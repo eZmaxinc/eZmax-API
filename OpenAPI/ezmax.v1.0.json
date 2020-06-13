@@ -37,8 +37,6 @@
   } ],
   "tags" : [ {
     "name" : "activesession"
-  }, {
-    "name" : "pipi"
   } ],
   "paths" : {
     "/1/object/activesession/getCurrent" : {
