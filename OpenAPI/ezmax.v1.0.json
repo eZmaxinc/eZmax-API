@@ -1,0 +1,74 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "eZmax API Definition",
+    "description" : "TODO Api description",
+    "termsOfService" : "https://www.ezmax.ca/TODO",
+    "contact" : {
+      "name" : "Ian Lord",
+      "url" : "https://www.ezmax.ca/en/contact",
+      "email" : "support@ezmax.ca"
+    },
+    "license" : {
+      "name" : "MIT2",
+      "url" : "https://creativecommons.org/licenses/by-sa/4.0/legalcode"
+    },
+    "version" : "1.0.0",
+    "x-restgeninfo" : { }
+  },
+  "servers" : [ {
+    "url" : "https://{sInfrastructureenvironmenttypeDescription}.api.appcluster01.{sInfrastructureregionCode}.ezmax.com/rest",
+    "description" : "The server endpoint where to send your API requests.",
+    "variables" : {
+      "sInfrastructureenvironmenttypeDescription" : {
+        "description" : "The environment on on which to call the API. Should always be \"prod\" unless instructed otherwise by support.",
+        "default" : "prod",
+        "enum" : [ "prod", "stg", "qa", "dev" ]
+      },
+      "sInfrastructureregionCode" : {
+        "description" : "The region where your services are hosted.",
+        "default" : "ca-central-1",
+        "enum" : [ "ca-central-1", "local" ]
+      }
+    }
+  } ],
+  "security" : [ {
+    "Authorization" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "activesession"
+  }, {
+    "name" : "pipi"
+  } ],
+  "paths" : {
+    "/1/object/activesession/getCurrent" : {
+      "get" : {
+        "tags" : [ "activesession", "pipi" ],
+        "summary" : "Get Current Activesession",
+        "description" : "Todo Description",
+        "operationId" : "getCurrent",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        },
+        "security" : [ {
+          "Authorization" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "securitySchemes" : {
+      "Authorization" : {
+        "type" : "apiKey",
+        "description" : "TODO API Key Description",
+        "name" : "Authorization",
+        "in" : "header"
+      }
+    }
+  }
+}
