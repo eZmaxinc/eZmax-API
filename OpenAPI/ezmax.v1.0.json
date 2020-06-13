@@ -41,7 +41,7 @@
   "paths" : {
     "/1/object/activesession/getCurrent" : {
       "get" : {
-        "tags" : [ "activesession", "pipi" ],
+        "tags" : [ "activesession" ],
         "summary" : "Get Current Activesession",
         "description" : "Todo Description",
         "operationId" : "getCurrent",
