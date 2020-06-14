@@ -57,7 +57,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/1-object-activesession-getCurrent-Response"
+                                    "$ref": "#/components/schemas/object-activesession-getCurrent-v1-Response"
                                 }
                             }
                         },
@@ -77,90 +77,17 @@
     },
     "components": {
         "schemas": {
-            "1-object-activesession-getCurrent-Response": {
-                "description": "Response for the /1/object/activesession/getCurrent API Request.",
-                "required": [
-                    "mPayload"
-                ],
-                "type": "object",
-                "allOf": [
-                    {
-                        "type": "object"
-                    },
-                    {
-                        "$ref": "#/components/schemas/Generic-Response"
-                    }
-                ],
-                "properties": {
-                    "mPayload": {
-                        "$ref": "#/components/schemas/1-object-activesession-getCurrent-Response-mPayload",
-                        "description": "The actual Payload of the response."
-                    }
-                }
-            },
-            "1-object-activesession-getCurrent-Response-mPayload": {
-                "description": "Payload for the /1/object/activesession/getCurrent API Request.",
-                "required": [
-                    "sCustomerCode",
-                    "eActivesessionSessiontype",
-                    "fkiLanguageID",
-                    "sCompanyNameX",
-                    "sDepartmentNameX",
-                    "a_RegisteredModules",
-                    "a_Permissions"
-                ],
-                "type": "object",
-                "properties": {
-                    "sCustomerCode": {
-                        "description": "The customer code specific to the client in which the API request is being made.",
-                        "type": "string"
-                    },
-                    "eActivesessionSessiontype": {
-                        "description": "The type of session used for the API request call.",
-                        "enum": [
-                            "Normal"
-                        ],
-                        "type": "string"
-                    },
-                    "fkiLanguageID": {
-                        "$ref": "#/components/schemas/Shared-fkiLanguageID",
-                        "description": "The Language ID of the current API request."
-                    },
-                    "sCompanyNameX": {
-                        "description": "The name of the active Company in the current language.",
-                        "type": "string"
-                    },
-                    "sDepartmentNameX": {
-                        "description": "The name of the active Department in the current language.",
-                        "type": "string"
-                    },
-                    "a_RegisteredModules": {
-                        "description": "An Array of Registered modules.\n\nThese are the modules that are Licensed to be used by the User or the API Key.",
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "a_Permissions": {
-                        "description": "An array of permissions granted to the user or api key.\n",
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    }
-                }
-            },
             "Generic-Response": {
-                "description": "Test",
+                "description": "All API response will inherit this based Response.",
                 "type": "object",
                 "properties": {
                     "objDebugPayload": {
                         "$ref": "#/components/schemas/Generic-Response-objDebugPayload",
-                        "description": ""
+                        "description": "This is a debug object containing debugging information on the actual function.666"
                     },
                     "objDebug": {
                         "$ref": "#/components/schemas/Generic-Response-objDebug",
-                        "description": "Prout"
+                        "description": "This is a generic debug object that is returned by all API requests."
                     }
                 }
             },
@@ -276,6 +203,79 @@
             "Shared-fkiLanguageID": {
                 "description": "The ID of the language, Valid values are:\n1. French\n2. English",
                 "type": "integer"
+            },
+            "object-activesession-getCurrent-v1-Response": {
+                "description": "Response for the /1/object/activesession/getCurrent API Request.",
+                "required": [
+                    "mPayload"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "type": "object"
+                    },
+                    {
+                        "$ref": "#/components/schemas/Generic-Response"
+                    }
+                ],
+                "properties": {
+                    "mPayload": {
+                        "$ref": "#/components/schemas/object-activesession-getCurrent-v1-Response-mPayload",
+                        "description": "The actual Payload of the response."
+                    }
+                }
+            },
+            "object-activesession-getCurrent-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/activesession/getCurrent API Request.",
+                "required": [
+                    "sCustomerCode",
+                    "eActivesessionSessiontype",
+                    "fkiLanguageID",
+                    "sCompanyNameX",
+                    "sDepartmentNameX",
+                    "a_RegisteredModules",
+                    "a_Permissions"
+                ],
+                "type": "object",
+                "properties": {
+                    "sCustomerCode": {
+                        "description": "The customer code specific to the client in which the API request is being made.",
+                        "type": "string"
+                    },
+                    "eActivesessionSessiontype": {
+                        "description": "The type of session used for the API request call.",
+                        "enum": [
+                            "Normal"
+                        ],
+                        "type": "string"
+                    },
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Shared-fkiLanguageID",
+                        "description": "The Language ID of the current API request."
+                    },
+                    "sCompanyNameX": {
+                        "description": "The name of the active Company in the current language.",
+                        "type": "string"
+                    },
+                    "sDepartmentNameX": {
+                        "description": "The name of the active Department in the current language.",
+                        "type": "string"
+                    },
+                    "a_RegisteredModules": {
+                        "description": "An Array of Registered modules.\n\nThese are the modules that are Licensed to be used by the User or the API Key.",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "a_Permissions": {
+                        "description": "An array of permissions granted to the user or api key.\n",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                }
             }
         },
         "securitySchemes": {
