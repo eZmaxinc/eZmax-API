@@ -1,72 +1,229 @@
 {
-  "openapi" : "3.0.0",
-  "info" : {
-    "title" : "eZmax API Definition",
-    "description" : "TODO Api description",
-    "termsOfService" : "https://www.ezmax.ca/TODO",
-    "contact" : {
-      "name" : "Ian Lord",
-      "url" : "https://www.ezmax.ca/en/contact",
-      "email" : "support@ezmax.ca"
-    },
-    "license" : {
-      "name" : "MIT2",
-      "url" : "https://creativecommons.org/licenses/by-sa/4.0/legalcode"
-    },
-    "version" : "1.0.0",
-    "x-restgeninfo" : { }
-  },
-  "servers" : [ {
-    "url" : "https://{sInfrastructureenvironmenttypeDescription}.api.appcluster01.{sInfrastructureregionCode}.ezmax.com/rest",
-    "description" : "The server endpoint where to send your API requests.",
-    "variables" : {
-      "sInfrastructureenvironmenttypeDescription" : {
-        "description" : "The environment on on which to call the API. Should always be \"prod\" unless instructed otherwise by support.",
-        "default" : "prod",
-        "enum" : [ "prod", "stg", "qa", "dev" ]
-      },
-      "sInfrastructureregionCode" : {
-        "description" : "The region where your services are hosted.",
-        "default" : "ca-central-1",
-        "enum" : [ "ca-central-1", "local" ]
-      }
-    }
-  } ],
-  "security" : [ {
-    "Authorization" : [ ]
-  } ],
-  "tags" : [ {
-    "name" : "activesession"
-  } ],
-  "paths" : {
-    "/1/object/activesession/getCurrent" : {
-      "get" : {
-        "tags" : [ "activesession" ],
-        "summary" : "Get Current Activesession",
-        "description" : "Todo Description",
-        "operationId" : "getCurrent",
-        "responses" : {
-          "200" : {
-            "description" : "OK",
-            "content" : {
-              "application/json" : { }
-            }
-          }
+    "openapi": "3.0.0",
+    "info": {
+        "title": "eZmax API Definition",
+        "version": "1.0.0",
+        "description": "TODO Api description",
+        "termsOfService": "https://www.ezmax.ca/TODO",
+        "contact": {
+            "name": "Ian Lord",
+            "url": "https://www.ezmax.ca/en/contact",
+            "email": "support@ezmax.ca"
         },
-        "security" : [ {
-          "Authorization" : [ ]
-        } ]
-      }
-    }
-  },
-  "components" : {
-    "securitySchemes" : {
-      "Authorization" : {
-        "type" : "apiKey",
-        "description" : "TODO API Key Description",
-        "name" : "Authorization",
-        "in" : "header"
-      }
-    }
-  }
+        "license": {
+            "name": "MIT License",
+            "url": "https://opensource.org/licenses/MIT"
+        },
+        "x-restgeninfo": {
+
+        }
+    },
+    "servers": [
+        {
+            "url": "https://{sInfrastructureenvironmenttypeDescription}.api.appcluster01.{sInfrastructureregionCode}.ezmax.com/rest",
+            "description": "The server endpoint where to send your API requests.",
+            "variables": {
+                "sInfrastructureenvironmenttypeDescription": {
+                    "enum": [
+                        "prod",
+                        "stg",
+                        "qa",
+                        "dev"
+                    ],
+                    "default": "prod",
+                    "description": "The environment on on which to call the API. Should always be \"prod\" unless instructed otherwise by support."
+                },
+                "sInfrastructureregionCode": {
+                    "enum": [
+                        "ca-central-1",
+                        "local"
+                    ],
+                    "default": "ca-central-1",
+                    "description": "The region where your services are hosted."
+                }
+            }
+        }
+    ],
+    "paths": {
+        "/1/object/activesession/getCurrent": {
+            "summary": "Todo",
+            "description": "Todo",
+            "get": {
+                "tags": [
+                    "activesession"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Response-1-object-activesession-getCurrent"
+                                }
+                            }
+                        },
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "summary": "Get Current Activesession",
+                "description": "Todo Description"
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Schema-Generic-objSQLQuery": {
+                "description": "Definition of objSQLQuery Object.",
+                "required": [
+                    "fDuration",
+                    "sQuery"
+                ],
+                "type": "object",
+                "properties": {
+                    "sQuery": {
+                        "description": "The SQL Query",
+                        "type": "string"
+                    },
+                    "fDuration": {
+                        "format": "float",
+                        "description": "Execution time of the SQL Query in seconds.",
+                        "type": "number"
+                    }
+                },
+                "example": {
+                    "sQuery": "SELECT * FROM table",
+                    "fDuration": 1.0E-4
+                }
+            },
+            "Schema-Generic-objDebug": {
+                "description": "This is a generic debug object that is returned by all API requests.",
+                "required": [
+                    "sMemoryUsage",
+                    "sRunTime",
+                    "iSQLSelects",
+                    "iSQLQueries",
+                    "a_objQuery"
+                ],
+                "type": "object",
+                "properties": {
+                    "sMemoryUsage": {
+                        "description": "The peak memory allocated during the API request execution. Formatted as a human readable string.",
+                        "type": "string"
+                    },
+                    "sRunTime": {
+                        "description": "The total server execution time of the API request execution. Formatted as a human readable string.",
+                        "type": "string"
+                    },
+                    "iSQLSelects": {
+                        "description": "The number of SQL SELECT queries that were sent to the database server during the API request execution.",
+                        "type": "integer"
+                    },
+                    "iSQLQueries": {
+                        "description": "The number of SQL INSERT/UPDATE/DELETE queries that were sent to the database server during the API request execution.",
+                        "type": "integer"
+                    },
+                    "a_objQuery": {
+                        "description": "An array of the SQL Queries that were executed during the API request execution.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Schema-Generic-objSQLQuery"
+                        }
+                    }
+                }
+            },
+            "Schema-Generic-objDebugPayload": {
+                "description": "This is a debug object containing debugging information on the actual function.",
+                "required": [
+                    "iVersionMin",
+                    "iVersionMax",
+                    "a_RequiredPermissions"
+                ],
+                "type": "object",
+                "properties": {
+                    "iVersionMin": {
+                        "description": "The minimum version of the function that can be called.",
+                        "type": "integer"
+                    },
+                    "iVersionMax": {
+                        "description": "The maximum version of the function that can be called.",
+                        "type": "integer"
+                    },
+                    "a_RequiredPermissions": {
+                        "description": "An array of permissions required to access this function.\n\nIf the value \"0\" is present in the array, anyone can call this function.\n\nYou must have one of the permission to access the function. You don't need to have all of them.",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "example": {
+                    "iVersionMin": 1,
+                    "iVersionMax": 2,
+                    "a_RequiredPermissions": [
+                        45,
+                        61
+                    ]
+                }
+            },
+            "Response-Generic": {
+                "description": "Test",
+                "type": "object",
+                "properties": {
+                    "objDebugPayload": {
+                        "$ref": "#/components/schemas/Schema-Generic-objDebugPayload",
+                        "description": ""
+                    },
+                    "objDebug": {
+                        "$ref": "#/components/schemas/Schema-Generic-objDebug",
+                        "description": "Prout"
+                    }
+                }
+            },
+            "Response-1-object-activesession-getCurrent": {
+                "description": "Response for the /1/object/activesession/getCurrent API Request.",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "pipi"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "pipi": {
+                                "description": "",
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Response-Generic"
+                    }
+                ]
+            }
+        },
+        "securitySchemes": {
+            "Authorization": {
+                "type": "apiKey",
+                "description": "TODO API Key Description",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
+    "security": [
+        {
+            "Authorization": [
+            ]
+        }
+    ],
+    "tags": [
+        {
+            "name": "activesession"
+        }
+    ]
 }
