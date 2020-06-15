@@ -50,6 +50,7 @@
             "description": "Todo",
             "get": {
                 "tags": [
+                    "Object_Activesession"
                 ],
                 "responses": {
                     "200": {
@@ -69,7 +70,7 @@
                         ]
                     }
                 ],
-                "operationId": "TestOperationID",
+                "operationId": "Object_Activesession_GetCurrent_1",
                 "summary": "Get Current Activesession",
                 "description": "Todo Description"
             }
