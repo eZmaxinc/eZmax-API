@@ -70,6 +70,7 @@
                         ]
                     }
                 ],
+                "operationId": "TestOperationID",
                 "summary": "Get Current Activesession",
                 "description": "Todo Description"
             }
