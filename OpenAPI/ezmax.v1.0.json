@@ -50,7 +50,6 @@
             "description": "Todo",
             "get": {
                 "tags": [
-                    "activesession"
                 ],
                 "responses": {
                     "200": {
