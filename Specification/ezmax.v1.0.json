@@ -205,8 +205,10 @@
             "$ref" : "#/components/schemas/Shared-fkiLanguageID"
           },
           "sCompanyNameX" : {
+            "maxLength" : 25,
             "type" : "string",
-            "description" : "The name of the active Company in the current language."
+            "description" : "The name of the active Company in the current language.",
+            "default" : "MSD Informatique"
           },
           "sDepartmentNameX" : {
             "type" : "string",
