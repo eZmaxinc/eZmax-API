@@ -14,10 +14,10 @@
       "url" : "https://opensource.org/licenses/MIT"
     },
     "version" : "1.0.0",
-	"x-logo": {
-      "url": "https://github.com/eZmaxinc/eZmax-API/raw/master/docs/resources/images/logo.png",
-      "backgroundColor": "#FFFFFF",
-      "altText": "eZmax Logo"
+    "x-logo" : {
+      "url" : "https://github.com/eZmaxinc/eZmax-API/raw/master/docs/resources/images/logo.png",
+      "backgroundColor" : "#FFFFFF",
+      "altText" : "eZmax Logo"
     },
     "x-restgeninfo" : { }
   },
@@ -235,6 +235,39 @@
           }
         },
         "description" : "Payload for the /1/object/activesession/getCurrent API Request."
+      },
+      "objEzsignfolder" : {
+        "required" : [ "pkiEzsignfolderID", "fkiEzsignfoldertypeID", "fkiLanguageID" ],
+        "type" : "object",
+        "properties" : {
+          "fkiEzsigntsarequirementID" : {
+            "type" : "integer",
+            "description" : "A Foreign Key to the Ezsign TSA Requirement"
+          },
+          "dtEzsignfolderSentdate" : {
+            "type" : "integer",
+            "description" : "Date and Time when the Folder was sent out for signature.",
+            "readOnly" : true
+          },
+          "fkiEzsignfoldertypeID" : {
+            "type" : "integer",
+            "description" : "A Foreign Key to the Ezsign Folder Type"
+          },
+          "fkiLanguageID" : {
+            "type" : "integer",
+            "description" : "A Foreign Key to the Language"
+          },
+          "eEzsignfolderStep" : {
+            "type" : "string"
+          },
+          "pkiEzsignfolderID" : {
+            "uniqueItems" : true,
+            "type" : "integer",
+            "description" : "Primary Key",
+            "readOnly" : true
+          }
+        },
+        "description" : "TODO"
       }
     },
     "securitySchemes" : {
@@ -245,5 +278,15 @@
         "in" : "header"
       }
     }
-  }
+  },
+  "x-tagGroups" : [ {
+    "name" : "Objects",
+    "tags" : [ "Object_Activesession" ]
+  }, {
+    "name" : "Modules",
+    "tags" : [ ]
+  }, {
+    "name" : "Reports",
+    "tags" : [ ]
+  } ]
 }
