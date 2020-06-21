@@ -274,7 +274,7 @@
             "Generic-Response-objDebug": {
                 "description": "This is a generic debug object that is returned by all API requests",
                 "required": [
-                    "a_objQuery",
+                    "a_objSQLQuery",
                     "iSQLQueries",
                     "iSQLSelects",
                     "sMemoryUsage",
@@ -298,7 +298,7 @@
                         "description": "The number of SQL INSERT/UPDATE/DELETE queries that were sent to the database server during the API request execution",
                         "type": "integer"
                     },
-                    "a_objQuery": {
+                    "a_objSQLQuery": {
                         "description": "An array of the SQL Queries that were executed during the API request execution",
                         "type": "array",
                         "items": {
