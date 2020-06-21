@@ -67,7 +67,7 @@
                     "required": true
                 },
                 "tags": [
-                    "Ezsignfolder"
+                    "Object_Ezsignfolder"
                 ],
                 "responses": {
                     "201": {
@@ -90,7 +90,7 @@
             "description": "",
             "get": {
                 "tags": [
-                    "Ezsignfolder"
+                    "Object_Ezsignfolder"
                 ],
                 "responses": {
                     "200": {
@@ -129,7 +129,7 @@
                     "required": true
                 },
                 "tags": [
-                    "Ezsignfolder"
+                    "Object_Ezsignfolder"
                 ],
                 "responses": {
                     "200": {
@@ -157,7 +157,7 @@
             },
             "delete": {
                 "tags": [
-                    "Ezsignfolder"
+                    "Object_Ezsignfolder"
                 ],
                 "responses": {
                     "200": {
@@ -198,7 +198,7 @@
         "/1/object/ezsignfolder/{pkiEzsignfolderID}/getChildren": {
             "get": {
                 "tags": [
-                    "Ezsignfolder"
+                    "Object_Ezsignfolder"
                 ],
                 "responses": {
                     "404": {
@@ -231,7 +231,7 @@
             "description": "",
             "get": {
                 "tags": [
-                    "Activesession"
+                    "Object_Activesession"
                 ],
                 "responses": {
                     "200": {
@@ -666,29 +666,29 @@
     ],
     "tags": [
         {
-            "name": "Activesession",
+            "name": "Object_Activesession",
             "description": "Activesession contains detail about the currently executing api request."
         },
         {
-            "name": "Ezsignfolder",
-            "description": ""
+            "name": "Object_Ezsignfolder",
+            "description": "Ezsignfolder contains detail about the container containing signers, documents to sign, etc. Sometimes referred as \"Envelopes\" in competitor products"
         }
     ],
     "x-tagGroups": [
         {
-            "name": "Objects",
+            "name": "Object",
             "tags": [
-                "Activesession",
-                "Ezsignfolder"
+                "Object_Activesession",
+                "Object_Ezsignfolder"
             ]
         },
         {
-            "name": "Modules",
+            "name": "Module",
             "tags": [
             ]
         },
         {
-            "name": "Reports",
+            "name": "Report",
             "tags": [
             ]
         }
