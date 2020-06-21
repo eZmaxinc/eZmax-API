@@ -59,7 +59,7 @@
                             "schema": {
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/components/schemas/object-ezsignfolder-createObject-v1-Request"
+                                    "$ref": "#/components/schemas/ezsignfolder-createObject-v1-Request"
                                 }
                             }
                         }
@@ -67,21 +67,21 @@
                     "required": true
                 },
                 "tags": [
-                    "Object_Ezsignfolder"
+                    "Ezsignfolder"
                 ],
                 "responses": {
                     "201": {
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/object-ezsignfolder-createObject-v1-Response"
+                                    "$ref": "#/components/schemas/ezsignfolder-createObject-v1-Response"
                                 }
                             }
                         },
                         "description": "Successful response"
                     }
                 },
-                "operationId": "Object_Ezsignfolder_CreateObject_V1",
+                "operationId": "Ezsignfolder_CreateObject_V1",
                 "summary": "Create a new Ezsignfolder",
                 "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects."
             }
@@ -90,14 +90,14 @@
             "description": "",
             "get": {
                 "tags": [
-                    "Object_Ezsignfolder"
+                    "Ezsignfolder"
                 ],
                 "responses": {
                     "200": {
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/object-ezsignfolder-getObject-v1-Response"
+                                    "$ref": "#/components/schemas/ezsignfolder-getObject-v1-Response"
                                 }
                             }
                         },
@@ -113,7 +113,7 @@
                         ]
                     }
                 ],
-                "operationId": "Object_Ezsignfolder_GetObject_V1",
+                "operationId": "Ezsignfolder_GetObject_V1",
                 "summary": "Retrieve an existing Ezsignfolder",
                 "description": ""
             },
@@ -122,21 +122,21 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/object-ezsignfolder-editObject-v1-Request"
+                                "$ref": "#/components/schemas/ezsignfolder-editObject-v1-Request"
                             }
                         }
                     },
                     "required": true
                 },
                 "tags": [
-                    "Object_Ezsignfolder"
+                    "Ezsignfolder"
                 ],
                 "responses": {
                     "200": {
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/object-ezsignfolder-editObject-v1-Response"
+                                    "$ref": "#/components/schemas/ezsignfolder-editObject-v1-Response"
                                 }
                             }
                         },
@@ -152,19 +152,19 @@
                         ]
                     }
                 ],
-                "operationId": "Object_Ezsignfolder_EditObject_V1",
+                "operationId": "Ezsignfolder_EditObject_V1",
                 "summary": "Modify an existing Ezsignfolder"
             },
             "delete": {
                 "tags": [
-                    "Object_Ezsignfolder"
+                    "Ezsignfolder"
                 ],
                 "responses": {
                     "200": {
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/object-ezsignfolder-deleteObject-v1-Response"
+                                    "$ref": "#/components/schemas/ezsignfolder-deleteObject-v1-Response"
                                 }
                             }
                         },
@@ -180,7 +180,7 @@
                         ]
                     }
                 ],
-                "operationId": "Object_Ezsignfolder_DeleteObject_V1",
+                "operationId": "Ezsignfolder_DeleteObject_V1",
                 "summary": "Delete an existing Ezsignfolder"
             },
             "parameters": [
@@ -198,7 +198,7 @@
         "/1/object/ezsignfolder/{pkiEzsignfolderID}/getChildren": {
             "get": {
                 "tags": [
-                    "Object_Ezsignfolder"
+                    "Ezsignfolder"
                 ],
                 "responses": {
                     "404": {
@@ -211,7 +211,7 @@
                         ]
                     }
                 ],
-                "operationId": "Object_Ezsignfolder_GetObject_GetChildren_V1",
+                "operationId": "Ezsignfolder_GetObject_GetChildren_V1",
                 "summary": "Retrieve an existing Ezsignfolder's children IDs",
                 "description": ""
             },
@@ -231,14 +231,14 @@
             "description": "",
             "get": {
                 "tags": [
-                    "Object_Activesession"
+                    "Activesession"
                 ],
                 "responses": {
                     "200": {
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/object-activesession-getCurrent-v1-Response"
+                                    "$ref": "#/components/schemas/activesession-getCurrent-v1-Response"
                                 }
                             }
                         },
@@ -251,7 +251,7 @@
                         ]
                     }
                 ],
-                "operationId": "Object_Activesession_GetCurrent_V1",
+                "operationId": "Activesession_GetCurrent_V1",
                 "summary": "Get Current Activesession",
                 "description": "Retrieve the details about the current activesession"
             }
@@ -384,7 +384,24 @@
                 "description": "The ID of the language, Valid values are:\n1. French\n2. English",
                 "type": "integer"
             },
-            "object-activesession-getCurrent-v1-Response": {
+            "Generic-Response-Error": {
+                "description": "Generic Error Message",
+                "required": [
+                    "sErrorMessage"
+                ],
+                "type": "object",
+                "properties": {
+                    "sErrorMessage": {
+                        "description": "More detail about the error",
+                        "type": "string"
+                    }
+                }
+            },
+            "Shared-fkiEzsigntsarequirementID": {
+                "description": "The ID of the Time Stamping Authority requirement, Valid values are:\n1. No. No TSA Timestamping will requested. This will make all signatures a lot faster since no round-trip to the TSA server will be required. Timestamping will be made using eZsign server's time.\n2. Best effort. Timestamping from a Time Stamping Authority will be requested but is not mandatory. In the very improbable case it cannot be completed, the timestamping will be made using eZsign server's time. **Additional fee applies**\n3. Mandatory. Timestamping from a Time Stamping Authority will be requested and is mandatory. In the very improbable case it cannot be completed, the signature will fail and the user will be asked to retry. **Additional fee applies**",
+                "type": "integer"
+            },
+            "activesession-getCurrent-v1-Response": {
                 "description": "Response for the /1/object/activesession/getCurrent API Request",
                 "required": [
                     "mPayload"
@@ -400,112 +417,11 @@
                 ],
                 "properties": {
                     "mPayload": {
-                        "$ref": "#/components/schemas/object-activesession-getCurrent-v1-Response-mPayload"
+                        "$ref": "#/components/schemas/activesession-getCurrent-v1-Response-mPayload"
                     }
                 }
             },
-            "object-ezsignfolder-getObject-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignfolder/getObject API Request",
-                "type": "object"
-            },
-            "object-ezsignfolder-getObject-v1-Response": {
-                "description": "Response for the /1/object/ezsignfolder/getObject API Request",
-                "required": [
-                    "mPayload"
-                ],
-                "type": "object",
-                "allOf": [
-                    {
-                        "type": "object"
-                    },
-                    {
-                        "$ref": "#/components/schemas/Generic-Response"
-                    }
-                ],
-                "properties": {
-                    "mPayload": {
-                        "$ref": "#/components/schemas/object-ezsignfolder-getObject-v1-Response-mPayload"
-                    }
-                }
-            },
-            "object-ezsignfolder-createObject-v1-Response": {
-                "description": "Response for the /1/object/ezsignfolder/createObject API Request",
-                "required": [
-                    "a_pkiEzsignfolderID"
-                ],
-                "type": "object",
-                "allOf": [
-                    {
-                        "type": "object"
-                    },
-                    {
-                        "$ref": "#/components/schemas/Generic-Response"
-                    }
-                ],
-                "properties": {
-                    "a_pkiEzsignfolderID": {
-                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    }
-                }
-            },
-            "object-ezsignfolder-createObject-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignfolder/editObject API Request",
-                "required": [
-                    "pkiEzsignfolderID"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiEzsignfolderID": {
-                        "description": "The unique ID representing the Ezsignfolder that was created.",
-                        "type": "integer"
-                    }
-                },
-                "example": {
-                    "pkiEzsignfolderID": 36
-                }
-            },
-            "object-ezsignfolder-editObject-v1-Response": {
-                "description": "Response for the /1/object/ezsignfolder/editObject API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "type": "object"
-                    },
-                    {
-                        "$ref": "#/components/schemas/Generic-Response"
-                    }
-                ]
-            },
-            "object-ezsignfolder-deleteObject-v1-Response": {
-                "description": "Response for the /1/object/ezsignfolder/deleteObject API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "type": "object"
-                    },
-                    {
-                        "$ref": "#/components/schemas/Generic-Response"
-                    }
-                ]
-            },
-            "Generic-Response-Error": {
-                "description": "Generic Error Message",
-                "required": [
-                    "sErrorMessage"
-                ],
-                "type": "object",
-                "properties": {
-                    "sErrorMessage": {
-                        "description": "More detail about the error",
-                        "type": "string"
-                    }
-                }
-            },
-            "object-activesession-getCurrent-v1-Response-mPayload": {
+            "activesession-getCurrent-v1-Response-mPayload": {
                 "description": "Payload for the /1/object/activesession/getCurrent API Request",
                 "required": [
                     "a_Permissions",
@@ -556,37 +472,119 @@
                     }
                 }
             },
-            "object-ezsignfolder-createObject-v1-Request": {
+            "ezsignfolder-createObject-v1-Request": {
                 "description": "Request for the /1/object/ezsignfolder/createObject API Request",
                 "type": "object",
                 "properties": {
                     "objEzsignfolder": {
-                        "$ref": "#/components/schemas/objEzsignfolder-Request",
+                        "$ref": "#/components/schemas/ezsignfolder-Request",
                         "description": "Details about the objEzsignfolder to create.\n\nOnly one of objEzsignfolder OR objEzsignfolderCompound should be used"
                     },
                     "objEzsignfolderCompound": {
-                        "$ref": "#/components/schemas/objEzsignfolderCompound-Request",
+                        "$ref": "#/components/schemas/ezsignfolderCompound-Request",
                         "description": "Details about the objEzsignfolder to create. This is a complex structure and children to create the whole structure in a single pass.\n\nOnly one of objEzsignfolder OR objEzsignfolderCompound should be used"
                     }
                 }
             },
-            "Shared-fkiEzsigntsarequirementID": {
-                "description": "The ID of the Time Stamping Authority requirement, Valid values are:\n1. No. No TSA Timestamping will requested. This will make all signatures a lot faster since no round-trip to the TSA server will be required. Timestamping will be made using eZsign server's time.\n2. Best effort. Timestamping from a Time Stamping Authority will be requested but is not mandatory. In the very improbable case it cannot be completed, the timestamping will be made using eZsign server's time. **Additional fee applies**\n3. Mandatory. Timestamping from a Time Stamping Authority will be requested and is mandatory. In the very improbable case it cannot be completed, the signature will fail and the user will be asked to retry. **Additional fee applies**",
-                "type": "integer"
-            },
-            "objEzsignfolderCompound-Request": {
-                "description": "An Ezsignfolder Object and children to create a complete structure",
+            "ezsignfolder-createObject-v1-Response": {
+                "description": "Response for the /1/object/ezsignfolder/createObject API Request",
+                "required": [
+                    "a_pkiEzsignfolderID"
+                ],
                 "type": "object",
                 "allOf": [
                     {
                         "type": "object"
                     },
                     {
-                        "$ref": "#/components/schemas/objEzsignfolder-Request"
+                        "$ref": "#/components/schemas/Generic-Response"
+                    }
+                ],
+                "properties": {
+                    "a_pkiEzsignfolderID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            },
+            "ezsignfolder-createObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignfolder/editObject API Request",
+                "required": [
+                    "pkiEzsignfolderID"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsignfolderID": {
+                        "description": "The unique ID representing the Ezsignfolder that was created.",
+                        "type": "integer"
+                    }
+                },
+                "example": {
+                    "pkiEzsignfolderID": 36
+                }
+            },
+            "ezsignfolder-deleteObject-v1-Response": {
+                "description": "Response for the /1/object/ezsignfolder/deleteObject API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "type": "object"
+                    },
+                    {
+                        "$ref": "#/components/schemas/Generic-Response"
                     }
                 ]
             },
-            "objEzsignfolder-Request": {
+            "ezsignfolder-editObject-v1-Request": {
+                "description": "Request for the /1/object/ezsignfolder/editObject API Request",
+                "type": "object",
+                "properties": {
+                    "objEzsignfolder": {
+                        "$ref": "#/components/schemas/ezsignfolder-Request",
+                        "description": "Details about the objEzsignfolder to create.\n\nOnly one of objEzsignfolder OR objEzsignfolderCompound should be used"
+                    }
+                }
+            },
+            "ezsignfolder-editObject-v1-Response": {
+                "description": "Response for the /1/object/ezsignfolder/editObject API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "type": "object"
+                    },
+                    {
+                        "$ref": "#/components/schemas/Generic-Response"
+                    }
+                ]
+            },
+            "ezsignfolder-getObject-v1-Response": {
+                "description": "Response for the /1/object/ezsignfolder/getObject API Request",
+                "required": [
+                    "mPayload"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "type": "object"
+                    },
+                    {
+                        "$ref": "#/components/schemas/Generic-Response"
+                    }
+                ],
+                "properties": {
+                    "mPayload": {
+                        "$ref": "#/components/schemas/ezsignfolder-getObject-v1-Response-mPayload"
+                    }
+                }
+            },
+            "ezsignfolder-getObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignfolder/getObject API Request",
+                "type": "object"
+            },
+            "ezsignfolder-Request": {
                 "description": "An Ezsignfolder Object",
                 "required": [
                     "fkiEzsignfoldertypeID",
@@ -626,15 +624,17 @@
                     "fkiEzsigntsarequirementID": 1
                 }
             },
-            "object-ezsignfolder-editObject-v1-Request": {
-                "description": "Request for the /1/object/ezsignfolder/editObject API Request",
+            "ezsignfolderCompound-Request": {
+                "description": "An Ezsignfolder Object and children to create a complete structure",
                 "type": "object",
-                "properties": {
-                    "objEzsignfolder": {
-                        "$ref": "#/components/schemas/objEzsignfolder-Request",
-                        "description": "Details about the objEzsignfolder to create.\n\nOnly one of objEzsignfolder OR objEzsignfolderCompound should be used"
+                "allOf": [
+                    {
+                        "type": "object"
+                    },
+                    {
+                        "$ref": "#/components/schemas/ezsignfolder-Request"
                     }
-                }
+                ]
             }
         },
         "responses": {
@@ -666,11 +666,11 @@
     ],
     "tags": [
         {
-            "name": "Object_Activesession",
+            "name": "Activesession",
             "description": "Activesession contains detail about the currently executing api request."
         },
         {
-            "name": "Object_Ezsignfolder",
+            "name": "Ezsignfolder",
             "description": "Ezsignfolder contains detail about the container containing signers, documents to sign, etc. Sometimes referred as \"Envelopes\" in competitor products"
         }
     ],
@@ -678,8 +678,8 @@
         {
             "name": "Object",
             "tags": [
-                "Object_Activesession",
-                "Object_Ezsignfolder"
+                "Activesession",
+                "Ezsignfolder"
             ]
         },
         {
