@@ -398,7 +398,7 @@
                 }
             },
             "Shared-fkiEzsigntsarequirementID": {
-                "description": "The ID of the Time Stamping Authority requirement, Valid values are:\n1. No. No TSA Timestamping will requested. This will make all signatures a lot faster since no round-trip to the TSA server will be required. Timestamping will be made using eZsign server's time.\n2. Best effort. Timestamping from a Time Stamping Authority will be requested but is not mandatory. In the very improbable case it cannot be completed, the timestamping will be made using eZsign server's time. **Additional fee applies**\n3. Mandatory. Timestamping from a Time Stamping Authority will be requested and is mandatory. In the very improbable case it cannot be completed, the signature will fail and the user will be asked to retry. **Additional fee applies**",
+                "description": "Determine if a Time Stamping Authority should add a timestamp on each of the signature. Valid values are:\n1. No. No TSA Timestamping will requested. This will make all signatures a lot faster since no round-trip to the TSA server will be required. Timestamping will be made using eZsign server's time.\n2. Best effort. Timestamping from a Time Stamping Authority will be requested but is not mandatory. In the very improbable case it cannot be completed, the timestamping will be made using eZsign server's time. **Additional fee applies**\n3. Mandatory. Timestamping from a Time Stamping Authority will be requested and is mandatory. In the very improbable case it cannot be completed, the signature will fail and the user will be asked to retry. **Additional fee applies**\n",
                 "type": "integer"
             },
             "activesession-getCurrent-v1-Response": {
@@ -478,18 +478,18 @@
                 "properties": {
                     "objEzsignfolder": {
                         "$ref": "#/components/schemas/ezsignfolder-Request",
-                        "description": "Details about the objEzsignfolder to create.\n\nOnly one of objEzsignfolder OR objEzsignfolderCompound should be used"
+                        "description": ""
                     },
                     "objEzsignfolderCompound": {
                         "$ref": "#/components/schemas/ezsignfolderCompound-Request",
-                        "description": "Details about the objEzsignfolder to create. This is a complex structure and children to create the whole structure in a single pass.\n\nOnly one of objEzsignfolder OR objEzsignfolderCompound should be used"
+                        "description": ""
                     }
                 }
             },
             "ezsignfolder-createObject-v1-Response": {
                 "description": "Response for the /1/object/ezsignfolder/createObject API Request",
                 "required": [
-                    "a_pkiEzsignfolderID"
+                    "mPayload"
                 ],
                 "type": "object",
                 "allOf": [
@@ -501,6 +501,19 @@
                     }
                 ],
                 "properties": {
+                    "mPayload": {
+                        "$ref": "#/components/schemas/ezsignfolder-createObject-v1-Response-mPayload",
+                        "description": ""
+                    }
+                }
+            },
+            "ezsignfolder-createObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignfolder/editObject API Request",
+                "required": [
+                    "a_pkiEzsignfolderID"
+                ],
+                "type": "object",
+                "properties": {
                     "a_pkiEzsignfolderID": {
                         "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
                         "type": "array",
@@ -508,22 +521,12 @@
                             "type": "integer"
                         }
                     }
-                }
-            },
-            "ezsignfolder-createObject-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignfolder/editObject API Request",
-                "required": [
-                    "pkiEzsignfolderID"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiEzsignfolderID": {
-                        "description": "The unique ID representing the Ezsignfolder that was created.",
-                        "type": "integer"
-                    }
                 },
                 "example": {
-                    "pkiEzsignfolderID": 36
+                    "pkiEzsignfolderID": [
+                        75,
+                        52
+                    ]
                 }
             },
             "ezsignfolder-deleteObject-v1-Response": {
@@ -544,7 +547,7 @@
                 "properties": {
                     "objEzsignfolder": {
                         "$ref": "#/components/schemas/ezsignfolder-Request",
-                        "description": "Details about the objEzsignfolder to create.\n\nOnly one of objEzsignfolder OR objEzsignfolderCompound should be used"
+                        "description": ""
                     }
                 }
             },
@@ -596,12 +599,12 @@
                 "type": "object",
                 "properties": {
                     "fkiEzsignfoldertypeID": {
-                        "description": "A Foreign Key to the Ezsign Folder Type",
+                        "description": "The Ezsign Folder Type ID.\nThis value can be queried by the API and is also visible in the admin interface.\n\nThere are two types of Ezsignfoldertype. **User** and **Shared**. **User** can only be seen by the user who created the folder or its assistants. Access to **Shared** folders are configurable for access and email delivery. You should typically choose a **Shared** type here.",
                         "type": "integer"
                     },
                     "fkiLanguageID": {
                         "$ref": "#/components/schemas/Shared-fkiLanguageID",
-                        "description": "A Foreign Key to the Language"
+                        "description": ""
                     },
                     "sEzsignfolderDescription": {
                         "description": "The description of the Ezsign Folder",
@@ -613,14 +616,14 @@
                     },
                     "fkiEzsigntsarequirementID": {
                         "$ref": "#/components/schemas/Shared-fkiEzsigntsarequirementID",
-                        "description": "A Foreign Key to the Ezsign TSA Requirement"
+                        "description": ""
                     }
                 },
                 "example": {
                     "fkiEzsignfoldertypeID": 1,
                     "fkiLanguageID": 1,
                     "sEzsignfolderDescription": "Test eZsign Folder",
-                    "tEzsignfolderNote": "These are extra notes we can add to the ezsign folder",
+                    "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
                     "fkiEzsigntsarequirementID": 1
                 }
             },
