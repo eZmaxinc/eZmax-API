@@ -499,7 +499,8 @@
         "properties" : {
           "fkiEzsignfoldertypeID" : {
             "type" : "integer",
-            "description" : "The Ezsign Folder Type ID.\nThis value can be queried by the API and is also visible in the admin interface.\n\nThere are two types of Ezsignfoldertype. **User** and **Shared**. **User** can only be seen by the user who created the folder or its assistants. Access to **Shared** folders are configurable for access and email delivery. You should typically choose a **Shared** type here."
+            "description" : "The Ezsign Folder Type ID.\nThis value can be queried by the API and is also visible in the admin interface.\n\nThere are two types of Ezsignfoldertype. **User** and **Shared**. **User** can only be seen by the user who created the folder or its assistants. Access to **Shared** folders are configurable for access and email delivery. You should typically choose a **Shared** type here.",
+            "nullable" : false
           },
           "fkiLanguageID" : {
             "$ref" : "#/components/schemas/Shared-fkiLanguageID"
@@ -507,11 +508,13 @@
           "sEzsignfolderDescription" : {
             "maxLength" : 50,
             "type" : "string",
-            "description" : "The description of the Ezsign Folder"
+            "description" : "The description of the Ezsign Folder",
+            "nullable" : false
           },
           "tEzsignfolderNote" : {
             "type" : "string",
-            "description" : "Somes extra notes about the eZsign Folder"
+            "description" : "Somes extra notes about the eZsign Folder",
+            "nullable" : false
           },
           "fkiEzsigntsarequirementID" : {
             "$ref" : "#/components/schemas/Shared-fkiEzsigntsarequirementID"
