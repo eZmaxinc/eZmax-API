@@ -1,699 +1,570 @@
 {
-    "openapi": "3.0.3",
-    "info": {
-        "title": "eZmax API Definition",
-        "version": "1.0.0",
-        "description": "This API expose all the functionnalities for the eZmax and eZsign application.\n\nWe provide SDKs for customers. They are generated using OpenAPI codegen, we encourage customers to use them as we also provide samples for them.\n\nYou can choose to build your own implementation manually or can use any compatible OpenAPI 3.0 generator like Swagger Codegen, OpenAPI codegen or any commercial generators.\n\nIf you need helping understanding how to use this API, don't waste too much time looging for it. Contact support-api@ezmax.ca, we're here to help. We are developpers so we know programmers don't like bad documentation. If you don't find what you need in the documentation, let us know, we'll improve it and put you rapidly up on track.",
-        "termsOfService": "https://www.ezmax.ca/TODO",
-        "contact": {
-            "name": "API Support department",
-            "url": "https://www.ezmax.ca/en/contact",
-            "email": "support-api@ezmax.ca"
-        },
-        "license": {
-            "name": "MIT License",
-            "url": "https://opensource.org/licenses/MIT"
-        },
-        "x-logo": {
-            "url": "https://github.com/eZmaxinc/eZmax-API/raw/master/docs/resources/images/logo.png",
-            "backgroundColor": "#fafafa",
-            "altText": "eZmax Logo"
-        },
-        "x-restgeninfo": {
-
-        }
+  "openapi" : "3.0.3",
+  "info" : {
+    "title" : "eZmax API Definition",
+    "description" : "This API expose all the functionnalities for the eZmax and eZsign application.\n\nWe provide SDKs for customers. They are generated using OpenAPI codegen, we encourage customers to use them as we also provide samples for them.\n\nYou can choose to build your own implementation manually or can use any compatible OpenAPI 3.0 generator like Swagger Codegen, OpenAPI codegen or any commercial generators.\n\nIf you need helping understanding how to use this API, don't waste too much time looging for it. Contact support-api@ezmax.ca, we're here to help. We are developpers so we know programmers don't like bad documentation. If you don't find what you need in the documentation, let us know, we'll improve it and put you rapidly up on track.",
+    "termsOfService" : "https://www.ezmax.ca/TODO",
+    "contact" : {
+      "name" : "API Support department",
+      "url" : "https://www.ezmax.ca/en/contact",
+      "email" : "support-api@ezmax.ca"
     },
-    "servers": [
-        {
-            "url": "https://{sInfrastructureenvironmenttypeDescription}.api.appcluster01.{sInfrastructureregionCode}.ezmax.com/rest",
-            "description": "The server endpoint where to send your API requests.",
-            "variables": {
-                "sInfrastructureenvironmenttypeDescription": {
-                    "enum": [
-                        "prod",
-                        "stg",
-                        "qa",
-                        "dev"
-                    ],
-                    "default": "prod",
-                    "description": "The environment on on which to call the API. Should always be \"prod\" unless instructed otherwise by support."
-                },
-                "sInfrastructureregionCode": {
-                    "enum": [
-                        "ca-central-1",
-                        "local"
-                    ],
-                    "default": "ca-central-1",
-                    "description": "The region where your services are hosted."
-                }
-            }
-        }
-    ],
-    "paths": {
-        "/1/object/ezsignfolder": {
-            "description": "",
-            "post": {
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/ezsignfolder-createObject-v1-Request"
-                                }
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "tags": [
-                    "Ezsignfolder"
-                ],
-                "responses": {
-                    "201": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsignfolder-createObject-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    }
-                },
-                "operationId": "Ezsignfolder_CreateObject_V1",
-                "summary": "Create a new Ezsignfolder",
-                "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects."
-            }
-        },
-        "/1/object/ezsignfolder/{pkiEzsignfolderID}": {
-            "description": "",
-            "get": {
-                "tags": [
-                    "Ezsignfolder"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsignfolder-getObject-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfolder_GetObject_V1",
-                "summary": "Retrieve an existing Ezsignfolder",
-                "description": ""
-            },
-            "put": {
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/ezsignfolder-editObject-v1-Request"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "tags": [
-                    "Ezsignfolder"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsignfolder-editObject-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfolder_EditObject_V1",
-                "summary": "Modify an existing Ezsignfolder"
-            },
-            "delete": {
-                "tags": [
-                    "Ezsignfolder"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsignfolder-deleteObject-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfolder_DeleteObject_V1",
-                "summary": "Delete an existing Ezsignfolder"
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsignfolderID",
-                    "description": "The unique ID of the Ezsignfolder",
-                    "schema": {
-                        "type": "integer"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/ezsignfolder/{pkiEzsignfolderID}/getChildren": {
-            "get": {
-                "tags": [
-                    "Ezsignfolder"
-                ],
-                "responses": {
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfolder_GetObject_GetChildren_V1",
-                "summary": "Retrieve an existing Ezsignfolder's children IDs",
-                "description": ""
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsignfolderID",
-                    "description": "The unique ID of the Ezsignfolder",
-                    "schema": {
-                        "type": "integer"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/activesession/getCurrent": {
-            "description": "",
-            "get": {
-                "tags": [
-                    "Activesession"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/activesession-getCurrent-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "OK"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Activesession_GetCurrent_V1",
-                "summary": "Get Current Activesession",
-                "description": "Retrieve the details about the current activesession"
-            }
-        }
+    "license" : {
+      "name" : "MIT License",
+      "url" : "https://opensource.org/licenses/MIT"
     },
-    "components": {
-        "schemas": {
-            "Generic-Response": {
-                "description": "All API response will inherit this based Response",
-                "type": "object",
-                "properties": {
-                    "objDebugPayload": {
-                        "$ref": "#/components/schemas/Generic-Response-objDebugPayload"
-                    },
-                    "objDebug": {
-                        "$ref": "#/components/schemas/Generic-Response-objDebug"
-                    }
-                }
-            },
-            "Generic-Response-objDebug": {
-                "description": "This is a generic debug object that is returned by all API requests",
-                "required": [
-                    "a_objSQLQuery",
-                    "iSQLQueries",
-                    "iSQLSelects",
-                    "sMemoryUsage",
-                    "sRunTime"
-                ],
-                "type": "object",
-                "properties": {
-                    "sMemoryUsage": {
-                        "description": "The peak memory allocated during the API request execution. Formatted as a human readable string",
-                        "type": "string"
-                    },
-                    "sRunTime": {
-                        "description": "The total server execution time of the API request execution. Formatted as a human readable string",
-                        "type": "string"
-                    },
-                    "iSQLSelects": {
-                        "description": "The number of SQL SELECT queries that were sent to the database server during the API request execution",
-                        "type": "integer"
-                    },
-                    "iSQLQueries": {
-                        "description": "The number of SQL INSERT/UPDATE/DELETE queries that were sent to the database server during the API request execution",
-                        "type": "integer"
-                    },
-                    "a_objSQLQuery": {
-                        "description": "An array of the SQL Queries that were executed during the API request execution",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Generic-Response-objSQLQuery"
-                        }
-                    }
-                },
-                "example": {
-                    "sMemoryUsage": "11,923MB",
-                    "sRunTime": "0.6084s",
-                    "iSQLSelects": 3,
-                    "iSQLQueries": 6,
-                    "a_objQuery": [
-                        {
-                            "sQuery": "SELECT * FROM table",
-                            "fDuration": 1.0E-4
-                        },
-                        {
-                            "sQuery": "SELECT * FROM table",
-                            "fDuration": 1.0E-4
-                        }
-                    ]
-                }
-            },
-            "Generic-Response-objDebugPayload": {
-                "description": "This is a debug object containing debugging information on the actual function",
-                "required": [
-                    "a_RequiredPermissions",
-                    "iVersionMax",
-                    "iVersionMin"
-                ],
-                "type": "object",
-                "properties": {
-                    "iVersionMin": {
-                        "description": "The minimum version of the function that can be called",
-                        "type": "integer"
-                    },
-                    "iVersionMax": {
-                        "description": "The maximum version of the function that can be called",
-                        "type": "integer"
-                    },
-                    "a_RequiredPermissions": {
-                        "description": "An array of permissions required to access this function.\n\nIf the value \"0\" is present in the array, anyone can call this function.\n\nYou must have one of the permission to access the function. You don't need to have all of them.",
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    }
-                },
-                "example": {
-                    "iVersionMin": 1,
-                    "iVersionMax": 2,
-                    "a_RequiredPermissions": [
-                        45,
-                        61
-                    ]
-                }
-            },
-            "Generic-Response-objSQLQuery": {
-                "description": "Definition of objSQLQuery Object",
-                "required": [
-                    "fDuration",
-                    "sQuery"
-                ],
-                "type": "object",
-                "properties": {
-                    "sQuery": {
-                        "description": "The SQL Query",
-                        "type": "string"
-                    },
-                    "fDuration": {
-                        "format": "float",
-                        "description": "Execution time of the SQL Query in seconds",
-                        "type": "number"
-                    }
-                },
-                "example": {
-                    "sQuery": "SELECT * FROM table",
-                    "fDuration": 1.0E-4
-                }
-            },
-            "Shared-fkiLanguageID": {
-                "description": "The ID of the language, Valid values are:\n1. French\n2. English",
-                "type": "integer"
-            },
-            "Generic-Response-Error": {
-                "description": "Generic Error Message",
-                "required": [
-                    "sErrorMessage"
-                ],
-                "type": "object",
-                "properties": {
-                    "sErrorMessage": {
-                        "description": "More detail about the error",
-                        "type": "string"
-                    }
-                }
-            },
-            "Shared-fkiEzsigntsarequirementID": {
-                "description": "Determine if a Time Stamping Authority should add a timestamp on each of the signature. Valid values are:\n1. No. No TSA Timestamping will requested. This will make all signatures a lot faster since no round-trip to the TSA server will be required. Timestamping will be made using eZsign server's time.\n2. Best effort. Timestamping from a Time Stamping Authority will be requested but is not mandatory. In the very improbable case it cannot be completed, the timestamping will be made using eZsign server's time. **Additional fee applies**\n3. Mandatory. Timestamping from a Time Stamping Authority will be requested and is mandatory. In the very improbable case it cannot be completed, the signature will fail and the user will be asked to retry. **Additional fee applies**\n",
-                "type": "integer"
-            },
-            "activesession-getCurrent-v1-Response": {
-                "description": "Response for the /1/object/activesession/getCurrent API Request",
-                "required": [
-                    "mPayload"
-                ],
-                "type": "object",
-                "allOf": [
-                    {
-                        "type": "object"
-                    },
-                    {
-                        "$ref": "#/components/schemas/Generic-Response"
-                    }
-                ],
-                "properties": {
-                    "mPayload": {
-                        "$ref": "#/components/schemas/activesession-getCurrent-v1-Response-mPayload"
-                    }
-                }
-            },
-            "activesession-getCurrent-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/activesession/getCurrent API Request",
-                "required": [
-                    "a_Permissions",
-                    "a_RegisteredModules",
-                    "eActivesessionSessiontype",
-                    "fkiLanguageID",
-                    "sCompanyNameX",
-                    "sCustomerCode",
-                    "sDepartmentNameX"
-                ],
-                "type": "object",
-                "properties": {
-                    "sCustomerCode": {
-                        "description": "The customer code specific to the client in which the API request is being made",
-                        "type": "string"
-                    },
-                    "eActivesessionSessiontype": {
-                        "description": "The type of session used for the API request call",
-                        "enum": [
-                            "Normal"
-                        ],
-                        "type": "string"
-                    },
-                    "fkiLanguageID": {
-                        "$ref": "#/components/schemas/Shared-fkiLanguageID"
-                    },
-                    "sCompanyNameX": {
-                        "description": "The name of the active Company in the current language",
-                        "type": "string"
-                    },
-                    "sDepartmentNameX": {
-                        "description": "The name of the active Department in the current language",
-                        "type": "string"
-                    },
-                    "a_RegisteredModules": {
-                        "description": "An Array of Registered modules.\n\nThese are the modules that are Licensed to be used by the User or the API Key.",
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "a_Permissions": {
-                        "description": "An array of permissions granted to the user or api key",
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    }
-                }
-            },
-            "ezsignfolder-createObject-v1-Request": {
-                "description": "Request for the /1/object/ezsignfolder/createObject API Request",
-                "type": "object",
-                "properties": {
-                    "objEzsignfolder": {
-                        "$ref": "#/components/schemas/ezsignfolder-Request",
-                        "description": ""
-                    },
-                    "objEzsignfolderCompound": {
-                        "$ref": "#/components/schemas/ezsignfolderCompound-Request",
-                        "description": ""
-                    }
-                }
-            },
-            "ezsignfolder-createObject-v1-Response": {
-                "description": "Response for the /1/object/ezsignfolder/createObject API Request",
-                "required": [
-                    "mPayload"
-                ],
-                "type": "object",
-                "allOf": [
-                    {
-                        "type": "object"
-                    },
-                    {
-                        "$ref": "#/components/schemas/Generic-Response"
-                    }
-                ],
-                "properties": {
-                    "mPayload": {
-                        "$ref": "#/components/schemas/ezsignfolder-createObject-v1-Response-mPayload",
-                        "description": ""
-                    }
-                }
-            },
-            "ezsignfolder-createObject-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignfolder/editObject API Request",
-                "required": [
-                    "a_pkiEzsignfolderID"
-                ],
-                "type": "object",
-                "properties": {
-                    "a_pkiEzsignfolderID": {
-                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    }
-                },
-                "example": {
-                    "pkiEzsignfolderID": [
-                        75,
-                        52
-                    ]
-                }
-            },
-            "ezsignfolder-deleteObject-v1-Response": {
-                "description": "Response for the /1/object/ezsignfolder/deleteObject API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "type": "object"
-                    },
-                    {
-                        "$ref": "#/components/schemas/Generic-Response"
-                    }
-                ]
-            },
-            "ezsignfolder-editObject-v1-Request": {
-                "description": "Request for the /1/object/ezsignfolder/editObject API Request",
-                "type": "object",
-                "properties": {
-                    "objEzsignfolder": {
-                        "$ref": "#/components/schemas/ezsignfolder-Request",
-                        "description": ""
-                    }
-                }
-            },
-            "ezsignfolder-editObject-v1-Response": {
-                "description": "Response for the /1/object/ezsignfolder/editObject API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "type": "object"
-                    },
-                    {
-                        "$ref": "#/components/schemas/Generic-Response"
-                    }
-                ]
-            },
-            "ezsignfolder-getObject-v1-Response": {
-                "description": "Response for the /1/object/ezsignfolder/getObject API Request",
-                "required": [
-                    "mPayload"
-                ],
-                "type": "object",
-                "allOf": [
-                    {
-                        "type": "object"
-                    },
-                    {
-                        "$ref": "#/components/schemas/Generic-Response"
-                    }
-                ],
-                "properties": {
-                    "mPayload": {
-                        "$ref": "#/components/schemas/ezsignfolder-getObject-v1-Response-mPayload"
-                    }
-                }
-            },
-            "ezsignfolder-getObject-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignfolder/getObject API Request",
-                "type": "object"
-            },
-            "ezsignfolder-Request": {
-                "description": "An Ezsignfolder Object",
-                "required": [
-                    "fkiEzsignfoldertypeID",
-                    "fkiLanguageID",
-                    "sEzsignfolderDescription",
-                    "fkiEzsigntsarequirementID",
-                    "tEzsignfolderNote"
-                ],
-                "type": "object",
-                "properties": {
-                    "fkiEzsignfoldertypeID": {
-                        "description": "The Ezsign Folder Type ID.\nThis value can be queried by the API and is also visible in the admin interface.\n\nThere are two types of Ezsignfoldertype. **User** and **Shared**. **User** can only be seen by the user who created the folder or its assistants. Access to **Shared** folders are configurable for access and email delivery. You should typically choose a **Shared** type here.",
-                        "type": "integer"
-                    },
-                    "fkiLanguageID": {
-                        "$ref": "#/components/schemas/Shared-fkiLanguageID",
-                        "description": ""
-                    },
-                    "sEzsignfolderDescription": {
-                        "description": "The description of the Ezsign Folder",
-                        "type": "string"
-                    },
-                    "tEzsignfolderNote": {
-                        "description": "Somes extra notes about the eZsign Folder",
-                        "type": "string"
-                    },
-                    "fkiEzsigntsarequirementID": {
-                        "$ref": "#/components/schemas/Shared-fkiEzsigntsarequirementID",
-                        "description": ""
-                    }
-                },
-                "example": {
-                    "fkiEzsignfoldertypeID": 1,
-                    "fkiLanguageID": 1,
-                    "sEzsignfolderDescription": "Test eZsign Folder",
-                    "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
-                    "fkiEzsigntsarequirementID": 1
-                }
-            },
-            "ezsignfolderCompound-Request": {
-                "description": "An Ezsignfolder Object and children to create a complete structure",
-                "type": "object",
-                "allOf": [
-                    {
-                        "type": "object"
-                    },
-                    {
-                        "$ref": "#/components/schemas/ezsignfolder-Request"
-                    }
-                ]
-            }
-        },
-        "responses": {
-            "Response-Error-404": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/Generic-Response-Error"
-                        }
-                    }
-                },
-                "description": "The element you are trying to work on does not exist"
-            }
-        },
-        "securitySchemes": {
-            "Authorization": {
-                "type": "apiKey",
-                "description": "There are 3 types of API Key that can be used to make requests to the API.\n\n1. **API type key** which is static and not session based. It can be generated from the admin console. This is the most common type of authentication for \"server to server\" kind of integration. Never use this in a web based (client) application as the key could be leaked. This type of key begins with the letter **A**.\n\n2. **Delegated type key** which has an expiration time. It is commonly used in mobile or web application where you cannot use an **API type key** that could be leaked. The application would query a server part that will generate a **Delegated type key** using an **API type key**. The **Delegated type key** could now be used by the mobile or web page application without leaking the **API type key**. This type of key begins with the letter **D**.\n\n3. **User type key** which are session based and can be retrieved after a successful authentication. This type of key is reserved to specific situation where the other types of key are not desirable. This type of key begins with the letter **U**.",
-                "name": "Authorization",
-                "in": "header"
-            }
-        }
+    "version" : "1.0.0",
+    "x-logo" : {
+      "url" : "https://github.com/eZmaxinc/eZmax-API/raw/master/docs/resources/images/logo.png",
+      "backgroundColor" : "#fafafa",
+      "altText" : "eZmax Logo"
     },
-    "security": [
-        {
-            "Authorization": [
-            ]
-        }
-    ],
-    "tags": [
-        {
-            "name": "Activesession",
-            "description": "Activesession contains detail about the currently executing api request."
+    "x-restgeninfo" : { }
+  },
+  "servers" : [ {
+    "url" : "https://{sInfrastructureenvironmenttypeDescription}.api.appcluster01.{sInfrastructureregionCode}.ezmax.com/rest",
+    "description" : "The server endpoint where to send your API requests.",
+    "variables" : {
+      "sInfrastructureenvironmenttypeDescription" : {
+        "description" : "The environment on on which to call the API. Should always be \"prod\" unless instructed otherwise by support.",
+        "default" : "prod",
+        "enum" : [ "prod", "stg", "qa", "dev" ]
+      },
+      "sInfrastructureregionCode" : {
+        "description" : "The region where your services are hosted.",
+        "default" : "ca-central-1",
+        "enum" : [ "ca-central-1", "local" ]
+      }
+    }
+  } ],
+  "security" : [ {
+    "Authorization" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "Activesession",
+    "description" : "Activesession contains detail about the currently executing api request."
+  }, {
+    "name" : "Ezsignfolder",
+    "description" : "Ezsignfolder contains detail about the container containing signers, documents to sign, etc. Sometimes referred as \"Envelopes\" in competitor products"
+  } ],
+  "paths" : {
+    "/1/object/ezsignfolder" : {
+      "post" : {
+        "tags" : [ "Ezsignfolder" ],
+        "summary" : "Create a new Ezsignfolder",
+        "description" : "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects.",
+        "operationId" : "Ezsignfolder_CreateObject_V1",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "minItems" : 199,
+                "type" : "array",
+                "items" : {
+                  "$ref" : "#/components/schemas/ezsignfolder-createObject-v1-Request"
+                }
+              }
+            }
+          },
+          "required" : true
         },
-        {
-            "name": "Ezsignfolder",
-            "description": "Ezsignfolder contains detail about the container containing signers, documents to sign, etc. Sometimes referred as \"Envelopes\" in competitor products"
+        "responses" : {
+          "201" : {
+            "description" : "Successful response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ezsignfolder-createObject-v1-Response"
+                }
+              }
+            }
+          }
         }
-    ],
-    "x-tagGroups": [
-        {
-            "name": "Object",
-            "tags": [
-                "Activesession",
-                "Ezsignfolder"
-            ]
+      }
+    },
+    "/1/object/ezsignfolder/{pkiEzsignfolderID}" : {
+      "get" : {
+        "tags" : [ "Ezsignfolder" ],
+        "summary" : "Retrieve an existing Ezsignfolder",
+        "operationId" : "Ezsignfolder_GetObject_V1",
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ezsignfolder-getObject-v1-Response"
+                }
+              }
+            }
+          },
+          "404" : {
+            "$ref" : "#/components/responses/Response-Error-404"
+          }
         },
-        {
-            "name": "Module",
-            "tags": [
-            ]
+        "security" : [ {
+          "Authorization" : [ ]
+        } ]
+      },
+      "put" : {
+        "tags" : [ "Ezsignfolder" ],
+        "summary" : "Modify an existing Ezsignfolder",
+        "operationId" : "Ezsignfolder_EditObject_V1",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ezsignfolder-editObject-v1-Request"
+              }
+            }
+          },
+          "required" : true
         },
-        {
-            "name": "Report",
-            "tags": [
-            ]
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ezsignfolder-editObject-v1-Response"
+                }
+              }
+            }
+          },
+          "404" : {
+            "$ref" : "#/components/responses/Response-Error-404"
+          }
+        },
+        "security" : [ {
+          "Authorization" : [ ]
+        } ]
+      },
+      "delete" : {
+        "tags" : [ "Ezsignfolder" ],
+        "summary" : "Delete an existing Ezsignfolder",
+        "operationId" : "Ezsignfolder_DeleteObject_V1",
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ezsignfolder-deleteObject-v1-Response"
+                }
+              }
+            }
+          },
+          "404" : {
+            "$ref" : "#/components/responses/Response-Error-404"
+          }
+        },
+        "security" : [ {
+          "Authorization" : [ ]
+        } ]
+      },
+      "parameters" : [ {
+        "name" : "pkiEzsignfolderID",
+        "in" : "path",
+        "description" : "The unique ID of the Ezsignfolder",
+        "required" : true,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "integer"
         }
-    ]
+      } ]
+    },
+    "/1/object/ezsignfolder/{pkiEzsignfolderID}/getChildren" : {
+      "get" : {
+        "tags" : [ "Ezsignfolder" ],
+        "summary" : "Retrieve an existing Ezsignfolder's children IDs",
+        "operationId" : "Ezsignfolder_GetObject_GetChildren_V1",
+        "responses" : {
+          "404" : {
+            "$ref" : "#/components/responses/Response-Error-404"
+          }
+        },
+        "security" : [ {
+          "Authorization" : [ ]
+        } ]
+      },
+      "parameters" : [ {
+        "name" : "pkiEzsignfolderID",
+        "in" : "path",
+        "description" : "The unique ID of the Ezsignfolder",
+        "required" : true,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "integer"
+        }
+      } ]
+    },
+    "/1/object/activesession/getCurrent" : {
+      "get" : {
+        "tags" : [ "Activesession" ],
+        "summary" : "Get Current Activesession",
+        "description" : "Retrieve the details about the current activesession",
+        "operationId" : "Activesession_GetCurrent_V1",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/activesession-getCurrent-v1-Response"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "Authorization" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Generic-Response" : {
+        "type" : "object",
+        "properties" : {
+          "objDebugPayload" : {
+            "$ref" : "#/components/schemas/Generic-Response-objDebugPayload"
+          },
+          "objDebug" : {
+            "$ref" : "#/components/schemas/Generic-Response-objDebug"
+          }
+        },
+        "description" : "All API response will inherit this based Response"
+      },
+      "Generic-Response-objDebug" : {
+        "required" : [ "a_objSQLQuery", "iSQLQueries", "iSQLSelects", "sMemoryUsage", "sRunTime" ],
+        "type" : "object",
+        "properties" : {
+          "sMemoryUsage" : {
+            "type" : "string",
+            "description" : "The peak memory allocated during the API request execution. Formatted as a human readable string"
+          },
+          "sRunTime" : {
+            "type" : "string",
+            "description" : "The total server execution time of the API request execution. Formatted as a human readable string"
+          },
+          "iSQLSelects" : {
+            "type" : "integer",
+            "description" : "The number of SQL SELECT queries that were sent to the database server during the API request execution"
+          },
+          "iSQLQueries" : {
+            "type" : "integer",
+            "description" : "The number of SQL INSERT/UPDATE/DELETE queries that were sent to the database server during the API request execution"
+          },
+          "a_objSQLQuery" : {
+            "type" : "array",
+            "description" : "An array of the SQL Queries that were executed during the API request execution",
+            "items" : {
+              "$ref" : "#/components/schemas/Generic-Response-objSQLQuery"
+            }
+          }
+        },
+        "description" : "This is a generic debug object that is returned by all API requests",
+        "example" : {
+          "sMemoryUsage" : "11,923MB",
+          "sRunTime" : "0.6084s",
+          "iSQLSelects" : 3,
+          "iSQLQueries" : 6,
+          "a_objQuery" : [ {
+            "sQuery" : "SELECT * FROM table",
+            "fDuration" : 1.0E-4
+          }, {
+            "sQuery" : "SELECT * FROM table",
+            "fDuration" : 1.0E-4
+          } ]
+        }
+      },
+      "Generic-Response-objDebugPayload" : {
+        "required" : [ "a_RequiredPermissions", "iVersionMax", "iVersionMin" ],
+        "type" : "object",
+        "properties" : {
+          "iVersionMin" : {
+            "type" : "integer",
+            "description" : "The minimum version of the function that can be called"
+          },
+          "iVersionMax" : {
+            "type" : "integer",
+            "description" : "The maximum version of the function that can be called"
+          },
+          "a_RequiredPermissions" : {
+            "type" : "array",
+            "description" : "An array of permissions required to access this function.\n\nIf the value \"0\" is present in the array, anyone can call this function.\n\nYou must have one of the permission to access the function. You don't need to have all of them.",
+            "items" : {
+              "type" : "integer"
+            }
+          }
+        },
+        "description" : "This is a debug object containing debugging information on the actual function",
+        "example" : {
+          "iVersionMin" : 1,
+          "iVersionMax" : 2,
+          "a_RequiredPermissions" : [ 45, 61 ]
+        }
+      },
+      "Generic-Response-objSQLQuery" : {
+        "required" : [ "fDuration", "sQuery" ],
+        "type" : "object",
+        "properties" : {
+          "sQuery" : {
+            "type" : "string",
+            "description" : "The SQL Query"
+          },
+          "fDuration" : {
+            "type" : "number",
+            "description" : "Execution time of the SQL Query in seconds",
+            "format" : "float"
+          }
+        },
+        "description" : "Definition of objSQLQuery Object",
+        "example" : {
+          "sQuery" : "SELECT * FROM table",
+          "fDuration" : 1.0E-4
+        }
+      },
+      "Shared-fkiLanguageID" : {
+        "type" : "integer",
+        "description" : "The ID of the language, Valid values are:\n1. French\n2. English"
+      },
+      "Generic-Response-Error" : {
+        "required" : [ "sErrorMessage" ],
+        "type" : "object",
+        "properties" : {
+          "sErrorMessage" : {
+            "type" : "string",
+            "description" : "More detail about the error"
+          }
+        },
+        "description" : "Generic Error Message"
+      },
+      "Shared-fkiEzsigntsarequirementID" : {
+        "type" : "integer",
+        "description" : "Determine if a Time Stamping Authority should add a timestamp on each of the signature. Valid values are:\n1. No. No TSA Timestamping will requested. This will make all signatures a lot faster since no round-trip to the TSA server will be required. Timestamping will be made using eZsign server's time.\n2. Best effort. Timestamping from a Time Stamping Authority will be requested but is not mandatory. In the very improbable case it cannot be completed, the timestamping will be made using eZsign server's time. **Additional fee applies**\n3. Mandatory. Timestamping from a Time Stamping Authority will be requested and is mandatory. In the very improbable case it cannot be completed, the signature will fail and the user will be asked to retry. **Additional fee applies**\n"
+      },
+      "activesession-getCurrent-v1-Response" : {
+        "required" : [ "mPayload" ],
+        "type" : "object",
+        "properties" : {
+          "mPayload" : {
+            "$ref" : "#/components/schemas/activesession-getCurrent-v1-Response-mPayload"
+          }
+        },
+        "description" : "Response for the /1/object/activesession/getCurrent API Request",
+        "allOf" : [ {
+          "type" : "object"
+        }, {
+          "$ref" : "#/components/schemas/Generic-Response"
+        } ]
+      },
+      "activesession-getCurrent-v1-Response-mPayload" : {
+        "required" : [ "a_Permissions", "a_RegisteredModules", "eActivesessionSessiontype", "fkiLanguageID", "sCompanyNameX", "sCustomerCode", "sDepartmentNameX" ],
+        "type" : "object",
+        "properties" : {
+          "sCustomerCode" : {
+            "type" : "string",
+            "description" : "The customer code specific to the client in which the API request is being made"
+          },
+          "eActivesessionSessiontype" : {
+            "type" : "string",
+            "description" : "The type of session used for the API request call",
+            "enum" : [ "Normal" ]
+          },
+          "fkiLanguageID" : {
+            "$ref" : "#/components/schemas/Shared-fkiLanguageID"
+          },
+          "sCompanyNameX" : {
+            "type" : "string",
+            "description" : "The name of the active Company in the current language"
+          },
+          "sDepartmentNameX" : {
+            "type" : "string",
+            "description" : "The name of the active Department in the current language"
+          },
+          "a_RegisteredModules" : {
+            "type" : "array",
+            "description" : "An Array of Registered modules.\n\nThese are the modules that are Licensed to be used by the User or the API Key.",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "a_Permissions" : {
+            "type" : "array",
+            "description" : "An array of permissions granted to the user or api key",
+            "items" : {
+              "type" : "integer"
+            }
+          }
+        },
+        "description" : "Payload for the /1/object/activesession/getCurrent API Request"
+      },
+      "ezsignfolder-createObject-v1-Request" : {
+        "type" : "object",
+        "properties" : {
+          "objEzsignfolder" : {
+            "$ref" : "#/components/schemas/ezsignfolder-Request"
+          },
+          "objEzsignfolderCompound" : {
+            "$ref" : "#/components/schemas/ezsignfolderCompound-Request"
+          }
+        },
+        "description" : "Request for the /1/object/ezsignfolder/createObject API Request"
+      },
+      "ezsignfolder-createObject-v1-Response" : {
+        "required" : [ "mPayload" ],
+        "type" : "object",
+        "properties" : {
+          "mPayload" : {
+            "$ref" : "#/components/schemas/ezsignfolder-createObject-v1-Response-mPayload"
+          }
+        },
+        "description" : "Response for the /1/object/ezsignfolder/createObject API Request",
+        "allOf" : [ {
+          "type" : "object"
+        }, {
+          "$ref" : "#/components/schemas/Generic-Response"
+        } ]
+      },
+      "ezsignfolder-createObject-v1-Response-mPayload" : {
+        "required" : [ "a_pkiEzsignfolderID" ],
+        "type" : "object",
+        "properties" : {
+          "a_pkiEzsignfolderID" : {
+            "type" : "array",
+            "description" : "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+            "items" : {
+              "type" : "integer"
+            }
+          }
+        },
+        "description" : "Payload for the /1/object/ezsignfolder/editObject API Request",
+        "example" : {
+          "pkiEzsignfolderID" : [ 75, 52 ]
+        }
+      },
+      "ezsignfolder-deleteObject-v1-Response" : {
+        "type" : "object",
+        "description" : "Response for the /1/object/ezsignfolder/deleteObject API Request",
+        "allOf" : [ {
+          "type" : "object"
+        }, {
+          "$ref" : "#/components/schemas/Generic-Response"
+        } ]
+      },
+      "ezsignfolder-editObject-v1-Request" : {
+        "type" : "object",
+        "properties" : {
+          "objEzsignfolder" : {
+            "$ref" : "#/components/schemas/ezsignfolder-Request"
+          }
+        },
+        "description" : "Request for the /1/object/ezsignfolder/editObject API Request"
+      },
+      "ezsignfolder-editObject-v1-Response" : {
+        "type" : "object",
+        "description" : "Response for the /1/object/ezsignfolder/editObject API Request",
+        "allOf" : [ {
+          "type" : "object"
+        }, {
+          "$ref" : "#/components/schemas/Generic-Response"
+        } ]
+      },
+      "ezsignfolder-getObject-v1-Response" : {
+        "required" : [ "mPayload" ],
+        "type" : "object",
+        "properties" : {
+          "mPayload" : {
+            "$ref" : "#/components/schemas/ezsignfolder-getObject-v1-Response-mPayload"
+          }
+        },
+        "description" : "Response for the /1/object/ezsignfolder/getObject API Request",
+        "allOf" : [ {
+          "type" : "object"
+        }, {
+          "$ref" : "#/components/schemas/Generic-Response"
+        } ]
+      },
+      "ezsignfolder-getObject-v1-Response-mPayload" : {
+        "type" : "object",
+        "description" : "Payload for the /1/object/ezsignfolder/getObject API Request"
+      },
+      "ezsignfolder-Request" : {
+        "required" : [ "fkiEzsignfoldertypeID", "fkiEzsigntsarequirementID", "fkiLanguageID", "sEzsignfolderDescription", "tEzsignfolderNote" ],
+        "type" : "object",
+        "properties" : {
+          "fkiEzsignfoldertypeID" : {
+            "type" : "integer",
+            "description" : "The Ezsign Folder Type ID.\nThis value can be queried by the API and is also visible in the admin interface.\n\nThere are two types of Ezsignfoldertype. **User** and **Shared**. **User** can only be seen by the user who created the folder or its assistants. Access to **Shared** folders are configurable for access and email delivery. You should typically choose a **Shared** type here."
+          },
+          "fkiLanguageID" : {
+            "$ref" : "#/components/schemas/Shared-fkiLanguageID"
+          },
+          "sEzsignfolderDescription" : {
+            "maxLength" : 50,
+            "type" : "string",
+            "description" : "The description of the Ezsign Folder"
+          },
+          "tEzsignfolderNote" : {
+            "type" : "string",
+            "description" : "Somes extra notes about the eZsign Folder"
+          },
+          "fkiEzsigntsarequirementID" : {
+            "$ref" : "#/components/schemas/Shared-fkiEzsigntsarequirementID"
+          }
+        },
+        "description" : "An Ezsignfolder Object",
+        "example" : {
+          "fkiEzsignfoldertypeID" : 1,
+          "fkiLanguageID" : 1,
+          "sEzsignfolderDescription" : "Test eZsign Folder",
+          "tEzsignfolderNote" : "An extra notes we can add to the ezsign folder",
+          "fkiEzsigntsarequirementID" : 1
+        }
+      },
+      "ezsignfolderCompound-Request" : {
+        "type" : "object",
+        "description" : "An Ezsignfolder Object and children to create a complete structure",
+        "allOf" : [ {
+          "type" : "object"
+        }, {
+          "$ref" : "#/components/schemas/ezsignfolder-Request"
+        } ]
+      }
+    },
+    "responses" : {
+      "Response-Error-404" : {
+        "description" : "The element you are trying to work on does not exist",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Generic-Response-Error"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "Authorization" : {
+        "type" : "apiKey",
+        "description" : "There are 3 types of API Key that can be used to make requests to the API.\n\n1. **API type key** which is static and not session based. It can be generated from the admin console. This is the most common type of authentication for \"server to server\" kind of integration. Never use this in a web based (client) application as the key could be leaked. This type of key begins with the letter **A**.\n\n2. **Delegated type key** which has an expiration time. It is commonly used in mobile or web application where you cannot use an **API type key** that could be leaked. The application would query a server part that will generate a **Delegated type key** using an **API type key**. The **Delegated type key** could now be used by the mobile or web page application without leaking the **API type key**. This type of key begins with the letter **D**.\n\n3. **User type key** which are session based and can be retrieved after a successful authentication. This type of key is reserved to specific situation where the other types of key are not desirable. This type of key begins with the letter **U**.",
+        "name" : "Authorization",
+        "in" : "header"
+      }
+    }
+  },
+  "x-tagGroups" : [ {
+    "name" : "Object",
+    "tags" : [ "Activesession", "Ezsignfolder" ]
+  }, {
+    "name" : "Module",
+    "tags" : [ ]
+  }, {
+    "name" : "Report",
+    "tags" : [ ]
+  } ]
 }
