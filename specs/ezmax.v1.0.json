@@ -259,143 +259,9 @@
     },
     "components": {
         "schemas": {
-            "Generic-Response": {
-                "description": "All API response will inherit this based Response",
-                "type": "object",
-                "properties": {
-                    "objDebugPayload": {
-                        "$ref": "#/components/schemas/Generic-Response-objDebugPayload"
-                    },
-                    "objDebug": {
-                        "$ref": "#/components/schemas/Generic-Response-objDebug"
-                    }
-                }
-            },
-            "Generic-Response-objDebug": {
-                "description": "This is a generic debug object that is returned by all API requests",
-                "required": [
-                    "a_objSQLQuery",
-                    "iSQLQueries",
-                    "iSQLSelects",
-                    "sMemoryUsage",
-                    "sRunTime"
-                ],
-                "type": "object",
-                "properties": {
-                    "sMemoryUsage": {
-                        "description": "The peak memory allocated during the API request execution. Formatted as a human readable string",
-                        "type": "string"
-                    },
-                    "sRunTime": {
-                        "description": "The total server execution time of the API request execution. Formatted as a human readable string",
-                        "type": "string"
-                    },
-                    "iSQLSelects": {
-                        "description": "The number of SQL SELECT queries that were sent to the database server during the API request execution",
-                        "type": "integer"
-                    },
-                    "iSQLQueries": {
-                        "description": "The number of SQL INSERT/UPDATE/DELETE queries that were sent to the database server during the API request execution",
-                        "type": "integer"
-                    },
-                    "a_objSQLQuery": {
-                        "description": "An array of the SQL Queries that were executed during the API request execution",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Generic-Response-objSQLQuery"
-                        }
-                    }
-                },
-                "example": {
-                    "sMemoryUsage": "11,923MB",
-                    "sRunTime": "0.6084s",
-                    "iSQLSelects": 3,
-                    "iSQLQueries": 6,
-                    "a_objQuery": [
-                        {
-                            "sQuery": "SELECT * FROM table",
-                            "fDuration": 1.0E-4
-                        },
-                        {
-                            "sQuery": "SELECT * FROM table",
-                            "fDuration": 1.0E-4
-                        }
-                    ]
-                }
-            },
-            "Generic-Response-objDebugPayload": {
-                "description": "This is a debug object containing debugging information on the actual function",
-                "required": [
-                    "a_RequiredPermissions",
-                    "iVersionMax",
-                    "iVersionMin"
-                ],
-                "type": "object",
-                "properties": {
-                    "iVersionMin": {
-                        "description": "The minimum version of the function that can be called",
-                        "type": "integer"
-                    },
-                    "iVersionMax": {
-                        "description": "The maximum version of the function that can be called",
-                        "type": "integer"
-                    },
-                    "a_RequiredPermissions": {
-                        "description": "An array of permissions required to access this function.\n\nIf the value \"0\" is present in the array, anyone can call this function.\n\nYou must have one of the permission to access the function. You don't need to have all of them.",
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    }
-                },
-                "example": {
-                    "iVersionMin": 1,
-                    "iVersionMax": 2,
-                    "a_RequiredPermissions": [
-                        45,
-                        61
-                    ]
-                }
-            },
-            "Generic-Response-objSQLQuery": {
-                "description": "Definition of objSQLQuery Object",
-                "required": [
-                    "fDuration",
-                    "sQuery"
-                ],
-                "type": "object",
-                "properties": {
-                    "sQuery": {
-                        "description": "The SQL Query",
-                        "type": "string"
-                    },
-                    "fDuration": {
-                        "format": "float",
-                        "description": "Execution time of the SQL Query in seconds",
-                        "type": "number"
-                    }
-                },
-                "example": {
-                    "sQuery": "SELECT * FROM table",
-                    "fDuration": 1.0E-4
-                }
-            },
             "Shared-fkiLanguageID": {
                 "description": "The ID of the language, Valid values are:\n1. French\n2. English",
                 "type": "integer"
-            },
-            "Generic-Response-Error": {
-                "description": "Generic Error Message",
-                "required": [
-                    "sErrorMessage"
-                ],
-                "type": "object",
-                "properties": {
-                    "sErrorMessage": {
-                        "description": "More detail about the error",
-                        "type": "string"
-                    }
-                }
             },
             "Shared-fkiEzsigntsarequirementID": {
                 "description": "Determine if a Time Stamping Authority should add a timestamp on each of the signature. Valid values are:\n1. No. No TSA Timestamping will requested. This will make all signatures a lot faster since no round-trip to the TSA server will be required. Timestamping will be made using eZsign server's time.\n2. Best effort. Timestamping from a Time Stamping Authority will be requested but is not mandatory. In the very improbable case it cannot be completed, the timestamping will be made using eZsign server's time. **Additional fee applies**\n3. Mandatory. Timestamping from a Time Stamping Authority will be requested and is mandatory. In the very improbable case it cannot be completed, the signature will fail and the user will be asked to retry. **Additional fee applies**\n",
@@ -495,7 +361,8 @@
                     "fkiLanguageID",
                     "sEzsignfolderDescription",
                     "fkiEzsigntsarequirementID",
-                    "tEzsignfolderNote"
+                    "tEzsignfolderNote",
+                    "eObjectType"
                 ],
                 "type": "object",
                 "properties": {
@@ -518,6 +385,10 @@
                     "fkiEzsigntsarequirementID": {
                         "$ref": "#/components/schemas/Shared-fkiEzsigntsarequirementID",
                         "description": ""
+                    },
+                    "eObjectType": {
+                        "$ref": "#/components/schemas/Common-eObjectType",
+                        "description": ""
                     }
                 },
                 "example": {
@@ -525,20 +396,9 @@
                     "fkiLanguageID": 1,
                     "sEzsignfolderDescription": "Test eZsign Folder",
                     "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
-                    "fkiEzsigntsarequirementID": 1
+                    "fkiEzsigntsarequirementID": 1,
+                    "eObjectType": "Simple"
                 }
-            },
-            "ezsignfolder-createObject-v1-Request": {
-                "oneOf": [
-                    {
-                        "$ref": "#/components/schemas/ezsignfolder-Request"
-                    },
-                    {
-                        "$ref": "#/components/schemas/ezsignfolderCompound-Request"
-                    }
-                ],
-                "description": "Request for the /1/object/ezsignfolder/createObject API Request",
-                "type": "object"
             },
             "activesession-getCurrent-v1-Response": {
                 "description": "Response for the /1/object/activesession/getCurrent API Request",
@@ -548,7 +408,7 @@
                 "type": "object",
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/Generic-Response"
+                        "$ref": "#/components/schemas/Common-Response"
                     }
                 ],
                 "properties": {
@@ -565,7 +425,7 @@
                 "type": "object",
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/Generic-Response"
+                        "$ref": "#/components/schemas/Common-Response"
                     }
                 ],
                 "properties": {
@@ -580,7 +440,7 @@
                 "type": "object",
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/Generic-Response"
+                        "$ref": "#/components/schemas/Common-Response"
                     }
                 ]
             },
@@ -589,7 +449,7 @@
                 "type": "object",
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/Generic-Response"
+                        "$ref": "#/components/schemas/Common-Response"
                     }
                 ]
             },
@@ -601,7 +461,7 @@
                 "type": "object",
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/Generic-Response"
+                        "$ref": "#/components/schemas/Common-Response"
                     }
                 ],
                 "properties": {
@@ -612,6 +472,9 @@
             },
             "ezsignfolderCompound-Request": {
                 "description": "An Ezsignfolder Object and children to create a complete structure",
+                "required": [
+                    "ExtraFieldForCompound"
+                ],
                 "type": "object",
                 "allOf": [
                     {
@@ -620,9 +483,174 @@
                 ],
                 "properties": {
                     "ExtraFieldForCompound": {
-                        "description": "TODO REMOVE ME"
+                        "description": "TODO REMOVE ME",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "ExtraFieldForCompound": "some text"
+                }
+            },
+            "Common-eObjectType": {
+                "description": "Define if the object is a Simple or Compound type.",
+                "enum": [
+                    "Simple",
+                    "Compound"
+                ],
+                "type": "string"
+            },
+            "Common-Response": {
+                "description": "All API response will inherit this based Response",
+                "type": "object",
+                "properties": {
+                    "objDebugPayload": {
+                        "$ref": "#/components/schemas/Common-Response-objDebugPayload"
+                    },
+                    "objDebug": {
+                        "$ref": "#/components/schemas/Common-Response-objDebug"
                     }
                 }
+            },
+            "Common-Response-Error": {
+                "description": "Generic Error Message",
+                "required": [
+                    "sErrorMessage"
+                ],
+                "type": "object",
+                "properties": {
+                    "sErrorMessage": {
+                        "description": "More detail about the error",
+                        "type": "string"
+                    }
+                }
+            },
+            "Common-Response-objDebug": {
+                "description": "This is a generic debug object that is returned by all API requests",
+                "required": [
+                    "a_objSQLQuery",
+                    "iSQLQueries",
+                    "iSQLSelects",
+                    "sMemoryUsage",
+                    "sRunTime"
+                ],
+                "type": "object",
+                "properties": {
+                    "sMemoryUsage": {
+                        "description": "The peak memory allocated during the API request execution. Formatted as a human readable string",
+                        "type": "string"
+                    },
+                    "sRunTime": {
+                        "description": "The total server execution time of the API request execution. Formatted as a human readable string",
+                        "type": "string"
+                    },
+                    "iSQLSelects": {
+                        "description": "The number of SQL SELECT queries that were sent to the database server during the API request execution",
+                        "type": "integer"
+                    },
+                    "iSQLQueries": {
+                        "description": "The number of SQL INSERT/UPDATE/DELETE queries that were sent to the database server during the API request execution",
+                        "type": "integer"
+                    },
+                    "a_objSQLQuery": {
+                        "description": "An array of the SQL Queries that were executed during the API request execution",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Common-Response-objSQLQuery"
+                        }
+                    }
+                },
+                "example": {
+                    "sMemoryUsage": "11,923MB",
+                    "sRunTime": "0.6084s",
+                    "iSQLSelects": 3,
+                    "iSQLQueries": 6,
+                    "a_objQuery": [
+                        {
+                            "sQuery": "SELECT * FROM table",
+                            "fDuration": 1.0E-4
+                        },
+                        {
+                            "sQuery": "SELECT * FROM table",
+                            "fDuration": 1.0E-4
+                        }
+                    ]
+                }
+            },
+            "Common-Response-objDebugPayload": {
+                "description": "This is a debug object containing debugging information on the actual function",
+                "required": [
+                    "a_RequiredPermissions",
+                    "iVersionMax",
+                    "iVersionMin"
+                ],
+                "type": "object",
+                "properties": {
+                    "iVersionMin": {
+                        "description": "The minimum version of the function that can be called",
+                        "type": "integer"
+                    },
+                    "iVersionMax": {
+                        "description": "The maximum version of the function that can be called",
+                        "type": "integer"
+                    },
+                    "a_RequiredPermissions": {
+                        "description": "An array of permissions required to access this function.\n\nIf the value \"0\" is present in the array, anyone can call this function.\n\nYou must have one of the permission to access the function. You don't need to have all of them.",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "example": {
+                    "iVersionMin": 1,
+                    "iVersionMax": 2,
+                    "a_RequiredPermissions": [
+                        45,
+                        61
+                    ]
+                }
+            },
+            "Common-Response-objSQLQuery": {
+                "description": "Definition of objSQLQuery Object",
+                "required": [
+                    "fDuration",
+                    "sQuery"
+                ],
+                "type": "object",
+                "properties": {
+                    "sQuery": {
+                        "description": "The SQL Query",
+                        "type": "string"
+                    },
+                    "fDuration": {
+                        "format": "float",
+                        "description": "Execution time of the SQL Query in seconds",
+                        "type": "number"
+                    }
+                },
+                "example": {
+                    "sQuery": "SELECT * FROM table",
+                    "fDuration": 1.0E-4
+                }
+            },
+            "ezsignfolder-createObject-v1-Request": {
+                "oneOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsignfolder-Request"
+                    },
+                    {
+                        "$ref": "#/components/schemas/ezsignfolderCompound-Request"
+                    }
+                ],
+                "discriminator": {
+                    "propertyName": "eObjectType",
+                    "mapping": {
+                        "Simple": "#/components/schemas/ezsignfolder-Request",
+                        "Compound": "#/components/schemas/ezsignfolderCompound-Request"
+                    }
+                },
+                "description": "Request for the /1/object/ezsignfolder/createObject API Request",
+                "type": "object"
             }
         },
         "responses": {
@@ -630,7 +658,7 @@
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "#/components/schemas/Generic-Response-Error"
+                            "$ref": "#/components/schemas/Common-Response-Error"
                         }
                     }
                 },
