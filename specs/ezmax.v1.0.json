@@ -617,7 +617,12 @@
                     {
                         "$ref": "#/components/schemas/ezsignfolder-Request"
                     }
-                ]
+                ],
+                "properties": {
+                    "ExtraFieldForCompound": {
+                        "description": "TODO REMOVE ME"
+                    }
+                }
             }
         },
         "responses": {
