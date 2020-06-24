@@ -472,23 +472,19 @@
             },
             "ezsignfolderCompound-Request": {
                 "description": "An Ezsignfolder Object and children to create a complete structure",
-                "required": [
-                    "ExtraFieldForCompound"
-                ],
                 "type": "object",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ezsignfolder-Request"
                     }
                 ],
-                "properties": {
-                    "ExtraFieldForCompound": {
-                        "description": "TODO REMOVE ME",
-                        "type": "string"
-                    }
-                },
                 "example": {
-                    "ExtraFieldForCompound": "some text"
+                    "fkiEzsignfoldertypeID": 1,
+                    "fkiLanguageID": 1,
+                    "sEzsignfolderDescription": "Test eZsign Folder",
+                    "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
+                    "fkiEzsigntsarequirementID": 1,
+                    "eObjectType": "Simple"
                 }
             },
             "Common-eObjectType": {
@@ -634,23 +630,18 @@
                 }
             },
             "ezsignfolder-createObject-v1-Request": {
-                "oneOf": [
-                    {
-                        "$ref": "#/components/schemas/ezsignfolder-Request"
-                    },
-                    {
-                        "$ref": "#/components/schemas/ezsignfolderCompound-Request"
-                    }
-                ],
-                "discriminator": {
-                    "propertyName": "eObjectType",
-                    "mapping": {
-                        "Simple": "#/components/schemas/ezsignfolder-Request",
-                        "Compound": "#/components/schemas/ezsignfolderCompound-Request"
-                    }
-                },
                 "description": "Request for the /1/object/ezsignfolder/createObject API Request",
-                "type": "object"
+                "type": "object",
+                "properties": {
+                    "objEzsignfolder": {
+                        "$ref": "#/components/schemas/ezsignfolder-Request",
+                        "description": ""
+                    },
+                    "objEzsignfolderCompound": {
+                        "$ref": "#/components/schemas/ezsignfolderCompound-Request",
+                        "description": ""
+                    }
+                }
             }
         },
         "responses": {
