@@ -259,14 +259,6 @@
     },
     "components": {
         "schemas": {
-            "Shared-fkiLanguageID": {
-                "description": "The ID of the language, Valid values are:\n1. French\n2. English",
-                "type": "integer"
-            },
-            "Shared-fkiEzsigntsarequirementID": {
-                "description": "Determine if a Time Stamping Authority should add a timestamp on each of the signature. Valid values are:\n1. No. No TSA Timestamping will requested. This will make all signatures a lot faster since no round-trip to the TSA server will be required. Timestamping will be made using eZsign server's time.\n2. Best effort. Timestamping from a Time Stamping Authority will be requested but is not mandatory. In the very improbable case it cannot be completed, the timestamping will be made using eZsign server's time. **Additional fee applies**\n3. Mandatory. Timestamping from a Time Stamping Authority will be requested and is mandatory. In the very improbable case it cannot be completed, the signature will fail and the user will be asked to retry. **Additional fee applies**\n",
-                "type": "integer"
-            },
             "activesession-getCurrent-v1-Response-mPayload": {
                 "description": "Payload for the /1/object/activesession/getCurrent API Request",
                 "required": [
@@ -426,18 +418,31 @@
             },
             "ezsignfolderCompound-Request": {
                 "description": "An Ezsignfolder Object and children to create a complete structure",
+                "required": [
+                    "a_Ezsignsigner"
+                ],
                 "type": "object",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ezsignfolder-Request"
                     }
                 ],
+                "properties": {
+                    "a_Ezsignsigner": {
+                        "description": "An array of signers that will be invited to sign the Ezsigndocuments",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ezsignsigner-Request"
+                        }
+                    }
+                },
                 "example": {
                     "fkiEzsignfoldertypeID": 1,
                     "fkiLanguageID": 1,
                     "sEzsignfolderDescription": "Test eZsign Folder",
                     "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
-                    "fkiEzsigntsarequirementID": 1
+                    "fkiEzsigntsarequirementID": 1,
+                    "eEzsignfolderSendreminderfrequency": "Daily"
                 }
             },
             "Common-Response": {
@@ -588,6 +593,24 @@
                     }
                 }
             },
+            "Shared-fkiTaxassignmentID": {
+                "description": "The ID of the tax assignment, Valid values are:\n1. No tax\n2. GST\n3. HST (ON)\n4. HST (NB)\n5. HST (NS)\n6. HST (NL)\n7. HST (PE)\n8. GST + QST (QC)\n9. GST + QST (QC) Non-Recoverable\n10. GST + PST (BC)\n11. GST + PST (SK)\n12. GST + RST (MB)\n13. GST + PST (BC) Non-Recoverable\n14. GST + PST (SK) Non-Recoverable\n15. GST + RST (MB) Non-Recoverable",
+                "maximum": 15,
+                "minimum": 1,
+                "type": "integer"
+            },
+            "Shared-fkiLanguageID": {
+                "description": "The ID of the language, Valid values are:\n1. French\n2. English",
+                "maximum": 2,
+                "minimum": 1,
+                "type": "integer"
+            },
+            "Shared-fkiEzsigntsarequirementID": {
+                "description": "Determine if a Time Stamping Authority should add a timestamp on each of the signature. Valid values are:\n1. No. No TSA Timestamping will requested. This will make all signatures a lot faster since no round-trip to the TSA server will be required. Timestamping will be made using eZsign server's time.\n2. Best effort. Timestamping from a Time Stamping Authority will be requested but is not mandatory. In the very improbable case it cannot be completed, the timestamping will be made using eZsign server's time. **Additional fee applies**\n3. Mandatory. Timestamping from a Time Stamping Authority will be requested and is mandatory. In the very improbable case it cannot be completed, the signature will fail and the user will be asked to retry. **Additional fee applies**\n",
+                "maximum": 3,
+                "minimum": 1,
+                "type": "integer"
+            },
             "ezsignfolder-Request": {
                 "description": "An Ezsignfolder Object",
                 "required": [
@@ -595,80 +618,80 @@
                     "fkiLanguageID",
                     "sEzsignfolderDescription",
                     "fkiEzsigntsarequirementID",
-                    "tEzsignfolderNote"
+                    "tEzsignfolderNote",
+                    "eEzsignfolderSendreminderfrequency"
                 ],
                 "type": "object",
                 "properties": {
                     "fkiEzsignfoldertypeID": {
                         "description": "The Ezsign Folder Type ID.\nThis value can be queried by the API and is also visible in the admin interface.\n\nThere are two types of Ezsignfoldertype. **User** and **Shared**. **User** can only be seen by the user who created the folder or its assistants. Access to **Shared** folders are configurable for access and email delivery. You should typically choose a **Shared** type here.",
+                        "minimum": 1,
                         "type": "integer"
                     },
                     "fkiLanguageID": {
                         "$ref": "#/components/schemas/Shared-fkiLanguageID",
                         "description": ""
                     },
+                    "fkiEzsigntsarequirementID": {
+                        "$ref": "#/components/schemas/Shared-fkiEzsigntsarequirementID",
+                        "description": ""
+                    },
                     "sEzsignfolderDescription": {
                         "description": "The description of the Ezsign Folder",
+                        "maxLength": 75,
+                        "minLength": 1,
                         "type": "string"
                     },
                     "tEzsignfolderNote": {
                         "description": "Somes extra notes about the eZsign Folder",
                         "type": "string"
                     },
-                    "fkiEzsigntsarequirementID": {
-                        "$ref": "#/components/schemas/Shared-fkiEzsigntsarequirementID",
-                        "description": ""
-                    },
-                    "testEnum": {
+                    "eEzsignfolderSendreminderfrequency": {
+                        "description": "Frequency at which reminders will be sent to signers that haven't signed the documents",
                         "enum": [
-                            "Simple",
-                            "Compound"
+                            "None",
+                            "Daily",
+                            "Weekly"
                         ],
-                        "type": "string"
-                    },
-                    "testString": {
-                        "maxLength": 25,
-                        "minLength": 5,
-                        "type": "string"
-                    },
-                    "testInteger": {
-                        "maximum": 66,
-                        "minimum": 33,
-                        "type": "integer"
-                    },
-                    "testBoolean": {
-                        "type": "boolean"
-                    },
-                    "testBase64": {
-                        "format": "byte",
-                        "type": "string"
-                    },
-                    "testEmail": {
-                        "format": "email",
-                        "type": "string"
-                    },
-                    "testIPV4": {
-                        "format": "IPv4",
-                        "type": "string"
-                    },
-                    "testDate": {
-                        "format": "date",
-                        "type": "string"
-                    },
-                    "patternSSN": {
-                        "pattern": "'^\\d{3}-\\d{2}-\\d{4}$'",
-                        "type": "string"
-                    },
-                    "testNullableTrue": {
-                        "nullable": true,
-                        "type": "string"
-                    },
-                    "testEzmaxCustom": {
-                        "format": "Ezmax-date",
                         "type": "string"
                     }
                 },
-                "example": "{\n    \"fkiEzsignfoldertypeID\": 1,\n    \"fkiLanguageID\": 1,\n    \"sEzsignfolderDescription\": \"Test eZsign Folder\",\n    \"tEzsignfolderNote\": \"An extra notes we can add to the ezsign folder\",\n    \"fkiEzsigntsarequirementID\": 1,\n}"
+                "example": {
+                    "fkiEzsignfoldertypeID": 1,
+                    "fkiLanguageID": 1,
+                    "sEzsignfolderDescription": "Test eZsign Folder",
+                    "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
+                    "fkiEzsigntsarequirementID": 1,
+                    "eEzsignfolderSendreminderfrequency": "Daily"
+                }
+            },
+            "ezsignsigner-Request": {
+                "description": "An Ezsignsigner Object",
+                "required": [
+                    "eEzsignsignerLogintype",
+                    "fkiTaxassignmentID"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiTaxassignmentID": {
+                        "$ref": "#/components/schemas/Shared-fkiTaxassignmentID",
+                        "description": ""
+                    },
+                    "eEzsignsignerLogintype": {
+                        "description": "The method the Ezsignsigner will authenticate to the signing platform.\n\n1. **Password** means the Ezsignsigner will receive a secure link by email.\n2. **PasswordPhone** means the Ezsignsigner will receive a secure link by email and will need to authenticate using SMS or Phone call.\n3. **PasswordQuestion** means the Ezsignsigner will receive a secure link by email and will need to authenticate using a predefined question and answer.\n4. **Phone** means the Ezsignsigner will only be able to sign \"In-Person\" and will need to authenticate using SMS or Phone call. No email will be sent for invitation to sign.",
+                        "enum": [
+                            "Password",
+                            "PasswordPhone",
+                            "PasswordQuestion",
+                            "Phone"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "fkiTaxassignmentID": 1,
+                    "eEzsignsignerLogintype": "PasswordPhone"
+                }
             }
         },
         "responses": {
