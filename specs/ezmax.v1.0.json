@@ -354,52 +354,6 @@
                 "description": "Payload for the /1/object/ezsignfolder/getObject API Request",
                 "type": "object"
             },
-            "ezsignfolder-Request": {
-                "description": "An Ezsignfolder Object",
-                "required": [
-                    "fkiEzsignfoldertypeID",
-                    "fkiLanguageID",
-                    "sEzsignfolderDescription",
-                    "fkiEzsigntsarequirementID",
-                    "tEzsignfolderNote",
-                    "eObjectType"
-                ],
-                "type": "object",
-                "properties": {
-                    "fkiEzsignfoldertypeID": {
-                        "description": "The Ezsign Folder Type ID.\nThis value can be queried by the API and is also visible in the admin interface.\n\nThere are two types of Ezsignfoldertype. **User** and **Shared**. **User** can only be seen by the user who created the folder or its assistants. Access to **Shared** folders are configurable for access and email delivery. You should typically choose a **Shared** type here.",
-                        "type": "integer"
-                    },
-                    "fkiLanguageID": {
-                        "$ref": "#/components/schemas/Shared-fkiLanguageID",
-                        "description": ""
-                    },
-                    "sEzsignfolderDescription": {
-                        "description": "The description of the Ezsign Folder",
-                        "type": "string"
-                    },
-                    "tEzsignfolderNote": {
-                        "description": "Somes extra notes about the eZsign Folder",
-                        "type": "string"
-                    },
-                    "fkiEzsigntsarequirementID": {
-                        "$ref": "#/components/schemas/Shared-fkiEzsigntsarequirementID",
-                        "description": ""
-                    },
-                    "eObjectType": {
-                        "$ref": "#/components/schemas/Common-eObjectType",
-                        "description": ""
-                    }
-                },
-                "example": {
-                    "fkiEzsignfoldertypeID": 1,
-                    "fkiLanguageID": 1,
-                    "sEzsignfolderDescription": "Test eZsign Folder",
-                    "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
-                    "fkiEzsigntsarequirementID": 1,
-                    "eObjectType": "Simple"
-                }
-            },
             "activesession-getCurrent-v1-Response": {
                 "description": "Response for the /1/object/activesession/getCurrent API Request",
                 "required": [
@@ -483,17 +437,8 @@
                     "fkiLanguageID": 1,
                     "sEzsignfolderDescription": "Test eZsign Folder",
                     "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
-                    "fkiEzsigntsarequirementID": 1,
-                    "eObjectType": "Simple"
+                    "fkiEzsigntsarequirementID": 1
                 }
-            },
-            "Common-eObjectType": {
-                "description": "Define if the object is a Simple or Compound type.",
-                "enum": [
-                    "Simple",
-                    "Compound"
-                ],
-                "type": "string"
             },
             "Common-Response": {
                 "description": "All API response will inherit this based Response",
@@ -642,6 +587,88 @@
                         "description": ""
                     }
                 }
+            },
+            "ezsignfolder-Request": {
+                "description": "An Ezsignfolder Object",
+                "required": [
+                    "fkiEzsignfoldertypeID",
+                    "fkiLanguageID",
+                    "sEzsignfolderDescription",
+                    "fkiEzsigntsarequirementID",
+                    "tEzsignfolderNote"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiEzsignfoldertypeID": {
+                        "description": "The Ezsign Folder Type ID.\nThis value can be queried by the API and is also visible in the admin interface.\n\nThere are two types of Ezsignfoldertype. **User** and **Shared**. **User** can only be seen by the user who created the folder or its assistants. Access to **Shared** folders are configurable for access and email delivery. You should typically choose a **Shared** type here.",
+                        "type": "integer"
+                    },
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Shared-fkiLanguageID",
+                        "description": ""
+                    },
+                    "sEzsignfolderDescription": {
+                        "description": "The description of the Ezsign Folder",
+                        "type": "string"
+                    },
+                    "tEzsignfolderNote": {
+                        "description": "Somes extra notes about the eZsign Folder",
+                        "type": "string"
+                    },
+                    "fkiEzsigntsarequirementID": {
+                        "$ref": "#/components/schemas/Shared-fkiEzsigntsarequirementID",
+                        "description": ""
+                    },
+                    "testEnum": {
+                        "enum": [
+                            "Simple",
+                            "Compound"
+                        ],
+                        "type": "string"
+                    },
+                    "testString": {
+                        "maxLength": 25,
+                        "minLength": 5,
+                        "type": "string"
+                    },
+                    "testInteger": {
+                        "maximum": 66,
+                        "minimum": 33,
+                        "type": "integer"
+                    },
+                    "testBoolean": {
+                        "type": "boolean"
+                    },
+                    "testBase64": {
+                        "format": "byte",
+                        "type": "string"
+                    },
+                    "testEmail": {
+                        "format": "email",
+                        "type": "string"
+                    },
+                    "testIPV4": {
+                        "format": "IPv4",
+                        "type": "string"
+                    },
+                    "testDate": {
+                        "format": "date",
+                        "type": "string"
+                    },
+                    "patternSSN": {
+                        "pattern": "'^\\d{3}-\\d{2}-\\d{4}$'",
+                        "type": "string"
+                    },
+                    "testNullableTrue": {
+                        "nullable": true,
+                        "type": "string"
+                    },
+                    "testEzmaxCustom": {
+                        "format": "Ezmax-date",
+                        "type": "string"
+                    }
+                },
+                "example": "{\n    \"fkiEzsignfoldertypeID\": 1,\n    \"fkiLanguageID\": 1,\n    \"sEzsignfolderDescription\": \"Test eZsign Folder\",\n    \"tEzsignfolderNote\": \"An extra notes we can add to the ezsign folder\",\n    \"fkiEzsigntsarequirementID\": 1,\n}"
             }
         },
         "responses": {
