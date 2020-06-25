@@ -50,6 +50,183 @@
         }
     ],
     "paths": {
+        "/1/object/ezsigndocument": {
+            "description": "",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/ezsigndocument-createObject-v1-Request"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Ezsigndocument"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigndocument-createObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "operationId": "Ezsigndocument_CreateObject_V1",
+                "summary": "Create a new Ezsigndocument",
+                "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects."
+            }
+        },
+        "/1/object/ezsigndocument/{pkiEzsigndocumentID}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Ezsigndocument"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigndocument-getObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsigndocument_GetObject_V1",
+                "summary": "Retrieve an existing Ezsigndocument",
+                "description": ""
+            },
+            "put": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezsigndocument-editObject-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Ezsigndocument"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigndocument-editObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsigndocument_EditObject_V1",
+                "summary": "Modify an existing Ezsigndocument"
+            },
+            "delete": {
+                "tags": [
+                    "Ezsigndocument"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigndocument-deleteObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsigndocument_DeleteObject_V1",
+                "summary": "Delete an existing Ezsigndocument"
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigndocumentID",
+                    "description": "The unique ID of the Ezsigndocument",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getChildren": {
+            "get": {
+                "tags": [
+                    "Ezsigndocument"
+                ],
+                "responses": {
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsigndocument_GetObject_GetChildren_V1",
+                "summary": "Retrieve an existing Ezsigndocument's children IDs",
+                "description": ""
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigndocumentID",
+                    "description": "The unique ID of the Ezsigndocument",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/1/object/ezsignfolder": {
             "description": "",
             "post": {
@@ -310,6 +487,199 @@
                     }
                 }
             },
+            "ezsigndocument-createObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsigndocument/editObject API Request",
+                "required": [
+                    "a_pkiEzsigndocumentID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiEzsigndocumentID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "example": {
+                    "a_pkiEzsigndocumentID": [
+                        95,
+                        96
+                    ]
+                }
+            },
+            "ezsigndocument-editObject-v1-Request": {
+                "description": "Request for the /1/object/ezsigndocument/editObject API Request",
+                "type": "object",
+                "properties": {
+                    "objEzsigndocument": {
+                        "$ref": "#/components/schemas/ezsigndocument-Request",
+                        "description": ""
+                    }
+                }
+            },
+            "ezsigndocument-getObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsigndocument/getObject API Request",
+                "type": "object"
+            },
+            "ezsigndocument-createObject-v1-Response": {
+                "description": "Response for the /1/object/ezsigndocument/createObject API Request",
+                "required": [
+                    "mPayload"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ],
+                "properties": {
+                    "mPayload": {
+                        "$ref": "#/components/schemas/ezsigndocument-createObject-v1-Response-mPayload",
+                        "description": ""
+                    }
+                }
+            },
+            "ezsigndocument-deleteObject-v1-Response": {
+                "description": "Response for the /1/object/ezsigndocument/deleteObject API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsigndocument-editObject-v1-Response": {
+                "description": "Response for the /1/object/ezsigndocument/editObject API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsigndocument-getObject-v1-Response": {
+                "description": "Response for the /1/object/ezsigndocument/getObject API Request",
+                "required": [
+                    "mPayload"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ],
+                "properties": {
+                    "mPayload": {
+                        "$ref": "#/components/schemas/ezsigndocument-getObject-v1-Response-mPayload"
+                    }
+                }
+            },
+            "ezsigndocumentCompound-Request": {
+                "description": "An Ezsigndocument Object and children to create a complete structure",
+                "required": [
+                    "a_Ezsignsigner"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsigndocument-Request"
+                    }
+                ],
+                "properties": {
+                    "a_Ezsignsigner": {
+                        "description": "An array of signers that will be invited to sign the Ezsigndocuments",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ezsignsigner-Request"
+                        }
+                    }
+                },
+                "example": {
+                    "sEzsignDocumentName": "Important contract",
+                    "sEzsignDocumentFilename": "Important Contract.pdf",
+                    "fkiLanguageID": 2,
+                    "eEzsigndocumentSource": "Base64",
+                    "eEzsigndocumentFormat": "Pdf",
+                    "sEzsigndocumentBase64": "JVBERi0xLjENCiXCpcKxw6sNCg0KMSAwIG9iag0KICA8PCAvVHlwZSAvQ2F0YWxvZw0KICAgICAvUGFnZXMgMiAwIFINCiAgPj4NCmVuZG9iag0KDQoyIDAgb2JqDQogIDw8IC9UeXBlIC9QYWdlcw0KICAgICAvS2lkcyBbMyAwIFJdDQogICAgIC9Db3VudCAxDQogICAgIC9NZWRpYUJveCBbMCAwIDMwMCAxNDRdDQogID4+DQplbmRvYmoNCg0KMyAwIG9iag0KICA8PCAgL1R5cGUgL1BhZ2UNCiAgICAgIC9QYXJlbnQgMiAwIFINCiAgICAgIC9SZXNvdXJjZXMNCiAgICAgICA8PCAvRm9udA0KICAgICAgICAgICA8PCAvRjENCiAgICAgICAgICAgICAgIDw8IC9UeXBlIC9Gb250DQogICAgICAgICAgICAgICAgICAvU3VidHlwZSAvVHlwZTENCiAgICAgICAgICAgICAgICAgIC9CYXNlRm9udCAvVGltZXMtUm9tYW4NCiAgICAgICAgICAgICAgID4+DQogICAgICAgICAgID4+DQogICAgICAgPj4NCiAgICAgIC9Db250ZW50cyA0IDAgUg0KICA+Pg0KZW5kb2JqDQoNCjQgMCBvYmoNCiAgPDwgL0xlbmd0aCA1NSA+Pg0Kc3RyZWFtDQogIEJUDQogICAgL0YxIDE4IFRmDQogICAgMCAwIFRkDQogICAgKEhlbGxvIFdvcmxkKSBUag0KICBFVA0KZW5kc3RyZWFtDQplbmRvYmoNCg0KeHJlZg0KMCA1DQowMDAwMDAwMDAwIDY1NTM1IGYgDQowMDAwMDAwMDE4IDAwMDAwIG4gDQowMDAwMDAwMDc3IDAwMDAwIG4gDQowMDAwMDAwMTc4IDAwMDAwIG4gDQowMDAwMDAwNDU3IDAwMDAwIG4gDQp0cmFpbGVyDQogIDw8ICAvUm9vdCAxIDAgUg0KICAgICAgL1NpemUgNQ0KICA+Pg0Kc3RhcnR4cmVmDQo1NjUNCiUlRU9G",
+                    "fkiEzsignfolderID": 1,
+                    "dtEzsigndocumentDuedate": "2020-12-31 23:59:59"
+                }
+            },
+            "ezsigndocument-createObject-v1-Request": {
+                "description": "Request for the /1/object/ezsigndocument/createObject API Request",
+                "type": "object",
+                "properties": {
+                    "objEzsigndocument": {
+                        "$ref": "#/components/schemas/ezsigndocument-Request",
+                        "description": ""
+                    },
+                    "objEzsigndocumentCompound": {
+                        "$ref": "#/components/schemas/ezsigndocumentCompound-Request",
+                        "description": ""
+                    }
+                }
+            },
+            "ezsigndocument-Request": {
+                "description": "An Ezsigndocument Object",
+                "required": [
+                    "sEzsignDocumentName",
+                    "sEzsignDocumentFilename",
+                    "eEzsigndocumentSource",
+                    "eEzsigndocumentFormat",
+                    "fkiEzsignfolderID",
+                    "dtEzsigndocumentDuedate"
+                ],
+                "type": "object",
+                "properties": {
+                    "sEzsignDocumentName": {
+                        "description": "The name of the document that will be presented to Ezsignsigners",
+                        "type": "string"
+                    },
+                    "sEzsignDocumentFilename": {
+                        "description": "The actual file name that will be used when downloading or attaching to an email.",
+                        "type": "string"
+                    },
+                    "eEzsigndocumentSource": {
+                        "description": "Indicates where to look for the document binary content.",
+                        "enum": [
+                            "Base64"
+                        ],
+                        "type": "string"
+                    },
+                    "eEzsigndocumentFormat": {
+                        "description": "Indicates the format of the document.",
+                        "enum": [
+                            "Pdf"
+                        ],
+                        "type": "string"
+                    },
+                    "sEzsigndocumentBase64": {
+                        "format": "byte",
+                        "description": "The Base64 encoded binary content of the document.\n\nThis field is Required when eEzsigndocumentSource = Base64.",
+                        "type": "string"
+                    },
+                    "fkiEzsignfolderID": {
+                        "description": "A reference to a valid Ezsignfolder.\n\nThat value is returned after a successful Ezsignfolder Creation.",
+                        "type": "integer"
+                    },
+                    "dtEzsigndocumentDuedate": {
+                        "$ref": "#/components/schemas/Common-Format-DateTime",
+                        "description": "Pourquoi ça n'apparait pas nulle part"
+                    }
+                },
+                "example": {
+                    "sEzsignDocumentName": "Important contract",
+                    "sEzsignDocumentFilename": "Important Contract.pdf",
+                    "fkiLanguageID": 2,
+                    "eEzsigndocumentSource": "Base64",
+                    "eEzsigndocumentFormat": "Pdf",
+                    "sEzsigndocumentBase64": "JVBERi0xLjENCiXCpcKxw6sNCg0KMSAwIG9iag0KICA8PCAvVHlwZSAvQ2F0YWxvZw0KICAgICAvUGFnZXMgMiAwIFINCiAgPj4NCmVuZG9iag0KDQoyIDAgb2JqDQogIDw8IC9UeXBlIC9QYWdlcw0KICAgICAvS2lkcyBbMyAwIFJdDQogICAgIC9Db3VudCAxDQogICAgIC9NZWRpYUJveCBbMCAwIDMwMCAxNDRdDQogID4+DQplbmRvYmoNCg0KMyAwIG9iag0KICA8PCAgL1R5cGUgL1BhZ2UNCiAgICAgIC9QYXJlbnQgMiAwIFINCiAgICAgIC9SZXNvdXJjZXMNCiAgICAgICA8PCAvRm9udA0KICAgICAgICAgICA8PCAvRjENCiAgICAgICAgICAgICAgIDw8IC9UeXBlIC9Gb250DQogICAgICAgICAgICAgICAgICAvU3VidHlwZSAvVHlwZTENCiAgICAgICAgICAgICAgICAgIC9CYXNlRm9udCAvVGltZXMtUm9tYW4NCiAgICAgICAgICAgICAgID4+DQogICAgICAgICAgID4+DQogICAgICAgPj4NCiAgICAgIC9Db250ZW50cyA0IDAgUg0KICA+Pg0KZW5kb2JqDQoNCjQgMCBvYmoNCiAgPDwgL0xlbmd0aCA1NSA+Pg0Kc3RyZWFtDQogIEJUDQogICAgL0YxIDE4IFRmDQogICAgMCAwIFRkDQogICAgKEhlbGxvIFdvcmxkKSBUag0KICBFVA0KZW5kc3RyZWFtDQplbmRvYmoNCg0KeHJlZg0KMCA1DQowMDAwMDAwMDAwIDY1NTM1IGYgDQowMDAwMDAwMDE4IDAwMDAwIG4gDQowMDAwMDAwMDc3IDAwMDAwIG4gDQowMDAwMDAwMTc4IDAwMDAwIG4gDQowMDAwMDAwNDU3IDAwMDAwIG4gDQp0cmFpbGVyDQogIDw8ICAvUm9vdCAxIDAgUg0KICAgICAgL1NpemUgNQ0KICA+Pg0Kc3RhcnR4cmVmDQo1NjUNCiUlRU9G",
+                    "fkiEzsignfolderID": 1,
+                    "dtEzsigndocumentDuedate": "2020-12-31 23:59:59"
+                }
+            },
             "ezsignfolder-createObject-v1-Response-mPayload": {
                 "description": "Payload for the /1/object/ezsignfolder/editObject API Request",
                 "required": [
@@ -326,9 +696,9 @@
                     }
                 },
                 "example": {
-                    "pkiEzsignfolderID": [
-                        75,
-                        52
+                    "a_pkiEzsignfolderID": [
+                        95,
+                        96
                     ]
                 }
             },
@@ -692,6 +1062,11 @@
                     "fkiTaxassignmentID": 1,
                     "eEzsignsignerLogintype": "PasswordPhone"
                 }
+            },
+            "Common-Format-DateTime": {
+                "description": "Represent a Date Time.\nThe timezone is the one configured in the User's profile.",
+                "type": "string",
+                "example": "\"2020-12-31 23:59:59\""
             }
         },
         "responses": {
@@ -727,6 +1102,10 @@
             "description": "Activesession contains detail about the currently executing api request."
         },
         {
+            "name": "Ezsigndocument",
+            "description": "Ezsigndocument contains detail about a document to sign"
+        },
+        {
             "name": "Ezsignfolder",
             "description": "Ezsignfolder contains detail about the container containing signers, documents to sign, etc. Sometimes referred as \"Envelopes\" in competitor products"
         }
@@ -736,7 +1115,8 @@
             "name": "Object",
             "tags": [
                 "Activesession",
-                "Ezsignfolder"
+                "Ezsignfolder",
+                "Ezsigndocument"
             ]
         },
         {
