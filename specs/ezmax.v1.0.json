@@ -737,7 +737,6 @@
                 },
                 "example": {
                     "fkiEzsignfoldertypeID": 1,
-                    "fkiLanguageID": 1,
                     "sEzsignfolderDescription": "Test eZsign Folder",
                     "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
                     "fkiEzsigntsarequirementID": 1,
@@ -914,7 +913,6 @@
                 "description": "An Ezsignfolder Object",
                 "required": [
                     "fkiEzsignfoldertypeID",
-                    "fkiLanguageID",
                     "sEzsignfolderDescription",
                     "fkiEzsigntsarequirementID",
                     "tEzsignfolderNote",
@@ -926,10 +924,6 @@
                         "description": "The Ezsign Folder Type ID.\nThis value can be queried by the API and is also visible in the admin interface.\n\nThere are two types of Ezsignfoldertype. **User** and **Shared**. **User** can only be seen by the user who created the folder or its assistants. Access to **Shared** folders are configurable for access and email delivery. You should typically choose a **Shared** type here.",
                         "minimum": 1,
                         "type": "integer"
-                    },
-                    "fkiLanguageID": {
-                        "$ref": "#/components/schemas/Shared-fkiLanguageID",
-                        "description": ""
                     },
                     "fkiEzsigntsarequirementID": {
                         "$ref": "#/components/schemas/Shared-fkiEzsigntsarequirementID",
@@ -957,7 +951,6 @@
                 },
                 "example": {
                     "fkiEzsignfoldertypeID": 1,
-                    "fkiLanguageID": 1,
                     "sEzsignfolderDescription": "Test eZsign Folder",
                     "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
                     "fkiEzsigntsarequirementID": 1,
@@ -1005,7 +998,8 @@
                     "eEzsigndocumentSource",
                     "eEzsigndocumentFormat",
                     "fkiEzsignfolderID",
-                    "dtEzsigndocumentDuedate"
+                    "dtEzsigndocumentDuedate",
+                    "fkiLanguageID"
                 ],
                 "type": "object",
                 "properties": {
@@ -1034,7 +1028,6 @@
                     "sEzsigndocumentBase64": {
                         "format": "byte",
                         "description": "The Base64 encoded binary content of the document.\n\nThis field is Required when eEzsigndocumentSource = Base64.",
-                        "pattern": "^\\\\d{3}-\\\\d{2}-\\\\d{4}$",
                         "type": "string"
                     },
                     "fkiEzsignfolderID": {
@@ -1044,6 +1037,10 @@
                     "dtEzsigndocumentDuedate": {
                         "$ref": "#/components/schemas/Common-Format-DateTime",
                         "description": "Pourquoi ça n'apparait pas nulle part"
+                    },
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Shared-fkiLanguageID",
+                        "description": ""
                     }
                 },
                 "example": {
