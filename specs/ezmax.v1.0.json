@@ -207,6 +207,9 @@
                     },
                     "404": {
                         "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
                     }
                 },
                 "security": [
@@ -390,6 +393,9 @@
                     },
                     "404": {
                         "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
                     }
                 },
                 "security": [
@@ -573,6 +579,9 @@
                     },
                     "404": {
                         "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
                     }
                 },
                 "security": [
@@ -1442,6 +1451,16 @@
                     }
                 },
                 "description": "The element you are trying to work on does not exist"
+            },
+            "Response-Error-422": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Common-Response-Error"
+                        }
+                    }
+                },
+                "description": "The syntax of the request is valid but the request cannot be completed. Look for detail in body."
             }
         },
         "securitySchemes": {
