@@ -636,6 +636,57 @@
                     "required": true
                 }
             ]
+        },
+        "/1/object/ezsignfolder/{pkiEzsignfolderID}/send": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezsignfolder-send-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Ezsignfolder"
+                ],
+                "responses": {
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfolder-send-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignfolder_Send_V1",
+                "summary": "Send the Ezsignfolder to the signatories for signature"
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignfolderID",
+                    "description": "The unique ID of the Ezsignfolder",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
         }
     },
     "components": {
@@ -1439,6 +1490,29 @@
                     "fkiEzsignfolderID": 1,
                     "dtEzsigndocumentDuedate": "2020-12-31 23:59:59"
                 }
+            },
+            "ezsignfolder-send-v1-Response": {
+                "description": "Response for the /1/object/ezsignfolder/{pkiEzsignfolderID}/send API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsignfolder-send-v1-Request": {
+                "description": "Request for the /1/object/ezsignfolder/{pkiEzsignfolderID}/send API Request",
+                "required": [
+                    "tExtraMessage"
+                ],
+                "type": "object",
+                "properties": {
+                    "tExtraMessage": {
+                        "description": "A custom text message that will be added to the email sent to signatories inviting them to sign.\n\nYou can send an empty string and only the generic message will be sent.",
+                        "type": "string"
+                    }
+                },
+                "example": "Hi John,\n\nThis is the document I need you to sign.\n\nCould you sign it before monday please.\n\nBest Regards.\n\nMary"
             }
         },
         "responses": {
