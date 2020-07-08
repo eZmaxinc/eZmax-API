@@ -665,6 +665,9 @@
                             }
                         },
                         "description": "Successful response"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
                     }
                 },
                 "security": [
@@ -1405,10 +1408,6 @@
                     "sEzsignsignerSecretanswer": "This Is My Secret Answer"
                 }
             },
-            "ezsignsigner-Request-Contact": {
-                "description": "An Ezsignsigner->Contact Object",
-                "type": "object"
-            },
             "ezsignfolder-RequestCompound": {
                 "description": "An Ezsignfolder Object and children to create a complete structure",
                 "required": [
@@ -1439,21 +1438,59 @@
             },
             "ezsignsigner-RequestCompound-Contact": {
                 "description": "A Ezsignsigner->Contact Object and children to create a complete structure",
+                "required": [
+                    "sContactFirstname",
+                    "sContactLastname",
+                    "fkiLanguageID"
+                ],
                 "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ezsignsigner-Request-Contact"
+                "properties": {
+                    "sContactFirstname": {
+                        "description": "The first name of the Contact",
+                        "type": "string"
+                    },
+                    "sContactLastname": {
+                        "description": "The last name of the Contact",
+                        "type": "string"
+                    },
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Shared-fkiLanguageID",
+                        "description": ""
+                    },
+                    "sEmailAddress": {
+                        "description": "The email address of the contact. Must be filled if email authentification was requested",
+                        "type": "string"
+                    },
+                    "sPhoneNumber": {
+                        "description": "The Phone number of the contact.\nUse format \"5149901516\" for North American Numbers (Without \"1\" for long distance code) you would dial like this: 1-514-990-1516.\nUse format \"498945233886\" for international numbers (Without \"011\") you would dial like this: +49 89 452 33 88-6. In this example \"49\" is the country code of Germany.",
+                        "type": "string"
                     }
-                ]
+                },
+                "example": {
+                    "sContactFirstname": "John",
+                    "sContactLastname": "Doe",
+                    "fkiLanguageID": 1,
+                    "sEmailAddress": "johh.doe@domain.com",
+                    "sPhoneNumber": "5149901516"
+                }
             },
             "ezsignsigner-RequestCompound": {
                 "description": "An Ezsignsigner Object and children to create a complete structure",
+                "required": [
+                    "objContact"
+                ],
                 "type": "object",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/ezsignsigner-Request"
                     }
-                ]
+                ],
+                "properties": {
+                    "objContact": {
+                        "$ref": "#/components/schemas/ezsignsigner-RequestCompound-Contact",
+                        "description": ""
+                    }
+                }
             },
             "ezsignfoldersignerassociation-RequestCompound": {
                 "description": "An Ezsignfoldersignerassociation Object and children to create a complete structure",
