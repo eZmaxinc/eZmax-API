@@ -1853,7 +1853,8 @@
                     "iEzsignsignatureX",
                     "iEzsignsignatureY",
                     "iEzsignsignatureStep",
-                    "eEzsignsignatureType"
+                    "eEzsignsignatureType",
+                    "fkiEzsignfolderID"
                 ],
                 "type": "object",
                 "properties": {
@@ -1886,9 +1887,14 @@
                             "Name"
                         ],
                         "type": "string"
+                    },
+                    "fkiEzsignfolderID": {
+                        "description": "A reference to a valid Ezsignfolder.\n\nThat value is returned after a successful Ezsignfolder Creation.",
+                        "type": "integer"
                     }
                 },
                 "example": {
+                    "fkiEzsignfolderID": 48,
                     "fkiEzsignfoldersignerassociationID": 77,
                     "iEzsignpagePagenumber": 3,
                     "iEzsignsignatureX": 200,
@@ -1906,6 +1912,7 @@
                     }
                 ],
                 "example": {
+                    "fkiEzsignfolderID": 48,
                     "fkiEzsignfoldersignerassociationID": 77,
                     "iEzsignpagePagenumber": 3,
                     "iEzsignsignatureX": 200,
