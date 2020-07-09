@@ -653,9 +653,6 @@
                     "Ezsignfolder"
                 ],
                 "responses": {
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
                     "200": {
                         "content": {
                             "application/json": {
@@ -665,6 +662,9 @@
                             }
                         },
                         "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
                     },
                     "422": {
                         "$ref": "#/components/responses/Response-Error-422"
@@ -683,6 +683,192 @@
                 {
                     "name": "pkiEzsignfolderID",
                     "description": "The unique ID of the Ezsignfolder",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsignsignature": {
+            "description": "",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/ezsignsignature-createObject-v1-Request"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Ezsignsignature"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignsignature-createObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignsignature_CreateObject_V1",
+                "summary": "Create a new Ezsignsignature",
+                "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects."
+            }
+        },
+        "/1/object/ezsignsignature/{pkiEzsignsignatureID}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Ezsignsignature"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignsignature-getObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignsignature_GetObject_V1",
+                "summary": "Retrieve an existing Ezsignsignature",
+                "description": ""
+            },
+            "put": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezsignsignature-editObject-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Ezsignsignature"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignsignature-editObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignsignature_EditObject_V1",
+                "summary": "Modify an existing Ezsignsignature"
+            },
+            "delete": {
+                "tags": [
+                    "Ezsignsignature"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignsignature-deleteObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignsignature_DeleteObject_V1",
+                "summary": "Delete an existing Ezsignsignature"
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignsignatureID",
+                    "description": "The unique ID of the Ezsignsignature",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsignsignature/{pkiEzsignsignatureID}/getChildren": {
+            "get": {
+                "tags": [
+                    "Ezsignsignature"
+                ],
+                "responses": {
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignsignature_GetObject_GetChildren_V1",
+                "summary": "Retrieve an existing Ezsignsignature's children IDs",
+                "description": ""
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignsignatureID",
+                    "description": "The unique ID of the Ezsignsignature",
                     "schema": {
                         "type": "integer"
                     },
@@ -1555,6 +1741,185 @@
                     }
                 },
                 "example": "Hi John,\n\nThis is the document I need you to sign.\n\nCould you sign it before monday please.\n\nBest Regards.\n\nMary"
+            },
+            "ezsignsignature-createObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignsignature/editObject API Request",
+                "required": [
+                    "a_pkiEzsignsignatureID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiEzsignsignatureID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "example": {
+                    "a_pkiEzsignsignatureID": [
+                        95,
+                        96
+                    ]
+                }
+            },
+            "ezsignsignature-editObject-v1-Request": {
+                "description": "Request for the /1/object/ezsignsignature/editObject API Request",
+                "type": "object",
+                "properties": {
+                    "objEzsignsignature": {
+                        "$ref": "#/components/schemas/ezsignsignature-Request",
+                        "description": ""
+                    }
+                }
+            },
+            "ezsignsignature-getObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignsignature/getObject API Request",
+                "type": "object"
+            },
+            "ezsignsignature-createObject-v1-Response": {
+                "description": "Response for the /1/object/ezsignsignature/createObject API Request",
+                "required": [
+                    "mPayload"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ],
+                "properties": {
+                    "mPayload": {
+                        "$ref": "#/components/schemas/ezsignsignature-createObject-v1-Response-mPayload",
+                        "description": ""
+                    }
+                }
+            },
+            "ezsignsignature-deleteObject-v1-Response": {
+                "description": "Response for the /1/object/ezsignsignature/deleteObject API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsignsignature-editObject-v1-Response": {
+                "description": "Response for the /1/object/ezsignsignature/editObject API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsignsignature-getObject-v1-Response": {
+                "description": "Response for the /1/object/ezsignsignature/getObject API Request",
+                "required": [
+                    "mPayload"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ],
+                "properties": {
+                    "mPayload": {
+                        "$ref": "#/components/schemas/ezsignsignature-getObject-v1-Response-mPayload"
+                    }
+                }
+            },
+            "ezsignsignature-createObject-v1-Request": {
+                "description": "Request for the /1/object/ezsignsignature/createObject API Request",
+                "type": "object",
+                "properties": {
+                    "objEzsignsignature": {
+                        "$ref": "#/components/schemas/ezsignsignature-Request",
+                        "description": ""
+                    },
+                    "objEzsignsignatureCompound": {
+                        "$ref": "#/components/schemas/ezsignsignature-RequestCompound",
+                        "description": ""
+                    }
+                }
+            },
+            "ezsignsignature-Request": {
+                "description": "An Ezsignsignature Object",
+                "required": [
+                    "fkiEzsignfoldersignerassociationID",
+                    "iEzsignpagePagenumber",
+                    "iEzsignsignatureX",
+                    "iEzsignsignatureY",
+                    "iEzsignsignatureStep",
+                    "eEzsignsignatureType",
+                    "fkiEzsignfolderID"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiEzsignfoldersignerassociationID": {
+                        "description": "A reference to a valid Ezsignfoldersignerassociation.\n\nThat value is returned after a successful Ezsignfoldersignerassociation Creation.\n",
+                        "type": "integer"
+                    },
+                    "iEzsignpagePagenumber": {
+                        "description": "The page number in the document where to apply the signature",
+                        "type": "integer"
+                    },
+                    "iEzsignsignatureX": {
+                        "description": "The X coordinate (Horizontal) where to put the signature block on the page.\n\nCoordinate is calculated at 100dpi (dot per inch). So for example, if you want to put the signature block 2 inches from the left border of the page, you would use \"200\" for the X coordinate.",
+                        "type": "integer"
+                    },
+                    "iEzsignsignatureY": {
+                        "description": "The Y coordinate (Vertical) where to put the signature block on the page.\n\nCoordinate is calculated at 100dpi (dot per inch). So for example, if you want to put the signature block 3 inches from the top border of the page, you would use \"300\" for the Y coordinate.",
+                        "type": "integer"
+                    },
+                    "iEzsignsignatureStep": {
+                        "description": "The step when the Ezsignsigner will be invited to sign.\n\nFor example, if you say iEzsignsignatureStep=2, that block of signature will be available for signature only after ALL the signatures in step 1 are completed.",
+                        "type": "integer"
+                    },
+                    "eEzsignsignatureType": {
+                        "description": "The type of signature required.\n\n1. **Acknowledgement** is for an acknowledgment of receipt.\n2. **Handwritten** is for a handwritten kind of signature where users needs to \"draw\" their signature on screen.\n3. **Initials** is a simple \"click to add initials\" block.\n4. **Name** is a simple \"Click to sign\" block. This is the most common block of signature.",
+                        "enum": [
+                            "Acknowledgement",
+                            "Handwritten",
+                            "Initials",
+                            "Name"
+                        ],
+                        "type": "string"
+                    },
+                    "fkiEzsignfolderID": {
+                        "description": "A reference to a valid Ezsignfolder.\n\nThat value is returned after a successful Ezsignfolder Creation.",
+                        "type": "integer"
+                    }
+                },
+                "example": {
+                    "fkiEzsignfolderID": 48,
+                    "fkiEzsignfoldersignerassociationID": 77,
+                    "iEzsignpagePagenumber": 3,
+                    "iEzsignsignatureX": 200,
+                    "iEzsignsignatureY": 300,
+                    "iEzsignsignatureStep": 1,
+                    "eEzsignsignatureType": "Name"
+                }
+            },
+            "ezsignsignature-RequestCompound": {
+                "description": "An Ezsignsignature Object and children to create a complete structure",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsignsignature-Request"
+                    }
+                ],
+                "example": {
+                    "fkiEzsignfolderID": 48,
+                    "fkiEzsignfoldersignerassociationID": 77,
+                    "iEzsignpagePagenumber": 3,
+                    "iEzsignsignatureX": 200,
+                    "iEzsignsignatureY": 300,
+                    "iEzsignsignatureStep": 1,
+                    "eEzsignsignatureType": "Name"
+                }
             }
         },
         "responses": {
@@ -1610,6 +1975,10 @@
         {
             "name": "Ezsignfoldersignerassociation",
             "description": "Ezsignfoldersignerassociation contains detail about the signers that will be invited to sign the documents. Signers can be users from the system or persons outside of the system."
+        },
+        {
+            "name": "Ezsignsignature",
+            "description": "Ezsignsignature contains detail about a specific signature block on a page of a Ezsigndocument"
         }
     ],
     "x-tagGroups": [
@@ -1619,7 +1988,8 @@
                 "Activesession",
                 "Ezsignfolder",
                 "Ezsigndocument",
-                "Ezsignfoldersignerassociation"
+                "Ezsignfoldersignerassociation",
+                "Ezsignsignature"
             ]
         },
         {
