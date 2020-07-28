@@ -876,6 +876,110 @@
                     "required": true
                 }
             ]
+        },
+        "/{WebhookPathEzsignDocumentCompleted}": {
+            "servers": [
+                {
+                    "url": "https://{yourdomain}",
+                    "description": "This is your server URL where the Webhook call should be made",
+                    "variables": {
+                        "yourdomain": {
+                            "default": "www.yourdomain.com"
+                        }
+                    }
+                }
+            ],
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Webhook-Ezsign-DocumentCompleted"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "EzsignWebhook"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response, will not be retried"
+                    }
+                },
+                "security": [
+                    {
+
+                    }
+                ],
+                "operationId": "Webhook_Ezsign_DocumentCompleted",
+                "summary": "DocumentCompleted",
+                "description": "This Webhook will be called when the last signature on an Ezsigndocument is made."
+            },
+            "parameters": [
+                {
+                    "name": "WebhookPathEzsignDocumentCompleted",
+                    "description": "The path on your server where your webhook listener resides",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/{WebhookPathEzsignFolderCompleted}": {
+            "servers": [
+                {
+                    "url": "https://{yourdomain}",
+                    "description": "This is your server URL where the Webhook call should be made",
+                    "variables": {
+                        "yourdomain": {
+                            "default": "www.yourdomain.com"
+                        }
+                    }
+                }
+            ],
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Webhook-Ezsign-FolderCompleted"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "EzsignWebhook"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response, will not be retried"
+                    }
+                },
+                "security": [
+                    {
+
+                    }
+                ],
+                "operationId": "Webhook_Ezsign_FolderCompleted",
+                "summary": "FolderCompleted",
+                "description": "This Webhook will be called when the last signature on the last Ezsigndocument from the folder is made."
+            },
+            "parameters": [
+                {
+                    "name": "WebhookPathEzsignFolderCompleted",
+                    "description": "The path on your server where your webhook listener resides",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
         }
     },
     "components": {
@@ -1920,6 +2024,145 @@
                     "iEzsignsignatureStep": 1,
                     "eEzsignsignatureType": "Name"
                 }
+            },
+            "Common-Webhook": {
+                "description": "This is the base Webhook object",
+                "required": [
+                    "objWebhook",
+                    "a_PreviousAttempts"
+                ],
+                "type": "object",
+                "properties": {
+                    "objWebhook": {
+                        "$ref": "#/components/schemas/Common-Webhook-Webhook",
+                        "description": "The details about the webhook being Called"
+                    },
+                    "a_PreviousAttempts": {
+                        "description": "An array containing details of previous attempts that were made to deliver the message.\nThe array is empty if it's the first attempt.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Common-Webhook-PreviousAttempt"
+                        }
+                    }
+                },
+                "example": {
+                    "pkiWebhookID": 24,
+                    "eWebhookModule": "Ezsign",
+                    "eWebhookEzsignevent": "DocumentCompleted"
+                }
+            },
+            "Webhook-Ezsign-DocumentCompleted": {
+                "description": "This is the base Webhook object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "objEzsigndocument"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "objEzsigndocument": {
+                                "description": "The Ezsign document on which the final signature was made.",
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Webhook"
+                    }
+                ]
+            },
+            "Common-Webhook-Webhook": {
+                "description": "This is the objWebhook Structure for the base Webhook object",
+                "required": [
+                    "pkiWebhookID",
+                    "eWebhookModule",
+                    "pksCustomerCode",
+                    "sWebhookUrl",
+                    "sWebhookEmailfailed"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiWebhookID": {
+                        "description": "The Webhook ID. This value is visible in the admin interface.",
+                        "type": "integer"
+                    },
+                    "eWebhookModule": {
+                        "description": "The Module generating the Event.",
+                        "enum": [
+                            "Ezsign"
+                        ],
+                        "type": "string"
+                    },
+                    "eWebhookEzsignevent": {
+                        "description": "This Ezsign Event. This property will be set only if the Module is \"Ezsign\".",
+                        "enum": [
+                            "DocumentCompleted",
+                            "FolderCompleted"
+                        ],
+                        "type": "string"
+                    },
+                    "pksCustomerCode": {
+                        "description": "The Customer Code in which the event was generated",
+                        "type": "string"
+                    },
+                    "sWebhookUrl": {
+                        "description": "The url being called",
+                        "type": "string"
+                    },
+                    "sWebhookEmailfailed": {
+                        "description": "The email that will receive the webhook in case all attempts fail.",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "pkiWebhookID": 24,
+                    "eWebhookModule": "Ezsign",
+                    "eWebhookEzsignevent": "DocumentCompleted"
+                }
+            },
+            "Common-Webhook-PreviousAttempt": {
+                "description": "XXX",
+                "required": [
+                    "iHttpCode",
+                    "dtAttempt"
+                ],
+                "type": "object",
+                "properties": {
+                    "iHttpCode": {
+                        "description": "The http request code that was returned by your server when we tried to call the URL to deliver the webhook event.",
+                        "type": "integer"
+                    },
+                    "dtAttempt": {
+                        "description": "Date and time of the attempt in UCT.",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "iHttpCode": 500,
+                    "dtAttempt": "2020-12-31 23:59:59"
+                }
+            },
+            "Webhook-Ezsign-FolderCompleted": {
+                "description": "This is the base Webhook object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "objEzsignfolder"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "objEzsignfolder": {
+                                "description": "The Ezsign folder on which the final signature was made.",
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Webhook"
+                    }
+                ]
             }
         },
         "responses": {
@@ -1979,8 +2222,31 @@
         {
             "name": "Ezsignsignature",
             "description": "Ezsignsignature contains detail about a specific signature block on a page of a Ezsigndocument"
+        },
+        {
+            "name": "EzsignWebhook",
+            "description": "Webhooks related to Ezsign module. You can configure them in Ezmax administrative console."
         }
     ],
+    "x-webhooks": {
+        "TODOWAITGINGFOROAS31": {
+            "requestBody": {
+                "description": "Information about a new pet in the system",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Common-Response-Error"
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Return a 200 status to indicate that the data was received successfully"
+                    }
+                }
+            }
+        }
+    },
     "x-tagGroups": [
         {
             "name": "Object",
@@ -2000,6 +2266,12 @@
         {
             "name": "Report",
             "tags": [
+            ]
+        },
+        {
+            "name": "Webhooks",
+            "tags": [
+                "EzsignWebhook"
             ]
         }
     ]
