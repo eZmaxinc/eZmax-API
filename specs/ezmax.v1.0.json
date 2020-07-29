@@ -2186,7 +2186,8 @@
                     "sEzsignfolderDescription",
                     "fkiEzsigntsarequirementID",
                     "tEzsignfolderNote",
-                    "eEzsignfolderSendreminderfrequency"
+                    "eEzsignfolderSendreminderfrequency",
+                    "pkiEzsignfolderID"
                 ],
                 "type": "object",
                 "properties": {
@@ -2217,9 +2218,14 @@
                             "Weekly"
                         ],
                         "type": "string"
+                    },
+                    "pkiEzsignfolderID": {
+                        "description": "The unique ID of the Ezsignfolder",
+                        "type": "integer"
                     }
                 },
                 "example": {
+                    "pkiEzsignfolderID": 13,
                     "fkiEzsignfoldertypeID": 1,
                     "sEzsignfolderDescription": "Test eZsign Folder",
                     "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
@@ -2236,6 +2242,7 @@
                     }
                 ],
                 "example": {
+                    "pkiEzsignfolderID": 13,
                     "fkiEzsignfoldertypeID": 1,
                     "sEzsignfolderDescription": "Test eZsign Folder",
                     "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
@@ -2250,7 +2257,8 @@
                     "sEzsigndocumentFilename",
                     "fkiEzsignfolderID",
                     "dtEzsigndocumentDuedate",
-                    "fkiLanguageID"
+                    "fkiLanguageID",
+                    "pkiEzsigndocumentID"
                 ],
                 "type": "object",
                 "properties": {
@@ -2274,9 +2282,14 @@
                     "sEzsigndocumentName": {
                         "description": "The name of the document that will be presented to Ezsignfoldersignerassociations",
                         "type": "string"
+                    },
+                    "pkiEzsigndocumentID": {
+                        "description": "The unique ID of the Ezsigndocument",
+                        "type": "integer"
                     }
                 },
                 "example": {
+                    "pkiEzsigndocumentID": 66,
                     "sEzsigndocumentName": "Important contract",
                     "sEzsigndocumentFilename": "Important Contract.pdf",
                     "fkiEzsignfolderID": 1,
@@ -2293,6 +2306,7 @@
                     }
                 ],
                 "example": {
+                    "pkiEzsigndocumentID": 66,
                     "sEzsigndocumentName": "Important contract",
                     "sEzsigndocumentFilename": "Important Contract.pdf",
                     "fkiEzsignfolderID": 1,
