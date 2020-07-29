@@ -1575,8 +1575,8 @@
             "ezsigndocument-Request": {
                 "description": "An Ezsigndocument Object",
                 "required": [
-                    "sEzsignDocumentName",
-                    "sEzsignDocumentFilename",
+                    "sEzsigndocumentName",
+                    "sEzsigndocumentFilename",
                     "eEzsigndocumentSource",
                     "eEzsigndocumentFormat",
                     "fkiEzsignfolderID",
@@ -1585,14 +1585,6 @@
                 ],
                 "type": "object",
                 "properties": {
-                    "sEzsignDocumentName": {
-                        "description": "The name of the document that will be presented to Ezsignfoldersignerassociations",
-                        "type": "string"
-                    },
-                    "sEzsignDocumentFilename": {
-                        "description": "The actual file name that will be used when downloading or attaching to an email.",
-                        "type": "string"
-                    },
                     "eEzsigndocumentSource": {
                         "description": "Indicates where to look for the document binary content.",
                         "enum": [
@@ -1624,11 +1616,19 @@
                     "fkiLanguageID": {
                         "$ref": "#/components/schemas/Shared-fkiLanguageID",
                         "description": ""
+                    },
+                    "sEzsigndocumentFilename": {
+                        "description": "The actual file name that will be used when downloading or attaching to an email.",
+                        "type": "string"
+                    },
+                    "sEzsigndocumentName": {
+                        "description": "The name of the document that will be presented to Ezsignfoldersignerassociations",
+                        "type": "string"
                     }
                 },
                 "example": {
-                    "sEzsignDocumentName": "Important contract",
-                    "sEzsignDocumentFilename": "Important Contract.pdf",
+                    "sEzsigndocumentName": "Important contract",
+                    "sEzsigndocumentFilename": "Important Contract.pdf",
                     "fkiLanguageID": 2,
                     "eEzsigndocumentSource": "Base64",
                     "eEzsigndocumentFormat": "Pdf",
@@ -1813,8 +1813,8 @@
                     }
                 ],
                 "example": {
-                    "sEzsignDocumentName": "Important contract",
-                    "sEzsignDocumentFilename": "Important Contract.pdf",
+                    "sEzsigndocumentName": "Important contract",
+                    "sEzsigndocumentFilename": "Important Contract.pdf",
                     "fkiEzsignfolderID": 1,
                     "dtEzsigndocumentDuedate": "2020-12-31 23:59:59",
                     "fkiLanguageID": 2
@@ -2246,22 +2246,14 @@
             "ezsigndocument-Response": {
                 "description": "An Ezsigndocument Object",
                 "required": [
-                    "sEzsignDocumentName",
-                    "sEzsignDocumentFilename",
+                    "sEzsigndocumentName",
+                    "sEzsigndocumentFilename",
                     "fkiEzsignfolderID",
                     "dtEzsigndocumentDuedate",
                     "fkiLanguageID"
                 ],
                 "type": "object",
                 "properties": {
-                    "sEzsignDocumentName": {
-                        "description": "The name of the document that will be presented to Ezsignfoldersignerassociations",
-                        "type": "string"
-                    },
-                    "sEzsignDocumentFilename": {
-                        "description": "The actual file name that will be used when downloading or attaching to an email.",
-                        "type": "string"
-                    },
                     "fkiEzsignfolderID": {
                         "description": "A reference to a valid Ezsignfolder.\n\nThat value is returned after a successful Ezsignfolder Creation.",
                         "minimum": 1,
@@ -2274,11 +2266,19 @@
                     "fkiLanguageID": {
                         "$ref": "#/components/schemas/Shared-fkiLanguageID",
                         "description": ""
+                    },
+                    "sEzsigndocumentFilename": {
+                        "description": "The actual file name that will be used when downloading or attaching to an email.",
+                        "type": "string"
+                    },
+                    "sEzsigndocumentName": {
+                        "description": "The name of the document that will be presented to Ezsignfoldersignerassociations",
+                        "type": "string"
                     }
                 },
                 "example": {
-                    "sEzsignDocumentName": "Important contract",
-                    "sEzsignDocumentFilename": "Important Contract.pdf",
+                    "sEzsigndocumentName": "Important contract",
+                    "sEzsigndocumentFilename": "Important Contract.pdf",
                     "fkiEzsignfolderID": 1,
                     "dtEzsigndocumentDuedate": "2020-12-31 23:59:59",
                     "fkiLanguageID": 2
@@ -2293,8 +2293,8 @@
                     }
                 ],
                 "example": {
-                    "sEzsignDocumentName": "Important contract",
-                    "sEzsignDocumentFilename": "Important Contract.pdf",
+                    "sEzsigndocumentName": "Important contract",
+                    "sEzsigndocumentFilename": "Important Contract.pdf",
                     "fkiEzsignfolderID": 1,
                     "dtEzsigndocumentDuedate": "2020-12-31 23:59:59",
                     "fkiLanguageID": 2
