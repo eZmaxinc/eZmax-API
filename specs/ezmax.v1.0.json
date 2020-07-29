@@ -1815,12 +1815,9 @@
                 "example": {
                     "sEzsignDocumentName": "Important contract",
                     "sEzsignDocumentFilename": "Important Contract.pdf",
-                    "fkiLanguageID": 2,
-                    "eEzsigndocumentSource": "Base64",
-                    "eEzsigndocumentFormat": "Pdf",
-                    "sEzsigndocumentBase64": "JVBERi0xLjENCiXCpcKxw6sNCg0KMSAwIG9iag0KICA8PCAvVHlwZSAvQ2F0YWxvZw0KICAgICAvUGFnZXMgMiAwIFINCiAgPj4NCmVuZG9iag0KDQoyIDAgb2JqDQogIDw8IC9UeXBlIC9QYWdlcw0KICAgICAvS2lkcyBbMyAwIFJdDQogICAgIC9Db3VudCAxDQogICAgIC9NZWRpYUJveCBbMCAwIDMwMCAxNDRdDQogID4+DQplbmRvYmoNCg0KMyAwIG9iag0KICA8PCAgL1R5cGUgL1BhZ2UNCiAgICAgIC9QYXJlbnQgMiAwIFINCiAgICAgIC9SZXNvdXJjZXMNCiAgICAgICA8PCAvRm9udA0KICAgICAgICAgICA8PCAvRjENCiAgICAgICAgICAgICAgIDw8IC9UeXBlIC9Gb250DQogICAgICAgICAgICAgICAgICAvU3VidHlwZSAvVHlwZTENCiAgICAgICAgICAgICAgICAgIC9CYXNlRm9udCAvVGltZXMtUm9tYW4NCiAgICAgICAgICAgICAgID4+DQogICAgICAgICAgID4+DQogICAgICAgPj4NCiAgICAgIC9Db250ZW50cyA0IDAgUg0KICA+Pg0KZW5kb2JqDQoNCjQgMCBvYmoNCiAgPDwgL0xlbmd0aCA1NSA+Pg0Kc3RyZWFtDQogIEJUDQogICAgL0YxIDE4IFRmDQogICAgMCAwIFRkDQogICAgKEhlbGxvIFdvcmxkKSBUag0KICBFVA0KZW5kc3RyZWFtDQplbmRvYmoNCg0KeHJlZg0KMCA1DQowMDAwMDAwMDAwIDY1NTM1IGYgDQowMDAwMDAwMDE4IDAwMDAwIG4gDQowMDAwMDAwMDc3IDAwMDAwIG4gDQowMDAwMDAwMTc4IDAwMDAwIG4gDQowMDAwMDAwNDU3IDAwMDAwIG4gDQp0cmFpbGVyDQogIDw8ICAvUm9vdCAxIDAgUg0KICAgICAgL1NpemUgNQ0KICA+Pg0Kc3RhcnR4cmVmDQo1NjUNCiUlRU9G",
                     "fkiEzsignfolderID": 1,
-                    "dtEzsigndocumentDuedate": "2020-12-31 23:59:59"
+                    "dtEzsigndocumentDuedate": "2020-12-31 23:59:59",
+                    "fkiLanguageID": 2
                 }
             },
             "ezsignfolder-send-v1-Response": {
@@ -2029,26 +2026,43 @@
                 "description": "This is the base Webhook object",
                 "required": [
                     "objWebhook",
-                    "a_PreviousAttempts"
+                    "a_objAttempt"
                 ],
                 "type": "object",
                 "properties": {
                     "objWebhook": {
-                        "$ref": "#/components/schemas/Common-Webhook-Webhook",
+                        "$ref": "#/components/schemas/webhook-Response",
                         "description": "The details about the webhook being Called"
                     },
-                    "a_PreviousAttempts": {
+                    "a_objAttempt": {
                         "description": "An array containing details of previous attempts that were made to deliver the message.\nThe array is empty if it's the first attempt.",
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/Common-Webhook-PreviousAttempt"
+                            "$ref": "#/components/schemas/attempt-Response"
                         }
                     }
                 },
                 "example": {
-                    "pkiWebhookID": 24,
-                    "eWebhookModule": "Ezsign",
-                    "eWebhookEzsignevent": "DocumentCompleted"
+                    "objWebhook": {
+                        "pkiWebhookID": 23,
+                        "eWebhookModule": "Ezsign",
+                        "eWebhookEzsignevent": "DocumentCompleted",
+                        "pksCustomerCode": "ezmax",
+                        "sWebhookUrl": "https://www.yourdomain.com/yourpath",
+                        "sWebhookEmailfailed": "hostmaster@yourdomain.com"
+                    },
+                    "a_objAttempt": [
+                        {
+                            "dtAttemptStart": "2020-12-31 23:58:58",
+                            "sAttemptResult": "Error: Server returned HTTP status code 500",
+                            "iAttemptDuration": 5
+                        },
+                        {
+                            "dtAttemptStart": "2020-12-31 23:59:59",
+                            "sAttemptResult": "Success",
+                            "iAttemptDuration": 0
+                        }
+                    ]
                 }
             },
             "Webhook-Ezsign-DocumentCompleted": {
@@ -2062,8 +2076,8 @@
                         "type": "object",
                         "properties": {
                             "objEzsigndocument": {
-                                "description": "The Ezsign document on which the final signature was made.",
-                                "type": "integer"
+                                "$ref": "#/components/schemas/ezsigndocument-ResponseCompound",
+                                "description": "The Ezsign document on which the final signature was made."
                             }
                         }
                     },
@@ -2072,8 +2086,29 @@
                     }
                 ]
             },
-            "Common-Webhook-Webhook": {
-                "description": "This is the objWebhook Structure for the base Webhook object",
+            "Webhook-Ezsign-FolderCompleted": {
+                "description": "This is the base Webhook object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "objEzsignfolder"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "objEzsignfolder": {
+                                "$ref": "#/components/schemas/ezsignfolder-ResponseCompound",
+                                "description": "The Ezsign folder on which the final signature was made."
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Webhook"
+                    }
+                ]
+            },
+            "webhook-Response": {
+                "description": "A webhook object",
                 "required": [
                     "pkiWebhookID",
                     "eWebhookModule",
@@ -2114,15 +2149,10 @@
                         "description": "The email that will receive the webhook in case all attempts fail.",
                         "type": "string"
                     }
-                },
-                "example": {
-                    "pkiWebhookID": 24,
-                    "eWebhookModule": "Ezsign",
-                    "eWebhookEzsignevent": "DocumentCompleted"
                 }
             },
-            "Common-Webhook-PreviousAttempt": {
-                "description": "XXX",
+            "attempt-Response": {
+                "description": "An Attempt object",
                 "required": [
                     "sAttemptResult",
                     "dtAttemptStart",
@@ -2149,26 +2179,126 @@
                     "iAttemptDuration": 1
                 }
             },
-            "Webhook-Ezsign-FolderCompleted": {
-                "description": "This is the base Webhook object",
+            "ezsignfolder-Response": {
+                "description": "An Ezsignfolder Object",
+                "required": [
+                    "fkiEzsignfoldertypeID",
+                    "sEzsignfolderDescription",
+                    "fkiEzsigntsarequirementID",
+                    "tEzsignfolderNote",
+                    "eEzsignfolderSendreminderfrequency"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiEzsignfoldertypeID": {
+                        "description": "The Ezsign Folder Type ID.\nThis value can be queried by the API and is also visible in the admin interface.\n\nThere are two types of Ezsignfoldertype. **User** and **Shared**. **User** can only be seen by the user who created the folder or its assistants. Access to **Shared** folders are configurable for access and email delivery. You should typically choose a **Shared** type here.",
+                        "minimum": 1,
+                        "type": "integer"
+                    },
+                    "fkiEzsigntsarequirementID": {
+                        "$ref": "#/components/schemas/Shared-fkiEzsigntsarequirementID",
+                        "description": ""
+                    },
+                    "sEzsignfolderDescription": {
+                        "description": "The description of the Ezsign Folder",
+                        "maxLength": 75,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "tEzsignfolderNote": {
+                        "description": "Somes extra notes about the eZsign Folder",
+                        "type": "string"
+                    },
+                    "eEzsignfolderSendreminderfrequency": {
+                        "description": "Frequency at which reminders will be sent to signers that haven't signed the documents",
+                        "enum": [
+                            "None",
+                            "Daily",
+                            "Weekly"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "fkiEzsignfoldertypeID": 1,
+                    "sEzsignfolderDescription": "Test eZsign Folder",
+                    "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
+                    "fkiEzsigntsarequirementID": 1,
+                    "eEzsignfolderSendreminderfrequency": "Daily"
+                }
+            },
+            "ezsignfolder-ResponseCompound": {
+                "description": "An Ezsignfolder Object and children to create a complete structure",
                 "type": "object",
                 "allOf": [
                     {
-                        "required": [
-                            "objEzsignfolder"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "objEzsignfolder": {
-                                "description": "The Ezsign folder on which the final signature was made.",
-                                "type": "integer"
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Webhook"
+                        "$ref": "#/components/schemas/ezsignfolder-Response"
                     }
-                ]
+                ],
+                "example": {
+                    "fkiEzsignfoldertypeID": 1,
+                    "sEzsignfolderDescription": "Test eZsign Folder",
+                    "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
+                    "fkiEzsigntsarequirementID": 1,
+                    "eEzsignfolderSendreminderfrequency": "Daily"
+                }
+            },
+            "ezsigndocument-Response": {
+                "description": "An Ezsigndocument Object",
+                "required": [
+                    "sEzsignDocumentName",
+                    "sEzsignDocumentFilename",
+                    "fkiEzsignfolderID",
+                    "dtEzsigndocumentDuedate",
+                    "fkiLanguageID"
+                ],
+                "type": "object",
+                "properties": {
+                    "sEzsignDocumentName": {
+                        "description": "The name of the document that will be presented to Ezsignfoldersignerassociations",
+                        "type": "string"
+                    },
+                    "sEzsignDocumentFilename": {
+                        "description": "The actual file name that will be used when downloading or attaching to an email.",
+                        "type": "string"
+                    },
+                    "fkiEzsignfolderID": {
+                        "description": "A reference to a valid Ezsignfolder.\n\nThat value is returned after a successful Ezsignfolder Creation.",
+                        "minimum": 1,
+                        "type": "integer"
+                    },
+                    "dtEzsigndocumentDuedate": {
+                        "$ref": "#/components/schemas/Common-Format-DateTime",
+                        "description": ""
+                    },
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Shared-fkiLanguageID",
+                        "description": ""
+                    }
+                },
+                "example": {
+                    "sEzsignDocumentName": "Important contract",
+                    "sEzsignDocumentFilename": "Important Contract.pdf",
+                    "fkiEzsignfolderID": 1,
+                    "dtEzsigndocumentDuedate": "2020-12-31 23:59:59",
+                    "fkiLanguageID": 2
+                }
+            },
+            "ezsigndocument-ResponseCompound": {
+                "description": "An Ezsigndocument Object and children to create a complete structure",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsigndocument-Response"
+                    }
+                ],
+                "example": {
+                    "sEzsignDocumentName": "Important contract",
+                    "sEzsignDocumentFilename": "Important Contract.pdf",
+                    "fkiEzsignfolderID": 1,
+                    "dtEzsigndocumentDuedate": "2020-12-31 23:59:59",
+                    "fkiLanguageID": 2
+                }
             }
         },
         "responses": {
