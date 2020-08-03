@@ -2174,6 +2174,56 @@
             "ezsignfolder-Response": {
                 "description": "An Ezsignfolder Object",
                 "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "fkiEzsignfoldertypeID",
+                            "sEzsignfolderDescription",
+                            "fkiEzsigntsarequirementID",
+                            "tEzsignfolderNote",
+                            "eEzsignfolderSendreminderfrequency",
+                            "pkiEzsignfolderID"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "fkiEzsignfoldertypeID": {
+                                "description": "The Ezsign Folder Type ID.\nThis value can be queried by the API and is also visible in the admin interface.\n\nThere are two types of Ezsignfoldertype. **User** and **Shared**. **User** can only be seen by the user who created the folder or its assistants. Access to **Shared** folders are configurable for access and email delivery. You should typically choose a **Shared** type here.",
+                                "minimum": 1,
+                                "type": "integer"
+                            },
+                            "fkiEzsigntsarequirementID": {
+                                "$ref": "#/components/schemas/Shared-fkiEzsigntsarequirementID",
+                                "description": ""
+                            },
+                            "sEzsignfolderDescription": {
+                                "description": "The description of the Ezsign Folder",
+                                "maxLength": 75,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            "tEzsignfolderNote": {
+                                "description": "Somes extra notes about the eZsign Folder",
+                                "type": "string"
+                            },
+                            "eEzsignfolderSendreminderfrequency": {
+                                "description": "Frequency at which reminders will be sent to signers that haven't signed the documents",
+                                "enum": [
+                                    "None",
+                                    "Daily",
+                                    "Weekly"
+                                ],
+                                "type": "string"
+                            },
+                            "pkiEzsignfolderID": {
+                                "description": "The unique ID of the Ezsignfolder",
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Audit"
+                    }
+                ],
                 "example": {
                     "pkiEzsignfolderID": 13,
                     "fkiEzsignfoldertypeID": 1,
@@ -2319,12 +2369,7 @@
                     {
                         "$ref": "#/components/schemas/ezsignfolder-Response"
                     }
-                ],
-                "properties": {
-                    "aaaa": {
-                        "description": ""
-                    }
-                }
+                ]
             }
         },
         "responses": {
