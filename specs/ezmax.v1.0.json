@@ -1170,10 +1170,6 @@
                     }
                 }
             },
-            "ezsignfolder-getObject-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignfolder/getObject API Request",
-                "type": "object"
-            },
             "activesession-getCurrent-v1-Response": {
                 "description": "Response for the /1/object/activesession/getCurrent API Request",
                 "required": [
@@ -1275,10 +1271,6 @@
                         "description": ""
                     }
                 }
-            },
-            "ezsignfoldersignerassociation-getObject-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignfoldersignerassociation/getObject API Request",
-                "type": "object"
             },
             "ezsignfoldersignerassociation-createObject-v1-Response": {
                 "description": "Response for the /1/object/ezsignfoldersignerassociation/createObject API Request",
@@ -2161,8 +2153,8 @@
                 "type": "object",
                 "properties": {
                     "dtAttemptStart": {
-                        "description": "Date and time of the attempt in UCT.",
-                        "type": "string"
+                        "$ref": "#/components/schemas/Common-Format-DateTime",
+                        "description": "Date and time of the attempt in UCT."
                     },
                     "sAttemptResult": {
                         "description": "The Success or Failure message of the attempt when we tried to call the URL to deliver the webhook event.",
@@ -2181,49 +2173,7 @@
             },
             "ezsignfolder-Response": {
                 "description": "An Ezsignfolder Object",
-                "required": [
-                    "fkiEzsignfoldertypeID",
-                    "sEzsignfolderDescription",
-                    "fkiEzsigntsarequirementID",
-                    "tEzsignfolderNote",
-                    "eEzsignfolderSendreminderfrequency",
-                    "pkiEzsignfolderID"
-                ],
                 "type": "object",
-                "properties": {
-                    "fkiEzsignfoldertypeID": {
-                        "description": "The Ezsign Folder Type ID.\nThis value can be queried by the API and is also visible in the admin interface.\n\nThere are two types of Ezsignfoldertype. **User** and **Shared**. **User** can only be seen by the user who created the folder or its assistants. Access to **Shared** folders are configurable for access and email delivery. You should typically choose a **Shared** type here.",
-                        "minimum": 1,
-                        "type": "integer"
-                    },
-                    "fkiEzsigntsarequirementID": {
-                        "$ref": "#/components/schemas/Shared-fkiEzsigntsarequirementID",
-                        "description": ""
-                    },
-                    "sEzsignfolderDescription": {
-                        "description": "The description of the Ezsign Folder",
-                        "maxLength": 75,
-                        "minLength": 1,
-                        "type": "string"
-                    },
-                    "tEzsignfolderNote": {
-                        "description": "Somes extra notes about the eZsign Folder",
-                        "type": "string"
-                    },
-                    "eEzsignfolderSendreminderfrequency": {
-                        "description": "Frequency at which reminders will be sent to signers that haven't signed the documents",
-                        "enum": [
-                            "None",
-                            "Daily",
-                            "Weekly"
-                        ],
-                        "type": "string"
-                    },
-                    "pkiEzsignfolderID": {
-                        "description": "The unique ID of the Ezsignfolder",
-                        "type": "integer"
-                    }
-                },
                 "example": {
                     "pkiEzsignfolderID": 13,
                     "fkiEzsignfoldertypeID": 1,
@@ -2313,6 +2263,68 @@
                     "dtEzsigndocumentDuedate": "2020-12-31 23:59:59",
                     "fkiLanguageID": 2
                 }
+            },
+            "Common-Audit": {
+                "description": "Gives informations about the user that created the object and the last user to have modified it.\n\nIf the object was never modified after creation, both Created and Modified informations will be the same.\n\nApikey details will only be provided if the changes were made by an API key.\n\n",
+                "required": [
+                    "dtCreatedDate",
+                    "dtModifiedDate",
+                    "fkiUserIDCreated",
+                    "fkiUserIDModified"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiUserIDCreated": {
+                        "description": "The id of the User that created the object.",
+                        "type": "integer"
+                    },
+                    "fkiUserIDModified": {
+                        "description": "The id of the User that made the last modification on the object.",
+                        "type": "integer"
+                    },
+                    "fkiApikeyIDCreated": {
+                        "description": "The id of the API Key that created the object.",
+                        "type": "integer"
+                    },
+                    "fkiApikeyIDModified": {
+                        "description": "The id of the API Key that made the last modification on the object.",
+                        "type": "integer"
+                    },
+                    "dtCreatedDate": {
+                        "$ref": "#/components/schemas/Common-Format-DateTime",
+                        "description": "The Date and time at which the object was created"
+                    },
+                    "dtModifiedDate": {
+                        "$ref": "#/components/schemas/Common-Format-DateTime",
+                        "description": "The Date and time at which the object was modified last."
+                    }
+                },
+                "example": {
+                    "fkiUserIDCreated": 35,
+                    "fkiUserIDModified": 35,
+                    "fkiApikeyIDCreated": 1,
+                    "fkiApikeyIDModified": 1,
+                    "dtCreatedDate": "2020-12-31 23:59:59",
+                    "dtModifiedDate": "2020-12-31 23:59:59"
+                }
+            },
+            "ezsignfoldersignerassociation-getObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignfoldersignerassociation/getObject API Request",
+                "type": "object"
+            },
+            "ezsignfolder-getObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignfolder/getObject API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsignfolder-Response"
+                    }
+                ],
+                "properties": {
+                    "aaaa": {
+                        "description": ""
+                    }
+                }
             }
         },
         "responses": {
@@ -2379,13 +2391,18 @@
         }
     ],
     "x-webhooks": {
-        "TODOWAITGINGFOROAS31": {
-            "requestBody": {
-                "description": "Information about a new pet in the system",
+        "test": {
+            "post": {
+                "summary": "Test Webhook",
+                "description": "Test Webhook",
+                "operationId": "test",
+                "tags": [
+                    "Activesession"
+                ],
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "#/components/schemas/Common-Response-Error"
+                            "$ref": "#/components/schemas/activesession-getCurrent-v1-Response"
                         }
                     }
                 },
