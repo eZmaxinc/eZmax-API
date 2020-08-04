@@ -2155,7 +2155,9 @@
                             "eEzsignfolderSendreminderfrequency",
                             "pkiEzsignfolderID",
                             "dtEzsignfolderSentdate",
-                            "eEzsignfolderStep"
+                            "eEzsignfolderStep",
+                            "fkiLanguageID",
+                            "dtEzsignfolderClose"
                         ],
                         "type": "object",
                         "properties": {
@@ -2187,11 +2189,19 @@
                                 "type": "integer"
                             },
                             "dtEzsignfolderSentdate": {
-                                "$ref": "#/components/schemas/Common-Format-DateTime",
-                                "description": "The date and time when the folder was last sent for signature."
+                                "$ref": "#/components/schemas/Field-dtEzsignfolderSentdate",
+                                "description": ""
                             },
                             "eEzsignfolderStep": {
                                 "$ref": "#/components/schemas/Field-eEzsignfolderStep",
+                                "description": ""
+                            },
+                            "fkiLanguageID": {
+                                "$ref": "#/components/schemas/Field-fkiLanguageID",
+                                "description": ""
+                            },
+                            "dtEzsignfolderClose": {
+                                "$ref": "#/components/schemas/Field-dtEzsignfolderClose",
                                 "description": ""
                             }
                         }
@@ -2399,6 +2409,16 @@
                 ],
                 "type": "string",
                 "example": "\"Completed\""
+            },
+            "Field-dtEzsignfolderSentdate": {
+                "description": "The date at which the Ezsign folder was sent the last time",
+                "type": "string",
+                "example": "\"2020-12-31 23:59:59\""
+            },
+            "Field-dtEzsignfolderClose": {
+                "description": "The date and time at which the folder was closed. Either by applying the last signature or by completing it prematurely.",
+                "type": "string",
+                "example": "\"2020-12-31 23:59:59\""
             }
         },
         "responses": {
