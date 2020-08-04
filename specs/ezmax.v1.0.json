@@ -1529,7 +1529,7 @@
             "Common-Format-DateTime": {
                 "description": "Represent a Date Time.\nThe timezone is the one configured in the User's profile.",
                 "type": "string",
-                "example": "\"2020-12-31 23:59:59\""
+                "example": "2020-12-31 23:59:59"
             },
             "ezsigndocument-Request": {
                 "description": "An Ezsigndocument Object",
@@ -2035,7 +2035,7 @@
                         "type": "object",
                         "properties": {
                             "objEzsigndocument": {
-                                "$ref": "#/components/schemas/ezsigndocument-ResponseCompound",
+                                "$ref": "#/components/schemas/ezsigndocument-Response",
                                 "description": "The Ezsign document on which the final signature was made."
                             }
                         }
@@ -2056,7 +2056,7 @@
                         "type": "object",
                         "properties": {
                             "objEzsignfolder": {
-                                "$ref": "#/components/schemas/ezsignfolder-ResponseCompound",
+                                "$ref": "#/components/schemas/ezsignfolder-Response",
                                 "description": "The Ezsign folder on which the final signature was made."
                             }
                         }
@@ -2167,22 +2167,22 @@
                                 "description": ""
                             },
                             "sEzsignfolderDescription": {
-                                "description": "The description of the Ezsign Folder",
+                                "$ref": "#/components/schemas/Field-sEzsignfolderDescription",
+                                "description": "",
                                 "maxLength": 75,
-                                "minLength": 1,
-                                "type": "string"
+                                "minLength": 1
                             },
                             "tEzsignfolderNote": {
-                                "description": "Somes extra notes about the eZsign Folder",
-                                "type": "string"
+                                "$ref": "#/components/schemas/Field-tEzsignfolderNote",
+                                "description": ""
                             },
                             "eEzsignfolderSendreminderfrequency": {
                                 "$ref": "#/components/schemas/Field-eEzsignfolderSendreminderfrequency",
                                 "description": ""
                             },
                             "pkiEzsignfolderID": {
-                                "description": "The unique ID of the Ezsignfolder",
-                                "type": "integer"
+                                "$ref": "#/components/schemas/Field-pkiEzsignfolderID",
+                                "description": ""
                             },
                             "dtEzsignfolderSentdate": {
                                 "$ref": "#/components/schemas/Field-dtEzsignfolderSentdate",
@@ -2205,15 +2205,7 @@
                     {
                         "$ref": "#/components/schemas/Common-Audit"
                     }
-                ],
-                "example": {
-                    "pkiEzsignfolderID": 13,
-                    "fkiEzsignfoldertypeID": 1,
-                    "sEzsignfolderDescription": "Test eZsign Folder",
-                    "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
-                    "fkiEzsigntsarequirementID": 1,
-                    "eEzsignfolderSendreminderfrequency": "Daily"
-                }
+                ]
             },
             "ezsignfolder-ResponseCompound": {
                 "description": "An Ezsignfolder Object and children to create a complete structure",
@@ -2234,93 +2226,95 @@
             },
             "ezsigndocument-Response": {
                 "description": "An Ezsigndocument Object",
-                "required": [
-                    "sEzsigndocumentName",
-                    "sEzsigndocumentFilename",
-                    "fkiEzsignfolderID",
-                    "dtEzsigndocumentDuedate",
-                    "fkiLanguageID",
-                    "pkiEzsigndocumentID",
-                    "eEzsigndocumentStep",
-                    "dtEzsigndocumentFirstsend",
-                    "dtEzsigndocumentLastsend",
-                    "iEzsigndocumentOrder",
-                    "iEzsigndocumentPagetotal",
-                    "iEzsigndocumentSignaturesigned",
-                    "iEzsigndocumentSignaturetotal"
-                ],
                 "type": "object",
-                "properties": {
-                    "fkiEzsignfolderID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID",
-                        "description": "",
-                        "minimum": 1
+                "allOf": [
+                    {
+                        "required": [
+                            "sEzsigndocumentName",
+                            "sEzsigndocumentFilename",
+                            "fkiEzsignfolderID",
+                            "dtEzsigndocumentDuedate",
+                            "fkiLanguageID",
+                            "pkiEzsigndocumentID",
+                            "eEzsigndocumentStep",
+                            "dtEzsigndocumentFirstsend",
+                            "dtEzsigndocumentLastsend",
+                            "iEzsigndocumentOrder",
+                            "iEzsigndocumentPagetotal",
+                            "iEzsigndocumentSignaturesigned",
+                            "iEzsigndocumentSignaturetotal",
+                            "sEzsigndocumentMD5initial",
+                            "sEzsigndocumentMD5signed"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "fkiEzsignfolderID": {
+                                "$ref": "#/components/schemas/Field-pkiEzsignfolderID",
+                                "description": "",
+                                "minimum": 1
+                            },
+                            "dtEzsigndocumentDuedate": {
+                                "$ref": "#/components/schemas/Field-dtEzsigndocumentDuedate",
+                                "description": ""
+                            },
+                            "fkiLanguageID": {
+                                "$ref": "#/components/schemas/Field-pkiLanguageID",
+                                "description": ""
+                            },
+                            "sEzsigndocumentFilename": {
+                                "$ref": "#/components/schemas/Field-sEzsigndocumentFilename",
+                                "description": ""
+                            },
+                            "sEzsigndocumentName": {
+                                "$ref": "#/components/schemas/Field-sEzsigndocumentName",
+                                "description": ""
+                            },
+                            "pkiEzsigndocumentID": {
+                                "$ref": "#/components/schemas/Field-pkiEzsigndocumentID",
+                                "description": ""
+                            },
+                            "eEzsigndocumentStep": {
+                                "$ref": "#/components/schemas/Field-eEzsigndocumentStep",
+                                "description": ""
+                            },
+                            "dtEzsigndocumentFirstsend": {
+                                "$ref": "#/components/schemas/Field-dtEzsigndocumentFirstsend",
+                                "description": ""
+                            },
+                            "dtEzsigndocumentLastsend": {
+                                "$ref": "#/components/schemas/Field-dtEzsigndocumentLastsend",
+                                "description": ""
+                            },
+                            "iEzsigndocumentOrder": {
+                                "$ref": "#/components/schemas/Field-iEzsigndocumentOrder",
+                                "description": ""
+                            },
+                            "iEzsigndocumentPagetotal": {
+                                "$ref": "#/components/schemas/Field-iEzsigndocumentPagetotal",
+                                "description": ""
+                            },
+                            "iEzsigndocumentSignaturesigned": {
+                                "$ref": "#/components/schemas/Field-iEzsigndocumentSignaturesigned",
+                                "description": ""
+                            },
+                            "iEzsigndocumentSignaturetotal": {
+                                "$ref": "#/components/schemas/Field-iEzsigndocumentSignaturetotal",
+                                "description": ""
+                            },
+                            "sEzsigndocumentMD5initial": {
+                                "$ref": "#/components/schemas/Field-sEzsigndocumentMD5initial",
+                                "description": ""
+                            },
+                            "sEzsigndocumentMD5signed": {
+                                "$ref": "#/components/schemas/Field-sEzsigndocumentMD5signed",
+                                "description": ""
+                            }
+                        }
                     },
-                    "dtEzsigndocumentDuedate": {
-                        "$ref": "#/components/schemas/Field-dtEzsigndocumentDuedate",
-                        "description": ""
-                    },
-                    "fkiLanguageID": {
-                        "$ref": "#/components/schemas/Field-pkiLanguageID",
-                        "description": ""
-                    },
-                    "sEzsigndocumentFilename": {
-                        "$ref": "#/components/schemas/Field-sEzsigndocumentFilename",
-                        "description": ""
-                    },
-                    "sEzsigndocumentName": {
-                        "$ref": "#/components/schemas/Field-sEzsigndocumentName",
-                        "description": ""
-                    },
-                    "pkiEzsigndocumentID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID",
-                        "description": ""
-                    },
-                    "eEzsigndocumentStep": {
-                        "$ref": "#/components/schemas/Field-eEzsigndocumentStep",
-                        "description": ""
-                    },
-                    "dtEzsigndocumentFirstsend": {
-                        "$ref": "#/components/schemas/Field-dtEzsigndocumentFirstsend",
-                        "description": ""
-                    },
-                    "dtEzsigndocumentLastsend": {
-                        "description": ""
-                    },
-                    "iEzsigndocumentOrder": {
-                        "$ref": "#/components/schemas/Field-iEzsigndocumentOrder",
-                        "description": ""
-                    },
-                    "iEzsigndocumentPagetotal": {
-                        "$ref": "#/components/schemas/Field-iEzsigndocumentPagetotal",
-                        "description": ""
-                    },
-                    "iEzsigndocumentSignaturesigned": {
-                        "$ref": "#/components/schemas/Field-iEzsigndocumentSignaturesigned",
-                        "description": ""
-                    },
-                    "iEzsigndocumentSignaturetotal": {
-                        "$ref": "#/components/schemas/Field-iEzsigndocumentSignaturetotal",
-                        "description": ""
+                    {
+                        "$ref": "#/components/schemas/Common-Audit"
                     }
-                },
-                "example": {
-                    "fkiEzsignfolderID": 67,
-                    "dtEzsigndocumentDuedate": "some text",
-                    "fkiLanguageID": 58,
-                    "sEzsigndocumentFilename": "some text",
-                    "sEzsigndocumentName": "some text",
-                    "pkiEzsigndocumentID": 49,
-                    "eEzsigndocumentStep": "Unsent",
-                    "dtEzsigndocumentFirstsend": "some text",
-                    "dtEzsigndocumentLastsend": {
-
-                    },
-                    "iEzsigndocumentOrder": 70,
-                    "iEzsigndocumentPagetotal": 77,
-                    "iEzsigndocumentSignaturesigned": 5,
-                    "iEzsigndocumentSignaturetotal": 7
-                }
+                ]
             },
             "ezsigndocument-ResponseCompound": {
                 "description": "An Ezsigndocument Object and children to create a complete structure",
@@ -2396,44 +2390,10 @@
                     }
                 ]
             },
-            "Field-eEzsignfolderSendreminderfrequency": {
-                "description": "Frequency at which reminders will be sent to signers that haven't signed the documents",
-                "enum": [
-                    "None",
-                    "Daily",
-                    "Weekly"
-                ],
-                "type": "string",
-                "example": "\"None\""
-            },
-            "Field-eEzsignfolderStep": {
-                "description": "The signature step of the Ezsignfolder.",
-                "enum": [
-                    "Unsent",
-                    "Sent",
-                    "PartiallySigned",
-                    "Expired",
-                    "Signed",
-                    "Completed",
-                    "Archived"
-                ],
-                "type": "string",
-                "example": "\"Completed\""
-            },
-            "Field-dtEzsignfolderSentdate": {
-                "description": "The date and time at which the Ezsign folder was sent the last time.",
-                "type": "string",
-                "example": "\"2020-12-31 23:59:59\""
-            },
-            "Field-dtEzsignfolderClose": {
-                "description": "The date and time at which the folder was closed. Either by applying the last signature or by completing it prematurely.",
-                "type": "string",
-                "example": "\"2020-12-31 23:59:59\""
-            },
             "Field-dtEzsigndocumentDuedate": {
                 "description": "The maximum date and time at which the document can be signed.",
                 "type": "string",
-                "example": "\"2020-12-31 23:59:59\""
+                "example": "2020-12-31 23:59:59"
             },
             "Field-pkiEzsignfolderID": {
                 "description": "The unique ID of the Ezsignfolder",
@@ -2443,12 +2403,12 @@
             "Field-sEzsigndocumentFilename": {
                 "description": "The actual file name that will be used when downloading or attaching to an email.",
                 "type": "string",
-                "example": "\"Contract123.pdf\""
+                "example": "Contract123.pdf"
             },
             "Field-sEzsigndocumentName": {
                 "description": "The name of the document that will be presented to Ezsignfoldersignerassociations",
                 "type": "string",
-                "example": "\"Contract #123\""
+                "example": "Contract #123"
             },
             "Field-pkiEzsignfoldertypeID": {
                 "description": "The unique ID of the Ezsignfoldertype.\r\n\r\nThis value can be queried by the API and is also visible in the admin interface.\r\n\r\nThere are two types of Ezsignfoldertype. **User** and **Shared**. **User** can only be seen by the user who created the folder or its assistants. Access to **Shared** folders are configurable for access and email delivery. You should typically choose a **Shared** type here.",
@@ -2502,17 +2462,17 @@
                     "Completed"
                 ],
                 "type": "string",
-                "example": "\"Completed\""
+                "example": "Completed"
             },
             "Field-dtEzsigndocumentFirstsend": {
                 "description": "The date and time when the Ezsigndocument was first sent.",
                 "type": "string",
-                "example": "\"2020-12-31 23:59:59\""
+                "example": "2020-12-31 23:59:59"
             },
             "Field-dtEzsigndocumentLastsend": {
                 "description": "The date and time when the Ezsigndocument was sent the last time.",
                 "type": "string",
-                "example": "\"2020-12-31 23:59:59\""
+                "example": "2020-12-31 23:59:59"
             },
             "Field-iEzsigndocumentOrder": {
                 "title": "Root Type for Field-iEzsigndocumentOrder",
@@ -2538,6 +2498,60 @@
                 "description": "The number of total signatures that were requested in the Ezsigndocument.",
                 "type": "integer",
                 "example": 4
+            },
+            "Field-sEzsignfolderDescription": {
+                "description": "The description of the Ezsign Folder",
+                "type": "string",
+                "example": "Test eZsign Folder"
+            },
+            "Field-tEzsignfolderNote": {
+                "description": "Somes extra notes about the eZsign Folder",
+                "type": "string",
+                "example": "An extra notes we can add to the ezsign folder"
+            },
+            "Field-dtEzsignfolderSentdate": {
+                "description": "The date and time at which the Ezsign folder was sent the last time.",
+                "type": "string",
+                "example": "2020-12-31 23:59:59"
+            },
+            "Field-dtEzsignfolderClose": {
+                "description": "The date and time at which the folder was closed. Either by applying the last signature or by completing it prematurely.",
+                "type": "string",
+                "example": "2020-12-31 23:59:59"
+            },
+            "Field-eEzsignfolderSendreminderfrequency": {
+                "description": "Frequency at which reminders will be sent to signers that haven't signed the documents",
+                "enum": [
+                    "None",
+                    "Daily",
+                    "Weekly"
+                ],
+                "type": "string",
+                "example": "None"
+            },
+            "Field-eEzsignfolderStep": {
+                "description": "The signature step of the Ezsignfolder.",
+                "enum": [
+                    "Unsent",
+                    "Sent",
+                    "PartiallySigned",
+                    "Expired",
+                    "Signed",
+                    "Completed",
+                    "Archived"
+                ],
+                "type": "string",
+                "example": "Completed"
+            },
+            "Field-sEzsigndocumentMD5initial": {
+                "description": "MD5 Hash of the initial PDF Document before signatures were applied to it.",
+                "type": "string",
+                "example": "012345678901234567890123456789AB"
+            },
+            "Field-sEzsigndocumentMD5signed": {
+                "description": "MD5 Hash of the final PDF Document after all signatures were applied to it.",
+                "type": "string",
+                "example": "012345678901234567890123456789AB"
             }
         },
         "responses": {
