@@ -1009,7 +1009,7 @@
                         "type": "string"
                     },
                     "fkiLanguageID": {
-                        "$ref": "#/components/schemas/Shared-fkiLanguageID"
+                        "$ref": "#/components/schemas/Field-fkiLanguageID"
                     },
                     "sCompanyNameX": {
                         "description": "The name of the active Company in the current language",
@@ -1473,24 +1473,6 @@
                     }
                 }
             },
-            "Shared-fkiTaxassignmentID": {
-                "description": "The ID of the tax assignment, Valid values are:\n1. No tax\n2. GST\n3. HST (ON)\n4. HST (NB)\n5. HST (NS)\n6. HST (NL)\n7. HST (PE)\n8. GST + QST (QC)\n9. GST + QST (QC) Non-Recoverable\n10. GST + PST (BC)\n11. GST + PST (SK)\n12. GST + RST (MB)\n13. GST + PST (BC) Non-Recoverable\n14. GST + PST (SK) Non-Recoverable\n15. GST + RST (MB) Non-Recoverable",
-                "maximum": 15,
-                "minimum": 1,
-                "type": "integer"
-            },
-            "Shared-fkiLanguageID": {
-                "description": "The ID of the language, Valid values are:\n1. French\n2. English",
-                "maximum": 2,
-                "minimum": 1,
-                "type": "integer"
-            },
-            "Shared-fkiEzsigntsarequirementID": {
-                "description": "Determine if a Time Stamping Authority should add a timestamp on each of the signature. Valid values are:\n1. No. No TSA Timestamping will requested. This will make all signatures a lot faster since no round-trip to the TSA server will be required. Timestamping will be made using eZsign server's time.\n2. Best effort. Timestamping from a Time Stamping Authority will be requested but is not mandatory. In the very improbable case it cannot be completed, the timestamping will be made using eZsign server's time. **Additional fee applies**\n3. Mandatory. Timestamping from a Time Stamping Authority will be requested and is mandatory. In the very improbable case it cannot be completed, the signature will fail and the user will be asked to retry. **Additional fee applies**\n",
-                "maximum": 3,
-                "minimum": 1,
-                "type": "integer"
-            },
             "ezsignfolder-Request": {
                 "description": "An Ezsignfolder Object",
                 "required": [
@@ -1503,12 +1485,12 @@
                 "type": "object",
                 "properties": {
                     "fkiEzsignfoldertypeID": {
-                        "description": "The Ezsign Folder Type ID.\nThis value can be queried by the API and is also visible in the admin interface.\n\nThere are two types of Ezsignfoldertype. **User** and **Shared**. **User** can only be seen by the user who created the folder or its assistants. Access to **Shared** folders are configurable for access and email delivery. You should typically choose a **Shared** type here.",
-                        "minimum": 1,
-                        "type": "integer"
+                        "$ref": "#/components/schemas/Field-fkiEzsignfoldertypeID",
+                        "description": "",
+                        "minimum": 1
                     },
                     "fkiEzsigntsarequirementID": {
-                        "$ref": "#/components/schemas/Shared-fkiEzsigntsarequirementID",
+                        "$ref": "#/components/schemas/Field-fkiEzsigntsarequirementID",
                         "description": ""
                     },
                     "sEzsignfolderDescription": {
@@ -1522,13 +1504,8 @@
                         "type": "string"
                     },
                     "eEzsignfolderSendreminderfrequency": {
-                        "description": "Frequency at which reminders will be sent to signers that haven't signed the documents",
-                        "enum": [
-                            "None",
-                            "Daily",
-                            "Weekly"
-                        ],
-                        "type": "string"
+                        "$ref": "#/components/schemas/Field-eEzsignfolderSendreminderfrequency",
+                        "description": ""
                     }
                 },
                 "example": {
@@ -1557,12 +1534,6 @@
                 "description": "Represent a Date Time.\nThe timezone is the one configured in the User's profile.",
                 "type": "string",
                 "example": "\"2020-12-31 23:59:59\""
-            },
-            "Shared-fkiSecretquestionID": {
-                "description": "The ID of the secret question, Valid values are:\n\n1. The name of the hospital in which you were born\n2. The name of your grade school\n3. The last name of your favorite teacher\n4. Your favorite sports team\n5. Your favorite TV show\n6. Your favorite movie\n7. The name of the street on which you grew up\n8. The name of your first employer\n9. Your first car\n10. Your favorite food\n11. The name of your first pet\n12. Favorite musician/band\n13. What instrument you play\n14. Your father's middle name\n15. Your mother's maiden name\n16. Name of your eldest child\n17. Your spouse's middle name\n18. Favorite restaurant\n19. Childhood nickname\n20. Favorite vacation destination\n21. Your boat's name\n22. Date of Birth (YYYY-MM-DD)",
-                "maximum": 15,
-                "minimum": 1,
-                "type": "integer"
             },
             "ezsigndocument-Request": {
                 "description": "An Ezsigndocument Object",
@@ -1606,7 +1577,7 @@
                         "description": ""
                     },
                     "fkiLanguageID": {
-                        "$ref": "#/components/schemas/Shared-fkiLanguageID",
+                        "$ref": "#/components/schemas/Field-fkiLanguageID",
                         "description": ""
                     },
                     "sEzsigndocumentFilename": {
@@ -1661,11 +1632,11 @@
                 "type": "object",
                 "properties": {
                     "fkiTaxassignmentID": {
-                        "$ref": "#/components/schemas/Shared-fkiTaxassignmentID",
+                        "$ref": "#/components/schemas/Field-fkiTaxassignmentID",
                         "description": ""
                     },
                     "fkiSecretquestionID": {
-                        "$ref": "#/components/schemas/Shared-fkiSecretquestionID",
+                        "$ref": "#/components/schemas/Field-fkiSecretquestionID",
                         "description": ""
                     },
                     "eEzsignsignerLogintype": {
@@ -1736,7 +1707,7 @@
                         "type": "string"
                     },
                     "fkiLanguageID": {
-                        "$ref": "#/components/schemas/Shared-fkiLanguageID",
+                        "$ref": "#/components/schemas/Field-fkiLanguageID",
                         "description": ""
                     },
                     "sEmailAddress": {
@@ -2182,17 +2153,19 @@
                             "fkiEzsigntsarequirementID",
                             "tEzsignfolderNote",
                             "eEzsignfolderSendreminderfrequency",
-                            "pkiEzsignfolderID"
+                            "pkiEzsignfolderID",
+                            "dtEzsignfolderSentdate",
+                            "eEzsignfolderStep"
                         ],
                         "type": "object",
                         "properties": {
                             "fkiEzsignfoldertypeID": {
-                                "description": "The Ezsign Folder Type ID.\nThis value can be queried by the API and is also visible in the admin interface.\n\nThere are two types of Ezsignfoldertype. **User** and **Shared**. **User** can only be seen by the user who created the folder or its assistants. Access to **Shared** folders are configurable for access and email delivery. You should typically choose a **Shared** type here.",
-                                "minimum": 1,
-                                "type": "integer"
+                                "$ref": "#/components/schemas/Field-fkiEzsignfoldertypeID",
+                                "description": "",
+                                "minimum": 1
                             },
                             "fkiEzsigntsarequirementID": {
-                                "$ref": "#/components/schemas/Shared-fkiEzsigntsarequirementID",
+                                "$ref": "#/components/schemas/Field-fkiEzsigntsarequirementID",
                                 "description": ""
                             },
                             "sEzsignfolderDescription": {
@@ -2206,17 +2179,20 @@
                                 "type": "string"
                             },
                             "eEzsignfolderSendreminderfrequency": {
-                                "description": "Frequency at which reminders will be sent to signers that haven't signed the documents",
-                                "enum": [
-                                    "None",
-                                    "Daily",
-                                    "Weekly"
-                                ],
-                                "type": "string"
+                                "$ref": "#/components/schemas/Field-eEzsignfolderSendreminderfrequency",
+                                "description": ""
                             },
                             "pkiEzsignfolderID": {
                                 "description": "The unique ID of the Ezsignfolder",
                                 "type": "integer"
+                            },
+                            "dtEzsignfolderSentdate": {
+                                "$ref": "#/components/schemas/Common-Format-DateTime",
+                                "description": "The date and time when the folder was last sent for signature."
+                            },
+                            "eEzsignfolderStep": {
+                                "$ref": "#/components/schemas/Field-eEzsignfolderStep",
+                                "description": ""
                             }
                         }
                     },
@@ -2272,7 +2248,7 @@
                         "description": ""
                     },
                     "fkiLanguageID": {
-                        "$ref": "#/components/schemas/Shared-fkiLanguageID",
+                        "$ref": "#/components/schemas/Field-fkiLanguageID",
                         "description": ""
                     },
                     "sEzsigndocumentFilename": {
@@ -2370,6 +2346,59 @@
                         "$ref": "#/components/schemas/ezsignfolder-Response"
                     }
                 ]
+            },
+            "Field-eEzsignfolderSendreminderfrequency": {
+                "description": "Frequency at which reminders will be sent to signers that haven't signed the documents",
+                "enum": [
+                    "None",
+                    "Daily",
+                    "Weekly"
+                ],
+                "type": "string",
+                "example": "\"None\""
+            },
+            "Field-fkiLanguageID": {
+                "description": "The ID of the language, Valid values are:\n1. French\n2. English",
+                "maximum": 2,
+                "minimum": 1,
+                "type": "integer"
+            },
+            "Field-fkiEzsigntsarequirementID": {
+                "description": "Determine if a Time Stamping Authority should add a timestamp on each of the signature. Valid values are:\n1. No. No TSA Timestamping will requested. This will make all signatures a lot faster since no round-trip to the TSA server will be required. Timestamping will be made using eZsign server's time.\n2. Best effort. Timestamping from a Time Stamping Authority will be requested but is not mandatory. In the very improbable case it cannot be completed, the timestamping will be made using eZsign server's time. **Additional fee applies**\n3. Mandatory. Timestamping from a Time Stamping Authority will be requested and is mandatory. In the very improbable case it cannot be completed, the signature will fail and the user will be asked to retry. **Additional fee applies**\n",
+                "maximum": 3,
+                "minimum": 1,
+                "type": "integer"
+            },
+            "Field-fkiSecretquestionID": {
+                "description": "The ID of the secret question, Valid values are:\n\n1. The name of the hospital in which you were born\n2. The name of your grade school\n3. The last name of your favorite teacher\n4. Your favorite sports team\n5. Your favorite TV show\n6. Your favorite movie\n7. The name of the street on which you grew up\n8. The name of your first employer\n9. Your first car\n10. Your favorite food\n11. The name of your first pet\n12. Favorite musician/band\n13. What instrument you play\n14. Your father's middle name\n15. Your mother's maiden name\n16. Name of your eldest child\n17. Your spouse's middle name\n18. Favorite restaurant\n19. Childhood nickname\n20. Favorite vacation destination\n21. Your boat's name\n22. Date of Birth (YYYY-MM-DD)",
+                "maximum": 15,
+                "minimum": 1,
+                "type": "integer"
+            },
+            "Field-fkiTaxassignmentID": {
+                "description": "The ID of the tax assignment, Valid values are:\n1. No tax\n2. GST\n3. HST (ON)\n4. HST (NB)\n5. HST (NS)\n6. HST (NL)\n7. HST (PE)\n8. GST + QST (QC)\n9. GST + QST (QC) Non-Recoverable\n10. GST + PST (BC)\n11. GST + PST (SK)\n12. GST + RST (MB)\n13. GST + PST (BC) Non-Recoverable\n14. GST + PST (SK) Non-Recoverable\n15. GST + RST (MB) Non-Recoverable",
+                "maximum": 15,
+                "minimum": 1,
+                "type": "integer"
+            },
+            "Field-fkiEzsignfoldertypeID": {
+                "description": "The Ezsign Folder Type ID.\r\nThis value can be queried by the API and is also visible in the admin interface.\r\n\r\nThere are two types of Ezsignfoldertype. **User** and **Shared**. **User** can only be seen by the user who created the folder or its assistants. Access to **Shared** folders are configurable for access and email delivery. You should typically choose a **Shared** type here.",
+                "type": "integer",
+                "example": "5"
+            },
+            "Field-eEzsignfolderStep": {
+                "description": "The signature step of the Ezsign folder.",
+                "enum": [
+                    "Unsent",
+                    "Sent",
+                    "PartiallySigned",
+                    "Expired",
+                    "Signed",
+                    "Completed",
+                    "Archived"
+                ],
+                "type": "string",
+                "example": "\"Completed\""
             }
         },
         "responses": {
