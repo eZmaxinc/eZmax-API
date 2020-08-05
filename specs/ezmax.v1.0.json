@@ -993,7 +993,9 @@
                     "200": {
                         "content": {
                             "application/json": {
-
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigndocument-getDownloadUrl-v1-Response"
+                                }
                             }
                         },
                         "description": "Successful response"
@@ -1024,7 +1026,7 @@
                 },
                 {
                     "name": "eDocumentType",
-                    "description": "The type of document to retrieve.\n\n1. **Initial** Is the initial document before any signature were applied.\n2. **Signed** Is the final document once all signatures were applied.\n3. **Proof** Is the evidence report.\n4. **Proofdocument** Is the complete evidence archive including all of the above and more.",
+                    "description": "The type of document to retrieve.\n\n1. **Initial** Is the initial document before any signature were applied.\n2. **Signed** Is the final document once all signatures were applied.\n3. **Proofdocument** Is the evidence report.\n4. **Proof** Is the complete evidence archive including all of the above and more.\n",
                     "schema": {
                         "enum": [
                             "Initial",
@@ -2624,24 +2626,24 @@
                 ],
                 "properties": {
                     "mPayload": {
-                        "$ref": "#/components/schemas/ezsigndocument-getObject-v1-Response-mPayload"
+                        "$ref": "#/components/schemas/ezsigndocument-getDownloadUrl-v1-Response-mPayload"
                     }
                 }
             },
             "ezsigndocument-getDownloadUrl-v1-Response-mPayload": {
                 "description": "Payload for the /1/object/ezsigndocument/{pkiEzsigndocument}/getDownloadUrl API Request",
                 "required": [
-                    "sUrl"
+                    "sDownloadUrl"
                 ],
                 "type": "object",
                 "properties": {
-                    "sUrl": {
+                    "sDownloadUrl": {
                         "description": "The Url to the requested document.\n\nUrl will expire after 5 minutes.",
                         "type": "string"
                     }
                 },
                 "example": {
-                    "sUrl": "http://www.example.com/document.pdf"
+                    "sDownloadUrl": "http://www.example.com/document.pdf"
                 }
             }
         },
