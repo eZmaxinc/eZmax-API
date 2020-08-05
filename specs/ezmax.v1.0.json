@@ -980,6 +980,64 @@
                     "required": true
                 }
             ]
+        },
+        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getDownloadUrl/{eDocumentType}": {
+            "get": {
+                "tags": [
+                    "Ezsigndocument"
+                ],
+                "responses": {
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "200": {
+                        "content": {
+                            "application/json": {
+
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsigndocument_GetDownloadUrl_V1",
+                "summary": "Retrieve a URL to download documents.",
+                "description": "This endpoint returns URLs to different files that can be downloaded during the signing process.\n\nThese links will expire after 5 minutes so the download of the file should be made soon after retrieving the link."
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigndocumentID",
+                    "description": "The unique ID of the Ezsigndocument",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                },
+                {
+                    "name": "eDocumentType",
+                    "description": "The type of document to retrieve.\n\n1. **Initial** Is the initial document before any signature were applied.\n2. **Signed** Is the final document once all signatures were applied.\n3. **Proof** Is the evidence report.\n4. **Proofdocument** Is the complete evidence archive including all of the above and more.",
+                    "schema": {
+                        "enum": [
+                            "Initial",
+                            "Signed",
+                            "Proof",
+                            "Proofdocument"
+                        ],
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
         }
     },
     "components": {
@@ -1104,7 +1162,7 @@
                 ]
             },
             "ezsigndocument-getObject-v1-Response": {
-                "description": "Response for the /1/object/ezsigndocument/getObject API Request",
+                "description": "Response for the /1/object/ezsigndocument/getDownloadUrl API Request",
                 "required": [
                     "mPayload"
                 ],
@@ -2552,6 +2610,39 @@
                 "description": "MD5 Hash of the final PDF Document after all signatures were applied to it.",
                 "type": "string",
                 "example": "012345678901234567890123456789AB"
+            },
+            "ezsigndocument-getDownloadUrl-v1-Response": {
+                "description": "Response for the /1/object/ezsigndocument/{pkiEzsigndocument}/getDownloadUrl API Request",
+                "required": [
+                    "mPayload"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ],
+                "properties": {
+                    "mPayload": {
+                        "$ref": "#/components/schemas/ezsigndocument-getObject-v1-Response-mPayload"
+                    }
+                }
+            },
+            "ezsigndocument-getDownloadUrl-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsigndocument/{pkiEzsigndocument}/getDownloadUrl API Request",
+                "required": [
+                    "sUrl"
+                ],
+                "type": "object",
+                "properties": {
+                    "sUrl": {
+                        "description": "The Url to the requested document.\n\nUrl will expire after 5 minutes.",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "sUrl": "http://www.example.com/document.pdf"
+                }
             }
         },
         "responses": {
