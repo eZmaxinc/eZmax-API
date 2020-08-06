@@ -1040,6 +1040,51 @@
                     "required": true
                 }
             ]
+        },
+        "/1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getInPersonLoginUrl": {
+            "get": {
+                "tags": [
+                    "Ezsignfoldersignerassociation"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfoldersignerassociation-getInPersonLoginUrl-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignfoldersignerassociation_GetInPersonLoginUrl_V1",
+                "summary": "Retrieve a Login Url to allow In-Person signing",
+                "description": "This endpoint returns a Login Url that can be used in a browser or embedded in an I-Frame to allow in person signing.\n\nThe signer Login type must be configured as In-Person."
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignfoldersignerassociationID",
+                    "description": "The unique ID of the Ezsignfoldersignerassociation",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
         }
     },
     "components": {
@@ -1696,7 +1741,7 @@
                         "description": ""
                     },
                     "eEzsignsignerLogintype": {
-                        "description": "The method the Ezsignsigner will authenticate to the signing platform.\n\n1. **Password** means the Ezsignsigner will receive a secure link by email.\n2. **PasswordPhone** means the Ezsignsigner will receive a secure link by email and will need to authenticate using SMS or Phone call. **Additional fee applies**.\n3. **PasswordQuestion** means the Ezsignsigner will receive a secure link by email and will need to authenticate using a predefined question and answer.\n4. **Phone** means the Ezsignsigner will only be able to sign \"In-Person\" and will need to authenticate using SMS or Phone call. No email will be sent for invitation to sign. **Additional fee applies**.",
+                        "description": "The method the Ezsignsigner will authenticate to the signing platform.\n\n1. **Password** means the Ezsignsigner will receive a secure link by email.\n2. **PasswordPhone** means the Ezsignsigner will receive a secure link by email and will need to authenticate using SMS or Phone call. **Additional fee applies**.\n3. **PasswordQuestion** means the Ezsignsigner will receive a secure link by email and will need to authenticate using a predefined question and answer.\n4. **InPersonPhone** means the Ezsignsigner will only be able to sign \"In-Person\" and will need to authenticate using SMS or Phone call. No email will be sent for invitation to sign. **Additional fee applies**.\n5. **InPerson** means the Ezsignsigner will only be able to sign \"In-Person\" and there won't be any authentication. No email will be sent for invitation to sign. Make sure you evaluate the risk of signature denial and at minimum, we recommend you use a handwritten signature type.",
                         "enum": [
                             "Password",
                             "PasswordPhone",
@@ -2212,7 +2257,6 @@
                             "pkiEzsignfolderID",
                             "dtEzsignfolderSentdate",
                             "eEzsignfolderStep",
-                            "fkiLanguageID",
                             "dtEzsignfolderClose"
                         ],
                         "type": "object",
@@ -2250,10 +2294,6 @@
                             },
                             "eEzsignfolderStep": {
                                 "$ref": "#/components/schemas/Field-eEzsignfolderStep",
-                                "description": ""
-                            },
-                            "fkiLanguageID": {
-                                "$ref": "#/components/schemas/Field-pkiLanguageID",
                                 "description": ""
                             },
                             "dtEzsignfolderClose": {
@@ -2644,6 +2684,36 @@
                 },
                 "example": {
                     "sDownloadUrl": "http://www.example.com/document.pdf"
+                }
+            },
+            "ezsignfoldersignerassociation-getInPersonLoginUrl-v1-Response": {
+                "description": "Response for the /1/object/ezsignfoldersignerassociation/getInPersonLoginUrl API Request",
+                "required": [
+                    "mPayload"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ],
+                "properties": {
+                    "mPayload": {
+                        "$ref": "#/components/schemas/ezsignfoldersignerassociation-getInPersonLoginUrl-v1-Response-mPayload"
+                    }
+                }
+            },
+            "ezsignfoldersignerassociation-getInPersonLoginUrl-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignfoldersignerassociation/getInPersonLoginUrl API Request",
+                "required": [
+                    "sLoginUrl"
+                ],
+                "type": "object",
+                "properties": {
+                    "sLoginUrl": {
+                        "description": "The Url to login to the signing application.\r\n\r\nUrl will expire after 30 minutes.\r\n",
+                        "type": "string"
+                    }
                 }
             }
         },
