@@ -877,119 +877,12 @@
                 }
             ]
         },
-        "/{WebhookPathEzsignDocumentCompleted}": {
-            "servers": [
-                {
-                    "url": "https://{yourdomain}",
-                    "description": "This is your server URL where the Webhook call should be made",
-                    "variables": {
-                        "yourdomain": {
-                            "default": "www.yourdomain.com"
-                        }
-                    }
-                }
-            ],
-            "post": {
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Webhook-Ezsign-DocumentCompleted"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "tags": [
-                    "EzsignWebhook"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful response, will not be retried"
-                    }
-                },
-                "security": [
-                    {
-
-                    }
-                ],
-                "operationId": "Webhook_Ezsign_DocumentCompleted",
-                "summary": "DocumentCompleted",
-                "description": "This Webhook will be called when the last signature on an Ezsigndocument is made."
-            },
-            "parameters": [
-                {
-                    "name": "WebhookPathEzsignDocumentCompleted",
-                    "description": "The path on your server where your webhook listener resides",
-                    "schema": {
-                        "type": "string"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/{WebhookPathEzsignFolderCompleted}": {
-            "servers": [
-                {
-                    "url": "https://{yourdomain}",
-                    "description": "This is your server URL where the Webhook call should be made",
-                    "variables": {
-                        "yourdomain": {
-                            "default": "www.yourdomain.com"
-                        }
-                    }
-                }
-            ],
-            "post": {
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Webhook-Ezsign-FolderCompleted"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "tags": [
-                    "EzsignWebhook"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful response, will not be retried"
-                    }
-                },
-                "security": [
-                    {
-
-                    }
-                ],
-                "operationId": "Webhook_Ezsign_FolderCompleted",
-                "summary": "FolderCompleted",
-                "description": "This Webhook will be called when the last signature on the last Ezsigndocument from the folder is made."
-            },
-            "parameters": [
-                {
-                    "name": "WebhookPathEzsignFolderCompleted",
-                    "description": "The path on your server where your webhook listener resides",
-                    "schema": {
-                        "type": "string"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
         "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getDownloadUrl/{eDocumentType}": {
             "get": {
                 "tags": [
                     "Ezsigndocument"
                 ],
                 "responses": {
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
                     "200": {
                         "content": {
                             "application/json": {
@@ -999,6 +892,9 @@
                             }
                         },
                         "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
                     },
                     "422": {
                         "$ref": "#/components/responses/Response-Error-422"
@@ -2782,24 +2678,50 @@
         }
     ],
     "x-webhooks": {
-        "test": {
+        "Webhook-Ezsign-DocumentCompleted": {
             "post": {
-                "summary": "Test Webhook",
-                "description": "Test Webhook",
-                "operationId": "test",
+                "summary": "Webhook Document Completed",
+                "description": "This Webhook will be called when the last signature on an Ezsigndocument is made.",
+                "operationId": "Webhook_Ezsign_DocumentCompleted",
                 "tags": [
-                    "Activesession"
+                    "Ezsigndocument"
                 ],
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/activesession-getCurrent-v1-Response"
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Webhook-Ezsign-DocumentCompleted"
+                            }
                         }
                     }
                 },
                 "responses": {
                     "200": {
-                        "description": "Return a 200 status to indicate that the data was received successfully"
+                        "description": "Successful response, will not be retried"
+                    }
+                }
+            }
+        },
+        "Webhook-Ezsign-FolderCompleted": {
+            "post": {
+                "summary": "Webhook Folder Completed",
+                "description": "This Webhook will be called when the last signature on the last Ezsigndocument from the folder is made.",
+                "operationId": "Webhook_Ezsign_FolderCompleted",
+                "tags": [
+                    "Ezsignfolder"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Webhook-Ezsign-FolderCompleted"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response, will not be retried"
                     }
                 }
             }
@@ -2824,12 +2746,6 @@
         {
             "name": "Report",
             "tags": [
-            ]
-        },
-        {
-            "name": "Webhooks",
-            "tags": [
-                "EzsignWebhook"
             ]
         }
     ]
