@@ -981,6 +981,48 @@
                     "required": true
                 }
             ]
+        },
+        "/1/object/franchisereferalincome/": {
+            "description": "",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/franchisereferalincome-createObject-v1-Request"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Franchisereferalincome"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/franchisereferalincome-createObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Franchisereferalincome_CreateObject_V1",
+                "summary": "Create a new Franchisereferalincome",
+                "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects."
+            }
         }
     },
     "components": {
@@ -2412,30 +2454,6 @@
                 "type": "integer",
                 "example": "5"
             },
-            "Field-pkiEzsigntsarequirementID": {
-                "description": "The unique ID of the Ezsigntsarequirement.\n\nDetermine if a Time Stamping Authority should add a timestamp on each of the signature. Valid values are:\n1. No. No TSA Timestamping will requested. This will make all signatures a lot faster since no round-trip to the TSA server will be required. Timestamping will be made using eZsign server's time.\n2. Best effort. Timestamping from a Time Stamping Authority will be requested but is not mandatory. In the very improbable case it cannot be completed, the timestamping will be made using eZsign server's time. **Additional fee applies**\n3. Mandatory. Timestamping from a Time Stamping Authority will be requested and is mandatory. In the very improbable case it cannot be completed, the signature will fail and the user will be asked to retry. **Additional fee applies**\n",
-                "maximum": 3,
-                "minimum": 1,
-                "type": "integer"
-            },
-            "Field-pkiLanguageID": {
-                "description": "The unique ID of the Language.\n\nValid values are:\n1. French\n2. English",
-                "maximum": 2,
-                "minimum": 1,
-                "type": "integer"
-            },
-            "Field-pkiSecretquestionID": {
-                "description": "The unique ID of the Secretquestion.\n\nValid values are:\n\n1. The name of the hospital in which you were born\n2. The name of your grade school\n3. The last name of your favorite teacher\n4. Your favorite sports team\n5. Your favorite TV show\n6. Your favorite movie\n7. The name of the street on which you grew up\n8. The name of your first employer\n9. Your first car\n10. Your favorite food\n11. The name of your first pet\n12. Favorite musician/band\n13. What instrument you play\n14. Your father's middle name\n15. Your mother's maiden name\n16. Name of your eldest child\n17. Your spouse's middle name\n18. Favorite restaurant\n19. Childhood nickname\n20. Favorite vacation destination\n21. Your boat's name\n22. Date of Birth (YYYY-MM-DD)",
-                "maximum": 15,
-                "minimum": 1,
-                "type": "integer"
-            },
-            "Field-pkiTaxassignmentID": {
-                "description": "The unique ID of the Taxassignment.\n\nValid values are:\n1. No tax\n2. GST\n3. HST (ON)\n4. HST (NB)\n5. HST (NS)\n6. HST (NL)\n7. HST (PE)\n8. GST + QST (QC)\n9. GST + QST (QC) Non-Recoverable\n10. GST + PST (BC)\n11. GST + PST (SK)\n12. GST + RST (MB)\n13. GST + PST (BC) Non-Recoverable\n14. GST + PST (SK) Non-Recoverable\n15. GST + RST (MB) Non-Recoverable",
-                "maximum": 15,
-                "minimum": 1,
-                "type": "integer"
-            },
             "Field-pkiEzsigndocumentID": {
                 "description": "The unique ID of the Ezsigndocument",
                 "type": "integer",
@@ -2612,6 +2630,588 @@
                         "type": "string"
                     }
                 }
+            },
+            "franchisereferalincome-createObject-v1-Request": {
+                "description": "Request for the /1/object/franchisereferalincome/createObject API Request",
+                "type": "object",
+                "properties": {
+                    "objFranchisereferalincome": {
+                        "$ref": "#/components/schemas/franchisereferalincome-Request",
+                        "description": ""
+                    },
+                    "objFranchisereferalincomeCompound": {
+                        "$ref": "#/components/schemas/franchisereferalincome-RequestCompound",
+                        "description": ""
+                    }
+                }
+            },
+            "franchisereferalincome-createObject-v1-Response": {
+                "description": "Response for the /1/object/franchisereferalincome/createObject API Request",
+                "required": [
+                    "mPayload"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ],
+                "properties": {
+                    "mPayload": {
+                        "$ref": "#/components/schemas/franchisereferalincome-createObject-v1-Response-mPayload",
+                        "description": ""
+                    }
+                }
+            },
+            "franchisereferalincome-createObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/franchisereferalincome/editObject API Request",
+                "required": [
+                    "a_pkiFranchisereferalincomeID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiFranchisereferalincomeID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "example": {
+                    "a_pkiFranchisereferalincomeID": [
+                        95,
+                        96
+                    ]
+                }
+            },
+            "Field-pkiFranchisebrokerID": {
+                "description": "The unique ID of the Franchisebroker",
+                "type": "integer",
+                "example": "61"
+            },
+            "Field-pkiPeriodID": {
+                "description": "The unique ID of the Period",
+                "type": "integer",
+                "example": "21"
+            },
+            "Field-pkiFranchisereferalincomeprogramID": {
+                "description": "The unique ID of the Franchisereferalincomeprogram",
+                "type": "integer",
+                "example": "51"
+            },
+            "Field-dFranchisereferalincomeLoan": {
+                "description": "The loan amount",
+                "type": "string",
+                "example": "500275.62"
+            },
+            "Field-dFranchisereferalincomeFranchiseamount": {
+                "description": "The amount that will be given to the franchise",
+                "type": "string",
+                "example": "275.00"
+            },
+            "Field-dFranchisereferalincomeFranchisoramount": {
+                "description": "The amount that will be kept by the franchisor",
+                "type": "string",
+                "example": "385.00"
+            },
+            "Field-dFranchisereferalincomeAgentamount": {
+                "description": "The amount that will be given to the agent",
+                "type": "string",
+                "example": "800.00"
+            },
+            "address-Request": {
+                "description": "An Address Object",
+                "required": [
+                    "fkiAddresstypeID",
+                    "sAddressCivic",
+                    "sAddressStreet",
+                    "sAddressSuite",
+                    "sAddressCity",
+                    "fkiProvinceID",
+                    "fkiCountryID",
+                    "sAddressZip"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiAddresstypeID": {
+                        "$ref": "#/components/schemas/Field-pkiAddresstypeID",
+                        "description": ""
+                    },
+                    "sAddressCivic": {
+                        "$ref": "#/components/schemas/Field-sAddressCivic",
+                        "description": ""
+                    },
+                    "sAddressStreet": {
+                        "$ref": "#/components/schemas/Field-sAddressStreet",
+                        "description": ""
+                    },
+                    "sAddressSuite": {
+                        "$ref": "#/components/schemas/Field-sAddressSuite",
+                        "description": ""
+                    },
+                    "sAddressCity": {
+                        "$ref": "#/components/schemas/Field-sAddressCity",
+                        "description": ""
+                    },
+                    "fkiProvinceID": {
+                        "$ref": "#/components/schemas/Field-pkiProvinceID",
+                        "description": ""
+                    },
+                    "fkiCountryID": {
+                        "$ref": "#/components/schemas/Field-pkiCountryID",
+                        "description": ""
+                    },
+                    "sAddressZip": {
+                        "$ref": "#/components/schemas/Field-sAddressZip",
+                        "description": ""
+                    }
+                }
+            },
+            "Field-sAddressZip": {
+                "description": "The Postal/Zip Code\n\nThe value must be entered without spaces",
+                "type": "string",
+                "example": "H7T2S3"
+            },
+            "Field-sAddressCivic": {
+                "description": "The Civic number.",
+                "type": "string",
+                "example": "2540"
+            },
+            "Field-sAddressStreet": {
+                "description": "The Street Name",
+                "type": "string",
+                "example": "Daniel-Johnson Blvd."
+            },
+            "Field-sAddressSuite": {
+                "description": "The Suite or appartment number",
+                "type": "string",
+                "example": "610"
+            },
+            "Field-sAddressCity": {
+                "description": "The City name",
+                "type": "string",
+                "example": "Laval"
+            },
+            "Field-tFranchisereferalincomeComment": {
+                "description": "A comment about the transaction",
+                "type": "string",
+                "example": "This is a comment"
+            },
+            "Field-dtFranchisereferalincomeDisbursed": {
+                "description": "The date the amounts were disbursed",
+                "type": "string",
+                "example": "2020-12-31"
+            },
+            "contact-Request": {
+                "description": "A Contact Object",
+                "required": [
+                    "fkiContacttitleID",
+                    "fkiLanguageID",
+                    "sContactFirstname",
+                    "sContactLastname",
+                    "sContactCompany"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiContacttitleID": {
+                        "$ref": "#/components/schemas/Field-pkiContacttitleID",
+                        "description": ""
+                    },
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Field-pkiLanguageID",
+                        "description": ""
+                    },
+                    "sContactFirstname": {
+                        "$ref": "#/components/schemas/Field-sContactFirstname",
+                        "description": ""
+                    },
+                    "sContactLastname": {
+                        "$ref": "#/components/schemas/Field-sContactLastname",
+                        "description": ""
+                    },
+                    "sContactCompany": {
+                        "$ref": "#/components/schemas/Field-sContactCompany",
+                        "description": ""
+                    },
+                    "dtContactBirthdate": {
+                        "$ref": "#/components/schemas/Field-dtContactBirthdate",
+                        "description": ""
+                    }
+                }
+            },
+            "email-Request": {
+                "description": "A Contact Object",
+                "required": [
+                    "fkiEmailtypeID",
+                    "sEmailAddress"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiEmailtypeID": {
+                        "$ref": "#/components/schemas/Field-pkiEmailtypeID",
+                        "description": ""
+                    },
+                    "sEmailAddress": {
+                        "$ref": "#/components/schemas/Field-sEmailAddress",
+                        "description": ""
+                    }
+                }
+            },
+            "Field-sEmailAddress": {
+                "description": "The email address.",
+                "type": "string",
+                "example": "example@domain.com"
+            },
+            "contactinformations-Request": {
+                "description": "A Contactinformations Object",
+                "type": "object"
+            },
+            "contact-RequestCompound": {
+                "description": "A Contact Object and children to create a complete structure",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "objContactinformations"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "objContactinformations": {
+                                "$ref": "#/components/schemas/contactinformations-RequestCompound",
+                                "description": ""
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/contact-Request"
+                    }
+                ]
+            },
+            "franchisereferalincome-Request": {
+                "description": "An Franchisereferalincome Object",
+                "required": [
+                    "fkiFranchisebrokerID",
+                    "fkiFranchisereferalincomeprogramID",
+                    "fkiPeriodID",
+                    "dFranchisereferalincomeLoan",
+                    "dFranchisereferalincomeFranchiseamount",
+                    "dFranchisereferalincomeFranchisoramount",
+                    "dFranchisereferalincomeAgentamount",
+                    "dtFranchisereferalincomeDisbursed",
+                    "tFranchisereferalincomeComment",
+                    "objAddress"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiFranchisebrokerID": {
+                        "$ref": "#/components/schemas/Field-pkiFranchisebrokerID",
+                        "description": ""
+                    },
+                    "fkiFranchisereferalincomeprogramID": {
+                        "$ref": "#/components/schemas/Field-pkiFranchisereferalincomeprogramID",
+                        "description": ""
+                    },
+                    "fkiPeriodID": {
+                        "$ref": "#/components/schemas/Field-pkiPeriodID",
+                        "description": ""
+                    },
+                    "dFranchisereferalincomeLoan": {
+                        "$ref": "#/components/schemas/Field-dFranchisereferalincomeLoan",
+                        "description": ""
+                    },
+                    "dFranchisereferalincomeFranchiseamount": {
+                        "$ref": "#/components/schemas/Field-dFranchisereferalincomeFranchiseamount",
+                        "description": ""
+                    },
+                    "dFranchisereferalincomeFranchisoramount": {
+                        "$ref": "#/components/schemas/Field-dFranchisereferalincomeFranchisoramount",
+                        "description": ""
+                    },
+                    "dFranchisereferalincomeAgentamount": {
+                        "$ref": "#/components/schemas/Field-dFranchisereferalincomeAgentamount",
+                        "description": ""
+                    },
+                    "dtFranchisereferalincomeDisbursed": {
+                        "$ref": "#/components/schemas/Field-dtFranchisereferalincomeDisbursed",
+                        "description": ""
+                    },
+                    "tFranchisereferalincomeComment": {
+                        "$ref": "#/components/schemas/Field-tFranchisereferalincomeComment",
+                        "description": ""
+                    }
+                }
+            },
+            "franchisereferalincome-RequestCompound": {
+                "description": "A Franchisereferalincome Object and children to create a complete structure",
+                "required": [
+                    "a_objContact"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/franchisereferalincome-Request"
+                    }
+                ],
+                "properties": {
+                    "objAddress": {
+                        "$ref": "#/components/schemas/address-Request",
+                        "description": ""
+                    },
+                    "a_objContact": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/contact-RequestCompound"
+                        }
+                    }
+                }
+            },
+            "Field-pkiContacttitleID": {
+                "description": "The unique ID of the Contacttitle.\n\nValid values:\n\n|Value|Description|\n|-|-|\n|1|Ms.|\n|2|Mr.|\n|4|(Blank)|\n|5|Me (For Notaries)|",
+                "type": "integer",
+                "example": "2"
+            },
+            "Field-pkiAddresstypeID": {
+                "description": "The unique ID of the Addresstype.\n\nValid values:\n\n|Value|Description|\n|-|-|\n|1|Office|\n|2|Home|\n|3|Real Estate Invoice|\n|4|Invoicing|\n|5|Shipping|",
+                "type": "integer",
+                "example": "1"
+            },
+            "Field-pkiCountryID": {
+                "description": "The unique ID of the Country.\n\nHere are some common values (Complete list must be retrieved from API):\n\n|Value|Description|\n|-|-|\n|1|Canada|\n|2|United-States|",
+                "type": "integer",
+                "example": "1"
+            },
+            "Field-pkiLanguageID": {
+                "description": "The unique ID of the Language.\n\nValid values:\n\n|Value|Description|\n|-|-|\n|1|French|\n|2|English|",
+                "maximum": 2,
+                "minimum": 1,
+                "type": "integer",
+                "example": "2"
+            },
+            "Field-pkiProvinceID": {
+                "description": "The unique ID of the Province.\n\nHere are some common values (Complete list must be retrieved from API):\n\n|Value|Description|\n|-|-|\n|1|(Canada) Alberta\n|2|(Canada) British Columbia|\n|3|(Canada) Manitoba|\n|3|(Canada) Manitoba|\n|4|(Canada) New Brunswick|\n|5|(Canada) Newfoundland|\n|6|(Canada) Northwest Territories|\n|7|(Canada) Nova Scotia|\n|8|(Canada) Nunavut|\n|9|(Canada) Ontario|\n|10|(Canada) Prince Edward Island|\n|11|(Canada) Quebec|\n|12|(Canada) Saskatchewan|\n|13|(Canada) Yukon|\n|14|(United-States) Alabama|\n|15|(United-States) Alaska|\n|16|(United-States) Arizona|\n|17|(United-States) Arkansas|\n|18|(United-States) California|\n|19|(United-States) Colorado|\n|20|(United-States) Connecticut|\n|21|(United-States) Delaware|\n|22|(United-States) District of Columbia|\n|23|(United-States) Florida|\n|24|(United-States) Georgia|\n|25|(United-States) Hawaii|\n|26|(United-States) Idaho|\n|27|(United-States) Illinois|\n|28|(United-States) Indiana|\n|29|(United-States) Iowa|\n|30|(United-States) Kansas|\n|31|(United-States) Kentucky|\n|32|(United-States) Louisiane|\n|33|(United-States) Maine|\n|34|(United-States) Maryland|\n|35|(United-States) Massachusetts|\n|36|(United-States) Michigan|\n|37|(United-States) Minnesota|\n|38|(United-States) Mississippi|\n|39|(United-States) Missouri|\n|40|(United-States) Montana|\n|41|(United-States) Nebraska|\n|42|(United-States) Nevada|\n|43|(United-States) New Hampshire|\n|44|(United-States) New Jersey|\n|45|(United-States) New Mexico|\n|46|(United-States) New York|\n|47|(United-States) North Carolina|\n|48|(United-States) North Dakota|\n|49|(United-States) Ohio|\n|50|(United-States) Oklahoma|\n|51|(United-States) Oregon|\n|52|(United-States) Pennsylvania|\n|53|(United-States) Rhode Island|\n|54|(United-States) South Carolina|\n|55|(United-States) South Dakota|\n|56|(United-States) Tennessee|\n|57|(United-States) Texas|\n|58|(United-States) Utah|\n|60|(United-States) Vermont|\n|59|(United-States) Virginia|\n|61|(United-States) Washington|\n|62|(United-States) West Virginia|\n|63|(United-States) Wisconsin|\n|64|(United-States) Wyoming|",
+                "type": "integer",
+                "example": "11"
+            },
+            "Field-pkiTaxassignmentID": {
+                "description": "The unique ID of the Taxassignment.\n\nValid values:\n\n|Value|Description|\n|-|-|\n|1|No tax|\n|2|GST|\n|3|HST (ON)|\n|4|HST (NB)|\n|5|HST (NS)|\n|6|HST (NL)|\n|7|HST (PE)|\n|8|GST + QST (QC)|\n|9|GST + QST (QC) Non-Recoverable|\n|10|GST + PST (BC)|\n|11|GST + PST (SK)|\n|12|GST + RST (MB)|\n|13|GST + PST (BC) Non-Recoverable|\n|14|GST + PST (SK) Non-Recoverable|\n|15|GST + RST (MB) Non-Recoverable|",
+                "maximum": 15,
+                "minimum": 1,
+                "type": "integer",
+                "example": "1"
+            },
+            "Field-pkiEmailtypeID": {
+                "description": "The unique ID of the Emailtype.\n\nValid values:\n\n|Value|Description|\n|-|-|\n|1|Office|\n|2|Home|",
+                "type": "integer",
+                "example": "1"
+            },
+            "Field-pkiEzsigntsarequirementID": {
+                "description": "The unique ID of the Ezsigntsarequirement.\n\nDetermine if a Time Stamping Authority should add a timestamp on each of the signature.\nValid values:\n\n|Value|Description|\n|-|-|\n|1|No. TSA Timestamping will requested. This will make all signatures a lot faster since no round-trip to the TSA server will be required. Timestamping will be made using eZsign server's time.|\n|2|Best effort. Timestamping from a Time Stamping Authority will be requested but is not mandatory. In the very improbable case it cannot be completed, the timestamping will be made using eZsign server's time. **Additional fee applies**|\n|3|Mandatory. Timestamping from a Time Stamping Authority will be requested and is mandatory. In the very improbable case it cannot be completed, the signature will fail and the user will be asked to retry. **Additional fee applies**|",
+                "maximum": 3,
+                "minimum": 1,
+                "type": "integer",
+                "example": "92"
+            },
+            "Field-pkiSecretquestionID": {
+                "description": "The unique ID of the Secretquestion.\n\nValid values:\n\n|Value|Description|\n|-|-|\n|1|The name of the hospital in which you were born|\n|2|The name of your grade school|\n|3|The last name of your favorite teacher|\n|4|Your favorite sports team|\n|5|Your favorite TV show|\n|6|Your favorite movie|\n|7|The name of the street on which you grew up|\n|8|The name of your first employer|\n|9|Your first car|\n|10|Your favorite food|\n|11|The name of your first pet|\n|12|Favorite musician/band|\n|13|What instrument you play|\n|14|Your father's middle name|\n|15|Your mother's maiden name|\n|16|Name of your eldest child|\n|17|Your spouse's middle name|\n|18|Favorite restaurant|\n|19|Childhood nickname|\n|20|Favorite vacation destination|\n|21|Your boat's name|\n|22|Date of Birth (YYYY-MM-DD)|",
+                "type": "integer",
+                "example": "7"
+            },
+            "Field-sContactFirstname": {
+                "description": "The First name of the contact",
+                "type": "string",
+                "example": "John"
+            },
+            "Field-sContactLastname": {
+                "description": "The Last name of the contact",
+                "type": "string",
+                "example": "Doe"
+            },
+            "Field-sContactCompany": {
+                "description": "The Company name of the contact",
+                "type": "string",
+                "example": "eZmax Solutions Inc."
+            },
+            "Field-dtContactBirthdate": {
+                "description": "The Birth Date of the contact",
+                "type": "string",
+                "example": "1980-01-01"
+            },
+            "Field-tContactNote": {
+                "description": "Some Notes about the contact",
+                "type": "string",
+                "example": "This is a note"
+            },
+            "Field-sPhoneRegion": {
+                "description": "The region of the phone number. (For a North America Number only)\n\nThe region is the \"514\" section in this sample phone number: (514) 990-1516 x123",
+                "type": "string",
+                "example": "514"
+            },
+            "Field-sPhoneExchange": {
+                "description": "The exchange of the phone number. (For a North America Number only)\n\nThe exchange is the \"990\" section in this sample phone number: (514) 990-1516 x123",
+                "type": "string",
+                "example": "990"
+            },
+            "Field-sPhoneNumber": {
+                "description": "The number of the phone number. (For a North America Number only)\n\nThe number is the \"1516\" section in this sample phone number: (514) 990-1516 x123",
+                "type": "string",
+                "example": "1516"
+            },
+            "Field-sPhoneExtension": {
+                "description": "The extension of the phone number.\n\nThe extension is the \"123\" section in this sample phone number: (514) 990-1516 x123.\n\nIt can also be used with international phone numbers",
+                "type": "string",
+                "example": "123"
+            },
+            "Field-sPhoneInternational": {
+                "description": "The international phone number. (For phone numbers outside of North)\n\nDo not specify the \"011\" part of the phone number used to dial an international phone number from North America.\n\nFor example for this sample phone number \"+442071838750\", you would send \"442071838750\" without the \"+\" sign.",
+                "type": "string",
+                "example": "442071838750"
+            },
+            "Field-ePhoneType": {
+                "description": "The type of phone number.\n\n**Local** refers to a north American phone number. You would then need to specify sPhoneRegion, sPhoneExchange, sPhoneNumber.\n**International** would be used for numbers outside of north america. You would then need to specify sPhoneInternational",
+                "enum": [
+                    "Local",
+                    "International"
+                ],
+                "type": "string",
+                "example": "Local"
+            },
+            "Field-pkiPhonetypeID": {
+                "description": "The unique ID of the Phonetype.\n\nValid values:\n\n|Value|Description|\n|-|-|\n|1|Office|\n|2|Home|\n|3|Mobile|\n|4|Fax|\n|5|Pager|\n|6|Toll Free|",
+                "type": "integer",
+                "example": "1"
+            },
+            "phone-Request": {
+                "description": "A Phone Object",
+                "required": [
+                    "fkiPhonetypeID",
+                    "ePhoneType"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiPhonetypeID": {
+                        "$ref": "#/components/schemas/Field-pkiPhonetypeID",
+                        "description": ""
+                    },
+                    "ePhoneType": {
+                        "$ref": "#/components/schemas/Field-ePhoneType",
+                        "description": ""
+                    },
+                    "sPhoneRegion": {
+                        "$ref": "#/components/schemas/Field-sPhoneRegion",
+                        "description": ""
+                    },
+                    "sPhoneExchange": {
+                        "$ref": "#/components/schemas/Field-sPhoneExchange",
+                        "description": ""
+                    },
+                    "sPhoneNumber": {
+                        "$ref": "#/components/schemas/Field-sPhoneNumber",
+                        "description": ""
+                    },
+                    "sPhoneInternational": {
+                        "$ref": "#/components/schemas/Field-sPhoneInternational",
+                        "description": ""
+                    },
+                    "sPhoneExtension": {
+                        "$ref": "#/components/schemas/Field-sPhoneExtension",
+                        "description": ""
+                    }
+                }
+            },
+            "Field-pkiWebsitetypeID": {
+                "description": "The unique ID of the Websitetype.\n\nValid values:\n\n|Value|Description|\n|-|-|\n|1|Website|\n|2|Twitter|\n|3|Facebook|\n|4|Survey|",
+                "type": "integer",
+                "example": "1"
+            },
+            "Field-sWebsiteAddress": {
+                "description": "The URL of the website.",
+                "type": "string",
+                "example": "https://www.domain.com"
+            },
+            "website-Request": {
+                "description": "A Website Object",
+                "required": [
+                    "fkiWebsitetypeID",
+                    "sWebsiteAddress"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiWebsitetypeID": {
+                        "$ref": "#/components/schemas/Field-pkiWebsitetypeID",
+                        "description": ""
+                    },
+                    "sWebsiteAddress": {
+                        "$ref": "#/components/schemas/Field-sWebsiteAddress",
+                        "description": ""
+                    }
+                }
+            },
+            "contactinformations-RequestCompound": {
+                "description": "A Contactinformations Object and children to create a complete structure",
+                "required": [
+                    "a_objAddress",
+                    "a_objPhone",
+                    "a_objEmail",
+                    "a_objWebsite",
+                    "iAddressDefault",
+                    "iPhoneDefault",
+                    "iEmailDefault",
+                    "iWebsiteDefault"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/contactinformations-Request"
+                    }
+                ],
+                "properties": {
+                    "a_objAddress": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/address-Request"
+                        }
+                    },
+                    "a_objPhone": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/phone-Request"
+                        }
+                    },
+                    "a_objEmail": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/email-Request"
+                        }
+                    },
+                    "a_objWebsite": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/website-Request"
+                        }
+                    },
+                    "iAddressDefault": {
+                        "description": "The index in the a_objAddress array (zero based index) representing the Address object that should become the default one.\n\nYou can leave the value to 0 if the array is empty.",
+                        "type": "integer"
+                    },
+                    "iPhoneDefault": {
+                        "description": "The index in the a_objPhone array (zero based index) representing the Phone object that should become the default one.\n\nYou can leave the value to 0 if the array is empty.",
+                        "type": "integer"
+                    },
+                    "iEmailDefault": {
+                        "description": "The index in the a_objEmail array (zero based index) representing the Email object that should become the default one.\n\nYou can leave the value to 0 if the array is empty.",
+                        "type": "integer"
+                    },
+                    "iWebsiteDefault": {
+                        "description": "The index in the a_objWebsite array (zero based index) representing the Website object that should become the default one.\n\nYou can leave the value to 0 if the array is empty.",
+                        "type": "integer"
+                    }
+                }
             }
         },
         "responses": {
@@ -2735,7 +3335,8 @@
                 "Ezsignfolder",
                 "Ezsigndocument",
                 "Ezsignfoldersignerassociation",
-                "Ezsignsignature"
+                "Ezsignsignature",
+                "Franchisereferalincome"
             ]
         },
         {
