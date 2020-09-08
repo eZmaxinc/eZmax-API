@@ -982,7 +982,7 @@
                 }
             ]
         },
-        "/1/object/franchisereferalincome/": {
+        "/1/object/franchisereferalincome": {
             "description": "",
             "post": {
                 "requestBody": {
