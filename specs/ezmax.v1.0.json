@@ -2863,10 +2863,6 @@
                 "type": "string",
                 "example": "example@domain.com"
             },
-            "contactinformations-Request": {
-                "description": "A Contactinformations Object",
-                "type": "object"
-            },
             "contact-RequestCompound": {
                 "description": "A Contact Object and children to create a complete structure",
                 "type": "object",
@@ -3154,11 +3150,7 @@
                     "a_objAddress",
                     "a_objPhone",
                     "a_objEmail",
-                    "a_objWebsite",
-                    "iAddressDefault",
-                    "iPhoneDefault",
-                    "iEmailDefault",
-                    "iWebsiteDefault"
+                    "a_objWebsite"
                 ],
                 "type": "object",
                 "allOf": [
@@ -3194,7 +3186,19 @@
                         "items": {
                             "$ref": "#/components/schemas/website-Request"
                         }
-                    },
+                    }
+                }
+            },
+            "contactinformations-Request": {
+                "description": "A Contactinformations Object",
+                "required": [
+                    "iAddressDefault",
+                    "iPhoneDefault",
+                    "iEmailDefault",
+                    "iWebsiteDefault"
+                ],
+                "type": "object",
+                "properties": {
                     "iAddressDefault": {
                         "description": "The index in the a_objAddress array (zero based index) representing the Address object that should become the default one.\n\nYou can leave the value to 0 if the array is empty.",
                         "type": "integer"
