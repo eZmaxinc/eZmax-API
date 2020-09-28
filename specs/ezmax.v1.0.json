@@ -1024,28 +1024,11 @@
                 "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects."
             }
         },
-        "/1/object/period/getAutocomplete": {
+        "/1/object/period/getAutocomplete/{sSelector}": {
             "description": "",
             "get": {
                 "tags": [
                     "Period"
-                ],
-                "parameters": [
-                    {
-                        "name": "sSelector",
-                        "description": "The types of Periods to return",
-                        "schema": {
-                            "enum": [
-                                "ActiveNormal",
-                                "ActiveNormalAndEndOfYear",
-                                "AllNormal",
-                                "AllNormalAndEndOfYear"
-                            ],
-                            "type": "string"
-                        },
-                        "in": "query",
-                        "required": true
-                    }
                 ],
                 "responses": {
                     "200": {
@@ -1068,7 +1051,24 @@
                 "operationId": "Period_GetAutocomplete_V1",
                 "summary": "Retrieve Periods and IDs",
                 "description": "Get the list of Periods to be used in a dropdown or autocomplete control."
-            }
+            },
+            "parameters": [
+                {
+                    "name": "sSelector",
+                    "description": "The types of Periods to return",
+                    "schema": {
+                        "enum": [
+                            "ActiveNormal",
+                            "ActiveNormalAndEndOfYear",
+                            "AllNormal",
+                            "AllNormalAndEndOfYear"
+                        ],
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
         }
     },
     "components": {
