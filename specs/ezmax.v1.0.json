@@ -1055,7 +1055,8 @@
                                     "$ref": "#/components/schemas/Common-getAutocomplete-v1-Response"
                                 }
                             }
-                        }
+                        },
+                        "description": "Successful response"
                     }
                 },
                 "security": [
