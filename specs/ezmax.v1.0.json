@@ -1069,6 +1069,61 @@
                     "required": true
                 }
             ]
+        },
+        "/1/object/franchisebroker/getAutocomplete/{sSelector}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Franchisebroker"
+                ],
+                "parameters": [
+                    {
+                        "name": "sQuery",
+                        "description": "Allow to filter on the option value",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Common-getAutocomplete-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Franchisebroker_GetAutocomplete_V1",
+                "summary": "Retrieve Franchisebrokers and IDs",
+                "description": "Get the list of Franchisebrokers to be used in a dropdown or autocomplete control."
+            },
+            "parameters": [
+                {
+                    "name": "sSelector",
+                    "description": "The type of Franchisebrokers to return",
+                    "schema": {
+                        "enum": [
+                            "Active",
+                            "All"
+                        ],
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
         }
     },
     "components": {
@@ -3430,6 +3485,7 @@
                 "Ezsigndocument",
                 "Ezsignfoldersignerassociation",
                 "Ezsignsignature",
+                "Franchisebroker",
                 "Franchisereferalincome",
                 "Period"
             ]
