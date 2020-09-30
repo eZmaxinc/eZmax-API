@@ -1024,52 +1024,6 @@
                 "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects."
             }
         },
-        "/1/object/period/getAutocomplete/{sSelector}": {
-            "description": "",
-            "get": {
-                "tags": [
-                    "Period"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Common-getAutocomplete-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Period_GetAutocomplete_V1",
-                "summary": "Retrieve Periods and IDs",
-                "description": "Get the list of Periods to be used in a dropdown or autocomplete control."
-            },
-            "parameters": [
-                {
-                    "name": "sSelector",
-                    "description": "The types of Periods to return",
-                    "schema": {
-                        "enum": [
-                            "ActiveNormal",
-                            "ActiveNormalAndEndOfYear",
-                            "AllNormal",
-                            "AllNormalAndEndOfYear"
-                        ],
-                        "type": "string"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
         "/1/object/franchisebroker/getAutocomplete/{sSelector}": {
             "description": "",
             "get": {
@@ -1117,6 +1071,63 @@
                         "enum": [
                             "Active",
                             "All"
+                        ],
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/period/getAutocomplete/{sSelector}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Period"
+                ],
+                "parameters": [
+                    {
+                        "name": "sQuery",
+                        "description": "Allow to filter on the option value",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Common-getAutocomplete-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Period_GetAutocomplete_V1",
+                "summary": "Retrieve Periods and IDs",
+                "description": "Get the list of Periods to be used in a dropdown or autocomplete control."
+            },
+            "parameters": [
+                {
+                    "name": "sSelector",
+                    "description": "The types of Periods to return",
+                    "schema": {
+                        "enum": [
+                            "ActiveNormal",
+                            "ActiveNormalAndEndOfYear",
+                            "AllNormal",
+                            "AllNormalAndEndOfYear"
                         ],
                         "type": "string"
                     },
