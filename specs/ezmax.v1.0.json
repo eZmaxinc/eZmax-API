@@ -1135,6 +1135,61 @@
                     "required": true
                 }
             ]
+        },
+        "/1/object/franchiseoffice/getAutocomplete/{sSelector}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Franchiseoffice"
+                ],
+                "parameters": [
+                    {
+                        "name": "sQuery",
+                        "description": "Allow to filter on the option value",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Common-getAutocomplete-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Franchiseoffice_GetAutocomplete_V1",
+                "summary": "Retrieve Franchiseoffices and IDs",
+                "description": "Get the list of Franchiseoffices to be used in a dropdown or autocomplete control."
+            },
+            "parameters": [
+                {
+                    "name": "sSelector",
+                    "description": "The type of Franchiseoffices to return",
+                    "schema": {
+                        "enum": [
+                            "Active",
+                            "All"
+                        ],
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
         }
     },
     "components": {
@@ -3008,7 +3063,8 @@
                     "dFranchisereferalincomeAgentamount",
                     "dtFranchisereferalincomeDisbursed",
                     "tFranchisereferalincomeComment",
-                    "objAddress"
+                    "objAddress",
+                    "fkiFranchiseofficeID"
                 ],
                 "type": "object",
                 "properties": {
@@ -3046,6 +3102,10 @@
                     },
                     "tFranchisereferalincomeComment": {
                         "$ref": "#/components/schemas/Field-tFranchisereferalincomeComment",
+                        "description": ""
+                    },
+                    "fkiFranchiseofficeID": {
+                        "$ref": "#/components/schemas/Field-pkiFranchiseofficeID",
                         "description": ""
                     }
                 }
@@ -3372,6 +3432,11 @@
                         "type": "string"
                     }
                 }
+            },
+            "Field-pkiFranchiseofficeID": {
+                "description": "The unique ID of the Franchisereoffice",
+                "type": "integer",
+                "example": "50"
             }
         },
         "responses": {
@@ -3497,6 +3562,7 @@
                 "Ezsignfoldersignerassociation",
                 "Ezsignsignature",
                 "Franchisebroker",
+                "Franchiseoffice",
                 "Franchisereferalincome",
                 "Period"
             ]
