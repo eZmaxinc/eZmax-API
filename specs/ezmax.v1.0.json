@@ -3064,7 +3064,8 @@
                     "dtFranchisereferalincomeDisbursed",
                     "tFranchisereferalincomeComment",
                     "objAddress",
-                    "fkiFranchiseofficeID"
+                    "fkiFranchiseofficeID",
+                    "sFranchisereferalincomeRemoteid"
                 ],
                 "type": "object",
                 "properties": {
@@ -3107,6 +3108,10 @@
                     "fkiFranchiseofficeID": {
                         "$ref": "#/components/schemas/Field-pkiFranchiseofficeID",
                         "description": ""
+                    },
+                    "sFranchisereferalincomeRemoteid": {
+                        "description": "",
+                        "type": "string"
                     }
                 }
             },
@@ -3437,6 +3442,11 @@
                 "description": "The unique ID of the Franchisereoffice",
                 "type": "integer",
                 "example": "50"
+            },
+            "Field-sFranchisereferalincomeRemoteid": {
+                "description": "The internal ID",
+                "type": "string",
+                "example": "12345"
             }
         },
         "responses": {
