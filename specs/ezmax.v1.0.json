@@ -54,7 +54,7 @@
             "description": "",
             "get": {
                 "tags": [
-                    "Activesession"
+                    "Object_Activesession"
                 ],
                 "responses": {
                     "200": {
@@ -96,7 +96,7 @@
                     "required": true
                 },
                 "tags": [
-                    "Ezsigndocument"
+                    "Object_Ezsigndocument"
                 ],
                 "responses": {
                     "201": {
@@ -125,7 +125,7 @@
             "description": "",
             "get": {
                 "tags": [
-                    "Ezsigndocument"
+                    "Object_Ezsigndocument"
                 ],
                 "responses": {
                     "200": {
@@ -164,7 +164,7 @@
                     "required": true
                 },
                 "tags": [
-                    "Ezsigndocument"
+                    "Object_Ezsigndocument"
                 ],
                 "responses": {
                     "200": {
@@ -192,7 +192,7 @@
             },
             "delete": {
                 "tags": [
-                    "Ezsigndocument"
+                    "Object_Ezsigndocument"
                 ],
                 "responses": {
                     "200": {
@@ -236,7 +236,7 @@
         "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getChildren": {
             "get": {
                 "tags": [
-                    "Ezsigndocument"
+                    "Object_Ezsigndocument"
                 ],
                 "responses": {
                     "404": {
@@ -282,7 +282,7 @@
                     "required": true
                 },
                 "tags": [
-                    "Ezsignfolder"
+                    "Object_Ezsignfolder"
                 ],
                 "responses": {
                     "201": {
@@ -311,7 +311,7 @@
             "description": "",
             "get": {
                 "tags": [
-                    "Ezsignfolder"
+                    "Object_Ezsignfolder"
                 ],
                 "responses": {
                     "200": {
@@ -350,7 +350,7 @@
                     "required": true
                 },
                 "tags": [
-                    "Ezsignfolder"
+                    "Object_Ezsignfolder"
                 ],
                 "responses": {
                     "200": {
@@ -378,7 +378,7 @@
             },
             "delete": {
                 "tags": [
-                    "Ezsignfolder"
+                    "Object_Ezsignfolder"
                 ],
                 "responses": {
                     "200": {
@@ -422,7 +422,7 @@
         "/1/object/ezsignfolder/{pkiEzsignfolderID}/getChildren": {
             "get": {
                 "tags": [
-                    "Ezsignfolder"
+                    "Object_Ezsignfolder"
                 ],
                 "responses": {
                     "404": {
@@ -468,7 +468,7 @@
                     "required": true
                 },
                 "tags": [
-                    "Ezsignfoldersignerassociation"
+                    "Object_Ezsignfoldersignerassociation"
                 ],
                 "responses": {
                     "201": {
@@ -497,7 +497,7 @@
             "description": "",
             "get": {
                 "tags": [
-                    "Ezsignfoldersignerassociation"
+                    "Object_Ezsignfoldersignerassociation"
                 ],
                 "responses": {
                     "200": {
@@ -536,7 +536,7 @@
                     "required": true
                 },
                 "tags": [
-                    "Ezsignfoldersignerassociation"
+                    "Object_Ezsignfoldersignerassociation"
                 ],
                 "responses": {
                     "200": {
@@ -564,7 +564,7 @@
             },
             "delete": {
                 "tags": [
-                    "Ezsignfoldersignerassociation"
+                    "Object_Ezsignfoldersignerassociation"
                 ],
                 "responses": {
                     "200": {
@@ -608,7 +608,7 @@
         "/1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getChildren": {
             "get": {
                 "tags": [
-                    "Ezsignfoldersignerassociation"
+                    "Object_Ezsignfoldersignerassociation"
                 ],
                 "responses": {
                     "404": {
@@ -650,7 +650,7 @@
                     "required": true
                 },
                 "tags": [
-                    "Ezsignfolder"
+                    "Object_Ezsignfolder"
                 ],
                 "responses": {
                     "200": {
@@ -708,7 +708,7 @@
                     "required": true
                 },
                 "tags": [
-                    "Ezsignsignature"
+                    "Object_Ezsignsignature"
                 ],
                 "responses": {
                     "201": {
@@ -737,7 +737,7 @@
             "description": "",
             "get": {
                 "tags": [
-                    "Ezsignsignature"
+                    "Object_Ezsignsignature"
                 ],
                 "responses": {
                     "200": {
@@ -776,7 +776,7 @@
                     "required": true
                 },
                 "tags": [
-                    "Ezsignsignature"
+                    "Object_Ezsignsignature"
                 ],
                 "responses": {
                     "200": {
@@ -804,7 +804,7 @@
             },
             "delete": {
                 "tags": [
-                    "Ezsignsignature"
+                    "Object_Ezsignsignature"
                 ],
                 "responses": {
                     "200": {
@@ -848,7 +848,7 @@
         "/1/object/ezsignsignature/{pkiEzsignsignatureID}/getChildren": {
             "get": {
                 "tags": [
-                    "Ezsignsignature"
+                    "Object_Ezsignsignature"
                 ],
                 "responses": {
                     "404": {
@@ -880,7 +880,7 @@
         "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getDownloadUrl/{eDocumentType}": {
             "get": {
                 "tags": [
-                    "Ezsigndocument"
+                    "Object_Ezsigndocument"
                 ],
                 "responses": {
                     "200": {
@@ -940,7 +940,7 @@
         "/1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getInPersonLoginUrl": {
             "get": {
                 "tags": [
-                    "Ezsignfoldersignerassociation"
+                    "Object_Ezsignfoldersignerassociation"
                 ],
                 "responses": {
                     "200": {
@@ -999,7 +999,7 @@
                     "required": true
                 },
                 "tags": [
-                    "Franchisereferalincome"
+                    "Object_Franchisereferalincome"
                 ],
                 "responses": {
                     "201": {
@@ -1028,7 +1028,7 @@
             "description": "",
             "get": {
                 "tags": [
-                    "Franchisebroker"
+                    "Object_Franchisebroker"
                 ],
                 "parameters": [
                     {
@@ -1083,7 +1083,7 @@
             "description": "",
             "get": {
                 "tags": [
-                    "Period"
+                    "Object_Period"
                 ],
                 "parameters": [
                     {
@@ -1140,7 +1140,7 @@
             "description": "",
             "get": {
                 "tags": [
-                    "Franchiseoffice"
+                    "Object_Franchiseoffice"
                 ],
                 "parameters": [
                     {
@@ -1190,6 +1190,35 @@
                     "required": true
                 }
             ]
+        },
+        "/1/module/createezsignuser": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Module_User"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/activesession-getCurrent-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Mocule_CreateEzsignuser_V1",
+                "summary": "Get Current Activesession",
+                "description": "Retrieve the details about the current activesession"
+            }
         }
     },
     "components": {
@@ -3488,28 +3517,54 @@
     ],
     "tags": [
         {
-            "name": "Activesession",
-            "description": "Activesession contains detail about the currently executing api request."
+            "name": "Object_Activesession",
+            "description": "Activesession contains detail about the currently executing api request.",
+            "x-displayName": "Activesession"
         },
         {
-            "name": "Ezsigndocument",
-            "description": "Ezsigndocument contains detail about a document to sign"
+            "name": "Object_Ezsigndocument",
+            "description": "Ezsigndocument contains detail about a document to sign",
+            "x-displayName": "Ezsigndocument"
         },
         {
-            "name": "Ezsignfolder",
-            "description": "Ezsignfolder contains detail about the container containing signers, documents to sign, etc. Sometimes referred as \"Envelopes\" in competitor products"
+            "name": "Object_Ezsignfolder",
+            "description": "Ezsignfolder contains detail about the container containing signers, documents to sign, etc. Sometimes referred as \"Envelopes\" in competitor products",
+            "x-displayName": "Ezsignfolder"
         },
         {
-            "name": "Ezsignfoldersignerassociation",
-            "description": "Ezsignfoldersignerassociation contains detail about the signers that will be invited to sign the documents. Signers can be users from the system or persons outside of the system."
+            "name": "Object_Ezsignfoldersignerassociation",
+            "description": "Ezsignfoldersignerassociation contains detail about the signers that will be invited to sign the documents. Signers can be users from the system or persons outside of the system.",
+            "x-displayName": "Ezsignfoldersignerassociation"
         },
         {
-            "name": "Ezsignsignature",
-            "description": "Ezsignsignature contains detail about a specific signature block on a page of a Ezsigndocument"
+            "name": "Object_Ezsignsignature",
+            "description": "Ezsignsignature contains detail about a specific signature block on a page of a Ezsigndocument",
+            "x-displayName": "Ezsignsignature"
         },
         {
-            "name": "EzsignWebhook",
-            "description": "Webhooks related to Ezsign module. You can configure them in Ezmax administrative console."
+            "name": "Object_Franchisebroker",
+            "description": "Franchisebroker contains detail about a brokerage in the franchise administration module",
+            "x-displayName": "Franchisebroker"
+        },
+        {
+            "name": "Object_Franchiseoffice",
+            "description": "Franchiseoffice contains detail about a brokerage's office in the franchise administration module",
+            "x-displayName": "Franchiseoffice"
+        },
+        {
+            "name": "Object_Franchisereferalincome",
+            "description": "Franchisereferalincome contains detail about a referal income in the franchise administration module",
+            "x-displayName": "Franchisereferalincome"
+        },
+        {
+            "name": "Object_Period",
+            "description": "Period contains detail about accounting periods",
+            "x-displayName": "Period"
+        },
+        {
+            "name": "Module_User",
+            "description": "User module contains actions that can be called to interract with users",
+            "x-displayName": "User"
         }
     ],
     "x-webhooks": {
@@ -3519,7 +3574,7 @@
                 "description": "This Webhook will be called when the last signature on an Ezsigndocument is made.",
                 "operationId": "Webhook_Ezsign_DocumentCompleted",
                 "tags": [
-                    "Ezsigndocument"
+                    "Object_Ezsigndocument"
                 ],
                 "requestBody": {
                     "content": {
@@ -3543,7 +3598,7 @@
                 "description": "This Webhook will be called when the last signature on the last Ezsigndocument from the folder is made.",
                 "operationId": "Webhook_Ezsign_FolderCompleted",
                 "tags": [
-                    "Ezsignfolder"
+                    "Object_Ezsignfolder"
                 ],
                 "requestBody": {
                     "content": {
@@ -3566,20 +3621,21 @@
         {
             "name": "Object",
             "tags": [
-                "Activesession",
-                "Ezsignfolder",
-                "Ezsigndocument",
-                "Ezsignfoldersignerassociation",
-                "Ezsignsignature",
-                "Franchisebroker",
-                "Franchiseoffice",
-                "Franchisereferalincome",
-                "Period"
+                "Object_Activesession",
+                "Object_Ezsigndocument",
+                "Object_Ezsignfolder",
+                "Object_Ezsignfoldersignerassociation",
+                "Object_Ezsignsignature",
+                "Object_Franchisebroker",
+                "Object_Franchiseoffice",
+                "Object_Franchisereferalincome",
+                "Object_Period"
             ]
         },
         {
             "name": "Module",
             "tags": [
+                "Module_User"
             ]
         },
         {
