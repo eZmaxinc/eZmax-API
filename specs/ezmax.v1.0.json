@@ -1191,9 +1191,22 @@
                 }
             ]
         },
-        "/1/module/createezsignuser": {
+        "/1/module/user/createezsignuser": {
             "description": "",
-            "get": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/user-createEzsignuser-v1-Request"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "tags": [
                     "Module_User"
                 ],
@@ -1202,11 +1215,11 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/activesession-getCurrent-v1-Response"
+                                    "$ref": "#/components/schemas/user-createEzsignuser-v1-Response"
                                 }
                             }
                         },
-                        "description": "OK"
+                        "description": "Successful response"
                     }
                 },
                 "security": [
@@ -1215,9 +1228,9 @@
                         ]
                     }
                 ],
-                "operationId": "Mocule_CreateEzsignuser_V1",
-                "summary": "Get Current Activesession",
-                "description": "Retrieve the details about the current activesession"
+                "operationId": "User_CreateEzsignuser_V1",
+                "summary": "Create a new User of type Ezsignuser",
+                "description": "The endpoint allows to initiate the creation or a user of type Ezsignuser.\n\nThe user will be created only once the email verification process will be completed"
             }
         }
     },
