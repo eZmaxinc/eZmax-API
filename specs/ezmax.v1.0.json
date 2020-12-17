@@ -3680,9 +3680,10 @@
             "ezsigndocument-applyEzsigntemplate-v1-Request": {
                 "description": "Request for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate API Request",
                 "required": [
-                    null,
                     "a_sEzsigntemplatesigner",
-                    "a_pkiEzsignfoldersignerassociation"
+                    "a_pkiEzsignfoldersignerassociation",
+                    "a_pkiEzsignfoldersignerassociationID",
+                    "fkiEzsigntemplateID"
                 ],
                 "type": "object",
                 "properties": {
