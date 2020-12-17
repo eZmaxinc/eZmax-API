@@ -3489,6 +3489,114 @@
                 "description": "The internal ID",
                 "type": "string",
                 "example": "12345"
+            },
+            "user-createEzsignuser-v1-Response": {
+                "description": "Response for the /1/module/user/createEzsignuser API Request",
+                "required": [
+                    "mPayload"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ],
+                "properties": {
+                    "mPayload": {
+                        "$ref": "#/components/schemas/user-createEzsignuser-v1-Response-mPayload",
+                        "description": ""
+                    }
+                }
+            },
+            "user-createEzsignuser-v1-Response-mPayload": {
+                "description": "Payload for the /1/module/user/createEzsignuser API Request",
+                "required": [
+                    "a_sEmailAddressSuccess",
+                    "a_sEmailAddressFailure"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_sEmailAddressSuccess": {
+                        "description": "An array of email addresses that succeeded.",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "a_sEmailAddressFailure": {
+                        "description": "An array of email addresses that failed.",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "example": {
+                    "a_sEmailAddressSuccess": [
+                        "someone@example.com",
+                        "someone2@example.com"
+                    ],
+                    "a_sEmailAddressFailure": [
+                        "UserAlreadyExists@example.com"
+                    ]
+                }
+            },
+            "user-createEzsignuser-v1-Request": {
+                "description": "Request for the /1/module/user/createEzsignuser API Request",
+                "required": [
+                    "fkiLanguageID",
+                    "sUserFirstname",
+                    "sUserLastname",
+                    "sEmailAddress",
+                    "sPhoneRegion",
+                    "sPhoneExchange",
+                    "sPhoneNumber"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Field-pkiLanguageID",
+                        "description": ""
+                    },
+                    "sUserFirstname": {
+                        "$ref": "#/components/schemas/Field-sUserFirstname",
+                        "description": ""
+                    },
+                    "sUserLastname": {
+                        "$ref": "#/components/schemas/Field-sUserLastname",
+                        "description": ""
+                    },
+                    "sEmailAddress": {
+                        "$ref": "#/components/schemas/Field-sEmailAddress",
+                        "description": ""
+                    },
+                    "sPhoneRegion": {
+                        "$ref": "#/components/schemas/Field-sPhoneRegion",
+                        "description": ""
+                    },
+                    "sPhoneExchange": {
+                        "$ref": "#/components/schemas/Field-sPhoneExchange",
+                        "description": ""
+                    },
+                    "sPhoneNumber": {
+                        "$ref": "#/components/schemas/Field-sPhoneNumber",
+                        "description": ""
+                    },
+                    "sPhoneExtension": {
+                        "$ref": "#/components/schemas/Field-sPhoneExtension",
+                        "description": ""
+                    }
+                }
+            },
+            "Field-sUserLastname": {
+                "description": "The Last name of the user",
+                "type": "string",
+                "example": "Doe"
+            },
+            "Field-sUserFirstname": {
+                "description": "The First name of the user",
+                "type": "string",
+                "example": "John"
             }
         },
         "responses": {
