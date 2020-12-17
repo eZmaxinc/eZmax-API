@@ -1232,6 +1232,61 @@
                 "summary": "Create a new User of type Ezsignuser",
                 "description": "The endpoint allows to initiate the creation or a user of type Ezsignuser.\n\nThe user will be created only once the email verification process will be completed"
             }
+        },
+        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezsigndocument-applyEzsigntemplate-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Ezsigndocument"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigndocument-applyEzsigntemplate-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsigndocument_ApplyEzsigntemplate_V1",
+                "summary": "Apply an Ezsign Template to the Ezsigndocument.",
+                "description": "This endpoint applies a predefined template to the ezsign document.\nThis allows to automatically apply all the form and signature fields on a document in a single step.\n\nThe document must not already have fields otherwise an error will be returned."
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigndocumentID",
+                    "description": "The unique ID of the Ezsigndocument",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
         }
     },
     "components": {
@@ -2663,11 +2718,6 @@
                 "type": "integer",
                 "example": "5"
             },
-            "Field-pkiEzsigndocumentID": {
-                "description": "The unique ID of the Ezsigndocument",
-                "type": "integer",
-                "example": "36"
-            },
             "ezsigndocument-getObject-v1-Response-mPayload": {
                 "description": "Payload for the /1/object/ezsigndocument/getObject API Request",
                 "type": "object",
@@ -3597,6 +3647,63 @@
                 "description": "The First name of the user",
                 "type": "string",
                 "example": "John"
+            },
+            "ezsigndocument-applyEzsigntemplate-v1-Response": {
+                "description": "Response for the /1/object/ezsigndocument/{pkiEzsigndocument}/applyEzsigntemplate API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "Field-pkiEzsigntemplateID": {
+                "description": "The unique ID of the Ezsigndocument",
+                "type": "integer",
+                "example": "36"
+            },
+            "Field-pkiEzsigndocumentID": {
+                "description": "The unique ID of the Ezsigntemplate",
+                "type": "integer",
+                "example": "97"
+            },
+            "Field-sEzsigntemplatesigner": {
+                "description": "The First name of the user",
+                "type": "string",
+                "example": "John"
+            },
+            "Field-pkiEzsignfoldersignerassociationID": {
+                "description": "The unique ID of the Ezsignfoldersignerassociation",
+                "type": "integer",
+                "example": "20"
+            },
+            "ezsigndocument-applyEzsigntemplate-v1-Request": {
+                "description": "Request for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate API Request",
+                "required": [
+                    null,
+                    "a_sEzsigntemplatesigner",
+                    "a_pkiEzsignfoldersignerassociation"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiEzsigntemplateID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigntemplateID",
+                        "description": ""
+                    },
+                    "a_sEzsigntemplatesigner": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Field-sEzsigntemplatesigner"
+                        }
+                    },
+                    "a_pkiEzsignfoldersignerassociationID": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID"
+                        }
+                    }
+                }
             }
         },
         "responses": {
