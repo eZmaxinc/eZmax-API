@@ -2312,8 +2312,8 @@
                 "example": {
                     "objWebhook": {
                         "pkiWebhookID": 23,
-                        "eWebhookModule": "Ezsign",
-                        "eWebhookEzsignevent": "DocumentCompleted",
+                        "eWebhookModule": "Module",
+                        "eWebhookEzsignevent": "Event",
                         "pksCustomerCode": "ezmax",
                         "sWebhookUrl": "https://www.yourdomain.com/yourpath",
                         "sWebhookEmailfailed": "hostmaster@yourdomain.com"
@@ -2392,7 +2392,8 @@
                     "eWebhookModule": {
                         "description": "The Module generating the Event.",
                         "enum": [
-                            "Ezsign"
+                            "Ezsign",
+                            "Management"
                         ],
                         "type": "string"
                     },
