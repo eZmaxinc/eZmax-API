@@ -2446,70 +2446,6 @@
                     "iAttemptDuration": 1
                 }
             },
-            "ezsignfolder-Response": {
-                "description": "An Ezsignfolder Object",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "fkiEzsignfoldertypeID",
-                            "sEzsignfolderDescription",
-                            "fkiEzsigntsarequirementID",
-                            "tEzsignfolderNote",
-                            "eEzsignfolderSendreminderfrequency",
-                            "pkiEzsignfolderID",
-                            "dtEzsignfolderSentdate",
-                            "eEzsignfolderStep",
-                            "dtEzsignfolderClose"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "fkiEzsignfoldertypeID": {
-                                "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID",
-                                "description": "",
-                                "minimum": 1
-                            },
-                            "fkiEzsigntsarequirementID": {
-                                "$ref": "#/components/schemas/Field-pkiEzsigntsarequirementID",
-                                "description": ""
-                            },
-                            "sEzsignfolderDescription": {
-                                "$ref": "#/components/schemas/Field-sEzsignfolderDescription",
-                                "description": "",
-                                "maxLength": 75,
-                                "minLength": 1
-                            },
-                            "tEzsignfolderNote": {
-                                "$ref": "#/components/schemas/Field-tEzsignfolderNote",
-                                "description": ""
-                            },
-                            "eEzsignfolderSendreminderfrequency": {
-                                "$ref": "#/components/schemas/Field-eEzsignfolderSendreminderfrequency",
-                                "description": ""
-                            },
-                            "pkiEzsignfolderID": {
-                                "$ref": "#/components/schemas/Field-pkiEzsignfolderID",
-                                "description": ""
-                            },
-                            "dtEzsignfolderSentdate": {
-                                "$ref": "#/components/schemas/Field-dtEzsignfolderSentdate",
-                                "description": ""
-                            },
-                            "eEzsignfolderStep": {
-                                "$ref": "#/components/schemas/Field-eEzsignfolderStep",
-                                "description": ""
-                            },
-                            "dtEzsignfolderClose": {
-                                "$ref": "#/components/schemas/Field-dtEzsignfolderClose",
-                                "description": ""
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Audit"
-                    }
-                ]
-            },
             "ezsignfolder-ResponseCompound": {
                 "description": "An Ezsignfolder Object and children to create a complete structure",
                 "type": "object",
@@ -3705,6 +3641,175 @@
                         }
                     }
                 }
+            },
+            "Webhook-User-UserCreated": {
+                "description": "This is the base Webhook object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "objUser"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "objUser": {
+                                "$ref": "#/components/schemas/user-Response",
+                                "description": "The User that was just created."
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Webhook"
+                    }
+                ]
+            },
+            "Field-pkiUserID": {
+                "description": "The unique ID of the User",
+                "type": "integer",
+                "example": "70"
+            },
+            "ezsignfolder-Response": {
+                "description": "An Ezsignfolder Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "fkiEzsignfoldertypeID",
+                            "sEzsignfolderDescription",
+                            "fkiEzsigntsarequirementID",
+                            "tEzsignfolderNote",
+                            "eEzsignfolderSendreminderfrequency",
+                            "pkiEzsignfolderID",
+                            "dtEzsignfolderSentdate",
+                            "eEzsignfolderStep",
+                            "dtEzsignfolderClose"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "fkiEzsignfoldertypeID": {
+                                "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID",
+                                "description": "",
+                                "minimum": 1
+                            },
+                            "fkiEzsigntsarequirementID": {
+                                "$ref": "#/components/schemas/Field-pkiEzsigntsarequirementID",
+                                "description": ""
+                            },
+                            "sEzsignfolderDescription": {
+                                "$ref": "#/components/schemas/Field-sEzsignfolderDescription",
+                                "description": "",
+                                "maxLength": 75,
+                                "minLength": 1
+                            },
+                            "tEzsignfolderNote": {
+                                "$ref": "#/components/schemas/Field-tEzsignfolderNote",
+                                "description": ""
+                            },
+                            "eEzsignfolderSendreminderfrequency": {
+                                "$ref": "#/components/schemas/Field-eEzsignfolderSendreminderfrequency",
+                                "description": ""
+                            },
+                            "pkiEzsignfolderID": {
+                                "$ref": "#/components/schemas/Field-pkiEzsignfolderID",
+                                "description": ""
+                            },
+                            "dtEzsignfolderSentdate": {
+                                "$ref": "#/components/schemas/Field-dtEzsignfolderSentdate",
+                                "description": ""
+                            },
+                            "eEzsignfolderStep": {
+                                "$ref": "#/components/schemas/Field-eEzsignfolderStep",
+                                "description": ""
+                            },
+                            "dtEzsignfolderClose": {
+                                "$ref": "#/components/schemas/Field-dtEzsignfolderClose",
+                                "description": ""
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Audit"
+                    }
+                ]
+            },
+            "user-Response": {
+                "description": "A User Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "pkiUserID",
+                            "sUserFirstname",
+                            "sUserLastname",
+                            "fkiLanguageID",
+                            "eUserType",
+                            "sUserLoginname"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "pkiUserID": {
+                                "$ref": "#/components/schemas/Field-pkiUserID",
+                                "description": ""
+                            },
+                            "fkiLanguageID": {
+                                "$ref": "#/components/schemas/Field-pkiLanguageID",
+                                "description": ""
+                            },
+                            "eUserType": {
+                                "$ref": "#/components/schemas/Field-eUserType",
+                                "description": ""
+                            },
+                            "sUserFirstname": {
+                                "$ref": "#/components/schemas/Field-sUserFirstname",
+                                "description": ""
+                            },
+                            "sUserLastname": {
+                                "$ref": "#/components/schemas/Field-sUserLastname",
+                                "description": ""
+                            },
+                            "sUserLoginname": {
+                                "$ref": "#/components/schemas/Field-sUserLoginname",
+                                "description": ""
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Audit"
+                    }
+                ]
+            },
+            "Field-eUserType": {
+                "description": "The user type of the User.",
+                "enum": [
+                    "AgentBroker",
+                    "Assistant",
+                    "Attendance",
+                    "Customer",
+                    "Employee",
+                    "Ezcom",
+                    "EzsignSigner",
+                    "EzsignUser",
+                    "FranchiseCustomerServer",
+                    "Normal",
+                    "RewardAdministration",
+                    "RewardMember",
+                    "RewardRepresentative",
+                    "RewardCustomer",
+                    "RewardDistributorServer",
+                    "Supplier",
+                    "VetrxCustomer",
+                    "Vetrxcustomergroup",
+                    "VetrxCustomerServer",
+                    "VetrxManufacturer",
+                    "VetrxVendor"
+                ],
+                "type": "string",
+                "example": "RewardDistributorServer"
+            },
+            "Field-sUserLoginname": {
+                "description": "The Login name of the User.",
+                "type": "string",
+                "example": "JohnDoe"
             }
         },
         "responses": {
@@ -3791,6 +3896,11 @@
             "x-displayName": "Period"
         },
         {
+            "name": "Object_User",
+            "description": "User contains detail about the users in the system",
+            "x-displayName": "User"
+        },
+        {
             "name": "Module_User",
             "description": "User module contains actions that can be called to interract with users",
             "x-displayName": "User"
@@ -3844,6 +3954,30 @@
                     }
                 }
             }
+        },
+        "Webhook-User-UserCreated": {
+            "post": {
+                "summary": "Webhook User Created",
+                "description": "This Webhook will be called when a user is created in the system.",
+                "operationId": "Webhook_User_UserCreated",
+                "tags": [
+                    "Object_User"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Webhook-User-UserCreated"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response, will not be retried"
+                    }
+                }
+            }
         }
     },
     "x-tagGroups": [
@@ -3858,7 +3992,8 @@
                 "Object_Franchisebroker",
                 "Object_Franchiseoffice",
                 "Object_Franchisereferalincome",
-                "Object_Period"
+                "Object_Period",
+                "Object_User"
             ]
         },
         {
