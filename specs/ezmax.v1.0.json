@@ -2416,6 +2416,13 @@
                     "sWebhookEmailfailed": {
                         "description": "The email that will receive the webhook in case all attempts fail.",
                         "type": "string"
+                    },
+                    "eWebhookManagementevent": {
+                        "description": "This Management Event. This property will be set only if the Module is \"Management\".",
+                        "enum": [
+                            "UserCreated"
+                        ],
+                        "type": "string"
                     }
                 }
             },
