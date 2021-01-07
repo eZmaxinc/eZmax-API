@@ -1287,6 +1287,48 @@
                     "required": true
                 }
             ]
+        },
+        "/1/object/apikey": {
+            "description": "",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/apikey-createObject-v1-Request"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Apikey"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/apikey-createObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Apikey_CreateObject_V1",
+                "summary": "Create a new Apikey",
+                "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects."
+            }
         }
     },
     "components": {
@@ -1340,28 +1382,6 @@
                             "type": "integer"
                         }
                     }
-                }
-            },
-            "ezsigndocument-createObject-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsigndocument/editObject API Request",
-                "required": [
-                    "a_pkiEzsigndocumentID"
-                ],
-                "type": "object",
-                "properties": {
-                    "a_pkiEzsigndocumentID": {
-                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    }
-                },
-                "example": {
-                    "a_pkiEzsigndocumentID": [
-                        95,
-                        96
-                    ]
                 }
             },
             "ezsigndocument-editObject-v1-Request": {
@@ -1439,28 +1459,6 @@
                         "$ref": "#/components/schemas/ezsigndocument-RequestCompound",
                         "description": ""
                     }
-                }
-            },
-            "ezsignfolder-createObject-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignfolder/editObject API Request",
-                "required": [
-                    "a_pkiEzsignfolderID"
-                ],
-                "type": "object",
-                "properties": {
-                    "a_pkiEzsignfolderID": {
-                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    }
-                },
-                "example": {
-                    "a_pkiEzsignfolderID": [
-                        95,
-                        96
-                    ]
                 }
             },
             "ezsignfolder-editObject-v1-Request": {
@@ -1541,28 +1539,6 @@
                     "mPayload": {
                         "$ref": "#/components/schemas/ezsignfolder-getObject-v1-Response-mPayload"
                     }
-                }
-            },
-            "ezsignfoldersignerassociation-createObject-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignfoldersignerassociation/editObject API Request",
-                "required": [
-                    "a_pkiEzsignfoldersignerassociationID"
-                ],
-                "type": "object",
-                "properties": {
-                    "a_pkiEzsignfoldersignerassociationID": {
-                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    }
-                },
-                "example": {
-                    "a_pkiEzsignfoldersignerassociationID": [
-                        95,
-                        96
-                    ]
                 }
             },
             "ezsignfoldersignerassociation-editObject-v1-Request": {
@@ -2109,28 +2085,6 @@
                     }
                 },
                 "example": "Hi John,\n\nThis is the document I need you to sign.\n\nCould you sign it before monday please.\n\nBest Regards.\n\nMary"
-            },
-            "ezsignsignature-createObject-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignsignature/editObject API Request",
-                "required": [
-                    "a_pkiEzsignsignatureID"
-                ],
-                "type": "object",
-                "properties": {
-                    "a_pkiEzsignsignatureID": {
-                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    }
-                },
-                "example": {
-                    "a_pkiEzsignsignatureID": [
-                        95,
-                        96
-                    ]
-                }
             },
             "ezsignsignature-editObject-v1-Request": {
                 "description": "Request for the /1/object/ezsignsignature/editObject API Request",
@@ -2864,28 +2818,6 @@
                         "$ref": "#/components/schemas/franchisereferalincome-createObject-v1-Response-mPayload",
                         "description": ""
                     }
-                }
-            },
-            "franchisereferalincome-createObject-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/franchisereferalincome/editObject API Request",
-                "required": [
-                    "a_pkiFranchisereferalincomeID"
-                ],
-                "type": "object",
-                "properties": {
-                    "a_pkiFranchisereferalincomeID": {
-                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    }
-                },
-                "example": {
-                    "a_pkiFranchisereferalincomeID": [
-                        95,
-                        96
-                    ]
                 }
             },
             "Field-pkiFranchisebrokerID": {
@@ -3818,6 +3750,237 @@
                 "description": "The Login name of the User.",
                 "type": "string",
                 "example": "JohnDoe"
+            },
+            "apikey-createObject-v1-Response": {
+                "description": "Response for the /1/object/apikey/createObject API Request",
+                "required": [
+                    "mPayload"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ],
+                "properties": {
+                    "mPayload": {
+                        "$ref": "#/components/schemas/apikey-createObject-v1-Response-mPayload",
+                        "description": ""
+                    }
+                }
+            },
+            "ezsigndocument-createObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsigndocument/createObject API Request",
+                "required": [
+                    "a_pkiEzsigndocumentID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiEzsigndocumentID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "example": {
+                    "a_pkiEzsigndocumentID": [
+                        95,
+                        96
+                    ]
+                }
+            },
+            "ezsignfolder-createObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignfolder/createObject API Request",
+                "required": [
+                    "a_pkiEzsignfolderID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiEzsignfolderID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "example": {
+                    "a_pkiEzsignfolderID": [
+                        95,
+                        96
+                    ]
+                }
+            },
+            "ezsignfoldersignerassociation-createObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignfoldersignerassociation/createObject API Request",
+                "required": [
+                    "a_pkiEzsignfoldersignerassociationID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiEzsignfoldersignerassociationID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "example": {
+                    "a_pkiEzsignfoldersignerassociationID": [
+                        95,
+                        96
+                    ]
+                }
+            },
+            "ezsignsignature-createObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignsignature/createObject API Request",
+                "required": [
+                    "a_pkiEzsignsignatureID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiEzsignsignatureID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "example": {
+                    "a_pkiEzsignsignatureID": [
+                        95,
+                        96
+                    ]
+                }
+            },
+            "franchisereferalincome-createObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/franchisereferalincome/createObject API Request",
+                "required": [
+                    "a_pkiFranchisereferalincomeID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiFranchisereferalincomeID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "example": {
+                    "a_pkiFranchisereferalincomeID": [
+                        95,
+                        96
+                    ]
+                }
+            },
+            "apikey-createObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/apikey/createObject API Request",
+                "required": [
+                    "a_objApikey"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objApikey": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/apikey-Response"
+                        }
+                    }
+                }
+            },
+            "apikey-createObject-v1-Request": {
+                "description": "Request for the /1/object/apikey/createObject API Request",
+                "type": "object",
+                "properties": {
+                    "objApikey": {
+                        "$ref": "#/components/schemas/apikey-Request",
+                        "description": ""
+                    },
+                    "objApikeyCompound": {
+                        "$ref": "#/components/schemas/apikey-RequestCompound",
+                        "description": ""
+                    }
+                }
+            },
+            "apikey-RequestCompound": {
+                "description": "An Apikey Object and children to create a complete structure",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/apikey-Request"
+                    }
+                ]
+            },
+            "apikey-Request": {
+                "description": "An Apikey Object",
+                "required": [
+                    "fkiUserID",
+                    "objApikeyDescription"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiUserID": {
+                        "$ref": "#/components/schemas/Field-pkiUserID",
+                        "description": ""
+                    },
+                    "objApikeyDescription": {
+                        "$ref": "#/components/schemas/Multilingual-ApikeyDescription",
+                        "description": ""
+                    }
+                }
+            },
+            "Multilingual-ApikeyDescription": {
+                "description": "Description of the API Key\n\n",
+                "type": "object",
+                "properties": {
+                    "sApikeyDescription1": {
+                        "description": "Value in French",
+                        "type": "string"
+                    },
+                    "sApikeyDescription2": {
+                        "description": "Value in English",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "sApikeyDescription1": "Projet X",
+                    "sApikeyDescription2": "Project X"
+                }
+            },
+            "apikey-Response": {
+                "description": "An Apikey Object",
+                "required": [
+                    "objApikeyDescription"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "pkiApikeyID"
+                        ],
+                        "type": "object"
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Audit"
+                    }
+                ],
+                "properties": {
+                    "objApikeyDescription": {
+                        "$ref": "#/components/schemas/Multilingual-ApikeyDescription",
+                        "description": ""
+                    },
+                    "sComputedToken": {
+                        "description": "The secret token for the API key.\n\nThis will be returned only on creation.",
+                        "type": "string"
+                    }
+                }
             }
         },
         "responses": {
@@ -3862,6 +4025,11 @@
             "name": "Object_Activesession",
             "description": "Activesession contains detail about the currently executing api request.",
             "x-displayName": "Activesession"
+        },
+        {
+            "name": "Object_Apikey",
+            "description": "Apikey contains detail about an api key used to access the API",
+            "x-displayName": "Apikey"
         },
         {
             "name": "Object_Ezsigndocument",
@@ -3993,6 +4161,7 @@
             "name": "Object",
             "tags": [
                 "Object_Activesession",
+                "Object_Apikey",
                 "Object_Ezsigndocument",
                 "Object_Ezsignfolder",
                 "Object_Ezsignfoldersignerassociation",
