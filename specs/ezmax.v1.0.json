@@ -2445,7 +2445,8 @@
                             "iEzsigndocumentSignaturesigned",
                             "iEzsigndocumentSignaturetotal",
                             "sEzsigndocumentMD5initial",
-                            "sEzsigndocumentMD5signed"
+                            "sEzsigndocumentMD5signed",
+                            "objAudit"
                         ],
                         "type": "object",
                         "properties": {
@@ -2509,11 +2510,12 @@
                             "sEzsigndocumentMD5signed": {
                                 "$ref": "#/components/schemas/Field-sEzsigndocumentMD5signed",
                                 "description": ""
+                            },
+                            "objAudit": {
+                                "$ref": "#/components/schemas/Common-Audit",
+                                "description": ""
                             }
                         }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Audit"
                     }
                 ]
             },
@@ -3622,7 +3624,8 @@
                             "pkiEzsignfolderID",
                             "dtEzsignfolderSentdate",
                             "eEzsignfolderStep",
-                            "dtEzsignfolderClose"
+                            "dtEzsignfolderClose",
+                            "objAudit"
                         ],
                         "type": "object",
                         "properties": {
@@ -3664,11 +3667,12 @@
                             "dtEzsignfolderClose": {
                                 "$ref": "#/components/schemas/Field-dtEzsignfolderClose",
                                 "description": ""
+                            },
+                            "objAudit": {
+                                "$ref": "#/components/schemas/Common-Audit",
+                                "description": ""
                             }
                         }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Audit"
                     }
                 ]
             },
@@ -3683,7 +3687,8 @@
                             "sUserLastname",
                             "fkiLanguageID",
                             "eUserType",
-                            "sUserLoginname"
+                            "sUserLoginname",
+                            "objAudit"
                         ],
                         "type": "object",
                         "properties": {
@@ -3710,11 +3715,12 @@
                             "sUserLoginname": {
                                 "$ref": "#/components/schemas/Field-sUserLoginname",
                                 "description": ""
+                            },
+                            "objAudit": {
+                                "$ref": "#/components/schemas/Common-Audit",
+                                "description": ""
                             }
                         }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Audit"
                     }
                 ]
             },
@@ -3958,7 +3964,8 @@
                 "description": "An Apikey Object",
                 "required": [
                     "objApikeyDescription",
-                    "pkiApikeyID"
+                    "pkiApikeyID",
+                    "objAudit"
                 ],
                 "type": "object",
                 "allOf": [
@@ -3967,9 +3974,6 @@
                             "pkiApikeyID"
                         ],
                         "type": "object"
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Audit"
                     }
                 ],
                 "properties": {
@@ -3983,6 +3987,10 @@
                     },
                     "pkiApikeyID": {
                         "$ref": "#/components/schemas/Field-pkiApikeyID",
+                        "description": ""
+                    },
+                    "objAudit": {
+                        "$ref": "#/components/schemas/Common-Audit",
                         "description": ""
                     }
                 }
