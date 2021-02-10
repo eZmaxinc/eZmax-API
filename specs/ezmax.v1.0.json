@@ -249,7 +249,7 @@
                         ]
                     }
                 ],
-                "operationId": "Ezsigndocument_GetObject_GetChildren_V1",
+                "operationId": "Ezsigndocument_GetChildren_V1",
                 "summary": "Retrieve an existing Ezsigndocument's children IDs",
                 "description": ""
             },
@@ -435,7 +435,7 @@
                         ]
                     }
                 ],
-                "operationId": "Ezsignfolder_GetObject_GetChildren_V1",
+                "operationId": "Ezsignfolder_GetChildren_V1",
                 "summary": "Retrieve an existing Ezsignfolder's children IDs",
                 "description": ""
             },
@@ -621,7 +621,7 @@
                         ]
                     }
                 ],
-                "operationId": "Ezsignfoldersignerassociation_GetObject_GetChildren_V1",
+                "operationId": "Ezsignfoldersignerassociation_GetChildren_V1",
                 "summary": "Retrieve an existing Ezsignfoldersignerassociation's children IDs",
                 "description": ""
             },
@@ -861,7 +861,7 @@
                         ]
                     }
                 ],
-                "operationId": "Ezsignsignature_GetObject_GetChildren_V1",
+                "operationId": "Ezsignsignature_GetChildren_V1",
                 "summary": "Retrieve an existing Ezsignsignature's children IDs",
                 "description": ""
             },
@@ -1329,6 +1329,73 @@
                 "summary": "Create a new Apikey",
                 "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects."
             }
+        },
+        "/1/customer/{pksCustomerCode}/endpoint": {
+            "description": "",
+            "servers": [
+                {
+                    "url": "https://{sInfrastructureenvironmenttypeDescription}.api.global.ezmax.com",
+                    "description": "The server endpoint where to send your API requests.",
+                    "variables": {
+                        "sInfrastructureenvironmenttypeDescription": {
+                            "default": "prod",
+                            "description": "The environment on on which to call the API. Should always be \"prod\" unless instructed otherwise by support."
+                        }
+                    }
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Global_Customer"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/global-customer-getEndpoint-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+
+                    }
+                ],
+                "operationId": "Global_Customer_GetEndpoint_V1",
+                "summary": "Get customer endpoint",
+                "description": "Retrieve the customer's specific server endpoint where to send requests. This will help locate the proper region (ie: sInfrastructureregionCode) and the proper environment (ie: sInfrastructureenvironmenttypeDescription) where the customer's data is stored."
+            },
+            "parameters": [
+                {
+                    "name": "pksCustomerCode",
+                    "description": "The customer code assigned to your account",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                },
+                {
+                    "name": "sInfrastructureproductCode",
+                    "description": "The infrastructure product Code\n\nIf undefined, \"appcluster01\" is assumed",
+                    "schema": {
+                        "enum": [
+                            "appcluster01",
+                            "ezsignuser"
+                        ],
+                        "type": "string"
+                    },
+                    "in": "query",
+                    "required": false
+                }
+            ]
         }
     },
     "components": {
@@ -2583,15 +2650,6 @@
             "ezsignfoldersignerassociation-getObject-v1-Response-mPayload": {
                 "description": "Payload for the /1/object/ezsignfoldersignerassociation/getObject API Request",
                 "type": "object"
-            },
-            "ezsignfolder-getObject-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignfolder/getObject API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ezsignfolder-Response"
-                    }
-                ]
             },
             "Field-dtEzsigndocumentDuedate": {
                 "description": "The maximum date and time at which the document can be signed.",
@@ -3999,6 +4057,31 @@
                 "description": "The unique ID of the Apikey",
                 "type": "integer",
                 "example": "99"
+            },
+            "ezsignfolder-getObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignfolder/getObject API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsignfolder-Response"
+                    }
+                ]
+            },
+            "global-customer-getEndpoint-v1-Response": {
+                "description": "Response for the /1/customer/{pksCustomerCode}/endpoint API Request",
+                "required": [
+                    "sEndpointURL"
+                ],
+                "type": "object",
+                "properties": {
+                    "sEndpointURL": {
+                        "description": "The endpoint's URL",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "sEndpointURL": "https://prod.api.appcluster01.ca-central-1.ezmax.com/"
+                }
             }
         },
         "responses": {
@@ -4039,6 +4122,16 @@
         }
     ],
     "tags": [
+        {
+            "name": "Global_Customer",
+            "description": "Customer contains details about the customer code assigned to your account",
+            "x-displayName": "Customer"
+        },
+        {
+            "name": "Module_User",
+            "description": "User module contains actions that can be called to interract with users",
+            "x-displayName": "User"
+        },
         {
             "name": "Object_Activesession",
             "description": "Activesession contains detail about the currently executing api request.",
@@ -4092,11 +4185,6 @@
         {
             "name": "Object_User",
             "description": "User contains detail about the users in the system",
-            "x-displayName": "User"
-        },
-        {
-            "name": "Module_User",
-            "description": "User module contains actions that can be called to interract with users",
             "x-displayName": "User"
         }
     ],
@@ -4176,6 +4264,18 @@
     },
     "x-tagGroups": [
         {
+            "name": "Global",
+            "tags": [
+                "Global_Customer"
+            ]
+        },
+        {
+            "name": "Module",
+            "tags": [
+                "Module_User"
+            ]
+        },
+        {
             "name": "Object",
             "tags": [
                 "Object_Activesession",
@@ -4189,12 +4289,6 @@
                 "Object_Franchisereferalincome",
                 "Object_Period",
                 "Object_User"
-            ]
-        },
-        {
-            "name": "Module",
-            "tags": [
-                "Module_User"
             ]
         },
         {
