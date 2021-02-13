@@ -26,7 +26,7 @@
     "servers": [
         {
             "url": "https://{sInfrastructureenvironmenttypeDescription}.api.appcluster01.{sInfrastructureregionCode}.ezmax.com/rest",
-            "description": "The server endpoint where to send your API requests.",
+            "description": "The server endpoint where to send your region specific API requests.",
             "variables": {
                 "sInfrastructureenvironmenttypeDescription": {
                     "enum": [
@@ -45,6 +45,22 @@
                     ],
                     "default": "ca-central-1",
                     "description": "The region where your services are hosted."
+                }
+            }
+        },
+        {
+            "url": "https://{sInfrastructureenvironmenttypeDescription}.api.global.ezmax.com/",
+            "description": "The server endpoint where to send your global API requests.",
+            "variables": {
+                "sInfrastructureenvironmenttypeDescription": {
+                    "enum": [
+                        "prod",
+                        "stg",
+                        "qa",
+                        "dev"
+                    ],
+                    "default": "prod",
+                    "description": "The environment on on which to call the API. Should always be \"prod\" unless instructed otherwise by support."
                 }
             }
         }
@@ -4191,6 +4207,11 @@
             "x-displayName": "Status Codes"
         },
         {
+            "name": "General_Webhooks",
+            "description": "## Concept\nA Webhook (also called a web callback or HTTP push API) is a way for your application to be notified of an event in real time.\n\nFor example, if you send a contract for signing and need to be notified as soon as it get signed.\n\nYou could program a loop to query the document status every 5 minutes for many days until you receive a response saying the document is signed. This is a bad approach as it will waste a lot of resources everytime you make a call to the API for no reason.\n\nA better approach would be to configure a webhook in the eZmax's administration console to watch for a specific event. In this exemple, the event to monitor is \"DocumentCompleted\" from the module \"Ezsign\". This way, as soon as the document gets signed, a request will be made to YOUR server to let you know about the event that just happened.\n\nWhen you configure eZmax to notify you of events, you must provide your server's URL and a fallback email address. The URL provided must use HTTPS for security reasons.\n\n### Types of Webhook:\nLook for purple indicators with the word \"EVENT\" throughout the documentation to see currently available Webhooks events you can subscribe to. If you have a need for an event that is not available, please send a feature request to technical support.\n\n### Important:\n- The event will be delivered using a POST request.\n- Your server will need to reply with a HTTP Status Code 204 to let eZmax know you've accepted the message and we shall not try to deliver the message again. If the server does not respond with a 204 Code, the message will be sent over and over until all tries are exhausted.\n- The 204 response must be returned in less than 30 seconds otherwise a timeout will occur and the event will be retried following the retry schedule.\n- Make sure to secure your Webhook receiving URL to make sure someone does not send forged messages to your application. You can do this by providing a secure token in your URL, for example \"?token=mysecuretoken1234\", or by validating the webhook message's signature.\n\n### Testing\nIn eZmax's administration module, you'll find a \"Test\" button that you can use as many time as you need to test your server code easily with a sample event.\n\n## Retries\neZmax will attempt to deliver the event to your server instantly but will retry many times if your server does not respond successfully for some reason (see schedule below). After all attempts are exhausted, the event will be forwarded to the configured fallback email in the same format as the webhook. The email body will contain the JSON request in the same format as the webhook. This way, you'll be able to send the request to your server using <a href=\"https://www.postman.com/\" target=\"_blank\">Postman</a>, <a href=\"https://curl.se/\" target=\"_blank\">Curl</a> or similar tool.\n\n### Retry Delivery schedule\nThis is the approximate retry schedule. Since there is a 30 seconds timeout on each try, there could be a cumulative overhead up to 3½ minutes.\n\n| Minutes after previous step | Minutes after event | Method |\n| :-------------------------: | :-----------------: | ------ |\n| N/A                         | 0                   | HTTPS  |\n| 1                           | 1                   | HTTPS  |\n| 5                           | 6                   | HTTPS  |\n| 15                          | 21                  | HTTPS  |\n| 15                          | 36                  | HTTPS  |\n| 15                          | 51                  | HTTPS  |\n| 15                          | 66                  | HTTPS  |\n| 0                           | 66                  | Email  |\n\n### Failed attempt reporting\nIf you don't receive the event on the first attempt, there will be debugging information about each previous attempt in the body of the event. You'll be able to see the timestamp of each previous attempt and the return code returned by your server or a timeout indication if your server hasn't replied.\n",
+            "x-displayName": "Webhooks"
+        },
+        {
             "name": "Global_Customer",
             "description": "Customer contains details about the customer code assigned to your account",
             "x-displayName": "Customer"
@@ -4342,7 +4363,8 @@
                 "General_Introduction",
                 "General_Servers",
                 "General_Authorization",
-                "General_StatusCodes"
+                "General_StatusCodes",
+                "General_Webhooks"
             ]
         },
         {
