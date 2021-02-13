@@ -2,7 +2,7 @@
     "openapi": "3.0.3",
     "info": {
         "title": "eZmax API Definition",
-        "version": "1.0.30",
+        "version": "1.0.31",
         "description": "This API expose all the functionnalities for the eZmax and eZsign application.",
         "termsOfService": "https://www.ezmax.ca/TODO",
         "contact": {
