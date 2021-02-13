@@ -4149,6 +4149,9 @@
                     }
                 },
                 "description": "You are not allowed to call this function"
+            },
+            "Response-Webhook-204": {
+                "description": "The Webhook event notification was successfully received and processed by the receiving web server."
             }
         },
         "securitySchemes": {
@@ -4277,8 +4280,8 @@
                     }
                 },
                 "responses": {
-                    "200": {
-                        "description": "Successful response, will not be retried"
+                    "204": {
+                        "$ref": "#/components/responses/Response-Webhook-204"
                     }
                 }
             }
@@ -4301,8 +4304,8 @@
                     }
                 },
                 "responses": {
-                    "200": {
-                        "description": "Successful response, will not be retried"
+                    "204": {
+                        "$ref": "#/components/responses/Response-Webhook-204"
                     }
                 }
             }
@@ -4325,8 +4328,8 @@
                     }
                 },
                 "responses": {
-                    "200": {
-                        "description": "Successful response, will not be retried"
+                    "204": {
+                        "$ref": "#/components/responses/Response-Webhook-204"
                     }
                 }
             }
