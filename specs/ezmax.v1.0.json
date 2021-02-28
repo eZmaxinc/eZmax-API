@@ -1196,24 +1196,6 @@
         },
         "/1/customer/{pksCustomerCode}/endpoint": {
             "description": "",
-            "servers": [
-                {
-                    "url": "https://{sInfrastructureenvironmenttypeDescription}.api.global.ezmax.com",
-                    "description": "The server endpoint where to send your API requests.",
-                    "variables": {
-                        "sInfrastructureenvironmenttypeDescription": {
-                            "enum": [
-                                "prod",
-                                "stg",
-                                "qa",
-                                "dev"
-                            ],
-                            "default": "prod",
-                            "description": "The environment on on which to call the API. Should always be \"prod\" unless instructed otherwise by support."
-                        }
-                    }
-                }
-            ],
             "get": {
                 "tags": [
                     "Global_Customer"
@@ -1267,8 +1249,19 @@
                 }
             ]
         },
-        "/1/module/sspr/remindUsernames": {
+        "/1/module/sspr/sendUsernames": {
             "post": {
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/sspr-sendUsernames-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "tags": [
                     "Module_Sspr"
                 ],
@@ -1291,9 +1284,169 @@
 
                     }
                 ],
-                "operationId": "Sspr_RemindUsernames_V1",
-                "summary": "Remind of forgotten username(s)",
+                "operationId": "Sspr_SendUsernames_V1",
+                "summary": "Send username(s)",
                 "description": "This endpoint returns an email with the username(s) matching the email address provided in case of forgotten username"
+            }
+        },
+        "/1/module/sspr/unlockAccountRequest": {
+            "post": {
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/sspr-unlockAccountRequest-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Module_Sspr"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The request was accepted.\n\nDo not misinterpret as \"the account exists\". It only means an email will be sent if (and only if) an account exists."
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Response-Error-403"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+
+                    }
+                ],
+                "operationId": "Sspr_UnlockAccountRequest_V1",
+                "summary": "Unlock Account Request",
+                "description": "This endpoint sends an email with a link to unlock the user account.\n\nsEmailAddress must be set if eUserTypeSSPR = EzsignUser\n\nsUserLoginname must be set if eUserTypeSSPR = Native"
+            }
+        },
+        "/1/module/sspr/unlockAccount": {
+            "post": {
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/sspr-unlockAccount-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Module_Sspr"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The account was unlocked Successfully"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Response-Error-403"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+
+                    }
+                ],
+                "operationId": "Sspr_UnlockAccount_V1",
+                "summary": "Unlock Account",
+                "description": "This endpoint unlocks the user account.\n\nsEmailAddress must be set if eUserTypeSSPR = EzsignUser\n\nsUserLoginname must be set if eUserTypeSSPR = Native"
+            }
+        },
+        "/1/module/sspr/resetPasswordRequest/": {
+            "post": {
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/sspr-resetPasswordRequest-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Module_Sspr"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The request was accepted.\n\nDo not misinterpret as \"the account exists\". It only means an email will be sent if (and only if) an account exists."
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Response-Error-403"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+
+                    }
+                ],
+                "operationId": "Sspr_ResetPasswordRequest_V1",
+                "summary": "Reset Password Request",
+                "description": "This endpoint sends an email with a link to reset the user's password.\n\nsEmailAddress must be set if eUserTypeSSPR = EzsignUser\n\nsUserLoginname must be set if eUserTypeSSPR = Native"
+            }
+        },
+        "/1/module/sspr/resetPassword": {
+            "post": {
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/sspr-resetPassword-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Module_Sspr"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The password was reset Successfully"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Response-Error-403"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+
+                    }
+                ],
+                "operationId": "Sspr_ResetPassword_V1",
+                "summary": "Reset Password",
+                "description": "This endpoint resets the user's password.\n\nsEmailAddress must be set if eUserTypeSSPR = EzsignUser\n\nsUserLoginname must be set if eUserTypeSSPR = Native"
             }
         }
     },
@@ -3981,6 +4134,195 @@
                         "$ref": "#/components/schemas/Common-Response"
                     }
                 ]
+            },
+            "Field-eUserTypeSSPR": {
+                "description": "The user type of the User for SSPR",
+                "enum": [
+                    "EzsignUser",
+                    "Native"
+                ],
+                "type": "string",
+                "example": "Native"
+            },
+            "sspr-sendUsernames-v1-Request": {
+                "description": "Request for the /1/module/sspr/sendUsernames API Request",
+                "required": [
+                    "pksCustomerCode",
+                    "fkiLanguageID",
+                    "sType",
+                    "sEmailAddress",
+                    "eUserTypeSSPR"
+                ],
+                "type": "object",
+                "properties": {
+                    "pksCustomerCode": {
+                        "$ref": "#/components/schemas/Field-pksCustomerCode",
+                        "description": ""
+                    },
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Field-pkiLanguageID",
+                        "description": ""
+                    },
+                    "eUserTypeSSPR": {
+                        "$ref": "#/components/schemas/Field-eUserTypeSSPR",
+                        "description": ""
+                    },
+                    "sEmailAddress": {
+                        "$ref": "#/components/schemas/Field-sEmailAddress",
+                        "description": ""
+                    }
+                }
+            },
+            "sspr-unlockAccountRequest-v1-Request": {
+                "description": "Request for the /1/module/sspr/unlockAccountRequest API Request",
+                "required": [
+                    "pksCustomerCode",
+                    "fkiLanguageID",
+                    "sType",
+                    "eUserTypeSSPR"
+                ],
+                "type": "object",
+                "properties": {
+                    "pksCustomerCode": {
+                        "$ref": "#/components/schemas/Field-pksCustomerCode",
+                        "description": ""
+                    },
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Field-pkiLanguageID",
+                        "description": ""
+                    },
+                    "eUserTypeSSPR": {
+                        "$ref": "#/components/schemas/Field-eUserTypeSSPR",
+                        "description": ""
+                    },
+                    "sEmailAddress": {
+                        "$ref": "#/components/schemas/Field-sEmailAddress",
+                        "description": ""
+                    },
+                    "sUserLoginname": {
+                        "$ref": "#/components/schemas/Field-sUserLoginname",
+                        "description": ""
+                    }
+                }
+            },
+            "sspr-unlockAccount-v1-Request": {
+                "description": "Request for the /1/module/sspr/unlockAccount API Request",
+                "required": [
+                    "pksCustomerCode",
+                    "fkiLanguageID",
+                    "sType",
+                    "eUserTypeSSPR",
+                    "binUserSSPRtoken"
+                ],
+                "type": "object",
+                "properties": {
+                    "pksCustomerCode": {
+                        "$ref": "#/components/schemas/Field-pksCustomerCode",
+                        "description": ""
+                    },
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Field-pkiLanguageID",
+                        "description": ""
+                    },
+                    "eUserTypeSSPR": {
+                        "$ref": "#/components/schemas/Field-eUserTypeSSPR",
+                        "description": ""
+                    },
+                    "sEmailAddress": {
+                        "$ref": "#/components/schemas/Field-sEmailAddress",
+                        "description": ""
+                    },
+                    "sUserLoginname": {
+                        "$ref": "#/components/schemas/Field-sUserLoginname",
+                        "description": ""
+                    },
+                    "binUserSSPRtoken": {
+                        "$ref": "#/components/schemas/Field-binUserSSPRtoken",
+                        "description": ""
+                    }
+                }
+            },
+            "sspr-resetPasswordRequest-v1-Request": {
+                "description": "Request for the /1/module/sspr/resetPasswordRequest API Request",
+                "required": [
+                    "pksCustomerCode",
+                    "fkiLanguageID",
+                    "sType",
+                    "eUserTypeSSPR"
+                ],
+                "type": "object",
+                "properties": {
+                    "pksCustomerCode": {
+                        "$ref": "#/components/schemas/Field-pksCustomerCode",
+                        "description": ""
+                    },
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Field-pkiLanguageID",
+                        "description": ""
+                    },
+                    "eUserTypeSSPR": {
+                        "$ref": "#/components/schemas/Field-eUserTypeSSPR",
+                        "description": ""
+                    },
+                    "sEmailAddress": {
+                        "$ref": "#/components/schemas/Field-sEmailAddress",
+                        "description": ""
+                    },
+                    "sUserLoginname": {
+                        "$ref": "#/components/schemas/Field-sUserLoginname",
+                        "description": ""
+                    }
+                }
+            },
+            "sspr-resetPassword-v1-Request": {
+                "description": "Request for the /1/module/sspr/resetPassword API Request",
+                "required": [
+                    "pksCustomerCode",
+                    "fkiLanguageID",
+                    "sType",
+                    "eUserTypeSSPR",
+                    "binUserSSPRtoken"
+                ],
+                "type": "object",
+                "properties": {
+                    "pksCustomerCode": {
+                        "$ref": "#/components/schemas/Field-pksCustomerCode",
+                        "description": ""
+                    },
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Field-pkiLanguageID",
+                        "description": ""
+                    },
+                    "eUserTypeSSPR": {
+                        "$ref": "#/components/schemas/Field-eUserTypeSSPR",
+                        "description": ""
+                    },
+                    "sEmailAddress": {
+                        "$ref": "#/components/schemas/Field-sEmailAddress",
+                        "description": ""
+                    },
+                    "sUserLoginname": {
+                        "$ref": "#/components/schemas/Field-sUserLoginname",
+                        "description": ""
+                    },
+                    "binUserSSPRtoken": {
+                        "$ref": "#/components/schemas/Field-binUserSSPRtoken",
+                        "description": ""
+                    }
+                }
+            },
+            "Field-binUserSSPRtoken": {
+                "description": "MD5 Hash of secret SSPR token",
+                "type": "string",
+                "example": "012345678901234567890123456789AB"
+            },
+            "Field-pksCustomerCode": {
+                "description": "The customer code assigned to your account",
+                "maxLength": 6,
+                "minLength": 2,
+                "pattern": "^[a-z]{2-6}$",
+                "type": "string",
+                "example": "demo"
             }
         },
         "responses": {
@@ -4035,14 +4377,14 @@
     ],
     "tags": [
         {
-            "name": "General_Authorization",
-            "description": "Except for a few functions that do not require authorization, most of the functions require an API key that is sent in the request headers. The header name is \"Authorization\". You can create one or many authorization in the eZmax's user module. Each API key can be enabled or disabled and you can restrict the API key's usage to specific IP(s) (Recommended). Each API Key can be configured to have specific permission(s) so we highly recommend to use the \"Least privilege\" principle.\n\nThere are 3 types of API Key that can be used to make requests to the API.\n\n1. **API type key** which is static and not session based. It can be generated from the admin console. This is the most common type of authentication for \"server to server\" kind of integration. Never use this in a web based (client) application as the key could be leaked. This type of key begins with the letter **A**.\n\n2. **Delegated type key** which has an expiration time. It is commonly used in mobile or web application where you cannot use an **API type key** that could be leaked. The application would query a server part that will generate a **Delegated type key** using an **API type key**. The **Delegated type key** could now be used by the mobile or web page application without leaking the **API type key**. This type of key begins with the letter **D**.\n\n3. **User type key** which are session based and can be retrieved after a successful authentication. This type of key is reserved to specific situation where the other types of key are not desirable. This type of key begins with the letter **U**.",
-            "x-displayName": "Authorization"
-        },
-        {
             "name": "General_Introduction",
             "description": "We publish everything related to our API on github at this location: <a href=\"https://github.com/eZmaxinc\" target=\"_blank\">https://github.com/eZmaxinc</a>. You'll find git repos for the specification, documentation, SDKs and samples.\n\nDocumentation, SDKs and samples are provided in english only for easier maintenance, but we also have french speaking integrators that can help you out.\n\nMost of our SDKs provide language specific documentation, but you'll find more details on this page about the general use of the API. Both the SDK's specific document (if you choose to use a SDK) and this documentation can be used in complementarity.\n\nIf you find any mistake or omission in the documentation, please notify us. We'll quickly fix the issue.\n\n## Onboarding\nWe highly recommend to schedule an online meeting with your technical team and an eZmax integrator. During this meeting, we go through requirements, business logic, configuration, api key generation, and we go through the list of functions you might need to implement to achieve your goals. Make sure you take this opportunity to speed up your integration project.\n\nIf you need help understanding how to use this API, don't waste too much time searching in it. Contact support-api@ezmax.ca, we're here to help. We are developpers so we know programmers don't like to waste time in documentation. If you don't find what you need in the documentation, let us know, we'll improve it and put you rapidly up on track.\n\n## Open API\nWe highly believe in open standards and open source. We have adopted the Open API vision where all of the functionnalities of our applications are accessible with open source definition files. We use our own public API's to build our interfaces so you can do pretty much everything we can do. Open API has a rich toolset from editor, generators, mock servers, validators, etc. Learn more at <a href=\"https://www.openapis.org/\" target=\"_blank\">OpenAPI Initiative</a>\n\nIf you need  our Open API Spec file to use in your toolset, here is a direct link to it: <a href=\"https://raw.githubusercontent.com/eZmaxinc/eZmax-API/master/specs/ezmax.v1.0.json\" target=\"_blank\">ezmax.v1.0.json</a>\n\n## SDK\nWe provide SDKs for customers. They are generated using <a href=\"https://openapi-generator.tech/\" target=\"_blank\">OpenAPI Generator</a>, we encourage customers to use them as we also provide samples for them. You can choose to build your own implementation manually or can use any compatible OpenAPI 3.0 generator like <a href=\"https://openapi-generator.tech/\" target=\"_blank\">OpenAPI Generator</a>, <a href=\"https://swagger.io/tools/swagger-codegen/\" target=\"_blank\">Swagger Codegen</a> or any commercial generators.\n\nWe try to make it as easy as possible for you to use our SDKs so we publish packages on NPM and Composer. If you don't find your favorite language supported or it we could make your like easier by automating package distribution, let us know !",
             "x-displayName": "Introduction"
+        },
+        {
+            "name": "General_Security",
+            "description": "## Authorization\n\nExcept for a few functions that do not require authorization, most of the functions require an API key that is sent in the request headers. The header name is \"Authorization\". You can create one or many authorization in the eZmax's user module. Each API Key can be configured to have specific permission(s) so we highly recommend to use the \"Least privilege\" principle.\n\nThere are 3 types of API Key that can be used to make requests to the API.\n\n1. **API type key** which is static and not session based. It can be generated from the admin console. This is the most common type of authentication for \"server to server\" kind of integration. Never use this in a web based (client) application as the key could be leaked. This type of key begins with the letter **A**.\n\n2. **Delegated type key** which has an expiration time. It is commonly used in mobile or web application where you cannot use an **API type key** that could be leaked. The application would query a server part that will generate a **Delegated type key** using an **API type key**. The **Delegated type key** could now be used by the mobile or web page application without leaking the **API type key**. This type of key begins with the letter **D**.\n\n3. **User type key** which are session based and can be retrieved after a successful authentication. This type of key is reserved to specific situations where the other types of key are not desirable. This type of key begins with the letter **U**.\n\n4. **Special type key** which are for special cases where other types of keys cannot be used. This type of key is reserved to specific situations. This type of key begins with the letter **S**.\n\n## IP restriction\n\nEach API key can be restricted to specific IP addresse(s). This is an optional but recommended security feature you should put in place if all your requests will be coming from a specific range. You can configure the allowed ranges from the eZmax administration console.\n\n## Request Signing\n\nRequest Signing is a process of signing the request with a **Secret** that is not transmitted over the Wire. The signing process improves security in case your API Key is leaked or during a MITM attack (Man in the Middle). It will also prevent request manipulation or replay attack. Since all requests must use **https** these kinds of attacks are hard to conduct but sometimes customers might not be aware their underlying library does not verify SSL Certs validity or that their application can disclose their API key if it's not well secured. It takes a bit of effort to sign requests but it's highly suggested to do so.\n\nMandatory requirements of signing varies by used key type. For **API** type keys (most common type), you can configure if signing is mandatory or not in eZmax's administration console. **Delegated**, **User** and **Special** type keys must sign requests otherwise requests will fail.\n\n### How to sign a request\n\nTo apply a signature to your request you will need to send 3 additional HTTP Headers to the request:\n- Ezmax-Date\n- Ezmax-Fingerprint\n- Ezmax-Signature\n\n### Ezmax-Date\n\n**Ezmax-Date** Is the date/time when you send the request. It needs to be a <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\">ISO 8601</a> formatted date/time. It's a format that supports timezones so you can either use your local timezone of GMT. Be aware certain implementation adds milliseconds to the formatted date which won't be accepted by the API (ex: Javascript's toISOString function).\n\nThere is a tolerance of ±5 minutes clock skew between the date/time you specify and the server's time so make sure your time is correct. Usage of a NTP server is recommended. Compute the date/time as close as possible to the actual sending of the request. For example, don't set the current time at the beginning of a long running script that sends 50 requests to the server with the same time/date as you might receive errors related to clock skew.\n\nExamples:\n- 2000-12-31T23:59:59Z\n- 2000-12-31T23:59:59-05:00\n\n### Ezmax-Fingerprint\n\n**Ezmax-Fingerprint** Is a fingerprint (aka hash) representing the request you are sending. Any alteration in any part of the request would produce a different fingerprint. The hash is computed using <a href=\"https://en.wikipedia.org/wiki/SHA-2\" target=\"_blank\">SHA256</a>. Most programming languages offer an implementation of SHA256. To make sure your implementation is producing expected values, try to hash the value \"foo\", it should produce the value \"2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae\".\n\nTo compute the Fingerprint, you'll need to concatenate the **Method**, the **URL**, the **Body**, the **API Key** and the **Date**. All these values will need to be separated by a line Feed caracter (\\n). Make sure your **Method** is Uppercase (Shoud be \"GET\", not \"Get\" or \"get\"). Make sure your URL Scheme and Host or the **URL** are lowercase (Should be \"https://www.example.com\", not \"HTTPS://WWW.EXAMPLE.COM\"). Also make sure the the URI part of the **URL** is properly URL encoded (Should be \"/Path%20with%20Spaces/?Key=Value%20with%20Spaces\", not \"/Path with Spaces/?Key=Value with Spaces\". If the **Body** is empty (ex: GET request don't have a body), use an empty string.\n\nOnce the SHA256 hash is computed, prefix it with \"v1=\" which is future proofing version identifier.\n\nHere is an example implementation in PHP:\n\n    public static function getFingerprintV1 ($sAuthorization, $dtDate, $sMethod, $sURL, $sBody = '') {\n        $sContentToHash = \"$sMethod\\n$sURL\\n$sBody\\n$sAuthorization\\n$dtDate\";\n        return 'v1='.hash('sha256', $sContentToHash);\n    }\n\nHere are two examples of what a GET and POST requests Fingerprints could look like. You can validate if your algorithm work by using these sample values and comparing them to the expected values. In the example below the litteral \"\\n\" should be replaced with a linefeed character.\n\n    GET\\n\n    https://prod.api.appcluster01.ca-central-1.ezmax.com/rest/1/object/activesession/getCurrent\\n\n    \\n\n    ThisIsMyAuthorizationKey\\n\n    2000-12-31T23:59:59Z\nExpected result for **Ezmax-Fingerprint** (GET): v1=8f6f3ed75edb6e2cbe777b4fda5cab1a6adaebadc758780eb82c3d49934f354a\n\n    POST\\n\n    https://prod.api.global.ezmax.com/1/module/sspr/sendUsernames\\n\n    {\"pksCustomerCode\": \"demo\",\"fkiLanguageID\": \"2\",\"eUserTypeSSPR\": \"Native\",\"sEmailAddress\": \"example@domain.com\"}\\n\n    ThisIsMyAuthorizationKey\\n\n    2000-12-31T23:59:59Z\nExpected result for **Ezmax-Fingerprint** (POST): v1=6dbdbc26437f1216f9cd0068a4fc35c272a062b1f638c7557d497ebbf3702ded\n\n### Ezmax-Signature\n\n**Ezmax-Signature** Is the actual signature proving the request was generated by the key owner using its secret. The signature is computed using <a href=\"https://en.wikipedia.org/wiki/HMAC\" target=\"_blank\">HMAC</a> and <a href=\"https://en.wikipedia.org/wiki/SHA-2\" target=\"_blank\">SHA512/256</a>. Don't confuse **SHA256**, **SHA512** and **SHA512/256**, these are 3 distinct algorithms. Most programming languages offer an implementation of HMAC with SHA512/256. To make sure your implementation is producing expected values, try to hash the value \"foo\" with the key \"bar\", it should produce the value \"12af52e7e555f0813a143f49462423b0c37da6734ab1acb091c6069f010ce814\".\n\nTo compute the Signature, you'll need to concatenate the **Ezmax-Fingerprint**, the **API Key** and the **Ezmax-Date**. The 3 values are concatenated WITHOUT separators. Then calculate the HMAC using SHA512/256 using your **Secret** as the key.\n\nOnce the HMAC-SHA512/256 hash is computed, prefix it with \"v1=\" which is future proofing version identifier.\n\nHere is an example implementation in PHP:\n\n    public static function getSignatureV1 ($sAuthorization, $dtDate, $sFingerprint, $sSecret) {\n        $sContentToSign = \"$sFingerprint$sAuthorization$dtDate\";\n        return 'v1='.hash_hmac('sha512/256', $sContentToSign, $sSecret);\n    }\n\nHere are two examples of what the GET and POST requests Signature would be. You can validate if your algorithm work by using these sample values and comparing them to the expected values. For the below examples, we have used the same **API Key**, **Fingerprint** and **Date** as in the Fingerprint section above. The only new variable is the **Secret** which is \"ThisIsTheSecretAssociatedToTheAuthorizationKey\" for this example.\n\n    v1=8f6f3ed75edb6e2cbe777b4fda5cab1a6adaebadc758780eb82c3d49934f354aThisIsMyAuthorizationKey2000-12-31T23:59:59Z\nExpected result for **Ezmax-Signature** (GET): v1=3909792a7c950e8d2977fa389166c5cbd67807dada50a583cf83040894e717a4\n\n    v1=6dbdbc26437f1216f9cd0068a4fc35c272a062b1f638c7557d497ebbf3702dedThisIsMyAuthorizationKey2000-12-31T23:59:59Z\nExpected result for **Ezmax-Signature** (POST): v1=62219af85fb56038bdd24666a775a88e05bfcd44ff59ac5d3f25d39e4d63b9ac\n\n### Wrapping up the examples\n\nThe whole process was detailed above but here is summary of what your http headers should look like to sign these example requests considering the following common variables:\n\n| Variable      | Example value                                  |\n| ------------- | ---------------------------------------------- |\n| Date          | 2000-12-31T23:59:59Z                           |\n| Authorization | ThisIsMyAuthorizationKey                       |\n| Secret        | ThisIsTheSecretAssociatedToTheAuthorizationKey |\n\nFor a GET request to https://prod.api.appcluster01.ca-central-1.ezmax.com/rest/1/object/activesession/getCurrent:\n\n    Authorization: ThisIsMyAuthorizationKey\n    Ezmax-Date: 2000-12-31T23:59:59Z\n    Ezmax-Fingerprint: v1=8f6f3ed75edb6e2cbe777b4fda5cab1a6adaebadc758780eb82c3d49934f354a\n    Ezmax-Signature: v1=3909792a7c950e8d2977fa389166c5cbd67807dada50a583cf83040894e717a4\n\nFor a POST request to https://prod.api.global.ezmax.com/1/module/sspr/sendUsernames with this body content = '{\"pksCustomerCode\": \"demo\",\"fkiLanguageID\": \"2\",\"eUserTypeSSPR\": \"Native\",\"sEmailAddress\": \"example@domain.com\"}' :\n\n    Authorization: ThisIsMyAuthorizationKey\n    Ezmax-Date: 2000-12-31T23:59:59Z\n    Ezmax-Fingerprint: v1=6dbdbc26437f1216f9cd0068a4fc35c272a062b1f638c7557d497ebbf3702ded\n    Ezmax-Signature: v1=62219af85fb56038bdd24666a775a88e05bfcd44ff59ac5d3f25d39e4d63b9ac",
+            "x-displayName": "Security"
         },
         {
             "name": "General_Servers",
@@ -4051,7 +4393,7 @@
         },
         {
             "name": "General_StatusCodes",
-            "description": "We use standard HTTP Status Codes to return details about completed function calls.\r\n\r\nYou should always validate the HTTP response's status code before trying to read the content of the body. Our SDKs do this automatically. In each of the documented function, we document only the function's specific return code to facilitate the reading of the documentation. Even if a generic return code is not documented at the function's level, it could be returned by the API.\r\n\r\n### Generic return codes (Documented at the function's level)\r\n| HTTP Status Code | Meaning              | Detail |\r\n| ---------------- | -------------------- | ------ |\r\n| 200              | OK                   | The request completed successfully and valid data was returned in the body |\r\n| 201              | Created              | The request completed successfully. Some elements were created and details about the created items was returned in the body |\r\n| 204              | No Content           | The request completed successfully. There was no need to return any data in the body |\r\n| 404              | Not Found            | The request failed. The element on which you were trying to work does not exists. Look for detail about the error in the body |\r\n| 422              | Unprocessable entity | The request was syntactically valid but failed because of an interdependance condition. Look for detail about the error in the body |\r\n\r\n### Generic return codes (Undocumented at the function's level)\r\n| HTTP Status Code | Meaning               | Detail |\r\n| ---------------- | --------------------- | ------ |\r\n| 400              | Bad Request           | The request does not meet specifications. For example: an invalid type for a variable, a value that does not pass validation or a protocol violation. Look for details about the error in the response's body |\r\n| 401              | Unauthorized          | The API Key is either not present, expired, invalid or inactive. It could also mean you are calling the API from an unauthorized IP address |\r\n| 403              | Forbidden             | The Provided API Key is valid, but it is not allowed to execute the request. Verify the Key's permissions |\r\n| 404              | Not Found             | Your request was sent to a URL that does not exist. Make sure you are calling the proper version number of the function and look for typos in the URL |\r\n| 405              | Method Not Allowed    | The URL is valid, but the Method is not allowed. For example, have you call a GET while the function expects a POST ? |\r\n| 429              | Too Many Requests     | Too many requests were received from your API Key/IP address. Make sure to optimize your requests or ask for a limit increase. For example, make a single request to create 100 objects instead of calling 100 requests each creating a single objet |\r\n| 500              | Internal Server Error | This should never happen. There is either a temporary problem that should resolve quickly or an error you should report to technical support. |\r\n| 503              | Service Unavailable   | This should never happen. There is either a temporary problem that should resolve quickly or an error you should report to technical support |\r\n\r\n### Custom return codes (Undocumented at the function's level)\r\nThese codes can only be generated for \"User type\" API Key. The \"API type\" and \"Delegated type\" keys will never return such codes. (See Authorization section for more information). Most users should not be concerned with these status codes.\r\n\r\n| HTTP Status Code | Meaning                          | Detail |\r\n| ---------------- | -------------------------------- | ------ |\r\n| 351              | Phone Validation required        | (2FA) User needs to complete a Voice Call or SMS challenge           |\r\n| 352              | Question Validation required     | (2FA) User needs to complete a question/answer challenge             |\r\n| 353              | Clause Acceptance required       | User need to accept electronic signature terms and conditions        |\r\n| 354              | Computer Validation required     | User's computer is not authorized                                    |\r\n| 355              | Password Change required         | User must change it's password                                       |\r\n| 356              | Native Application Version Check | The user is not running the latest version of the native application |\r\n",
+            "description": "We use standard HTTP Status Codes to return details about completed function calls.\r\n\r\nYou should always validate the HTTP response's status code before trying to read the content of the body. Our SDKs do this automatically. In each of the documented function, we document only the function's specific return code to facilitate the reading of the documentation. Even if a generic return code is not documented at the function's level, it could be returned by the API.\r\n\r\n### Generic return codes (Documented at the function's level)\r\n| HTTP Status Code | Meaning              | Detail |\r\n| ---------------- | -------------------- | ------ |\r\n| 200              | OK                   | The request completed successfully and valid data was returned in the body |\r\n| 201              | Created              | The request completed successfully. Some elements were created and details about the created items was returned in the body |\r\n| 204              | No Content           | The request completed successfully. There was no need to return any data in the body |\r\n| 403              | Forbidden            | The request is not allowed to be executed. Look for detail about the error in the body |\r\n| 404              | Not Found            | The request failed. The element on which you were trying to work does not exists. Look for detail about the error in the body |\r\n| 422              | Unprocessable entity | The request was syntactically valid but failed because of an interdependance condition. Look for detail about the error in the body |\r\n\r\n### Generic return codes (Undocumented at the function's level)\r\n| HTTP Status Code | Meaning               | Detail |\r\n| ---------------- | --------------------- | ------ |\r\n| 400              | Bad Request           | The request does not meet specifications. For example: an invalid type for a variable, a value that does not pass validation or a protocol violation. Look for details about the error in the response's body |\r\n| 401              | Unauthorized          | The API Key is either not present, expired, invalid or inactive. It could also mean you are calling the API from an unauthorized IP address |\r\n| 403              | Forbidden             | The Provided API Key is valid, but it is not allowed to execute the request. Verify the Key's permissions |\r\n| 404              | Not Found             | Your request was sent to a URL that does not exist. Make sure you are calling the proper version number of the function and look for typos in the URL |\r\n| 405              | Method Not Allowed    | The URL is valid, but the Method is not allowed. For example, have you call a GET while the function expects a POST ? |\r\n| 429              | Too Many Requests     | Too many requests were received from your API Key/IP address. Make sure to optimize your requests or ask for a limit increase. For example, make a single request to create 100 objects instead of calling 100 requests each creating a single objet |\r\n| 500              | Internal Server Error | This should never happen. There is either a temporary problem that should resolve quickly or an error you should report to technical support. |\r\n| 503              | Service Unavailable   | This should never happen. There is either a temporary problem that should resolve quickly or an error you should report to technical support |\r\n\r\n### Custom return codes (Undocumented at the function's level)\r\nThese codes can only be generated for **User** type API Key. The **API**, **Delegated** and **Special** types keys will never return such codes. (See Authorization section for more information). Most users should not be concerned with these status codes.\r\n\r\n| HTTP Status Code | Meaning                          | Detail |\r\n| ---------------- | -------------------------------- | ------ |\r\n| 351              | Phone Validation required        | (2FA) User needs to complete a Voice Call or SMS challenge           |\r\n| 352              | Question Validation required     | (2FA) User needs to complete a question/answer challenge             |\r\n| 353              | Clause Acceptance required       | User need to accept electronic signature terms and conditions        |\r\n| 354              | Computer Validation required     | User's computer is not authorized                                    |\r\n| 355              | Password Change required         | User must change it's password                                       |\r\n| 356              | Native Application Version Check | The user is not running the latest version of the native application |\r\n",
             "x-displayName": "Status Codes"
         },
         {
@@ -4061,7 +4403,7 @@
         },
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.0.X Releases\n### [1.0.31] - 2021-\n#### Added\n- Changelog section in documentation\n\n#### Removed \n- PUT /1/object/ezsigndocument/{pkiEzsigndocumentID} that was documented but unimplemented\n- PUT /1/object/ezsignfolder/{pkiEzsignfolderID} that was documented but unimplemented\n- PUT /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID} that was documented but unimplemented\n- PUT /1/object/ezsignsignature/{pkiEzsignsignatureID} that was documented but unimplemented\n\n### [1.0.30] - 2021-02-12\n#### Added\n- Added global endpoint in servers list\n- POST /1/module/sspr/remindUsernames\n- Introduction section in documentation\n- Servers section in documentation\n- Authorization section in documentation\n- Status Codes section in documentation\n- Webhooks section in documentation\n\n### [1.0.29] - 2021-02-10\n#### Added\n- GET /1/customer/{pksCustomerCode}/endpoint\n\n### [1.0.28] - 2021-02-04\n#### Changed\n- Minor changes\n\n### [1.0.27] - 2021-02-03\n#### Changed\n- Minor changes\n\n### [1.0.26] - 2021-01-08\n#### Added\n- Added Audit objets to some responses\n\n### [1.0.25] - 2021-01-08\n#### Changed\n- Minor changes\n\n### [1.0.24] - 2021-01-07\n#### Added\n- POST /1/object/apikey\n\n### [1.0.23] - 2020-12-21\n#### Changed\n- Minor changes\n\n### [1.0.22] - 2020-12-21\n#### Changed\n- Minor changes\n\n### [1.0.21] - 2020-12-21\n#### Added\n- WEBHOOK User-UserCreated\n\n### [1.0.20] - 2020-12-17\n#### Added\n- POST /1/module/user/createezsignuser\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n\n#### Changed\n- Reorganized Documentation Categories\n\n### [1.0.19] - 2020-12-01\n#### Changed\n- Minor changes\n\n### [1.0.18] - 2020-10-14\n#### Changed\n- Minor changes\n\n### [1.0.17] - 2020-09-30\n#### Changed\n- Minor changes\n\n### [1.0.16] - 2020-09-29\n#### Added\n- GET /1/object/franchisebroker/getAutocomplete/{sSelector}\n\n### [1.0.15] - 2020-09-28\n#### Removed \n- GET /1/object/period/getAutocomplete\n\n#### Added\n- GET /1/object/period/getAutocomplete/{sSelector}\n\n### [1.0.14] - 2020-09-28\n#### Added\n- GET /1/object/period/getAutocomplete\n\n### [1.0.13] - 2020-09-08\n#### Changed\n- Minor changes\n\n### [1.0.12] - 2020-09-08\n#### Changed\n- Minor changes\n\n### [1.0.11] - 2020-09-04\n#### Added\n- POST /1/object/franchisereferalincome/\n\n### [1.0.10] - 2020-08-11\n#### Changed\n- Minor changes\n\n### [1.0.9] - 2020-08-06\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getDownloadUrl/{eDocumentType}\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getInPersonLoginUrl\n\n### [1.0.8] - 2020-08-04\n#### Changed\n- Minor changes\n\n### [1.0.7] - 2020-07-29\n#### Changed\n- Minor changes\n\n### [1.0.6] - 2020-07-29\n#### Changed\n- Minor changes\n\n### [1.0.5] - 2020-07-29\n#### Added\n- WEBHOOK Ezsign-DocumentCompleted\n- WEBHOOK Ezsign-FolderCompleted\n\n### [1.0.4] - 2020-07-09\n#### Added\n- POST /1/object/ezsignsignature\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}\n- DELETE /1/object/ezsignsignature/{pkiEzsignsignatureID}\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}/getChildren\n\n### [1.0.3] - 2020-07-08\n#### Changed\n- Documentation improvement\n\n### [1.0.2] - 2020-07-26\n#### Added\n- GET /1/object/activesession/getCurrent\n- POST /1/object/ezsignfoldersignerassociation\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n- DELETE /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getChildren\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/send\n\n### [1.0.1] - 2020-06-26\n#### Changed\n- Minor changes\n\n### [1.0.0] - 2020-06-26\n#### Added\n- Initial Release\n",
+            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.0.X Releases\n### [1.0.31] - 2021-\n#### Added\n- Changelog section in documentation\n- Special type Authorization key\n- Security section in documentation\n- Request Signing section in documentation\n- POST /1/module/sspr/unlockAccountRequest\n- POST /1/module/sspr/unlockAccount\n- POST /1/module/sspr/resetPasswordRequest\n- POST /1/module/sspr/resetPassword\n- POST /1/module/sspr/validateToken\n\n#### Changed\n- Authorization section moved under security section in documentation\n\n#### Removed \n- PUT /1/object/ezsigndocument/{pkiEzsigndocumentID} that was documented but unimplemented\n- PUT /1/object/ezsignfolder/{pkiEzsignfolderID} that was documented but unimplemented\n- PUT /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID} that was documented but unimplemented\n- PUT /1/object/ezsignsignature/{pkiEzsignsignatureID} that was documented but unimplemented\n\n### [1.0.30] - 2021-02-12\n#### Added\n- Added global endpoint in servers list\n- POST /1/module/sspr/sendUsernames\n- Introduction section in documentation\n- Servers section in documentation\n- Authorization section in documentation\n- Status Codes section in documentation\n- Webhooks section in documentation\n\n### [1.0.29] - 2021-02-10\n#### Added\n- GET /1/customer/{pksCustomerCode}/endpoint\n\n### [1.0.28] - 2021-02-04\n#### Changed\n- Minor changes\n\n### [1.0.27] - 2021-02-03\n#### Changed\n- Minor changes\n\n### [1.0.26] - 2021-01-08\n#### Added\n- Added Audit objets to some responses\n\n### [1.0.25] - 2021-01-08\n#### Changed\n- Minor changes\n\n### [1.0.24] - 2021-01-07\n#### Added\n- POST /1/object/apikey\n\n### [1.0.23] - 2020-12-21\n#### Changed\n- Minor changes\n\n### [1.0.22] - 2020-12-21\n#### Changed\n- Minor changes\n\n### [1.0.21] - 2020-12-21\n#### Added\n- WEBHOOK User-UserCreated\n\n### [1.0.20] - 2020-12-17\n#### Added\n- POST /1/module/user/createezsignuser\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n\n#### Changed\n- Reorganized Documentation Categories\n\n### [1.0.19] - 2020-12-01\n#### Changed\n- Minor changes\n\n### [1.0.18] - 2020-10-14\n#### Changed\n- Minor changes\n\n### [1.0.17] - 2020-09-30\n#### Changed\n- Minor changes\n\n### [1.0.16] - 2020-09-29\n#### Added\n- GET /1/object/franchisebroker/getAutocomplete/{sSelector}\n\n### [1.0.15] - 2020-09-28\n#### Removed \n- GET /1/object/period/getAutocomplete\n\n#### Added\n- GET /1/object/period/getAutocomplete/{sSelector}\n\n### [1.0.14] - 2020-09-28\n#### Added\n- GET /1/object/period/getAutocomplete\n\n### [1.0.13] - 2020-09-08\n#### Changed\n- Minor changes\n\n### [1.0.12] - 2020-09-08\n#### Changed\n- Minor changes\n\n### [1.0.11] - 2020-09-04\n#### Added\n- POST /1/object/franchisereferalincome/\n\n### [1.0.10] - 2020-08-11\n#### Changed\n- Minor changes\n\n### [1.0.9] - 2020-08-06\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getDownloadUrl/{eDocumentType}\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getInPersonLoginUrl\n\n### [1.0.8] - 2020-08-04\n#### Changed\n- Minor changes\n\n### [1.0.7] - 2020-07-29\n#### Changed\n- Minor changes\n\n### [1.0.6] - 2020-07-29\n#### Changed\n- Minor changes\n\n### [1.0.5] - 2020-07-29\n#### Added\n- WEBHOOK Ezsign-DocumentCompleted\n- WEBHOOK Ezsign-FolderCompleted\n\n### [1.0.4] - 2020-07-09\n#### Added\n- POST /1/object/ezsignsignature\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}\n- DELETE /1/object/ezsignsignature/{pkiEzsignsignatureID}\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}/getChildren\n\n### [1.0.3] - 2020-07-08\n#### Changed\n- Documentation improvement\n\n### [1.0.2] - 2020-07-26\n#### Added\n- GET /1/object/activesession/getCurrent\n- POST /1/object/ezsignfoldersignerassociation\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n- DELETE /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getChildren\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/send\n\n### [1.0.1] - 2020-06-26\n#### Changed\n- Minor changes\n\n### [1.0.0] - 2020-06-26\n#### Added\n- Initial Release\n",
             "x-displayName": "Changelog"
         },
         {
@@ -4215,7 +4557,7 @@
             "tags": [
                 "General_Introduction",
                 "General_Servers",
-                "General_Authorization",
+                "General_Security",
                 "General_StatusCodes",
                 "General_Webhooks",
                 "General_Changelog"
