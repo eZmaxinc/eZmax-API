@@ -1101,98 +1101,11 @@
                 }
             ]
         },
-        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions": {
-            "post": {
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/ezsigndocument-getWordsPositions-v1-Request"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "tags": [
-                    "ComingSoon_Endpoints"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsigndocument-getWordsPositions-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/Response-Error-422"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsigndocument_GetWordsPositions_V1",
-                "summary": "Retrieve positions X,Y of given words from a Ezsigndocument",
-                "description": "This endpoint lists the positions X,Y of given words of the Ezsigndocument."
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsigndocumentID",
-                    "description": "The unique ID of the Ezsigndocument",
-                    "schema": {
-                        "type": "integer"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getChildren": {
-            "get": {
-                "tags": [
-                    "ComingSoon_Endpoints"
-                ],
-                "responses": {
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsigndocument_GetChildren_V1",
-                "summary": "Retrieve an existing Ezsigndocument's children IDs",
-                "description": ""
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsigndocumentID",
-                    "description": "The unique ID of the Ezsigndocument",
-                    "schema": {
-                        "type": "integer"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
         "/1/object/ezsigndocument/{pkiEzsigndocumentID}": {
             "description": "",
             "get": {
                 "tags": [
-                    "ComingSoon_Endpoints"
+                    "Object_Ezsigndocument"
                 ],
                 "responses": {
                     "200": {
@@ -1217,7 +1130,7 @@
                 ],
                 "operationId": "Ezsigndocument_GetObject_V1",
                 "summary": "Retrieve an existing Ezsigndocument",
-                "description": ""
+                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
             },
             "delete": {
                 "tags": [
@@ -1262,11 +1175,147 @@
                 }
             ]
         },
+        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezsigndocument-getWordsPositions-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Ezsigndocument"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigndocument-getWordsPositions-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsigndocument_GetWordsPositions_V1",
+                "summary": "Retrieve positions X,Y of given words from a Ezsigndocument",
+                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigndocumentID",
+                    "description": "The unique ID of the Ezsigndocument",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData": {
+            "get": {
+                "tags": [
+                    "Object_Ezsigndocument"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/zip": {
+                                "schema": {
+                                    "format": "binary",
+                                    "type": "string"
+                                }
+                            },
+                            "application/json": {
+
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsigndocument_GetFormData_V1",
+                "summary": "Retrieve an existing Ezsigndocument's Form Data",
+                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigndocumentID",
+                    "description": "The unique ID of the Ezsigndocument",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getChildren": {
+            "get": {
+                "tags": [
+                    "Object_Ezsigndocument"
+                ],
+                "responses": {
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsigndocument_GetChildren_V1",
+                "summary": "Retrieve an existing Ezsigndocument's children IDs",
+                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigndocumentID",
+                    "description": "The unique ID of the Ezsigndocument",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/1/object/ezsignfolder/{pkiEzsignfolderID}": {
             "description": "",
             "get": {
                 "tags": [
-                    "ComingSoon_Endpoints"
+                    "Object_Ezsignfolder"
                 ],
                 "responses": {
                     "200": {
@@ -1291,7 +1340,7 @@
                 ],
                 "operationId": "Ezsignfolder_GetObject_V1",
                 "summary": "Retrieve an existing Ezsignfolder",
-                "description": ""
+                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
             },
             "delete": {
                 "tags": [
@@ -1339,7 +1388,7 @@
         "/1/object/ezsignfolder/{pkiEzsignfolderID}/getChildren": {
             "get": {
                 "tags": [
-                    "ComingSoon_Endpoints"
+                    "Object_Ezsignfolder"
                 ],
                 "responses": {
                     "404": {
@@ -1354,7 +1403,7 @@
                 ],
                 "operationId": "Ezsignfolder_GetChildren_V1",
                 "summary": "Retrieve an existing Ezsignfolder's children IDs",
-                "description": ""
+                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
             },
             "parameters": [
                 {
@@ -1372,7 +1421,7 @@
             "description": "",
             "get": {
                 "tags": [
-                    "ComingSoon_Endpoints"
+                    "Object_Ezsignfoldersignerassociation"
                 ],
                 "responses": {
                     "200": {
@@ -1397,7 +1446,7 @@
                 ],
                 "operationId": "Ezsignfoldersignerassociation_GetObject_V1",
                 "summary": "Retrieve an existing Ezsignfoldersignerassociation",
-                "description": ""
+                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
             },
             "delete": {
                 "tags": [
@@ -1445,7 +1494,7 @@
         "/1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getChildren": {
             "get": {
                 "tags": [
-                    "ComingSoon_Endpoints"
+                    "Object_Ezsignfoldersignerassociation"
                 ],
                 "responses": {
                     "404": {
@@ -1460,7 +1509,7 @@
                 ],
                 "operationId": "Ezsignfoldersignerassociation_GetChildren_V1",
                 "summary": "Retrieve an existing Ezsignfoldersignerassociation's children IDs",
-                "description": ""
+                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
             },
             "parameters": [
                 {
@@ -1478,7 +1527,7 @@
             "description": "",
             "get": {
                 "tags": [
-                    "ComingSoon_Endpoints"
+                    "Object_Ezsignsignature"
                 ],
                 "responses": {
                     "200": {
@@ -1503,7 +1552,7 @@
                 ],
                 "operationId": "Ezsignsignature_GetObject_V1",
                 "summary": "Retrieve an existing Ezsignsignature",
-                "description": ""
+                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
             },
             "delete": {
                 "tags": [
@@ -1551,7 +1600,7 @@
         "/1/object/ezsignsignature/{pkiEzsignsignatureID}/getChildren": {
             "get": {
                 "tags": [
-                    "ComingSoon_Endpoints"
+                    "Object_Ezsignsignature"
                 ],
                 "responses": {
                     "404": {
@@ -1566,61 +1615,12 @@
                 ],
                 "operationId": "Ezsignsignature_GetChildren_V1",
                 "summary": "Retrieve an existing Ezsignsignature's children IDs",
-                "description": ""
+                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
             },
             "parameters": [
                 {
                     "name": "pkiEzsignsignatureID",
                     "description": "The unique ID of the Ezsignsignature",
-                    "schema": {
-                        "type": "integer"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData": {
-            "get": {
-                "tags": [
-                    "ComingSoon_Endpoints"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/zip": {
-                                "schema": {
-                                    "format": "binary",
-                                    "type": "string"
-                                }
-                            },
-                            "application/json": {
-
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/Response-Error-422"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsigndocument_GetFormData_V1",
-                "summary": "Retrieve an existing Ezsigndocument's Form Data",
-                "description": ""
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsigndocumentID",
-                    "description": "The unique ID of the Ezsigndocument",
                     "schema": {
                         "type": "integer"
                     },
@@ -4823,16 +4823,6 @@
     ],
     "tags": [
         {
-            "name": "ComingSoon_Endpoints",
-            "description": "These endpoints are not officially released. Definition might still change and they might not be available in every environment and region.",
-            "x-displayName": "Endpoints"
-        },
-        {
-            "name": "ComingSoon_Webhooks",
-            "description": "These Webhooks are not officially released. Definition might still change and they might not be available in every environment and region.",
-            "x-displayName": "Webhooks"
-        },
-        {
             "name": "General_Introduction",
             "description": "We publish everything related to our API on github at this location: <a href=\"https://github.com/eZmaxinc\" target=\"_blank\">https://github.com/eZmaxinc</a>. You'll find git repos for the specification, documentation, SDKs and samples.\n\nDocumentation, SDKs and samples are provided in english only for easier maintenance, but we also have french speaking integrators that can help you out.\n\nMost of our SDKs provide language specific documentation, but you'll find more details on this page about the general use of the API. Both the SDK's specific document (if you choose to use a SDK) and this documentation can be used in complementarity.\n\nIf you find any mistake or omission in the documentation, please notify us. We'll quickly fix the issue.\n\n## Onboarding\nWe highly recommend to schedule an online meeting with your technical team and an eZmax integrator. During this meeting, we go through requirements, business logic, configuration, api key generation, and we go through the list of functions you might need to implement to achieve your goals. Make sure you take this opportunity to speed up your integration project.\n\nIf you need help understanding how to use this API, don't waste too much time searching in it. Contact support-api@ezmax.ca, we're here to help. We are developpers so we know programmers don't like to waste time in documentation. If you don't find what you need in the documentation, let us know, we'll improve it and put you rapidly up on track.\n\n## Open API\nWe highly believe in open standards and open source. We have adopted the Open API vision where all of the functionnalities of our applications are accessible with open source definition files. We use our own public API's to build our interfaces so you can do pretty much everything we can do. Open API has a rich toolset from editor, generators, mock servers, validators, etc. Learn more at <a href=\"https://www.openapis.org/\" target=\"_blank\">OpenAPI Initiative</a>\n\nIf you need  our Open API Spec file to use in your toolset, here is a direct link to it: <a href=\"https://raw.githubusercontent.com/eZmaxinc/eZmax-API/master/specs/ezmax.v1.0.json\" target=\"_blank\">ezmax.v1.0.json</a>\n\n## SDK\nWe provide SDKs for customers. They are generated using <a href=\"https://openapi-generator.tech/\" target=\"_blank\">OpenAPI Generator</a>, we encourage customers to use them as we also provide samples for them. You can choose to build your own implementation manually or can use any compatible OpenAPI 3.0 generator like <a href=\"https://openapi-generator.tech/\" target=\"_blank\">OpenAPI Generator</a>, <a href=\"https://swagger.io/tools/swagger-codegen/\" target=\"_blank\">Swagger Codegen</a> or any commercial generators.\n\nWe try to make it as easy as possible for you to use our SDKs so we publish packages on NPM and Composer. If you don't find your favorite language supported or it we could make your like easier by automating package distribution, let us know !",
             "x-displayName": "Introduction"
@@ -4864,7 +4854,7 @@
         },
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Coming Soon** for new features not yet considered officially in production.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.0.X Releases\n### [1.0.47] - 2021-09-17\n#### Coming Soon\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormsData\n\n#### Added\n- Coming Soon Section in the documentation\n\n#### Changed\n- Normalized internal definition of AllOf (Objects vs additionnal properties)\n\n#### Fixed\n- (CsharpSDK) Requests don't have to be mandatory signed anymore\n\n### [1.0.46] - 2021-06-03\n#### Fixed\n- Minor changes\n\n### [1.0.45] - 2021-06-02\n#### Added\n- Enum values \"DeclinedToSign\" and \"PrematurelyEnded\" to field eEzsigndocumentStep\n\n### [1.0.44] - 2021-05-31\n#### Added\n- Enum value \"City\" for Ezsignsignature\n- Password can be sent in encrypted form in authenticate method\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was sometimes invalid\n\n### [1.0.43] - 2021-05-25\n#### Added\n- (SDK) cpp-qt-client\n- POST /2/module/authenticate/authenticate/{eSessionType}\n\n#### Removed\n- (SDK) cpp-qt5-client\n\n### [1.0.42] - 2021-04-21\n#### Changed\n- (AxiosSDK) Minor changes\n\n### [1.0.41] - 2021-04-21\n#### Changed\n- (AxiosSDK) Minor changes\n\n### [1.0.40] - 2021-04-19\n#### Changed\n- (AxiosSDK) Minor changes\n\n### [1.0.39] - 2021-03-26\n#### Added\n- (CsharpSDK) Automatic request signing\n- (CsharpSDK) Secret handling in configuration class\n- eErrorCode in Error model\n- Error Codes documentation section\n- Documentation for 350 Redirection code (Authentication)\n\n#### Changed\n- Signature algorithm now supports HMAC SHA256\n\n### [1.0.38] - 2021-03-22\n#### Fixed\n- (CsharpSDK) Hyphens in Class Name\n\n- \n### [1.0.37] - 2021-03-18\n#### Added\n- (AxiosSDK) Published to NPM\n\n#### Changed\n- (AxiosSDK) Minor changes\n\n### [1.0.33] - 2021-03-14\n#### Added\n- (PHPSDK) Automatic request signing\n- (PHPSDK) Secret handling in configuration class\n- (AxiosSDK) Automatic request signing\n- (AxiosSDK) Secret handling in configuration class\n\n#### Fixed\n- Extra slash in /1/module/sspr/resetPasswordRequest\n\n### [1.0.32] - 2021-03-05\n#### Added\n- POST /1/module/sspr/validateToken\n- Webhooks successful codes in Status Codes documentation section\n- fkiUserID in the response of Activesession getCurrent\n- fkiApikeyID in the response of Activesession getCurrent\n\n#### Changed\n- Webhooks now consider an HTTP Code of 202 to be a successful delivery\n- Minor changes\n\n#### Removed\n- sEzsigndocumentFilename in the request of Create Ezsigndocument\n- sEzsigndocumentFilename in the response of Create Ezsigndocument\n\n### [1.0.31] - 2021-02-28\n#### Added\n- Changelog section in documentation\n- Special type Authorization key\n- Security section in documentation\n- Request Signing section in documentation\n- POST /1/module/sspr/unlockAccountRequest\n- POST /1/module/sspr/unlockAccount\n- POST /1/module/sspr/resetPasswordRequest\n- POST /1/module/sspr/resetPassword\n- POST /1/module/sspr/validateToken\n\n#### Changed\n- Authorization section moved under security section in documentation\n\n#### Removed \n- PUT /1/object/ezsigndocument/{pkiEzsigndocumentID} that was documented but unimplemented\n- PUT /1/object/ezsignfolder/{pkiEzsignfolderID} that was documented but unimplemented\n- PUT /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID} that was documented but unimplemented\n- PUT /1/object/ezsignsignature/{pkiEzsignsignatureID} that was documented but unimplemented\n\n### [1.0.30] - 2021-02-12\n#### Added\n- Added global endpoint in servers list\n- POST /1/module/sspr/sendUsernames\n- Introduction section in documentation\n- Servers section in documentation\n- Authorization section in documentation\n- Status Codes section in documentation\n- Webhooks section in documentation\n\n### [1.0.29] - 2021-02-10\n#### Added\n- GET /1/customer/{pksCustomerCode}/endpoint\n\n### [1.0.28] - 2021-02-04\n#### Changed\n- Minor changes\n\n### [1.0.27] - 2021-02-03\n#### Changed\n- Minor changes\n\n### [1.0.26] - 2021-01-08\n#### Added\n- Added Audit objets to some responses\n\n### [1.0.25] - 2021-01-08\n#### Changed\n- Minor changes\n\n### [1.0.24] - 2021-01-07\n#### Added\n- POST /1/object/apikey\n\n### [1.0.23] - 2020-12-21\n#### Changed\n- Minor changes\n\n### [1.0.22] - 2020-12-21\n#### Changed\n- Minor changes\n\n### [1.0.21] - 2020-12-21\n#### Added\n- WEBHOOK User-UserCreated\n\n### [1.0.20] - 2020-12-17\n#### Added\n- POST /1/module/user/createezsignuser\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n\n#### Changed\n- Reorganized Documentation Categories\n\n### [1.0.19] - 2020-12-01\n#### Changed\n- Minor changes\n\n### [1.0.18] - 2020-10-14\n#### Changed\n- Minor changes\n\n### [1.0.17] - 2020-09-30\n#### Changed\n- Minor changes\n\n### [1.0.16] - 2020-09-29\n#### Added\n- GET /1/object/franchisebroker/getAutocomplete/{sSelector}\n\n### [1.0.15] - 2020-09-28\n#### Removed \n- GET /1/object/period/getAutocomplete\n\n#### Added\n- GET /1/object/period/getAutocomplete/{sSelector}\n\n### [1.0.14] - 2020-09-28\n#### Added\n- GET /1/object/period/getAutocomplete\n\n### [1.0.13] - 2020-09-08\n#### Changed\n- Minor changes\n\n### [1.0.12] - 2020-09-08\n#### Changed\n- Minor changes\n\n### [1.0.11] - 2020-09-04\n#### Added\n- POST /1/object/franchisereferalincome/\n\n### [1.0.10] - 2020-08-11\n#### Changed\n- Minor changes\n\n### [1.0.9] - 2020-08-06\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getDownloadUrl/{eDocumentType}\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getInPersonLoginUrl\n\n### [1.0.8] - 2020-08-04\n#### Changed\n- Minor changes\n\n### [1.0.7] - 2020-07-29\n#### Changed\n- Minor changes\n\n### [1.0.6] - 2020-07-29\n#### Changed\n- Minor changes\n\n### [1.0.5] - 2020-07-29\n#### Added\n- WEBHOOK Ezsign-DocumentCompleted\n- WEBHOOK Ezsign-FolderCompleted\n\n### [1.0.4] - 2020-07-09\n#### Added\n- POST /1/object/ezsignsignature\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}\n- DELETE /1/object/ezsignsignature/{pkiEzsignsignatureID}\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}/getChildren\n\n### [1.0.3] - 2020-07-08\n#### Changed\n- Documentation improvement\n\n### [1.0.2] - 2020-07-26\n#### Added\n- GET /1/object/activesession/getCurrent\n- POST /1/object/ezsignfoldersignerassociation\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n- DELETE /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getChildren\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/send\n\n### [1.0.1] - 2020-06-26\n#### Changed\n- Minor changes\n\n### [1.0.0] - 2020-06-26\n#### Added\n- Initial Release\n",
+            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not yet considered officially in production.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.0.X Releases\n### [1.0.47] - 2021-09-20\n#### Early Adopters\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormsData\n\n#### Added\n- Early Adopters mention in documentation for endpoints not ready to be used in production\n\n#### Changed\n- Normalized internal definition of AllOf (Objects vs additionnal properties)\n\n#### Fixed\n- (CsharpSDK) Requests don't have to be mandatory signed anymore\n\n### [1.0.46] - 2021-06-03\n#### Fixed\n- Minor changes\n\n### [1.0.45] - 2021-06-02\n#### Added\n- Enum values \"DeclinedToSign\" and \"PrematurelyEnded\" to field eEzsigndocumentStep\n\n### [1.0.44] - 2021-05-31\n#### Added\n- Enum value \"City\" for Ezsignsignature\n- Password can be sent in encrypted form in authenticate method\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was sometimes invalid\n\n### [1.0.43] - 2021-05-25\n#### Added\n- (SDK) cpp-qt-client\n- POST /2/module/authenticate/authenticate/{eSessionType}\n\n#### Removed\n- (SDK) cpp-qt5-client\n\n### [1.0.42] - 2021-04-21\n#### Changed\n- (AxiosSDK) Minor changes\n\n### [1.0.41] - 2021-04-21\n#### Changed\n- (AxiosSDK) Minor changes\n\n### [1.0.40] - 2021-04-19\n#### Changed\n- (AxiosSDK) Minor changes\n\n### [1.0.39] - 2021-03-26\n#### Added\n- (CsharpSDK) Automatic request signing\n- (CsharpSDK) Secret handling in configuration class\n- eErrorCode in Error model\n- Error Codes documentation section\n- Documentation for 350 Redirection code (Authentication)\n\n#### Changed\n- Signature algorithm now supports HMAC SHA256\n\n### [1.0.38] - 2021-03-22\n#### Fixed\n- (CsharpSDK) Hyphens in Class Name\n\n- \n### [1.0.37] - 2021-03-18\n#### Added\n- (AxiosSDK) Published to NPM\n\n#### Changed\n- (AxiosSDK) Minor changes\n\n### [1.0.33] - 2021-03-14\n#### Added\n- (PHPSDK) Automatic request signing\n- (PHPSDK) Secret handling in configuration class\n- (AxiosSDK) Automatic request signing\n- (AxiosSDK) Secret handling in configuration class\n\n#### Fixed\n- Extra slash in /1/module/sspr/resetPasswordRequest\n\n### [1.0.32] - 2021-03-05\n#### Added\n- POST /1/module/sspr/validateToken\n- Webhooks successful codes in Status Codes documentation section\n- fkiUserID in the response of Activesession getCurrent\n- fkiApikeyID in the response of Activesession getCurrent\n\n#### Changed\n- Webhooks now consider an HTTP Code of 202 to be a successful delivery\n- Minor changes\n\n#### Removed\n- sEzsigndocumentFilename in the request of Create Ezsigndocument\n- sEzsigndocumentFilename in the response of Create Ezsigndocument\n\n### [1.0.31] - 2021-02-28\n#### Added\n- Changelog section in documentation\n- Special type Authorization key\n- Security section in documentation\n- Request Signing section in documentation\n- POST /1/module/sspr/unlockAccountRequest\n- POST /1/module/sspr/unlockAccount\n- POST /1/module/sspr/resetPasswordRequest\n- POST /1/module/sspr/resetPassword\n- POST /1/module/sspr/validateToken\n\n#### Changed\n- Authorization section moved under security section in documentation\n\n#### Removed \n- PUT /1/object/ezsigndocument/{pkiEzsigndocumentID} that was documented but unimplemented\n- PUT /1/object/ezsignfolder/{pkiEzsignfolderID} that was documented but unimplemented\n- PUT /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID} that was documented but unimplemented\n- PUT /1/object/ezsignsignature/{pkiEzsignsignatureID} that was documented but unimplemented\n\n### [1.0.30] - 2021-02-12\n#### Added\n- Added global endpoint in servers list\n- POST /1/module/sspr/sendUsernames\n- Introduction section in documentation\n- Servers section in documentation\n- Authorization section in documentation\n- Status Codes section in documentation\n- Webhooks section in documentation\n\n### [1.0.29] - 2021-02-10\n#### Added\n- GET /1/customer/{pksCustomerCode}/endpoint\n\n### [1.0.28] - 2021-02-04\n#### Changed\n- Minor changes\n\n### [1.0.27] - 2021-02-03\n#### Changed\n- Minor changes\n\n### [1.0.26] - 2021-01-08\n#### Added\n- Added Audit objets to some responses\n\n### [1.0.25] - 2021-01-08\n#### Changed\n- Minor changes\n\n### [1.0.24] - 2021-01-07\n#### Added\n- POST /1/object/apikey\n\n### [1.0.23] - 2020-12-21\n#### Changed\n- Minor changes\n\n### [1.0.22] - 2020-12-21\n#### Changed\n- Minor changes\n\n### [1.0.21] - 2020-12-21\n#### Added\n- WEBHOOK User-UserCreated\n\n### [1.0.20] - 2020-12-17\n#### Added\n- POST /1/module/user/createezsignuser\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n\n#### Changed\n- Reorganized Documentation Categories\n\n### [1.0.19] - 2020-12-01\n#### Changed\n- Minor changes\n\n### [1.0.18] - 2020-10-14\n#### Changed\n- Minor changes\n\n### [1.0.17] - 2020-09-30\n#### Changed\n- Minor changes\n\n### [1.0.16] - 2020-09-29\n#### Added\n- GET /1/object/franchisebroker/getAutocomplete/{sSelector}\n\n### [1.0.15] - 2020-09-28\n#### Removed \n- GET /1/object/period/getAutocomplete\n\n#### Added\n- GET /1/object/period/getAutocomplete/{sSelector}\n\n### [1.0.14] - 2020-09-28\n#### Added\n- GET /1/object/period/getAutocomplete\n\n### [1.0.13] - 2020-09-08\n#### Changed\n- Minor changes\n\n### [1.0.12] - 2020-09-08\n#### Changed\n- Minor changes\n\n### [1.0.11] - 2020-09-04\n#### Added\n- POST /1/object/franchisereferalincome/\n\n### [1.0.10] - 2020-08-11\n#### Changed\n- Minor changes\n\n### [1.0.9] - 2020-08-06\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getDownloadUrl/{eDocumentType}\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getInPersonLoginUrl\n\n### [1.0.8] - 2020-08-04\n#### Changed\n- Minor changes\n\n### [1.0.7] - 2020-07-29\n#### Changed\n- Minor changes\n\n### [1.0.6] - 2020-07-29\n#### Changed\n- Minor changes\n\n### [1.0.5] - 2020-07-29\n#### Added\n- WEBHOOK Ezsign-DocumentCompleted\n- WEBHOOK Ezsign-FolderCompleted\n\n### [1.0.4] - 2020-07-09\n#### Added\n- POST /1/object/ezsignsignature\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}\n- DELETE /1/object/ezsignsignature/{pkiEzsignsignatureID}\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}/getChildren\n\n### [1.0.3] - 2020-07-08\n#### Changed\n- Documentation improvement\n\n### [1.0.2] - 2020-07-26\n#### Added\n- GET /1/object/activesession/getCurrent\n- POST /1/object/ezsignfoldersignerassociation\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n- DELETE /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getChildren\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/send\n\n### [1.0.1] - 2020-06-26\n#### Changed\n- Minor changes\n\n### [1.0.0] - 2020-06-26\n#### Added\n- Initial Release\n",
             "x-displayName": "Changelog"
         },
         {
@@ -5063,13 +5053,6 @@
         {
             "name": "Report",
             "tags": [
-            ]
-        },
-        {
-            "name": "Coming soon",
-            "tags": [
-                "ComingSoon_Endpoints",
-                "ComingSoon_Webhooks"
             ]
         }
     ]
