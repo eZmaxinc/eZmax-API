@@ -1671,7 +1671,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/formdataxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                                    "$ref": "#/components/schemas/ezsigndocument-getFormData-v1-Response"
                                 }
                             },
                             "application/zip": {
@@ -4758,27 +4758,6 @@
                     ]
                 }
             },
-            "wordPosition-Response": {
-                "description": "A Word Position Object",
-                "type": "object",
-                "properties": {
-                    "iPage": {
-                        "description": "The page where the word occurence was found",
-                        "minimum": 1,
-                        "type": "integer"
-                    },
-                    "iX": {
-                        "description": "The X coordinate (Horizontal) where the Word occurence was found.\n\nCoordinate is calculated at 100dpi (dot per inch).",
-                        "minimum": 0,
-                        "type": "integer"
-                    },
-                    "iY": {
-                        "description": "The Y coordinate (Vertical) where the Word occurence was found.\n\nCoordinate is calculated at 100dpi (dot per inch).",
-                        "minimum": 0,
-                        "type": "integer"
-                    }
-                }
-            },
             "ezsigndocument-getWordsPositions-v1-Response": {
                 "description": "Response for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions API Request",
                 "type": "object",
@@ -4810,7 +4789,7 @@
                         "description": "An array of words with an array of pages and positions X,Y\n\nThey are returned with the sames words that was sent in the request.",
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/wordPosition-Response"
+                            "$ref": "#/components/schemas/Custom-WordPosition-Response"
                         }
                     }
                 },
@@ -5013,51 +4992,6 @@
                 "description": "A Comma separated values text file",
                 "type": "string"
             },
-            "formdataxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx": {
-                "description": "",
-                "required": [
-                    "pkiEzsigndocumentID",
-                    "fkiEzsignfolderID",
-                    "sEzsigndocumentName",
-                    "dtModifiedDate",
-                    "a_objEzsignformfieldgroup",
-                    "a_zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiEzsigndocumentID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID",
-                        "description": ""
-                    },
-                    "fkiEzsignfolderID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID",
-                        "description": ""
-                    },
-                    "sEzsigndocumentName": {
-                        "$ref": "#/components/schemas/Field-sEzsigndocumentName",
-                        "description": ""
-                    },
-                    "dtModifiedDate": {
-                        "$ref": "#/components/schemas/Field-dtModifiedDate",
-                        "description": ""
-                    },
-                    "a_zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz": {
-                        "description": "",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/formdatazzzzzzzzzzzzzzzzzzzzzzzzzzz"
-                        }
-                    },
-                    "a_objEzsignformfieldgroup": {
-                        "description": "",
-                        "uniqueItems": true,
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/formdatayyyyyyyyyyyyyyyyyyyyyyyy"
-                        }
-                    }
-                }
-            },
             "Field-dtCreatedDate": {
                 "description": "The date and time at which the object was created",
                 "type": "string",
@@ -5067,27 +5001,6 @@
                 "description": "The date and time at which the object was last modified",
                 "type": "string",
                 "example": "2020-12-31 23:59:59"
-            },
-            "formdatayyyyyyyyyyyyyyyyyyyyyyyy": {
-                "description": "",
-                "required": [
-                    "sEzsignformfieldgroupLabel",
-                    "a_objEzsignformfield"
-                ],
-                "type": "object",
-                "properties": {
-                    "sEzsignformfieldgroupLabel": {
-                        "$ref": "#/components/schemas/Field-sEzsignformfieldgroupLabel",
-                        "description": ""
-                    },
-                    "a_objEzsignformfield": {
-                        "description": "",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/formdatagggggggggggggggggggggg"
-                        }
-                    }
-                }
             },
             "Field-sEzsignformfieldgroupLabel": {
                 "description": "The Label for the Ezsignformfieldgroup",
@@ -5103,29 +5016,6 @@
                 "description": "The Value for the Ezsignformfield",
                 "type": "string",
                 "example": "Yes"
-            },
-            "formdatazzzzzzzzzzzzzzzzzzzzzzzzzzz": {
-                "description": "",
-                "required": [
-                    "sEzsignformfieldgroupLabel",
-                    "sEzsignformfieldLabel",
-                    "sEzsignformfieldValue"
-                ],
-                "type": "object",
-                "properties": {
-                    "sEzsignformfieldgroupLabel": {
-                        "$ref": "#/components/schemas/Field-sEzsignformfieldgroupLabel",
-                        "description": ""
-                    },
-                    "sEzsignformfieldLabel": {
-                        "$ref": "#/components/schemas/Field-sEzsignformfieldLabel",
-                        "description": ""
-                    },
-                    "sEzsignformfieldValue": {
-                        "$ref": "#/components/schemas/Field-sEzsignformfieldValue",
-                        "description": ""
-                    }
-                }
             },
             "ezsigndocument-applyEzsigntemplate-v2-Request": {
                 "description": "Request for the /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate API Request",
@@ -5165,16 +5055,193 @@
                     }
                 ]
             },
-            "formdatagggggggggggggggggggggg": {
-                "description": "",
+            "ezsigndocument-getFormData-v1-Response": {
+                "description": "Response for the /1/object/ezsigndocument/{pkiEzsigndocument}/getFormData API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsigndocument-getFormData-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsignformfieldgroup-Response": {
+                "description": "An Ezsignformfieldgroup Object",
                 "required": [
-                    "sEzsignformfieldLabel"
+                    "sEzsignformfieldgroupLabel"
+                ],
+                "type": "object",
+                "properties": {
+                    "sEzsignformfieldgroupLabel": {
+                        "$ref": "#/components/schemas/Field-sEzsignformfieldgroupLabel",
+                        "description": ""
+                    }
+                }
+            },
+            "ezsignformfield-Response": {
+                "description": "An Ezsignformfield Object",
+                "required": [
+                    "sEzsignformfieldLabel",
+                    "sEzsignformfieldValue"
                 ],
                 "type": "object",
                 "properties": {
                     "sEzsignformfieldLabel": {
                         "$ref": "#/components/schemas/Field-sEzsignformfieldLabel",
                         "description": ""
+                    },
+                    "sEzsignformfieldValue": {
+                        "$ref": "#/components/schemas/Field-sEzsignformfieldValue",
+                        "description": ""
+                    }
+                }
+            },
+            "ezsignformfield-ResponseCompound": {
+                "description": "An Ezsignformfield Object and children to create a complete structure",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsignformfield-Response"
+                    }
+                ]
+            },
+            "ezsigndocument-getFormData-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsigndocument/{pkiEzsigndocument}/getFormData API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "type": "object"
+                    },
+                    {
+                        "$ref": "#/components/schemas/Custom-FormData-Response"
+                    }
+                ]
+            },
+            "Custom-WordPosition-Response": {
+                "description": "A Word Position Object",
+                "type": "object",
+                "properties": {
+                    "iPage": {
+                        "description": "The page where the word occurence was found",
+                        "minimum": 1,
+                        "type": "integer"
+                    },
+                    "iX": {
+                        "description": "The X coordinate (Horizontal) where the Word occurence was found.\n\nCoordinate is calculated at 100dpi (dot per inch).",
+                        "minimum": 0,
+                        "type": "integer"
+                    },
+                    "iY": {
+                        "description": "The Y coordinate (Vertical) where the Word occurence was found.\n\nCoordinate is calculated at 100dpi (dot per inch).",
+                        "minimum": 0,
+                        "type": "integer"
+                    }
+                }
+            },
+            "Custom-FormData-Response": {
+                "description": "A form Data Object",
+                "required": [
+                    "pkiEzsigndocumentID",
+                    "fkiEzsignfolderID",
+                    "sEzsigndocumentName",
+                    "dtModifiedDate",
+                    "a_objFormDataSigner"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsigndocumentID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID",
+                        "description": ""
+                    },
+                    "fkiEzsignfolderID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID",
+                        "description": ""
+                    },
+                    "sEzsigndocumentName": {
+                        "$ref": "#/components/schemas/Field-sEzsigndocumentName",
+                        "description": ""
+                    },
+                    "dtModifiedDate": {
+                        "$ref": "#/components/schemas/Field-dtModifiedDate",
+                        "description": ""
+                    },
+                    "a_objFormDataSigner": {
+                        "description": "",
+                        "uniqueItems": false,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-FormDataSigner-Response"
+                        }
+                    }
+                }
+            },
+            "ezsignformfieldgroup-ResponseCompound": {
+                "description": "An Ezsignformfieldgroup Object and children to create a complete structure",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsignformfieldgroup-Response"
+                    },
+                    {
+                        "required": [
+                            "a_objEzsignformfield"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "a_objEzsignformfield": {
+                                "description": "",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/ezsignformfield-Response"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "Custom-FormDataSigner-Response": {
+                "description": "A form Data Signer Object",
+                "required": [
+                    "a_objEzsignformfieldgroupCompound",
+                    "fkiEzsignfoldersignerassociationID",
+                    "sContactFirstname",
+                    "sContactLastname"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiEzsignfoldersignerassociationID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID",
+                        "description": ""
+                    },
+                    "fkiUserID": {
+                        "$ref": "#/components/schemas/Field-pkiUserID",
+                        "description": ""
+                    },
+                    "sContactFirstname": {
+                        "$ref": "#/components/schemas/Field-sContactFirstname",
+                        "description": ""
+                    },
+                    "sContactLastname": {
+                        "$ref": "#/components/schemas/Field-sContactLastname",
+                        "description": ""
+                    },
+                    "a_objEzsignformfieldgroupCompound": {
+                        "description": "This array contains the labels or each Form fields in the form but WITHOUT the values",
+                        "uniqueItems": false,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ezsignformfieldgroup-ResponseCompound"
+                        }
                     }
                 }
             }
