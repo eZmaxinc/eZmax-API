@@ -1252,56 +1252,6 @@
                 }
             ]
         },
-        "/1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData": {
-            "get": {
-                "tags": [
-                    "Object_Ezsignfolder"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/zip": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/File-Zip"
-                                }
-                            },
-                            "application/json": {
-
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/Response-Error-422"
-                    },
-                    "406": {
-                        "$ref": "#/components/responses/Response-Error-406"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfolder_GetFormsData_V1",
-                "summary": "Retrieve an existing Ezsignfolder's forms data",
-                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsignfolderID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
         "/1/object/ezsignfolder/{pkiEzsignfolderID}/send": {
             "post": {
                 "requestBody": {
@@ -1772,6 +1722,58 @@
                     "name": "pkiEzsigndocumentID",
                     "schema": {
                         "$ref": "#/components/schemas/Field-pkiEzsigndocumentID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData": {
+            "get": {
+                "tags": [
+                    "Object_Ezsignfolder"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfolder-getFormsData-v1-Response"
+                                }
+                            },
+                            "application/zip": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/File-Zip"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "406": {
+                        "$ref": "#/components/responses/Response-Error-406"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignfolder_GetFormsData_V1",
+                "summary": "Retrieve an existing Ezsignfolder's forms data",
+                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignfolderID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
                     },
                     "in": "path",
                     "required": true
@@ -5123,7 +5125,7 @@
                         "type": "object"
                     },
                     {
-                        "$ref": "#/components/schemas/Custom-FormData-Response"
+                        "$ref": "#/components/schemas/Custom-FormDataDocument-Response"
                     }
                 ]
             },
@@ -5145,43 +5147,6 @@
                         "description": "The Y coordinate (Vertical) where the Word occurence was found.\n\nCoordinate is calculated at 100dpi (dot per inch).",
                         "minimum": 0,
                         "type": "integer"
-                    }
-                }
-            },
-            "Custom-FormData-Response": {
-                "description": "A form Data Object",
-                "required": [
-                    "pkiEzsigndocumentID",
-                    "fkiEzsignfolderID",
-                    "sEzsigndocumentName",
-                    "dtModifiedDate",
-                    "a_objFormDataSigner"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiEzsigndocumentID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID",
-                        "description": ""
-                    },
-                    "fkiEzsignfolderID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID",
-                        "description": ""
-                    },
-                    "sEzsigndocumentName": {
-                        "$ref": "#/components/schemas/Field-sEzsigndocumentName",
-                        "description": ""
-                    },
-                    "dtModifiedDate": {
-                        "$ref": "#/components/schemas/Field-dtModifiedDate",
-                        "description": ""
-                    },
-                    "a_objFormDataSigner": {
-                        "description": "",
-                        "uniqueItems": false,
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Custom-FormDataSigner-Response"
-                        }
                     }
                 }
             },
@@ -5241,6 +5206,101 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/ezsignformfieldgroup-ResponseCompound"
+                        }
+                    }
+                }
+            },
+            "ezsignfolder-getFormsData-v1-Response": {
+                "description": "Response for the /1/object/ezsignfolder/{pkiEzsignfolder}/getFormsData API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsignfolder-getFormsData-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsignfolder-getFormsData-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignfolder/{pkiEzsigndocument}/getFormsData API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "type": "object"
+                    },
+                    {
+                        "$ref": "#/components/schemas/Custom-FormDataFolder-Response"
+                    }
+                ]
+            },
+            "Custom-FormDataDocument-Response": {
+                "description": "A form Data Document Object ",
+                "required": [
+                    "pkiEzsigndocumentID",
+                    "fkiEzsignfolderID",
+                    "sEzsigndocumentName",
+                    "dtModifiedDate",
+                    "a_objFormDataSigner"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsigndocumentID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID",
+                        "description": ""
+                    },
+                    "fkiEzsignfolderID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID",
+                        "description": ""
+                    },
+                    "sEzsigndocumentName": {
+                        "$ref": "#/components/schemas/Field-sEzsigndocumentName",
+                        "description": ""
+                    },
+                    "dtModifiedDate": {
+                        "$ref": "#/components/schemas/Field-dtModifiedDate",
+                        "description": ""
+                    },
+                    "a_objFormDataSigner": {
+                        "description": "",
+                        "uniqueItems": false,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-FormDataSigner-Response"
+                        }
+                    }
+                }
+            },
+            "Custom-FormDataFolder-Response": {
+                "description": "A form Data Folder Object",
+                "required": [
+                    "pkiEzsignfolderID",
+                    "sEzsignfolderDescription",
+                    "a_objFormDataDocument"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsignfolderID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID",
+                        "description": ""
+                    },
+                    "sEzsignfolderDescription": {
+                        "$ref": "#/components/schemas/Field-sEzsignfolderDescription",
+                        "description": ""
+                    },
+                    "a_objFormDataDocument": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-FormDataDocument-Response"
                         }
                     }
                 }
