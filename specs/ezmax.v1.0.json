@@ -4741,23 +4741,17 @@
             "ezsigndocument-getWordsPositions-v1-Request": {
                 "description": "Request for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions API Request",
                 "required": [
-                    "a_sWords"
+                    "a_sWord"
                 ],
                 "type": "object",
                 "properties": {
-                    "a_sWords": {
+                    "a_sWord": {
+                        "description": "Array of words to find in the document",
                         "type": "array",
                         "items": {
                             "type": "string"
                         }
                     }
-                },
-                "example": {
-                    "a_sWords": [
-                        "Your word 1",
-                        "Your word 2",
-                        "Your word 3"
-                    ]
                 }
             },
             "ezsigndocument-getWordsPositions-v1-Response": {
@@ -4779,57 +4773,6 @@
                         "$ref": "#/components/schemas/Common-Response"
                     }
                 ]
-            },
-            "ezsigndocument-getWordsPositions-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions API Request",
-                "required": [
-                    "a_sWords"
-                ],
-                "type": "object",
-                "properties": {
-                    "a_sWords": {
-                        "description": "An array of words with an array of pages and positions X,Y\n\nThey are returned with the sames words that was sent in the request.",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Custom-WordPosition-Response"
-                        }
-                    }
-                },
-                "example": {
-                    "a_sWords": [
-                        {
-                            "iPage": 1,
-                            "iX": 70,
-                            "iY": 0
-                        },
-                        {
-                            "iPage": 2,
-                            "iX": 20,
-                            "iY": 40
-                        }
-                    ],
-                    "Your Word 1": [
-                        {
-                            "iPage": 1,
-                            "iX": 70,
-                            "iY": 0
-                        },
-                        {
-                            "iPage": 2,
-                            "iX": 20,
-                            "iY": 40
-                        }
-                    ],
-                    "Your Word 2": [
-                        {
-                            "iPage": 2,
-                            "iX": 20,
-                            "iY": 40
-                        }
-                    ],
-                    "Your Word 3": [
-                    ]
-                }
             },
             "ezsigndocument-getEzsignpages-v1-Response": {
                 "description": "Response for the /1/object/ezsigndocument/{pkiEzsigndocument}/getEzsignpages API Request",
@@ -5302,6 +5245,19 @@
                         "items": {
                             "$ref": "#/components/schemas/Custom-FormDataDocument-Response"
                         }
+                    }
+                }
+            },
+            "ezsigndocument-getWordsPositions-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions API Request",
+                "required": [
+                ],
+                "type": "object",
+                "additionalProperties": {
+                    "description": "Each searched word will be a property and the value will be an array of search results",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/components/schemas/Custom-WordPosition-Response"
                     }
                 }
             }
