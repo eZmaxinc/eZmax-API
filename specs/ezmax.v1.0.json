@@ -4738,22 +4738,6 @@
                 "type": "string",
                 "example": "VGhpcyBpcyBhbiBlbmNyeXB0ZWQgcGFzc3dvcmQ="
             },
-            "ezsigndocument-getWordsPositions-v1-Request": {
-                "description": "Request for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions API Request",
-                "required": [
-                    "a_sWord"
-                ],
-                "type": "object",
-                "properties": {
-                    "a_sWord": {
-                        "description": "Array of words to find in the document",
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
             "ezsigndocument-getWordsPositions-v1-Response": {
                 "description": "Response for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions API Request",
                 "type": "object",
@@ -5144,7 +5128,7 @@
                         "description": ""
                     },
                     "a_objEzsignformfieldgroupCompound": {
-                        "description": "This array contains the labels or each Form fields in the form but WITHOUT the values",
+                        "description": "",
                         "uniqueItems": false,
                         "type": "array",
                         "items": {
@@ -5263,6 +5247,30 @@
                         }
                     }
                 ]
+            },
+            "ezsigndocument-getWordsPositions-v1-Request": {
+                "description": "Request for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions API Request",
+                "required": [
+                    "eSearchFor"
+                ],
+                "type": "object",
+                "properties": {
+                    "eGet": {
+                        "description": "Specify if you want to retrieve *All* words or specific *Words* from the document. If you specify *Words*, you must send the list of words to search in *a_sWord*.",
+                        "enum": [
+                            "All",
+                            "Words"
+                        ],
+                        "type": "string"
+                    },
+                    "a_sWord": {
+                        "description": "Array of words to find in the document",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
             }
         },
         "responses": {
