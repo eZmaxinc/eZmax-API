@@ -5250,16 +5250,19 @@
             },
             "ezsigndocument-getWordsPositions-v1-Response-mPayload": {
                 "description": "Payload for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions API Request",
-                "required": [
-                ],
                 "type": "object",
-                "additionalProperties": {
-                    "description": "Each searched word will be a property and the value will be an array of search results",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/components/schemas/Custom-WordPosition-Response"
+                "allOf": [
+                    {
+                        "type": "object",
+                        "additionalProperties": {
+                            "description": "Each searched word will be a property and the value will be an array of search results",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/Custom-WordPosition-Response"
+                            }
+                        }
                     }
-                }
+                ]
             }
         },
         "responses": {
