@@ -5232,22 +5232,6 @@
                     }
                 }
             },
-            "ezsigndocument-getWordsPositions-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "type": "object",
-                        "additionalProperties": {
-                            "description": "Each searched word will be a property and the value will be an array of search results",
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/components/schemas/Custom-WordPosition-Response"
-                            }
-                        }
-                    }
-                ]
-            },
             "ezsigndocument-getWordsPositions-v1-Request": {
                 "description": "Request for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions API Request",
                 "required": [
@@ -5271,6 +5255,31 @@
                         }
                     }
                 }
+            },
+            "ezsigndocument-getWordsPositions-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "test"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "test": {
+                                "description": "",
+                                "type": "boolean"
+                            }
+                        },
+                        "additionalProperties": {
+                            "description": "Each searched word will be a property and the value will be an array of search results",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/Custom-WordPosition-Response"
+                            }
+                        }
+                    }
+                ]
             }
         },
         "responses": {
