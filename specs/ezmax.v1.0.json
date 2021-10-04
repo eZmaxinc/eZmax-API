@@ -5247,7 +5247,7 @@
                 "description": "A Word Position Object",
                 "required": [
                     "sWord",
-                    "objWordPositionOccurence"
+                    "a_objWordPositionOccurence"
                 ],
                 "type": "object",
                 "properties": {
@@ -5255,7 +5255,7 @@
                         "description": "The searched word",
                         "type": "string"
                     },
-                    "objWordPositionOccurence": {
+                    "a_objWordPositionOccurence": {
                         "description": "The found occurences for the seached word",
                         "type": "array",
                         "items": {
@@ -5277,8 +5277,7 @@
                             "mPayload": {
                                 "$ref": "#/components/schemas/ezsigndocument-getWordsPositions-v1-Response-mPayload"
                             }
-                        },
-                        "additionalProperties": true
+                        }
                     },
                     {
                         "$ref": "#/components/schemas/Common-Response"
