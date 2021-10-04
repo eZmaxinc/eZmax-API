@@ -4738,26 +4738,6 @@
                 "type": "string",
                 "example": "VGhpcyBpcyBhbiBlbmNyeXB0ZWQgcGFzc3dvcmQ="
             },
-            "ezsigndocument-getWordsPositions-v1-Response": {
-                "description": "Response for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "mPayload"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "mPayload": {
-                                "$ref": "#/components/schemas/ezsigndocument-getWordsPositions-v1-Response-mPayload"
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Response"
-                    }
-                ]
-            },
             "ezsigndocument-getEzsignpages-v1-Response": {
                 "description": "Response for the /1/object/ezsigndocument/{pkiEzsigndocument}/getEzsignpages API Request",
                 "type": "object",
@@ -5283,6 +5263,27 @@
                         }
                     }
                 }
+            },
+            "ezsigndocument-getWordsPositions-v1-Response": {
+                "description": "Response for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsigndocument-getWordsPositions-v1-Response-mPayload"
+                            }
+                        },
+                        "additionalProperties": true
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
             }
         },
         "responses": {
