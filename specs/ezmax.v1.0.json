@@ -1821,7 +1821,7 @@
                         "name": "sZZZZZZZZZZZZZZZZZZZZ",
                         "description": "",
                         "schema": {
-                            "$ref": "#/components/schemas/apikey-Request"
+                            "$ref": "#/components/schemas/Multilingual-ApikeyDescription"
                         },
                         "in": "query"
                     }
@@ -1841,6 +1841,9 @@
                             }
                         },
                         "description": "Successful response"
+                    },
+                    "406": {
+                        "$ref": "#/components/responses/Response-Error-406"
                     }
                 },
                 "security": [
