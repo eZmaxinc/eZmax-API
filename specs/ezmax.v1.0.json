@@ -5201,7 +5201,7 @@
                         "type": "object"
                     },
                     {
-                        "$ref": "#/components/schemas/Custom-FormDataFolder-Response"
+                        "$ref": "#/components/schemas/Custom-FormsDataFolder-Response"
                     }
                 ]
             },
@@ -5238,32 +5238,6 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/Custom-FormDataSigner-Response"
-                        }
-                    }
-                }
-            },
-            "Custom-FormDataFolder-Response": {
-                "description": "A form Data Folder Object",
-                "required": [
-                    "pkiEzsignfolderID",
-                    "sEzsignfolderDescription",
-                    "a_objFormDataDocument"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiEzsignfolderID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID",
-                        "description": ""
-                    },
-                    "sEzsignfolderDescription": {
-                        "$ref": "#/components/schemas/Field-sEzsignfolderDescription",
-                        "description": ""
-                    },
-                    "a_objFormDataDocument": {
-                        "description": "",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Custom-FormDataDocument-Response"
                         }
                     }
                 }
@@ -5468,6 +5442,32 @@
                 "format": "binary",
                 "description": "A Microsoft Excel File",
                 "type": "string"
+            },
+            "Custom-FormsDataFolder-Response": {
+                "description": "A forms Data Folder Object",
+                "required": [
+                    "pkiEzsignfolderID",
+                    "sEzsignfolderDescription",
+                    "a_objFormDataDocument"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsignfolderID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID",
+                        "description": ""
+                    },
+                    "sEzsignfolderDescription": {
+                        "$ref": "#/components/schemas/Field-sEzsignfolderDescription",
+                        "description": ""
+                    },
+                    "a_objFormDataDocument": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-FormDataDocument-Response"
+                        }
+                    }
+                }
             }
         },
         "responses": {
