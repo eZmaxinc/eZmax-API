@@ -1786,12 +1786,60 @@
                 "tags": [
                     "Object_Ezsignfoldertype"
                 ],
+                "parameters": [
+                    {
+                        "name": "eOrderBy",
+                        "description": "Specify how you want the results to be sorted",
+                        "schema": {
+                            "enum": [
+                                "sEzsignfoldertypeNameX",
+                                "sEzsignfoldertypeNameX desc"
+                            ],
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false
+                    },
+                    {
+                        "name": "iRowMax",
+                        "schema": {
+                            "$ref": "#/components/schemas/Field-iRowMax"
+                        },
+                        "in": "query"
+                    },
+                    {
+                        "name": "iRowOffset",
+                        "schema": {
+                            "$ref": "#/components/schemas/Field-iRowOffset"
+                        },
+                        "in": "query",
+                        "required": false
+                    },
+                    {
+                        "style": "deepObject",
+                        "explode": true,
+                        "name": "sZZZZZZZZZZZZZZZZZZZZ",
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/apikey-Request"
+                            }
+                        },
+                        "in": "query"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/ezsignfoldertype-getList-v1-Response"
+                                }
+                            },
+                            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/File-Xlsx"
                                 }
                             }
                         },
@@ -5405,6 +5453,21 @@
                         }
                     }
                 }
+            },
+            "Field-iRowOffset": {
+                "description": "The starting element from where to start retrieving the results. For example if you started at iRowOffset=0 and asked for iRowMax=100, to get the next 100 results, you could specify iRowOffset=100&iRowMax=100,",
+                "type": "integer",
+                "example": 0
+            },
+            "Field-iRowMax": {
+                "description": "The maximum numbers of results to be returned",
+                "type": "integer",
+                "example": 100
+            },
+            "File-Xlsx": {
+                "format": "binary",
+                "description": "A Microsoft Excel File",
+                "type": "string"
             }
         },
         "responses": {
