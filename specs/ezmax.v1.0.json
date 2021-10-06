@@ -1821,10 +1821,7 @@
                         "name": "sZZZZZZZZZZZZZZZZZZZZ",
                         "description": "",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/components/schemas/apikey-Request"
-                            }
+                            "$ref": "#/components/schemas/apikey-Request"
                         },
                         "in": "query"
                     }
