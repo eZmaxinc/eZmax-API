@@ -40,8 +40,7 @@
                 },
                 "sInfrastructureregionCode": {
                     "enum": [
-                        "ca-central-1",
-                        "local"
+                        "ca-central-1"
                     ],
                     "default": "ca-central-1",
                     "description": "The region where your services are hosted."
