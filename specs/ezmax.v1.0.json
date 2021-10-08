@@ -1792,8 +1792,14 @@
                         "description": "Specify how you want the results to be sorted",
                         "schema": {
                             "enum": [
-                                "sEzsignfoldertypeNameX",
-                                "sEzsignfoldertypeNameX desc"
+                                "pkiEzsignfoldertypeID_ASC",
+                                "pkiEzsignfoldertypeID_DESC",
+                                "eEzsignfoldertypePrivacylevel_ASC",
+                                "eEzsignfoldertypePrivacylevel_DESC",
+                                "sEzsignfoldertypeNameX_ASC",
+                                "sEzsignfoldertypeNameX_DESC",
+                                "bEzsignfoldertypeIsactive_ASC",
+                                "bEzsignfoldertypeIsactive_DESC"
                             ],
                             "type": "string"
                         },
@@ -2168,40 +2174,6 @@
                             "sQuery": "SELECT * FROM table",
                             "fDuration": 1.0E-4
                         }
-                    ]
-                }
-            },
-            "Common-Response-objDebugPayload": {
-                "description": "This is a debug object containing debugging information on the actual function",
-                "required": [
-                    "a_RequiredPermissions",
-                    "iVersionMax",
-                    "iVersionMin"
-                ],
-                "type": "object",
-                "properties": {
-                    "iVersionMin": {
-                        "description": "The minimum version of the function that can be called",
-                        "type": "integer"
-                    },
-                    "iVersionMax": {
-                        "description": "The maximum version of the function that can be called",
-                        "type": "integer"
-                    },
-                    "a_RequiredPermissions": {
-                        "description": "An array of permissions required to access this function.\n\nIf the value \"0\" is present in the array, anyone can call this function.\n\nYou must have one of the permission to access the function. You don't need to have all of them.",
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    }
-                },
-                "example": {
-                    "iVersionMin": 1,
-                    "iVersionMax": 2,
-                    "a_RequiredPermissions": [
-                        45,
-                        61
                     ]
                 }
             },
@@ -5299,26 +5271,6 @@
                     }
                 ]
             },
-            "ezsignfoldertype-getList-v1-Response": {
-                "description": "Response for the /1/object/ezsignfoldertype/getList API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "mPayload"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "mPayload": {
-                                "$ref": "#/components/schemas/ezsignfoldertype-getList-v1-Response-mPayload"
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Response"
-                    }
-                ]
-            },
             "ezsignfoldertype-getList-v1-Response-mPayload": {
                 "description": "Payload for the /1/object/ezsignfolder/getList API Request",
                 "type": "object",
@@ -5367,24 +5319,6 @@
                 "description": "The name of the Ezsignfoldertype in the language of the requester",
                 "type": "string",
                 "example": "Default"
-            },
-            "ezsignfoldertype-ListElement": {
-                "description": "An Ezsignfoldertype List Element",
-                "required": [
-                    "pkiEzsignfoldertypeID",
-                    "sEzsignfoldertypeNameX"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiEzsignfoldertypeID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID",
-                        "description": ""
-                    },
-                    "sEzsignfoldertypeNameX": {
-                        "$ref": "#/components/schemas/Field-sEzsignfoldertypeNameX",
-                        "description": ""
-                    }
-                }
             },
             "Field-iRowOffset": {
                 "description": "The starting element from where to start retrieving the results. For example if you started at iRowOffset=0 and asked for iRowMax=100, to get the next 100 results, you could specify iRowOffset=100&iRowMax=100,",
@@ -5489,6 +5423,166 @@
                         "items": {
                             "type": "string"
                         }
+                    }
+                }
+            },
+            "Field-eEzsignfoldertypePrivacylevel": {
+                "description": "The Privacy level of the Ezsignfolder type.\n\n* **User** is for personal folders use and cannot be shared\n* **Usergroup** is for shared folders and complex permission can be configured to control access",
+                "enum": [
+                    "User",
+                    "Usergroup"
+                ],
+                "type": "string"
+            },
+            "Field-bEzsignfoldertypeIsactive": {
+                "description": "Whether the Ezsignfoldertype is active or not",
+                "type": "boolean"
+            },
+            "ezsignfoldertype-ListElement": {
+                "description": "An Ezsignfoldertype List Element",
+                "required": [
+                    "pkiEzsignfoldertypeID",
+                    "eEzsignfoldertypePrivacylevel",
+                    "sEzsignfoldertypeNameX",
+                    "bEzsignfoldertypeIsactive"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsignfoldertypeID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID",
+                        "description": ""
+                    },
+                    "eEzsignfoldertypePrivacylevel": {
+                        "$ref": "#/components/schemas/Field-eEzsignfoldertypePrivacylevel",
+                        "description": ""
+                    },
+                    "sEzsignfoldertypeNameX": {
+                        "$ref": "#/components/schemas/Field-sEzsignfoldertypeNameX",
+                        "description": ""
+                    },
+                    "bEzsignfoldertypeIsactive": {
+                        "$ref": "#/components/schemas/Field-bEzsignfoldertypeIsactive",
+                        "description": ""
+                    }
+                }
+            },
+            "Common-Response-objDebugPayload": {
+                "description": "This is a debug object containing debugging information on the actual function",
+                "required": [
+                    "a_RequiredPermission",
+                    "iVersionMax",
+                    "iVersionMin"
+                ],
+                "type": "object",
+                "properties": {
+                    "iVersionMin": {
+                        "description": "The minimum version of the function that can be called",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "iVersionMax": {
+                        "description": "The maximum version of the function that can be called",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "a_RequiredPermission": {
+                        "description": "An array of permissions required to access this function.\n\nIf the value \"0\" is present in the array, anyone can call this function.\n\nYou must have one of the permission to access the function. You don't need to have all of them.",
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "example": 117
+                        }
+                    }
+                }
+            },
+            "ezsignfoldertype-getList-v1-Response": {
+                "description": "Response for the /1/object/ezsignfoldertype/getList API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsignfoldertype-getList-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response_getList"
+                    }
+                ]
+            },
+            "Common-Response_getList": {
+                "description": "All API response will inherit this based Response",
+                "type": "object",
+                "properties": {
+                    "objDebugPayload": {
+                        "$ref": "#/components/schemas/Common-Response-objDebugPayload_getList"
+                    },
+                    "objDebug": {
+                        "$ref": "#/components/schemas/Common-Response-objDebug"
+                    }
+                }
+            },
+            "Common-Response-objDebugPayload_getList": {
+                "description": "This is a debug object containing debugging information on the actual function",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response-objDebugPayload"
+                    },
+                    {
+                        "required": [
+                            "a_Filter",
+                            "a_OrderBy"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "a_Filter": {
+                                "$ref": "#/components/schemas/Common-Response-Filter",
+                                "description": ""
+                            },
+                            "a_OrderBy": {
+                                "description": "List of available values for *eOrderBy*",
+                                "type": "object",
+                                "additionalProperties": {
+                                    "description": "Corresponding sql statement",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "Common-Response-Filter": {
+                "description": "Definition of Filters for getList",
+                "type": "object",
+                "properties": {
+                    "a_AutoType": {
+                        "description": "List of filters that can be used in *sFilter* (Automatic types)",
+                        "type": "object",
+                        "additionalProperties": {
+                            "description": "The actual field name being filtered",
+                            "type": "string"
+                        }
+                    },
+                    "a_Enum": {
+                        "$ref": "#/components/schemas/Common-Response-FilterEnum"
+                    }
+                }
+            },
+            "Common-Response-FilterEnum": {
+                "description": "List of filters that can be used in *sFilter* (Enum types)",
+                "type": "object",
+                "additionalProperties": {
+                    "description": "List of valid enum values",
+                    "type": "object",
+                    "additionalProperties": {
+                        "description": "Corresponding sql statement",
+                        "type": "string"
                     }
                 }
             }
