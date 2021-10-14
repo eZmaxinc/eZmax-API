@@ -1778,26 +1778,6 @@
                         },
                         "in": "query",
                         "required": false
-                    },
-                    {
-                        "name": "xxx",
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "in": "header"
-                    },
-                    {
-                        "name": "yyy",
-                        "description": "",
-                        "schema": {
-                            "enum": [
-                                "aaa",
-                                "bbb"
-                            ],
-                            "type": "string"
-                        },
-                        "in": "header"
                     }
                 ],
                 "responses": {
