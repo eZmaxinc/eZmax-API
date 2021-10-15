@@ -1868,6 +1868,69 @@
                 }
             ]
         },
+        "/1/object/ezsignfoldertype/getAutocomplete/{sSelector}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Ezsignfoldertype"
+                ],
+                "parameters": [
+                    {
+                        "name": "sQuery",
+                        "description": "Allow to filter the returned results",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Common-getAutocomplete-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignfoldertype_GetAutocomplete_V1",
+                "summary": "Retrieve Ezsignfoldertypes and IDs",
+                "description": "Get the list of Ezsignfoldertypes to be used in a dropdown or autocomplete control."
+            },
+            "parameters": [
+                {
+                    "name": "sSelector",
+                    "description": "The type of Ezsignfoldertypes to return",
+                    "schema": {
+                        "enum": [
+                            "Active",
+                            "All"
+                        ],
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                },
+                {
+                    "name": "Accept-Language",
+                    "schema": {
+                        "$ref": "#/components/schemas/Header-Accept-Language"
+                    },
+                    "in": "header",
+                    "required": false
+                }
+            ]
+        },
         "/1/object/ezsignfolder/getList": {
             "description": "",
             "get": {
@@ -1882,8 +1945,28 @@
                             "enum": [
                                 "pkiEzsignfolderID_ASC",
                                 "pkiEzsignfolderID_DESC",
-                                "sEzsignfolderDescription",
-                                "sEzsignfolderDescription_DESC"
+                                "sEzsignfolderDescription_ASC",
+                                "sEzsignfolderDescription_DESC",
+                                "dtCreatedDate_ASC",
+                                "dtCreatedDate_DESC",
+                                "fkiEzsignfoldertypeID_ASC",
+                                "fkiEzsignfoldertypeID_DESC",
+                                "sEzsignfoldertypeNameX_ASC",
+                                "sEzsignfoldertypeNameX_DESC",
+                                "eEzsignfolderStep_ASC",
+                                "eEzsignfolderStep_DESC",
+                                "dtEzsignfolderSentdate_ASC",
+                                "dtEzsignfolderSentdate_DESC",
+                                "dtDueDate_ASC",
+                                "dtDueDate_DESC",
+                                "iTotalDocument_ASC",
+                                "iTotalDocument_DESC",
+                                "iTotalDocumentEdm_ASC",
+                                "iTotalDocumentEdm_DESC",
+                                "iTotalSignature_ASC",
+                                "iTotalSignature_DESC",
+                                "iTotalSignatureSigned_ASC",
+                                "iTotalSignatureSigned_DESC"
                             ],
                             "type": "string"
                         },
@@ -1949,71 +2032,9 @@
                     }
                 ],
                 "operationId": "Ezsignfolder_GetList_V1",
-                "summary": "Retrieve Ezsignfolder list"
+                "summary": "Retrieve Ezsignfolder list",
+                "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eEzsignfolderStep | Unsent<br>Sent<br>PartiallySigned<br>Expired<br>Completed<br>Archived |"
             }
-        },
-        "/1/object/ezsignfoldertype/getAutocomplete/{sSelector}": {
-            "description": "",
-            "get": {
-                "tags": [
-                    "Object_Ezsignfoldertype"
-                ],
-                "parameters": [
-                    {
-                        "name": "sQuery",
-                        "description": "Allow to filter the returned results",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "in": "query",
-                        "required": false
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Common-getAutocomplete-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfoldertype_GetAutocomplete_V1",
-                "summary": "Retrieve Ezsignfoldertypes and IDs",
-                "description": "Get the list of Ezsignfoldertypes to be used in a dropdown or autocomplete control."
-            },
-            "parameters": [
-                {
-                    "name": "sSelector",
-                    "description": "The type of Ezsignfoldertypes to return",
-                    "schema": {
-                        "enum": [
-                            "Active",
-                            "All"
-                        ],
-                        "type": "string"
-                    },
-                    "in": "path",
-                    "required": true
-                },
-                {
-                    "name": "Accept-Language",
-                    "schema": {
-                        "$ref": "#/components/schemas/Header-Accept-Language"
-                    },
-                    "in": "header",
-                    "required": false
-                }
-            ]
         }
     },
     "components": {
@@ -5786,12 +5807,6 @@
                 "type": "string",
                 "example": "Completed"
             },
-            "Common-Format-DateTime-Nullable": {
-                "nullable": true,
-                "description": "Represent a Date Time.\nThe timezone is the one configured in the User's profile.",
-                "type": "string",
-                "example": "2020-12-31 23:59:59"
-            },
             "ezsignfolder-ListElement": {
                 "description": "An Ezsignfolder List Element",
                 "required": [
@@ -5834,9 +5849,14 @@
                         "description": ""
                     },
                     "dtEzsignfolderSentdate": {
-                        "nullable": true,
-                        "$ref": "#/components/schemas/Field-dtEzsignfolderSentdate",
-                        "description": ""
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Field-dtEzsignfolderSentdate"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     },
                     "dtDueDate": {
                         "oneOf": [
