@@ -2,7 +2,7 @@
     "openapi": "3.0.3",
     "info": {
         "title": "eZmax API Definition",
-        "version": "1.1.0",
+        "version": "1.0.47",
         "description": "This API expose all the functionnalities for the eZmax and eZsign applications.",
         "termsOfService": "https://www.ezmax.ca/TODO",
         "contact": {
@@ -40,7 +40,8 @@
                 },
                 "sInfrastructureregionCode": {
                     "enum": [
-                        "ca-central-1"
+                        "ca-central-1",
+                        "local"
                     ],
                     "default": "ca-central-1",
                     "description": "The region where your services are hosted."
@@ -220,6 +221,60 @@
                 "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects."
             }
         },
+        "/1/object/ezsignfolder/{pkiEzsignfolderID}/send": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezsignfolder-send-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Ezsignfolder"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfolder-send-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignfolder_Send_V1",
+                "summary": "Send the Ezsignfolder to the signatories for signature"
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignfolderID",
+                    "description": "The unique ID of the Ezsignfolder",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/1/object/ezsignsignature": {
             "description": "",
             "post": {
@@ -261,6 +316,111 @@
                 "summary": "Create a new Ezsignsignature",
                 "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects."
             }
+        },
+        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getDownloadUrl/{eDocumentType}": {
+            "get": {
+                "tags": [
+                    "Object_Ezsigndocument"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigndocument-getDownloadUrl-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsigndocument_GetDownloadUrl_V1",
+                "summary": "Retrieve a URL to download documents.",
+                "description": "This endpoint returns URLs to different files that can be downloaded during the signing process.\n\nThese links will expire after 5 minutes so the download of the file should be made soon after retrieving the link."
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigndocumentID",
+                    "description": "The unique ID of the Ezsigndocument",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                },
+                {
+                    "name": "eDocumentType",
+                    "description": "The type of document to retrieve.\n\n1. **Initial** Is the initial document before any signature were applied.\n2. **Signed** Is the final document once all signatures were applied.\n3. **Proofdocument** Is the evidence report.\n4. **Proof** Is the complete evidence archive including all of the above and more.\n",
+                    "schema": {
+                        "enum": [
+                            "Initial",
+                            "Signed",
+                            "Proof",
+                            "Proofdocument"
+                        ],
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getInPersonLoginUrl": {
+            "get": {
+                "tags": [
+                    "Object_Ezsignfoldersignerassociation"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfoldersignerassociation-getInPersonLoginUrl-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignfoldersignerassociation_GetInPersonLoginUrl_V1",
+                "summary": "Retrieve a Login Url to allow In-Person signing",
+                "description": "This endpoint returns a Login Url that can be used in a browser or embedded in an I-Frame to allow in person signing.\n\nThe signer Login type must be configured as In-Person."
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignfoldersignerassociationID",
+                    "description": "The unique ID of the Ezsignfoldersignerassociation",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
         },
         "/1/object/franchisereferalincome": {
             "description": "",
@@ -313,7 +473,7 @@
                 "parameters": [
                     {
                         "name": "sQuery",
-                        "description": "Allow to filter the returned results",
+                        "description": "Allow to filter on the option value",
                         "schema": {
                             "type": "string"
                         },
@@ -359,6 +519,63 @@
                 }
             ]
         },
+        "/1/object/period/getAutocomplete/{sSelector}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Period"
+                ],
+                "parameters": [
+                    {
+                        "name": "sQuery",
+                        "description": "Allow to filter on the option value",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Common-getAutocomplete-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Period_GetAutocomplete_V1",
+                "summary": "Retrieve Periods and IDs",
+                "description": "Get the list of Periods to be used in a dropdown or autocomplete control."
+            },
+            "parameters": [
+                {
+                    "name": "sSelector",
+                    "description": "The types of Periods to return",
+                    "schema": {
+                        "enum": [
+                            "ActiveNormal",
+                            "ActiveNormalAndEndOfYear",
+                            "AllNormal",
+                            "AllNormalAndEndOfYear"
+                        ],
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/1/object/franchiseoffice/getAutocomplete/{sSelector}": {
             "description": "",
             "get": {
@@ -368,7 +585,7 @@
                 "parameters": [
                     {
                         "name": "sQuery",
-                        "description": "Allow to filter the returned results",
+                        "description": "Allow to filter on the option value",
                         "schema": {
                             "type": "string"
                         },
@@ -456,6 +673,61 @@
                 "description": "The endpoint allows to initiate the creation or a user of type Ezsignuser.\n\nThe user will be created only once the email verification process will be completed"
             }
         },
+        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezsigndocument-applyEzsigntemplate-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Ezsigndocument"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigndocument-applyEzsigntemplate-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsigndocument_ApplyEzsigntemplate_V1",
+                "summary": "Apply an Ezsign Template to the Ezsigndocument.",
+                "description": "This endpoint applies a predefined template to the ezsign document.\nThis allows to automatically apply all the form and signature fields on a document in a single step.\n\nThe document must not already have fields otherwise an error will be returned."
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigndocumentID",
+                    "description": "The unique ID of the Ezsigndocument",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/1/object/apikey": {
             "description": "",
             "post": {
@@ -497,6 +769,61 @@
                 "summary": "Create a new Apikey",
                 "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects."
             }
+        },
+        "/1/customer/{pksCustomerCode}/endpoint": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Global_Customer"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/global-customer-getEndpoint-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+
+                    }
+                ],
+                "operationId": "Global_Customer_GetEndpoint_V1",
+                "summary": "Get customer endpoint",
+                "description": "Retrieve the customer's specific server endpoint where to send requests. This will help locate the proper region (ie: sInfrastructureregionCode) and the proper environment (ie: sInfrastructureenvironmenttypeDescription) where the customer's data is stored."
+            },
+            "parameters": [
+                {
+                    "name": "pksCustomerCode",
+                    "description": "The customer code assigned to your account",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                },
+                {
+                    "name": "sInfrastructureproductCode",
+                    "description": "The infrastructure product Code\n\nIf undefined, \"appcluster01\" is assumed",
+                    "schema": {
+                        "enum": [
+                            "appcluster01",
+                            "ezsignuser"
+                        ],
+                        "type": "string"
+                    },
+                    "in": "query",
+                    "required": false
+                }
+            ]
         },
         "/1/module/sspr/sendUsernames": {
             "post": {
@@ -774,50 +1101,6 @@
                 }
             ]
         },
-        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages": {
-            "get": {
-                "tags": [
-                    "Object_Ezsigndocument"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsigndocument-getEzsignpages-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/Response-Error-422"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsigndocument_GetEzsignpages_V1",
-                "summary": "Retrieve an existing Ezsigndocument's Ezsignpages",
-                "description": ""
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsigndocumentID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
         "/1/object/ezsigndocument/{pkiEzsigndocumentID}": {
             "description": "",
             "get": {
@@ -883,153 +1166,9 @@
             "parameters": [
                 {
                     "name": "pkiEzsigndocumentID",
+                    "description": "The unique ID of the Ezsigndocument",
                     "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate": {
-            "post": {
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/ezsigndocument-applyEzsigntemplate-v1-Request"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "tags": [
-                    "Object_Ezsigndocument"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsigndocument-applyEzsigntemplate-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/Response-Error-422"
-                    }
-                },
-                "deprecated": true,
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsigndocument_ApplyEzsigntemplate_V1",
-                "summary": "Apply an Ezsign Template to the Ezsigndocument.",
-                "description": "This function is deprecated. Please use *applyEzsigntemplate* instead which is doing the same thing but with a capital \"E\" to normalize the nomenclature.\n\nThis endpoint applies a predefined template to the ezsign document.\nThis allows to automatically apply all the form and signature fields on a document in a single step.\n\nThe document must not already have fields otherwise an error will be returned."
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsigndocumentID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getChildren": {
-            "get": {
-                "tags": [
-                    "Object_Ezsigndocument"
-                ],
-                "responses": {
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsigndocument_GetChildren_V1",
-                "summary": "Retrieve an existing Ezsigndocument's children IDs",
-                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsigndocumentID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getDownloadUrl/{eDocumentType}": {
-            "get": {
-                "tags": [
-                    "Object_Ezsigndocument"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsigndocument-getDownloadUrl-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/Response-Error-422"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsigndocument_GetDownloadUrl_V1",
-                "summary": "Retrieve a URL to download documents.",
-                "description": "This endpoint returns URLs to different files that can be downloaded during the signing process.\n\nThese links will expire after 5 minutes so the download of the file should be made soon after retrieving the link."
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsigndocumentID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID"
-                    },
-                    "in": "path",
-                    "required": true
-                },
-                {
-                    "name": "eDocumentType",
-                    "description": "The type of document to retrieve.\n\n1. **Initial** Is the initial document before any signature were applied.\n2. **Signed** Is the final document once all signatures were applied.\n3. **Proofdocument** Is the evidence report.\n4. **Proof** Is the complete evidence archive including all of the above and more.\n",
-                    "schema": {
-                        "enum": [
-                            "Initial",
-                            "Signed",
-                            "Proof",
-                            "Proofdocument"
-                        ],
-                        "type": "string"
+                        "type": "integer"
                     },
                     "in": "path",
                     "required": true
@@ -1077,13 +1216,95 @@
                 ],
                 "operationId": "Ezsigndocument_GetWordsPositions_V1",
                 "summary": "Retrieve positions X,Y of given words from a Ezsigndocument",
-                "description": ""
+                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
             },
             "parameters": [
                 {
                     "name": "pkiEzsigndocumentID",
+                    "description": "The unique ID of the Ezsigndocument",
                     "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID"
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData": {
+            "get": {
+                "tags": [
+                    "Object_Ezsigndocument"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/zip": {
+                                "schema": {
+                                    "format": "binary",
+                                    "type": "string"
+                                }
+                            },
+                            "application/json": {
+
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsigndocument_GetFormData_V1",
+                "summary": "Retrieve an existing Ezsigndocument's Form Data",
+                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigndocumentID",
+                    "description": "The unique ID of the Ezsigndocument",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getChildren": {
+            "get": {
+                "tags": [
+                    "Object_Ezsigndocument"
+                ],
+                "responses": {
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsigndocument_GetChildren_V1",
+                "summary": "Retrieve an existing Ezsigndocument's children IDs",
+                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigndocumentID",
+                    "description": "The unique ID of the Ezsigndocument",
+                    "schema": {
+                        "type": "integer"
                     },
                     "in": "path",
                     "required": true
@@ -1155,8 +1376,9 @@
             "parameters": [
                 {
                     "name": "pkiEzsignfolderID",
+                    "description": "The unique ID of the Ezsignfolder",
                     "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                        "type": "integer"
                     },
                     "in": "path",
                     "required": true
@@ -1186,61 +1408,9 @@
             "parameters": [
                 {
                     "name": "pkiEzsignfolderID",
+                    "description": "The unique ID of the Ezsignfolder",
                     "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/ezsignfolder/{pkiEzsignfolderID}/send": {
-            "post": {
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/ezsignfolder-send-v1-Request"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "tags": [
-                    "Object_Ezsignfolder"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsignfolder-send-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/Response-Error-422"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfolder_Send_V1",
-                "summary": "Send the Ezsignfolder to the signatories for signature"
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsignfolderID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                        "type": "integer"
                     },
                     "in": "path",
                     "required": true
@@ -1312,8 +1482,9 @@
             "parameters": [
                 {
                     "name": "pkiEzsignfoldersignerassociationID",
+                    "description": "The unique ID of the Ezsignfoldersignerassociation",
                     "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID"
+                        "type": "integer"
                     },
                     "in": "path",
                     "required": true
@@ -1343,52 +1514,9 @@
             "parameters": [
                 {
                     "name": "pkiEzsignfoldersignerassociationID",
+                    "description": "The unique ID of the Ezsignfoldersignerassociation",
                     "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getInPersonLoginUrl": {
-            "get": {
-                "tags": [
-                    "Object_Ezsignfoldersignerassociation"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsignfoldersignerassociation-getInPersonLoginUrl-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/Response-Error-422"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfoldersignerassociation_GetInPersonLoginUrl_V1",
-                "summary": "Retrieve a Login Url to allow In-Person signing",
-                "description": "This endpoint returns a Login Url that can be used in a browser or embedded in an I-Frame to allow in person signing.\n\nThe signer Login type must be configured as In-Person."
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsignfoldersignerassociationID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID"
+                        "type": "integer"
                     },
                     "in": "path",
                     "required": true
@@ -1460,8 +1588,9 @@
             "parameters": [
                 {
                     "name": "pkiEzsignsignatureID",
+                    "description": "The unique ID of the Ezsignsignature",
                     "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignsignatureID"
+                        "type": "integer"
                     },
                     "in": "path",
                     "required": true
@@ -1491,556 +1620,12 @@
             "parameters": [
                 {
                     "name": "pkiEzsignsignatureID",
+                    "description": "The unique ID of the Ezsignsignature",
                     "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignsignatureID"
+                        "type": "integer"
                     },
                     "in": "path",
                     "required": true
-                }
-            ]
-        },
-        "/1/customer/{pksCustomerCode}/endpoint": {
-            "description": "",
-            "get": {
-                "tags": [
-                    "Global_Customer"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/global-customer-getEndpoint-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    }
-                },
-                "security": [
-                    {
-
-                    }
-                ],
-                "operationId": "Global_Customer_GetEndpoint_V1",
-                "summary": "Get customer endpoint",
-                "description": "Retrieve the customer's specific server endpoint where to send requests. This will help locate the proper region (ie: sInfrastructureregionCode) and the proper environment (ie: sInfrastructureenvironmenttypeDescription) where the customer's data is stored."
-            },
-            "parameters": [
-                {
-                    "name": "pksCustomerCode",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pksCustomerCode"
-                    },
-                    "in": "path",
-                    "required": true
-                },
-                {
-                    "name": "sInfrastructureproductCode",
-                    "description": "The infrastructure product Code\n\nIf undefined, \"appcluster01\" is assumed",
-                    "schema": {
-                        "enum": [
-                            "appcluster01",
-                            "ezsignuser"
-                        ],
-                        "type": "string"
-                    },
-                    "in": "query",
-                    "required": false
-                }
-            ]
-        },
-        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData": {
-            "get": {
-                "tags": [
-                    "Object_Ezsigndocument"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsigndocument-getFormData-v1-Response"
-                                }
-                            },
-                            "application/zip": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/File-Zip"
-                                }
-                            },
-                            "text/csv": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/File-Csv"
-                                },
-                                "examples": {
-                                    "Example": {
-                                        "value": "sep=,\n\"sEzsignformfieldgroupLabel.sEzsignformfieldLabel1\",\"sEzsignformfieldgroupLabel.sEzsignformfieldLabel2\",\"sEzsignformfieldgroupLabel.sEzsignformfieldLabel3\",\"sEzsignformfieldgroupLabel.sEzsignformfieldLabel4\"\n\"sEzsignformfieldValue01\",\"sEzsignformfieldValue02\",\"sEzsignformfieldValue03\",\"sEzsignformfieldValue04\"\n\"sEzsignformfieldValue11\",\"sEzsignformfieldValue12\",\"sEzsignformfieldValue13\",\"sEzsignformfieldValue14\"\n\"sEzsignformfieldValue21\",\"sEzsignformfieldValue22\",\"sEzsignformfieldValue23\",\"sEzsignformfieldValue24\""
-                                    }
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
-                    "406": {
-                        "$ref": "#/components/responses/Response-Error-406"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/Response-Error-422"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsigndocument_GetFormData_V1",
-                "summary": "Retrieve an existing Ezsigndocument's Form Data",
-                "description": ""
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsigndocumentID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate": {
-            "post": {
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/ezsigndocument-applyEzsigntemplate-v2-Request"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "tags": [
-                    "Object_Ezsigndocument"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsigndocument-applyEzsigntemplate-v2-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/Response-Error-422"
-                    }
-                },
-                "deprecated": false,
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsigndocument_ApplyEzsigntemplate_V2",
-                "summary": "Apply an Ezsign Template to the Ezsigndocument.",
-                "description": "This endpoint applies a predefined template to the ezsign document.\nThis allows to automatically apply all the form and signature fields on a document in a single step.\n\nThe document must not already have fields otherwise an error will be returned."
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsigndocumentID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData": {
-            "get": {
-                "tags": [
-                    "Object_Ezsignfolder"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsignfolder-getFormsData-v1-Response"
-                                }
-                            },
-                            "application/zip": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/File-Zip"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
-                    "406": {
-                        "$ref": "#/components/responses/Response-Error-406"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/Response-Error-422"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfolder_GetFormsData_V1",
-                "summary": "Retrieve an existing Ezsignfolder's forms data",
-                "description": ""
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsignfolderID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/ezsignfoldertype/getList": {
-            "description": "",
-            "get": {
-                "tags": [
-                    "Object_Ezsignfoldertype"
-                ],
-                "parameters": [
-                    {
-                        "name": "eOrderBy",
-                        "description": "Specify how you want the results to be sorted",
-                        "schema": {
-                            "enum": [
-                                "pkiEzsignfoldertypeID_ASC",
-                                "pkiEzsignfoldertypeID_DESC",
-                                "eEzsignfoldertypePrivacylevel_ASC",
-                                "eEzsignfoldertypePrivacylevel_DESC",
-                                "sEzsignfoldertypeNameX_ASC",
-                                "sEzsignfoldertypeNameX_DESC",
-                                "bEzsignfoldertypeIsactive_ASC",
-                                "bEzsignfoldertypeIsactive_DESC"
-                            ],
-                            "type": "string"
-                        },
-                        "in": "query",
-                        "required": false
-                    },
-                    {
-                        "name": "iRowMax",
-                        "schema": {
-                            "$ref": "#/components/schemas/Field-iRowMax"
-                        },
-                        "in": "query"
-                    },
-                    {
-                        "name": "iRowOffset",
-                        "schema": {
-                            "$ref": "#/components/schemas/Field-iRowOffset"
-                        },
-                        "in": "query",
-                        "required": false
-                    },
-                    {
-                        "name": "Accept-Language",
-                        "schema": {
-                            "$ref": "#/components/schemas/Header-Accept-Language"
-                        },
-                        "in": "header",
-                        "required": false
-                    },
-                    {
-                        "name": "sFilter",
-                        "schema": {
-                            "$ref": "#/components/schemas/Field-sFilter"
-                        },
-                        "in": "query",
-                        "required": false
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsignfoldertype-getList-v1-Response"
-                                }
-                            },
-                            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/File-Xlsx"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "406": {
-                        "$ref": "#/components/responses/Response-Error-406"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfoldertype_GetList_V1",
-                "summary": "Retrieve Ezsignfoldertype list",
-                "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eEzsignfoldertypePrivacylevel | User<br>Usergroup |"
-            }
-        },
-        "/1/object/period/getAutocomplete/{sSelector}": {
-            "description": "",
-            "get": {
-                "tags": [
-                    "Object_Period"
-                ],
-                "parameters": [
-                    {
-                        "name": "sQuery",
-                        "description": "Allow to filter the returned results",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "in": "query",
-                        "required": false
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Common-getAutocomplete-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Period_GetAutocomplete_V1",
-                "summary": "Retrieve Periods and IDs",
-                "description": "Get the list of Periods to be used in a dropdown or autocomplete control."
-            },
-            "parameters": [
-                {
-                    "name": "sSelector",
-                    "description": "The types of Periods to return",
-                    "schema": {
-                        "enum": [
-                            "ActiveNormal",
-                            "ActiveNormalAndEndOfYear",
-                            "AllNormal",
-                            "AllNormalAndEndOfYear"
-                        ],
-                        "type": "string"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/ezsignfolder/getList": {
-            "description": "",
-            "get": {
-                "tags": [
-                    "Object_Ezsignfolder"
-                ],
-                "parameters": [
-                    {
-                        "name": "eOrderBy",
-                        "description": "Specify how you want the results to be sorted",
-                        "schema": {
-                            "enum": [
-                                "pkiEzsignfolderID_ASC",
-                                "pkiEzsignfolderID_DESC",
-                                "sEzsignfolderDescription_ASC",
-                                "sEzsignfolderDescription_DESC",
-                                "dtCreatedDate_ASC",
-                                "dtCreatedDate_DESC",
-                                "fkiEzsignfoldertypeID_ASC",
-                                "fkiEzsignfoldertypeID_DESC",
-                                "sEzsignfoldertypeNameX_ASC",
-                                "sEzsignfoldertypeNameX_DESC",
-                                "eEzsignfolderStep_ASC",
-                                "eEzsignfolderStep_DESC",
-                                "dtEzsignfolderSentdate_ASC",
-                                "dtEzsignfolderSentdate_DESC",
-                                "dtDueDate_ASC",
-                                "dtDueDate_DESC",
-                                "iTotalDocument_ASC",
-                                "iTotalDocument_DESC",
-                                "iTotalDocumentEdm_ASC",
-                                "iTotalDocumentEdm_DESC",
-                                "iTotalSignature_ASC",
-                                "iTotalSignature_DESC",
-                                "iTotalSignatureSigned_ASC",
-                                "iTotalSignatureSigned_DESC"
-                            ],
-                            "type": "string"
-                        },
-                        "in": "query",
-                        "required": false
-                    },
-                    {
-                        "name": "iRowMax",
-                        "schema": {
-                            "$ref": "#/components/schemas/Field-iRowMax"
-                        },
-                        "in": "query"
-                    },
-                    {
-                        "name": "iRowOffset",
-                        "schema": {
-                            "$ref": "#/components/schemas/Field-iRowOffset"
-                        },
-                        "in": "query",
-                        "required": false
-                    },
-                    {
-                        "name": "Accept-Language",
-                        "schema": {
-                            "$ref": "#/components/schemas/Header-Accept-Language"
-                        },
-                        "in": "header",
-                        "required": false
-                    },
-                    {
-                        "name": "sFilter",
-                        "schema": {
-                            "$ref": "#/components/schemas/Field-sFilter"
-                        },
-                        "in": "query",
-                        "required": false
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsignfolder-getList-v1-Response"
-                                }
-                            },
-                            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/File-Xlsx"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "406": {
-                        "$ref": "#/components/responses/Response-Error-406"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfolder_GetList_V1",
-                "summary": "Retrieve Ezsignfolder list",
-                "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eEzsignfolderStep | Unsent<br>Sent<br>PartiallySigned<br>Expired<br>Completed<br>Archived |"
-            }
-        },
-        "/1/object/ezsignfoldertype/getAutocomplete/{sSelector}": {
-            "description": "",
-            "get": {
-                "tags": [
-                    "Object_Ezsignfoldertype"
-                ],
-                "parameters": [
-                    {
-                        "name": "sQuery",
-                        "description": "Allow to filter the returned results",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "in": "query",
-                        "required": false
-                    },
-                    {
-                        "name": "Accept-Language",
-                        "schema": {
-                            "$ref": "#/components/schemas/Header-Accept-Language"
-                        },
-                        "in": "header",
-                        "required": false
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Common-getAutocomplete-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfoldertype_GetAutocomplete_V1",
-                "summary": "Retrieve Ezsignfoldertypes and IDs",
-                "description": "Get the list of Ezsignfoldertypes to be used in a dropdown or autocomplete control."
-            },
-            "parameters": [
-                {
-                    "name": "sSelector",
-                    "description": "The type of Ezsignfoldertypes to return",
-                    "schema": {
-                        "enum": [
-                            "Active",
-                            "All"
-                        ],
-                        "type": "string"
-                    },
-                    "in": "path",
-                    "required": true
-                },
-                {
-                    "name": "Accept-Language",
-                    "schema": {
-                        "$ref": "#/components/schemas/Header-Accept-Language"
-                    },
-                    "in": "header",
-                    "required": false
                 }
             ]
         }
@@ -2191,6 +1776,24 @@
                         "$ref": "#/components/schemas/Common-Response"
                     }
                 ]
+            },
+            "ezsignfolder-createObject-v1-Response": {
+                "description": "Response for the /1/object/ezsignfolder/createObject API Request",
+                "required": [
+                    "mPayload"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ],
+                "properties": {
+                    "mPayload": {
+                        "$ref": "#/components/schemas/ezsignfolder-createObject-v1-Response-mPayload",
+                        "description": ""
+                    }
+                }
             },
             "ezsignfolder-deleteObject-v1-Response": {
                 "description": "Response for the /1/object/ezsignfolder/deleteObject API Request",
@@ -2349,6 +1952,40 @@
                             "sQuery": "SELECT * FROM table",
                             "fDuration": 1.0E-4
                         }
+                    ]
+                }
+            },
+            "Common-Response-objDebugPayload": {
+                "description": "This is a debug object containing debugging information on the actual function",
+                "required": [
+                    "a_RequiredPermissions",
+                    "iVersionMax",
+                    "iVersionMin"
+                ],
+                "type": "object",
+                "properties": {
+                    "iVersionMin": {
+                        "description": "The minimum version of the function that can be called",
+                        "type": "integer"
+                    },
+                    "iVersionMax": {
+                        "description": "The maximum version of the function that can be called",
+                        "type": "integer"
+                    },
+                    "a_RequiredPermissions": {
+                        "description": "An array of permissions required to access this function.\n\nIf the value \"0\" is present in the array, anyone can call this function.\n\nYou must have one of the permission to access the function. You don't need to have all of them.",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "example": {
+                    "iVersionMin": 1,
+                    "iVersionMax": 2,
+                    "a_RequiredPermissions": [
+                        45,
+                        61
                     ]
                 }
             },
@@ -3009,87 +2646,92 @@
             },
             "ezsigndocument-Response": {
                 "description": "An Ezsigndocument Object",
-                "required": [
-                    "sEzsigndocumentName",
-                    "fkiEzsignfolderID",
-                    "dtEzsigndocumentDuedate",
-                    "fkiLanguageID",
-                    "pkiEzsigndocumentID",
-                    "eEzsigndocumentStep",
-                    "dtEzsigndocumentFirstsend",
-                    "dtEzsigndocumentLastsend",
-                    "iEzsigndocumentOrder",
-                    "iEzsigndocumentPagetotal",
-                    "iEzsigndocumentSignaturesigned",
-                    "iEzsigndocumentSignaturetotal",
-                    "sEzsigndocumentMD5initial",
-                    "sEzsigndocumentMD5signed",
-                    "objAudit"
-                ],
                 "type": "object",
-                "properties": {
-                    "fkiEzsignfolderID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID",
-                        "description": "",
-                        "minimum": 1
-                    },
-                    "dtEzsigndocumentDuedate": {
-                        "$ref": "#/components/schemas/Field-dtEzsigndocumentDuedate",
-                        "description": ""
-                    },
-                    "fkiLanguageID": {
-                        "$ref": "#/components/schemas/Field-pkiLanguageID",
-                        "description": ""
-                    },
-                    "sEzsigndocumentName": {
-                        "$ref": "#/components/schemas/Field-sEzsigndocumentName",
-                        "description": ""
-                    },
-                    "pkiEzsigndocumentID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID",
-                        "description": ""
-                    },
-                    "eEzsigndocumentStep": {
-                        "$ref": "#/components/schemas/Field-eEzsigndocumentStep",
-                        "description": ""
-                    },
-                    "dtEzsigndocumentFirstsend": {
-                        "$ref": "#/components/schemas/Field-dtEzsigndocumentFirstsend",
-                        "description": ""
-                    },
-                    "dtEzsigndocumentLastsend": {
-                        "$ref": "#/components/schemas/Field-dtEzsigndocumentLastsend",
-                        "description": ""
-                    },
-                    "iEzsigndocumentOrder": {
-                        "$ref": "#/components/schemas/Field-iEzsigndocumentOrder",
-                        "description": ""
-                    },
-                    "iEzsigndocumentPagetotal": {
-                        "$ref": "#/components/schemas/Field-iEzsigndocumentPagetotal",
-                        "description": ""
-                    },
-                    "iEzsigndocumentSignaturesigned": {
-                        "$ref": "#/components/schemas/Field-iEzsigndocumentSignaturesigned",
-                        "description": ""
-                    },
-                    "iEzsigndocumentSignaturetotal": {
-                        "$ref": "#/components/schemas/Field-iEzsigndocumentSignaturetotal",
-                        "description": ""
-                    },
-                    "sEzsigndocumentMD5initial": {
-                        "$ref": "#/components/schemas/Field-sEzsigndocumentMD5initial",
-                        "description": ""
-                    },
-                    "sEzsigndocumentMD5signed": {
-                        "$ref": "#/components/schemas/Field-sEzsigndocumentMD5signed",
-                        "description": ""
-                    },
-                    "objAudit": {
-                        "$ref": "#/components/schemas/Common-Audit",
-                        "description": ""
+                "allOf": [
+                    {
+                        "required": [
+                            "sEzsigndocumentName",
+                            "fkiEzsignfolderID",
+                            "dtEzsigndocumentDuedate",
+                            "fkiLanguageID",
+                            "pkiEzsigndocumentID",
+                            "eEzsigndocumentStep",
+                            "dtEzsigndocumentFirstsend",
+                            "dtEzsigndocumentLastsend",
+                            "iEzsigndocumentOrder",
+                            "iEzsigndocumentPagetotal",
+                            "iEzsigndocumentSignaturesigned",
+                            "iEzsigndocumentSignaturetotal",
+                            "sEzsigndocumentMD5initial",
+                            "sEzsigndocumentMD5signed",
+                            "objAudit"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "fkiEzsignfolderID": {
+                                "$ref": "#/components/schemas/Field-pkiEzsignfolderID",
+                                "description": "",
+                                "minimum": 1
+                            },
+                            "dtEzsigndocumentDuedate": {
+                                "$ref": "#/components/schemas/Field-dtEzsigndocumentDuedate",
+                                "description": ""
+                            },
+                            "fkiLanguageID": {
+                                "$ref": "#/components/schemas/Field-pkiLanguageID",
+                                "description": ""
+                            },
+                            "sEzsigndocumentName": {
+                                "$ref": "#/components/schemas/Field-sEzsigndocumentName",
+                                "description": ""
+                            },
+                            "pkiEzsigndocumentID": {
+                                "$ref": "#/components/schemas/Field-pkiEzsigndocumentID",
+                                "description": ""
+                            },
+                            "eEzsigndocumentStep": {
+                                "$ref": "#/components/schemas/Field-eEzsigndocumentStep",
+                                "description": ""
+                            },
+                            "dtEzsigndocumentFirstsend": {
+                                "$ref": "#/components/schemas/Field-dtEzsigndocumentFirstsend",
+                                "description": ""
+                            },
+                            "dtEzsigndocumentLastsend": {
+                                "$ref": "#/components/schemas/Field-dtEzsigndocumentLastsend",
+                                "description": ""
+                            },
+                            "iEzsigndocumentOrder": {
+                                "$ref": "#/components/schemas/Field-iEzsigndocumentOrder",
+                                "description": ""
+                            },
+                            "iEzsigndocumentPagetotal": {
+                                "$ref": "#/components/schemas/Field-iEzsigndocumentPagetotal",
+                                "description": ""
+                            },
+                            "iEzsigndocumentSignaturesigned": {
+                                "$ref": "#/components/schemas/Field-iEzsigndocumentSignaturesigned",
+                                "description": ""
+                            },
+                            "iEzsigndocumentSignaturetotal": {
+                                "$ref": "#/components/schemas/Field-iEzsigndocumentSignaturetotal",
+                                "description": ""
+                            },
+                            "sEzsigndocumentMD5initial": {
+                                "$ref": "#/components/schemas/Field-sEzsigndocumentMD5initial",
+                                "description": ""
+                            },
+                            "sEzsigndocumentMD5signed": {
+                                "$ref": "#/components/schemas/Field-sEzsigndocumentMD5signed",
+                                "description": ""
+                            },
+                            "objAudit": {
+                                "$ref": "#/components/schemas/Common-Audit",
+                                "description": ""
+                            }
+                        }
                     }
-                }
+                ]
             },
             "ezsigndocument-ResponseCompound": {
                 "description": "An Ezsigndocument Object and children to create a complete structure",
@@ -3198,6 +2840,31 @@
                 "type": "string",
                 "example": "2020-12-31 23:59:59"
             },
+            "Field-iEzsigndocumentOrder": {
+                "title": "Root Type for Field-iEzsigndocumentOrder",
+                "description": "The order in which the Ezsigndocument will be presented to the signatory in the Ezsignfolder.",
+                "type": "integer",
+                "example": 1
+            },
+            "Field-iEzsigndocumentPagetotal": {
+                "title": "Root Type for Field-iEzsigndocumentPagetotal",
+                "description": "The number of pages in the Ezsigndocument.",
+                "type": "integer",
+                "example": 4
+            },
+            "Field-iEzsigndocumentSignaturesigned": {
+                "title": "Root Type for Field-iEzsigndocumentSignaturesigned",
+                "description": "The number of signatures that were signed in the document.",
+                "type": "integer",
+                "example": 3
+            },
+            "Field-iEzsigndocumentSignaturetotal": {
+                "format": "int32",
+                "title": "Root Type for Field-iEzsigndocumentSignaturetotal",
+                "description": "The number of total signatures that were requested in the Ezsigndocument.",
+                "type": "integer",
+                "example": 4
+            },
             "Field-sEzsignfolderDescription": {
                 "description": "The description of the Ezsign Folder",
                 "type": "string",
@@ -3227,6 +2894,20 @@
                 ],
                 "type": "string",
                 "example": "None"
+            },
+            "Field-eEzsignfolderStep": {
+                "description": "The signature step of the Ezsignfolder.",
+                "enum": [
+                    "Unsent",
+                    "Sent",
+                    "PartiallySigned",
+                    "Expired",
+                    "Signed",
+                    "Completed",
+                    "Archived"
+                ],
+                "type": "string",
+                "example": "Completed"
             },
             "Field-sEzsigndocumentMD5initial": {
                 "description": "MD5 Hash of the initial PDF Document before signatures were applied to it.",
@@ -3825,8 +3506,11 @@
                         "type": "object",
                         "properties": {
                             "mPayload": {
-                                "$ref": "#/components/schemas/Common-getAutocomplete-v1-Response-mPayload",
-                                "description": ""
+                                "description": "",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Common-getAutocomplete-v1-Response-mPayload"
+                                }
                             }
                         }
                     },
@@ -3834,6 +3518,29 @@
                         "$ref": "#/components/schemas/Common-Response"
                     }
                 ]
+            },
+            "Common-getAutocomplete-v1-Response-mPayload": {
+                "description": "Generic Autocomplete Response",
+                "required": [
+                    "group",
+                    "id",
+                    "option"
+                ],
+                "type": "object",
+                "properties": {
+                    "group": {
+                        "description": "The Category (ie group) for the dropdown or an empty string if not categorized",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The Unique ID of the element",
+                        "type": "string"
+                    },
+                    "option": {
+                        "description": "The Description of the element",
+                        "type": "string"
+                    }
+                }
             },
             "Field-sFranchisereferalincomeRemoteid": {
                 "description": "The internal ID",
@@ -4727,8 +4434,13 @@
                 "type": "integer",
                 "example": 2
             },
+            "Field-pkiEzsigndocumentID": {
+                "description": "The unique ID of the Ezsigntemplate",
+                "type": "integer",
+                "example": 97
+            },
             "Field-pkiEzsignfoldertypeID": {
-                "description": "The unique ID of the Ezsignfoldertype.",
+                "description": "The unique ID of the Ezsignfoldertype.\r\n\r\nThis value can be queried by the API and is also visible in the admin interface.\r\n\r\nThere are two types of Ezsignfoldertype. **User** and **Shared**. **User** can only be seen by the user who created the folder or its assistants. Access to **Shared** folders are configurable for access and email delivery. You should typically choose a **Shared** type here.",
                 "type": "integer",
                 "example": 5
             },
@@ -4905,446 +4617,58 @@
                 "type": "string",
                 "example": "Name"
             },
-            "Field-sPasswordEncrypted": {
-                "description": "A Password encrypted and encoded in Base64\n\nMust meet complexity requirements",
-                "type": "string",
-                "example": "VGhpcyBpcyBhbiBlbmNyeXB0ZWQgcGFzc3dvcmQ="
-            },
-            "ezsigndocument-getEzsignpages-v1-Response": {
-                "description": "Response for the /1/object/ezsigndocument/{pkiEzsigndocument}/getEzsignpages API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "mPayload"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "mPayload": {
-                                "$ref": "#/components/schemas/ezsigndocument-getEzsignpages-v1-Response-mPayload"
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Response"
-                    }
-                ]
-            },
-            "ezsigndocument-getEzsignpages-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsigndocument/{pkiEzsigndocument}/getEzsignpages API Request",
-                "required": [
-                    "a_objEzsignpage"
-                ],
-                "type": "object",
-                "properties": {
-                    "a_objEzsignpage": {
-                        "description": "",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/ezsignpage-Response"
-                        }
-                    }
-                }
-            },
-            "Field-pkiEzsignpageID": {
-                "description": "The unique ID of the Ezsignpage",
-                "type": "integer",
-                "example": "64"
-            },
             "Field-iEzsignpagePagenumber": {
-                "description": "The page number in the Ezsigndocument",
+                "title": "Root Type for Field-iEzsigndocumentOrder",
+                "description": "The page number in the document where to apply the signature",
                 "type": "integer",
                 "example": 1
-            },
-            "Field-iEzsigndocumentOrder": {
-                "description": "The order in which the Ezsigndocument will be presented to the signatory in the Ezsignfolder.",
-                "type": "integer",
-                "example": 1
-            },
-            "Field-iEzsigndocumentPagetotal": {
-                "description": "The number of pages in the Ezsigndocument.",
-                "type": "integer",
-                "example": 4
-            },
-            "Field-iEzsigndocumentSignaturesigned": {
-                "description": "The number of signatures that were signed in the document.",
-                "type": "integer",
-                "example": 3
-            },
-            "Field-iEzsigndocumentSignaturetotal": {
-                "description": "The number of total signatures that were requested in the Ezsigndocument.",
-                "type": "integer",
-                "example": 4
             },
             "Field-iEzsignsignatureStep": {
+                "title": "Root Type for Field-iEzsigndocumentOrder",
                 "description": "The step when the Ezsignsigner will be invited to sign.",
                 "type": "integer",
                 "example": 1
             },
             "Field-iEzsignsignatureX": {
+                "title": "Root Type for Field-iEzsigndocumentOrder",
                 "description": "The X coordinate (Horizontal) where to put the signature block on the page.\n\nCoordinate is calculated at 100dpi (dot per inch). So for example, if you want to put the signature block 2 inches from the left border of the page, you would use \"200\" for the X coordinate.",
                 "type": "integer",
-                "example": 200
+                "example": "200"
             },
             "Field-iEzsignsignatureY": {
+                "title": "Root Type for Field-iEzsigndocumentOrder",
                 "description": "The Y coordinate (Vertical) where to put the signature block on the page.\n\nCoordinate is calculated at 100dpi (dot per inch). So for example, if you want to put the signature block 3 inches from the top border of the page, you would use \"300\" for the Y coordinate.",
                 "type": "integer",
-                "example": 300
+                "example": "300"
             },
-            "Field-iEzsignpageWidthimage": {
-                "description": "The Width of the page's image in pixels calculated at 100 DPI",
-                "type": "integer",
-                "example": 850
+            "Field-sPasswordEncrypted": {
+                "description": "A Password encrypted and encoded in Base64\n\nMust meet complexity requirements",
+                "type": "string",
+                "example": "VGhpcyBpcyBhbiBlbmNyeXB0ZWQgcGFzc3dvcmQ="
             },
-            "Field-iEzsignpageHeightimage": {
-                "description": "The Height of the page's image in pixels calculated at 100 DPI",
-                "type": "integer",
-                "example": 1100
-            },
-            "Field-iEzsignpageWidthpdf": {
-                "description": "The Width of the page in points calculated at 72 DPI",
-                "type": "integer",
-                "example": 612
-            },
-            "Field-iEzsignpageHeightpdf": {
-                "description": "The Height of the page in points calculated at 72 DPI",
-                "type": "integer",
-                "example": 792
-            },
-            "ezsignpage-Response": {
-                "description": "An Ezsignpage Object",
+            "ezsigndocument-getWordsPositions-v1-Request": {
+                "description": "Request for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions API Request",
                 "required": [
-                    "pkiEzsignpageID",
-                    "iEzsignpageWidthimage",
-                    "iEzsignpageHeightimage",
-                    "iEzsignpageWidthpdf",
-                    "iEzsignpageHeightpdf",
-                    "iEzsignpagePagenumber",
-                    "sImageUrl"
+                    "a_sWords"
                 ],
                 "type": "object",
                 "properties": {
-                    "pkiEzsignpageID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignpageID",
-                        "description": ""
-                    },
-                    "iEzsignpageWidthimage": {
-                        "$ref": "#/components/schemas/Field-iEzsignpageWidthimage",
-                        "description": ""
-                    },
-                    "iEzsignpageHeightimage": {
-                        "$ref": "#/components/schemas/Field-iEzsignpageHeightimage",
-                        "description": ""
-                    },
-                    "iEzsignpageWidthpdf": {
-                        "$ref": "#/components/schemas/Field-iEzsignpageWidthpdf",
-                        "description": ""
-                    },
-                    "iEzsignpageHeightpdf": {
-                        "$ref": "#/components/schemas/Field-iEzsignpageHeightpdf",
-                        "description": ""
-                    },
-                    "iEzsignpagePagenumber": {
-                        "$ref": "#/components/schemas/Field-iEzsignpagePagenumber",
-                        "description": ""
-                    },
-                    "sImageUrl": {
-                        "description": "The Url to the Ezsignpage's rasterized image.\n\nUrl will expire after 5 minutes.",
-                        "type": "string"
-                    }
-                }
-            },
-            "Field-pkiEzsigndocumentID": {
-                "description": "The unique ID of the Ezsigndocument",
-                "type": "integer",
-                "example": 97
-            },
-            "Field-pkiEzsignsignatureID": {
-                "description": "The unique ID of the Ezsignsignature",
-                "type": "integer",
-                "example": "49"
-            },
-            "File-Zip": {
-                "format": "binary",
-                "description": "A Zip compressed archive",
-                "type": "string"
-            },
-            "File-Csv": {
-                "description": "A Comma separated values text file",
-                "type": "string"
-            },
-            "Field-dtCreatedDate": {
-                "description": "The date and time at which the object was created",
-                "type": "string",
-                "example": "2020-12-31 23:59:59"
-            },
-            "Field-dtModifiedDate": {
-                "description": "The date and time at which the object was last modified",
-                "type": "string",
-                "example": "2020-12-31 23:59:59"
-            },
-            "Field-sEzsignformfieldgroupLabel": {
-                "description": "The Label for the Ezsignformfieldgroup",
-                "type": "string",
-                "example": "Allergies"
-            },
-            "Field-sEzsignformfieldLabel": {
-                "description": "The Label for the Ezsignformfield",
-                "type": "string",
-                "example": "Peanuts"
-            },
-            "Field-sEzsignformfieldValue": {
-                "description": "The Value for the Ezsignformfield",
-                "type": "string",
-                "example": "Yes"
-            },
-            "ezsigndocument-applyEzsigntemplate-v2-Request": {
-                "description": "Request for the /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate API Request",
-                "required": [
-                    "a_sEzsigntemplatesigner",
-                    "a_pkiEzsignfoldersignerassociation",
-                    "a_pkiEzsignfoldersignerassociationID",
-                    "fkiEzsigntemplateID"
-                ],
-                "type": "object",
-                "properties": {
-                    "fkiEzsigntemplateID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigntemplateID",
-                        "description": ""
-                    },
-                    "a_sEzsigntemplatesigner": {
-                        "description": "",
+                    "a_sWords": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/Field-sEzsigntemplatesigner"
-                        }
-                    },
-                    "a_pkiEzsignfoldersignerassociationID": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID"
+                            "type": "string"
                         }
                     }
+                },
+                "example": {
+                    "a_sWords": [
+                        "Your word 1",
+                        "Your word 2",
+                        "Your word 3"
+                    ]
                 }
             },
-            "ezsigndocument-applyEzsigntemplate-v2-Response": {
-                "description": "Response for the /2/object/ezsigndocument/{pkiEzsigndocument}/applyEzsigntemplate API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/Common-Response"
-                    }
-                ]
-            },
-            "ezsigndocument-getFormData-v1-Response": {
-                "description": "Response for the /1/object/ezsigndocument/{pkiEzsigndocument}/getFormData API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "mPayload"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "mPayload": {
-                                "$ref": "#/components/schemas/ezsigndocument-getFormData-v1-Response-mPayload"
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Response"
-                    }
-                ]
-            },
-            "ezsignformfieldgroup-Response": {
-                "description": "An Ezsignformfieldgroup Object",
-                "required": [
-                    "sEzsignformfieldgroupLabel"
-                ],
-                "type": "object",
-                "properties": {
-                    "sEzsignformfieldgroupLabel": {
-                        "$ref": "#/components/schemas/Field-sEzsignformfieldgroupLabel",
-                        "description": ""
-                    }
-                }
-            },
-            "ezsignformfield-Response": {
-                "description": "An Ezsignformfield Object",
-                "required": [
-                    "sEzsignformfieldLabel",
-                    "sEzsignformfieldValue"
-                ],
-                "type": "object",
-                "properties": {
-                    "sEzsignformfieldLabel": {
-                        "$ref": "#/components/schemas/Field-sEzsignformfieldLabel",
-                        "description": ""
-                    },
-                    "sEzsignformfieldValue": {
-                        "$ref": "#/components/schemas/Field-sEzsignformfieldValue",
-                        "description": ""
-                    }
-                }
-            },
-            "ezsignformfield-ResponseCompound": {
-                "description": "An Ezsignformfield Object and children to create a complete structure",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ezsignformfield-Response"
-                    }
-                ]
-            },
-            "ezsigndocument-getFormData-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsigndocument/{pkiEzsigndocument}/getFormData API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "type": "object"
-                    },
-                    {
-                        "$ref": "#/components/schemas/Custom-FormDataDocument-Response"
-                    }
-                ]
-            },
-            "ezsignformfieldgroup-ResponseCompound": {
-                "description": "An Ezsignformfieldgroup Object and children to create a complete structure",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ezsignformfieldgroup-Response"
-                    },
-                    {
-                        "required": [
-                            "a_objEzsignformfield"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "a_objEzsignformfield": {
-                                "description": "",
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/ezsignformfield-Response"
-                                }
-                            }
-                        }
-                    }
-                ]
-            },
-            "Custom-FormDataSigner-Response": {
-                "description": "A form Data Signer Object",
-                "required": [
-                    "a_objEzsignformfieldgroupCompound",
-                    "fkiEzsignfoldersignerassociationID",
-                    "sContactFirstname",
-                    "sContactLastname"
-                ],
-                "type": "object",
-                "properties": {
-                    "fkiEzsignfoldersignerassociationID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID",
-                        "description": ""
-                    },
-                    "fkiUserID": {
-                        "$ref": "#/components/schemas/Field-pkiUserID",
-                        "description": ""
-                    },
-                    "sContactFirstname": {
-                        "$ref": "#/components/schemas/Field-sContactFirstname",
-                        "description": ""
-                    },
-                    "sContactLastname": {
-                        "$ref": "#/components/schemas/Field-sContactLastname",
-                        "description": ""
-                    },
-                    "a_objEzsignformfieldgroupCompound": {
-                        "description": "",
-                        "uniqueItems": false,
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/ezsignformfieldgroup-ResponseCompound"
-                        }
-                    }
-                }
-            },
-            "ezsignfolder-getFormsData-v1-Response": {
-                "description": "Response for the /1/object/ezsignfolder/{pkiEzsignfolder}/getFormsData API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "mPayload"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "mPayload": {
-                                "$ref": "#/components/schemas/ezsignfolder-getFormsData-v1-Response-mPayload"
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Response"
-                    }
-                ]
-            },
-            "ezsignfolder-getFormsData-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignfolder/{pkiEzsigndocument}/getFormsData API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "type": "object"
-                    },
-                    {
-                        "$ref": "#/components/schemas/Custom-FormsDataFolder-Response"
-                    }
-                ]
-            },
-            "Custom-FormDataDocument-Response": {
-                "description": "A form Data Document Object ",
-                "required": [
-                    "pkiEzsigndocumentID",
-                    "fkiEzsignfolderID",
-                    "sEzsigndocumentName",
-                    "dtModifiedDate",
-                    "a_objFormDataSigner"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiEzsigndocumentID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID",
-                        "description": ""
-                    },
-                    "fkiEzsignfolderID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID",
-                        "description": ""
-                    },
-                    "sEzsigndocumentName": {
-                        "$ref": "#/components/schemas/Field-sEzsigndocumentName",
-                        "description": ""
-                    },
-                    "dtModifiedDate": {
-                        "$ref": "#/components/schemas/Field-dtModifiedDate",
-                        "description": ""
-                    },
-                    "a_objFormDataSigner": {
-                        "description": "",
-                        "uniqueItems": false,
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Custom-FormDataSigner-Response"
-                        }
-                    }
-                }
-            },
-            "ezsigndocument-getWordsPositions-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions API Request",
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/Custom-WordPositionWord-Response"
-                }
-            },
-            "Custom-WordPositionOccurence-Response": {
+            "wordPosition-Response": {
                 "description": "A Word Position Object",
                 "type": "object",
                 "properties": {
@@ -5362,27 +4686,6 @@
                         "description": "The Y coordinate (Vertical) where the Word occurence was found.\n\nCoordinate is calculated at 100dpi (dot per inch).",
                         "minimum": 0,
                         "type": "integer"
-                    }
-                }
-            },
-            "Custom-WordPositionWord-Response": {
-                "description": "A Word Position Object",
-                "required": [
-                    "sWord",
-                    "a_objWordPositionOccurence"
-                ],
-                "type": "object",
-                "properties": {
-                    "sWord": {
-                        "description": "The searched word",
-                        "type": "string"
-                    },
-                    "a_objWordPositionOccurence": {
-                        "description": "The found occurences for the seached word",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Custom-WordPositionOccurence-Response"
-                        }
                     }
                 }
             },
@@ -5406,498 +4709,55 @@
                     }
                 ]
             },
-            "Common-getList-v1-Response-mPayload": {
-                "description": "Generic List Response",
+            "ezsigndocument-getWordsPositions-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions API Request",
                 "required": [
-                    "iRowReturned",
-                    "iRowFiltered"
+                    "a_sWords"
                 ],
                 "type": "object",
                 "properties": {
-                    "iRowReturned": {
-                        "description": "The number of rows returned",
-                        "type": "integer",
-                        "example": 100
-                    },
-                    "iRowFiltered": {
-                        "description": "The number of rows matching your filters (if any) or the total number of rows",
-                        "type": "integer",
-                        "example": 533
-                    }
-                }
-            },
-            "Field-sEzsignfoldertypeNameX": {
-                "description": "The name of the Ezsignfoldertype in the language of the requester",
-                "type": "string",
-                "example": "Default"
-            },
-            "Field-iRowOffset": {
-                "description": "The starting element from where to start retrieving the results. For example if you started at iRowOffset=0 and asked for iRowMax=100, to get the next 100 results, you could specify iRowOffset=100&iRowMax=100,",
-                "type": "integer",
-                "example": 0
-            },
-            "Field-iRowMax": {
-                "description": "The maximum numbers of results to be returned",
-                "type": "integer",
-                "example": 100
-            },
-            "File-Xlsx": {
-                "format": "binary",
-                "description": "A Microsoft Excel File",
-                "type": "string"
-            },
-            "Custom-FormsDataFolder-Response": {
-                "description": "A forms Data Folder Object",
-                "required": [
-                    "pkiEzsignfolderID",
-                    "sEzsignfolderDescription",
-                    "a_objFormDataDocument"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiEzsignfolderID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID",
-                        "description": ""
-                    },
-                    "sEzsignfolderDescription": {
-                        "$ref": "#/components/schemas/Field-sEzsignfolderDescription",
-                        "description": ""
-                    },
-                    "a_objFormDataDocument": {
-                        "description": "",
+                    "a_sWords": {
+                        "description": "An array of words with an array of pages and positions X,Y\n\nThey are returned with the sames words that was sent in the request.",
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/Custom-FormDataDocument-Response"
+                            "$ref": "#/components/schemas/wordPosition-Response"
                         }
                     }
-                }
-            },
-            "Header-Accept-Language": {
-                "description": "The language of the returned content.\n\n1. **\\*** (or header not defined) Default language\n2. **en** English\n2. **fr** French\n\n",
-                "enum": [
-                    "*",
-                    "en",
-                    "fr"
-                ],
-                "type": "string"
-            },
-            "Field-sFilter": {
-                "description": "The filter to apply to the request to limit results.",
-                "type": "string",
-                "example": "bField1 eq true and iField2 gte 0 and iField2 lte 1000 and sField3 eq 'Other' and eField4 eq 'Paid' and sField5 like '%needle%'"
-            },
-            "ezsignfolder-createObject-v1-Response": {
-                "description": "Response for the /1/object/ezsignfolder/createObject API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "mPayload"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "mPayload": {
-                                "$ref": "#/components/schemas/ezsignfolder-createObject-v1-Response-mPayload",
-                                "description": ""
-                            }
+                },
+                "example": {
+                    "a_sWords": [
+                        {
+                            "iPage": 1,
+                            "iX": 70,
+                            "iY": 0
+                        },
+                        {
+                            "iPage": 2,
+                            "iX": 20,
+                            "iY": 40
                         }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Response"
-                    }
-                ]
-            },
-            "ezsigndocument-getWordsPositions-v1-Request": {
-                "description": "Request for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions API Request",
-                "required": [
-                    "eSearchFor",
-                    "eGet",
-                    "bWordCaseSensitive"
-                ],
-                "type": "object",
-                "properties": {
-                    "eGet": {
-                        "description": "Specify if you want to retrieve *All* words or specific *Words* from the document. If you specify *Words*, you must send the list of words to search for in *a_sWord*.",
-                        "enum": [
-                            "All",
-                            "Words"
-                        ],
-                        "type": "string"
-                    },
-                    "bWordCaseSensitive": {
-                        "description": "IF *true*, words will be searched case-sensitive and results will be returned case-sensitive.\nIF *false*, words will be searched case-insensitive and results will be returned case-insensitive.",
-                        "type": "boolean"
-                    },
-                    "a_sWord": {
-                        "description": "Array of words to find in the document",
-                        "type": "array",
-                        "items": {
-                            "type": "string"
+                    ],
+                    "Your Word 1": [
+                        {
+                            "iPage": 1,
+                            "iX": 70,
+                            "iY": 0
+                        },
+                        {
+                            "iPage": 2,
+                            "iX": 20,
+                            "iY": 40
                         }
-                    }
-                }
-            },
-            "Field-eEzsignfoldertypePrivacylevel": {
-                "description": "The Privacy level of the Ezsignfolder type.\n\n* **User** is for personal folders use and cannot be shared\n* **Usergroup** is for shared folders and complex permission can be configured to control access",
-                "enum": [
-                    "User",
-                    "Usergroup"
-                ],
-                "type": "string"
-            },
-            "Field-bEzsignfoldertypeIsactive": {
-                "description": "Whether the Ezsignfoldertype is active or not",
-                "type": "boolean"
-            },
-            "Common-Response-objDebugPayload": {
-                "description": "This is a debug object containing debugging information on the actual function",
-                "required": [
-                    "a_RequiredPermission",
-                    "iVersionMax",
-                    "iVersionMin"
-                ],
-                "type": "object",
-                "properties": {
-                    "iVersionMin": {
-                        "description": "The minimum version of the function that can be called",
-                        "type": "integer",
-                        "example": "1"
-                    },
-                    "iVersionMax": {
-                        "description": "The maximum version of the function that can be called",
-                        "type": "integer",
-                        "example": "2"
-                    },
-                    "a_RequiredPermission": {
-                        "description": "An array of permissions required to access this function.\n\nIf the value \"0\" is present in the array, anyone can call this function.\n\nYou must have one of the permission to access the function. You don't need to have all of them.",
-                        "type": "array",
-                        "items": {
-                            "type": "integer",
-                            "example": 117
+                    ],
+                    "Your Word 2": [
+                        {
+                            "iPage": 2,
+                            "iX": 20,
+                            "iY": 40
                         }
-                    }
-                }
-            },
-            "ezsignfoldertype-getList-v1-Response": {
-                "description": "Response for the /1/object/ezsignfoldertype/getList API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "mPayload"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "mPayload": {
-                                "$ref": "#/components/schemas/ezsignfoldertype-getList-v1-Response-mPayload"
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Response_getList"
-                    }
-                ]
-            },
-            "Common-Response_getList": {
-                "description": "All API response will inherit this based Response",
-                "type": "object",
-                "properties": {
-                    "objDebugPayload": {
-                        "$ref": "#/components/schemas/Common-Response-objDebugPayload_getList"
-                    },
-                    "objDebug": {
-                        "$ref": "#/components/schemas/Common-Response-objDebug"
-                    }
-                }
-            },
-            "Common-Response-objDebugPayload_getList": {
-                "description": "This is a debug object containing debugging information on the actual function",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/Common-Response-objDebugPayload"
-                    },
-                    {
-                        "required": [
-                            "a_Filter",
-                            "a_OrderBy"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "a_Filter": {
-                                "$ref": "#/components/schemas/Common-Response-Filter",
-                                "description": ""
-                            },
-                            "a_OrderBy": {
-                                "description": "List of available values for *eOrderBy*",
-                                "type": "object",
-                                "additionalProperties": {
-                                    "description": "Corresponding sql statement",
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ]
-            },
-            "Common-Response-Filter": {
-                "description": "Definition of Filters for getList",
-                "type": "object",
-                "properties": {
-                    "a_AutoType": {
-                        "description": "List of filters that can be used in *sFilter* (Automatic types)",
-                        "type": "object",
-                        "additionalProperties": {
-                            "description": "The actual field name being filtered",
-                            "type": "string"
-                        }
-                    },
-                    "a_Enum": {
-                        "$ref": "#/components/schemas/Common-Response-FilterEnum"
-                    }
-                }
-            },
-            "Common-Response-FilterEnum": {
-                "description": "List of filters that can be used in *sFilter* (Enum types)",
-                "type": "object",
-                "additionalProperties": {
-                    "description": "List of valid enum values",
-                    "type": "object",
-                    "additionalProperties": {
-                        "description": "Corresponding sql statement",
-                        "type": "string"
-                    }
-                }
-            },
-            "Common-getAutocomplete-v1-Response-mPayload": {
-                "description": "Generic Autocomplete Response",
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/Custom-AutocompleteElement-Response"
-                }
-            },
-            "Custom-AutocompleteElement-Response": {
-                "description": "Generic Autocomplete Response",
-                "required": [
-                    "sCategory",
-                    "mValue",
-                    "sLabel"
-                ],
-                "type": "object",
-                "properties": {
-                    "sCategory": {
-                        "description": "The Category for the dropdown or an empty string if not categorized",
-                        "type": "string"
-                    },
-                    "sLabel": {
-                        "description": "The Description of the element",
-                        "type": "string"
-                    },
-                    "mValue": {
-                        "oneOf": [
-                            {
-                                "type": "integer"
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ],
-                        "description": "The Unique ID of the element"
-                    }
-                }
-            },
-            "ezsignfoldertype-getList-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignfoldertype/getList API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "a_objEzsignfoldertype"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "a_objEzsignfoldertype": {
-                                "description": "",
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/ezsignfoldertype-ListElement"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-getList-v1-Response-mPayload"
-                    }
-                ]
-            },
-            "ezsignfoldertype-ListElement": {
-                "description": "An Ezsignfoldertype List Element",
-                "required": [
-                    "pkiEzsignfoldertypeID",
-                    "eEzsignfoldertypePrivacylevel",
-                    "sEzsignfoldertypeNameX",
-                    "bEzsignfoldertypeIsactive"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiEzsignfoldertypeID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID",
-                        "description": ""
-                    },
-                    "eEzsignfoldertypePrivacylevel": {
-                        "$ref": "#/components/schemas/Field-eEzsignfoldertypePrivacylevel",
-                        "description": ""
-                    },
-                    "sEzsignfoldertypeNameX": {
-                        "$ref": "#/components/schemas/Field-sEzsignfoldertypeNameX",
-                        "description": ""
-                    },
-                    "bEzsignfoldertypeIsactive": {
-                        "$ref": "#/components/schemas/Field-bEzsignfoldertypeIsactive",
-                        "description": ""
-                    }
-                }
-            },
-            "ezsignfolder-getList-v1-Response": {
-                "description": "Response for the /1/object/ezsignfolder/getList API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "mPayload"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "mPayload": {
-                                "$ref": "#/components/schemas/ezsignfolder-getList-v1-Response-mPayload"
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Response_getList"
-                    }
-                ]
-            },
-            "ezsignfolder-getList-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignfolder/getList API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "a_objEzsignfolder"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "a_objEzsignfolder": {
-                                "description": "",
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/ezsignfolder-ListElement"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-getList-v1-Response-mPayload"
-                    }
-                ]
-            },
-            "Field-eEzsignfolderStep": {
-                "description": "The signature step of the Ezsignfolder.",
-                "enum": [
-                    "Unsent",
-                    "Sent",
-                    "PartiallySigned",
-                    "Expired",
-                    "Completed",
-                    "Archived"
-                ],
-                "type": "string",
-                "example": "Completed"
-            },
-            "Custom-Null": {
-                "nullable": true,
-                "description": "A custom type for null until OAS 3.1 support for null type",
-                "type": "object"
-            },
-            "ezsignfolder-ListElement": {
-                "description": "An Ezsignfolder List Element",
-                "required": [
-                    "pkiEzsignfolderID",
-                    "fkiEzsignfoldertypeID",
-                    "sEzsignfoldertypeNameX",
-                    "sEzsignfolderDescription",
-                    "eEzsignfolderStep",
-                    "dtCreatedDate",
-                    "dtEzsignfolderSentdate",
-                    "dtDueDate",
-                    "iTotalDocument",
-                    "iTotalDocumentEdm",
-                    "iTotalSignature",
-                    "iTotalSignatureSigned"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiEzsignfolderID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
-                    },
-                    "fkiEzsignfoldertypeID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID",
-                        "description": ""
-                    },
-                    "sEzsignfoldertypeNameX": {
-                        "$ref": "#/components/schemas/Field-sEzsignfoldertypeNameX",
-                        "description": ""
-                    },
-                    "sEzsignfolderDescription": {
-                        "$ref": "#/components/schemas/Field-sEzsignfolderDescription",
-                        "description": ""
-                    },
-                    "eEzsignfolderStep": {
-                        "$ref": "#/components/schemas/Field-eEzsignfolderStep",
-                        "description": ""
-                    },
-                    "dtCreatedDate": {
-                        "$ref": "#/components/schemas/Field-dtCreatedDate",
-                        "description": ""
-                    },
-                    "dtEzsignfolderSentdate": {
-                        "oneOf": [
-                            {
-                                "$ref": "#/components/schemas/Field-dtEzsignfolderSentdate"
-                            },
-                            {
-                                "$ref": "#/components/schemas/Custom-Null"
-                            }
-                        ]
-                    },
-                    "dtDueDate": {
-                        "oneOf": [
-                            {
-                                "$ref": "#/components/schemas/Common-Format-DateTime"
-                            },
-                            {
-                                "$ref": "#/components/schemas/Custom-Null"
-                            }
-                        ],
-                        "description": "The date at which no more signature will be accepted on the folder"
-                    },
-                    "iTotalDocument": {
-                        "description": "The total number of Ezsigndocument in the folder",
-                        "type": "integer"
-                    },
-                    "iTotalDocumentEdm": {
-                        "description": "The total number of Ezsigndocument in the folder that were saved in the edm system",
-                        "type": "integer"
-                    },
-                    "iTotalSignature": {
-                        "description": "The total number of signature blocks in all Ezsigndocuments in the folder",
-                        "type": "integer"
-                    },
-                    "iTotalSignatureSigned": {
-                        "description": "The total number of already signed signature blocks in all Ezsigndocuments in the folder",
-                        "type": "integer"
-                    }
+                    ],
+                    "Your Word 3": [
+                    ]
                 }
             }
         },
@@ -5944,16 +4804,6 @@
                     }
                 },
                 "description": "Unauthorized"
-            },
-            "Response-Error-406": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/Common-Response-Error"
-                        }
-                    }
-                },
-                "description": "One of the accept header is not defined or invalid."
             }
         },
         "securitySchemes": {
@@ -5983,23 +4833,18 @@
             "x-displayName": "Security"
         },
         {
-            "name": "General_Conventions",
-            "description": "## Variables\n\nWe use a custom type base naming convention for variables.\n\nEach variable name is composed of up to 6 indicators\n1. **Array** (Optional) *a_* when we are dealing with an array.\n2. **Key** (Optional) *pk* when we are dealing with a primary key or *fk* for foreign key.\n3. **Type** Will always be in lowercase and represent the type of the variable.\n4. **Table** The first letter in uppercase and the rest in lowercase and represents the table name from where the variable was retrieved.\n5. **Field** (Optional) The first letter is uppercase and the rest is lowercase and represents the field name.\n6. **Discriminator** (Optional) Will be present only when two identical fields are stored in the same table to differenciate one from the other. \n\nHere is a summary table explaining the convention.\n\n|  | Array | Key | Type | Table | Field | Discriminator |\n|---|---|---|---|---|---|---|\n| **Optional** | Yes | Yes | No | No | Yes | Yes |\n| **Naming** | Fixed | Fixed | Lowercase | First letter is uppercase and the rest is lowercase | First letter is uppercase and the rest is lowercase except for the Field *ID* wich is always uppercase | First letter is uppercase and the rest is lowercase |\n| **Values** | a_ | pk<br>fki | s (string)<br>t (text)<br>c (char)<br>sha (sha-1 string)<br>md5 (md5 string)<br>bin (binary string)<br>i (integer)<br>f (float)<br>d (decimal)<br>e (enum)<br>dt (date or datetime)<br>b (boolean)<br>obj (object) | Any | Any | Any |\n\nHere are examples of typical variables' names\n\n| Variable name | Array | key | Type | Table | Field | Discriminator | Explanation | Example |\n|---|---|---|---|---|---|---|---|---|\n| pkiContactID |  | pk | i | Contact | ID |  | Primary key of type integer for the field name *ID* in table *Contact* | 133 |\n| fkiContactID |  | fk | i | Contact | ID |  | Foreign key of type integer pointing to the field *pkiContactID* in table *Contact* | 133 |\n| fkiContactIDOwner |  | fk | i | Contact | ID | Owner | Foreign key of type integer pointing to the field *pkiContactID* in table *Contact* with a discriminator of *Owner* | 266 |\n| sContactFirstname |  |  | s | Contact | Firstname |  | String for the Field *Firstname* in table *Contact* | John |\n| bPurchaseIspaid |  |  | b | Purchase | Ispaid |  | Boolean for the field Ispaid in table *Purchase* | true |\n| dPurchaseTotal |  |  | d | Purchase | Total |  | Decimal number for the field *Total* in table *Purchase* | 2199.78 |\n| objEzsignfolder |  |  | obj | Esignfolder |  |  | Object of type *Ezsignfolder* | {\"pkiEzsignfolderID\": 122, \"sEzsignfolderName\": \"Test\"} |\n| a_objEzsignfolder | a_ |  | obj | Ezsignfolder |  |  | Array of objects of type *Ezsignfolder* | [{\"pkiEzsignfolderID\": 122, \"sEzsignfolderName\": \"Test\"}, {\"pkiEzsignfolderID\": 234, \"sEzsignfolderName\": \"Test 2\"}] |\n| a_sContactFirstname | a_ |  | s | Contact | Firstname |  | An array of string for the field *Firstname* in table *Contact* | ['John', 'Mary', 'Jane'] |\n| a_pkiContactIDOwner | a_ | pk | i | Contact | ID | Owner | An array of foreign keys of type integer pointing to the field *pkiContactID* in table *Contact* with a discriminator of *Owner* | [266, 277, 288] |\n\n## List filter\n\nEvery GetList Endpoint has a *sFilter* query parameter that can be used to filter the returned elements.\n\nThe sFilter parameter's syntax is not documented at the endpoint's level since it would be redundant. This section documents the syntax.\n\n* Every property returned by the endpoint can be used to build the *sFilter* string. Except for rare exceptions.\n* Each filter can be joined by the *and* operator\n* Not every property supports every operator. The list of valid operators is based on the variable type. For example, only strings support the *like* operator. You can refer to the *Variables* article in the *Conventions* section of the documentation to learn about variable types.\n* Variables of type *Enum* have predetermined list of filters which will be documented at the endpoint's level.\n* *sFilter*'s value must be url encoded.\n* String values need to be enclosed in single quotes\n\nValid operators for boolean values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | bEzsigndocumentEzsignclause eq true<br>bEzsigndocumentEzsignclause eq false |\n\nValid operators for integer values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | iEzsigndocumentPagetotal eq 10 |\n| gt | Greater than | iEzsigndocumentPagetotal gt 10 |\n| gte | Greater than or equal to | iEzsigndocumentPagetotal gte 10 |\n| lt | Less than | iEzsigndocumentPagetotal lt 100 |\n| lte | Less than or equal to | iEzsigndocumentPagetotal lte 100 |\n\nValid operators for date and datetime values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | dtEzsigndocumentDuedate eq '2005-07-01 18:15:59'<br>dtEzsigndocumentDuedate eq '2005-07-01' |\n| gt | Greater than | dtEzsigndocumentDuedate gt '2001-01-01 00:00:00'<br>dtEzsigndocumentDuedate gt '2001-01-01' |\n| gte | Greater than or equal to | dtEzsigndocumentDuedate gte '2001-01-01 00:00:00'<br>dtEzsigndocumentDuedate gte '2001-01-01' |\n| lt | Less than | dtEzsigndocumentDuedate lt '2025-12-31 23:59:59'<br>dtEzsigndocumentDuedate lt '2025-12-31' |\n| lte | Less than or equal to | dtEzsigndocumentDuedate lte '2025-12-31 23:59:59'<br>dtEzsigndocumentDuedate lte '2025-12-31' |\n\nValid operators for string values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | sEzsigndocumentName  eq 'Test contract' |\n| like | Search for a partial string with *%* wildcard | sEzsigndocumentName  like 'Test contra%'<br>sEzsigndocumentName  like '%contract'<br>sEzsigndocumentName  like '%con%' |\n\nValid operators for enum values (valid values are documented at the endpoint's level):\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | eEzsigndocumentStep eq 'PartiallySigned' |\n\nExample of combining multiple filter together:\n\nsFilter=bEzsigndocumentEzsignclause eq true and iEzsigndocumentPagetotal gt 10 and iEzsigndocumentPagetotal lte 100 and dtEzsigndocumentDuedate gt '2001-01-01 00:00:00' and dtEzsigndocumentDuedate lte '2025-12-31 23:59:59' and sEzsigndocumentName  like '%con%' and eEzsigndocumentStep eq 'PartiallySigned'\n\nSame example, but properly url encoded:\n\nsFilter=bEzsigndocumentEzsignclause%20eq%20true%20and%20iEzsigndocumentPagetotal%20gt%2010%20and%20iEzsigndocumentPagetotal%20lte%20100%20and%20dtEzsigndocumentDuedate%20gt%20%272001-01-01%2000%3A00%3A00%27%20and%20dtEzsigndocumentDuedate%20lte%20%272025-12-31%2023%3A59%3A59%27%20and%20sEzsigndocumentName%20%20like%20%27%25con%25%27%20and%20eEzsigndocumentStep%20eq%20%27PartiallySigned%27",
-            "x-displayName": "Conventions"
-        },
-        {
             "name": "General_Servers",
             "description": "## Regional requests\nWhen you send your API requests, you'll need to send them in the proper region and proper environment where your customer data are stored. Based on your requirements (proximity and legislation), we will create your environment in one of our supported region's.\n\nThe general format of the URL where to send requests is:\nhttps://**{sInfrastructureenvironmenttypeDescription}**.api.appcluster01.**sInfrastructureregionCode}**.ezmax.com/rest/\n\nWhere \"**{sInfrastructureenvironmenttypeDescription}**\" and \"**{sInfrastructureregionCode}**\" need to be replaced with one of the values in the table below.\n\nOur SDKs have a default value of \"prod\" and \"ca-central-1\". You will need to call \"setHost\" to change the default value if needed.\n\nNote: You should always use \"prod\" for the environment unless otherwise instructed by eZmax's support.\n\n| sInfrastructureenvironmenttypeDescription | Description       |\n| ----------------------------------------- | ----------------- |\n| prod                                      | Production        |\n| stg                                       | Staging           |\n| qa                                        | Quality Assurance |\n| dev                                       | Development       |\n\n| sInfrastructureregionCode | Description                |\n| ------------------------- | -------------------------- |\n| af-south-1\t            | Africa (Cape Town)         |\n| ap-east-1\t                | Asia Pacific (Hong Kong)   |\n| ap-northeast-1\t        | Asia Pacific (Tokyo)       |\n| ap-northeast-2\t        | Asia Pacific (Seoul)       |\n| ap-northeast-3\t        | Asia Pacific (Osaka-Local) |\n| ap-south-1\t            | Asia Pacific (Mumbai)      |\n| ap-southeast-1\t        | Asia Pacific (Singapore)   |\n| ap-southeast-2\t        | Asia Pacific (Sydney)      |\n| ca-central-1\t            | Canada (Central)           |\n| eu-central-1\t            | Europe (Frankfurt)         |\n| eu-north-1\t            | Europe (Stockholm)         |\n| eu-south-1\t            | Europe (Milan)             |\n| eu-west-1\t                | Europe (Ireland)           |\n| eu-west-2\t                | Europe (London)            |\n| eu-west-3\t                | Europe (Paris)             |\n| sa-east-1\t                | South America (São Paulo)  |\n| us-east-1\t                | US East (N. Virginia)      |\n| us-east-2\t                | US East (Ohio)             |\n| us-west-1\t                | US West (N. California)    |\n| us-west-2\t                | US West (Oregon)           |\n\n## Global requests\nSome of the functions needs to be called on the global infrastructure instead of the regional servers. These functions are all located in the **Global** section of the documentation.\n\nThe general format of the URL where to send requests is:\nhttps://**{sInfrastructureenvironmenttypeDescription}**.api.global.ezmax.com/\n\nWhere \"**{sInfrastructureenvironmenttypeDescription}**\" needs to be replaced with one of the values in the table below.\n\nOur SDKs have a default value of \"prod\". You will need to call \"setHost\" to change the default value if needed.\n\nNote: You should always use \"prod\" for the environment unless otherwise instructed by eZmax's support.\n\n| sInfrastructureenvironmenttypeDescription | Description       |\n| ----------------------------------------- | ----------------- |\n| prod                                      | Production        |\n| stg                                       | Staging           |\n| qa                                        | Quality Assurance |\n| dev                                       | Development       |",
             "x-displayName": "Servers"
         },
         {
             "name": "General_StatusCodes",
-            "description": "We use standard HTTP Status Codes to return details about completed function calls.\r\n\r\nYou should always validate the HTTP response's status code before trying to read the content of the body. Our SDKs do this automatically. In each of the documented function, we document only the function's specific return code to facilitate the reading of the documentation. Even if a generic return code is not documented at the function's level, it could be returned by the API.\r\n\r\n### Generic return codes (Documented at the function's level)\r\n| HTTP Status Code | Meaning              | Detail |\r\n| ---------------- | -------------------- | ------ |\r\n| 200              | OK                   | The request completed successfully and valid data was returned in the body |\r\n| 201              | Created              | The request completed successfully. Some elements were created and details about the created items was returned in the body |\r\n| 204              | No Content           | The request completed successfully. There was no need to return any data in the body |\r\n| 403              | Forbidden            | The request is not allowed to be executed. Look for detail about the error in the body |\r\n| 404              | Not Found            | The request failed. The element on which you were trying to work does not exists. Look for detail about the error in the body |\r\n| 406              | Not Acceptable       | The URL is valid, but one of the Accept header is not defined or invalid. For example, you set the header \"Accept: application/json\" but the function can only return \"Content-type: image/png\" |\r\n| 422              | Unprocessable entity | The request was syntactically valid but failed because of an interdependance condition. Look for detail about the error in the body |\r\n\r\n### Generic return codes (Undocumented at the function's level)\r\n| HTTP Status Code | Meaning               | Detail |\r\n| ---------------- | --------------------- | ------ |\r\n| 400              | Bad Request           | The request does not meet specifications. For example: an invalid type for a variable, a value that does not pass validation or a protocol violation. Look for details about the error in the response's body |\r\n| 401              | Unauthorized          | The API Key is either not present, expired, invalid or inactive. It could also mean you are calling the API from an unauthorized IP address |\r\n| 403              | Forbidden             | The Provided API Key is valid, but it is not allowed to execute the request. Verify the Key's permissions |\r\n| 404              | Not Found             | Your request was sent to a URL that does not exist. Make sure you are calling the proper version number of the function and look for typos in the URL |\r\n| 405              | Method Not Allowed    | The URL is valid, but the Method is not allowed. For example, have you call a GET while the function expects a POST ? |\r\n| 406              | Not Acceptable       | The URL is valid, but one of the Accept header is not defined or invalid. For example, you set the header \"Accept: application/json\" but the function can only return \"Content-type: image/png\" |\r\n| 429              | Too Many Requests     | Too many requests were received from your API Key/IP address. Make sure to optimize your requests or ask for a limit increase. For example, make a single request to create 100 objects instead of calling 100 requests each creating a single objet |\r\n| 500              | Internal Server Error | This should never happen. There is either a temporary problem that should resolve quickly or an error you should report to technical support. |\r\n| 501              | Not Implemented       | Endpoint not yet available in your region or environment |\r\n| 503              | Service Unavailable   | This should never happen. There is either a temporary problem that should resolve quickly or an error you should report to technical support |\r\n\r\n### Custom return codes (Undocumented at the function's level)\r\nThese codes can only be generated for **User** type API Key. The **API**, **Delegated** and **Special** types keys will never return such codes. (See Authorization section for more information). Most users should not be concerned with these status codes.\r\n\r\n| HTTP Status Code | Meaning                          | Detail                                                               |\r\n| ---------------- | -------------------------------- | -------------------------------------------------------------------- |\r\n| 350              | Authentication required          | User must authenticate because session is invalid                    |\r\n| 351              | Phone Validation required        | (2FA) User needs to complete a Voice Call or SMS challenge           |\r\n| 352              | Question Validation required     | (2FA) User needs to complete a question/answer challenge             |\r\n| 353              | Clause Acceptance required       | User need to accept electronic signature terms and conditions        |\r\n| 354              | Computer Validation required     | User's computer is not authorized                                    |\r\n| 355              | Password Change required         | User must change it's password                                       |\r\n| 356              | Native Application Version Check | The user is not running the latest version of the native application |\r\n\r\n### Webhook delivery successful code\r\nThese codes will be considered as a succesful delivery when they are returned by your webpage during a Webhook delivery.\r\n\r\n| HTTP Status Code | Meaning              | Detail |\r\n| ---------------- | -------------------- | ------ |\r\n| 202              | Accepted             | The request has been received but not yet acted upon. It is intended for cases where another process or server handles the request, or for batch processing. |\r\n| 204              | No Content           | The request completed successfully. There was no need to return any data in the body |\r\n",
+            "description": "We use standard HTTP Status Codes to return details about completed function calls.\r\n\r\nYou should always validate the HTTP response's status code before trying to read the content of the body. Our SDKs do this automatically. In each of the documented function, we document only the function's specific return code to facilitate the reading of the documentation. Even if a generic return code is not documented at the function's level, it could be returned by the API.\r\n\r\n### Generic return codes (Documented at the function's level)\r\n| HTTP Status Code | Meaning              | Detail |\r\n| ---------------- | -------------------- | ------ |\r\n| 200              | OK                   | The request completed successfully and valid data was returned in the body |\r\n| 201              | Created              | The request completed successfully. Some elements were created and details about the created items was returned in the body |\r\n| 204              | No Content           | The request completed successfully. There was no need to return any data in the body |\r\n| 403              | Forbidden            | The request is not allowed to be executed. Look for detail about the error in the body |\r\n| 404              | Not Found            | The request failed. The element on which you were trying to work does not exists. Look for detail about the error in the body |\r\n| 422              | Unprocessable entity | The request was syntactically valid but failed because of an interdependance condition. Look for detail about the error in the body |\r\n\r\n### Generic return codes (Undocumented at the function's level)\r\n| HTTP Status Code | Meaning               | Detail |\r\n| ---------------- | --------------------- | ------ |\r\n| 400              | Bad Request           | The request does not meet specifications. For example: an invalid type for a variable, a value that does not pass validation or a protocol violation. Look for details about the error in the response's body |\r\n| 401              | Unauthorized          | The API Key is either not present, expired, invalid or inactive. It could also mean you are calling the API from an unauthorized IP address |\r\n| 403              | Forbidden             | The Provided API Key is valid, but it is not allowed to execute the request. Verify the Key's permissions |\r\n| 404              | Not Found             | Your request was sent to a URL that does not exist. Make sure you are calling the proper version number of the function and look for typos in the URL |\r\n| 405              | Method Not Allowed    | The URL is valid, but the Method is not allowed. For example, have you call a GET while the function expects a POST ? |\r\n| 429              | Too Many Requests     | Too many requests were received from your API Key/IP address. Make sure to optimize your requests or ask for a limit increase. For example, make a single request to create 100 objects instead of calling 100 requests each creating a single objet |\r\n| 500              | Internal Server Error | This should never happen. There is either a temporary problem that should resolve quickly or an error you should report to technical support. |\r\n| 503              | Service Unavailable   | This should never happen. There is either a temporary problem that should resolve quickly or an error you should report to technical support |\r\n\r\n### Custom return codes (Undocumented at the function's level)\r\nThese codes can only be generated for **User** type API Key. The **API**, **Delegated** and **Special** types keys will never return such codes. (See Authorization section for more information). Most users should not be concerned with these status codes.\r\n\r\n| HTTP Status Code | Meaning                          | Detail                                                               |\r\n| ---------------- | -------------------------------- | -------------------------------------------------------------------- |\r\n| 350              | Authentication required          | User must authenticate because session is invalid                    |\r\n| 351              | Phone Validation required        | (2FA) User needs to complete a Voice Call or SMS challenge           |\r\n| 352              | Question Validation required     | (2FA) User needs to complete a question/answer challenge             |\r\n| 353              | Clause Acceptance required       | User need to accept electronic signature terms and conditions        |\r\n| 354              | Computer Validation required     | User's computer is not authorized                                    |\r\n| 355              | Password Change required         | User must change it's password                                       |\r\n| 356              | Native Application Version Check | The user is not running the latest version of the native application |\r\n\r\n### Webhook delivery successful code\r\nThese codes will be considered as a succesful delivery when they are returned by your webpage during a Webhook delivery.\r\n\r\n| HTTP Status Code | Meaning              | Detail |\r\n| ---------------- | -------------------- | ------ |\r\n| 202              | Accepted             | The request has been received but not yet acted upon. It is intended for cases where another process or server handles the request, or for batch processing. |\r\n| 204              | No Content           | The request completed successfully. There was no need to return any data in the body |\r\n",
             "x-displayName": "Status Codes"
         },
         {
             "name": "General_ErrorCodes",
-            "description": "When the API returns an HTTP status code in the range 400-599, a JSON object will be returned with 2 properties:\r\n- eErrorCode\r\n- sErrorMessage\r\n\r\nWe highly suggest you use **eErrorCode** to do any error validation logic in your code or to create your own error message for your users. **sErrorMessage** has more detail for a human to read, but is intended for the developper and is always returned in english.\r\n\r\nHere is the complete list of **eErrorCode** you could receive for each HTTP status code and examples of situations where they could be returned.\r\n\r\n### HTTP 400 (Bad Request)\r\n| eErrorCode           | Examples                                                                       |\r\n| -------------------- | ------------------------------------------------------------------------------ |\r\n| BADREQUEST           | Unserializable JSON, invalid parameter, invalid signature, invalid fingerprint |\r\n| BADREQUEST_CLOCKSKEW | The time on the client computer is wrong                                       |\r\n\r\n### HTTP 401 (Unauthorized)\r\n| eErrorCode           | Examples                                                           |\r\n| -------------------- | ------------------------------------------------------------------ |\r\n| UNAUTHORIZED_BADAUTH | Invalid credentials during Authentication                          |\r\n| UNAUTHORIZED_REQUEST | The request is invalid (bad ip source, signature, invalid api key) |\r\n\r\n### HTTP 403 (Forbidden)\r\n| eErrorCode              | Examples                                            |\r\n| ----------------------- | --------------------------------------------------- |\r\n| FORBIDDEN               | Generic Forbidden                                   |\r\n| FORBIDDEN_CONFIGURATION | A configured setting prevent access to the element  |\r\n| FORBIDDEN_MODULE        | Module is not activated                             |\r\n| FORBIDDEN_NOACCESS      | Not allowed to access the element                   |\r\n| FORBIDDEN_PERMISSION    | Missing a permission to access the route            |\r\n| FORBIDDEN_SUBSCRIPTION  | No subscription, for example to eZsign              |\r\n\r\n### HTTP 404 (Not Found)\r\n| eErrorCode      | Examples                                    |\r\n| --------------- | ------------------------------------------- |\r\n| NOTFOUND        | Generic not found                           |\r\n| NOTFOUND_OBJECT | Object does not exist in database           |\r\n| NOTFOUND_ROUTE  | The route does not exist (url, API version) |\r\n\r\n### HTTP 405 (Method Not Allowed)\r\n| eErrorCode       | Examples                                                                      |\r\n| ---------------- | ----------------------------------------------------------------------------- |\r\n| METHODNOTALLOWED | The route is valid but the method is not allowed ex: POST on a GET only route |\r\n\r\n### HTTP 406 (Not Acceptable)\r\n| eErrorCode             | Examples                                                                                      |\r\n| ---------------------- | --------------------------------------------------------------------------------------------- |\r\n| NOTACCEPTABLE_CONTENT  | The route is valid but the Accept header is not allowed ex: \"application/json\" vs \"image/png\" |\r\n| NOTACCEPTABLE_LANGUAGE | The route is valid but the Accept-Language header is not allowed ex: \"en\" vs \"es\"             |\r\n\r\n### HTTP 422 (Unprocessable entity)\r\n| eErrorCode                            | Examples                                                               |\r\n| ------------------------------------- | ---------------------------------------------------------------------- |\r\n| UNPROCESSABLEENTITY_CANNOTDELETE      | The element cannot be deleted                                          |\r\n| UNPROCESSABLEENTITY_NOTHINGTODO       | The request was valid, but no action was necessary                     |\r\n| UNPROCESSABLEENTITY_NOTREADY          | The element is not in a state that allows the action (Sending a document without signature, downloading an unsigned document) |\r\n| UNPROCESSABLEENTITY_PDF_INCOMPATIBLE  | The pdf document cannot be signed                                      |\r\n| UNPROCESSABLEENTITY_PDF_PASSWORD      | The pdf document contains a password and cannot be signed              |\r\n| UNPROCESSABLEENTITY_PDF_XFA           | The pdf document contains XFA form and cannot be signed                |\r\n| UNPROCESSABLEENTITY_TEMPLATE_MISMATCH | The number of pages between the document and the template do not match |\r\n\r\n### HTTP 500 (Internal Server Error)\r\n| eErrorCode     | Examples                  |\r\n| -------------- | ------------------------- |\r\n| ERROR_INTERNAL | Unhandled error on server |\r\n\r\n### HTTP 501 (Not Implemented)\r\n| eErrorCode           | Examples                                                 |\r\n| -------------------- | -------------------------------------------------------- |\r\n| ERROR_NOTIMPLEMENTED | Endpoint not yet available in your region or environment |",
+            "description": "When the API returns an HTTP status code in the range 400-599, a JSON object will be returned with 2 properties:\r\n- eErrorCode\r\n- sErrorMessage\r\n\r\nWe highly suggest you use **eErrorCode** to do any error validation logic in your code or to create your own error message for your users. **sErrorMessage** has more detail for a human to read, but is intended for the developper and is always returned in english.\r\n\r\nHere is the complete list of **eErrorCode** you could receive for each HTTP status code and examples of situations where they could be returned.\r\n\r\n### HTTP 400 (Bad Request)\r\n| eErrorCode           | Examples                                                                       |\r\n| -------------------- | ------------------------------------------------------------------------------ |\r\n| BADREQUEST           | Unserializable JSON, invalid parameter, invalid signature, invalid fingerprint |\r\n| BADREQUEST_CLOCKSKEW | The time on the client computer is wrong                                       |\r\n\r\n### HTTP 401 (Unauthorized)\r\n| eErrorCode           | Examples                                                           |\r\n| -------------------- | ------------------------------------------------------------------ |\r\n| UNAUTHORIZED_BADAUTH | Invalid credentials during Authentication                          |\r\n| UNAUTHORIZED_REQUEST | The request is invalid (bad ip source, signature, invalid api key) |\r\n\r\n### HTTP 403 (Forbidden)\r\n| eErrorCode              | Examples                                            |\r\n| ----------------------- | --------------------------------------------------- |\r\n| FORBIDDEN               | Generic Forbidden                                   |\r\n| FORBIDDEN_CONFIGURATION | A configured setting prevent access to the element  |\r\n| FORBIDDEN_MODULE        | Module is not activated                             |\r\n| FORBIDDEN_NOACCESS      | Not allowed to access the element                   |\r\n| FORBIDDEN_PERMISSION    | Missing a permission to access the route            |\r\n| FORBIDDEN_SUBSCRIPTION  | No subscription, for example to eZsign              |\r\n\r\n### HTTP 404 (Not Found)\r\n| eErrorCode      | Examples                                    |\r\n| --------------- | ------------------------------------------- |\r\n| NOTFOUND        | Generic not found                           |\r\n| NOTFOUND_OBJECT | Object does not exist in database           |\r\n| NOTFOUND_ROUTE  | The route does not exist (url, API version) |\r\n\r\n### HTTP 405 (Method Not Allowed)\r\n| eErrorCode       | Examples                                                                      |\r\n| ---------------- | ----------------------------------------------------------------------------- |\r\n| METHODNOTALLOWED | The route is valid but the method is not allowed ex: POST on a GET only route |\r\n\r\n### HTTP 422 (Unprocessable entity)\r\n| eErrorCode                            | Examples                                                               |\r\n| ------------------------------------- | ---------------------------------------------------------------------- |\r\n| UNPROCESSABLEENTITY_CANNOTDELETE      | The element cannot be deleted                                          |\r\n| UNPROCESSABLEENTITY_NOTHINGTODO       | The request was valid, but no action was necessary                     |\r\n| UNPROCESSABLEENTITY_NOTREADY          | The element is not in a state that allows the action (Sending a document without signature, downloading an unsigned document) |\r\n| UNPROCESSABLEENTITY_PDF_INCOMPATIBLE  | The pdf document cannot be signed                                      |\r\n| UNPROCESSABLEENTITY_PDF_PASSWORD      | The pdf document contains a password and cannot be signed              |\r\n| UNPROCESSABLEENTITY_PDF_XFA           | The pdf document contains XFA form and cannot be signed                |\r\n| UNPROCESSABLEENTITY_TEMPLATE_MISMATCH | The number of pages between the document and the template do not match |\r\n\r\n### HTTP 500 (Internal Server Error)\r\n| eErrorCode     | Examples                  |\r\n| -------------- | ------------------------- |\r\n| ERROR_INTERNAL | Unhandled error on server |",
             "x-displayName": "Error Codes"
         },
         {
@@ -6009,7 +4854,7 @@
         },
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\n- GET /1/object/ezsignfolder/getList/\n- GET /1/object/ezsignfoldertype/getList\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\n### [1.0.47] - 2021-09-20\n#### Early Adopters\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n\n#### Added\n- Early Adopters mention in documentation for endpoints not ready to be used in production\n\n#### Changed\n- Normalized internal definition of AllOf (Objects vs additionnal properties)\n\n#### Fixed\n- (CsharpSDK) Requests don't have to be mandatory signed anymore\n\n### [1.0.46] - 2021-06-03\n#### Fixed\n- Minor changes\n\n### [1.0.45] - 2021-06-02\n#### Added\n- Enum values \"DeclinedToSign\" and \"PrematurelyEnded\" to field eEzsigndocumentStep\n\n### [1.0.44] - 2021-05-31\n#### Added\n- Enum value \"City\" for Ezsignsignature\n- Password can be sent in encrypted form in authenticate method\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was sometimes invalid\n\n### [1.0.43] - 2021-05-25\n#### Added\n- (SDK) cpp-qt-client\n- POST /2/module/authenticate/authenticate/{eSessionType}\n\n#### Removed\n- (SDK) cpp-qt5-client\n\n### [1.0.42] - 2021-04-21\n#### Changed\n- (AxiosSDK) Minor changes\n\n### [1.0.41] - 2021-04-21\n#### Changed\n- (AxiosSDK) Minor changes\n\n### [1.0.40] - 2021-04-19\n#### Changed\n- (AxiosSDK) Minor changes\n\n### [1.0.39] - 2021-03-26\n#### Added\n- (CsharpSDK) Automatic request signing\n- (CsharpSDK) Secret handling in configuration class\n- eErrorCode in Error model\n- Error Codes documentation section\n- Documentation for 350 Redirection code (Authentication)\n\n#### Changed\n- Signature algorithm now supports HMAC SHA256\n\n### [1.0.38] - 2021-03-22\n#### Fixed\n- (CsharpSDK) Hyphens in Class Name\n\n- \n### [1.0.37] - 2021-03-18\n#### Added\n- (AxiosSDK) Published to NPM\n\n#### Changed\n- (AxiosSDK) Minor changes\n\n### [1.0.33] - 2021-03-14\n#### Added\n- (PHPSDK) Automatic request signing\n- (PHPSDK) Secret handling in configuration class\n- (AxiosSDK) Automatic request signing\n- (AxiosSDK) Secret handling in configuration class\n\n#### Fixed\n- Extra slash in /1/module/sspr/resetPasswordRequest\n\n### [1.0.32] - 2021-03-05\n#### Added\n- POST /1/module/sspr/validateToken\n- Webhooks successful codes in Status Codes documentation section\n- fkiUserID in the response of Activesession getCurrent\n- fkiApikeyID in the response of Activesession getCurrent\n\n#### Changed\n- Webhooks now consider an HTTP Code of 202 to be a successful delivery\n- Minor changes\n\n#### Removed\n- sEzsigndocumentFilename in the request of Create Ezsigndocument\n- sEzsigndocumentFilename in the response of Create Ezsigndocument\n\n### [1.0.31] - 2021-02-28\n#### Added\n- Changelog section in documentation\n- Special type Authorization key\n- Security section in documentation\n- Request Signing section in documentation\n- POST /1/module/sspr/unlockAccountRequest\n- POST /1/module/sspr/unlockAccount\n- POST /1/module/sspr/resetPasswordRequest\n- POST /1/module/sspr/resetPassword\n- POST /1/module/sspr/validateToken\n\n#### Changed\n- Authorization section moved under security section in documentation\n\n#### Removed \n- PUT /1/object/ezsigndocument/{pkiEzsigndocumentID} that was documented but unimplemented\n- PUT /1/object/ezsignfolder/{pkiEzsignfolderID} that was documented but unimplemented\n- PUT /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID} that was documented but unimplemented\n- PUT /1/object/ezsignsignature/{pkiEzsignsignatureID} that was documented but unimplemented\n\n### [1.0.30] - 2021-02-12\n#### Added\n- Added global endpoint in servers list\n- POST /1/module/sspr/sendUsernames\n- Introduction section in documentation\n- Servers section in documentation\n- Authorization section in documentation\n- Status Codes section in documentation\n- Webhooks section in documentation\n\n### [1.0.29] - 2021-02-10\n#### Added\n- GET /1/customer/{pksCustomerCode}/endpoint\n\n### [1.0.28] - 2021-02-04\n#### Changed\n- Minor changes\n\n### [1.0.27] - 2021-02-03\n#### Changed\n- Minor changes\n\n### [1.0.26] - 2021-01-08\n#### Added\n- Added Audit objets to some responses\n\n### [1.0.25] - 2021-01-08\n#### Changed\n- Minor changes\n\n### [1.0.24] - 2021-01-07\n#### Added\n- POST /1/object/apikey\n\n### [1.0.23] - 2020-12-21\n#### Changed\n- Minor changes\n\n### [1.0.22] - 2020-12-21\n#### Changed\n- Minor changes\n\n### [1.0.21] - 2020-12-21\n#### Added\n- WEBHOOK User-UserCreated\n\n### [1.0.20] - 2020-12-17\n#### Added\n- POST /1/module/user/createezsignuser\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n\n#### Changed\n- Reorganized Documentation Categories\n\n### [1.0.19] - 2020-12-01\n#### Changed\n- Minor changes\n\n### [1.0.18] - 2020-10-14\n#### Changed\n- Minor changes\n\n### [1.0.17] - 2020-09-30\n#### Changed\n- Minor changes\n\n### [1.0.16] - 2020-09-29\n#### Added\n- GET /1/object/franchisebroker/getAutocomplete/{sSelector}\n\n### [1.0.15] - 2020-09-28\n#### Removed \n- GET /1/object/period/getAutocomplete\n\n#### Added\n- GET /1/object/period/getAutocomplete/{sSelector}\n\n### [1.0.14] - 2020-09-28\n#### Added\n- GET /1/object/period/getAutocomplete\n\n### [1.0.13] - 2020-09-08\n#### Changed\n- Minor changes\n\n### [1.0.12] - 2020-09-08\n#### Changed\n- Minor changes\n\n### [1.0.11] - 2020-09-04\n#### Added\n- POST /1/object/franchisereferalincome/\n\n### [1.0.10] - 2020-08-11\n#### Changed\n- Minor changes\n\n### [1.0.9] - 2020-08-06\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getDownloadUrl/{eDocumentType}\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getInPersonLoginUrl\n\n### [1.0.8] - 2020-08-04\n#### Changed\n- Minor changes\n\n### [1.0.7] - 2020-07-29\n#### Changed\n- Minor changes\n\n### [1.0.6] - 2020-07-29\n#### Changed\n- Minor changes\n\n### [1.0.5] - 2020-07-29\n#### Added\n- WEBHOOK Ezsign-DocumentCompleted\n- WEBHOOK Ezsign-FolderCompleted\n\n### [1.0.4] - 2020-07-09\n#### Added\n- POST /1/object/ezsignsignature\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}\n- DELETE /1/object/ezsignsignature/{pkiEzsignsignatureID}\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}/getChildren\n\n### [1.0.3] - 2020-07-08\n#### Changed\n- Documentation improvement\n\n### [1.0.2] - 2020-07-26\n#### Added\n- GET /1/object/activesession/getCurrent\n- POST /1/object/ezsignfoldersignerassociation\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n- DELETE /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getChildren\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/send\n\n### [1.0.1] - 2020-06-26\n#### Changed\n- Minor changes\n\n### [1.0.0] - 2020-06-26\n#### Added\n- Initial Release\n",
+            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not yet considered officially in production.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.0.X Releases\n### [1.0.47] - 2021-09-20\n#### Early Adopters\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormsData\n\n#### Added\n- Early Adopters mention in documentation for endpoints not ready to be used in production\n\n#### Changed\n- Normalized internal definition of AllOf (Objects vs additionnal properties)\n\n#### Fixed\n- (CsharpSDK) Requests don't have to be mandatory signed anymore\n\n### [1.0.46] - 2021-06-03\n#### Fixed\n- Minor changes\n\n### [1.0.45] - 2021-06-02\n#### Added\n- Enum values \"DeclinedToSign\" and \"PrematurelyEnded\" to field eEzsigndocumentStep\n\n### [1.0.44] - 2021-05-31\n#### Added\n- Enum value \"City\" for Ezsignsignature\n- Password can be sent in encrypted form in authenticate method\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was sometimes invalid\n\n### [1.0.43] - 2021-05-25\n#### Added\n- (SDK) cpp-qt-client\n- POST /2/module/authenticate/authenticate/{eSessionType}\n\n#### Removed\n- (SDK) cpp-qt5-client\n\n### [1.0.42] - 2021-04-21\n#### Changed\n- (AxiosSDK) Minor changes\n\n### [1.0.41] - 2021-04-21\n#### Changed\n- (AxiosSDK) Minor changes\n\n### [1.0.40] - 2021-04-19\n#### Changed\n- (AxiosSDK) Minor changes\n\n### [1.0.39] - 2021-03-26\n#### Added\n- (CsharpSDK) Automatic request signing\n- (CsharpSDK) Secret handling in configuration class\n- eErrorCode in Error model\n- Error Codes documentation section\n- Documentation for 350 Redirection code (Authentication)\n\n#### Changed\n- Signature algorithm now supports HMAC SHA256\n\n### [1.0.38] - 2021-03-22\n#### Fixed\n- (CsharpSDK) Hyphens in Class Name\n\n- \n### [1.0.37] - 2021-03-18\n#### Added\n- (AxiosSDK) Published to NPM\n\n#### Changed\n- (AxiosSDK) Minor changes\n\n### [1.0.33] - 2021-03-14\n#### Added\n- (PHPSDK) Automatic request signing\n- (PHPSDK) Secret handling in configuration class\n- (AxiosSDK) Automatic request signing\n- (AxiosSDK) Secret handling in configuration class\n\n#### Fixed\n- Extra slash in /1/module/sspr/resetPasswordRequest\n\n### [1.0.32] - 2021-03-05\n#### Added\n- POST /1/module/sspr/validateToken\n- Webhooks successful codes in Status Codes documentation section\n- fkiUserID in the response of Activesession getCurrent\n- fkiApikeyID in the response of Activesession getCurrent\n\n#### Changed\n- Webhooks now consider an HTTP Code of 202 to be a successful delivery\n- Minor changes\n\n#### Removed\n- sEzsigndocumentFilename in the request of Create Ezsigndocument\n- sEzsigndocumentFilename in the response of Create Ezsigndocument\n\n### [1.0.31] - 2021-02-28\n#### Added\n- Changelog section in documentation\n- Special type Authorization key\n- Security section in documentation\n- Request Signing section in documentation\n- POST /1/module/sspr/unlockAccountRequest\n- POST /1/module/sspr/unlockAccount\n- POST /1/module/sspr/resetPasswordRequest\n- POST /1/module/sspr/resetPassword\n- POST /1/module/sspr/validateToken\n\n#### Changed\n- Authorization section moved under security section in documentation\n\n#### Removed \n- PUT /1/object/ezsigndocument/{pkiEzsigndocumentID} that was documented but unimplemented\n- PUT /1/object/ezsignfolder/{pkiEzsignfolderID} that was documented but unimplemented\n- PUT /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID} that was documented but unimplemented\n- PUT /1/object/ezsignsignature/{pkiEzsignsignatureID} that was documented but unimplemented\n\n### [1.0.30] - 2021-02-12\n#### Added\n- Added global endpoint in servers list\n- POST /1/module/sspr/sendUsernames\n- Introduction section in documentation\n- Servers section in documentation\n- Authorization section in documentation\n- Status Codes section in documentation\n- Webhooks section in documentation\n\n### [1.0.29] - 2021-02-10\n#### Added\n- GET /1/customer/{pksCustomerCode}/endpoint\n\n### [1.0.28] - 2021-02-04\n#### Changed\n- Minor changes\n\n### [1.0.27] - 2021-02-03\n#### Changed\n- Minor changes\n\n### [1.0.26] - 2021-01-08\n#### Added\n- Added Audit objets to some responses\n\n### [1.0.25] - 2021-01-08\n#### Changed\n- Minor changes\n\n### [1.0.24] - 2021-01-07\n#### Added\n- POST /1/object/apikey\n\n### [1.0.23] - 2020-12-21\n#### Changed\n- Minor changes\n\n### [1.0.22] - 2020-12-21\n#### Changed\n- Minor changes\n\n### [1.0.21] - 2020-12-21\n#### Added\n- WEBHOOK User-UserCreated\n\n### [1.0.20] - 2020-12-17\n#### Added\n- POST /1/module/user/createezsignuser\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n\n#### Changed\n- Reorganized Documentation Categories\n\n### [1.0.19] - 2020-12-01\n#### Changed\n- Minor changes\n\n### [1.0.18] - 2020-10-14\n#### Changed\n- Minor changes\n\n### [1.0.17] - 2020-09-30\n#### Changed\n- Minor changes\n\n### [1.0.16] - 2020-09-29\n#### Added\n- GET /1/object/franchisebroker/getAutocomplete/{sSelector}\n\n### [1.0.15] - 2020-09-28\n#### Removed \n- GET /1/object/period/getAutocomplete\n\n#### Added\n- GET /1/object/period/getAutocomplete/{sSelector}\n\n### [1.0.14] - 2020-09-28\n#### Added\n- GET /1/object/period/getAutocomplete\n\n### [1.0.13] - 2020-09-08\n#### Changed\n- Minor changes\n\n### [1.0.12] - 2020-09-08\n#### Changed\n- Minor changes\n\n### [1.0.11] - 2020-09-04\n#### Added\n- POST /1/object/franchisereferalincome/\n\n### [1.0.10] - 2020-08-11\n#### Changed\n- Minor changes\n\n### [1.0.9] - 2020-08-06\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getDownloadUrl/{eDocumentType}\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getInPersonLoginUrl\n\n### [1.0.8] - 2020-08-04\n#### Changed\n- Minor changes\n\n### [1.0.7] - 2020-07-29\n#### Changed\n- Minor changes\n\n### [1.0.6] - 2020-07-29\n#### Changed\n- Minor changes\n\n### [1.0.5] - 2020-07-29\n#### Added\n- WEBHOOK Ezsign-DocumentCompleted\n- WEBHOOK Ezsign-FolderCompleted\n\n### [1.0.4] - 2020-07-09\n#### Added\n- POST /1/object/ezsignsignature\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}\n- DELETE /1/object/ezsignsignature/{pkiEzsignsignatureID}\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}/getChildren\n\n### [1.0.3] - 2020-07-08\n#### Changed\n- Documentation improvement\n\n### [1.0.2] - 2020-07-26\n#### Added\n- GET /1/object/activesession/getCurrent\n- POST /1/object/ezsignfoldersignerassociation\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n- DELETE /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getChildren\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/send\n\n### [1.0.1] - 2020-06-26\n#### Changed\n- Minor changes\n\n### [1.0.0] - 2020-06-26\n#### Added\n- Initial Release\n",
             "x-displayName": "Changelog"
         },
         {
@@ -6056,11 +4901,6 @@
             "name": "Object_Ezsignfoldersignerassociation",
             "description": "Ezsignfoldersignerassociation contains detail about the signers that will be invited to sign the documents. Signers can be users from the system or persons outside of the system.",
             "x-displayName": "Ezsignfoldersignerassociation"
-        },
-        {
-            "name": "Object_Ezsignfoldertype",
-            "description": "Ezsignfoldertype contains detail about the types of ezsign folders",
-            "x-displayName": "Ezsignfoldertype"
         },
         {
             "name": "Object_Ezsignsignature",
@@ -6174,7 +5014,6 @@
                 "General_Introduction",
                 "General_Servers",
                 "General_Security",
-                "General_Conventions",
                 "General_StatusCodes",
                 "General_ErrorCodes",
                 "General_Webhooks",
@@ -6203,7 +5042,6 @@
                 "Object_Ezsigndocument",
                 "Object_Ezsignfolder",
                 "Object_Ezsignfoldersignerassociation",
-                "Object_Ezsignfoldertype",
                 "Object_Ezsignsignature",
                 "Object_Franchisebroker",
                 "Object_Franchiseoffice",
