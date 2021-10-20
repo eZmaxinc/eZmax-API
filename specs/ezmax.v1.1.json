@@ -2043,6 +2043,60 @@
                     "required": false
                 }
             ]
+        },
+        "/1/object/ezsignfolder/{pkiEzsignfolderID}/unsend": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezsignfolder-unsend-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Ezsignfolder"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfolder-unsend-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignfolder_Unsend_V1",
+                "summary": "Unsend the Ezsignfolder",
+                "description": "Once an Ezsignfolder has been sent to signatories, it cannot be modified.\n\nUsing this endpoint, you can unsend the Ezsignfolder and make it modifiable again.\n\nSignatories will receive an email informing them the signature process was aborted and they might receive a new invitation to sign.\n\n⚠️ Warning: Any signature previously made by signatories on \"Non-completed\" Ezsigndocuments will be lost."
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignfolderID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
         }
     },
     "components": {
@@ -2450,66 +2504,6 @@
                 "description": "Represent a Date Time.\nThe timezone is the one configured in the User's profile.",
                 "type": "string",
                 "example": "2020-12-31 23:59:59"
-            },
-            "ezsigndocument-Request": {
-                "description": "An Ezsigndocument Object",
-                "required": [
-                    "sEzsigndocumentName",
-                    "eEzsigndocumentSource",
-                    "eEzsigndocumentFormat",
-                    "fkiEzsignfolderID",
-                    "dtEzsigndocumentDuedate",
-                    "fkiLanguageID"
-                ],
-                "type": "object",
-                "properties": {
-                    "eEzsigndocumentSource": {
-                        "description": "Indicates where to look for the document binary content.",
-                        "enum": [
-                            "Base64"
-                        ],
-                        "type": "string"
-                    },
-                    "eEzsigndocumentFormat": {
-                        "description": "Indicates the format of the document.",
-                        "enum": [
-                            "Pdf"
-                        ],
-                        "type": "string"
-                    },
-                    "sEzsigndocumentBase64": {
-                        "format": "byte",
-                        "description": "The Base64 encoded binary content of the document.\n\nThis field is Required when eEzsigndocumentSource = Base64.",
-                        "type": "string"
-                    },
-                    "fkiEzsignfolderID": {
-                        "description": "A reference to a valid Ezsignfolder.\n\nThat value is returned after a successful Ezsignfolder Creation.",
-                        "minimum": 1,
-                        "type": "integer"
-                    },
-                    "dtEzsigndocumentDuedate": {
-                        "$ref": "#/components/schemas/Common-Format-DateTime",
-                        "description": ""
-                    },
-                    "fkiLanguageID": {
-                        "$ref": "#/components/schemas/Field-pkiLanguageID",
-                        "description": ""
-                    },
-                    "sEzsigndocumentName": {
-                        "description": "The name of the document that will be presented to Ezsignfoldersignerassociations",
-                        "type": "string"
-                    }
-                },
-                "example": {
-                    "sEzsigndocumentName": "Important contract",
-                    "sEzsigndocumentFilename": "Important Contract.pdf",
-                    "fkiLanguageID": 2,
-                    "eEzsigndocumentSource": "Base64",
-                    "eEzsigndocumentFormat": "Pdf",
-                    "sEzsigndocumentBase64": "JVBERi0xLjENCiXCpcKxw6sNCg0KMSAwIG9iag0KICA8PCAvVHlwZSAvQ2F0YWxvZw0KICAgICAvUGFnZXMgMiAwIFINCiAgPj4NCmVuZG9iag0KDQoyIDAgb2JqDQogIDw8IC9UeXBlIC9QYWdlcw0KICAgICAvS2lkcyBbMyAwIFJdDQogICAgIC9Db3VudCAxDQogICAgIC9NZWRpYUJveCBbMCAwIDMwMCAxNDRdDQogID4+DQplbmRvYmoNCg0KMyAwIG9iag0KICA8PCAgL1R5cGUgL1BhZ2UNCiAgICAgIC9QYXJlbnQgMiAwIFINCiAgICAgIC9SZXNvdXJjZXMNCiAgICAgICA8PCAvRm9udA0KICAgICAgICAgICA8PCAvRjENCiAgICAgICAgICAgICAgIDw8IC9UeXBlIC9Gb250DQogICAgICAgICAgICAgICAgICAvU3VidHlwZSAvVHlwZTENCiAgICAgICAgICAgICAgICAgIC9CYXNlRm9udCAvVGltZXMtUm9tYW4NCiAgICAgICAgICAgICAgID4+DQogICAgICAgICAgID4+DQogICAgICAgPj4NCiAgICAgIC9Db250ZW50cyA0IDAgUg0KICA+Pg0KZW5kb2JqDQoNCjQgMCBvYmoNCiAgPDwgL0xlbmd0aCA1NSA+Pg0Kc3RyZWFtDQogIEJUDQogICAgL0YxIDE4IFRmDQogICAgMCAwIFRkDQogICAgKEhlbGxvIFdvcmxkKSBUag0KICBFVA0KZW5kc3RyZWFtDQplbmRvYmoNCg0KeHJlZg0KMCA1DQowMDAwMDAwMDAwIDY1NTM1IGYgDQowMDAwMDAwMDE4IDAwMDAwIG4gDQowMDAwMDAwMDc3IDAwMDAwIG4gDQowMDAwMDAwMTc4IDAwMDAwIG4gDQowMDAwMDAwNDU3IDAwMDAwIG4gDQp0cmFpbGVyDQogIDw8ICAvUm9vdCAxIDAgUg0KICAgICAgL1NpemUgNQ0KICA+Pg0Kc3RhcnR4cmVmDQo1NjUNCiUlRU9G",
-                    "fkiEzsignfolderID": 1,
-                    "dtEzsigndocumentDuedate": "2020-12-31 23:59:59"
-                }
             },
             "ezsignfoldersignerassociation-Request": {
                 "description": "An Ezsignfoldersignerassociation Object",
@@ -5899,6 +5893,72 @@
                         "type": "integer"
                     }
                 }
+            },
+            "ezsignfolder-unsend-v1-Request": {
+                "description": "Request for the /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend API Request\n\nIntentionally empty for future-proofing",
+                "type": "object"
+            },
+            "ezsignfolder-unsend-v1-Response": {
+                "description": "Response for the /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsigndocument-Request": {
+                "description": "An Ezsigndocument Object",
+                "required": [
+                    "sEzsigndocumentName",
+                    "eEzsigndocumentSource",
+                    "eEzsigndocumentFormat",
+                    "fkiEzsignfolderID",
+                    "dtEzsigndocumentDuedate",
+                    "fkiLanguageID"
+                ],
+                "type": "object",
+                "properties": {
+                    "eEzsigndocumentSource": {
+                        "description": "Indicates where to look for the document binary content.",
+                        "enum": [
+                            "Base64"
+                        ],
+                        "type": "string"
+                    },
+                    "eEzsigndocumentFormat": {
+                        "description": "Indicates the format of the document.",
+                        "enum": [
+                            "Pdf"
+                        ],
+                        "type": "string"
+                    },
+                    "sEzsigndocumentBase64": {
+                        "format": "byte",
+                        "description": "The Base64 encoded binary content of the document.\n\nThis field is Required when eEzsigndocumentSource = Base64.",
+                        "default": "",
+                        "type": "string",
+                        "example": "JVBERi0xLjENCiXCpcKxw6sNCg0KMSAwIG9iag0KICA8PCAvVHlwZSAvQ2F0YWxvZw0KICAgICAvUGFnZXMgMiAwIFINCiAgPj4NCmVuZG9iag0KDQoyIDAgb2JqDQogIDw8IC9UeXBlIC9QYWdlcw0KICAgICAvS2lkcyBbMyAwIFJdDQogICAgIC9Db3VudCAxDQogICAgIC9NZWRpYUJveCBbMCAwIDMwMCAxNDRdDQogID4+DQplbmRvYmoNCg0KMyAwIG9iag0KICA8PCAgL1R5cGUgL1BhZ2UNCiAgICAgIC9QYXJlbnQgMiAwIFINCiAgICAgIC9SZXNvdXJjZXMNCiAgICAgICA8PCAvRm9udA0KICAgICAgICAgICA8PCAvRjENCiAgICAgICAgICAgICAgIDw8IC9UeXBlIC9Gb250DQogICAgICAgICAgICAgICAgICAvU3VidHlwZSAvVHlwZTENCiAgICAgICAgICAgICAgICAgIC9CYXNlRm9udCAvVGltZXMtUm9tYW4NCiAgICAgICAgICAgICAgID4+DQogICAgICAgICAgID4+DQogICAgICAgPj4NCiAgICAgIC9Db250ZW50cyA0IDAgUg0KICA+Pg0KZW5kb2JqDQoNCjQgMCBvYmoNCiAgPDwgL0xlbmd0aCA1NSA+Pg0Kc3RyZWFtDQogIEJUDQogICAgL0YxIDE4IFRmDQogICAgMCAwIFRkDQogICAgKEhlbGxvIFdvcmxkKSBUag0KICBFVA0KZW5kc3RyZWFtDQplbmRvYmoNCg0KeHJlZg0KMCA1DQowMDAwMDAwMDAwIDY1NTM1IGYgDQowMDAwMDAwMDE4IDAwMDAwIG4gDQowMDAwMDAwMDc3IDAwMDAwIG4gDQowMDAwMDAwMTc4IDAwMDAwIG4gDQowMDAwMDAwNDU3IDAwMDAwIG4gDQp0cmFpbGVyDQogIDw8ICAvUm9vdCAxIDAgUg0KICAgICAgL1NpemUgNQ0KICA+Pg0Kc3RhcnR4cmVmDQo1NjUNCiUlRU9G"
+                    },
+                    "sEzsigndocumentPassword": {
+                        "description": "If the source document is password protected, the password to open/modify it.",
+                        "default": "",
+                        "type": "string",
+                        "example": "SecretPassword123"
+                    },
+                    "fkiEzsignfolderID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "dtEzsigndocumentDuedate": {
+                        "$ref": "#/components/schemas/Field-dtEzsigndocumentDuedate"
+                    },
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Field-pkiLanguageID"
+                    },
+                    "sEzsigndocumentName": {
+                        "$ref": "#/components/schemas/Field-sEzsigndocumentName"
+                    }
+                }
             }
         },
         "responses": {
@@ -5974,7 +6034,7 @@
     "tags": [
         {
             "name": "General_Introduction",
-            "description": "We publish everything related to our API on github at this location: <a href=\"https://github.com/eZmaxinc\" target=\"_blank\">https://github.com/eZmaxinc</a>. You'll find git repos for the specification, documentation, SDKs and samples.\n\nDocumentation, SDKs and samples are provided in english only for easier maintenance, but we also have french speaking integrators that can help you out.\n\nMost of our SDKs provide language specific documentation, but you'll find more details on this page about the general use of the API. Both the SDK's specific document (if you choose to use a SDK) and this documentation can be used in complementarity.\n\nIf you find any mistake or omission in the documentation, please notify us. We'll quickly fix the issue.\n\n## Onboarding\nWe highly recommend to schedule an online meeting with your technical team and an eZmax integrator. During this meeting, we go through requirements, business logic, configuration, api key generation, and we go through the list of functions you might need to implement to achieve your goals. Make sure you take this opportunity to speed up your integration project.\n\nIf you need help understanding how to use this API, don't waste too much time searching in it. Contact support-api@ezmax.ca, we're here to help. We are developpers so we know programmers don't like to waste time in documentation. If you don't find what you need in the documentation, let us know, we'll improve it and put you rapidly up on track.\n\n## Open API\nWe highly believe in open standards and open source. We have adopted the Open API vision where all of the functionnalities of our applications are accessible with open source definition files. We use our own public API's to build our interfaces so you can do pretty much everything we can do. Open API has a rich toolset from editor, generators, mock servers, validators, etc. Learn more at <a href=\"https://www.openapis.org/\" target=\"_blank\">OpenAPI Initiative</a>\n\nIf you need  our Open API Spec file to use in your toolset, here is a direct link to it: <a href=\"https://raw.githubusercontent.com/eZmaxinc/eZmax-API/master/specs/ezmax.v1.0.json\" target=\"_blank\">ezmax.v1.0.json</a>\n\n## SDK\nWe provide SDKs for customers. They are generated using <a href=\"https://openapi-generator.tech/\" target=\"_blank\">OpenAPI Generator</a>, we encourage customers to use them as we also provide samples for them. You can choose to build your own implementation manually or can use any compatible OpenAPI 3.0 generator like <a href=\"https://openapi-generator.tech/\" target=\"_blank\">OpenAPI Generator</a>, <a href=\"https://swagger.io/tools/swagger-codegen/\" target=\"_blank\">Swagger Codegen</a> or any commercial generators.\n\nWe try to make it as easy as possible for you to use our SDKs so we publish packages on NPM and Composer. If you don't find your favorite language supported or it we could make your like easier by automating package distribution, let us know !",
+            "description": "We publish everything related to our API on github at this location: <a href=\"https://github.com/eZmaxinc\" target=\"_blank\">https://github.com/eZmaxinc</a>. You'll find git repos for the specification, documentation, SDKs and samples.\n\nDocumentation, SDKs and samples are provided in english only for easier maintenance, but we also have french speaking integrators that can help you out.\n\nMost of our SDKs provide language specific documentation, but you'll find more details on this page about the general use of the API. Both the SDK's specific document (if you choose to use a SDK) and this documentation can be used in complementarity.\n\nIf you find any mistake or omission in the documentation, please notify us. We'll quickly fix the issue.\n\n## Onboarding\nWe highly recommend to schedule an online meeting with your technical team and an eZmax integrator. During this meeting, we go through requirements, business logic, configuration, api key generation, and we go through the list of functions you might need to implement to achieve your goals. Make sure you take this opportunity to speed up your integration project.\n\nIf you need help understanding how to use this API, don't waste too much time searching in it. Contact support-api@ezmax.ca, we're here to help. We are developpers so we know programmers don't like to waste time in documentation. If you don't find what you need in the documentation, let us know, we'll improve it and put you rapidly up on track.\n\n## Open API\nWe highly believe in open standards and open source. We have adopted the Open API vision where all of the functionnalities of our applications are accessible with open source definition files. We use our own public API's to build our interfaces so you can do pretty much everything we can do. Open API has a rich toolset from editor, generators, mock servers, validators, etc. Learn more at <a href=\"https://www.openapis.org/\" target=\"_blank\">OpenAPI Initiative</a>\n\nIf you need  our Open API Spec file to use in your toolset, here is a direct link to it: <a href=\"https://raw.githubusercontent.com/eZmaxinc/eZmax-API/master/specs/ezmax.v1.1.json\" target=\"_blank\">ezmax.v1.1.json</a>\n\n## SDK\nWe provide SDKs for customers. They are generated using <a href=\"https://openapi-generator.tech/\" target=\"_blank\">OpenAPI Generator</a>, we encourage customers to use them as we also provide samples for them. You can choose to build your own implementation manually or can use any compatible OpenAPI 3.0 generator like <a href=\"https://openapi-generator.tech/\" target=\"_blank\">OpenAPI Generator</a>, <a href=\"https://swagger.io/tools/swagger-codegen/\" target=\"_blank\">Swagger Codegen</a> or any commercial generators.\n\nWe try to make it as easy as possible for you to use our SDKs so we publish packages on NPM and Composer. If you don't find your favorite language supported or it we could make your like easier by automating package distribution, let us know !",
             "x-displayName": "Introduction"
         },
         {
@@ -5984,7 +6044,7 @@
         },
         {
             "name": "General_Conventions",
-            "description": "## Variables\n\nWe use a custom type base naming convention for variables.\n\nEach variable name is composed of up to 6 indicators\n1. **Array** (Optional) *a_* when we are dealing with an array.\n2. **Key** (Optional) *pk* when we are dealing with a primary key or *fk* for foreign key.\n3. **Type** Will always be in lowercase and represent the type of the variable.\n4. **Table** The first letter in uppercase and the rest in lowercase and represents the table name from where the variable was retrieved.\n5. **Field** (Optional) The first letter is uppercase and the rest is lowercase and represents the field name.\n6. **Discriminator** (Optional) Will be present only when two identical fields are stored in the same table to differenciate one from the other. \n\nHere is a summary table explaining the convention.\n\n|  | Array | Key | Type | Table | Field | Discriminator |\n|---|---|---|---|---|---|---|\n| **Optional** | Yes | Yes | No | No | Yes | Yes |\n| **Naming** | Fixed | Fixed | Lowercase | First letter is uppercase and the rest is lowercase | First letter is uppercase and the rest is lowercase except for the Field *ID* wich is always uppercase | First letter is uppercase and the rest is lowercase |\n| **Values** | a_ | pk<br>fki | s (string)<br>t (text)<br>c (char)<br>sha (sha-1 string)<br>md5 (md5 string)<br>bin (binary string)<br>i (integer)<br>f (float)<br>d (decimal)<br>e (enum)<br>dt (date or datetime)<br>b (boolean)<br>obj (object) | Any | Any | Any |\n\nHere are examples of typical variables' names\n\n| Variable name | Array | key | Type | Table | Field | Discriminator | Explanation | Example |\n|---|---|---|---|---|---|---|---|---|\n| pkiContactID |  | pk | i | Contact | ID |  | Primary key of type integer for the field name *ID* in table *Contact* | 133 |\n| fkiContactID |  | fk | i | Contact | ID |  | Foreign key of type integer pointing to the field *pkiContactID* in table *Contact* | 133 |\n| fkiContactIDOwner |  | fk | i | Contact | ID | Owner | Foreign key of type integer pointing to the field *pkiContactID* in table *Contact* with a discriminator of *Owner* | 266 |\n| sContactFirstname |  |  | s | Contact | Firstname |  | String for the Field *Firstname* in table *Contact* | John |\n| bPurchaseIspaid |  |  | b | Purchase | Ispaid |  | Boolean for the field Ispaid in table *Purchase* | true |\n| dPurchaseTotal |  |  | d | Purchase | Total |  | Decimal number for the field *Total* in table *Purchase* | 2199.78 |\n| objEzsignfolder |  |  | obj | Esignfolder |  |  | Object of type *Ezsignfolder* | {\"pkiEzsignfolderID\": 122, \"sEzsignfolderName\": \"Test\"} |\n| a_objEzsignfolder | a_ |  | obj | Ezsignfolder |  |  | Array of objects of type *Ezsignfolder* | [{\"pkiEzsignfolderID\": 122, \"sEzsignfolderName\": \"Test\"}, {\"pkiEzsignfolderID\": 234, \"sEzsignfolderName\": \"Test 2\"}] |\n| a_sContactFirstname | a_ |  | s | Contact | Firstname |  | An array of string for the field *Firstname* in table *Contact* | ['John', 'Mary', 'Jane'] |\n| a_pkiContactIDOwner | a_ | pk | i | Contact | ID | Owner | An array of foreign keys of type integer pointing to the field *pkiContactID* in table *Contact* with a discriminator of *Owner* | [266, 277, 288] |\n\n## List filter\n\nEvery GetList Endpoint has a *sFilter* query parameter that can be used to filter the returned elements.\n\nThe sFilter parameter's syntax is not documented at the endpoint's level since it would be redundant. This section documents the syntax.\n\n* Every property returned by the endpoint can be used to build the *sFilter* string. Except for rare exceptions.\n* Each filter can be joined by the *and* operator\n* Not every property supports every operator. The list of valid operators is based on the variable type. For example, only strings support the *like* operator. You can refer to the *Variables* article in the *Conventions* section of the documentation to learn about variable types.\n* Variables of type *Enum* have predetermined list of filters which will be documented at the endpoint's level.\n* *sFilter*'s value must be url encoded.\n* String values need to be enclosed in single quotes\n\nValid operators for boolean values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | bEzsigndocumentEzsignclause eq true<br>bEzsigndocumentEzsignclause eq false |\n\nValid operators for integer values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | iEzsigndocumentPagetotal eq 10 |\n| gt | Greater than | iEzsigndocumentPagetotal gt 10 |\n| gte | Greater than or equal to | iEzsigndocumentPagetotal gte 10 |\n| lt | Less than | iEzsigndocumentPagetotal lt 100 |\n| lte | Less than or equal to | iEzsigndocumentPagetotal lte 100 |\n\nValid operators for date and datetime values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | dtEzsigndocumentDuedate eq '2005-07-01 18:15:59'<br>dtEzsigndocumentDuedate eq '2005-07-01' |\n| gt | Greater than | dtEzsigndocumentDuedate gt '2001-01-01 00:00:00'<br>dtEzsigndocumentDuedate gt '2001-01-01' |\n| gte | Greater than or equal to | dtEzsigndocumentDuedate gte '2001-01-01 00:00:00'<br>dtEzsigndocumentDuedate gte '2001-01-01' |\n| lt | Less than | dtEzsigndocumentDuedate lt '2025-12-31 23:59:59'<br>dtEzsigndocumentDuedate lt '2025-12-31' |\n| lte | Less than or equal to | dtEzsigndocumentDuedate lte '2025-12-31 23:59:59'<br>dtEzsigndocumentDuedate lte '2025-12-31' |\n\nValid operators for string values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | sEzsigndocumentName  eq 'Test contract' |\n| like | Search for a partial string with *%* wildcard | sEzsigndocumentName  like 'Test contra%'<br>sEzsigndocumentName  like '%contract'<br>sEzsigndocumentName  like '%con%' |\n\nValid operators for enum values (valid values are documented at the endpoint's level):\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | eEzsigndocumentStep eq 'PartiallySigned' |\n\nExample of combining multiple filter together:\n\nsFilter=bEzsigndocumentEzsignclause eq true and iEzsigndocumentPagetotal gt 10 and iEzsigndocumentPagetotal lte 100 and dtEzsigndocumentDuedate gt '2001-01-01 00:00:00' and dtEzsigndocumentDuedate lte '2025-12-31 23:59:59' and sEzsigndocumentName  like '%con%' and eEzsigndocumentStep eq 'PartiallySigned'\n\nSame example, but properly url encoded:\n\nsFilter=bEzsigndocumentEzsignclause%20eq%20true%20and%20iEzsigndocumentPagetotal%20gt%2010%20and%20iEzsigndocumentPagetotal%20lte%20100%20and%20dtEzsigndocumentDuedate%20gt%20%272001-01-01%2000%3A00%3A00%27%20and%20dtEzsigndocumentDuedate%20lte%20%272025-12-31%2023%3A59%3A59%27%20and%20sEzsigndocumentName%20%20like%20%27%25con%25%27%20and%20eEzsigndocumentStep%20eq%20%27PartiallySigned%27",
+            "description": "## Variables\n\nWe use a custom type base naming convention for variables.\n\nEach variable name is composed of up to 6 indicators\n1. **Array** (Optional) *a_* when we are dealing with an array.\n2. **Key** (Optional) *pk* when we are dealing with a primary key or *fk* for foreign key.\n3. **Type** Will always be in lowercase and represent the type of the variable.\n4. **Table** The first letter in uppercase and the rest in lowercase and represents the table name from where the variable was retrieved.\n5. **Field** (Optional) The first letter is uppercase and the rest is lowercase and represents the field name.\n6. **Discriminator** (Optional) Will be present only when two identical fields are stored in the same table to differenciate one from the other. \n\nHere is a summary table explaining the convention.\n\n|  | Array | Key | Type | Table | Field | Discriminator |\n|---|---|---|---|---|---|---|\n| **Optional** | Yes | Yes | No | No | Yes | Yes |\n| **Naming** | Fixed | Fixed | Lowercase | First letter is uppercase and the rest is lowercase | First letter is uppercase and the rest is lowercase except for the Field *ID* wich is always uppercase | First letter is uppercase and the rest is lowercase |\n| **Values** | a_ | pk<br>fki | s (string)<br>t (text)<br>c (char)<br>sha (sha-1 string)<br>md5 (md5 string)<br>bin (binary string)<br>i (integer)<br>f (float)<br>d (decimal)<br>e (enum)<br>dt (date or datetime)<br>b (boolean)<br>obj (object)<br>m (mixed) | Any | Any | Any |\n\nHere are examples of typical variables' names\n\n| Variable name | Array | key | Type | Table | Field | Discriminator | Explanation | Example |\n|---|---|---|---|---|---|---|---|---|\n| pkiContactID |  | pk | i | Contact | ID |  | Primary key of type integer for the field name *ID* in table *Contact* | 133 |\n| fkiContactID |  | fk | i | Contact | ID |  | Foreign key of type integer pointing to the field *pkiContactID* in table *Contact* | 133 |\n| fkiContactIDOwner |  | fk | i | Contact | ID | Owner | Foreign key of type integer pointing to the field *pkiContactID* in table *Contact* with a discriminator of *Owner* | 266 |\n| sContactFirstname |  |  | s | Contact | Firstname |  | String for the Field *Firstname* in table *Contact* | John |\n| bPurchaseIspaid |  |  | b | Purchase | Ispaid |  | Boolean for the field Ispaid in table *Purchase* | true |\n| dPurchaseTotal |  |  | d | Purchase | Total |  | Decimal number for the field *Total* in table *Purchase* | 2199.78 |\n| objEzsignfolder |  |  | obj | Esignfolder |  |  | Object of type *Ezsignfolder* | {\"pkiEzsignfolderID\": 122, \"sEzsignfolderName\": \"Test\"} |\n| a_objEzsignfolder | a_ |  | obj | Ezsignfolder |  |  | Array of objects of type *Ezsignfolder* | [{\"pkiEzsignfolderID\": 122, \"sEzsignfolderName\": \"Test\"}, {\"pkiEzsignfolderID\": 234, \"sEzsignfolderName\": \"Test 2\"}] |\n| a_sContactFirstname | a_ |  | s | Contact | Firstname |  | An array of string for the field *Firstname* in table *Contact* | ['John', 'Mary', 'Jane'] |\n| a_pkiContactIDOwner | a_ | pk | i | Contact | ID | Owner | An array of foreign keys of type integer pointing to the field *pkiContactID* in table *Contact* with a discriminator of *Owner* | [266, 277, 288] |\n\n## List filter\n\nEvery GetList Endpoint has a *sFilter* query parameter that can be used to filter the returned elements.\n\nThe sFilter parameter's syntax is not documented at the endpoint's level since it would be redundant. This section documents the syntax.\n\n* Every property returned by the endpoint can be used to build the *sFilter* string. Except for rare exceptions.\n* Each filter can be joined by the *and* operator\n* Not every property supports every operator. The list of valid operators is based on the variable type. For example, only strings support the *like* operator. You can refer to the *Variables* article in the *Conventions* section of the documentation to learn about variable types.\n* Variables of type *Enum* have predetermined list of filters which will be documented at the endpoint's level.\n* *sFilter*'s value must be url encoded.\n* String values need to be enclosed in single quotes\n\nValid operators for boolean values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | bEzsigndocumentEzsignclause eq true<br>bEzsigndocumentEzsignclause eq false |\n\nValid operators for integer values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | iEzsigndocumentPagetotal eq 10 |\n| gt | Greater than | iEzsigndocumentPagetotal gt 10 |\n| gte | Greater than or equal to | iEzsigndocumentPagetotal gte 10 |\n| lt | Less than | iEzsigndocumentPagetotal lt 100 |\n| lte | Less than or equal to | iEzsigndocumentPagetotal lte 100 |\n\nValid operators for date and datetime values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | dtEzsigndocumentDuedate eq '2005-07-01 18:15:59'<br>dtEzsigndocumentDuedate eq '2005-07-01' |\n| gt | Greater than | dtEzsigndocumentDuedate gt '2001-01-01 00:00:00'<br>dtEzsigndocumentDuedate gt '2001-01-01' |\n| gte | Greater than or equal to | dtEzsigndocumentDuedate gte '2001-01-01 00:00:00'<br>dtEzsigndocumentDuedate gte '2001-01-01' |\n| lt | Less than | dtEzsigndocumentDuedate lt '2025-12-31 23:59:59'<br>dtEzsigndocumentDuedate lt '2025-12-31' |\n| lte | Less than or equal to | dtEzsigndocumentDuedate lte '2025-12-31 23:59:59'<br>dtEzsigndocumentDuedate lte '2025-12-31' |\n\nValid operators for string values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | sEzsigndocumentName  eq 'Test contract' |\n| like | Search for a partial string with *%* wildcard | sEzsigndocumentName  like 'Test contra%'<br>sEzsigndocumentName  like '%contract'<br>sEzsigndocumentName  like '%con%' |\n\nValid operators for enum values (valid values are documented at the endpoint's level):\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | eEzsigndocumentStep eq 'PartiallySigned' |\n\nExample of combining multiple filter together:\n\nsFilter=bEzsigndocumentEzsignclause eq true and iEzsigndocumentPagetotal gt 10 and iEzsigndocumentPagetotal lte 100 and dtEzsigndocumentDuedate gt '2001-01-01 00:00:00' and dtEzsigndocumentDuedate lte '2025-12-31 23:59:59' and sEzsigndocumentName  like '%con%' and eEzsigndocumentStep eq 'PartiallySigned'\n\nSame example, but properly url encoded:\n\nsFilter=bEzsigndocumentEzsignclause%20eq%20true%20and%20iEzsigndocumentPagetotal%20gt%2010%20and%20iEzsigndocumentPagetotal%20lte%20100%20and%20dtEzsigndocumentDuedate%20gt%20%272001-01-01%2000%3A00%3A00%27%20and%20dtEzsigndocumentDuedate%20lte%20%272025-12-31%2023%3A59%3A59%27%20and%20sEzsigndocumentName%20%20like%20%27%25con%25%27%20and%20eEzsigndocumentStep%20eq%20%27PartiallySigned%27",
             "x-displayName": "Conventions"
         },
         {
@@ -6009,7 +6069,7 @@
         },
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.1] - 2021-10-\n\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\n- GET /1/object/ezsignfolder/getList/\n- GET /1/object/ezsignfoldertype/getList\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog can be found here: [1.0.x Documentation](https://ezmaxinc.github.io/eZmax-API/docs/ezmax.v1.0.html)",
+            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.1] - 2021-10-20\n\n#### Added\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend\n- Variables convention documentation now contains type \"m\" for mixed type\n- sEzsigndocumentPassword added to POST /1/object/ezsigndocument/\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\n- GET /1/object/ezsignfolder/getList/\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\n- GET /1/object/ezsignfoldertype/getList\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation](https://ezmaxinc.github.io/eZmax-API/docs/ezmax.v1.0.html)",
             "x-displayName": "Changelog"
         },
         {
