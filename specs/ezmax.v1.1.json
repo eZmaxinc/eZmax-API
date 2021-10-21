@@ -2689,14 +2689,7 @@
                     {
                         "$ref": "#/components/schemas/ezsigndocument-Request"
                     }
-                ],
-                "example": {
-                    "sEzsigndocumentName": "Important contract",
-                    "sEzsigndocumentFilename": "Important Contract.pdf",
-                    "fkiEzsignfolderID": 1,
-                    "dtEzsigndocumentDuedate": "2020-12-31 23:59:59",
-                    "fkiLanguageID": 2
-                }
+                ]
             },
             "ezsignfolder-send-v1-Response": {
                 "description": "Response for the /1/object/ezsignfolder/{pkiEzsignfolderID}/send API Request",
