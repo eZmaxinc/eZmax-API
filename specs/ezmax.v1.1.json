@@ -5887,10 +5887,6 @@
                     }
                 }
             },
-            "ezsignfolder-unsend-v1-Request": {
-                "description": "Request for the /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend API Request\n\nIntentionally empty for future-proofing",
-                "type": "object"
-            },
             "ezsignfolder-unsend-v1-Response": {
                 "description": "Response for the /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend API Request",
                 "type": "object",
@@ -5952,6 +5948,10 @@
                         "$ref": "#/components/schemas/Field-sEzsigndocumentName"
                     }
                 }
+            },
+            "ezsignfolder-unsend-v1-Request": {
+                "description": "Request for the /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend API Request\n\nIntentionally empty for future-proofing",
+                "type": "string"
             }
         },
         "responses": {
