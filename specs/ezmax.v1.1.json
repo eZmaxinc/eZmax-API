@@ -2099,6 +2099,35 @@
             ]
         },
         "/1/module/list/listpresentation/{sListName}": {
+            "get": {
+                "tags": [
+                    "Module_List"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/list-getListpresentation-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "List_GetListpresentation_V1",
+                "summary": "Get all Listpresentation for a specific list",
+                "description": "Retrive previously saved Listpresentation"
+            },
             "post": {
                 "requestBody": {
                     "description": "",
@@ -2135,7 +2164,7 @@
                         ]
                     }
                 ],
-                "operationId": "List_Listpresentation_V1",
+                "operationId": "List_SaveListpresentation_V1",
                 "summary": "Save all Listpresentation for a specific list",
                 "description": "Users can create many Listpresentations for lists in the system. They can customize orber by, filters, numbers of rows, etc."
             },
@@ -5959,36 +5988,12 @@
                 "type": "object",
                 "allOf": [
                     {
-                        "required": [
-                            "mPayload"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "mPayload": {
-                                "$ref": "#/components/schemas/list-saveListpresentation-v1-Response-mPayload"
-                            }
-                        }
+                        "type": "object"
                     },
                     {
                         "$ref": "#/components/schemas/Common-Response"
                     }
                 ]
-            },
-            "list-saveListpresentation-v1-Response-mPayload": {
-                "description": "Payload for the POST /1/module/list/listpresentation/{sListName} API Request",
-                "required": [
-                    "a_objListpresentation"
-                ],
-                "type": "object",
-                "properties": {
-                    "a_objListpresentation": {
-                        "description": "",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/listpresentation-Response"
-                        }
-                    }
-                }
             },
             "list-saveListpresentation-v1-Request": {
                 "description": "Request for the POST /1/module/list/listpresentation/{sListName} API Request",
@@ -6078,6 +6083,42 @@
             "listpresentation-Response": {
                 "$ref": "#/components/schemas/listpresentation-Request",
                 "description": "A Listpresentation element"
+            },
+            "list-getListpresentation-v1-Response": {
+                "description": "Response for the GET /1/module/list/listpresentation/{sListName} API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/list-getListpresentation-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "list-getListpresentation-v1-Response-mPayload": {
+                "description": "Payload for the GET /1/module/list/listpresentation/{sListName} API Request",
+                "required": [
+                    "a_objListpresentation"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objListpresentation": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/listpresentation-Response"
+                        }
+                    }
+                }
             }
         },
         "responses": {
