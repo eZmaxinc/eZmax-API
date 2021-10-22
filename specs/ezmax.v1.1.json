@@ -2097,6 +2097,59 @@
                     "required": true
                 }
             ]
+        },
+        "/1/module/list/listpresentation/{sListName}": {
+            "post": {
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/list-saveListpresentation-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Module_List"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/list-saveListpresentation-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "List_Listpresentation_V1",
+                "summary": "Save all Listpresentation for a specific list",
+                "description": "Users can create many Listpresentations for lists in the system. They can customize orber by, filters, numbers of rows, etc."
+            },
+            "parameters": [
+                {
+                    "name": "sListName",
+                    "description": "The list Name",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
         }
     },
     "components": {
@@ -2441,49 +2494,6 @@
                         "$ref": "#/components/schemas/ezsignfolder-RequestCompound",
                         "description": ""
                     }
-                }
-            },
-            "ezsignfolder-Request": {
-                "description": "An Ezsignfolder Object",
-                "required": [
-                    "fkiEzsignfoldertypeID",
-                    "sEzsignfolderDescription",
-                    "fkiEzsigntsarequirementID",
-                    "tEzsignfolderNote",
-                    "eEzsignfolderSendreminderfrequency"
-                ],
-                "type": "object",
-                "properties": {
-                    "fkiEzsignfoldertypeID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID",
-                        "description": "",
-                        "minimum": 1
-                    },
-                    "fkiEzsigntsarequirementID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigntsarequirementID",
-                        "description": ""
-                    },
-                    "sEzsignfolderDescription": {
-                        "description": "The description of the Ezsign Folder",
-                        "maxLength": 75,
-                        "minLength": 1,
-                        "type": "string"
-                    },
-                    "tEzsignfolderNote": {
-                        "description": "Somes extra notes about the eZsign Folder",
-                        "type": "string"
-                    },
-                    "eEzsignfolderSendreminderfrequency": {
-                        "$ref": "#/components/schemas/Field-eEzsignfolderSendreminderfrequency",
-                        "description": ""
-                    }
-                },
-                "example": {
-                    "fkiEzsignfoldertypeID": 1,
-                    "sEzsignfolderDescription": "Test eZsign Folder",
-                    "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
-                    "fkiEzsigntsarequirementID": 1,
-                    "eEzsignfolderSendreminderfrequency": "Daily"
                 }
             },
             "ezsignfoldersignerassociation-createObject-v1-Request": {
@@ -2984,15 +2994,7 @@
                     {
                         "$ref": "#/components/schemas/ezsignfolder-Response"
                     }
-                ],
-                "example": {
-                    "pkiEzsignfolderID": 13,
-                    "fkiEzsignfoldertypeID": 1,
-                    "sEzsignfolderDescription": "Test eZsign Folder",
-                    "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
-                    "fkiEzsigntsarequirementID": 1,
-                    "eEzsignfolderSendreminderfrequency": "Daily"
-                }
+                ]
             },
             "ezsigndocument-Response": {
                 "description": "An Ezsigndocument Object",
@@ -5951,6 +5953,131 @@
                         "$ref": "#/components/schemas/Field-sEzsigndocumentName"
                     }
                 }
+            },
+            "list-saveListpresentation-v1-Response": {
+                "description": "Response for the POST /1/module/list/listpresentation/{sListName} API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/list-saveListpresentation-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "list-saveListpresentation-v1-Response-mPayload": {
+                "description": "Payload for the POST /1/module/list/listpresentation/{sListName} API Request",
+                "required": [
+                    "a_objListpresentation"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objListpresentation": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/listpresentation-Response"
+                        }
+                    }
+                }
+            },
+            "list-saveListpresentation-v1-Request": {
+                "description": "Request for the POST /1/module/list/listpresentation/{sListName} API Request",
+                "required": [
+                    "a_objListpresentation"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objListpresentation": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/listpresentation-Request"
+                        }
+                    }
+                }
+            },
+            "ezsignfolder-Request": {
+                "description": "An Ezsignfolder Object",
+                "required": [
+                    "fkiEzsignfoldertypeID",
+                    "sEzsignfolderDescription",
+                    "fkiEzsigntsarequirementID",
+                    "tEzsignfolderNote",
+                    "eEzsignfolderSendreminderfrequency"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiEzsignfoldertypeID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID"
+                    },
+                    "fkiEzsigntsarequirementID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigntsarequirementID"
+                    },
+                    "sEzsignfolderDescription": {
+                        "$ref": "#/components/schemas/Field-sEzsignfolderDescription"
+                    },
+                    "tEzsignfolderNote": {
+                        "$ref": "#/components/schemas/Field-tEzsignfolderNote"
+                    },
+                    "eEzsignfolderSendreminderfrequency": {
+                        "$ref": "#/components/schemas/Field-eEzsignfolderSendreminderfrequency"
+                    }
+                }
+            },
+            "listpresentation-Request": {
+                "description": "A Listpresentation element",
+                "required": [
+                    "sListpresentationDescription",
+                    "sListpresentationFilter",
+                    "sListpresentationOrderby",
+                    "a_sColumnName",
+                    "iListpresentationRowMax",
+                    "iListpresentationRowOffset"
+                ],
+                "type": "object",
+                "properties": {
+                    "sListpresentationDescription": {
+                        "description": "A descriptive for the list presentation",
+                        "type": "string"
+                    },
+                    "sListpresentationFilter": {
+                        "$ref": "#/components/schemas/Field-sFilter",
+                        "description": ""
+                    },
+                    "sListpresentationOrderby": {
+                        "description": "The order by the user chose",
+                        "type": "string"
+                    },
+                    "a_sColumnName": {
+                        "description": "An array of column names that the user chose to bee visible",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "iListpresentationRowMax": {
+                        "$ref": "#/components/schemas/Field-iRowMax",
+                        "description": ""
+                    },
+                    "iListpresentationRowOffset": {
+                        "$ref": "#/components/schemas/Field-iRowOffset",
+                        "description": ""
+                    }
+                }
+            },
+            "listpresentation-Response": {
+                "$ref": "#/components/schemas/listpresentation-Request",
+                "description": "A Listpresentation element"
             }
         },
         "responses": {
@@ -6061,7 +6188,7 @@
         },
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.1] - 2021-10-20\n\n#### Added\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend\n- Variables convention documentation now contains type \"m\" for mixed type\n- sEzsigndocumentPassword added to POST /1/object/ezsigndocument/\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\n- GET /1/object/ezsignfolder/getList/\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\n- GET /1/object/ezsignfoldertype/getList\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation](https://ezmaxinc.github.io/eZmax-API/docs/ezmax.v1.0.html)",
+            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.1] - 2021-10-22\n\n#### Added\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend\n- GET /1/module/list/listpresentation/{sListName}\n- POST /1/module/list/listpresentation/{sListName}\n- Variables convention documentation now contains type \"m\" for mixed type\n- POST /1/object/ezsigndocument/ sEzsigndocumentPassword property\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\n- GET /1/object/ezsignfolder/getList/\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\n- GET /1/object/ezsignfoldertype/getList\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation](https://ezmaxinc.github.io/eZmax-API/docs/ezmax.v1.0.html)",
             "x-displayName": "Changelog"
         },
         {
@@ -6071,8 +6198,13 @@
         },
         {
             "name": "Module_Authenticate",
-            "description": "Authenticate contains details action related to authenticating users to the platform",
+            "description": "Authenticate contains actions related to authenticating users to the platform",
             "x-displayName": "Authenticate"
+        },
+        {
+            "name": "Module_List",
+            "description": "List contains actions related to lists in the system.",
+            "x-displayName": "List"
         },
         {
             "name": "Module_Sspr",
@@ -6243,6 +6375,7 @@
             "name": "Module",
             "tags": [
                 "Module_Authenticate",
+                "Module_List",
                 "Module_Sspr",
                 "Module_User"
             ]
