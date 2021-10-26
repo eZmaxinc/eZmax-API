@@ -123,6 +123,12 @@
                             }
                         },
                         "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422-sTemporaryFileUrl"
                     }
                 },
                 "security": [
@@ -1970,7 +1976,7 @@
                 ],
                 "operationId": "Ezsignfolder_GetList_V1",
                 "summary": "Retrieve Ezsignfolder list",
-                "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eEzsignfolderStep | Unsent<br>Sent<br>PartiallySigned<br>Expired<br>Completed<br>Archived |"
+                "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eEzsignfolderStep | Unsent<br>Sent<br>PartiallySigned<br>Expired<br>Completed<br>Archived |\n| eEzsignfoldertypePrivacylevel | User<br>Usergroup |"
             }
         },
         "/1/object/ezsignfoldertype/getAutocomplete/{sSelector}": {
@@ -5833,86 +5839,6 @@
                 "description": "A custom type for null until OAS 3.1 support for null type",
                 "type": "object"
             },
-            "ezsignfolder-ListElement": {
-                "description": "An Ezsignfolder List Element",
-                "required": [
-                    "pkiEzsignfolderID",
-                    "fkiEzsignfoldertypeID",
-                    "sEzsignfoldertypeNameX",
-                    "sEzsignfolderDescription",
-                    "eEzsignfolderStep",
-                    "dtCreatedDate",
-                    "dtEzsignfolderSentdate",
-                    "dtDueDate",
-                    "iTotalDocument",
-                    "iTotalDocumentEdm",
-                    "iTotalSignature",
-                    "iTotalSignatureSigned"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiEzsignfolderID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
-                    },
-                    "fkiEzsignfoldertypeID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID",
-                        "description": ""
-                    },
-                    "sEzsignfoldertypeNameX": {
-                        "$ref": "#/components/schemas/Field-sEzsignfoldertypeNameX",
-                        "description": ""
-                    },
-                    "sEzsignfolderDescription": {
-                        "$ref": "#/components/schemas/Field-sEzsignfolderDescription",
-                        "description": ""
-                    },
-                    "eEzsignfolderStep": {
-                        "$ref": "#/components/schemas/Field-eEzsignfolderStep",
-                        "description": ""
-                    },
-                    "dtCreatedDate": {
-                        "$ref": "#/components/schemas/Field-dtCreatedDate",
-                        "description": ""
-                    },
-                    "dtEzsignfolderSentdate": {
-                        "oneOf": [
-                            {
-                                "$ref": "#/components/schemas/Field-dtEzsignfolderSentdate"
-                            },
-                            {
-                                "$ref": "#/components/schemas/Custom-Null"
-                            }
-                        ]
-                    },
-                    "dtDueDate": {
-                        "oneOf": [
-                            {
-                                "$ref": "#/components/schemas/Common-Format-DateTime"
-                            },
-                            {
-                                "$ref": "#/components/schemas/Custom-Null"
-                            }
-                        ],
-                        "description": "The date at which no more signature will be accepted on the folder"
-                    },
-                    "iTotalDocument": {
-                        "description": "The total number of Ezsigndocument in the folder",
-                        "type": "integer"
-                    },
-                    "iTotalDocumentEdm": {
-                        "description": "The total number of Ezsigndocument in the folder that were saved in the edm system",
-                        "type": "integer"
-                    },
-                    "iTotalSignature": {
-                        "description": "The total number of signature blocks in all Ezsigndocuments in the folder",
-                        "type": "integer"
-                    },
-                    "iTotalSignatureSigned": {
-                        "description": "The total number of already signed signature blocks in all Ezsigndocuments in the folder",
-                        "type": "integer"
-                    }
-                }
-            },
             "ezsignfolder-unsend-v1-Response": {
                 "description": "Response for the /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend API Request",
                 "type": "object",
@@ -5925,58 +5851,6 @@
             "ezsignfolder-unsend-v1-Request": {
                 "description": "Request for the /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend API Request\n\nIntentionally empty for future-proofing",
                 "type": "string"
-            },
-            "ezsigndocument-Request": {
-                "description": "An Ezsigndocument Object",
-                "required": [
-                    "sEzsigndocumentName",
-                    "eEzsigndocumentSource",
-                    "eEzsigndocumentFormat",
-                    "fkiEzsignfolderID",
-                    "dtEzsigndocumentDuedate",
-                    "fkiLanguageID"
-                ],
-                "type": "object",
-                "properties": {
-                    "eEzsigndocumentSource": {
-                        "description": "Indicates where to look for the document binary content.",
-                        "enum": [
-                            "Base64"
-                        ],
-                        "type": "string"
-                    },
-                    "eEzsigndocumentFormat": {
-                        "description": "Indicates the format of the document.",
-                        "enum": [
-                            "Pdf"
-                        ],
-                        "type": "string"
-                    },
-                    "sEzsigndocumentBase64": {
-                        "format": "byte",
-                        "description": "The Base64 encoded binary content of the document.\n\nThis field is Required when eEzsigndocumentSource = Base64.",
-                        "type": "string",
-                        "example": "JVBERi0xLjENCiXCpcKxw6sNCg0KMSAwIG9iag0KICA8PCAvVHlwZSAvQ2F0YWxvZw0KICAgICAvUGFnZXMgMiAwIFINCiAgPj4NCmVuZG9iag0KDQoyIDAgb2JqDQogIDw8IC9UeXBlIC9QYWdlcw0KICAgICAvS2lkcyBbMyAwIFJdDQogICAgIC9Db3VudCAxDQogICAgIC9NZWRpYUJveCBbMCAwIDMwMCAxNDRdDQogID4+DQplbmRvYmoNCg0KMyAwIG9iag0KICA8PCAgL1R5cGUgL1BhZ2UNCiAgICAgIC9QYXJlbnQgMiAwIFINCiAgICAgIC9SZXNvdXJjZXMNCiAgICAgICA8PCAvRm9udA0KICAgICAgICAgICA8PCAvRjENCiAgICAgICAgICAgICAgIDw8IC9UeXBlIC9Gb250DQogICAgICAgICAgICAgICAgICAvU3VidHlwZSAvVHlwZTENCiAgICAgICAgICAgICAgICAgIC9CYXNlRm9udCAvVGltZXMtUm9tYW4NCiAgICAgICAgICAgICAgID4+DQogICAgICAgICAgID4+DQogICAgICAgPj4NCiAgICAgIC9Db250ZW50cyA0IDAgUg0KICA+Pg0KZW5kb2JqDQoNCjQgMCBvYmoNCiAgPDwgL0xlbmd0aCA1NSA+Pg0Kc3RyZWFtDQogIEJUDQogICAgL0YxIDE4IFRmDQogICAgMCAwIFRkDQogICAgKEhlbGxvIFdvcmxkKSBUag0KICBFVA0KZW5kc3RyZWFtDQplbmRvYmoNCg0KeHJlZg0KMCA1DQowMDAwMDAwMDAwIDY1NTM1IGYgDQowMDAwMDAwMDE4IDAwMDAwIG4gDQowMDAwMDAwMDc3IDAwMDAwIG4gDQowMDAwMDAwMTc4IDAwMDAwIG4gDQowMDAwMDAwNDU3IDAwMDAwIG4gDQp0cmFpbGVyDQogIDw8ICAvUm9vdCAxIDAgUg0KICAgICAgL1NpemUgNQ0KICA+Pg0Kc3RhcnR4cmVmDQo1NjUNCiUlRU9G"
-                    },
-                    "sEzsigndocumentPassword": {
-                        "description": "If the source document is password protected, the password to open/modify it.",
-                        "default": "",
-                        "type": "string",
-                        "example": "SecretPassword123"
-                    },
-                    "fkiEzsignfolderID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
-                    },
-                    "dtEzsigndocumentDuedate": {
-                        "$ref": "#/components/schemas/Field-dtEzsigndocumentDuedate"
-                    },
-                    "fkiLanguageID": {
-                        "$ref": "#/components/schemas/Field-pkiLanguageID"
-                    },
-                    "sEzsigndocumentName": {
-                        "$ref": "#/components/schemas/Field-sEzsigndocumentName"
-                    }
-                }
             },
             "list-saveListpresentation-v1-Response": {
                 "description": "Response for the POST /1/module/list/listpresentation/{sListName} API Request",
@@ -6124,6 +5998,152 @@
                 "description": "The filter to apply to the request to limit results.",
                 "type": "string",
                 "example": "bField1 eq true and iField2 gte 0 and iField2 lte 1000 and sField3 eq 'Other' and eField4 eq 'Paid' and sField5 like '%needle%' and iField6 in '1,2,3' and dtField7 rg '=m,=3mm'"
+            },
+            "ezsignfolder-ListElement": {
+                "description": "An Ezsignfolder List Element",
+                "required": [
+                    "pkiEzsignfolderID",
+                    "fkiEzsignfoldertypeID",
+                    "sEzsignfoldertypeNameX",
+                    "sEzsignfolderDescription",
+                    "eEzsignfolderStep",
+                    "dtCreatedDate",
+                    "dtEzsignfolderSentdate",
+                    "dtDueDate",
+                    "iTotalDocument",
+                    "iTotalDocumentEdm",
+                    "iTotalSignature",
+                    "iTotalSignatureSigned",
+                    "eEzsignfoldertypePrivacylevel"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsignfolderID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "fkiEzsignfoldertypeID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID"
+                    },
+                    "eEzsignfoldertypePrivacylevel": {
+                        "$ref": "#/components/schemas/Field-eEzsignfoldertypePrivacylevel"
+                    },
+                    "sEzsignfoldertypeNameX": {
+                        "$ref": "#/components/schemas/Field-sEzsignfoldertypeNameX",
+                        "description": ""
+                    },
+                    "sEzsignfolderDescription": {
+                        "$ref": "#/components/schemas/Field-sEzsignfolderDescription",
+                        "description": ""
+                    },
+                    "eEzsignfolderStep": {
+                        "$ref": "#/components/schemas/Field-eEzsignfolderStep",
+                        "description": ""
+                    },
+                    "dtCreatedDate": {
+                        "$ref": "#/components/schemas/Field-dtCreatedDate",
+                        "description": ""
+                    },
+                    "dtEzsignfolderSentdate": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Field-dtEzsignfolderSentdate"
+                            },
+                            {
+                                "$ref": "#/components/schemas/Custom-Null"
+                            }
+                        ]
+                    },
+                    "dtDueDate": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Common-Format-DateTime"
+                            },
+                            {
+                                "$ref": "#/components/schemas/Custom-Null"
+                            }
+                        ],
+                        "description": "The date at which no more signature will be accepted on the folder"
+                    },
+                    "iTotalDocument": {
+                        "description": "The total number of Ezsigndocument in the folder",
+                        "type": "integer"
+                    },
+                    "iTotalDocumentEdm": {
+                        "description": "The total number of Ezsigndocument in the folder that were saved in the edm system",
+                        "type": "integer"
+                    },
+                    "iTotalSignature": {
+                        "description": "The total number of signature blocks in all Ezsigndocuments in the folder",
+                        "type": "integer"
+                    },
+                    "iTotalSignatureSigned": {
+                        "description": "The total number of already signed signature blocks in all Ezsigndocuments in the folder",
+                        "type": "integer"
+                    }
+                }
+            },
+            "ezsigndocument-Request": {
+                "description": "An Ezsigndocument Object",
+                "required": [
+                    "sEzsigndocumentName",
+                    "eEzsigndocumentSource",
+                    "eEzsigndocumentFormat",
+                    "fkiEzsignfolderID",
+                    "dtEzsigndocumentDuedate",
+                    "fkiLanguageID"
+                ],
+                "type": "object",
+                "properties": {
+                    "eEzsigndocumentSource": {
+                        "description": "Indicates where to look for the document binary content.",
+                        "enum": [
+                            "Base64",
+                            "Url"
+                        ],
+                        "type": "string"
+                    },
+                    "eEzsigndocumentFormat": {
+                        "description": "Indicates the format of the document.",
+                        "enum": [
+                            "Pdf"
+                        ],
+                        "type": "string"
+                    },
+                    "sEzsigndocumentBase64": {
+                        "format": "byte",
+                        "description": "The Base64 encoded binary content of the document.\n\nThis field is Required when eEzsigndocumentSource = Base64.",
+                        "type": "string",
+                        "example": "JVBERi0xLjENCiXCpcKxw6sNCg0KMSAwIG9iag0KICA8PCAvVHlwZSAvQ2F0YWxvZw0KICAgICAvUGFnZXMgMiAwIFINCiAgPj4NCmVuZG9iag0KDQoyIDAgb2JqDQogIDw8IC9UeXBlIC9QYWdlcw0KICAgICAvS2lkcyBbMyAwIFJdDQogICAgIC9Db3VudCAxDQogICAgIC9NZWRpYUJveCBbMCAwIDMwMCAxNDRdDQogID4+DQplbmRvYmoNCg0KMyAwIG9iag0KICA8PCAgL1R5cGUgL1BhZ2UNCiAgICAgIC9QYXJlbnQgMiAwIFINCiAgICAgIC9SZXNvdXJjZXMNCiAgICAgICA8PCAvRm9udA0KICAgICAgICAgICA8PCAvRjENCiAgICAgICAgICAgICAgIDw8IC9UeXBlIC9Gb250DQogICAgICAgICAgICAgICAgICAvU3VidHlwZSAvVHlwZTENCiAgICAgICAgICAgICAgICAgIC9CYXNlRm9udCAvVGltZXMtUm9tYW4NCiAgICAgICAgICAgICAgID4+DQogICAgICAgICAgID4+DQogICAgICAgPj4NCiAgICAgIC9Db250ZW50cyA0IDAgUg0KICA+Pg0KZW5kb2JqDQoNCjQgMCBvYmoNCiAgPDwgL0xlbmd0aCA1NSA+Pg0Kc3RyZWFtDQogIEJUDQogICAgL0YxIDE4IFRmDQogICAgMCAwIFRkDQogICAgKEhlbGxvIFdvcmxkKSBUag0KICBFVA0KZW5kc3RyZWFtDQplbmRvYmoNCg0KeHJlZg0KMCA1DQowMDAwMDAwMDAwIDY1NTM1IGYgDQowMDAwMDAwMDE4IDAwMDAwIG4gDQowMDAwMDAwMDc3IDAwMDAwIG4gDQowMDAwMDAwMTc4IDAwMDAwIG4gDQowMDAwMDAwNDU3IDAwMDAwIG4gDQp0cmFpbGVyDQogIDw8ICAvUm9vdCAxIDAgUg0KICAgICAgL1NpemUgNQ0KICA+Pg0Kc3RhcnR4cmVmDQo1NjUNCiUlRU9G"
+                    },
+                    "sEzsigndocumentUrl": {
+                        "description": "The url where the document content resides.\n\nThis field is Required when eEzsigndocumentSource = Url.",
+                        "type": "string",
+                        "example": "http://www.example.com/document.pdf"
+                    },
+                    "bEzsigndocumentForcerepair": {
+                        "description": "Try to repair the document or flatten it if it cannot be used for electronic signature. ",
+                        "default": true,
+                        "type": "boolean"
+                    },
+                    "sEzsigndocumentPassword": {
+                        "description": "If the source document is password protected, the password to open/modify it.",
+                        "default": "",
+                        "type": "string",
+                        "example": "SecretPassword123"
+                    },
+                    "fkiEzsignfolderID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "dtEzsigndocumentDuedate": {
+                        "$ref": "#/components/schemas/Field-dtEzsigndocumentDuedate"
+                    },
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Field-pkiLanguageID"
+                    },
+                    "sEzsigndocumentName": {
+                        "$ref": "#/components/schemas/Field-sEzsigndocumentName"
+                    }
+                }
             }
         },
         "responses": {
@@ -6136,16 +6156,6 @@
                     }
                 },
                 "description": "The element you are trying to work on does not exist"
-            },
-            "Response-Error-422": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/Common-Response-Error"
-                        }
-                    }
-                },
-                "description": "The syntax of the request is valid but the request cannot be completed. Look for detail in body."
             },
             "Response-Error-403": {
                 "content": {
@@ -6179,6 +6189,41 @@
                     }
                 },
                 "description": "One of the accept header is not defined or invalid."
+            },
+            "Response-Error-422": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Common-Response-Error"
+                        }
+                    }
+                },
+                "description": "The syntax of the request is valid but the request cannot be completed. Look for detail in body."
+            },
+            "Response-Error-422-sTemporaryFileUrl": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "allOf": [
+                                {
+                                    "$ref": "#/components/schemas/Common-Response-Error"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "sTemporaryFileUrl": {
+                                            "description": "The Temporary File Url of the document that was uploaded. That url can be reused instead of uploading the file again.",
+                                            "type": "string",
+                                            "example": "http://www.example.com/document.pdf"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "description": "The syntax of the request is valid but the request cannot be completed. Look for detail in body."
             }
         },
         "securitySchemes": {
@@ -6209,7 +6254,7 @@
         },
         {
             "name": "General_Conventions",
-            "description": "## Variables\n\nWe use a custom type base naming convention for variables.\n\nEach variable name is composed of up to 6 indicators\n1. **Array** (Optional) *a_* when we are dealing with an array.\n2. **Key** (Optional) *pk* when we are dealing with a primary key or *fk* for foreign key.\n3. **Type** Will always be in lowercase and represent the type of the variable.\n4. **Table** The first letter in uppercase and the rest in lowercase and represents the table name from where the variable was retrieved.\n5. **Field** (Optional) The first letter is uppercase and the rest is lowercase and represents the field name.\n6. **Discriminator** (Optional) Will be present only when two identical fields are stored in the same table to differenciate one from the other. \n\nHere is a summary table explaining the convention.\n\n|  | Array | Key | Type | Table | Field | Discriminator |\n|---|---|---|---|---|---|---|\n| **Optional** | Yes | Yes | No | No | Yes | Yes |\n| **Naming** | Fixed | Fixed | Lowercase | First letter is uppercase and the rest is lowercase | First letter is uppercase and the rest is lowercase except for the Field *ID* wich is always uppercase | First letter is uppercase and the rest is lowercase |\n| **Values** | a_ | pk<br>fki | s (string)<br>t (text)<br>c (char)<br>sha (sha-1 string)<br>md5 (md5 string)<br>bin (binary string)<br>i (integer)<br>f (float)<br>d (decimal)<br>e (enum)<br>dt (date or datetime)<br>b (boolean)<br>obj (object)<br>m (mixed) | Any | Any | Any |\n\nHere are examples of typical variables' names\n\n| Variable name | Array | key | Type | Table | Field | Discriminator | Explanation | Example |\n|---|---|---|---|---|---|---|---|---|\n| pkiContactID |  | pk | i | Contact | ID |  | Primary key of type integer for the field name *ID* in table *Contact* | 133 |\n| fkiContactID |  | fk | i | Contact | ID |  | Foreign key of type integer pointing to the field *pkiContactID* in table *Contact* | 133 |\n| fkiContactIDOwner |  | fk | i | Contact | ID | Owner | Foreign key of type integer pointing to the field *pkiContactID* in table *Contact* with a discriminator of *Owner* | 266 |\n| sContactFirstname |  |  | s | Contact | Firstname |  | String for the Field *Firstname* in table *Contact* | John |\n| bPurchaseIspaid |  |  | b | Purchase | Ispaid |  | Boolean for the field Ispaid in table *Purchase* | true |\n| dPurchaseTotal |  |  | d | Purchase | Total |  | Decimal number for the field *Total* in table *Purchase* | 2199.78 |\n| objEzsignfolder |  |  | obj | Esignfolder |  |  | Object of type *Ezsignfolder* | {\"pkiEzsignfolderID\": 122, \"sEzsignfolderName\": \"Test\"} |\n| a_objEzsignfolder | a_ |  | obj | Ezsignfolder |  |  | Array of objects of type *Ezsignfolder* | [{\"pkiEzsignfolderID\": 122, \"sEzsignfolderName\": \"Test\"}, {\"pkiEzsignfolderID\": 234, \"sEzsignfolderName\": \"Test 2\"}] |\n| a_sContactFirstname | a_ |  | s | Contact | Firstname |  | An array of string for the field *Firstname* in table *Contact* | ['John', 'Mary', 'Jane'] |\n| a_pkiContactIDOwner | a_ | pk | i | Contact | ID | Owner | An array of foreign keys of type integer pointing to the field *pkiContactID* in table *Contact* with a discriminator of *Owner* | [266, 277, 288] |\n\n## List filter\n\nEvery GetList Endpoint has a *sFilter* query parameter that can be used to filter the returned elements.\n\nThe sFilter parameter's syntax is not documented at the endpoint's level since it would be redundant. This section documents the syntax.\n\n* Every property returned by the endpoint can be used to build the *sFilter* string. Except for rare exceptions.\n* Each filter can be joined by the *and* operator\n* Not every property supports every operator. The list of valid operators is based on the variable type. For example, only strings support the *like* operator. You can refer to the *Variables* article in the *Conventions* section of the documentation to learn about variable types.\n* Variables of type *Enum* have predetermined list of filters which will be documented at the endpoint's level.\n* *sFilter*'s value must be url encoded.\n* String values need to be enclosed in single quotes\n\nValid operators for boolean values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | bEzsigndocumentEzsignclause eq true<br>bEzsigndocumentEzsignclause eq false |\n\nValid operators for integer values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | iEzsigndocumentPagetotal eq 10 |\n| gt | Greater than | iEzsigndocumentPagetotal gt 10 |\n| gte | Greater than or equal to | iEzsigndocumentPagetotal gte 10 |\n| lt | Less than | iEzsigndocumentPagetotal lt 100 |\n| lte | Less than or equal to | iEzsigndocumentPagetotal lte 100 |\n| in | in list | fkiEzsignfoldertypeID in '1,2,3' |\n\nValid operators for date and datetime values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | dtEzsigndocumentDuedate eq '2005-07-01 18:15:59'<br>dtEzsigndocumentDuedate eq '2005-07-01' |\n| gt | Greater than | dtEzsigndocumentDuedate gt '2001-01-01 00:00:00'<br>dtEzsigndocumentDuedate gt '2001-01-01' |\n| gte | Greater than or equal to | dtEzsigndocumentDuedate gte '2001-01-01 00:00:00'<br>dtEzsigndocumentDuedate gte '2001-01-01' |\n| lt | Less than | dtEzsigndocumentDuedate lt '2025-12-31 23:59:59'<br>dtEzsigndocumentDuedate lt '2025-12-31' |\n| lte | Less than or equal to | dtEzsigndocumentDuedate lte '2025-12-31 23:59:59'<br>dtEzsigndocumentDuedate lte '2025-12-31' |\n| rg | In the range of<br>*see range documentation*| dtEzsigndocumentDuedate rg '=m,=m+7d' |\n\nValid operators for string values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | sEzsigndocumentName  eq 'Test contract' |\n| like | Search for a partial string with *%* wildcard | sEzsigndocumentName  like 'Test contra%'<br>sEzsigndocumentName  like '%contract'<br>sEzsigndocumentName  like '%con%' |\n\nValid operators for enum values (valid values are documented at the endpoint's level):\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | eEzsigndocumentStep eq 'PartiallySigned' |\n| in | in list | eEzsigndocumentStep in 'PartiallySigned,Archived' |\n\nExample of combining multiple filter together:\n\nsFilter=bEzsigndocumentEzsignclause eq true and iEzsigndocumentPagetotal gt 10 and iEzsigndocumentPagetotal lte 100 and dtEzsigndocumentDuedate gt '2001-01-01 00:00:00' and dtEzsigndocumentDuedate lte '2025-12-31 23:59:59' and sEzsigndocumentName  like '%con%' and eEzsigndocumentStep eq 'PartiallySigned' and fkiEzsignfoldertypeID in '1,2,3' and dtEzsigndocumentDuedate rg '=m,=m+7d'\n\nSame example, but properly url encoded:\n\nsFilter=bEzsigndocumentEzsignclause%20eq%20true%20and%20iEzsigndocumentPagetotal%20gt%2010%20and%20iEzsigndocumentPagetotal%20lte%20100%20and%20dtEzsigndocumentDuedate%20gt%20%272001-01-01%2000%3A00%3A00%27%20and%20dtEzsigndocumentDuedate%20lte%20%272025-12-31%2023%3A59%3A59%27%20and%20sEzsigndocumentName%20%20like%20%27%25con%25%27%20and%20eEzsigndocumentStep%20eq%20%27PartiallySigned%27%20and%20fkiEzsignfoldertypeID%20in%20%271%2C2%2C3%27%20and%20dtEzsigndocumentDuedate%20rg%20%27%3Dm%2C%3Dm%2B7d%27\n\n## Range operator\n\nDates in list filter can use a \"rg\" operator for ranges. This allows to filter data based on relative dates. The range operator is just another way to compute filters dates.\n\nFor the rest of this section, let's assume today's date is February 25th 2019 and the time is 10:15:37. Let's assume that we want to filter on dtInvoiceDate.\n\nIf we wanted to get all the invoices that were generated in the previous month, we could do (not url encoded for readability purposes):\nsFilter=dtInvoiceDate gte '2019-01-01 00:00:00' and dtInvoiceDate lte '2019-01-31 23:59:59'\n\nRange operator is useful to transfer the complexity of date computation to the api instead of the calling application.\n\nThe general format of the range operator is:\ndtInvoiceDate rg '**[STARTDATE]**,**[ENDDATE]**'\n\nBoth **[STARTDATE]** and **[ENDDATE]** use the same format which is a sequence of 1 or more **[SUBSECTION]** so for example, we could have:\ndtInvoiceDate rg '**[SUBSECTION]**,**[SUBSECTION][SUBSECTION][SUBSECTION][SUBSECTION]**'\n\nBoth **[STARTDATE]** and **[ENDDATE]** have a starting time equal to current time (so in this example 2019-02-25 10:15:37)\n\n**[SUBSECTION]** start with an operator which can be either **=** to reset the pointer, **+** to move forward in time or **-** to move backward in time. \n\nThe **=** operator can be directly followed by a letter representing the **[PERIOD]** (ex: **=m**) to initialize the date to the start or end of the period or by a number and a letter representing the **[PERIOD]** (ex: **=7m**) to set the **[PERIOD]** to a specific value.\n\nThe **+** and **-** operators are followed by a number then by a letter representing the **[PERIOD]** (ex: **+7d** or **-1m**)\n\nHere is a list of valid **[PERIOD]**\n\n| [Period] | Description |\n|---|---|\n| y | year |\n| m | month |\n| w | week |\n| d | day |\n| h | hour |\n| i | minute |\n| s | second |\n\n**=** operator without a number resets the pointer to either the beginning or the end of the **[Period]** depending if it's being used in the **[STARTDATE]** or **[ENDDATE]**. This table shows the time when the pointer is reset\n\n| Syntax | Description | [STARTDATE] | [ENDDATE] |\n|---|---|---|---|\n| =y | year | 2019-01-01 00:00:00 | 2019-12-31 23:59:59 |\n| =m | month | 2019-02-01 00:00:00 | 2019-02-28 23:59:59 |\n| =w | week\\* | 2019-02-24 00:00:00 | 2019-03-02 23:59:59 |\n| =d | day | 2019-02-25 00:00:00 | 2019-02-25 23:59:59 |\n| =h | hour | 2019-02-25 10:00:00 | 2019-02-25 10:59:59 |\n| =i | minute | 2019-02-25 10:15:00 | 2019-02-25 10:15:59 |\n| =s | second | 2019-02-25 10:15:37 | 2019-02-25 10:15:37 |\n\n\\* Week start day is configurable per user\n\n**=** operator with a number resets the **[PERIOD]** to a specific value and works the same for both **[STARTDATE]** or **[ENDDATE]**. Here are some example. Please note it's not possible to reset the week like this (ex: **=7w**)\n\n| Syntax | Description | New Date |\n|---|---|---|\n| =2025y | year | **2025**-02-25 10:15:37 |\n| =11m | month | 2019-**11**-25 10:15:37 |\n| =7d | day | 2019-02-**07** 10:15:37 |\n| =17h | hour | 2019-02-25 **17**:15:37 |\n| =1i | minute | 2019-02-25 10:**01**:37 |\n| =18s | second | 2019-02-25 10:15:**18** |\n\n### Combining [SUBSECTION]\n\nYou can combine multiple [SUBSECTION] under the same operator. For example:\n- Instead of using \"=m=7d=8h=6m=32s\" you can simplify as \"=m7d8h6m32s\"\n- Instead of using \"+7d+7h+7m+7s\" you can simplify as \"+7d7h7m7s\"\n- Instead of using \"=3=m\" you can simplify as \"=3mm\"\n\n### Order of precedence\n\n**[STARTDATE]** and **[ENDDATE]** are evaluated from left to right. The order is important. For example, these values would give different results in **[ENDDATE]**:\n- \"=m-1m\" would give \"2019-01-28 23:59:59\"\n- \"-1m=m\" would give \"2019-01-31 23:59:59\"\n\n### Examples of use\n\n| Syntax | Explanation | Date From | Date To |\n|---|---|---|---|\n|sFilter=dtInvoice rg '-7d,=s'|Invoices in the last 7 days up to now|2019-02-18 10:15:37|2019-02-25 10:15:37|\n|sFilter=dtInvoice rg '=d-7d,=s'|Invoices in the last 7 days starting at 00:00:00 up to now|2019-02-18 00:00:00|2019-02-25 10:15:37|\n|sFilter=dtInvoice rg '=m-1m,=m-1m'|Invoices in the last month|2019-01-01 00:00:00|2019-01-31 23:59:59|\n|sFilter=dtInvoice rg '=m,=m'|Invoices in this month|2019-02-01 00:00:00|2019-02-28 23:59:59|\n|sFilter=dtInvoice rg '=m-1m+10d,=s'|Invoices since the 10th of last month up to now|2019-01-10 00:00:00|2019-02-25 10:15:37|\n|sFilter=dtInvoice rg '-10h,=d9h+1d'|Invoices in the last 10 hours up to 9h00 tomorrow morning|2019-02-25 00:15:37|2019-02-26 09:00:00|\n|sFilter=dtInvoice rg '-1y=4mm,=3mm'|Invoices from last year second quarter up to this year first quarter|2018-04-01 00:00:00|2019-03-31 23:59:59|\n|sFilter=dtInvoice rg '=w-3w,=w'|Invoices in the last 3 weeks (calendar week start day = Sunday) up to the end of the week|2019-02-03 00:00:00|2019-03-02 23:59:59|\n",
+            "description": "## Variables\n\nWe use a custom type base naming convention for variables.\n\nEach variable name is composed of up to 6 indicators\n1. **Array** (Optional) *a_* when we are dealing with an array.\n2. **Key** (Optional) *pk* when we are dealing with a primary key or *fk* for foreign key.\n3. **Type** Will always be in lowercase and represent the type of the variable.\n4. **Table** The first letter in uppercase and the rest in lowercase and represents the table name from where the variable was retrieved.\n5. **Field** (Optional) The first letter is uppercase and the rest is lowercase and represents the field name.\n6. **Discriminator** (Optional) Will be present only when two identical fields are stored in the same table to differenciate one from the other. \n\nHere is a summary table explaining the convention.\n\n|  | Array | Key | Type | Table | Field | Discriminator |\n|---|---|---|---|---|---|---|\n| **Optional** | Yes | Yes | No | No | Yes | Yes |\n| **Naming** | Fixed | Fixed | Lowercase | First letter is uppercase and the rest is lowercase | First letter is uppercase and the rest is lowercase except for the Field *ID* wich is always uppercase | First letter is uppercase and the rest is lowercase |\n| **Values** | a_ | pk<br>fki | s (string)<br>t (text)<br>c (char)<br>sha (sha-1 string)<br>md5 (md5 string)<br>bin (binary string)<br>i (integer)<br>f (float)<br>d (decimal)<br>e (enum)<br>dt (date or datetime)<br>b (boolean)<br>obj (object)<br>m (mixed) | Any | Any | Any |\n\nHere are examples of typical variables' names\n\n| Variable name | Array | key | Type | Table | Field | Discriminator | Explanation | Example |\n|---|---|---|---|---|---|---|---|---|\n| pkiContactID |  | pk | i | Contact | ID |  | Primary key of type integer for the field name *ID* in table *Contact* | 133 |\n| fkiContactID |  | fk | i | Contact | ID |  | Foreign key of type integer pointing to the field *pkiContactID* in table *Contact* | 133 |\n| fkiContactIDOwner |  | fk | i | Contact | ID | Owner | Foreign key of type integer pointing to the field *pkiContactID* in table *Contact* with a discriminator of *Owner* | 266 |\n| sContactFirstname |  |  | s | Contact | Firstname |  | String for the Field *Firstname* in table *Contact* | John |\n| bPurchaseIspaid |  |  | b | Purchase | Ispaid |  | Boolean for the field Ispaid in table *Purchase* | true |\n| dPurchaseTotal |  |  | d | Purchase | Total |  | Decimal number for the field *Total* in table *Purchase* | 2199.78 |\n| objEzsignfolder |  |  | obj | Esignfolder |  |  | Object of type *Ezsignfolder* | {\"pkiEzsignfolderID\": 122, \"sEzsignfolderName\": \"Test\"} |\n| a_objEzsignfolder | a_ |  | obj | Ezsignfolder |  |  | Array of objects of type *Ezsignfolder* | [{\"pkiEzsignfolderID\": 122, \"sEzsignfolderName\": \"Test\"}, {\"pkiEzsignfolderID\": 234, \"sEzsignfolderName\": \"Test 2\"}] |\n| a_sContactFirstname | a_ |  | s | Contact | Firstname |  | An array of string for the field *Firstname* in table *Contact* | ['John', 'Mary', 'Jane'] |\n| a_pkiContactIDOwner | a_ | pk | i | Contact | ID | Owner | An array of foreign keys of type integer pointing to the field *pkiContactID* in table *Contact* with a discriminator of *Owner* | [266, 277, 288] |\n\n## List filter\n\nEvery GetList Endpoint has a *sFilter* query parameter that can be used to filter the returned elements.\n\nThe sFilter parameter's syntax is not documented at the endpoint's level since it would be redundant. This section documents the syntax.\n\n* Every property returned by the endpoint can be used to build the *sFilter* string. Except for rare exceptions.\n* Each filter can be joined by the *and* operator\n* Not every property supports every operator. The list of valid operators is based on the variable type. For example, only strings support the *like* operator. You can refer to the *Variables* article in the *Conventions* section of the documentation to learn about variable types.\n* Variables of type *Enum* have predetermined list of filters which will be documented at the endpoint's level.\n* *sFilter*'s value must be url encoded.\n* String values need to be enclosed in single quotes\n\nValid operators for boolean values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | bEzsigndocumentEzsignclause eq true<br>bEzsigndocumentEzsignclause eq false |\n\nValid operators for integer values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | iEzsigndocumentPagetotal eq 10 |\n| gt | Greater than | iEzsigndocumentPagetotal gt 10 |\n| gte | Greater than or equal to | iEzsigndocumentPagetotal gte 10 |\n| lt | Less than | iEzsigndocumentPagetotal lt 100 |\n| lte | Less than or equal to | iEzsigndocumentPagetotal lte 100 |\n| in | in list | fkiEzsignfoldertypeID in '1,2,3' |\n\nValid operators for date and datetime values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | dtEzsigndocumentDuedate eq '2005-07-01 18:15:59'<br>dtEzsigndocumentDuedate eq '2005-07-01' |\n| gt | Greater than | dtEzsigndocumentDuedate gt '2001-01-01 00:00:00'<br>dtEzsigndocumentDuedate gt '2001-01-01' |\n| gte | Greater than or equal to | dtEzsigndocumentDuedate gte '2001-01-01 00:00:00'<br>dtEzsigndocumentDuedate gte '2001-01-01' |\n| lt | Less than | dtEzsigndocumentDuedate lt '2025-12-31 23:59:59'<br>dtEzsigndocumentDuedate lt '2025-12-31' |\n| lte | Less than or equal to | dtEzsigndocumentDuedate lte '2025-12-31 23:59:59'<br>dtEzsigndocumentDuedate lte '2025-12-31' |\n| rg | In the range of<br>*see range documentation*| dtEzsigndocumentDuedate rg '=m,=m+7d' |\n\nValid operators for string values:\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | sEzsigndocumentName  eq 'Test contract' |\n| like | Search for a partial string with *%* wildcard | sEzsigndocumentName  like 'Test contra%'<br>sEzsigndocumentName  like '%contract'<br>sEzsigndocumentName  like '%con%' |\n\nValid operators for enum values (valid values are documented at the endpoint's level):\n\n| Operator | Description | Examples |\n|---|---|---|\n| eq | Equals | eEzsigndocumentStep eq 'PartiallySigned' |\n| in | in list | eEzsigndocumentStep in 'PartiallySigned,Archived' |\n\nExample of combining multiple filter together:\n\n`sFilter=bEzsigndocumentEzsignclause eq true and iEzsigndocumentPagetotal gt 10 and iEzsigndocumentPagetotal lte 100 and dtEzsigndocumentDuedate gt '2001-01-01 00:00:00' and dtEzsigndocumentDuedate lte '2025-12-31 23:59:59' and sEzsigndocumentName  like '%con%' and eEzsigndocumentStep eq 'PartiallySigned' and fkiEzsignfoldertypeID in '1,2,3' and dtEzsigndocumentDuedate rg '=m,=m+7d'`\n\nSame example, but properly url encoded:\n\n`sFilter=bEzsigndocumentEzsignclause%20eq%20true%20and%20iEzsigndocumentPagetotal%20gt%2010%20and%20iEzsigndocumentPagetotal%20lte%20100%20and%20dtEzsigndocumentDuedate%20gt%20%272001-01-01%2000%3A00%3A00%27%20and%20dtEzsigndocumentDuedate%20lte%20%272025-12-31%2023%3A59%3A59%27%20and%20sEzsigndocumentName%20%20like%20%27%25con%25%27%20and%20eEzsigndocumentStep%20eq%20%27PartiallySigned%27%20and%20fkiEzsignfoldertypeID%20in%20%271%2C2%2C3%27%20and%20dtEzsigndocumentDuedate%20rg%20%27%3Dm%2C%3Dm%2B7d%27`\n\n## Range operator\n\nDates in list filter can use a \"rg\" operator for ranges. This allows to filter data based on relative dates. The range operator is just another way to compute filters dates.\n\nFor the rest of this section, let's assume today's date is February 25th 2019 and the time is 10:15:37. Let's assume that we want to filter on dtInvoiceDate.\n\nIf we wanted to get all the invoices that were generated in the previous month, we could do (not url encoded for readability purposes):\nsFilter=dtInvoiceDate gte '2019-01-01 00:00:00' and dtInvoiceDate lte '2019-01-31 23:59:59'\n\nRange operator is useful to transfer the complexity of date computation to the api instead of the calling application.\n\nThe general format of the range operator is:\ndtInvoiceDate rg '**[STARTDATE]**,**[ENDDATE]**'\n\nBoth **[STARTDATE]** and **[ENDDATE]** use the same format which is a sequence of 1 or more **[SUBSECTION]** so for example, we could have:\ndtInvoiceDate rg '**[SUBSECTION]**,**[SUBSECTION][SUBSECTION][SUBSECTION][SUBSECTION]**'\n\nBoth **[STARTDATE]** and **[ENDDATE]** have a starting time equal to current time (so in this example 2019-02-25 10:15:37)\n\n**[SUBSECTION]** start with an operator which can be either **=** to reset the pointer, **+** to move forward in time or **-** to move backward in time. \n\nThe **=** operator can be directly followed by a letter representing the **[PERIOD]** (ex: **=m**) to initialize the date to the start or end of the period or by a number and a letter representing the **[PERIOD]** (ex: **=7m**) to set the **[PERIOD]** to a specific value.\n\nThe **+** and **-** operators are followed by a number then by a letter representing the **[PERIOD]** (ex: **+7d** or **-1m**)\n\nHere is a list of valid **[PERIOD]**\n\n| [Period] | Description |\n|---|---|\n| y | year |\n| m | month |\n| w | week |\n| d | day |\n| h | hour |\n| i | minute |\n| s | second |\n\n**=** operator without a number resets the pointer to either the beginning or the end of the **[Period]** depending if it's being used in the **[STARTDATE]** or **[ENDDATE]**. This table shows the time when the pointer is reset\n\n| Syntax | Description | [STARTDATE] | [ENDDATE] |\n|---|---|---|---|\n| =y | year | 2019-01-01 00:00:00 | 2019-12-31 23:59:59 |\n| =m | month | 2019-02-01 00:00:00 | 2019-02-28 23:59:59 |\n| =w | week\\* | 2019-02-24 00:00:00 | 2019-03-02 23:59:59 |\n| =d | day | 2019-02-25 00:00:00 | 2019-02-25 23:59:59 |\n| =h | hour | 2019-02-25 10:00:00 | 2019-02-25 10:59:59 |\n| =i | minute | 2019-02-25 10:15:00 | 2019-02-25 10:15:59 |\n| =s | second | 2019-02-25 10:15:37 | 2019-02-25 10:15:37 |\n\n\\* Week start day is configurable per user\n\n**=** operator with a number resets the **[PERIOD]** to a specific value and works the same for both **[STARTDATE]** or **[ENDDATE]**. Here are some example. Please note it's not possible to reset the week like this (ex: **=7w**)\n\n| Syntax | Description | New Date |\n|---|---|---|\n| =2025y | year | **2025**-02-25 10:15:37 |\n| =11m | month | 2019-**11**-25 10:15:37 |\n| =7d | day | 2019-02-**07** 10:15:37 |\n| =17h | hour | 2019-02-25 **17**:15:37 |\n| =1i | minute | 2019-02-25 10:**01**:37 |\n| =18s | second | 2019-02-25 10:15:**18** |\n\n### Combining [SUBSECTION]\n\nYou can combine multiple [SUBSECTION] under the same operator. For example:\n- Instead of using \"=m=7d=8h=6m=32s\" you can simplify as \"=m7d8h6m32s\"\n- Instead of using \"+7d+7h+7m+7s\" you can simplify as \"+7d7h7m7s\"\n- Instead of using \"=3m=m\" you can simplify as \"=3mm\"\n\n### Order of precedence\n\n**[STARTDATE]** and **[ENDDATE]** are evaluated from left to right. The order is important. For example, these values would give different results in **[ENDDATE]**:\n- \"=m-1m\" would give \"2019-01-28 23:59:59\"\n- \"-1m=m\" would give \"2019-01-31 23:59:59\"\n\n### Examples of use\n\n| Syntax | Explanation | Date From | Date To |\n|---|---|---|---|\n|sFilter=dtInvoice rg '-7d,=s'|Invoices in the last 7 days up to now|2019-02-18 10:15:37|2019-02-25 10:15:37|\n|sFilter=dtInvoice rg '=d-7d,=s'|Invoices in the last 7 days starting at 00:00:00 up to now|2019-02-18 00:00:00|2019-02-25 10:15:37|\n|sFilter=dtInvoice rg '=m-1m,=m-1m'|Invoices in the last month|2019-01-01 00:00:00|2019-01-31 23:59:59|\n|sFilter=dtInvoice rg '=m,=m'|Invoices in this month|2019-02-01 00:00:00|2019-02-28 23:59:59|\n|sFilter=dtInvoice rg '=m-1m+10d,=s'|Invoices since the 10th of last month up to now|2019-01-10 00:00:00|2019-02-25 10:15:37|\n|sFilter=dtInvoice rg '-10h,=d8h+1d1s'|Invoices in the last 10 hours up to 9h00 tomorrow morning|2019-02-25 00:15:37|2019-02-26 09:00:00|\n|sFilter=dtInvoice rg '-1y=4mm,=3mm'|Invoices from last year second semester up to this year first quarter|2018-04-01 00:00:00|2019-03-31 23:59:59|\n|sFilter=dtInvoice rg '=w-3w,=w'|Invoices in the last 3 weeks (calendar week start day = Sunday) up to the end of the week|2019-02-03 00:00:00|2019-03-02 23:59:59|\n|sFilter=dtInvoice rg '=y,=3mm'|Invoices in the first semester|2019-01-01 00:00:00|2019-03-31 23:59:59|\n|sFilter=dtInvoice rg '=4mm,=6mm'|Invoices in the second semester|2019-04-01 00:00:00|2019-06-30 23:59:59|\n|sFilter=dtInvoice rg '=7mm,=9mm'|Invoices in the third semester|2019-07-01 00:00:00|2019-09-30 23:59:59|\n|sFilter=dtInvoice rg '=10mm,=y'|Invoices in the last semester|2019-10-01 00:00:00|2019-12-31 23:59:59|\n",
             "x-displayName": "Conventions"
         },
         {
@@ -6234,7 +6279,7 @@
         },
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.2] - 2021-10-\n\n### [1.1.1] - 2021-10-22\n\n#### Added\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend\n- GET /1/module/list/listpresentation/{sListName}\n- POST /1/module/list/listpresentation/{sListName}\n- Variables convention documentation now contains type \"m\" for mixed type\n- Range operator added to convention section of the documentation\n- POST /1/object/ezsigndocument/ sEzsigndocumentPassword property\n- Support for \"in\" operator for integer fields in sFilter\n- Support for \"in\" operator for enum fields in sFilter\n- Support for \"rg\" operator in date fields in sFilter\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\n- GET /1/object/ezsignfolder/getList/\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\n- GET /1/object/ezsignfoldertype/getList\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation](https://ezmaxinc.github.io/eZmax-API/docs/ezmax.v1.0.html)",
+            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.2] - 2021-10-26\n\n#### Added\n- GET /1/object/ezsignfolder/getList eEzsignfoldertypePrivacylevel property\n- POST /1/object/ezsigndocument returns a sTemporaryFileUrl on error 422 if error is recoverable\n- POST /1/object/ezsigndocument sEzsigndocumentUrl property\n- POST /1/object/ezsigndocument eEzsigndocumentSource property now accept \"Url\" as the source\n- POST /1/object/ezsigndocument bEzsigndocumentForcerepair property\n- Support for \"rg\" operator in date fields in sFilter\n- Range operator added to convention section of the documentation\n\n### [1.1.1] - 2021-10-22\n\n#### Added\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend\n- GET /1/module/list/listpresentation/{sListName}\n- POST /1/module/list/listpresentation/{sListName}\n- Variables convention documentation now contains type \"m\" for mixed type\n- POST /1/object/ezsigndocument/ sEzsigndocumentPassword property\n- Support for \"in\" operator for integer fields in sFilter\n- Support for \"in\" operator for enum fields in sFilter\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\n- GET /1/object/ezsignfolder/getList\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\n- GET /1/object/ezsignfoldertype/getList\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation](https://ezmaxinc.github.io/eZmax-API/docs/ezmax.v1.0.html)",
             "x-displayName": "Changelog"
         },
         {
