@@ -6144,6 +6144,25 @@
                         "$ref": "#/components/schemas/Field-sEzsigndocumentName"
                     }
                 }
+            },
+            "Common-Response-Error-sTemporaryFileUrl": {
+                "description": "Generic Error Message",
+                "type": "object",
+                "allOf": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "sTemporaryFileUrl": {
+                                "description": "The Temporary File Url of the document that was uploaded. That url can be reused instead of uploading the file again.",
+                                "type": "string",
+                                "example": "http://www.example.com/document.pdf"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response-Error"
+                    }
+                ]
             }
         },
         "responses": {
@@ -6204,26 +6223,11 @@
                 "content": {
                     "application/json": {
                         "schema": {
-                            "type": "object",
-                            "allOf": [
-                                {
-                                    "$ref": "#/components/schemas/Common-Response-Error"
-                                },
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "sTemporaryFileUrl": {
-                                            "description": "The Temporary File Url of the document that was uploaded. That url can be reused instead of uploading the file again.",
-                                            "type": "string",
-                                            "example": "http://www.example.com/document.pdf"
-                                        }
-                                    }
-                                }
-                            ]
+                            "$ref": "#/components/schemas/Common-Response-Error-sTemporaryFileUrl"
                         }
                     }
                 },
-                "description": "The syntax of the request is valid but the request cannot be completed. Look for detail in body."
+                "description": "The syntax of the request is valid but the request cannot be completed. Look for detail in body. If the error is recoverable sTemporaryFileUrl will be set and you can use this url to try a new request without sending the file over again"
             }
         },
         "securitySchemes": {
