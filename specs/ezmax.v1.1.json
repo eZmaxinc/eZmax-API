@@ -6149,25 +6149,20 @@
                 "type": "object",
                 "properties": {
                     "fkiUserID": {
-                        "description": "A reference to a valid User.\n\nThis is only used if the signatory will be a user from the system.",
-                        "minimum": 1,
-                        "type": "integer"
+                        "$ref": "#/components/schemas/Field-pkiUserID"
                     },
                     "fkiEzsignfolderID": {
-                        "description": "A reference to a valid Ezsignfolder.\n\nThat value is returned after a successful Ezsignfolder Creation.",
-                        "minimum": 1,
-                        "type": "integer"
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
                     },
                     "bEzsignfoldersignerassociationReceivecopy": {
-                        "description": "If this flag is true. This will also send signed documents to this person.",
-                        "default": false,
-                        "type": "boolean"
+                        "$ref": "#/components/schemas/Field-bEzsignfoldersignerassociationReceivecopy",
+                        "default": false
                     }
-                },
-                "example": {
-                    "fkiUserID": 48,
-                    "fkiEzsignfolderID": 85
                 }
+            },
+            "Field-bEzsignfoldersignerassociationReceivecopy": {
+                "description": "If this flag is true. The signatory will receive a copy of every signed Ezsigndocument even if it ain't required to sign the document.",
+                "type": "boolean"
             }
         },
         "responses": {
