@@ -2288,6 +2288,105 @@
                 "summary": "Retrieve Ezsignbulksend list",
                 "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eEzsignfoldertypePrivacylevel | User<br>Usergroup |"
             }
+        },
+        "/1/object/ezsigntemplatepackage/getList": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Ezsigntemplatepackage"
+                ],
+                "parameters": [
+                    {
+                        "name": "eOrderBy",
+                        "description": "Specify how you want the results to be sorted",
+                        "schema": {
+                            "enum": [
+                                "pkiEzsigntemplatepackageID_ASC",
+                                "pkiEzsigntemplatepackageID_DESC",
+                                "fkiDepartmentID_ASC",
+                                "fkiDepartmentID_DESC",
+                                "fkiTeamID_ASC",
+                                "fkiTeamID_DESC",
+                                "fkiEzsignfoldertypeID_ASC",
+                                "fkiEzsignfoldertypeID_DESC",
+                                "fkiLanguageID_ASC",
+                                "fkiLanguageID_DESC",
+                                "eEzsigntemplatepackageType_ASC",
+                                "eEzsigntemplatepackageType_DESC",
+                                "sEzsigntemplatepackageDescription_ASC",
+                                "sEzsigntemplatepackageDescription_DESC",
+                                "bEzsigntemplatepackageIsactive_ASC",
+                                "bEzsigntemplatepackageIsactive_DESC",
+                                "iEzsigntemplatepackagemembership_ASC",
+                                "iEzsigntemplatepackagemembership_DESC"
+                            ],
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false
+                    },
+                    {
+                        "name": "iRowMax",
+                        "schema": {
+                            "$ref": "#/components/schemas/Field-iRowMax"
+                        },
+                        "in": "query"
+                    },
+                    {
+                        "name": "iRowOffset",
+                        "schema": {
+                            "$ref": "#/components/schemas/Field-iRowOffset"
+                        },
+                        "in": "query",
+                        "required": false
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "schema": {
+                            "$ref": "#/components/schemas/Header-Accept-Language"
+                        },
+                        "in": "header",
+                        "required": false
+                    },
+                    {
+                        "name": "sFilter",
+                        "schema": {
+                            "$ref": "#/components/schemas/Field-sFilter"
+                        },
+                        "in": "query",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigntemplatepackage-getList-v1-Response"
+                                }
+                            },
+                            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/File-Xlsx"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "406": {
+                        "$ref": "#/components/responses/Response-Error-406"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsigntemplatepackage_GetList_V1",
+                "summary": "Retrieve Ezsigntemplatepackage list",
+                "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| ezsigntemplatepackage | Company<br>Department<br>Team<br>User<br>Usergroup |"
+            }
         }
     },
     "components": {
@@ -6381,6 +6480,152 @@
                         "type": "integer"
                     }
                 }
+            },
+            "ezsigntemplatepackage-getList-v1-Response": {
+                "description": "Response for the /1/object/ezsigntemplatepackage/getList API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsigntemplatepackage-getList-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response_getList"
+                    }
+                ]
+            },
+            "ezsigntemplatepackage-getList-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsigntemplatepackage/getList API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "a_objEzsigntemplatepackage"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "a_objEzsigntemplatepackage": {
+                                "description": "",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/ezsigntemplatepackage-ListElement"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-getList-v1-Response-mPayload"
+                    }
+                ]
+            },
+            "Field-pkiEzsigntemplatepackageID": {
+                "description": "The unique ID of the Ezsigntemplatepackage",
+                "type": "integer",
+                "example": 99
+            },
+            "Field-pkiDepartmentID": {
+                "description": "The unique ID of the Department.",
+                "type": "integer",
+                "example": 1
+            },
+            "Field-pkiTeamID": {
+                "description": "The unique ID of the Team",
+                "type": "integer",
+                "example": 1
+            },
+            "Field-sEzsigntemplatepackageDescription": {
+                "description": "The description of the Ezsigntemplatepackage",
+                "type": "string",
+                "example": "Package for new clients"
+            },
+            "Field-bEzsigntemplatepackageIsactive": {
+                "description": "Whether the Ezsigntemplatepackage is active or not",
+                "type": "boolean"
+            },
+            "Field-eEzsigntemplatepackageType": {
+                "description": "The type of the Ezsigntemplatepackage.",
+                "enum": [
+                    "Company",
+                    "Department",
+                    "Team",
+                    "User",
+                    "Usergroup"
+                ],
+                "type": "string",
+                "example": "User"
+            },
+            "ezsigntemplatepackage-ListElement": {
+                "description": "An Ezsigntemplatepackage List Element",
+                "required": [
+                    "pkiEzsigntemplatepackageID",
+                    "fkiDepartmentID",
+                    "fkiTeamID",
+                    "fkiEzsignfoldertypeID",
+                    "fkiLanguageID",
+                    "eEzsigntemplatepackageType",
+                    "sEzsigntemplatepackageDescription",
+                    "bEzsigntemplatepackageIsactive",
+                    "iEzsigntemplatepackagemembership"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsigntemplatepackageID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigntemplatepackageID"
+                    },
+                    "fkiDepartmentID": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Field-pkiDepartmentID"
+                            },
+                            {
+                                "$ref": "#/components/schemas/Custom-Null"
+                            }
+                        ]
+                    },
+                    "fkiTeamID": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Field-pkiTeamID"
+                            },
+                            {
+                                "$ref": "#/components/schemas/Custom-Null"
+                            }
+                        ]
+                    },
+                    "fkiEzsignfoldertypeID": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID"
+                            },
+                            {
+                                "$ref": "#/components/schemas/Custom-Null"
+                            }
+                        ]
+                    },
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Field-pkiLanguageID"
+                    },
+                    "eEzsigntemplatepackageType": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplatepackageType"
+                    },
+                    "sEzsigntemplatepackageDescription": {
+                        "$ref": "#/components/schemas/Field-sEzsigntemplatepackageDescription"
+                    },
+                    "bEzsigntemplatepackageIsactive": {
+                        "$ref": "#/components/schemas/Field-bEzsigntemplatepackageIsactive"
+                    },
+                    "iEzsigntemplatepackagemembership": {
+                        "description": "The total number of Ezsigntemplatepackagemembership in the Ezsigntemplatepackage",
+                        "type": "integer"
+                    }
+                }
             }
         },
         "responses": {
@@ -6501,7 +6746,7 @@
         },
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.3] - 2021-10-\n\n#### Added\n- GET /1/object/ezsignbulksend/getList\n- POST /1/object/ezsignfoldersignerassociation bEzsignfoldersignerassociationReceivecopy property\n- Error Code UNPROCESSABLEENTITY_DOWNLOAD_ERROR added to documentation\n- Error Code UNPROCESSABLEENTITY_PDF_REPAIRABLE added to documentation\n\n### [1.1.2] - 2021-10-26\n\n#### Added\n- GET /1/object/ezsignfolder/getList eEzsignfoldertypePrivacylevel property\n- POST /1/object/ezsigndocument returns a sTemporaryFileUrl on error 422 if error is recoverable\n- POST /1/object/ezsigndocument sEzsigndocumentUrl property\n- POST /1/object/ezsigndocument eEzsigndocumentSource property now accept \"Url\" as the source\n- POST /1/object/ezsigndocument bEzsigndocumentForcerepair property\n- Support for \"rg\" operator in date fields in sFilter\n- Range operator added to convention section of the documentation\n\n### [1.1.1] - 2021-10-22\n\n#### Added\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend\n- GET /1/module/list/listpresentation/{sListName}\n- POST /1/module/list/listpresentation/{sListName}\n- Variables convention documentation now contains type \"m\" for mixed type\n- POST /1/object/ezsigndocument/ sEzsigndocumentPassword property\n- Support for \"in\" operator for integer fields in sFilter\n- Support for \"in\" operator for enum fields in sFilter\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\n- GET /1/object/ezsignfolder/getList\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\n- GET /1/object/ezsignfoldertype/getList\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation](https://ezmaxinc.github.io/eZmax-API/docs/ezmax.v1.0.html)",
+            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.3] - 2021-10-\n\n#### Added\n- GET /1/object/ezsignbulksend/getList\n- GET /1/object/ezsigntemplatepackage/getList\n- POST /1/object/ezsignfoldersignerassociation bEzsignfoldersignerassociationReceivecopy property\n- Error Code UNPROCESSABLEENTITY_DOWNLOAD_ERROR added to documentation\n- Error Code UNPROCESSABLEENTITY_PDF_REPAIRABLE added to documentation\n\n### [1.1.2] - 2021-10-26\n\n#### Added\n- GET /1/object/ezsignfolder/getList eEzsignfoldertypePrivacylevel property\n- POST /1/object/ezsigndocument returns a sTemporaryFileUrl on error 422 if error is recoverable\n- POST /1/object/ezsigndocument sEzsigndocumentUrl property\n- POST /1/object/ezsigndocument eEzsigndocumentSource property now accept \"Url\" as the source\n- POST /1/object/ezsigndocument bEzsigndocumentForcerepair property\n- Support for \"rg\" operator in date fields in sFilter\n- Range operator added to convention section of the documentation\n\n### [1.1.1] - 2021-10-22\n\n#### Added\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend\n- GET /1/module/list/listpresentation/{sListName}\n- POST /1/module/list/listpresentation/{sListName}\n- Variables convention documentation now contains type \"m\" for mixed type\n- POST /1/object/ezsigndocument/ sEzsigndocumentPassword property\n- Support for \"in\" operator for integer fields in sFilter\n- Support for \"in\" operator for enum fields in sFilter\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\n- GET /1/object/ezsignfolder/getList\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\n- GET /1/object/ezsignfoldertype/getList\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation](https://ezmaxinc.github.io/eZmax-API/docs/ezmax.v1.0.html)",
             "x-displayName": "Changelog"
         },
         {
@@ -6568,6 +6813,11 @@
             "name": "Object_Ezsignsignature",
             "description": "Ezsignsignature contains detail about a specific signature block on a page of a Ezsigndocument",
             "x-displayName": "Ezsignsignature"
+        },
+        {
+            "name": "Object_Ezsigntemplatepackage",
+            "description": "Ezsigntemplatepackage contains detail about a package of ezsign templates that can be used as a whole",
+            "x-displayName": "Ezsigntemplatepackage"
         },
         {
             "name": "Object_Franchisebroker",
@@ -6709,6 +6959,7 @@
                 "Object_Ezsignfoldersignerassociation",
                 "Object_Ezsignfoldertype",
                 "Object_Ezsignsignature",
+                "Object_Ezsigntemplatepackage",
                 "Object_Franchisebroker",
                 "Object_Franchiseoffice",
                 "Object_Franchisereferalincome",
