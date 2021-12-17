@@ -2747,11 +2747,6 @@
                     }
                 }
             },
-            "Common-Format-DateTime": {
-                "description": "Represent a Date Time.\nThe timezone is the one configured in the User's profile.",
-                "type": "string",
-                "example": "2020-12-31 23:59:59"
-            },
             "ezsignsigner-Request": {
                 "description": "An Ezsignsigner Object",
                 "required": [
@@ -3405,11 +3400,6 @@
                 "description": "Somes extra notes about the eZsign Folder",
                 "type": "string",
                 "example": "An extra notes we can add to the ezsign folder"
-            },
-            "Field-dtEzsignfolderSentdate": {
-                "description": "The date and time at which the Ezsign folder was sent the last time.",
-                "type": "string",
-                "example": "2020-12-31 23:59:59"
             },
             "Field-dtEzsignfolderClose": {
                 "description": "The date and time at which the folder was closed. Either by applying the last signature or by completing it prematurely.",
@@ -4257,7 +4247,7 @@
                         "description": ""
                     },
                     "dtEzsignfolderSentdate": {
-                        "$ref": "#/components/schemas/Field-dtEzsignfolderSentdate",
+                        "$ref": "#/components/schemas/Field-dtEzsignfolderSentdateNullable",
                         "description": ""
                     },
                     "eEzsignfolderStep": {
@@ -5869,36 +5859,6 @@
                     "$ref": "#/components/schemas/Custom-AutocompleteElement-Response"
                 }
             },
-            "Custom-AutocompleteElement-Response": {
-                "description": "Generic Autocomplete Response",
-                "required": [
-                    "sCategory",
-                    "mValue",
-                    "sLabel"
-                ],
-                "type": "object",
-                "properties": {
-                    "sCategory": {
-                        "description": "The Category for the dropdown or an empty string if not categorized",
-                        "type": "string"
-                    },
-                    "sLabel": {
-                        "description": "The Description of the element",
-                        "type": "string"
-                    },
-                    "mValue": {
-                        "oneOf": [
-                            {
-                                "type": "integer"
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ],
-                        "description": "The Unique ID of the element"
-                    }
-                }
-            },
             "ezsignfoldertype-getList-v1-Response-mPayload": {
                 "description": "Payload for the /1/object/ezsignfoldertype/getList API Request",
                 "type": "object",
@@ -6007,11 +5967,6 @@
                 ],
                 "type": "string",
                 "example": "Completed"
-            },
-            "Custom-Null": {
-                "nullable": true,
-                "description": "A custom type for null until OAS 3.1 support for null type",
-                "type": "object"
             },
             "ezsignfolder-unsend-v1-Response": {
                 "description": "Response for the /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend API Request",
@@ -6398,89 +6353,6 @@
                 "type": "integer",
                 "example": 8
             },
-            "ezsignfolder-ListElement": {
-                "description": "An Ezsignfolder List Element",
-                "required": [
-                    "pkiEzsignfolderID",
-                    "fkiEzsignfoldertypeID",
-                    "sEzsignfoldertypeNameX",
-                    "sEzsignfolderDescription",
-                    "eEzsignfolderStep",
-                    "dtCreatedDate",
-                    "dtEzsignfolderSentdate",
-                    "dtDueDate",
-                    "iEzsigndocument",
-                    "iEzsigndocumentEdm",
-                    "iEzsignsignature",
-                    "iEzsignsignatureSigned",
-                    "eEzsignfoldertypePrivacylevel"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiEzsignfolderID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
-                    },
-                    "fkiEzsignfoldertypeID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID"
-                    },
-                    "eEzsignfoldertypePrivacylevel": {
-                        "$ref": "#/components/schemas/Field-eEzsignfoldertypePrivacylevel"
-                    },
-                    "sEzsignfoldertypeNameX": {
-                        "$ref": "#/components/schemas/Field-sEzsignfoldertypeNameX",
-                        "description": ""
-                    },
-                    "sEzsignfolderDescription": {
-                        "$ref": "#/components/schemas/Field-sEzsignfolderDescription",
-                        "description": ""
-                    },
-                    "eEzsignfolderStep": {
-                        "$ref": "#/components/schemas/Field-eEzsignfolderStep",
-                        "description": ""
-                    },
-                    "dtCreatedDate": {
-                        "$ref": "#/components/schemas/Field-dtCreatedDate",
-                        "description": ""
-                    },
-                    "dtEzsignfolderSentdate": {
-                        "oneOf": [
-                            {
-                                "$ref": "#/components/schemas/Field-dtEzsignfolderSentdate"
-                            },
-                            {
-                                "$ref": "#/components/schemas/Custom-Null"
-                            }
-                        ]
-                    },
-                    "dtDueDate": {
-                        "oneOf": [
-                            {
-                                "$ref": "#/components/schemas/Common-Format-DateTime"
-                            },
-                            {
-                                "$ref": "#/components/schemas/Custom-Null"
-                            }
-                        ],
-                        "description": "The date at which no more signature will be accepted on the folder"
-                    },
-                    "iEzsigndocument": {
-                        "description": "The total number of Ezsigndocument in the folder",
-                        "type": "integer"
-                    },
-                    "iEzsigndocumentEdm": {
-                        "description": "The total number of Ezsigndocument in the folder that were saved in the edm system",
-                        "type": "integer"
-                    },
-                    "iEzsignsignature": {
-                        "description": "The total number of signature blocks in all Ezsigndocuments in the folder",
-                        "type": "integer"
-                    },
-                    "iEzsignsignatureSigned": {
-                        "description": "The total number of already signed signature blocks in all Ezsigndocuments in the folder",
-                        "type": "integer"
-                    }
-                }
-            },
             "ezsigntemplatepackage-getList-v1-Response": {
                 "description": "Response for the /1/object/ezsigntemplatepackage/getList API Request",
                 "type": "object",
@@ -6561,6 +6433,133 @@
                 "type": "string",
                 "example": "User"
             },
+            "Custom-AutocompleteElement-Response": {
+                "description": "Generic Autocomplete Response",
+                "required": [
+                    "sCategory",
+                    "sLabel",
+                    "mValue"
+                ],
+                "type": "object",
+                "properties": {
+                    "sCategory": {
+                        "description": "The Category for the dropdown or an empty string if not categorized",
+                        "type": "string"
+                    },
+                    "sLabel": {
+                        "description": "The Description of the element",
+                        "type": "string"
+                    },
+                    "mValue": {
+                        "description": "The Unique ID of the element",
+                        "type": "string"
+                    }
+                }
+            },
+            "Common-Format-DateTime": {
+                "description": "Represent a Date Time.\nThe timezone is the one configured in the User's profile.",
+                "type": "string",
+                "example": "2020-12-31 23:59:59"
+            },
+            "Common-Format-DateTimeNullable": {
+                "nullable": true,
+                "description": "Represent a Date Time.\nThe timezone is the one configured in the User's profile.",
+                "type": "string",
+                "example": "2020-12-31 23:59:59"
+            },
+            "ezsignfolder-ListElement": {
+                "description": "An Ezsignfolder List Element",
+                "required": [
+                    "pkiEzsignfolderID",
+                    "fkiEzsignfoldertypeID",
+                    "sEzsignfoldertypeNameX",
+                    "sEzsignfolderDescription",
+                    "eEzsignfolderStep",
+                    "dtCreatedDate",
+                    "dtEzsignfolderSentdate",
+                    "dtDueDate",
+                    "iEzsigndocument",
+                    "iEzsigndocumentEdm",
+                    "iEzsignsignature",
+                    "iEzsignsignatureSigned",
+                    "eEzsignfoldertypePrivacylevel"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsignfolderID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "fkiEzsignfoldertypeID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID"
+                    },
+                    "eEzsignfoldertypePrivacylevel": {
+                        "$ref": "#/components/schemas/Field-eEzsignfoldertypePrivacylevel"
+                    },
+                    "sEzsignfoldertypeNameX": {
+                        "$ref": "#/components/schemas/Field-sEzsignfoldertypeNameX",
+                        "description": ""
+                    },
+                    "sEzsignfolderDescription": {
+                        "$ref": "#/components/schemas/Field-sEzsignfolderDescription",
+                        "description": ""
+                    },
+                    "eEzsignfolderStep": {
+                        "$ref": "#/components/schemas/Field-eEzsignfolderStep",
+                        "description": ""
+                    },
+                    "dtCreatedDate": {
+                        "$ref": "#/components/schemas/Field-dtCreatedDate",
+                        "description": ""
+                    },
+                    "dtEzsignfolderSentdate": {
+                        "$ref": "#/components/schemas/Field-dtEzsignfolderSentdateNullable"
+                    },
+                    "dtDueDate": {
+                        "$ref": "#/components/schemas/Common-Format-DateTimeNullable",
+                        "description": "The date at which no more signature will be accepted on the folder"
+                    },
+                    "iEzsigndocument": {
+                        "description": "The total number of Ezsigndocument in the folder",
+                        "type": "integer"
+                    },
+                    "iEzsigndocumentEdm": {
+                        "description": "The total number of Ezsigndocument in the folder that were saved in the edm system",
+                        "type": "integer"
+                    },
+                    "iEzsignsignature": {
+                        "description": "The total number of signature blocks in all Ezsigndocuments in the folder",
+                        "type": "integer"
+                    },
+                    "iEzsignsignatureSigned": {
+                        "description": "The total number of already signed signature blocks in all Ezsigndocuments in the folder",
+                        "type": "integer"
+                    }
+                }
+            },
+            "Field-dtEzsignfolderSentdateNullable": {
+                "nullable": true,
+                "description": "The date and time at which the Ezsign folder was sent the last time.",
+                "type": "string",
+                "example": "2020-12-31 23:59:59"
+            },
+            "Field-pkiDepartmentIDNullable": {
+                "nullable": true,
+                "description": "The unique ID of the Department.",
+                "type": "integer",
+                "example": 1
+            },
+            "Field-pkiTeamIDNullable": {
+                "nullable": true,
+                "description": "The unique ID of the Team",
+                "type": "integer",
+                "example": 1
+            },
+            "Field-pkiEzsignfoldertypeIDNullable": {
+                "nullable": true,
+                "description": "The unique ID of the Ezsignfoldertype.",
+                "type": "integer",
+                "example": 5
+            },
             "ezsigntemplatepackage-ListElement": {
                 "description": "An Ezsigntemplatepackage List Element",
                 "required": [
@@ -6580,34 +6579,13 @@
                         "$ref": "#/components/schemas/Field-pkiEzsigntemplatepackageID"
                     },
                     "fkiDepartmentID": {
-                        "oneOf": [
-                            {
-                                "$ref": "#/components/schemas/Field-pkiDepartmentID"
-                            },
-                            {
-                                "$ref": "#/components/schemas/Custom-Null"
-                            }
-                        ]
+                        "$ref": "#/components/schemas/Field-pkiDepartmentIDNullable"
                     },
                     "fkiTeamID": {
-                        "oneOf": [
-                            {
-                                "$ref": "#/components/schemas/Field-pkiTeamID"
-                            },
-                            {
-                                "$ref": "#/components/schemas/Custom-Null"
-                            }
-                        ]
+                        "$ref": "#/components/schemas/Field-pkiTeamIDNullable"
                     },
                     "fkiEzsignfoldertypeID": {
-                        "oneOf": [
-                            {
-                                "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID"
-                            },
-                            {
-                                "$ref": "#/components/schemas/Custom-Null"
-                            }
-                        ]
+                        "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeIDNullable"
                     },
                     "fkiLanguageID": {
                         "$ref": "#/components/schemas/Field-pkiLanguageID"
@@ -6746,7 +6724,7 @@
         },
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.3] - 2021-10-\n\n#### Added\n- GET /1/object/ezsignbulksend/getList\n- GET /1/object/ezsigntemplatepackage/getList\n- POST /1/object/ezsignfoldersignerassociation bEzsignfoldersignerassociationReceivecopy property\n- Error Code UNPROCESSABLEENTITY_DOWNLOAD_ERROR added to documentation\n- Error Code UNPROCESSABLEENTITY_PDF_REPAIRABLE added to documentation\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters contained utf8 special chars\n\n### [1.1.2] - 2021-10-26\n\n#### Added\n- GET /1/object/ezsignfolder/getList eEzsignfoldertypePrivacylevel property\n- POST /1/object/ezsigndocument returns a sTemporaryFileUrl on error 422 if error is recoverable\n- POST /1/object/ezsigndocument sEzsigndocumentUrl property\n- POST /1/object/ezsigndocument eEzsigndocumentSource property now accept \"Url\" as the source\n- POST /1/object/ezsigndocument bEzsigndocumentForcerepair property\n- Support for \"rg\" operator in date fields in sFilter\n- Range operator added to convention section of the documentation\n\n### [1.1.1] - 2021-10-22\n\n#### Added\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend\n- GET /1/module/list/listpresentation/{sListName}\n- POST /1/module/list/listpresentation/{sListName}\n- Variables convention documentation now contains type \"m\" for mixed type\n- POST /1/object/ezsigndocument/ sEzsigndocumentPassword property\n- Support for \"in\" operator for integer fields in sFilter\n- Support for \"in\" operator for enum fields in sFilter\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\n- GET /1/object/ezsignfolder/getList\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\n- GET /1/object/ezsignfoldertype/getList\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation](https://ezmaxinc.github.io/eZmax-API/docs/ezmax.v1.0.html)",
+            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.3] - 2021-10-\n\n#### Added\n- GET /1/object/ezsignbulksend/getList\n- GET /1/object/ezsigntemplatepackage/getList\n- POST /1/object/ezsignfoldersignerassociation bEzsignfoldersignerassociationReceivecopy property\n- Error Code UNPROCESSABLEENTITY_DOWNLOAD_ERROR added to documentation\n- Error Code UNPROCESSABLEENTITY_PDF_REPAIRABLE added to documentation\n\n#### Changed\n- Changed all the OneOf used back to nullable types. When the generators will support 3.1 nullable polymorphism documentation will be improved\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters contained utf8 special chars\n- (CsharpSDK) OneOf not supported for polymorphism was preventing compilation\n- \n### [1.1.2] - 2021-10-26\n\n#### Added\n- GET /1/object/ezsignfolder/getList eEzsignfoldertypePrivacylevel property\n- POST /1/object/ezsigndocument returns a sTemporaryFileUrl on error 422 if error is recoverable\n- POST /1/object/ezsigndocument sEzsigndocumentUrl property\n- POST /1/object/ezsigndocument eEzsigndocumentSource property now accept \"Url\" as the source\n- POST /1/object/ezsigndocument bEzsigndocumentForcerepair property\n- Support for \"rg\" operator in date fields in sFilter\n- Range operator added to convention section of the documentation\n\n### [1.1.1] - 2021-10-22\n\n#### Added\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend\n- GET /1/module/list/listpresentation/{sListName}\n- POST /1/module/list/listpresentation/{sListName}\n- Variables convention documentation now contains type \"m\" for mixed type\n- POST /1/object/ezsigndocument/ sEzsigndocumentPassword property\n- Support for \"in\" operator for integer fields in sFilter\n- Support for \"in\" operator for enum fields in sFilter\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\n- GET /1/object/ezsignfolder/getList\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\n- GET /1/object/ezsignfoldertype/getList\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation](https://ezmaxinc.github.io/eZmax-API/docs/ezmax.v1.0.html)",
             "x-displayName": "Changelog"
         },
         {
