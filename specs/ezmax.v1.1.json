@@ -952,37 +952,6 @@
                 }
             ]
         },
-        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getChildren": {
-            "get": {
-                "tags": [
-                    "Object_Ezsigndocument"
-                ],
-                "responses": {
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsigndocument_GetChildren_V1",
-                "summary": "Retrieve an existing Ezsigndocument's children IDs",
-                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsigndocumentID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
         "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getDownloadUrl/{eDocumentType}": {
             "get": {
                 "tags": [
@@ -1096,110 +1065,6 @@
                 }
             ]
         },
-        "/1/object/ezsignfolder/{pkiEzsignfolderID}": {
-            "description": "",
-            "get": {
-                "tags": [
-                    "Object_Ezsignfolder"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsignfolder-getObject-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfolder_GetObject_V1",
-                "summary": "Retrieve an existing Ezsignfolder",
-                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
-            },
-            "delete": {
-                "tags": [
-                    "Object_Ezsignfolder"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsignfolder-deleteObject-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/Response-Error-422"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfolder_DeleteObject_V1",
-                "summary": "Delete an existing Ezsignfolder"
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsignfolderID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/ezsignfolder/{pkiEzsignfolderID}/getChildren": {
-            "get": {
-                "tags": [
-                    "Object_Ezsignfolder"
-                ],
-                "responses": {
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfolder_GetChildren_V1",
-                "summary": "Retrieve an existing Ezsignfolder's children IDs",
-                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsignfolderID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
         "/1/object/ezsignfolder/{pkiEzsignfolderID}/send": {
             "post": {
                 "requestBody": {
@@ -1247,110 +1112,6 @@
                     "name": "pkiEzsignfolderID",
                     "schema": {
                         "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}": {
-            "description": "",
-            "get": {
-                "tags": [
-                    "Object_Ezsignfoldersignerassociation"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsignfoldersignerassociation-getObject-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfoldersignerassociation_GetObject_V1",
-                "summary": "Retrieve an existing Ezsignfoldersignerassociation",
-                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
-            },
-            "delete": {
-                "tags": [
-                    "Object_Ezsignfoldersignerassociation"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsignfoldersignerassociation-deleteObject-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/Response-Error-422"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfoldersignerassociation_DeleteObject_V1",
-                "summary": "Delete an existing Ezsignfoldersignerassociation"
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsignfoldersignerassociationID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/getChildren": {
-            "get": {
-                "tags": [
-                    "Object_Ezsignfoldersignerassociation"
-                ],
-                "responses": {
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignfoldersignerassociation_GetChildren_V1",
-                "summary": "Retrieve an existing Ezsignfoldersignerassociation's children IDs",
-                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsignfoldersignerassociationID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID"
                     },
                     "in": "path",
                     "required": true
@@ -1462,37 +1223,6 @@
                 ],
                 "operationId": "Ezsignsignature_DeleteObject_V1",
                 "summary": "Delete an existing Ezsignsignature"
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsignsignatureID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignsignatureID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/ezsignsignature/{pkiEzsignsignatureID}/getChildren": {
-            "get": {
-                "tags": [
-                    "Object_Ezsignsignature"
-                ],
-                "responses": {
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignsignature_GetChildren_V1",
-                "summary": "Retrieve an existing Ezsignsignature's children IDs",
-                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
             },
             "parameters": [
                 {
@@ -2387,6 +2117,191 @@
                 "summary": "Retrieve Ezsigntemplatepackage list",
                 "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eEzsigntemplatepackageType | Company<br>Department<br>Team<br>User<br>Usergroup |"
             }
+        },
+        "/1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments": {
+            "get": {
+                "tags": [
+                    "Object_Ezsignfolder"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfolder-getEzsigndocuments-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignfolder_GetEzsigndocuments_V1",
+                "summary": "Retrieve an existing Ezsignfolder's Ezsigndocuments",
+                "description": ""
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignfolderID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsignfolder/{pkiEzsignfolderID}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Ezsignfolder"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfolder-getObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignfolder_GetObject_V1",
+                "summary": "Retrieve an existing Ezsignfolder"
+            },
+            "delete": {
+                "tags": [
+                    "Object_Ezsignfolder"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfolder-deleteObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignfolder_DeleteObject_V1",
+                "summary": "Delete an existing Ezsignfolder"
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignfolderID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Ezsignfoldersignerassociation"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfoldersignerassociation-getObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignfoldersignerassociation_GetObject_V1",
+                "summary": "Retrieve an existing Ezsignfoldersignerassociation"
+            },
+            "delete": {
+                "tags": [
+                    "Object_Ezsignfoldersignerassociation"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfoldersignerassociation-deleteObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignfoldersignerassociation_DeleteObject_V1",
+                "summary": "Delete an existing Ezsignfoldersignerassociation"
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignfoldersignerassociationID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
         }
     },
     "components": {
@@ -3350,15 +3265,6 @@
                     "dtModifiedDate": "2020-12-31 23:59:59"
                 }
             },
-            "ezsignfoldersignerassociation-getObject-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignfoldersignerassociation/getObject API Request",
-                "type": "object"
-            },
-            "Field-dtEzsigndocumentDuedate": {
-                "description": "The maximum date and time at which the document can be signed.",
-                "type": "string",
-                "example": "2020-12-31 23:59:59"
-            },
             "Field-sEzsigndocumentName": {
                 "description": "The name of the document that will be presented to Ezsignfoldersignerassociations",
                 "type": "string",
@@ -4202,67 +4108,6 @@
                         "$ref": "#/components/schemas/Common-Webhook"
                     }
                 ]
-            },
-            "ezsignfolder-Response": {
-                "description": "An Ezsignfolder Object",
-                "required": [
-                    "fkiEzsignfoldertypeID",
-                    "sEzsignfolderDescription",
-                    "fkiEzsigntsarequirementID",
-                    "tEzsignfolderNote",
-                    "eEzsignfolderSendreminderfrequency",
-                    "pkiEzsignfolderID",
-                    "dtEzsignfolderSentdate",
-                    "eEzsignfolderStep",
-                    "dtEzsignfolderClose",
-                    "objAudit"
-                ],
-                "type": "object",
-                "properties": {
-                    "fkiEzsignfoldertypeID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID",
-                        "description": "",
-                        "minimum": 1
-                    },
-                    "fkiEzsigntsarequirementID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigntsarequirementID",
-                        "description": ""
-                    },
-                    "sEzsignfolderDescription": {
-                        "$ref": "#/components/schemas/Field-sEzsignfolderDescription",
-                        "description": "",
-                        "maxLength": 75,
-                        "minLength": 1
-                    },
-                    "tEzsignfolderNote": {
-                        "$ref": "#/components/schemas/Field-tEzsignfolderNote",
-                        "description": ""
-                    },
-                    "eEzsignfolderSendreminderfrequency": {
-                        "$ref": "#/components/schemas/Field-eEzsignfolderSendreminderfrequency",
-                        "description": ""
-                    },
-                    "pkiEzsignfolderID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID",
-                        "description": ""
-                    },
-                    "dtEzsignfolderSentdate": {
-                        "$ref": "#/components/schemas/Field-dtEzsignfolderSentdateNullable",
-                        "description": ""
-                    },
-                    "eEzsignfolderStep": {
-                        "$ref": "#/components/schemas/Field-eEzsignfolderStep",
-                        "description": ""
-                    },
-                    "dtEzsignfolderClose": {
-                        "$ref": "#/components/schemas/Field-dtEzsignfolderClose",
-                        "description": ""
-                    },
-                    "objAudit": {
-                        "$ref": "#/components/schemas/Common-Audit",
-                        "description": ""
-                    }
-                }
             },
             "user-Response": {
                 "description": "A User Object",
@@ -6604,6 +6449,198 @@
                         "type": "integer"
                     }
                 }
+            },
+            "Field-pkiBillingentityinternalID": {
+                "description": "The unique ID of the Billingentityinternal.",
+                "type": "integer",
+                "example": 1
+            },
+            "Field-dtEzsignfolderDuedate": {
+                "description": "The maximum date and time at which the Ezsignfolder can be signed.",
+                "type": "string",
+                "example": "2020-12-31 23:59:59"
+            },
+            "Field-dtEzsigndocumentDuedate": {
+                "description": "The maximum date and time at which the Ezsigndocument can be signed.",
+                "type": "string",
+                "example": "2020-12-31 23:59:59"
+            },
+            "Field-sBillingentityinternalDescriptionX": {
+                "description": "The description of the Billingentityinternal in the language of the requester",
+                "type": "string",
+                "example": "Default"
+            },
+            "Field-sEzsigntsarequirementDescriptionX": {
+                "description": "The description of the Ezsigntsarequirement in the language of the requester",
+                "type": "string",
+                "example": "Default"
+            },
+            "ezsignfolder-Response": {
+                "description": "An Ezsignfolder Object",
+                "required": [
+                    "fkiEzsignfoldertypeID",
+                    "sEzsignfoldertypeNameX",
+                    "fkiBillingentityinternalID",
+                    "sBillingentityinternalDescriptionX",
+                    "sEzsignfolderDescription",
+                    "fkiEzsigntsarequirementID",
+                    "sEzsigntsarequirementDescriptionX",
+                    "tEzsignfolderNote",
+                    "eEzsignfolderSendreminderfrequency",
+                    "pkiEzsignfolderID",
+                    "dtEzsignfolderDuedate",
+                    "dtEzsignfolderSentdate",
+                    "eEzsignfolderStep",
+                    "dtEzsignfolderClose",
+                    "objAudit"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsignfolderID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "fkiEzsignfoldertypeID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID"
+                    },
+                    "sEzsignfoldertypeNameX": {
+                        "$ref": "#/components/schemas/Field-sEzsignfoldertypeNameX"
+                    },
+                    "fkiBillingentityinternalID": {
+                        "$ref": "#/components/schemas/Field-pkiBillingentityinternalID"
+                    },
+                    "sBillingentityinternalDescriptionX": {
+                        "$ref": "#/components/schemas/Field-sBillingentityinternalDescriptionX"
+                    },
+                    "fkiEzsigntsarequirementID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigntsarequirementID"
+                    },
+                    "sEzsigntsarequirementDescriptionX": {
+                        "$ref": "#/components/schemas/Field-sEzsigntsarequirementDescriptionX"
+                    },
+                    "sEzsignfolderDescription": {
+                        "$ref": "#/components/schemas/Field-sEzsignfolderDescription"
+                    },
+                    "tEzsignfolderNote": {
+                        "$ref": "#/components/schemas/Field-tEzsignfolderNote"
+                    },
+                    "eEzsignfolderSendreminderfrequency": {
+                        "$ref": "#/components/schemas/Field-eEzsignfolderSendreminderfrequency"
+                    },
+                    "dtEzsignfolderDuedate": {
+                        "$ref": "#/components/schemas/Field-dtEzsignfolderDuedate"
+                    },
+                    "dtEzsignfolderSentdate": {
+                        "$ref": "#/components/schemas/Field-dtEzsignfolderSentdateNullable"
+                    },
+                    "eEzsignfolderStep": {
+                        "$ref": "#/components/schemas/Field-eEzsignfolderStep"
+                    },
+                    "dtEzsignfolderClose": {
+                        "$ref": "#/components/schemas/Field-dtEzsignfolderClose"
+                    },
+                    "objAudit": {
+                        "$ref": "#/components/schemas/Common-Audit"
+                    }
+                }
+            },
+            "ezsignfolder-getEzsigndocuments-v1-Response": {
+                "description": "Response for the /1/object/ezsignfolder/{pkiEzsignfolder}/getEzsigndocuments API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsignfolder-getEzsigndocuments-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsignfolder-getEzsigndocuments-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignfolder/{pkiEzsignfolder}/getEzsigndocuments API Request",
+                "required": [
+                    "a_objEzsigndocument"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objEzsigndocument": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ezsigndocument-Response"
+                        }
+                    }
+                }
+            },
+            "Field-pkiUserIDNullable": {
+                "nullable": true,
+                "description": "The unique ID of the User",
+                "type": "integer",
+                "example": 70
+            },
+            "Field-pkiEzsignsignerID": {
+                "description": "The unique ID of the Ezsignsigner",
+                "type": "integer",
+                "example": 89
+            },
+            "Field-pkiEzsignsignerIDNullable": {
+                "nullable": true,
+                "description": "The unique ID of the Ezsignsigner",
+                "type": "integer",
+                "example": 89
+            },
+            "ezsignfoldersignerassociation-Response": {
+                "description": "An Ezsignfoldersignerassociation Object",
+                "required": [
+                    "pkiEzsignfoldersignerassociationID",
+                    "fkiEzsignfolderID",
+                    "fkiEzsignsignerID",
+                    "fkiUserID",
+                    "bEzsignfoldersignerassociationReceivecopy"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsignfoldersignerassociationID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID"
+                    },
+                    "fkiEzsignfolderID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "fkiEzsignsignerID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignsignerIDNullable"
+                    },
+                    "fkiUserID": {
+                        "$ref": "#/components/schemas/Field-pkiUserIDNullable"
+                    },
+                    "bEzsignfoldersignerassociationReceivecopy": {
+                        "$ref": "#/components/schemas/Field-bEzsignfoldersignerassociationReceivecopy"
+                    }
+                }
+            },
+            "ezsignfoldersignerassociation-ResponseCompound": {
+                "description": "An Ezsignfoldersignerassociation Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsignfoldersignerassociation-Response"
+                    }
+                ]
+            },
+            "ezsignfoldersignerassociation-getObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignfoldersignerassociation/getObject API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsignfoldersignerassociation-ResponseCompound"
+                    }
+                ]
             }
         },
         "responses": {
@@ -6724,7 +6761,7 @@
         },
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.4] - 2021-12-\n\n### [1.1.3] - 2021-12-17\n\n#### Added\n- GET /1/object/ezsignbulksend/getList\n- GET /1/object/ezsigntemplatepackage/getList\n- POST /1/object/ezsignfoldersignerassociation bEzsignfoldersignerassociationReceivecopy property\n- Error Code UNPROCESSABLEENTITY_DOWNLOAD_ERROR added to documentation\n- Error Code UNPROCESSABLEENTITY_PDF_REPAIRABLE added to documentation\n\n#### Changed\n- Changed all the OneOf used back to nullable types. When the generators will support 3.1 nullable polymorphism documentation will be improved\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters contained utf8 special chars\n- (CsharpSDK) OneOf not supported for polymorphism was preventing compilation\n- \n### [1.1.2] - 2021-10-26\n\n#### Added\n- GET /1/object/ezsignfolder/getList eEzsignfoldertypePrivacylevel property\n- POST /1/object/ezsigndocument returns a sTemporaryFileUrl on error 422 if error is recoverable\n- POST /1/object/ezsigndocument sEzsigndocumentUrl property\n- POST /1/object/ezsigndocument eEzsigndocumentSource property now accept \"Url\" as the source\n- POST /1/object/ezsigndocument bEzsigndocumentForcerepair property\n- Support for \"rg\" operator in date fields in sFilter\n- Range operator added to convention section of the documentation\n\n### [1.1.1] - 2021-10-22\n\n#### Added\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend\n- GET /1/module/list/listpresentation/{sListName}\n- POST /1/module/list/listpresentation/{sListName}\n- Variables convention documentation now contains type \"m\" for mixed type\n- POST /1/object/ezsigndocument/ sEzsigndocumentPassword property\n- Support for \"in\" operator for integer fields in sFilter\n- Support for \"in\" operator for enum fields in sFilter\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\n- GET /1/object/ezsignfolder/getList\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\n- GET /1/object/ezsignfoldertype/getList\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation](https://ezmaxinc.github.io/eZmax-API/docs/ezmax.v1.0.html)",
+            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.4] - 2021-12-\n\n#### Added\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID} fkiBillingentityinternalID, dtEzsignfolderDuedate, sBillingentityinternalDescriptionX, sEzsignfoldertypeNameX, sEzsigntsarequirementDescriptionX properties\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\n\n### [1.1.3] - 2021-12-17\n\n#### Added\n- GET /1/object/ezsignbulksend/getList\n- GET /1/object/ezsigntemplatepackage/getList\n- POST /1/object/ezsignfoldersignerassociation bEzsignfoldersignerassociationReceivecopy property\n- Error Code UNPROCESSABLEENTITY_DOWNLOAD_ERROR added to documentation\n- Error Code UNPROCESSABLEENTITY_PDF_REPAIRABLE added to documentation\n\n#### Changed\n- Changed all the OneOf used back to nullable types. When the generators will support 3.1 nullable polymorphism documentation will be improved\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters contained utf8 special chars\n- (CsharpSDK) OneOf not supported for polymorphism was preventing compilation\n- \n### [1.1.2] - 2021-10-26\n\n#### Added\n- GET /1/object/ezsignfolder/getList eEzsignfoldertypePrivacylevel property\n- POST /1/object/ezsigndocument returns a sTemporaryFileUrl on error 422 if error is recoverable\n- POST /1/object/ezsigndocument sEzsigndocumentUrl property\n- POST /1/object/ezsigndocument eEzsigndocumentSource property now accept \"Url\" as the source\n- POST /1/object/ezsigndocument bEzsigndocumentForcerepair property\n- Support for \"rg\" operator in date fields in sFilter\n- Range operator added to convention section of the documentation\n\n### [1.1.1] - 2021-10-22\n\n#### Added\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend\n- GET /1/module/list/listpresentation/{sListName}\n- POST /1/module/list/listpresentation/{sListName}\n- Variables convention documentation now contains type \"m\" for mixed type\n- POST /1/object/ezsigndocument/ sEzsigndocumentPassword property\n- Support for \"in\" operator for integer fields in sFilter\n- Support for \"in\" operator for enum fields in sFilter\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\n- GET /1/object/ezsignfolder/getList\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\n- GET /1/object/ezsignfoldertype/getList\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation](https://ezmaxinc.github.io/eZmax-API/docs/ezmax.v1.0.html)",
             "x-displayName": "Changelog"
         },
         {
