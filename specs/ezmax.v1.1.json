@@ -2302,6 +2302,47 @@
                     "required": true
                 }
             ]
+        },
+        "/1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociations": {
+            "get": {
+                "tags": [
+                    "Object_Ezsignfolder"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfolder-getEzsignfoldersignerassociations-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignfolder_GetEzsignfoldersignerassociations_V1",
+                "summary": "Retrieve an existing Ezsignfolder's Ezsignfoldersignerassociations",
+                "description": ""
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignfolderID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
         }
     },
     "components": {
@@ -2706,19 +2747,7 @@
                 "type": "object",
                 "allOf": [
                     {
-                        "required": [
-                            "a_Ezsignfoldersignerassociation"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "a_Ezsignfoldersignerassociation": {
-                                "description": "An array of signers that will be invited to sign the Ezsigndocuments",
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/ezsignfoldersignerassociation-Request"
-                                }
-                            }
-                        }
+                        "type": "object"
                     },
                     {
                         "$ref": "#/components/schemas/ezsignfolder-Request"
@@ -2730,49 +2759,6 @@
                     "tEzsignfolderNote": "An extra notes we can add to the ezsign folder",
                     "fkiEzsigntsarequirementID": 1,
                     "eEzsignfolderSendreminderfrequency": "Daily"
-                }
-            },
-            "ezsignsigner-RequestCompound-Contact": {
-                "description": "A Ezsignsigner->Contact Object and children to create a complete structure",
-                "required": [
-                    "sContactFirstname",
-                    "sContactLastname",
-                    "fkiLanguageID"
-                ],
-                "type": "object",
-                "properties": {
-                    "sContactFirstname": {
-                        "description": "The first name of the Contact",
-                        "type": "string"
-                    },
-                    "sContactLastname": {
-                        "description": "The last name of the Contact",
-                        "type": "string"
-                    },
-                    "fkiLanguageID": {
-                        "$ref": "#/components/schemas/Field-pkiLanguageID",
-                        "description": ""
-                    },
-                    "sEmailAddress": {
-                        "description": "The email address of the contact. Must be filled if email authentification was requested",
-                        "type": "string"
-                    },
-                    "sPhoneNumber": {
-                        "description": "The Phone number of the contact.\nUse format \"5149901516\" for North American Numbers (Without \"1\" for long distance code) you would dial like this: 1-514-990-1516.\nUse format \"498945233886\" for international numbers (Without \"011\") you would dial like this: +49 89 452 33 88-6. In this example \"49\" is the country code of Germany.",
-                        "type": "string"
-                    },
-                    "sPhoneNumberCell": {
-                        "description": "The Cell Phone number of the contact.\nUse format \"5149901516\" for North American Numbers (Without \"1\" for long distance code) you would dial like this: 1-514-990-1516.\nUse format \"498945233886\" for international numbers (Without \"011\") you would dial like this: +49 89 452 33 88-6. In this example \"49\" is the country code of Germany.",
-                        "type": "string"
-                    }
-                },
-                "example": {
-                    "sContactFirstname": "John",
-                    "sContactLastname": "Doe",
-                    "fkiLanguageID": 1,
-                    "sEmailAddress": "johh.doe@domain.com",
-                    "sPhoneNumber": "5149901516",
-                    "sPhoneNumberCell": "5149901516"
                 }
             },
             "ezsignsigner-RequestCompound": {
@@ -3204,23 +3190,6 @@
                     }
                 }
             },
-            "ezsigndocument-ResponseCompound": {
-                "description": "An Ezsigndocument Object and children to create a complete structure",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ezsigndocument-Response"
-                    }
-                ],
-                "example": {
-                    "pkiEzsigndocumentID": 66,
-                    "sEzsigndocumentName": "Important contract",
-                    "sEzsigndocumentFilename": "Important Contract.pdf",
-                    "fkiEzsignfolderID": 1,
-                    "dtEzsigndocumentDuedate": "2020-12-31 23:59:59",
-                    "fkiLanguageID": 2
-                }
-            },
             "Common-Audit": {
                 "description": "Gives informations about the user that created the object and the last user to have modified it.\n\nIf the object was never modified after creation, both Created and Modified informations will be the same.\n\nApikey details will only be provided if the changes were made by an API key.\n\n",
                 "required": [
@@ -3269,15 +3238,6 @@
                 "description": "The name of the document that will be presented to Ezsignfoldersignerassociations",
                 "type": "string",
                 "example": "Contract #123"
-            },
-            "ezsigndocument-getObject-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsigndocument/getObject API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ezsigndocument-Response"
-                    }
-                ]
             },
             "Field-eEzsigndocumentStep": {
                 "description": "The signature step of the Ezsigndocument.",
@@ -5009,11 +4969,6 @@
                 "type": "integer",
                 "example": 4
             },
-            "Field-iEzsignsignatureStep": {
-                "description": "The step when the Ezsignsigner will be invited to sign.",
-                "type": "integer",
-                "example": 1
-            },
             "Field-iEzsignsignatureX": {
                 "description": "The X coordinate (Horizontal) where to put the signature block on the page.\n\nCoordinate is calculated at 100dpi (dot per inch). So for example, if you want to put the signature block 2 inches from the left border of the page, you would use \"200\" for the X coordinate.",
                 "type": "integer",
@@ -6475,74 +6430,6 @@
                 "type": "string",
                 "example": "Default"
             },
-            "ezsignfolder-Response": {
-                "description": "An Ezsignfolder Object",
-                "required": [
-                    "fkiEzsignfoldertypeID",
-                    "sEzsignfoldertypeNameX",
-                    "fkiBillingentityinternalID",
-                    "sBillingentityinternalDescriptionX",
-                    "sEzsignfolderDescription",
-                    "fkiEzsigntsarequirementID",
-                    "sEzsigntsarequirementDescriptionX",
-                    "tEzsignfolderNote",
-                    "eEzsignfolderSendreminderfrequency",
-                    "pkiEzsignfolderID",
-                    "dtEzsignfolderDuedate",
-                    "dtEzsignfolderSentdate",
-                    "eEzsignfolderStep",
-                    "dtEzsignfolderClose",
-                    "objAudit"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiEzsignfolderID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
-                    },
-                    "fkiEzsignfoldertypeID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID"
-                    },
-                    "sEzsignfoldertypeNameX": {
-                        "$ref": "#/components/schemas/Field-sEzsignfoldertypeNameX"
-                    },
-                    "fkiBillingentityinternalID": {
-                        "$ref": "#/components/schemas/Field-pkiBillingentityinternalID"
-                    },
-                    "sBillingentityinternalDescriptionX": {
-                        "$ref": "#/components/schemas/Field-sBillingentityinternalDescriptionX"
-                    },
-                    "fkiEzsigntsarequirementID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigntsarequirementID"
-                    },
-                    "sEzsigntsarequirementDescriptionX": {
-                        "$ref": "#/components/schemas/Field-sEzsigntsarequirementDescriptionX"
-                    },
-                    "sEzsignfolderDescription": {
-                        "$ref": "#/components/schemas/Field-sEzsignfolderDescription"
-                    },
-                    "tEzsignfolderNote": {
-                        "$ref": "#/components/schemas/Field-tEzsignfolderNote"
-                    },
-                    "eEzsignfolderSendreminderfrequency": {
-                        "$ref": "#/components/schemas/Field-eEzsignfolderSendreminderfrequency"
-                    },
-                    "dtEzsignfolderDuedate": {
-                        "$ref": "#/components/schemas/Field-dtEzsignfolderDuedate"
-                    },
-                    "dtEzsignfolderSentdate": {
-                        "$ref": "#/components/schemas/Field-dtEzsignfolderSentdateNullable"
-                    },
-                    "eEzsignfolderStep": {
-                        "$ref": "#/components/schemas/Field-eEzsignfolderStep"
-                    },
-                    "dtEzsignfolderClose": {
-                        "$ref": "#/components/schemas/Field-dtEzsignfolderClose"
-                    },
-                    "objAudit": {
-                        "$ref": "#/components/schemas/Common-Audit"
-                    }
-                }
-            },
             "ezsignfolder-getEzsigndocuments-v1-Response": {
                 "description": "Response for the /1/object/ezsignfolder/{pkiEzsignfolder}/getEzsigndocuments API Request",
                 "type": "object",
@@ -6562,22 +6449,6 @@
                         "$ref": "#/components/schemas/Common-Response"
                     }
                 ]
-            },
-            "ezsignfolder-getEzsigndocuments-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignfolder/{pkiEzsignfolder}/getEzsigndocuments API Request",
-                "required": [
-                    "a_objEzsigndocument"
-                ],
-                "type": "object",
-                "properties": {
-                    "a_objEzsigndocument": {
-                        "description": "",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/ezsigndocument-Response"
-                        }
-                    }
-                }
             },
             "Field-pkiUserIDNullable": {
                 "nullable": true,
@@ -6641,6 +6512,415 @@
                         "$ref": "#/components/schemas/ezsignfoldersignerassociation-ResponseCompound"
                     }
                 ]
+            },
+            "ezsignfolder-getEzsignfoldersignerassociations-v1-Response": {
+                "description": "Response for the /1/object/ezsignfolder/{pkiEzsignfolder}/getEzsignfoldersignerassociations API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsignfolder-getEzsignfoldersignerassociations-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsignfolder-getEzsignfoldersignerassociations-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignfolder/{pkiEzsignfolder}/getEzsignfoldersignerassociations API Request",
+                "required": [
+                    "a_objEzsignfoldersignerassociation"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objEzsignfoldersignerassociation": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ezsignfoldersignerassociation-Response"
+                        }
+                    }
+                }
+            },
+            "ezsignsigner-ResponseCompound-Contact": {
+                "description": "A Ezsignsigner->Contact Object and children to create a complete structure",
+                "required": [
+                    "sContactFirstname",
+                    "sContactLastname",
+                    "fkiLanguageID"
+                ],
+                "type": "object",
+                "properties": {
+                    "sContactFirstname": {
+                        "$ref": "#/components/schemas/Field-sContactFirstname"
+                    },
+                    "sContactLastname": {
+                        "$ref": "#/components/schemas/Field-sContactLastname"
+                    },
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Field-pkiLanguageID"
+                    },
+                    "sEmailAddress": {
+                        "$ref": "#/components/schemas/Field-sEmailAddress"
+                    },
+                    "sPhoneNumber": {
+                        "description": "The Phone number of the contact.\nUse format \"5149901516\" for North American Numbers (Without \"1\" for long distance code) you would dial like this: 1-514-990-1516.\nUse format \"498945233886\" for international numbers (Without \"011\") you would dial like this: +49 89 452 33 88-6. In this example \"49\" is the country code of Germany.",
+                        "type": "string"
+                    },
+                    "sPhoneNumberCell": {
+                        "description": "The Cell Phone number of the contact.\nUse format \"5149901516\" for North American Numbers (Without \"1\" for long distance code) you would dial like this: 1-514-990-1516.\nUse format \"498945233886\" for international numbers (Without \"011\") you would dial like this: +49 89 452 33 88-6. In this example \"49\" is the country code of Germany.",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "sContactFirstname": "John",
+                    "sContactLastname": "Doe",
+                    "fkiLanguageID": 1,
+                    "sEmailAddress": "johh.doe@domain.com",
+                    "sPhoneNumber": "5149901516",
+                    "sPhoneNumberCell": "5149901516"
+                }
+            },
+            "ezsignsigner-ResponseCompound": {
+                "description": "An Ezsignsigner Object and children to create a complete structure",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "objContact"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "objContact": {
+                                "$ref": "#/components/schemas/ezsignsigner-ResponseCompound-Contact"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/ezsignsigner-Response"
+                    }
+                ]
+            },
+            "ezsignsigner-Response": {
+                "description": "An Ezsignsigner Object",
+                "required": [
+                    "eEzsignsignerLogintype",
+                    "fkiTaxassignmentID"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiTaxassignmentID": {
+                        "$ref": "#/components/schemas/Field-pkiTaxassignmentID"
+                    },
+                    "fkiSecretquestionID": {
+                        "$ref": "#/components/schemas/Field-pkiSecretquestionID"
+                    },
+                    "eEzsignsignerLogintype": {
+                        "description": "The method the Ezsignsigner will authenticate to the signing platform.\n\n1. **Password** means the Ezsignsigner will receive a secure link by email.\n2. **PasswordPhone** means the Ezsignsigner will receive a secure link by email and will need to authenticate using SMS or Phone call. **Additional fee applies**.\n3. **PasswordQuestion** means the Ezsignsigner will receive a secure link by email and will need to authenticate using a predefined question and answer.\n4. **InPersonPhone** means the Ezsignsigner will only be able to sign \"In-Person\" and will need to authenticate using SMS or Phone call. No email will be sent for invitation to sign. **Additional fee applies**.\n5. **InPerson** means the Ezsignsigner will only be able to sign \"In-Person\" and there won't be any authentication. No email will be sent for invitation to sign. Make sure you evaluate the risk of signature denial and at minimum, we recommend you use a handwritten signature type.",
+                        "enum": [
+                            "Password",
+                            "PasswordPhone",
+                            "PasswordQuestion",
+                            "InPersonPhone",
+                            "InPerson"
+                        ],
+                        "type": "string"
+                    },
+                    "sEzsignsignerSecretanswer": {
+                        "description": "The predefined answer to the secret question the Ezsignsigner will need to provide to successfully authenticate.",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "fkiTaxassignmentID": 1,
+                    "fkiSecretquestionID": 5,
+                    "eEzsignsignerLogintype": "PasswordQuestion",
+                    "sEzsignsignerSecretanswer": "This Is My Secret Answer"
+                }
+            },
+            "ezsignsigner-RequestCompound-Contact": {
+                "description": "A Ezsignsigner->Contact Object and children to create a complete structure",
+                "required": [
+                    "sContactFirstname",
+                    "sContactLastname",
+                    "fkiLanguageID"
+                ],
+                "type": "object",
+                "properties": {
+                    "sContactFirstname": {
+                        "$ref": "#/components/schemas/Field-sContactFirstname"
+                    },
+                    "sContactLastname": {
+                        "$ref": "#/components/schemas/Field-sContactLastname"
+                    },
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Field-pkiLanguageID"
+                    },
+                    "sEmailAddress": {
+                        "$ref": "#/components/schemas/Field-sEmailAddress"
+                    },
+                    "sPhoneNumber": {
+                        "description": "The Phone number of the contact.\nUse format \"5149901516\" for North American Numbers (Without \"1\" for long distance code) you would dial like this: 1-514-990-1516.\nUse format \"498945233886\" for international numbers (Without \"011\") you would dial like this: +49 89 452 33 88-6. In this example \"49\" is the country code of Germany.",
+                        "type": "string"
+                    },
+                    "sPhoneNumberCell": {
+                        "description": "The Cell Phone number of the contact.\nUse format \"5149901516\" for North American Numbers (Without \"1\" for long distance code) you would dial like this: 1-514-990-1516.\nUse format \"498945233886\" for international numbers (Without \"011\") you would dial like this: +49 89 452 33 88-6. In this example \"49\" is the country code of Germany.",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "sContactFirstname": "John",
+                    "sContactLastname": "Doe",
+                    "fkiLanguageID": 1,
+                    "sEmailAddress": "johh.doe@domain.com",
+                    "sPhoneNumber": "5149901516",
+                    "sPhoneNumberCell": "5149901516"
+                }
+            },
+            "ezsignfolder-Response": {
+                "description": "An Ezsignfolder Object",
+                "required": [
+                    "fkiEzsignfoldertypeID",
+                    "sEzsignfoldertypeNameX",
+                    "fkiBillingentityinternalID",
+                    "sBillingentityinternalDescriptionX",
+                    "sEzsignfolderDescription",
+                    "fkiEzsigntsarequirementID",
+                    "sEzsigntsarequirementDescriptionX",
+                    "tEzsignfolderNote",
+                    "eEzsignfolderSendreminderfrequency",
+                    "pkiEzsignfolderID",
+                    "dtEzsignfolderDuedate",
+                    "dtEzsignfolderSentdate",
+                    "dtEzsignfolderScheduledarchive",
+                    "dtEzsignfolderScheduleddestruction",
+                    "eEzsignfolderStep",
+                    "dtEzsignfolderClose",
+                    "objAudit"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsignfolderID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "fkiEzsignfoldertypeID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID"
+                    },
+                    "sEzsignfoldertypeNameX": {
+                        "$ref": "#/components/schemas/Field-sEzsignfoldertypeNameX"
+                    },
+                    "fkiBillingentityinternalID": {
+                        "$ref": "#/components/schemas/Field-pkiBillingentityinternalID"
+                    },
+                    "sBillingentityinternalDescriptionX": {
+                        "$ref": "#/components/schemas/Field-sBillingentityinternalDescriptionX"
+                    },
+                    "fkiEzsigntsarequirementID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigntsarequirementID"
+                    },
+                    "sEzsigntsarequirementDescriptionX": {
+                        "$ref": "#/components/schemas/Field-sEzsigntsarequirementDescriptionX"
+                    },
+                    "sEzsignfolderDescription": {
+                        "$ref": "#/components/schemas/Field-sEzsignfolderDescription"
+                    },
+                    "tEzsignfolderNote": {
+                        "$ref": "#/components/schemas/Field-tEzsignfolderNote"
+                    },
+                    "eEzsignfolderSendreminderfrequency": {
+                        "$ref": "#/components/schemas/Field-eEzsignfolderSendreminderfrequency"
+                    },
+                    "dtEzsignfolderDuedate": {
+                        "$ref": "#/components/schemas/Field-dtEzsignfolderDuedate"
+                    },
+                    "dtEzsignfolderSentdate": {
+                        "$ref": "#/components/schemas/Field-dtEzsignfolderSentdateNullable"
+                    },
+                    "dtEzsignfolderScheduledarchive": {
+                        "$ref": "#/components/schemas/Computed-dtEzsignfolderScheduledarchive"
+                    },
+                    "dtEzsignfolderScheduleddestruction": {
+                        "$ref": "#/components/schemas/Computed-dtEzsignfolderScheduleddestruction"
+                    },
+                    "eEzsignfolderStep": {
+                        "$ref": "#/components/schemas/Field-eEzsignfolderStep"
+                    },
+                    "dtEzsignfolderClose": {
+                        "$ref": "#/components/schemas/Field-dtEzsignfolderClose"
+                    },
+                    "objAudit": {
+                        "$ref": "#/components/schemas/Common-Audit"
+                    }
+                }
+            },
+            "Computed-dtEzsignfolderScheduledarchive": {
+                "description": "The scheduled date and time at which the Ezsignfolder should be archived.",
+                "type": "string",
+                "example": "2020-12-31 23:59:59"
+            },
+            "Computed-dtEzsignfolderScheduleddestruction": {
+                "description": "The scheduled date and time at which the Ezsignfolder should be Destroyed.",
+                "type": "string",
+                "example": "2020-12-31 23:59:59"
+            },
+            "Computed-iEzsigndocumentStepsignaturetotal": {
+                "description": "The total number of steps in the signature filling phase",
+                "type": "integer",
+                "example": 2
+            },
+            "Computed-iEzsigndocumentStepformtotal": {
+                "description": "The total number of steps in the form filling phase",
+                "type": "integer",
+                "example": 2
+            },
+            "Computed-iEzsigndocumentStepformcurrent": {
+                "description": "The current step in the form filling phase",
+                "type": "integer",
+                "example": 1
+            },
+            "ezsigndocument-getObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsigndocument/getObject API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsigndocument-ResponseCompound"
+                    }
+                ]
+            },
+            "Computed-iEzsigndocumentStepsignatureCurrent": {
+                "description": "The current step in the signature phase",
+                "type": "integer",
+                "example": 0
+            },
+            "ezsignfolder-getEzsigndocuments-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignfolder/{pkiEzsignfolder}/getEzsigndocuments API Request",
+                "required": [
+                    "a_objEzsigndocument"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objEzsigndocument": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ezsigndocument-ResponseCompound"
+                        }
+                    }
+                }
+            },
+            "ezsigndocument-ResponseCompound": {
+                "description": "An Ezsigndocument Object and children to create a complete structure",
+                "required": [
+                    "iEzsigndocumentStepformtotal",
+                    "iEzsigndocumentStepformcurrent",
+                    "iEzsigndocumentStepsignaturetotal",
+                    "iEzsigndocumentStepsignatureCurrent",
+                    "a_objEzsignfoldersignerassociationstatus"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsigndocument-Response"
+                    }
+                ],
+                "properties": {
+                    "iEzsigndocumentStepformtotal": {
+                        "$ref": "#/components/schemas/Computed-iEzsigndocumentStepformtotal"
+                    },
+                    "iEzsigndocumentStepformcurrent": {
+                        "$ref": "#/components/schemas/Computed-iEzsigndocumentStepformcurrent"
+                    },
+                    "iEzsigndocumentStepsignaturetotal": {
+                        "$ref": "#/components/schemas/Computed-iEzsigndocumentStepsignaturetotal"
+                    },
+                    "iEzsigndocumentStepsignatureCurrent": {
+                        "$ref": "#/components/schemas/Computed-iEzsigndocumentStepsignatureCurrent"
+                    },
+                    "a_objEzsignfoldersignerassociationstatus": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-Ezsignfoldersignerassociationstatus-Response"
+                        }
+                    }
+                }
+            },
+            "Field-iEzsignsignatureStep": {
+                "description": "The step when the Ezsignsigner will be invited to sign or fill form fields",
+                "type": "integer",
+                "example": 1
+            },
+            "Custom-Ezsignsignaturestatus-Response": {
+                "description": "A Ezsignsignaturestatus Object and children to create a complete structure",
+                "required": [
+                    "eEzsignsignaturestatusSteptype",
+                    "iEzsignsignaturestatusStep",
+                    "iEzsignsignaturestatusTotal",
+                    "iEzsignsignaturestatusSigned"
+                ],
+                "type": "object",
+                "properties": {
+                    "eEzsignsignaturestatusSteptype": {
+                        "description": "Type of step",
+                        "enum": [
+                            "Form",
+                            "Signature"
+                        ],
+                        "type": "string"
+                    },
+                    "iEzsignsignaturestatusStep": {
+                        "description": "The step at which the Ezsignsigner will be invited to sign or fill the form fields",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "iEzsignsignaturestatusTotal": {
+                        "description": "The total number of signature or form fields the Ezsignsigner must process at the current step",
+                        "type": "integer",
+                        "example": 2
+                    },
+                    "iEzsignsignaturestatusSigned": {
+                        "description": "The number of signature or form fields the Ezsignsigner has already processed at the current step",
+                        "type": "integer",
+                        "example": 1
+                    }
+                }
+            },
+            "Custom-Ezsignfoldersignerassociationstatus-Response": {
+                "description": "A Ezsignfoldersignerassociationstatus Object and children to create a complete structure",
+                "required": [
+                    "fkiEzsignfoldersignerassociationID",
+                    "a_objEzsignsignaturestatus",
+                    "sEzsignfoldersignerassociationstatusLastname",
+                    "sEzsignfoldersignerassociationstatusFirstname"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiEzsignfoldersignerassociationID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID"
+                    },
+                    "sEzsignfoldersignerassociationstatusLastname": {
+                        "description": "The last name of the Ezsignsigner",
+                        "type": "string",
+                        "example": "Doe"
+                    },
+                    "sEzsignfoldersignerassociationstatusFirstname": {
+                        "description": "The first name of the Ezsignsigner",
+                        "type": "string",
+                        "example": "John"
+                    },
+                    "a_objEzsignsignaturestatus": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-Ezsignsignaturestatus-Response"
+                        }
+                    }
+                }
             }
         },
         "responses": {
@@ -6761,7 +7041,7 @@
         },
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.4] - 2021-12-\n\n#### Added\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID} fkiBillingentityinternalID, dtEzsignfolderDuedate, sBillingentityinternalDescriptionX, sEzsignfoldertypeNameX, sEzsigntsarequirementDescriptionX properties\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\n\n### [1.1.3] - 2021-12-17\n\n#### Added\n- GET /1/object/ezsignbulksend/getList\n- GET /1/object/ezsigntemplatepackage/getList\n- POST /1/object/ezsignfoldersignerassociation bEzsignfoldersignerassociationReceivecopy property\n- Error Code UNPROCESSABLEENTITY_DOWNLOAD_ERROR added to documentation\n- Error Code UNPROCESSABLEENTITY_PDF_REPAIRABLE added to documentation\n\n#### Changed\n- Changed all the OneOf used back to nullable types. When the generators will support 3.1 nullable polymorphism documentation will be improved\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters contained utf8 special chars\n- (CsharpSDK) OneOf not supported for polymorphism was preventing compilation\n- \n### [1.1.2] - 2021-10-26\n\n#### Added\n- GET /1/object/ezsignfolder/getList eEzsignfoldertypePrivacylevel property\n- POST /1/object/ezsigndocument returns a sTemporaryFileUrl on error 422 if error is recoverable\n- POST /1/object/ezsigndocument sEzsigndocumentUrl property\n- POST /1/object/ezsigndocument eEzsigndocumentSource property now accept \"Url\" as the source\n- POST /1/object/ezsigndocument bEzsigndocumentForcerepair property\n- Support for \"rg\" operator in date fields in sFilter\n- Range operator added to convention section of the documentation\n\n### [1.1.1] - 2021-10-22\n\n#### Added\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend\n- GET /1/module/list/listpresentation/{sListName}\n- POST /1/module/list/listpresentation/{sListName}\n- Variables convention documentation now contains type \"m\" for mixed type\n- POST /1/object/ezsigndocument/ sEzsigndocumentPassword property\n- Support for \"in\" operator for integer fields in sFilter\n- Support for \"in\" operator for enum fields in sFilter\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\n- GET /1/object/ezsignfolder/getList\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\n- GET /1/object/ezsignfoldertype/getList\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation](https://ezmaxinc.github.io/eZmax-API/docs/ezmax.v1.0.html)",
+            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.4] - 2022-01-\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID} Added status\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID} fkiBillingentityinternalID, dtEzsignfolderDuedate, sBillingentityinternalDescriptionX, sEzsignfoldertypeNameX, sEzsigntsarequirementDescriptionX, dtEzsignfolderScheduledarchive and dtEzsignfolderScheduleddestruction properties\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociations\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n\n### [1.1.3] - 2021-12-17\n\n#### Added\n- GET /1/object/ezsignbulksend/getList\n- GET /1/object/ezsigntemplatepackage/getList\n- POST /1/object/ezsignfoldersignerassociation bEzsignfoldersignerassociationReceivecopy property\n- Error Code UNPROCESSABLEENTITY_DOWNLOAD_ERROR added to documentation\n- Error Code UNPROCESSABLEENTITY_PDF_REPAIRABLE added to documentation\n\n#### Changed\n- Changed all the OneOf used back to nullable types. When the generators will support 3.1 nullable polymorphism documentation will be improved\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters contained utf8 special chars\n- (CsharpSDK) OneOf not supported for polymorphism was preventing compilation\n- \n### [1.1.2] - 2021-10-26\n\n#### Added\n- GET /1/object/ezsignfolder/getList eEzsignfoldertypePrivacylevel property\n- POST /1/object/ezsigndocument returns a sTemporaryFileUrl on error 422 if error is recoverable\n- POST /1/object/ezsigndocument sEzsigndocumentUrl property\n- POST /1/object/ezsigndocument eEzsigndocumentSource property now accept \"Url\" as the source\n- POST /1/object/ezsigndocument bEzsigndocumentForcerepair property\n- Support for \"rg\" operator in date fields in sFilter\n- Range operator added to convention section of the documentation\n\n### [1.1.1] - 2021-10-22\n\n#### Added\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend\n- GET /1/module/list/listpresentation/{sListName}\n- POST /1/module/list/listpresentation/{sListName}\n- Variables convention documentation now contains type \"m\" for mixed type\n- POST /1/object/ezsigndocument/ sEzsigndocumentPassword property\n- Support for \"in\" operator for integer fields in sFilter\n- Support for \"in\" operator for enum fields in sFilter\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\n- GET /1/object/ezsignfolder/getList\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\n- GET /1/object/ezsignfoldertype/getList\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation](https://ezmaxinc.github.io/eZmax-API/docs/ezmax.v1.0.html)",
             "x-displayName": "Changelog"
         },
         {
