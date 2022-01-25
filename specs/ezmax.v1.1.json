@@ -4378,15 +4378,6 @@
                     }
                 }
             },
-            "ezsignfolder-getObject-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignfolder/getObject API Request",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ezsignfolder-Response"
-                    }
-                ]
-            },
             "global-customer-getEndpoint-v1-Response": {
                 "description": "Response for the /1/customer/{pksCustomerCode}/endpoint API Request",
                 "required": [
@@ -6921,6 +6912,15 @@
                         }
                     }
                 }
+            },
+            "ezsignfolder-getObject-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignfolder/getObject API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsignfolder-ResponseCompound"
+                    }
+                ]
             }
         },
         "responses": {
