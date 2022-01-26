@@ -2902,58 +2902,6 @@
                     }
                 }
             },
-            "ezsignsignature-Request": {
-                "description": "An Ezsignsignature Object",
-                "required": [
-                    "fkiEzsignfoldersignerassociationID",
-                    "iEzsignpagePagenumber",
-                    "iEzsignsignatureX",
-                    "iEzsignsignatureY",
-                    "iEzsignsignatureStep",
-                    "eEzsignsignatureType",
-                    "fkiEzsigndocumentID"
-                ],
-                "type": "object",
-                "properties": {
-                    "fkiEzsignfoldersignerassociationID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID",
-                        "description": ""
-                    },
-                    "iEzsignpagePagenumber": {
-                        "$ref": "#/components/schemas/Field-iEzsignpagePagenumber",
-                        "description": ""
-                    },
-                    "iEzsignsignatureX": {
-                        "$ref": "#/components/schemas/Field-iEzsignsignatureX",
-                        "description": ""
-                    },
-                    "iEzsignsignatureY": {
-                        "$ref": "#/components/schemas/Field-iEzsignsignatureY",
-                        "description": ""
-                    },
-                    "iEzsignsignatureStep": {
-                        "$ref": "#/components/schemas/Field-iEzsignsignatureStep",
-                        "description": ""
-                    },
-                    "eEzsignsignatureType": {
-                        "$ref": "#/components/schemas/Field-eEzsignsignatureType",
-                        "description": ""
-                    },
-                    "fkiEzsigndocumentID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID",
-                        "description": ""
-                    }
-                }
-            },
-            "ezsignsignature-RequestCompound": {
-                "description": "An Ezsignsignature Object and children to create a complete structure",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ezsignsignature-Request"
-                    }
-                ]
-            },
             "Common-Webhook": {
                 "description": "This is the base Webhook object",
                 "required": [
@@ -6921,6 +6869,102 @@
                         "$ref": "#/components/schemas/ezsignfolder-ResponseCompound"
                     }
                 ]
+            },
+            "Field-bEzsignsignatureCustomdate": {
+                "description": "Whether the Ezsignsignature has a custom date format or not. (Only possible when eEzsignsignatureType is \"Name\" or \"Handwritten\")",
+                "type": "boolean"
+            },
+            "ezsignsignature-RequestCompound": {
+                "description": "An Ezsignsignature Object and children to create a complete structure",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsignsignature-Request"
+                    }
+                ],
+                "properties": {
+                    "bEzsignsignatureCustomdate": {
+                        "$ref": "#/components/schemas/Field-bEzsignsignatureCustomdate"
+                    },
+                    "a_objEzsignsignaturecustomdate": {
+                        "description": "An array of custom date blocks that will be filled at the time of signature.\n\nCan only be used if bEzsignsignatureCustomdate is true.\n\nUse an empty array if you don't want to have a date at all.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ezsignsignaturecustomdate-Request"
+                        }
+                    }
+                }
+            },
+            "ezsignsignature-Request": {
+                "description": "An Ezsignsignature Object",
+                "required": [
+                    "fkiEzsignfoldersignerassociationID",
+                    "iEzsignpagePagenumber",
+                    "iEzsignsignatureX",
+                    "iEzsignsignatureY",
+                    "iEzsignsignatureStep",
+                    "eEzsignsignatureType",
+                    "fkiEzsigndocumentID"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiEzsignfoldersignerassociationID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID"
+                    },
+                    "iEzsignpagePagenumber": {
+                        "$ref": "#/components/schemas/Field-iEzsignpagePagenumber"
+                    },
+                    "iEzsignsignatureX": {
+                        "$ref": "#/components/schemas/Field-iEzsignsignatureX"
+                    },
+                    "iEzsignsignatureY": {
+                        "$ref": "#/components/schemas/Field-iEzsignsignatureY"
+                    },
+                    "iEzsignsignatureStep": {
+                        "$ref": "#/components/schemas/Field-iEzsignsignatureStep"
+                    },
+                    "eEzsignsignatureType": {
+                        "$ref": "#/components/schemas/Field-eEzsignsignatureType"
+                    },
+                    "fkiEzsigndocumentID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID"
+                    }
+                }
+            },
+            "ezsignsignaturecustomdate-Request": {
+                "description": "An Ezsignsignaturecustomdate Object",
+                "required": [
+                    "iEzsignsignaturecustomdateX",
+                    "iEzsignsignaturecustomdateY",
+                    "sEzsignsignaturecustomdateFormat"
+                ],
+                "type": "object",
+                "properties": {
+                    "iEzsignsignaturecustomdateX": {
+                        "$ref": "#/components/schemas/Field-iEzsignsignaturecustomdateX"
+                    },
+                    "iEzsignsignaturecustomdateY": {
+                        "$ref": "#/components/schemas/Field-iEzsignsignaturecustomdateY"
+                    },
+                    "sEzsignsignaturecustomdateFormat": {
+                        "$ref": "#/components/schemas/Field-sEzsignsignaturecustomdateFormat"
+                    }
+                }
+            },
+            "Field-iEzsignsignaturecustomdateX": {
+                "description": "The X coordinate (Horizontal) where to put the custom date block on the page.\n\nCoordinate is calculated at 100dpi (dot per inch). So for example, if you want to put the custom date block 2 inches from the left border of the page, you would use \"200\" for the X coordinate.",
+                "type": "integer",
+                "example": 200
+            },
+            "Field-iEzsignsignaturecustomdateY": {
+                "description": "The Y coordinate (Vertical) where to put the custom date block on the page.\n\nCoordinate is calculated at 100dpi (dot per inch). So for example, if you want to put the custom date block 3 inches from the top border of the page, you would use \"300\" for the Y coordinate.",
+                "type": "integer",
+                "example": 300
+            },
+            "Field-sEzsignsignaturecustomdateFormat": {
+                "description": "The custom date format to use\n\nYou can use the codes below and they will be replaced at signature time.\nText values like month and day names will be rendered in the proper language.\nOther text will be left as-is.\n\nThe codes examples below are based on the following datetime: Thursday, January 6, 2022 at 08:07:09 EST\n\nFor example, the format \"Signature date: {MM}/{DD}/{YYYY} {hh}:{mm}\" would become \"Signature date: 01/06/2022 08:07\"\n\n**Year**\n\n| Code | Example |\n| - | - |\n| {YYYY} | 2022 |\n\n**Month**\n\n| Code | Example |\n| - | - |\n| {MonthCapitalize} | Janvier |\n| {Month} | janvier |\n| {MM} | 01 |\n| {M} | 1 |\n\n**Day**\n\n| Code | Example |\n| - | - |\n| {DayCapitalize} | Jeudi |\n| {Day} | jeudi |\n| {DD} | 06 |\n| {D} | 6 |\n\n**Hour**\n\n| Code | Example |\n| - | - |\n| {hh} | 08 |\n\n**Minute**\n\n| Code | Example |\n| - | - |\n| {mm} | 07 |\n\n**Second**\n\n| Code | Example |\n| - | - |\n| {ss} | 09 |      \n\n**Timezone**\n\n| Code | Example |\n| - | - |\n| {Z} | EST |     \n\n**Time**\n\n| Code | Example |\n| - | - |\n| {Time} | 08:07:09 |  \n| {TimeZ} | 08:07:09 EST |\n   \n**Date**\n\n| Code | Example |\n| - | - |\n| {Date} | 2022-01-06 |  \n| {DateText} | 1er Janvier 2022 |\n\n**Full**\n\n| Code | Example |\n| - | - |\n| {DateTime} | 2022-01-06 08:07:09 |  \n| {DateTimeZ} | 2022-01-06 08:07:09 EST |\n",
+                "type": "string",
+                "example": "Signature date: {YYYY}/{MM}/{DD} {hh}:{mm}{ss} {Z}"
             }
         },
         "responses": {
@@ -7041,7 +7085,7 @@
         },
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.4] - 2022-01-\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID} Added status\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID} fkiBillingentityinternalID, dtEzsignfolderDuedate, sBillingentityinternalDescriptionX, sEzsignfoldertypeNameX, sEzsigntsarequirementDescriptionX, dtEzsignfolderScheduledarchive and dtEzsignfolderScheduleddestruction properties\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociations\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n\n### [1.1.3] - 2021-12-17\n\n#### Added\n- GET /1/object/ezsignbulksend/getList\n- GET /1/object/ezsigntemplatepackage/getList\n- POST /1/object/ezsignfoldersignerassociation bEzsignfoldersignerassociationReceivecopy property\n- Error Code UNPROCESSABLEENTITY_DOWNLOAD_ERROR added to documentation\n- Error Code UNPROCESSABLEENTITY_PDF_REPAIRABLE added to documentation\n\n#### Changed\n- Changed all the OneOf used back to nullable types. When the generators will support 3.1 nullable polymorphism documentation will be improved\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters contained utf8 special chars\n- (CsharpSDK) OneOf not supported for polymorphism was preventing compilation\n- \n### [1.1.2] - 2021-10-26\n\n#### Added\n- GET /1/object/ezsignfolder/getList eEzsignfoldertypePrivacylevel property\n- POST /1/object/ezsigndocument returns a sTemporaryFileUrl on error 422 if error is recoverable\n- POST /1/object/ezsigndocument sEzsigndocumentUrl property\n- POST /1/object/ezsigndocument eEzsigndocumentSource property now accept \"Url\" as the source\n- POST /1/object/ezsigndocument bEzsigndocumentForcerepair property\n- Support for \"rg\" operator in date fields in sFilter\n- Range operator added to convention section of the documentation\n\n### [1.1.1] - 2021-10-22\n\n#### Added\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend\n- GET /1/module/list/listpresentation/{sListName}\n- POST /1/module/list/listpresentation/{sListName}\n- Variables convention documentation now contains type \"m\" for mixed type\n- POST /1/object/ezsigndocument/ sEzsigndocumentPassword property\n- Support for \"in\" operator for integer fields in sFilter\n- Support for \"in\" operator for enum fields in sFilter\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\n- GET /1/object/ezsignfolder/getList\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\n- GET /1/object/ezsignfoldertype/getList\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation](https://ezmaxinc.github.io/eZmax-API/docs/ezmax.v1.0.html)",
+            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.4] - 2022-01-\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID} Added status\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID} fkiBillingentityinternalID, dtEzsignfolderDuedate, sBillingentityinternalDescriptionX, sEzsignfoldertypeNameX, sEzsigntsarequirementDescriptionX, dtEzsignfolderScheduledarchive and dtEzsignfolderScheduleddestruction properties\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociations\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n- POST /1/object/ezsignsignature bEzsignsignatureCustomdate and a_objEzsignsignaturecustomdate\n\n### [1.1.3] - 2021-12-17\n\n#### Added\n- GET /1/object/ezsignbulksend/getList\n- GET /1/object/ezsigntemplatepackage/getList\n- POST /1/object/ezsignfoldersignerassociation bEzsignfoldersignerassociationReceivecopy property\n- Error Code UNPROCESSABLEENTITY_DOWNLOAD_ERROR added to documentation\n- Error Code UNPROCESSABLEENTITY_PDF_REPAIRABLE added to documentation\n\n#### Changed\n- Changed all the OneOf used back to nullable types. When the generators will support 3.1 nullable polymorphism documentation will be improved\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters contained utf8 special chars\n- (CsharpSDK) OneOf not supported for polymorphism was preventing compilation\n- \n### [1.1.2] - 2021-10-26\n\n#### Added\n- GET /1/object/ezsignfolder/getList eEzsignfoldertypePrivacylevel property\n- POST /1/object/ezsigndocument returns a sTemporaryFileUrl on error 422 if error is recoverable\n- POST /1/object/ezsigndocument sEzsigndocumentUrl property\n- POST /1/object/ezsigndocument eEzsigndocumentSource property now accept \"Url\" as the source\n- POST /1/object/ezsigndocument bEzsigndocumentForcerepair property\n- Support for \"rg\" operator in date fields in sFilter\n- Range operator added to convention section of the documentation\n\n### [1.1.1] - 2021-10-22\n\n#### Added\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend\n- GET /1/module/list/listpresentation/{sListName}\n- POST /1/module/list/listpresentation/{sListName}\n- Variables convention documentation now contains type \"m\" for mixed type\n- POST /1/object/ezsigndocument/ sEzsigndocumentPassword property\n- Support for \"in\" operator for integer fields in sFilter\n- Support for \"in\" operator for enum fields in sFilter\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\n- GET /1/object/ezsignfolder/getList\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\n- GET /1/object/ezsignfoldertype/getList\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation](https://ezmaxinc.github.io/eZmax-API/docs/ezmax.v1.0.html)",
             "x-displayName": "Changelog"
         },
         {
