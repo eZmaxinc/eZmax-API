@@ -2571,18 +2571,6 @@
                     }
                 ]
             },
-            "Common-Response": {
-                "description": "All API response will inherit this based Response",
-                "type": "object",
-                "properties": {
-                    "objDebugPayload": {
-                        "$ref": "#/components/schemas/Common-Response-objDebugPayload"
-                    },
-                    "objDebug": {
-                        "$ref": "#/components/schemas/Common-Response-objDebug"
-                    }
-                }
-            },
             "Common-Response-Error": {
                 "description": "Generic Error Message",
                 "required": [
@@ -6945,15 +6933,70 @@
                 "type": "string",
                 "example": "+5149901516"
             },
+            "ezsignfolder-getEzsignfoldersignerassociations-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/ezsignfolder/{pkiEzsignfolder}/getEzsignfoldersignerassociations API Request",
+                "required": [
+                    "a_objEzsignfoldersignerassociation"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objEzsignfoldersignerassociation": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ezsignfoldersignerassociation-ResponseCompound"
+                        }
+                    }
+                }
+            },
+            "Common-Response": {
+                "description": "All API response will inherit this based Response",
+                "type": "object",
+                "properties": {
+                    "objDebugPayload": {
+                        "$ref": "#/components/schemas/Common-Response-objDebugPayload"
+                    },
+                    "objDebug": {
+                        "$ref": "#/components/schemas/Common-Response-objDebug"
+                    }
+                }
+            },
+            "xxxx": {
+                "description": "Test",
+                "required": [
+                    "foo",
+                    "bar"
+                ],
+                "type": "object",
+                "properties": {
+                    "foo": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "bar": {
+                        "type": "integer",
+                        "example": 1
+                    }
+                }
+            },
+            "Field-pkiContactID": {
+                "description": "The unique ID of the Contact",
+                "type": "integer",
+                "example": 21
+            },
             "ezsignsigner-ResponseCompound-Contact": {
                 "description": "A Ezsignsigner->Contact Object and children to create a complete structure",
                 "required": [
+                    "pkiContactID",
                     "sContactFirstname",
                     "sContactLastname",
                     "fkiLanguageID"
                 ],
                 "type": "object",
                 "properties": {
+                    "pkiContactID": {
+                        "$ref": "#/components/schemas/Field-pkiContactID"
+                    },
                     "sContactFirstname": {
                         "$ref": "#/components/schemas/Field-sContactFirstname"
                     },
@@ -6971,22 +7014,6 @@
                     },
                     "sPhoneE164Cell": {
                         "$ref": "#/components/schemas/Field-sPhoneE164"
-                    }
-                }
-            },
-            "ezsignfolder-getEzsignfoldersignerassociations-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/ezsignfolder/{pkiEzsignfolder}/getEzsignfoldersignerassociations API Request",
-                "required": [
-                    "a_objEzsignfoldersignerassociation"
-                ],
-                "type": "object",
-                "properties": {
-                    "a_objEzsignfoldersignerassociation": {
-                        "description": "",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/ezsignfoldersignerassociation-ResponseCompound"
-                        }
                     }
                 }
             }
