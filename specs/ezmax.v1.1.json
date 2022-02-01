@@ -6505,39 +6505,42 @@
             },
             "ezsigndocument-ResponseCompound": {
                 "description": "An Ezsigndocument Object and children to create a complete structure",
-                "required": [
-                    "iEzsigndocumentStepformtotal",
-                    "iEzsigndocumentStepformcurrent",
-                    "iEzsigndocumentStepsignaturetotal",
-                    "iEzsigndocumentStepsignatureCurrent",
-                    "a_objEzsignfoldersignerassociationstatus"
-                ],
                 "type": "object",
                 "allOf": [
                     {
+                        "required": [
+                            "iEzsigndocumentStepformtotal",
+                            "iEzsigndocumentStepformcurrent",
+                            "iEzsigndocumentStepsignaturetotal",
+                            "iEzsigndocumentStepsignatureCurrent",
+                            "a_objEzsignfoldersignerassociationstatus"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "iEzsigndocumentStepformtotal": {
+                                "$ref": "#/components/schemas/Computed-iEzsigndocumentStepformtotal"
+                            },
+                            "iEzsigndocumentStepformcurrent": {
+                                "$ref": "#/components/schemas/Computed-iEzsigndocumentStepformcurrent"
+                            },
+                            "iEzsigndocumentStepsignaturetotal": {
+                                "$ref": "#/components/schemas/Computed-iEzsigndocumentStepsignaturetotal"
+                            },
+                            "iEzsigndocumentStepsignatureCurrent": {
+                                "$ref": "#/components/schemas/Computed-iEzsigndocumentStepsignatureCurrent"
+                            },
+                            "a_objEzsignfoldersignerassociationstatus": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Custom-Ezsignfoldersignerassociationstatus-Response"
+                                }
+                            }
+                        }
+                    },
+                    {
                         "$ref": "#/components/schemas/ezsigndocument-Response"
                     }
-                ],
-                "properties": {
-                    "iEzsigndocumentStepformtotal": {
-                        "$ref": "#/components/schemas/Computed-iEzsigndocumentStepformtotal"
-                    },
-                    "iEzsigndocumentStepformcurrent": {
-                        "$ref": "#/components/schemas/Computed-iEzsigndocumentStepformcurrent"
-                    },
-                    "iEzsigndocumentStepsignaturetotal": {
-                        "$ref": "#/components/schemas/Computed-iEzsigndocumentStepsignaturetotal"
-                    },
-                    "iEzsigndocumentStepsignatureCurrent": {
-                        "$ref": "#/components/schemas/Computed-iEzsigndocumentStepsignatureCurrent"
-                    },
-                    "a_objEzsignfoldersignerassociationstatus": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Custom-Ezsignfoldersignerassociationstatus-Response"
-                        }
-                    }
-                }
+                ]
             },
             "Field-iEzsignsignatureStep": {
                 "description": "The step when the Ezsignsigner will be invited to sign or fill form fields",
@@ -6628,21 +6631,24 @@
                 "type": "object",
                 "allOf": [
                     {
+                        "type": "object",
+                        "properties": {
+                            "bEzsignsignatureCustomdate": {
+                                "$ref": "#/components/schemas/Field-bEzsignsignatureCustomdate"
+                            },
+                            "a_objEzsignsignaturecustomdate": {
+                                "description": "An array of custom date blocks that will be filled at the time of signature.\n\nCan only be used if bEzsignsignatureCustomdate is true.\n\nUse an empty array if you don't want to have a date at all.",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/ezsignsignaturecustomdate-Request"
+                                }
+                            }
+                        }
+                    },
+                    {
                         "$ref": "#/components/schemas/ezsignsignature-Request"
                     }
-                ],
-                "properties": {
-                    "bEzsignsignatureCustomdate": {
-                        "$ref": "#/components/schemas/Field-bEzsignsignatureCustomdate"
-                    },
-                    "a_objEzsignsignaturecustomdate": {
-                        "description": "An array of custom date blocks that will be filled at the time of signature.\n\nCan only be used if bEzsignsignatureCustomdate is true.\n\nUse an empty array if you don't want to have a date at all.",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/ezsignsignaturecustomdate-Request"
-                        }
-                    }
-                }
+                ]
             },
             "ezsignsignature-Request": {
                 "description": "An Ezsignsignature Object",
