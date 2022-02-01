@@ -2347,67 +2347,6 @@
     },
     "components": {
         "schemas": {
-            "activesession-getCurrent-v1-Response-mPayload": {
-                "description": "Payload for the /1/object/activesession/getCurrent API Request",
-                "required": [
-                    "a_Permissions",
-                    "a_RegisteredModules",
-                    "eActivesessionSessiontype",
-                    "fkiLanguageID",
-                    "sCompanyNameX",
-                    "sCustomerCode",
-                    "sDepartmentNameX",
-                    "fkiUserID",
-                    "fkiApikeyID"
-                ],
-                "type": "object",
-                "properties": {
-                    "sCustomerCode": {
-                        "description": "The customer code specific to the client in which the API request is being made",
-                        "type": "string"
-                    },
-                    "eActivesessionSessiontype": {
-                        "description": "The type of session used for the API request call",
-                        "enum": [
-                            "Normal"
-                        ],
-                        "type": "string"
-                    },
-                    "fkiLanguageID": {
-                        "$ref": "#/components/schemas/Field-pkiLanguageID"
-                    },
-                    "sCompanyNameX": {
-                        "description": "The name of the active Company in the current language",
-                        "type": "string"
-                    },
-                    "sDepartmentNameX": {
-                        "description": "The name of the active Department in the current language",
-                        "type": "string"
-                    },
-                    "a_RegisteredModules": {
-                        "description": "An Array of Registered modules.\n\nThese are the modules that are Licensed to be used by the User or the API Key.",
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "a_Permissions": {
-                        "description": "An array of permissions granted to the user or api key",
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    },
-                    "fkiUserID": {
-                        "$ref": "#/components/schemas/Field-pkiUserID",
-                        "description": ""
-                    },
-                    "fkiApikeyID": {
-                        "$ref": "#/components/schemas/Field-pkiApikeyID",
-                        "description": ""
-                    }
-                }
-            },
             "ezsigndocument-createObject-v1-Response": {
                 "description": "Response for the /1/object/ezsigndocument/createObject API Request",
                 "type": "object",
@@ -6851,17 +6790,20 @@
                 "type": "object",
                 "allOf": [
                     {
+                        "type": "object",
+                        "properties": {
+                            "objUser": {
+                                "$ref": "#/components/schemas/ezsignfoldersignerassociation-ResponseCompound-User"
+                            },
+                            "objEzsignsigner": {
+                                "$ref": "#/components/schemas/ezsignsigner-ResponseCompound"
+                            }
+                        }
+                    },
+                    {
                         "$ref": "#/components/schemas/ezsignfoldersignerassociation-Response"
                     }
-                ],
-                "properties": {
-                    "objUser": {
-                        "$ref": "#/components/schemas/ezsignfoldersignerassociation-ResponseCompound-User"
-                    },
-                    "objEzsignsigner": {
-                        "$ref": "#/components/schemas/ezsignsigner-ResponseCompound"
-                    }
-                }
+                ]
             },
             "ezsignfoldersignerassociation-ResponseCompound-User": {
                 "description": "A Ezsignfoldersignerassociation->User Object and children to create a complete structure",
@@ -7014,6 +6956,85 @@
                     },
                     "sPhoneE164Cell": {
                         "$ref": "#/components/schemas/Field-sPhoneE164"
+                    }
+                }
+            },
+            "Field-eActivesessionWeekdaystart": {
+                "description": "The weekday start of the User.",
+                "enum": [
+                    "Sunday",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                ],
+                "type": "string",
+                "example": "Sunday"
+            },
+            "activesession-getCurrent-v1-Response-mPayload": {
+                "description": "Payload for the /1/object/activesession/getCurrent API Request",
+                "required": [
+                    "a_Permissions",
+                    "a_RegisteredModules",
+                    "eActivesessionSessiontype",
+                    "eActivesessionWeekdaystart",
+                    "fkiLanguageID",
+                    "sCompanyNameX",
+                    "sCustomerCode",
+                    "sDepartmentNameX",
+                    "fkiUserID",
+                    "fkiApikeyID"
+                ],
+                "type": "object",
+                "properties": {
+                    "sCustomerCode": {
+                        "description": "The customer code specific to the client in which the API request is being made",
+                        "type": "string"
+                    },
+                    "eActivesessionSessiontype": {
+                        "description": "The type of session used for the API request call",
+                        "enum": [
+                            "Normal"
+                        ],
+                        "type": "string"
+                    },
+                    "eActivesessionWeekdaystart": {
+                        "$ref": "#/components/schemas/Field-eActivesessionWeekdaystart"
+                    },
+                    "fkiLanguageID": {
+                        "$ref": "#/components/schemas/Field-pkiLanguageID"
+                    },
+                    "sCompanyNameX": {
+                        "description": "The name of the active Company in the current language",
+                        "type": "string"
+                    },
+                    "sDepartmentNameX": {
+                        "description": "The name of the active Department in the current language",
+                        "type": "string"
+                    },
+                    "a_RegisteredModules": {
+                        "description": "An Array of Registered modules.\n\nThese are the modules that are Licensed to be used by the User or the API Key.",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "a_Permissions": {
+                        "description": "An array of permissions granted to the user or api key",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    },
+                    "fkiUserID": {
+                        "$ref": "#/components/schemas/Field-pkiUserID",
+                        "description": ""
+                    },
+                    "fkiApikeyID": {
+                        "$ref": "#/components/schemas/Field-pkiApikeyID",
+                        "description": ""
                     }
                 }
             }
