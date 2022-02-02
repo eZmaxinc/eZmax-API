@@ -4177,33 +4177,6 @@
                     "sApikeyDescription2": "Project X"
                 }
             },
-            "apikey-Response": {
-                "description": "An Apikey Object",
-                "required": [
-                    "objApikeyDescription",
-                    "pkiApikeyID",
-                    "objAudit"
-                ],
-                "type": "object",
-                "properties": {
-                    "objApikeyDescription": {
-                        "$ref": "#/components/schemas/Multilingual-ApikeyDescription",
-                        "description": ""
-                    },
-                    "sComputedToken": {
-                        "description": "The secret token for the API key.\n\nThis will be returned only on creation.",
-                        "type": "string"
-                    },
-                    "pkiApikeyID": {
-                        "$ref": "#/components/schemas/Field-pkiApikeyID",
-                        "description": ""
-                    },
-                    "objAudit": {
-                        "$ref": "#/components/schemas/Common-Audit",
-                        "description": ""
-                    }
-                }
-            },
             "global-customer-getEndpoint-v1-Response": {
                 "description": "Response for the /1/customer/{pksCustomerCode}/endpoint API Request",
                 "required": [
@@ -5348,35 +5321,6 @@
             "Field-bEzsignfoldertypeIsactive": {
                 "description": "Whether the Ezsignfoldertype is active or not",
                 "type": "boolean"
-            },
-            "Common-Response-objDebugPayload": {
-                "description": "This is a debug object containing debugging information on the actual function",
-                "required": [
-                    "a_RequiredPermission",
-                    "iVersionMax",
-                    "iVersionMin"
-                ],
-                "type": "object",
-                "properties": {
-                    "iVersionMin": {
-                        "description": "The minimum version of the function that can be called",
-                        "type": "integer",
-                        "example": "1"
-                    },
-                    "iVersionMax": {
-                        "description": "The maximum version of the function that can be called",
-                        "type": "integer",
-                        "example": "2"
-                    },
-                    "a_RequiredPermission": {
-                        "description": "An array of permissions required to access this function.\n\nIf the value \"0\" is present in the array, anyone can call this function.\n\nYou must have one of the permission to access the function. You don't need to have all of them.",
-                        "type": "array",
-                        "items": {
-                            "type": "integer",
-                            "example": 117
-                        }
-                    }
-                }
             },
             "ezsignfoldertype-getList-v1-Response": {
                 "description": "Response for the /1/object/ezsignfoldertype/getList API Request",
@@ -6909,24 +6853,6 @@
                     }
                 }
             },
-            "xxxx": {
-                "description": "Test",
-                "required": [
-                    "foo",
-                    "bar"
-                ],
-                "type": "object",
-                "properties": {
-                    "foo": {
-                        "type": "integer",
-                        "example": 1
-                    },
-                    "bar": {
-                        "type": "integer",
-                        "example": 1
-                    }
-                }
-            },
             "Field-pkiContactID": {
                 "description": "The unique ID of the Contact",
                 "type": "integer",
@@ -6979,32 +6905,53 @@
                 "type": "string",
                 "example": "Sunday"
             },
+            "Field-bActivesessionDebug": {
+                "description": "Whether the active session is in debug or not",
+                "type": "boolean",
+                "example": false
+            },
             "activesession-getCurrent-v1-Response-mPayload": {
                 "description": "Payload for the /1/object/activesession/getCurrent API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/activesession-ResponseCompound"
+                    }
+                ]
+            },
+            "Field-sCompanyNameX": {
+                "description": "The Name of the Company in the language of the requester",
+                "type": "string",
+                "example": "Acme inc."
+            },
+            "Field-sDepartmentNameX": {
+                "description": "The Name of the Department in the language of the requester",
+                "type": "string",
+                "example": "Head Office"
+            },
+            "Field-eActivesessionSessiontype": {
+                "description": "The Type of session for the Activesession",
+                "enum": [
+                    "Normal"
+                ],
+                "type": "string",
+                "example": "Normal"
+            },
+            "activesession-Response": {
+                "description": "An Activesession Object",
                 "required": [
-                    "a_Permissions",
-                    "a_RegisteredModules",
                     "eActivesessionSessiontype",
                     "eActivesessionWeekdaystart",
+                    "bActivesessionDebug",
                     "fkiLanguageID",
                     "sCompanyNameX",
-                    "sCustomerCode",
-                    "sDepartmentNameX",
-                    "fkiUserID",
-                    "fkiApikeyID"
+                    "pksCustomerCode",
+                    "sDepartmentNameX"
                 ],
                 "type": "object",
                 "properties": {
-                    "sCustomerCode": {
-                        "description": "The customer code specific to the client in which the API request is being made",
-                        "type": "string"
-                    },
                     "eActivesessionSessiontype": {
-                        "description": "The type of session used for the API request call",
-                        "enum": [
-                            "Normal"
-                        ],
-                        "type": "string"
+                        "$ref": "#/components/schemas/Field-eActivesessionSessiontype"
                     },
                     "eActivesessionWeekdaystart": {
                         "$ref": "#/components/schemas/Field-eActivesessionWeekdaystart"
@@ -7013,36 +6960,178 @@
                         "$ref": "#/components/schemas/Field-pkiLanguageID"
                     },
                     "sCompanyNameX": {
-                        "description": "The name of the active Company in the current language",
-                        "type": "string"
+                        "$ref": "#/components/schemas/Field-sCompanyNameX"
                     },
                     "sDepartmentNameX": {
-                        "description": "The name of the active Department in the current language",
-                        "type": "string"
+                        "$ref": "#/components/schemas/Field-sDepartmentNameX"
                     },
-                    "a_RegisteredModules": {
-                        "description": "An Array of Registered modules.\n\nThese are the modules that are Licensed to be used by the User or the API Key.",
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
+                    "bActivesessionDebug": {
+                        "$ref": "#/components/schemas/Field-bActivesessionDebug"
                     },
-                    "a_Permissions": {
-                        "description": "An array of permissions granted to the user or api key",
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        }
-                    },
-                    "fkiUserID": {
-                        "$ref": "#/components/schemas/Field-pkiUserID",
-                        "description": ""
-                    },
-                    "fkiApikeyID": {
-                        "$ref": "#/components/schemas/Field-pkiApikeyID",
-                        "description": ""
+                    "pksCustomerCode": {
+                        "$ref": "#/components/schemas/Field-pksCustomerCode"
                     }
                 }
+            },
+            "Field-pkiPermissionID": {
+                "description": "The unique ID of the Permission",
+                "type": "integer",
+                "example": 53
+            },
+            "Field-eModuleInternalname": {
+                "description": "The Internal name of the Module.\n\nThis is theoretically an enum field but there are so many possibles values we decided not to list them all.",
+                "type": "string",
+                "example": "Purchases"
+            },
+            "apikey-Response": {
+                "description": "An Apikey Object",
+                "required": [
+                    "objApikeyDescription",
+                    "pkiApikeyID",
+                    "objAudit"
+                ],
+                "type": "object",
+                "properties": {
+                    "objApikeyDescription": {
+                        "$ref": "#/components/schemas/Multilingual-ApikeyDescription"
+                    },
+                    "sComputedToken": {
+                        "description": "The secret token for the API key.\n\nThis will be returned only on creation.",
+                        "type": "string"
+                    },
+                    "pkiApikeyID": {
+                        "$ref": "#/components/schemas/Field-pkiApikeyID"
+                    },
+                    "objAudit": {
+                        "$ref": "#/components/schemas/Common-Audit"
+                    }
+                }
+            },
+            "activesession-ResponseCompound": {
+                "description": "Payload for the /1/object/activesession/getCurrent API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "a_Permissions",
+                            "a_eModuleInternalname",
+                            "objUserReal",
+                            "a_pkiPermissionID"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "a_pkiPermissionID": {
+                                "description": "An array of permissions granted to the user or api key",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Field-pkiPermissionID"
+                                }
+                            },
+                            "objUserReal": {
+                                "$ref": "#/components/schemas/activesession-ResponseCompound-User"
+                            },
+                            "objUserCloned": {
+                                "$ref": "#/components/schemas/activesession-ResponseCompound-User"
+                            },
+                            "objApikey": {
+                                "$ref": "#/components/schemas/activesession-ResponseCompound-Apikey"
+                            },
+                            "a_eModuleInternalname": {
+                                "description": "An Array of Registered modules.\n\nThese are the modules that are Licensed to be used by the User or the API Key.",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Field-eModuleInternalname"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/activesession-Response"
+                    }
+                ]
+            },
+            "Field-sApikeyDescriptionX": {
+                "description": "The description of the Apikey in the language of the requester",
+                "type": "string",
+                "example": "Project X"
+            },
+            "activesession-ResponseCompound-User": {
+                "description": "An Activesession->User Object and children to create a complete structure",
+                "required": [
+                    "pkiUserID",
+                    "sUserFirstname",
+                    "sUserLastname",
+                    "sEmailAddress",
+                    "sAvatarUrl"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiUserID": {
+                        "$ref": "#/components/schemas/Field-pkiUserID"
+                    },
+                    "sAvatarUrl": {
+                        "$ref": "#/components/schemas/Computed-sAvatarUrl"
+                    },
+                    "sUserFirstname": {
+                        "$ref": "#/components/schemas/Field-sUserFirstname"
+                    },
+                    "sUserLastname": {
+                        "$ref": "#/components/schemas/Field-sUserLastname"
+                    },
+                    "sEmailAddress": {
+                        "$ref": "#/components/schemas/Field-sEmailAddress"
+                    }
+                }
+            },
+            "activesession-ResponseCompound-Apikey": {
+                "description": "An Activesession->Apikey object and children to create a complete structure",
+                "required": [
+                    "pkiApikeyID",
+                    "sApikeyDescriptionX"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiApikeyID": {
+                        "$ref": "#/components/schemas/Field-pkiApikeyID"
+                    },
+                    "sApikeyDescriptionX": {
+                        "$ref": "#/components/schemas/Field-sApikeyDescriptionX"
+                    }
+                }
+            },
+            "Common-Response-objDebugPayload": {
+                "description": "This is a debug object containing debugging information on the actual function",
+                "required": [
+                    "a_RequiredPermission",
+                    "iVersionMax",
+                    "iVersionMin"
+                ],
+                "type": "object",
+                "properties": {
+                    "iVersionMin": {
+                        "description": "The minimum version of the function that can be called",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "iVersionMax": {
+                        "description": "The maximum version of the function that can be called",
+                        "type": "integer",
+                        "example": 2
+                    },
+                    "a_RequiredPermission": {
+                        "description": "An array of permissions required to access this function.\n\nIf the value \"0\" is present in the array, anyone can call this function.\n\nYou must have one of the permission to access the function. You don't need to have all of them.",
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "example": 117
+                        }
+                    }
+                }
+            },
+            "Computed-sAvatarUrl": {
+                "description": "The url of the picture used as avatar",
+                "type": "string",
+                "example": "http://www.website.com/avatar.jpg"
             }
         },
         "responses": {
