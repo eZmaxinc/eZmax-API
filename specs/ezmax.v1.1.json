@@ -7281,6 +7281,7 @@
             },
             "ezsigndocument-RequestPatch": {
                 "description": "An Ezsigndocument Object",
+                "minProperties": 1,
                 "type": "object",
                 "properties": {
                     "dtEzsigndocumentDuedate": {
