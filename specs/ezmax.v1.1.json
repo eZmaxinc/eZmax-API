@@ -2338,7 +2338,7 @@
                     }
                 ],
                 "operationId": "Ezsignfolder_EditObject_V1",
-                "summary": "Edit an Ezsignfolder"
+                "summary": "Edit an existing Ezsignfolder"
             },
             "delete": {
                 "tags": [
