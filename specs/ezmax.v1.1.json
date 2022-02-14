@@ -1090,80 +1090,6 @@
                 }
             ]
         },
-        "/1/object/ezsignsignature/{pkiEzsignsignatureID}": {
-            "description": "",
-            "get": {
-                "tags": [
-                    "Object_Ezsignsignature"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsignsignature-getObject-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignsignature_GetObject_V1",
-                "summary": "Retrieve an existing Ezsignsignature",
-                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
-            },
-            "delete": {
-                "tags": [
-                    "Object_Ezsignsignature"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsignsignature-deleteObject-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/Response-Error-422"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": [
-                        ]
-                    }
-                ],
-                "operationId": "Ezsignsignature_DeleteObject_V1",
-                "summary": "Delete an existing Ezsignsignature",
-                "description": ""
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsignsignatureID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignsignatureID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
         "/1/customer/{pksCustomerCode}/endpoint": {
             "description": "",
             "get": {
@@ -2429,6 +2355,122 @@
                     "name": "pkiEzsignfolderID",
                     "schema": {
                         "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsignsignature/{pkiEzsignsignatureID}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Ezsignsignature"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignsignature-getObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignsignature_GetObject_V1",
+                "summary": "Retrieve an existing Ezsignsignature",
+                "description": "## ⚠️EARLY ADOPTERS WARNING\n\n### This endpoint is not officially released. Its definition might still change and it might not be available in every environment and region."
+            },
+            "put": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezsignsignature-editObject-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Ezsignsignature"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignsignature-editObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignsignature_EditObject_V1",
+                "summary": "Edit an existing Ezsignsignature",
+                "description": ""
+            },
+            "delete": {
+                "tags": [
+                    "Object_Ezsignsignature"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignsignature-deleteObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": [
+                        ]
+                    }
+                ],
+                "operationId": "Ezsignsignature_DeleteObject_V1",
+                "summary": "Delete an existing Ezsignsignature",
+                "description": ""
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignsignatureID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignsignatureID"
                     },
                     "in": "path",
                     "required": true
@@ -7281,7 +7323,6 @@
             },
             "ezsigndocument-RequestPatch": {
                 "description": "An Ezsigndocument Object",
-                "minProperties": 1,
                 "type": "object",
                 "properties": {
                     "dtEzsigndocumentDuedate": {
@@ -7291,6 +7332,27 @@
                         "$ref": "#/components/schemas/Field-sEzsigndocumentName"
                     }
                 }
+            },
+            "ezsignsignature-editObject-v1-Request": {
+                "description": "Request for the /1/object/ezsignsignature/editObject API Request",
+                "required": [
+                    "objEzsignsignature"
+                ],
+                "type": "object",
+                "properties": {
+                    "objEzsignsignature": {
+                        "$ref": "#/components/schemas/ezsignsignature-RequestCompound"
+                    }
+                }
+            },
+            "ezsignsignature-editObject-v1-Response": {
+                "description": "Response for the /1/object/ezsignsignature/editObject API Request",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
             }
         },
         "responses": {
