@@ -4864,11 +4864,6 @@
                 "type": "integer",
                 "example": 97
             },
-            "Field-pkiEzsignsignatureID": {
-                "description": "The unique ID of the Ezsignsignature",
-                "type": "integer",
-                "example": "49"
-            },
             "File-Zip": {
                 "format": "binary",
                 "description": "A Zip compressed archive",
@@ -6511,26 +6506,6 @@
                     }
                 ]
             },
-            "ezsignsignaturecustomdate-Request": {
-                "description": "An Ezsignsignaturecustomdate Object",
-                "required": [
-                    "iEzsignsignaturecustomdateX",
-                    "iEzsignsignaturecustomdateY",
-                    "sEzsignsignaturecustomdateFormat"
-                ],
-                "type": "object",
-                "properties": {
-                    "iEzsignsignaturecustomdateX": {
-                        "$ref": "#/components/schemas/Field-iEzsignsignaturecustomdateX"
-                    },
-                    "iEzsignsignaturecustomdateY": {
-                        "$ref": "#/components/schemas/Field-iEzsignsignaturecustomdateY"
-                    },
-                    "sEzsignsignaturecustomdateFormat": {
-                        "$ref": "#/components/schemas/Field-sEzsignsignaturecustomdateFormat"
-                    }
-                }
-            },
             "Field-iEzsignsignaturecustomdateX": {
                 "description": "The X coordinate (Horizontal) where to put the custom date block on the page.\n\nCoordinate is calculated at 100dpi (dot per inch). So for example, if you want to put the custom date block 2 inches from the left border of the page, you would use \"200\" for the X coordinate.",
                 "type": "integer",
@@ -7353,6 +7328,39 @@
                         "$ref": "#/components/schemas/Common-Response"
                     }
                 ]
+            },
+            "ezsignsignaturecustomdate-Request": {
+                "description": "An Ezsignsignaturecustomdate Object",
+                "required": [
+                    "iEzsignsignaturecustomdateX",
+                    "iEzsignsignaturecustomdateY",
+                    "sEzsignsignaturecustomdateFormat"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsignsignaturecustomdateID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignsignaturecustomdateID"
+                    },
+                    "iEzsignsignaturecustomdateX": {
+                        "$ref": "#/components/schemas/Field-iEzsignsignaturecustomdateX"
+                    },
+                    "iEzsignsignaturecustomdateY": {
+                        "$ref": "#/components/schemas/Field-iEzsignsignaturecustomdateY"
+                    },
+                    "sEzsignsignaturecustomdateFormat": {
+                        "$ref": "#/components/schemas/Field-sEzsignsignaturecustomdateFormat"
+                    }
+                }
+            },
+            "Field-pkiEzsignsignatureID": {
+                "description": "The unique ID of the Ezsignsignature",
+                "type": "integer",
+                "example": 49
+            },
+            "Field-pkiEzsignsignaturecustomdateID": {
+                "description": "The unique ID of the Ezsignsignaturecustomdate",
+                "type": "integer",
+                "example": 27
             }
         },
         "responses": {
