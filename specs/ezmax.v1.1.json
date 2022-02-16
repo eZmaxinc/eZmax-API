@@ -2315,7 +2315,7 @@
                     }
                 ],
                 "operationId": "Ezsignfolder_EditObject_V1",
-                "summary": "Modify an existing Ezsignfolder",
+                "summary": "Edit an existing Ezsignfolder",
                 "description": ""
             },
             "delete": {
