@@ -7413,13 +7413,6 @@
                 "type": "integer",
                 "example": 27
             },
-            "ezsigndocument-editEzsignsignatures-v1-Request": {
-                "description": "Request for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures API Request",
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/ezsignsignature-RequestCompound"
-                }
-            },
             "ezsigndocument-editEzsignsignatures-v1-Response": {
                 "description": "Response for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures API Request",
                 "type": "object",
@@ -7428,6 +7421,21 @@
                         "$ref": "#/components/schemas/Common-Response"
                     }
                 ]
+            },
+            "ezsigndocument-editEzsignsignatures-v1-Request": {
+                "description": "Request for the /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures API Request",
+                "required": [
+                    "a_objEzsignsignature"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objEzsignsignature": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ezsignsignature-RequestCompound"
+                        }
+                    }
+                }
             }
         },
         "responses": {
