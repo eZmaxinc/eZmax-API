@@ -138,50 +138,6 @@
                 ]
             }
         },
-        "\/1\/object\/apikey": {
-            "description": "",
-            "post": {
-                "tags": [
-                    "Object_Apikey"
-                ],
-                "summary": "Create a new Apikey",
-                "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects.",
-                "operationId": "Apikey_CreateObject_V1",
-                "requestBody": {
-                    "content": {
-                        "application\/json": {
-                            "schema": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#\/components\/schemas\/apikey-createObject-v1-Request"
-                                }
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful response",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "$ref": "#\/components\/schemas\/apikey-createObject-v1-Response"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": []
-                    }
-                ],
-                "x-presentations": [
-                    "Ezsign"
-                ]
-            }
-        },
         "\/1\/object\/ezsignbulksend\/getList": {
             "description": "",
             "get": {
@@ -275,53 +231,6 @@
                     },
                     "406": {
                         "$ref": "#\/components\/responses\/Response-Error-406"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": []
-                    }
-                ],
-                "x-presentations": [
-                    "Ezsign"
-                ]
-            }
-        },
-        "\/1\/object\/ezsigndocument": {
-            "description": "",
-            "post": {
-                "tags": [
-                    "Object_Ezsigndocument"
-                ],
-                "summary": "Create a new Ezsigndocument",
-                "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects.",
-                "operationId": "Ezsigndocument_CreateObject_V1",
-                "requestBody": {
-                    "content": {
-                        "application\/json": {
-                            "schema": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#\/components\/schemas\/ezsigndocument-createObject-v1-Request"
-                                }
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful response",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "$ref": "#\/components\/schemas\/ezsigndocument-createObject-v1-Response"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "$ref": "#\/components\/responses\/Response-Error-422-sTemporaryFileUrl"
                     }
                 },
                 "security": [
@@ -669,50 +578,6 @@
                     }
                 }
             ]
-        },
-        "\/1\/object\/ezsignfolder": {
-            "description": "",
-            "post": {
-                "tags": [
-                    "Object_Ezsignfolder"
-                ],
-                "summary": "Create a new Ezsignfolder",
-                "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects.",
-                "operationId": "Ezsignfolder_CreateObject_V1",
-                "requestBody": {
-                    "content": {
-                        "application\/json": {
-                            "schema": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#\/components\/schemas\/ezsignfolder-createObject-v1-Request"
-                                }
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful response",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "$ref": "#\/components\/schemas\/ezsignfolder-createObject-v1-Response"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": []
-                    }
-                ],
-                "x-presentations": [
-                    "Ezsign"
-                ]
-            }
         },
         "\/1\/object\/ezsignfolder\/{pkiEzsignfolderID}": {
             "description": "",
@@ -1195,50 +1060,6 @@
                 ]
             }
         },
-        "\/1\/object\/ezsignfoldersignerassociation": {
-            "description": "",
-            "post": {
-                "tags": [
-                    "Object_Ezsignfoldersignerassociation"
-                ],
-                "summary": "Create a new Ezsignfoldersignerassociation",
-                "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects.",
-                "operationId": "Ezsignfoldersignerassociation_CreateObject_V1",
-                "requestBody": {
-                    "content": {
-                        "application\/json": {
-                            "schema": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#\/components\/schemas\/ezsignfoldersignerassociation-createObject-v1-Request"
-                                }
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful response",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "$ref": "#\/components\/schemas\/ezsignfoldersignerassociation-createObject-v1-Response"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": []
-                    }
-                ],
-                "x-presentations": [
-                    "Ezsign"
-                ]
-            }
-        },
         "\/1\/object\/ezsignfoldersignerassociation\/{pkiEzsignfoldersignerassociationID}": {
             "description": "",
             "get": {
@@ -1515,50 +1336,6 @@
                     },
                     "406": {
                         "$ref": "#\/components\/responses\/Response-Error-406"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": []
-                    }
-                ],
-                "x-presentations": [
-                    "Ezsign"
-                ]
-            }
-        },
-        "\/1\/object\/ezsignsignature": {
-            "description": "",
-            "post": {
-                "tags": [
-                    "Object_Ezsignsignature"
-                ],
-                "summary": "Create a new Ezsignsignature",
-                "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects.",
-                "operationId": "Ezsignsignature_CreateObject_V1",
-                "requestBody": {
-                    "content": {
-                        "application\/json": {
-                            "schema": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#\/components\/schemas\/ezsignsignature-createObject-v1-Request"
-                                }
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful response",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "$ref": "#\/components\/schemas\/ezsignsignature-createObject-v1-Response"
-                                }
-                            }
-                        }
                     }
                 },
                 "security": [
@@ -1903,48 +1680,6 @@
                     }
                 }
             ]
-        },
-        "\/1\/object\/franchisereferalincome": {
-            "description": "",
-            "post": {
-                "tags": [
-                    "Object_Franchisereferalincome"
-                ],
-                "summary": "Create a new Franchisereferalincome",
-                "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects.",
-                "operationId": "Franchisereferalincome_CreateObject_V1",
-                "requestBody": {
-                    "content": {
-                        "application\/json": {
-                            "schema": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#\/components\/schemas\/franchisereferalincome-createObject-v1-Request"
-                                }
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful response",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "$ref": "#\/components\/schemas\/franchisereferalincome-createObject-v1-Response"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": []
-                    }
-                ],
-                "x-presentations": []
-            }
         },
         "\/1\/object\/period\/getAutocomplete\/{sSelector}": {
             "description": "",
@@ -2504,6 +2239,524 @@
                     }
                 }
             ]
+        },
+        "\/1\/object\/ezsigndocument": {
+            "description": "",
+            "post": {
+                "tags": [
+                    "Object_Ezsigndocument"
+                ],
+                "summary": "Create a new Ezsigndocument",
+                "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects.",
+                "operationId": "Ezsigndocument_CreateObject_V1",
+                "requestBody": {
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#\/components\/schemas\/ezsigndocument-createObject-v1-Request"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful response",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/ezsigndocument-createObject-v1-Response"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/Response-Error-422-sTemporaryFileUrl"
+                    }
+                },
+                "deprecated": true,
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "x-presentations": [
+                    "Ezsign"
+                ]
+            }
+        },
+        "\/1\/object\/ezsignfolder": {
+            "description": "",
+            "post": {
+                "tags": [
+                    "Object_Ezsignfolder"
+                ],
+                "summary": "Create a new Ezsignfolder",
+                "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects.",
+                "operationId": "Ezsignfolder_CreateObject_V1",
+                "requestBody": {
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#\/components\/schemas\/ezsignfolder-createObject-v1-Request"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful response",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/ezsignfolder-createObject-v1-Response"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": true,
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "x-presentations": [
+                    "Ezsign"
+                ]
+            }
+        },
+        "\/1\/object\/ezsignfoldersignerassociation": {
+            "description": "",
+            "post": {
+                "tags": [
+                    "Object_Ezsignfoldersignerassociation"
+                ],
+                "summary": "Create a new Ezsignfoldersignerassociation",
+                "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects.",
+                "operationId": "Ezsignfoldersignerassociation_CreateObject_V1",
+                "requestBody": {
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#\/components\/schemas\/ezsignfoldersignerassociation-createObject-v1-Request"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful response",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/ezsignfoldersignerassociation-createObject-v1-Response"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": true,
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "x-presentations": [
+                    "Ezsign"
+                ]
+            }
+        },
+        "\/1\/object\/ezsignsignature": {
+            "description": "",
+            "post": {
+                "tags": [
+                    "Object_Ezsignsignature"
+                ],
+                "summary": "Create a new Ezsignsignature",
+                "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects.",
+                "operationId": "Ezsignsignature_CreateObject_V1",
+                "requestBody": {
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#\/components\/schemas\/ezsignsignature-createObject-v1-Request"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful response",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/ezsignsignature-createObject-v1-Response"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": true,
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "x-presentations": [
+                    "Ezsign"
+                ]
+            }
+        },
+        "\/1\/object\/franchisereferalincome": {
+            "description": "",
+            "post": {
+                "tags": [
+                    "Object_Franchisereferalincome"
+                ],
+                "summary": "Create a new Franchisereferalincome",
+                "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects.",
+                "operationId": "Franchisereferalincome_CreateObject_V1",
+                "requestBody": {
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#\/components\/schemas\/franchisereferalincome-createObject-v1-Request"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful response",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/franchisereferalincome-createObject-v1-Response"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": true,
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "x-presentations": []
+            }
+        },
+        "\/1\/object\/apikey": {
+            "description": "",
+            "post": {
+                "tags": [
+                    "Object_Apikey"
+                ],
+                "summary": "Create a new Apikey",
+                "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects.",
+                "operationId": "Apikey_CreateObject_V1",
+                "requestBody": {
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#\/components\/schemas\/apikey-createObject-v1-Request"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful response",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/apikey-createObject-v1-Response"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": true,
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "x-presentations": [
+                    "Ezsign"
+                ]
+            }
+        },
+        "\/2\/object\/apikey": {
+            "description": "",
+            "post": {
+                "tags": [
+                    "Object_Apikey"
+                ],
+                "summary": "Create a new Apikey",
+                "description": "The endpoint allows to create one or many elements at once.",
+                "operationId": "Apikey_CreateObject_V2",
+                "requestBody": {
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "$ref": "#\/components\/schemas\/apikey-createObject-v2-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful response",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/apikey-createObject-v2-Response"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "x-presentations": [
+                    "Ezsign"
+                ]
+            }
+        },
+        "\/2\/object\/ezsigndocument": {
+            "description": "",
+            "post": {
+                "tags": [
+                    "Object_Ezsigndocument"
+                ],
+                "summary": "Create a new Ezsigndocument",
+                "description": "The endpoint allows to create one or many elements at once.",
+                "operationId": "Ezsigndocument_CreateObject_V2",
+                "requestBody": {
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "$ref": "#\/components\/schemas\/ezsigndocument-createObject-v2-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful response",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/ezsigndocument-createObject-v2-Response"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/Response-Error-422-sTemporaryFileUrl"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "x-presentations": [
+                    "Ezsign"
+                ]
+            }
+        },
+        "\/2\/object\/ezsignfolder": {
+            "description": "",
+            "post": {
+                "tags": [
+                    "Object_Ezsignfolder"
+                ],
+                "summary": "Create a new Ezsignfolder",
+                "description": "The endpoint allows to create one or many elements at once.",
+                "operationId": "Ezsignfolder_CreateObject_V2",
+                "requestBody": {
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "$ref": "#\/components\/schemas\/ezsignfolder-createObject-v2-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful response",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/ezsignfolder-createObject-v2-Response"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "x-presentations": [
+                    "Ezsign"
+                ]
+            }
+        },
+        "\/2\/object\/ezsignfoldersignerassociation": {
+            "description": "",
+            "post": {
+                "tags": [
+                    "Object_Ezsignfoldersignerassociation"
+                ],
+                "summary": "Create a new Ezsignfoldersignerassociation",
+                "description": "The endpoint allows to create one or many elements at once.",
+                "operationId": "Ezsignfoldersignerassociation_CreateObject_V2",
+                "requestBody": {
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "$ref": "#\/components\/schemas\/ezsignfoldersignerassociation-createObject-v2-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful response",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/ezsignfoldersignerassociation-createObject-v2-Response"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "x-presentations": [
+                    "Ezsign"
+                ]
+            }
+        },
+        "\/2\/object\/ezsignsignature": {
+            "description": "",
+            "post": {
+                "tags": [
+                    "Object_Ezsignsignature"
+                ],
+                "summary": "Create a new Ezsignsignature",
+                "description": "The endpoint allows to create one or many elements at once.",
+                "operationId": "Ezsignsignature_CreateObject_V2",
+                "requestBody": {
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "$ref": "#\/components\/schemas\/ezsignsignature-createObject-v2-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful response",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/ezsignsignature-createObject-v2-Response"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "x-presentations": [
+                    "Ezsign"
+                ]
+            }
+        },
+        "\/2\/object\/franchisereferalincome": {
+            "description": "",
+            "post": {
+                "tags": [
+                    "Object_Franchisereferalincome"
+                ],
+                "summary": "Create a new Franchisereferalincome",
+                "description": "The endpoint allows to create one or many elements at once.",
+                "operationId": "Franchisereferalincome_CreateObject_V2",
+                "requestBody": {
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "$ref": "#\/components\/schemas\/franchisereferalincome-createObject-v2-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful response",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/franchisereferalincome-createObject-v2-Response"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "x-presentations": []
+            }
         }
     },
     "components": {
@@ -7371,6 +7624,341 @@
                     }
                 ],
                 "description": "An Ezsignfoldersignerassociation Object and children to create a complete structure"
+            },
+            "apikey-createObject-v2-Response": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#\/components\/schemas\/apikey-createObject-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#\/components\/schemas\/Common-Response"
+                    }
+                ],
+                "description": "Response for the \/2\/object\/apikey\/createObject API Request"
+            },
+            "apikey-createObject-v2-Response-mPayload": {
+                "required": [
+                    "a_objApikey"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objApikey": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#\/components\/schemas\/apikey-Response"
+                        }
+                    }
+                },
+                "description": "Payload for the \/2\/object\/apikey\/createObject API Request"
+            },
+            "apikey-createObject-v2-Request": {
+                "required": [
+                    "a_objApikey"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objApikey": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#\/components\/schemas\/apikey-RequestCompound"
+                        }
+                    }
+                },
+                "description": "Request for the \/2\/object\/apikey\/createObject API Request"
+            },
+            "ezsigndocument-createObject-v2-Response-mPayload": {
+                "required": [
+                    "a_pkiEzsigndocumentID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiEzsigndocumentID": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request."
+                    }
+                },
+                "description": "Payload for the \/2\/object\/ezsigndocument\/createObject API Request",
+                "example": {
+                    "a_pkiEzsigndocumentID": [
+                        95,
+                        96
+                    ]
+                }
+            },
+            "ezsigndocument-createObject-v2-Request": {
+                "required": [
+                    "a_objEzsigndocument"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objEzsigndocument": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#\/components\/schemas\/ezsigndocument-RequestCompound"
+                        }
+                    }
+                },
+                "description": "Request for the \/2\/object\/ezsigndocument\/createObject API Request"
+            },
+            "ezsigndocument-createObject-v2-Response": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#\/components\/schemas\/ezsigndocument-createObject-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#\/components\/schemas\/Common-Response"
+                    }
+                ],
+                "description": "Response for the \/2\/object\/ezsigndocument\/createObject API Request"
+            },
+            "ezsignfolder-createObject-v2-Request": {
+                "required": [
+                    "a_objEzsignfolder"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objEzsignfolder": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#\/components\/schemas\/ezsignfolder-RequestCompound"
+                        }
+                    }
+                },
+                "description": "Request for the \/2\/object\/ezsignfolder\/createObject API Request"
+            },
+            "ezsignfolder-createObject-v2-Response": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#\/components\/schemas\/ezsignfolder-createObject-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#\/components\/schemas\/Common-Response"
+                    }
+                ],
+                "description": "Response for the \/2\/object\/ezsignfolder\/createObject API Request"
+            },
+            "ezsignfolder-createObject-v2-Response-mPayload": {
+                "required": [
+                    "a_pkiEzsignfolderID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiEzsignfolderID": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request."
+                    }
+                },
+                "description": "Payload for the \/2\/object\/ezsignfolder\/createObject API Request",
+                "example": {
+                    "a_pkiEzsignfolderID": [
+                        95,
+                        96
+                    ]
+                }
+            },
+            "ezsignfoldersignerassociation-createObject-v2-Request": {
+                "required": [
+                    "a_objEzsignfoldersignerassociation"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objEzsignfoldersignerassociation": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#\/components\/schemas\/ezsignfoldersignerassociation-RequestCompound"
+                        }
+                    }
+                },
+                "description": "Request for the \/2\/object\/ezsignfoldersignerassociation\/createObject API Request"
+            },
+            "ezsignfoldersignerassociation-createObject-v2-Response": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#\/components\/schemas\/ezsignfoldersignerassociation-createObject-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#\/components\/schemas\/Common-Response"
+                    }
+                ],
+                "description": "Response for the \/2\/object\/ezsignfoldersignerassociation\/createObject API Request"
+            },
+            "ezsignfoldersignerassociation-createObject-v2-Response-mPayload": {
+                "required": [
+                    "a_pkiEzsignfoldersignerassociationID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiEzsignfoldersignerassociationID": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request."
+                    }
+                },
+                "description": "Payload for the \/2\/object\/ezsignfoldersignerassociation\/createObject API Request",
+                "example": {
+                    "a_pkiEzsignfoldersignerassociationID": [
+                        95,
+                        96
+                    ]
+                }
+            },
+            "ezsignsignature-createObject-v2-Request": {
+                "required": [
+                    "a_objEzsignsignature"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objEzsignsignature": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#\/components\/schemas\/ezsignsignature-RequestCompound"
+                        }
+                    }
+                },
+                "description": "Request for the \/2\/object\/ezsignsignature\/createObject API Request"
+            },
+            "ezsignsignature-createObject-v2-Response": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#\/components\/schemas\/ezsignsignature-createObject-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#\/components\/schemas\/Common-Response"
+                    }
+                ],
+                "description": "Response for the \/2\/object\/ezsignsignature\/createObject API Request"
+            },
+            "ezsignsignature-createObject-v2-Response-mPayload": {
+                "required": [
+                    "a_pkiEzsignsignatureID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiEzsignsignatureID": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request."
+                    }
+                },
+                "description": "Payload for the \/2\/object\/ezsignsignature\/createObject API Request",
+                "example": {
+                    "a_pkiEzsignsignatureID": [
+                        95,
+                        96
+                    ]
+                }
+            },
+            "franchisereferalincome-createObject-v2-Response": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#\/components\/schemas\/franchisereferalincome-createObject-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#\/components\/schemas\/Common-Response"
+                    }
+                ],
+                "description": "Response for the \/2\/object\/franchisereferalincome\/createObject API Request"
+            },
+            "franchisereferalincome-createObject-v2-Response-mPayload": {
+                "required": [
+                    "a_pkiFranchisereferalincomeID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiFranchisereferalincomeID": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request."
+                    }
+                },
+                "description": "Payload for the \/2\/object\/franchisereferalincome\/createObject API Request",
+                "example": {
+                    "a_pkiFranchisereferalincomeID": [
+                        95,
+                        96
+                    ]
+                }
+            },
+            "franchisereferalincome-createObject-v2-Request": {
+                "required": [
+                    "a_objFranchisereferalincome"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objFranchisereferalincome": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#\/components\/schemas\/franchisereferalincome-RequestCompound"
+                        }
+                    }
+                },
+                "description": "Request for the \/2\/object\/franchisereferalincome\/createObject API Request"
             }
         },
         "responses": {
@@ -7490,7 +8078,7 @@
         },
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.5] - 2022-02-\n\n### [1.1.4] - 2022-02-24\n\n#### Added\n- GET \/1\/object\/ezsignbulksend\/{pkiEzsignbulksendID}\n- GET \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID} Added status\n- GET \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID}\/getTemporaryProof\n- GET \/1\/object\/ezsignfolder\/{pkiEzsignfolderID} Added fkiBillingentityinternalID, dtEzsignfolderDuedate, sBillingentityinternalDescriptionX, sEzsignfoldertypeNameX, sEzsigntsarequirementDescriptionX, dtEzsignfolderScheduledarchive and dtEzsignfolderScheduleddestruction properties\n- GET \/1\/object\/ezsignfolder\/{pkiEzsignfolderID}\/getEzsigndocuments\n- GET \/1\/object\/ezsignfolder\/{pkiEzsignfolderID}\/getEzsignfoldersignerassociations\n- GET \/1\/object\/ezsignfoldersignerassociation\/{pkiEzsignfoldersignerassociationID}\n- PATCH \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID}\n- POST \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID}\/endPrematurely\n- POST \/1\/object\/ezsignsignature bEzsignsignatureCustomdate and a_objEzsignsignaturecustomdate\n- PUT \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID}\/editEzsignsignatures\n- PUT \/1\/object\/ezsignfolder\/{pkiEzsignfolderID}\n- Error Code UNPROCESSABLEENTITY_UNMODIFIABLE_FIELD added to documentation\n- Error Code UNPROCESSABLEENTITY_CANNOTMODIFY added to documentation\n- Error Code UNPROCESSABLEENTITY_DATA_VALIDATION added to documentation\n- Error Code UNPROCESSABLEENTITY_DATA_OUTOFBOUND added to documentation\n\n### [1.1.3] - 2021-12-17\n\n#### Added\n- GET \/1\/object\/ezsignbulksend\/getList\n- GET \/1\/object\/ezsigntemplatepackage\/getList\n- POST \/1\/object\/ezsignfoldersignerassociation bEzsignfoldersignerassociationReceivecopy property\n- Error Code UNPROCESSABLEENTITY_DOWNLOAD_ERROR added to documentation\n- Error Code UNPROCESSABLEENTITY_PDF_REPAIRABLE added to documentation\n\n#### Changed\n- Changed all the OneOf used back to nullable types. When the generators will support 3.1 nullable polymorphism documentation will be improved\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters contained utf8 special chars\n- (CsharpSDK) OneOf not supported for polymorphism was preventing compilation\n- \n### [1.1.2] - 2021-10-26\n\n#### Added\n- GET \/1\/object\/ezsignfolder\/getList eEzsignfoldertypePrivacylevel property\n- POST \/1\/object\/ezsigndocument returns a sTemporaryFileUrl on error 422 if error is recoverable\n- POST \/1\/object\/ezsigndocument sEzsigndocumentUrl property\n- POST \/1\/object\/ezsigndocument eEzsigndocumentSource property now accept \"Url\" as the source\n- POST \/1\/object\/ezsigndocument bEzsigndocumentForcerepair property\n- Support for \"rg\" operator in date fields in sFilter\n- Range operator added to convention section of the documentation\n\n### [1.1.1] - 2021-10-22\n\n#### Added\n- GET \/1\/object\/ezsignfolder\/{pkiEzsignfolderID}\/unsend\n- GET \/1\/module\/list\/listpresentation\/{sListName}\n- POST \/1\/module\/list\/listpresentation\/{sListName}\n- Variables convention documentation now contains type \"m\" for mixed type\n- POST \/1\/object\/ezsigndocument\/ sEzsigndocumentPassword property\n- Support for \"in\" operator for integer fields in sFilter\n- Support for \"in\" operator for enum fields in sFilter\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID}\/getEzsignpages\n- GET \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID}\/getFormData\n- GET \/1\/object\/ezsignfolder\/{pkiEzsignfolderID}\/getFormsData\n- GET \/1\/object\/ezsignfolder\/getList\n- GET \/1\/object\/ezsignfoldertype\/getAutocomplete\/{sSelector}\n- GET \/1\/object\/ezsignfoldertype\/getList\n- POST \/2\/object\/ezsigndocument\/{pkiEzsigndocumentID}\/applyEzsigntemplate\n- POST \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID}\/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID}\/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation](https:\/\/ezmaxinc.github.io\/eZmax-API\/docs\/ezmax.v1.0.html)",
+            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nYou can always safely update to newer **PATCH** version if you stay in the same **MAJOR**.**MINOR** prefix.\n\nYou can safely update to a newer **MINOR** version as long as you don't jump more than a version at a time. For example, let say there is a function named \"foo\" in version 1.0.23. We might deprecate this function in version 1.1.1 but you can continue using it. We might decide to remove it in version 1.2.1 so then you would have a breaking change if you try to update to version 1.2.1 without having fixed the issue with your deprecated \"foo\" function.\n\nFor each version, there will be the list of changes:\n* **Early Adopters** for new features not officially considered final and ready for production use.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n## 1.1.X Releases\n### [1.1.5] - 2022-02-\n\n#### Added\n- POST \/2\/object\/apikey\n- POST \/2\/object\/ezsigndocument\n- POST \/2\/object\/ezsignfolder\n- POST \/2\/object\/ezsignfoldersignerassociation\n- POST \/2\/object\/ezsignsignature\n- POST \/2\/object\/franchisereferalincome\n\n#### Deprecated\n- POST \/1\/object\/apikey\n- POST \/1\/object\/ezsigndocument\n- POST \/1\/object\/ezsignfolder\n- POST \/1\/object\/ezsignfoldersignerassociation\n- POST \/1\/object\/ezsignsignature\n- POST \/1\/object\/franchisereferalincome\n\n### [1.1.4] - 2022-02-24\n\n#### Added\n- GET \/1\/object\/ezsignbulksend\/{pkiEzsignbulksendID}\n- GET \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID} Added status\n- GET \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID}\/getTemporaryProof\n- GET \/1\/object\/ezsignfolder\/{pkiEzsignfolderID} Added fkiBillingentityinternalID, dtEzsignfolderDuedate, sBillingentityinternalDescriptionX, sEzsignfoldertypeNameX, sEzsigntsarequirementDescriptionX, dtEzsignfolderScheduledarchive and dtEzsignfolderScheduleddestruction properties\n- GET \/1\/object\/ezsignfolder\/{pkiEzsignfolderID}\/getEzsigndocuments\n- GET \/1\/object\/ezsignfolder\/{pkiEzsignfolderID}\/getEzsignfoldersignerassociations\n- GET \/1\/object\/ezsignfoldersignerassociation\/{pkiEzsignfoldersignerassociationID}\n- PATCH \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID}\n- POST \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID}\/endPrematurely\n- POST \/1\/object\/ezsignsignature bEzsignsignatureCustomdate and a_objEzsignsignaturecustomdate\n- PUT \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID}\/editEzsignsignatures\n- PUT \/1\/object\/ezsignfolder\/{pkiEzsignfolderID}\n- Error Code UNPROCESSABLEENTITY_UNMODIFIABLE_FIELD added to documentation\n- Error Code UNPROCESSABLEENTITY_CANNOTMODIFY added to documentation\n- Error Code UNPROCESSABLEENTITY_DATA_VALIDATION added to documentation\n- Error Code UNPROCESSABLEENTITY_DATA_OUTOFBOUND added to documentation\n\n### [1.1.3] - 2021-12-17\n\n#### Added\n- GET \/1\/object\/ezsignbulksend\/getList\n- GET \/1\/object\/ezsigntemplatepackage\/getList\n- POST \/1\/object\/ezsignfoldersignerassociation bEzsignfoldersignerassociationReceivecopy property\n- Error Code UNPROCESSABLEENTITY_DOWNLOAD_ERROR added to documentation\n- Error Code UNPROCESSABLEENTITY_PDF_REPAIRABLE added to documentation\n\n#### Changed\n- Changed all the OneOf used back to nullable types. When the generators will support 3.1 nullable polymorphism documentation will be improved\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters contained utf8 special chars\n- (CsharpSDK) OneOf not supported for polymorphism was preventing compilation\n- \n### [1.1.2] - 2021-10-26\n\n#### Added\n- GET \/1\/object\/ezsignfolder\/getList eEzsignfoldertypePrivacylevel property\n- POST \/1\/object\/ezsigndocument returns a sTemporaryFileUrl on error 422 if error is recoverable\n- POST \/1\/object\/ezsigndocument sEzsigndocumentUrl property\n- POST \/1\/object\/ezsigndocument eEzsigndocumentSource property now accept \"Url\" as the source\n- POST \/1\/object\/ezsigndocument bEzsigndocumentForcerepair property\n- Support for \"rg\" operator in date fields in sFilter\n- Range operator added to convention section of the documentation\n\n### [1.1.1] - 2021-10-22\n\n#### Added\n- GET \/1\/object\/ezsignfolder\/{pkiEzsignfolderID}\/unsend\n- GET \/1\/module\/list\/listpresentation\/{sListName}\n- POST \/1\/module\/list\/listpresentation\/{sListName}\n- Variables convention documentation now contains type \"m\" for mixed type\n- POST \/1\/object\/ezsigndocument\/ sEzsigndocumentPassword property\n- Support for \"in\" operator for integer fields in sFilter\n- Support for \"in\" operator for enum fields in sFilter\n\n### [1.1.0] - 2021-10-19\n\n#### Added\n- GET \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID}\/getEzsignpages\n- GET \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID}\/getFormData\n- GET \/1\/object\/ezsignfolder\/{pkiEzsignfolderID}\/getFormsData\n- GET \/1\/object\/ezsignfolder\/getList\n- GET \/1\/object\/ezsignfoldertype\/getAutocomplete\/{sSelector}\n- GET \/1\/object\/ezsignfoldertype\/getList\n- POST \/2\/object\/ezsigndocument\/{pkiEzsigndocumentID}\/applyEzsigntemplate\n- POST \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID}\/getWordsPositions\n- Status Code 406 added to documentation\n- Status Code 501 added to documentation\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\n- Variables convention added to documentation\n- List Filter convention added to documentation\n\n#### Deprecated\n- POST \/1\/object\/ezsigndocument\/{pkiEzsigndocumentID}\/applyezsigntemplate\n \n#### Removed\n- Support for typescript-angular\n- Support for typescript-aurelia\n- Support for typescript-fetch\n- Support for typescript-jquery\n- Support for typescript-node\n\n#### Fixed\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\n\n## 1.0.X Releases\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation (Full)](https:\/\/ezmaxinc.github.io\/eZmax-API\/docs\/full\/ezmax.v1.0.html)",
             "x-displayName": "Changelog"
         },
         {
