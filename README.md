@@ -14,7 +14,7 @@ We are also serving simplified versions of the documentation containing only the
 | 1.1.x  | [eZmax API Documentation 1.1.x (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.1.html) | [eZmax API Definition 1.1.x (Full)](https://ezmaxinc.github.io/eZmax-API/specs/ezmax.v1.1.json) | [eZmax API Definition 1.1.x (Full)](https://ezmaxinc.github.io/eZmax-API/specs/ezmax.v1.1%20%5BPostman%5D.json) |
 | 1.0.x  | [eZmax API Documentation 1.0.x (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html) | [eZmax API Definition 1.0.x (Full)](https://ezmaxinc.github.io/eZmax-API/specs/ezmax.v1.0.json) | [eZmax API Definition 1.0.x (Full)](https://ezmaxinc.github.io/eZmax-API/specs/ezmax.v1.0%20%5BPostman%5D.json) |
 
-## Partial documentation
+## Partial documentations
 | Presentation| 1.1x 
 | - | -|
 | eZsign | [eZmax API Documentation 1.1.x (Ezsign)](https://ezmaxinc.github.io/eZmax-API/docs/partial/ezsign/ezmax.v1.1.html) |
