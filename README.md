@@ -16,6 +16,6 @@ We are also serving simplified versions of the documentation containing only the
 
 ## Partial documentation
 | Presentation| 1.1x 
-| - | -| -|
+| - | -|
 | eZsign | [eZmax API Documentation 1.1.x (Ezsign)](https://ezmaxinc.github.io/eZmax-API/docs/partial/ezsign/ezmax.v1.1.html) |
 | RE/MAX Québec | [eZmax API Documentation 1.1.x (RemaxQC)](https://ezmaxinc.github.io/eZmax-API/docs/partial/remaxqc/ezmax.v1.1.html) |
