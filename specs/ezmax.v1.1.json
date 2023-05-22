@@ -15827,7 +15827,7 @@
             },
             "Field-pkiSessionhistoryID": {
                 "description": "The unique ID of the Sessionhistory",
-                "maximum": 4294967295,
+                "maximum": 2147483647,
                 "minimum": 1,
                 "type": "integer",
                 "example": 259
