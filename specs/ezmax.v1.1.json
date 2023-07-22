@@ -19489,6 +19489,7 @@
                 "example": 0
             },
             "Field-iSubnetMask": {
+                "format": "int64",
                 "description": "The mask of the Subnet  in integer form. For example 255.255.255.0 would be 4294967040",
                 "maximum": 4294967295,
                 "minimum": 0,
@@ -19496,6 +19497,7 @@
                 "example": 4294967040
             },
             "Field-iSubnetNetwork": {
+                "format": "int64",
                 "description": "The network of the Subnet in integer form. For example 8.8.8.0 would be 134744064",
                 "maximum": 4294967295,
                 "minimum": 0,
