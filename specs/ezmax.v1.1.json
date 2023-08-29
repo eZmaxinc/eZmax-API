@@ -2708,7 +2708,9 @@
                     "description": "The type of Ezmaxproducts to return",
                     "schema": {
                         "enum": [
-                            "All"
+                            "All",
+                            "Entitydefault",
+                            "Entityother"
                         ],
                         "type": "string"
                     },
@@ -14098,6 +14100,57 @@
                 }
             ]
         },
+        "/1/object/user/{pkiUserID}/getApikeys": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_User"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/user-getApikeys-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "User_GetApikeys_V1",
+                "summary": "Retrieve an existing User's Apikeys",
+                "x-apikeyrequire": true,
+                "x-authorizationsources": [
+                    "Headers"
+                ],
+                "x-permissions": [
+                    "Management_APIKeyGeneration"
+                ],
+                "x-usertypeextra": [],
+                "x-presentations": [
+                    "Ezsign"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiUserID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiUserID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/1/object/user/{pkiUserID}/getEffectivePermissions": {
             "description": "",
             "get": {
@@ -14249,6 +14302,69 @@
                 }
             ]
         },
+        "/1/object/user/{pkiUserID}/sendPasswordReset": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/user-sendPasswordReset-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_User"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/user-sendPasswordReset-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "User_SendPasswordReset_V1",
+                "summary": "Send password reset",
+                "description": "Send the password reset email",
+                "x-apikeyrequire": true,
+                "x-authorizationsources": [
+                    "Headers"
+                ],
+                "x-permissions": [
+                    "Management_UsersEzsignUser",
+                    "Management_UsersNormal"
+                ],
+                "x-usertypeextra": [],
+                "x-presentations": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiUserID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiUserID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/2/object/user/getAutocomplete/{sSelector}": {
             "description": "",
             "get": {
@@ -14319,10 +14435,12 @@
                             "All",
                             "AgentBrokerEmployeeEzsignUserNormal",
                             "AgentBrokerEmployeeNormalBuiltIn",
+                            "AgentBrokerEzsignuserNormal",
                             "ClonableUsers",
                             "EzsignuserBuiltIn",
                             "Normal",
-                            "NormalEzsignSigner"
+                            "NormalEzsignSigner",
+                            "UsergroupDelegated"
                         ],
                         "type": "string"
                     },
@@ -14506,7 +14624,8 @@
                     "Headers"
                 ],
                 "x-permissions": [
-                    "Management_Usergroup"
+                    "Management_Usergroup",
+                    "Management_UsergroupDelegated"
                 ],
                 "x-usertypeextra": [],
                 "x-presentations": []
@@ -14647,6 +14766,68 @@
                 }
             ]
         },
+        "/1/object/usergroup/{pkiUsergroupID}/editUsergroupdelegations": {
+            "put": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/usergroup-editUsergroupdelegations-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Usergroup"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/usergroup-editUsergroupdelegations-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Usergroup_EditUsergroupdelegations_V1",
+                "summary": "Edit multiple Usergroupdelegations",
+                "description": "Edit multiple Usergroupdelegations",
+                "x-apikeyrequire": true,
+                "x-authorizationsources": [
+                    "Headers"
+                ],
+                "x-permissions": [
+                    "Management_Usergroup"
+                ],
+                "x-usertypeextra": [],
+                "x-presentations": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiUsergroupID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiUsergroupID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/1/object/usergroup/{pkiUsergroupID}/editUsergroupmemberships": {
             "put": {
                 "requestBody": {
@@ -14693,7 +14874,8 @@
                     "Headers"
                 ],
                 "x-permissions": [
-                    "Management_Usergroup"
+                    "Management_Usergroup",
+                    "Management_UsergroupDelegated"
                 ],
                 "x-usertypeextra": [],
                 "x-presentations": []
@@ -14758,6 +14940,56 @@
                 }
             ]
         },
+        "/1/object/usergroup/{pkiUsergroupID}/getUsergroupdelegations": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Usergroup"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/usergroup-getUsergroupdelegations-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Usergroup_GetUsergroupdelegations_V1",
+                "summary": "Retrieve an existing Usergroup's Usergroupdelegations",
+                "x-apikeyrequire": true,
+                "x-authorizationsources": [
+                    "Headers"
+                ],
+                "x-permissions": [
+                    "Management_Usergroup",
+                    "Management_UsergroupDelegated"
+                ],
+                "x-usertypeextra": [],
+                "x-presentations": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiUsergroupID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiUsergroupID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/1/object/usergroup/{pkiUsergroupID}/getUsergroupmemberships": {
             "description": "",
             "get": {
@@ -14791,7 +15023,8 @@
                     "Headers"
                 ],
                 "x-permissions": [
-                    "Management_Usergroup"
+                    "Management_Usergroup",
+                    "Management_UsergroupDelegated"
                 ],
                 "x-usertypeextra": [],
                 "x-presentations": []
@@ -14951,11 +15184,211 @@
                     "Headers"
                 ],
                 "x-permissions": [
+                    "Management_Usergroup",
+                    "Management_UsergroupDelegated"
+                ],
+                "x-usertypeextra": [],
+                "x-presentations": []
+            }
+        },
+        "/1/object/usergroupdelegation": {
+            "description": "",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/usergroupdelegation-createObject-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Usergroupdelegation"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/usergroupdelegation-createObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Usergroupdelegation_CreateObject_V1",
+                "summary": "Create a new Usergroupdelegation",
+                "description": "The endpoint allows to create one or many elements at once.",
+                "x-apikeyrequire": true,
+                "x-authorizationsources": [
+                    "Headers"
+                ],
+                "x-permissions": [
                     "Management_Usergroup"
                 ],
                 "x-usertypeextra": [],
                 "x-presentations": []
             }
+        },
+        "/2/object/usergroupdelegation/{pkiUsergroupdelegationID}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Usergroupdelegation"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/usergroupdelegation-getObject-v2-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Usergroupdelegation_GetObject_V2",
+                "summary": "Retrieve an existing Usergroupdelegation",
+                "description": "",
+                "x-apikeyrequire": true,
+                "x-authorizationsources": [
+                    "Headers"
+                ],
+                "x-permissions": [
+                    "Management_Usergroup"
+                ],
+                "x-usertypeextra": [],
+                "x-presentations": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiUsergroupdelegationID",
+                    "description": "The unique ID of the Usergroupdelegation",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiUsergroupdelegationID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/usergroupdelegation/{pkiUsergroupdelegationID}": {
+            "description": "",
+            "put": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/usergroupdelegation-editObject-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Usergroupdelegation"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/usergroupdelegation-editObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Usergroupdelegation_EditObject_V1",
+                "summary": "Edit an existing Usergroupdelegation",
+                "description": "",
+                "x-apikeyrequire": true,
+                "x-authorizationsources": [
+                    "Headers"
+                ],
+                "x-permissions": [
+                    "Management_Usergroup"
+                ],
+                "x-usertypeextra": [],
+                "x-presentations": []
+            },
+            "delete": {
+                "tags": [
+                    "Object_Usergroupdelegation"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/usergroupdelegation-deleteObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Usergroupdelegation_DeleteObject_V1",
+                "summary": "Delete an existing Usergroupdelegation",
+                "description": "",
+                "x-apikeyrequire": true,
+                "x-authorizationsources": [
+                    "Headers"
+                ],
+                "x-permissions": [
+                    "Management_Usergroup"
+                ],
+                "x-usertypeextra": [],
+                "x-presentations": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiUsergroupdelegationID",
+                    "description": "The unique ID of the Usergroupdelegation",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiUsergroupdelegationID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
         },
         "/1/object/usergroupmembership": {
             "description": "",
@@ -14998,7 +15431,8 @@
                     "Headers"
                 ],
                 "x-permissions": [
-                    "Management_Usergroup"
+                    "Management_Usergroup",
+                    "Management_UsergroupDelegated"
                 ],
                 "x-usertypeextra": [],
                 "x-presentations": []
@@ -15038,7 +15472,8 @@
                     "Headers"
                 ],
                 "x-permissions": [
-                    "Management_Usergroup"
+                    "Management_Usergroup",
+                    "Management_UsergroupDelegated"
                 ],
                 "x-usertypeextra": [],
                 "x-presentations": []
@@ -15101,7 +15536,8 @@
                     "Headers"
                 ],
                 "x-permissions": [
-                    "Management_Usergroup"
+                    "Management_Usergroup",
+                    "Management_UsergroupDelegated"
                 ],
                 "x-usertypeextra": [],
                 "x-presentations": []
@@ -15138,7 +15574,8 @@
                     "Headers"
                 ],
                 "x-permissions": [
-                    "Management_Usergroup"
+                    "Management_Usergroup",
+                    "Management_UsergroupDelegated"
                 ],
                 "x-usertypeextra": [],
                 "x-presentations": []
@@ -17076,6 +17513,9 @@
             },
             "Common-Response": {
                 "description": "All API response will inherit this based Response",
+                "required": [
+                    "objDebugPayload"
+                ],
                 "type": "object",
                 "properties": {
                     "objDebugPayload": {
@@ -17273,7 +17713,8 @@
                 "required": [
                     "a_RequiredPermission",
                     "iVersionMax",
-                    "iVersionMin"
+                    "iVersionMin",
+                    "bVersionDeprecated"
                 ],
                 "type": "object",
                 "properties": {
@@ -17294,6 +17735,11 @@
                             "type": "integer",
                             "example": 117
                         }
+                    },
+                    "bVersionDeprecated": {
+                        "description": "Wheter the current route is deprecated or not",
+                        "type": "boolean",
+                        "example": false
                     }
                 }
             },
@@ -17351,6 +17797,9 @@
             },
             "Common-Response_getList": {
                 "description": "All API response will inherit this based Response",
+                "required": [
+                    "objDebugPayload"
+                ],
                 "type": "object",
                 "properties": {
                     "objDebugPayload": {
@@ -17498,6 +17947,16 @@
                 ],
                 "type": "string",
                 "example": "Outbound"
+            },
+            "Computed-eEzsigndocumentSteptype": {
+                "description": "Indicates whether the current step is a form or signatures.",
+                "enum": [
+                    "Form",
+                    "Sign",
+                    "None"
+                ],
+                "type": "string",
+                "example": "Sign"
             },
             "Computed-iCommunicationCount": {
                 "description": "The count of Communication.",
@@ -18133,7 +18592,7 @@
                             },
                             "sEzsignformfielderrortestDetail": {
                                 "description": "The detail why the test failed",
-                                "pattern": "^.{0,100}$",
+                                "pattern": "^.{0,255}$",
                                 "type": "string"
                             }
                         }
@@ -19880,7 +20339,9 @@
                     "Handwritten",
                     "Initials",
                     "Name",
-                    "Attachments"
+                    "Attachments",
+                    "FieldText",
+                    "FieldTextarea"
                 ],
                 "type": "string",
                 "example": "Name"
@@ -19934,7 +20395,8 @@
                     "Inactive",
                     "InvalidUser",
                     "BadUserType",
-                    "BadIP"
+                    "BadIP",
+                    "ForcedLogoff"
                 ],
                 "type": "string",
                 "example": "Logoff"
@@ -20347,6 +20809,7 @@
             },
             "Field-iEzsignformfieldgroupMaxlength": {
                 "description": "The maximum length for the value in the Ezsignformfieldgroup\n\nThis can only be set if eEzsignformfieldgroupType is **Text** or **Textarea**",
+                "maximum": 65535,
                 "minimum": 0,
                 "type": "integer",
                 "example": 75
@@ -20392,6 +20855,13 @@
                 "minimum": 0,
                 "type": "integer",
                 "example": 200
+            },
+            "Field-iEzsignsignatureMaxlength": {
+                "description": "The maximum length for the value in the Ezsignsignature\n\nThis can only be set if eEzsignsignatureType is **FieldText** or **FieldTextarea**",
+                "maximum": 65535,
+                "minimum": 0,
+                "type": "integer",
+                "example": 75
             },
             "Field-iEzsignsignatureStep": {
                 "description": "The step when the Ezsignsigner will be invited to sign",
@@ -20507,6 +20977,7 @@
             },
             "Field-iEzsigntemplateformfieldgroupMaxlength": {
                 "description": "The maximum length for the value in the Ezsigntemplateformfieldgroup\n\nThis can only be set if eEzsigntemplateformfieldgroupType is **Text** or **Textarea**",
+                "maximum": 65535,
                 "minimum": 0,
                 "type": "integer",
                 "example": 75
@@ -20529,6 +21000,19 @@
                 "type": "integer",
                 "example": 1
             },
+            "Field-iEzsigntemplatesignatureHeight": {
+                "description": "The height of the Ezsigntemplatesignature.\n\nSize is calculated at 100dpi (dot per inch). So for example, if you want the Ezsigntemplatesignature to have an height of 2 inches, you would use \"200\" for the iEzsigntemplatesignatureHeight.",
+                "minimum": 0,
+                "type": "integer",
+                "example": 200
+            },
+            "Field-iEzsigntemplatesignatureMaxlength": {
+                "description": "The maximum length for the value in the Ezsigntemplatesignature\n\nThis can only be set if eEzsigntemplatesignatureType is **FieldText** or **FieldTextarea**",
+                "maximum": 65535,
+                "minimum": 0,
+                "type": "integer",
+                "example": 75
+            },
             "Field-iEzsigntemplatesignatureStep": {
                 "description": "The step when the Ezsigntemplatesigner will be invited to sign",
                 "minimum": 1,
@@ -20539,6 +21023,12 @@
                 "description": "The step when the Ezsigntemplatesigner will be invited to validate the Ezsigntemplatesignature of eEzsigntemplatesignatureType Attachments",
                 "type": "integer",
                 "example": 1
+            },
+            "Field-iEzsigntemplatesignatureWidth": {
+                "description": "The width of the Ezsigntemplatesignature.\n\nSize is calculated at 100dpi (dot per inch). So for example, if you want the Ezsigntemplatesignature to have a width of 2 inches, you would use \"200\" for the iEzsigntemplatesignatureWidth.",
+                "minimum": 0,
+                "type": "integer",
+                "example": 200
             },
             "Field-iEzsigntemplatesignatureX": {
                 "description": "The X coordinate (Horizontal) where to put the Ezsigntemplatesignature on the page.\n\nCoordinate is calculated at 100dpi (dot per inch). So for example, if you want to put the Ezsigntemplatesignature 2 inches from the left border of the page, you would use \"200\" for the X coordinate.",
@@ -21333,6 +21823,13 @@
                 "type": "integer",
                 "example": 2
             },
+            "Field-pkiUsergroupdelegationID": {
+                "description": "The unique ID of the Usergroupdelegation",
+                "maximum": 65535,
+                "minimum": 0,
+                "type": "integer",
+                "example": 141
+            },
             "Field-pkiUsergroupmembershipID": {
                 "description": "The unique ID of the Usergroupmembership",
                 "maximum": 65535,
@@ -21790,6 +22287,11 @@
                 "description": "The description attached to the attachment name added in Ezsigntemplatesignature of eEzsigntemplatesignatureType Attachments",
                 "type": "string",
                 "example": "Attachment"
+            },
+            "Field-sEzsigntemplatesignatureRegexp": {
+                "description": "A regular expression to indicate what values are acceptable for the Ezsigntemplatesignature.\n\nThis can only be set if eEzsigntemplatesignatureType is **Text** or **Textarea**",
+                "type": "string",
+                "example": "/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/"
             },
             "Field-sEzsigntemplatesigner": {
                 "description": "The First name of the user",
@@ -27854,6 +28356,7 @@
                     },
                     {
                         "required": [
+                            "eEzsigndocumentSteptype",
                             "iEzsigndocumentStepformtotal",
                             "iEzsigndocumentStepformcurrent",
                             "iEzsigndocumentStepsignaturetotal",
@@ -27862,6 +28365,9 @@
                         ],
                         "type": "object",
                         "properties": {
+                            "eEzsigndocumentSteptype": {
+                                "$ref": "#/components/schemas/Computed-eEzsigndocumentSteptype"
+                            },
                             "iEzsigndocumentStepformtotal": {
                                 "$ref": "#/components/schemas/Computed-iEzsigndocumentStepformtotal"
                             },
@@ -31034,6 +31540,9 @@
                     "bEzsignformfieldgroupEncrypted": {
                         "$ref": "#/components/schemas/Field-bEzsignformfieldgroupEncrypted"
                     },
+                    "eEzsignformfieldgroupTextvalidation": {
+                        "$ref": "#/components/schemas/Enum-Textvalidation"
+                    },
                     "sEzsignformfieldgroupRegexp": {
                         "$ref": "#/components/schemas/Field-sEzsignformfieldgroupRegexp"
                     },
@@ -31371,6 +31880,9 @@
                     "iEzsignsignatureValidationstep": {
                         "$ref": "#/components/schemas/Field-iEzsignsignatureValidationstep"
                     },
+                    "iEzsignsignatureMaxlength": {
+                        "$ref": "#/components/schemas/Field-iEzsignsignatureMaxlength"
+                    },
                     "eEzsignsignatureTextvalidation": {
                         "$ref": "#/components/schemas/Enum-Textvalidation"
                     },
@@ -31480,6 +31992,9 @@
                     },
                     "sEzsignsignatureDescription": {
                         "$ref": "#/components/schemas/Field-sEzsignsignatureDescription"
+                    },
+                    "iEzsignsignatureMaxlength": {
+                        "$ref": "#/components/schemas/Field-iEzsignsignatureMaxlength"
                     },
                     "eEzsignsignatureTextvalidation": {
                         "$ref": "#/components/schemas/Enum-Textvalidation"
@@ -32275,7 +32790,7 @@
                 ],
                 "type": "object",
                 "properties": {
-                    "objBranding": {
+                    "objEzsignsignergroup": {
                         "$ref": "#/components/schemas/ezsignsignergroup-RequestCompound"
                     }
                 }
@@ -32359,10 +32874,7 @@
             "ezsignsignergroupmembership-Request": {
                 "description": "A Ezsignsignergroupmembership Object",
                 "required": [
-                    "fkiEzsignsignergroupID",
-                    "fkiEzsignsignerID",
-                    "fkiUserID",
-                    "fkiUsergroupID"
+                    "fkiEzsignsignergroupID"
                 ],
                 "type": "object",
                 "properties": {
@@ -32399,10 +32911,7 @@
                 "description": "A Ezsignsignergroupmembership Object",
                 "required": [
                     "pkiEzsignsignergroupmembershipID",
-                    "fkiEzsignsignergroupID",
-                    "fkiEzsignsignerID",
-                    "fkiUserID",
-                    "fkiUsergroupID"
+                    "fkiEzsignsignergroupID"
                 ],
                 "type": "object",
                 "properties": {
@@ -33736,6 +34245,9 @@
                     "sEzsigntemplateformfieldgroupRegexp": {
                         "$ref": "#/components/schemas/Field-sEzsigntemplateformfieldgroupRegexp"
                     },
+                    "eEzsigntemplateformfieldgroupTextvalidation": {
+                        "$ref": "#/components/schemas/Enum-Textvalidation"
+                    },
                     "tEzsigntemplateformfieldgroupTooltip": {
                         "$ref": "#/components/schemas/Field-tEzsigntemplateformfieldgroupTooltip"
                     },
@@ -33833,6 +34345,9 @@
                     },
                     "sEzsigntemplateformfieldgroupRegexp": {
                         "$ref": "#/components/schemas/Field-sEzsigntemplateformfieldgroupRegexp"
+                    },
+                    "eEzsigntemplateformfieldgroupTextvalidation": {
+                        "$ref": "#/components/schemas/Enum-Textvalidation"
                     },
                     "tEzsigntemplateformfieldgroupTooltip": {
                         "$ref": "#/components/schemas/Field-tEzsigntemplateformfieldgroupTooltip"
@@ -35093,6 +35608,12 @@
                     "iEzsigntemplatesignatureY": {
                         "$ref": "#/components/schemas/Field-iEzsigntemplatesignatureY"
                     },
+                    "iEzsigntemplatesignatureWidth": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplatesignatureWidth"
+                    },
+                    "iEzsigntemplatesignatureHeight": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplatesignatureHeight"
+                    },
                     "iEzsigntemplatesignatureStep": {
                         "$ref": "#/components/schemas/Field-iEzsigntemplatesignatureStep"
                     },
@@ -35119,6 +35640,15 @@
                     },
                     "iEzsigntemplatesignatureValidationstep": {
                         "$ref": "#/components/schemas/Field-iEzsigntemplatesignatureValidationstep"
+                    },
+                    "iEzsigntemplatesignatureMaxlength": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplatesignatureMaxlength"
+                    },
+                    "sEzsigntemplatesignatureRegexp": {
+                        "$ref": "#/components/schemas/Field-sEzsigntemplatesignatureRegexp"
+                    },
+                    "eEzsigntemplatesignatureTextvalidation": {
+                        "$ref": "#/components/schemas/Enum-Textvalidation"
                     }
                 }
             },
@@ -35181,6 +35711,12 @@
                     "iEzsigntemplatesignatureY": {
                         "$ref": "#/components/schemas/Field-iEzsigntemplatesignatureY"
                     },
+                    "iEzsigntemplatesignatureWidth": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplatesignatureWidth"
+                    },
+                    "iEzsigntemplatesignatureHeight": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplatesignatureHeight"
+                    },
                     "iEzsigntemplatesignatureStep": {
                         "$ref": "#/components/schemas/Field-iEzsigntemplatesignatureStep"
                     },
@@ -35207,6 +35743,15 @@
                     },
                     "bEzsigntemplatesignatureRequired": {
                         "$ref": "#/components/schemas/Field-bEzsigntemplatesignatureRequired"
+                    },
+                    "iEzsigntemplatesignatureMaxlength": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplatesignatureMaxlength"
+                    },
+                    "sEzsigntemplatesignatureRegexp": {
+                        "$ref": "#/components/schemas/Field-sEzsigntemplatesignatureRegexp"
+                    },
+                    "eEzsigntemplatesignatureTextvalidation": {
+                        "$ref": "#/components/schemas/Enum-Textvalidation"
                     }
                 }
             },
@@ -38518,6 +39063,42 @@
                     }
                 }
             },
+            "user-getApikeys-v1-Response": {
+                "description": "Response for GET /1/object/user/{pkiUserID}/getApikeys",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/user-getApikeys-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "user-getApikeys-v1-Response-mPayload": {
+                "description": "Response for GET /1/object/user/{pkiUserID}/getApikeys",
+                "required": [
+                    "a_objApikey"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objApikey": {
+                        "minItems": 0,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/apikey-ResponseCompound"
+                        }
+                    }
+                }
+            },
             "user-getAutocomplete-v2-Response": {
                 "description": "Response for GET /2/object/user/getAutocomplete",
                 "type": "object",
@@ -38733,6 +39314,19 @@
                         }
                     }
                 }
+            },
+            "user-sendPasswordReset-v1-Request": {
+                "description": "Request for POST /1/object/user/{pkiUserID}/sendPasswordReset\n\nIntentionally empty for future-proofing",
+                "type": "object"
+            },
+            "user-sendPasswordReset-v1-Response": {
+                "description": "Response for POST /1/object/user/{pkiUserID}/sendPasswordReset",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
             },
             "usergroup-AutocompleteElement-Response": {
                 "description": "A Usergroup AutocompleteElement Response",
@@ -38952,6 +39546,56 @@
                     }
                 }
             },
+            "usergroup-editUsergroupdelegations-v1-Request": {
+                "description": "Request for PUT /1/object/usergroup/{pkiUsergroupID}/editUsergroupdelegations",
+                "required": [
+                    "a_objUsergroupdelegation"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objUsergroupdelegation": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/usergroupdelegation-RequestCompound"
+                        }
+                    }
+                }
+            },
+            "usergroup-editUsergroupdelegations-v1-Response": {
+                "description": "Response for PUT /1/object/usergroup/{pkiUsergroupID}/editUsergroupdelegations",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/usergroup-editUsergroupdelegations-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "usergroup-editUsergroupdelegations-v1-Response-mPayload": {
+                "description": "Response for PUT /1/object/usergroup/{pkiUsergroupID}/EditUsergroupdelegations",
+                "required": [
+                    "a_pkiUsergroupdelegationID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiUsergroupdelegationID": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Field-pkiUsergroupdelegationID"
+                        }
+                    }
+                }
+            },
             "usergroup-editUsergroupmemberships-v1-Request": {
                 "description": "Request for PUT /1/object/usergroup/{pkiUsergroupID}/editUsergroupmemberships",
                 "required": [
@@ -39148,6 +39792,41 @@
                     }
                 }
             },
+            "usergroup-getUsergroupdelegations-v1-Response": {
+                "description": "Response for GET /1/object/usergroup/{pkiUsergroupID}/getUsergroupdelegations",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/usergroup-getUsergroupdelegations-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "usergroup-getUsergroupdelegations-v1-Response-mPayload": {
+                "description": "Response for GET /1/object/usergroup/{pkiUsergroupID}/getUsergroupdelegations",
+                "required": [
+                    "a_objUsergroupdelegation"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objUsergroupdelegation": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/usergroupdelegation-ResponseCompound"
+                        }
+                    }
+                }
+            },
             "usergroup-getUsergroupmemberships-v1-Response": {
                 "description": "Response for GET /1/object/usergroup/{pkiUsergroupID}/getUsergroupmemberships",
                 "type": "object",
@@ -39180,6 +39859,202 @@
                         "items": {
                             "$ref": "#/components/schemas/usergroupmembership-ResponseCompound"
                         }
+                    }
+                }
+            },
+            "usergroupdelegation-Request": {
+                "description": "A Usergroupdelegation Object",
+                "required": [
+                    "fkiUsergroupID",
+                    "fkiUserID"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiUsergroupdelegationID": {
+                        "$ref": "#/components/schemas/Field-pkiUsergroupdelegationID"
+                    },
+                    "fkiUsergroupID": {
+                        "$ref": "#/components/schemas/Field-pkiUsergroupID"
+                    },
+                    "fkiUserID": {
+                        "$ref": "#/components/schemas/Field-pkiUserID"
+                    }
+                }
+            },
+            "usergroupdelegation-RequestCompound": {
+                "description": "A Usergroupdelegation Object and children",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/usergroupdelegation-Request"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "usergroupdelegation-Response": {
+                "description": "A Usergroupdelegation Object",
+                "required": [
+                    "pkiUsergroupdelegationID",
+                    "fkiUsergroupID",
+                    "fkiUserID",
+                    "sUserFirstname",
+                    "sUserLastname",
+                    "sUserLoginname",
+                    "sUsergroupNameX"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiUsergroupdelegationID": {
+                        "$ref": "#/components/schemas/Field-pkiUsergroupdelegationID"
+                    },
+                    "fkiUsergroupID": {
+                        "$ref": "#/components/schemas/Field-pkiUsergroupID"
+                    },
+                    "fkiUserID": {
+                        "$ref": "#/components/schemas/Field-pkiUserID"
+                    },
+                    "sUserFirstname": {
+                        "$ref": "#/components/schemas/Field-sUserFirstname"
+                    },
+                    "sUserLastname": {
+                        "$ref": "#/components/schemas/Field-sUserLastname"
+                    },
+                    "sUserLoginname": {
+                        "$ref": "#/components/schemas/Field-sUserLoginname"
+                    },
+                    "sEmailAddress": {
+                        "$ref": "#/components/schemas/Field-sEmailAddress"
+                    },
+                    "sUsergroupNameX": {
+                        "$ref": "#/components/schemas/Field-sUsergroupNameX"
+                    }
+                }
+            },
+            "usergroupdelegation-ResponseCompound": {
+                "description": "A Usergroupdelegation Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/usergroupdelegation-Response"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "usergroupdelegation-createObject-v1-Request": {
+                "description": "Request for POST /1/object/usergroupdelegation",
+                "required": [
+                    "a_objUsergroupdelegation"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objUsergroupdelegation": {
+                        "minItems": 1,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/usergroupdelegation-RequestCompound"
+                        }
+                    }
+                }
+            },
+            "usergroupdelegation-createObject-v1-Response": {
+                "description": "Response for POST /1/object/usergroupdelegation",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/usergroupdelegation-createObject-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "usergroupdelegation-createObject-v1-Response-mPayload": {
+                "description": "Payload for POST /1/object/usergroupdelegation",
+                "required": [
+                    "a_pkiUsergroupdelegationID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiUsergroupdelegationID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Field-pkiUsergroupdelegationID"
+                        }
+                    }
+                }
+            },
+            "usergroupdelegation-deleteObject-v1-Response": {
+                "description": "Response for DELETE /1/object/usergroupdelegation/{pkiUsergroupdelegationID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "usergroupdelegation-editObject-v1-Request": {
+                "description": "Request for PUT /1/object/usergroupdelegation/{pkiUsergroupdelegationID}",
+                "required": [
+                    "objUsergroupdelegation"
+                ],
+                "type": "object",
+                "properties": {
+                    "objUsergroupdelegation": {
+                        "$ref": "#/components/schemas/usergroupdelegation-RequestCompound"
+                    }
+                }
+            },
+            "usergroupdelegation-editObject-v1-Response": {
+                "description": "Response for PUT /1/object/usergroupdelegation/{pkiUsergroupdelegationID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "usergroupdelegation-getObject-v2-Response": {
+                "description": "Response for GET /2/object/usergroupdelegation/{pkiUsergroupdelegationID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/usergroupdelegation-getObject-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "usergroupdelegation-getObject-v2-Response-mPayload": {
+                "description": "Payload for GET /2/object/usergroupdelegation/{pkiUsergroupdelegationID}",
+                "required": [
+                    "objUsergroupdelegation"
+                ],
+                "type": "object",
+                "properties": {
+                    "objUsergroupdelegation": {
+                        "$ref": "#/components/schemas/usergroupdelegation-ResponseCompound"
                     }
                 }
             },
@@ -40574,7 +41449,7 @@
     "tags": [
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\r\n\r\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\r\n\r\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\r\n\r\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\r\n\r\n**PATCH** will be incremented everytime changes and additions are released.\r\n\r\nFor each version, there will be the list of changes:\r\n* **Added** for new features.\r\n* **Changed** for changes in existing functionality.\r\n* **Deprecated** for soon-to-be removed features.\r\n* **Removed** for now removed features.\r\n* **Fixed** for any bug fixes.\r\n* **Security** in case of vulnerabilities.\r\n\r\n**Removal lifecycle**<br>\r\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\r\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\r\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\r\n\r\n## 1.1.X Releases\r\n\r\n### [1.1.19] - 2023-08-\r\n\r\n#### Added\r\n\r\n### [1.1.18] - 2023-07-22\r\n\r\n#### Added\r\n- DELETE /1/object/cors/{pkiCorsID}\r\n- DELETE /1/object/ezsignsignergroupmembership/{pkiEzsignsignergroupmembershipID}\r\n- DELETE /1/object/permission/{pkiPermissionID}\r\n- DELETE /1/object/signature/{pkiSignatureID}\r\n- DELETE /1/object/subnet/{pkiSubnetID}\r\n- DELETE /1/object/usergroupmembership/{pkiUsergroupmembershipID}\r\n- DELETE /2/scim/Groups/{groupId}\r\n- DELETE /2/scim/Users/{userId}\r\n- GET /1/object/apikey/getList\r\n- GET /1/object/apikey/{pkiApkiID}\r\n- GET /1/object/apikey/{pkiApkiID}/getCors\r\n- GET /1/object/apikey/{pkiApkiID}/getPermissions\r\n- GET /1/object/apikey/{pkiApkiID}/getSubnets\r\n- GET /1/module/report/getReportFromCache/{sReportgroupCacheID}\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociationsmine\r\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}/getEzsignsignatureattachment\r\n- GET /1/object/modulegroup/getAll/{eContext}\r\n- GET /1/object/user/getList\r\n- GET /1/object/user/{pkiUserID}/getEffectivePermissions\r\n- GET /1/object/user/{pkiUserID}/getPermissions\r\n- GET /1/object/user/{pkiUserID}/getSubnets\r\n- GET /1/object/usergroup/{pkiUsergroupID}/getPermissions\r\n- GET /1/object/usergroup/{pkiUsergroupID}/getUsergroupmemberships\r\n- GET /1/object/usergroupmembership/{pkiUsergroupmembershipID}\r\n- GET /2/object/company/getAutocomplete/{sSelector}\r\n- GET /2/object/cors/{pkiCorsID}\r\n- GET /2/object/emailtype/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsignsignergroupmembership/{pkiEzsignsignergroupmembershipID}\r\n- GET /2/object/permission/{pkiPermissionID}\r\n- GET /2/object/phonetype/getAutocomplete/{sSelector}\r\n- GET /2/object/signature/{pkiSignatureID}\r\n- GET /2/object/subnet/{pkiSubnetID} \r\n- GET /2/object/systemconfiguration/{pkiSystemconfigurationID}\r\n- GET /2/object/user/{pkiUserID}\r\n- GET /2/scim/Groups\r\n- GET /2/scim/Groups/{groupId}\r\n- GET /2/scim/ServiceProviderConfig\r\n- GET /2/scim/Users\r\n- GET /2/scim/Users/{userId}\r\n- POST /1/object/apikey/{pkiApikeyID}/regenerate\r\n- POST /1/object/cors\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/submitEzsignform\r\n- POST /1/object/ezsignpage/{pkiEzsignpageID}/consult\r\n- POST /1/object/ezsignsignergroupmembership\r\n- POST /1/object/permission\r\n- POST /1/object/signature\r\n- POST /1/object/subnet\r\n- POST /1/object/usergroupmembership\r\n- POST /1/object/userstaged/{pkiUserstagedID}/createUser\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/declineToSign\r\n- POST /1/object/user\r\n- POST /1/report/accountsreceivable/accountsreceivablereport\r\n- POST /2/scim/Groups\r\n- POST /2/scim/Users\r\n- PUT /1/object/apikey/{pkiApikeyID}\r\n- PUT /1/object/apikey/{pkiApikeyID}/editPermissions\r\n- PUT /1/object/cors/{pkiCorsID}\r\n- PUT /1/object/permission/{pkiPermissionID}  \r\n- PUT /1/object/signature/{pkiSignatureID} \r\n- PUT /1/object/subnet/{pkiSubnetID}\r\n- PUT /1/object/systemconfiguration/{pkiSystemconfigurationID}\r\n- PUT /1/object/user/{pkiUserID}\r\n- PUT /1/object/user/{pkiUserID}/editPermissions\r\n- PUT /1/object/usergroup/{pkiUsergroupID}/editPermissions\r\n- PUT /1/object/usergroup/{pkiUsergroupID}/editUsergroupmemberships\r\n- PUT /1/object/usergroupmembership/{pkiUsergroupmembershipID}\r\n- PUT /2/scim/Groups/{groupId}\r\n- PUT /2/scim/Users/{userId}\r\n- Webhook Userstaged Created in Userstaged\r\n- Websocket RequestServer-GetWebsocketID-V1\r\n- Websocket Response-Error-V1\r\n- Websocket Response-GetWebsocketID-V1\r\n- Websocket Response-Information-V1\r\n- Added property a_objBillingentityinternalproduct in billingentityinternal-RequestCompound and billingentityinternal-ResponseCompound\r\n- Added property bCommunicationPrivate in objet communication-Response\r\n- Added property eEzsignformfieldgroupTextvalidation in object ezsignformfieldgroup-Request and ezsignformfieldgroup-Response \r\n- Added property fkiEmailID, sBrandingName and sEmailAddress in object branding-Response \r\n- Added property fkiSignatureID in object activesession-Response\r\n- Added property iEzsignsignatureattachmentCount, iEzsignsignatureWidth, iEzsignsignatureHeight, sEzsignsignatureRegexp and eEzsignsignatureTextvalidation in object ezsignsignature-Request and ezsignsignature-Response\r\n- Added property sBrandingName and sEmailAddress in objet branding-Request\r\n- Added property sEmailAddress in object userstaged-Response\r\n- Added property sEzsignsignatureDescription and objSignature in object ezsignsignature-Response\r\n- Added property sDownloadUrl and objSignature in object communicationattachment-Response\r\n- Added property a_objFile, eDecision, sReason and sSvg in ezsignsignature-sign-v1-Request\r\n- Added value FieldText and FieldTextarea for property eEzsignsignatureType\r\n- Added Websocket section in servers section of the documentation\r\n- New 401 error code UNAUTHORIZED_EXPIRED\r\n- New 422 error code UNPROCESSABLEENTITY_EZSIGNFORM_VALIDATION\r\n- New 500 error code ERROR_CONFIGURATION\r\n\r\n\r\n### [1.1.17] - 2023-05-22\r\n\r\n#### Added\r\n- DELETE /1/object/ezsignannotation/{pkiEzsignannotationID}\r\n- DELETE /1/object/userstaged/{pkiUserstagedID}\r\n- GET /1/ezmaxclient/{pksEzmaxclientOs}/version\r\n- GET /1/ezmaxcustomer/{pksEzmaxcustomerCode}/getConfiguration\r\n- GET /1/object/activesession/getList\r\n- GET /1/object/billingentityinternal/getList\r\n- GET /1/object/clonehistory/getList\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}/getEzsignsignaturesAutomatic\r\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}/getEzsignsignaturesAutomatic\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignannotations\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignaturesAutomatic\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getCommunicationCount\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getCommunicationList\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignsignaturesAutomatic\r\n- GET /1/object/ezsignsignature/getEzsignsignaturesAutomatic\r\n- GET /1/object/paymentterm/getList\r\n- GET /1/object/usergroup/getList\r\n- GET /1/object/userstaged/getList\r\n- GET /2/object/billingentityinternal/{pkiBillingentityinternalID}\r\n- GET /2/object/billingentityexternal/getAutocomplete/{sSelector} \r\n- GET /2/object/communication/{pkiCommunicationID}\r\n- GET /2/object/ezmaxproduct/getAutocomplete/{sSelector} \r\n- GET /2/object/ezsignannotation/{pkiEzsignannotationID}\r\n- GET /2/object/paymentterm/{pkiPaymenttermID}\r\n- GET /2/object/paymentterm/getAutocomplete/{sSelector} \r\n- GET /1/object/sessionhistory/getList\r\n- GET /2/object/usergroup/{pkiUsergroupID}\r\n- GET /2/object/userstaged/{pkiUserstagedID}\r\n- POST /1/object/billingentityinternal\r\n- POST /1/object/ezsignannotation\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/flatten\r\n- POST /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/flatten\r\n- POST /1/object/paymentterm\r\n- POST /1/object/usergroup\r\n- POST /1/object/userstaged/{pkiUserstagedID}/map\r\n- PUT /1/object/billingentityinternal/{pkiBillingentityinternalID}\r\n- PUT /1/object/ezsignannotation/{pkiEzsignannotationID}\r\n- PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignannotations\r\n- PUT /1/object/paymentterm/{pkiPaymenttermID}\r\n- PUT /1/object/usergroup/{pkiUsergroupID}\r\n- Webhook Ezsignsigner Accept Clause in Ezsignfoldersignerassociation\r\n- Webhook Ezsignsigner Connect in Ezsignfoldersignerassociation\r\n- New 403 error code FORBIDDEN_PERMISSION\r\n- New 403 error code FORBIDDEN_USER_ORIGIN_EXTERNAL\r\n- New 403 error code UNPROCESSABLEENTITY_DATA_UNIQUE\r\n- New 422 error code UNPROCESSABLEENTITY_PDF_SIGNATURE\r\n- Added property bEzsigndocumentHassignedsignatures in object ezsigndocument-Response\r\n- Added property bEzsigntemplatedocumentHassignedsignatures in object ezsigntemplatedocument-Response\r\n- Added property dtEzsignsignatureDate in object ezsignsignature-Response\r\n- Added property eActivesessionUsertype in object activesession-Response\r\n- Added property objCreditcardtransaction in object ezsignsignature-Response\r\n- Added property objContactName in object ezsignsignature-Response\r\n- Added property sEzsignfolderDescription in object Custom-Ezsignfoldertransmission-Response\r\n- Added property sEzsigndocumentExternalid in object ezsigndocument-Request\r\n- Added property sEzsigndocumentExternalid in object ezsigndocument-Response\r\n- Added property sEzsignfolderExternalid in object ezsignfolder-Request\r\n- Added property sEzsignfolderExternalid in object ezsignfolder-Response\r\n- Added value AgentBrokerEmployeeNormalBuiltIn for sSelector in GET /2/object/user/getAutocomplete/{sSelector}\r\n- Added value EzsignuserBuiltIn for sSelector in GET /2/object/user/getAutocomplete/{sSelector}\r\n \r\n### Removed\r\n- GET /1/object/billingentityinternal/getAutocomplete/{sSelector}\r\n- GET /1/object/branding/{pkiBrandingID}\r\n- GET /1/object/branding/getAutocomplete/{sSelector}\r\n- GET /1/object/department/getAutocomplete/{sSelector}\r\n- GET /1/object/ezmaxinvoicing/{pkiEzmaxinvoicingID}\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- GET /1/object/ezsignbulksenddocumentmapping/{pkiEzsignbulksenddocumentmappingID}\r\n- GET /1/object/ezsignbulksendsignermapping/{pkiEzsignbulksendsignermappingID}\r\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}\r\n- GET /1/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\r\n- GET /1/object/ezsignformfieldgroup/{pkiEzsignformfieldgroupID}\r\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /1/object/ezsigntemplate/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}\r\n- GET /1/object/ezsigntemplateformfieldgroup/{pkiEzsigntemplateformfieldgroupID}\r\n- GET /1/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}\r\n- GET /1/object/ezsigntemplatepackage/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsigntemplatepackagemembership/{pkiEzsigntemplatepackagemembershipID}\r\n- GET /1/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}\r\n- GET /1/object/ezsigntemplatepackagesignermembership/{pkiEzsigntemplatepackagesignermembershipID}\r\n- GET /1/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- GET /1/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}\r\n- GET /1/object/ezsigntsarequirement/getAutocomplete/{sSelector}\r\n- GET /1/object/franchiseoffice/getAutocomplete/{sSelector}\r\n- GET /1/object/secretquestion/getAutocomplete/{sSelector}\r\n- GET /1/object/taxassignment/getAutocomplete/{sSelector}\r\n- GET /1/object/timezone/getAutocomplete/{sSelector}\r\n- GET /1/object/user/getAutocomplete/{sSelector}\r\n- GET /1/object/usergroup/getAutocomplete/{sSelector}\r\n- GET /1/object/versionhistory/{pkiVersionhistoryID}\r\n- GET /1/object/webhook/{pkiWebhookID}\r\n- POST /1/object/apikey\r\n\r\n### [1.1.16] - 2022-11-10\r\n\r\n#### Added\r\n- POST /1/object/ezsigntemplate/{pkiEzsigntemplateID}/copy\r\n- Properties fkiEzsignfoldersignerassociationIDDeclinedtosign and tEzsigndocumentDeclinedtosignreason in ezsigndocument-Response\r\n\r\n### [1.1.15] - 2022-11-07\r\n\r\n#### Added\r\n- PATCH /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\r\n- POST /3/object/ezsignfolder/{pkiEzsignfolderID}/send\r\n- Enum value 'PendingSend' for eEzsignfolderStep\r\n- Property bEzsignfoldersignerassociationDelayedsend in ezsignfoldersignerassociation-Response\r\n- Property dtEzsignfolderDelayedsenddate in ezsignfolder-Response\r\n\r\n#### Deprecated\r\n- POST /2/object/ezsignfolder/{pkiEzsignfolderID}/send\r\n\r\n\r\n### [1.1.14] - 2022-11-01\r\n\r\n#### Added\r\n- GET /2/object/period/getAutocomplete/{sSelector}\r\n- GET /2/object/franchisebroker/getAutocomplete/{sSelector}\r\n- GET /2/object/franchiseoffice/getAutocomplete/{sSelector}\r\n\r\n#### Deprecated\r\n- GET /1/object/period/getAutocomplete/{sSelector}\r\n- GET /1/object/franchisebroker/getAutocomplete/{sSelector}\r\n- GET /1/object/franchiseoffice/getAutocomplete/{sSelector}\r\n\r\n### [1.1.13] - 2022-10-28\r\n\r\n#### Added\r\n\r\n- GET /1/object/ezmaxinvoicing/getAutocomplete/{sSelector}\r\n- GET /1/object/ezmaxinvoicing/getProvisional\r\n- GET /1/object/ezmaxinvoicing/{pkiEzmaxinvoicingID}\r\n- GET /2/object/billingentityinternal/getAutocomplete/{sSelector}\r\n- GET /2/object/branding/getAutocomplete/{sSelector}\r\n- GET /2/object/department/getAutocomplete/{sSelector}\r\n- GET /2/object/ezmaxinvoicing/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsignfoldertype/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsigntemplate/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsigntemplatepackage/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsigntsarequirement/getAutocomplete/{sSelector}\r\n- GET /2/object/secretquestion/getAutocomplete/{sSelector}\r\n- GET /2/object/taxassignment/getAutocomplete/{sSelector}\r\n- GET /2/object/timezone/getAutocomplete/{sSelector}\r\n- GET /2/object/user/getAutocomplete/{sSelector}\r\n- GET /2/object/usergroup/getAutocomplete/{sSelector}\r\n- GET /2/object/branding/{pkiBrandingID}\r\n- GET /2/object/ezmaxinvoicing/{pkiEzmaxinvoicingID}\r\n- GET /2/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- GET /2/object/ezsignbulksenddocumentmapping/{pkiEzsignbulksenddocumentmappingID}\r\n- GET /2/object/ezsignbulksendsignermapping/{pkiEzsignbulksendsignermappingID}\r\n- GET /2/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}\r\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}\r\n- GET /2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\r\n- GET /2/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\r\n- GET /2/object/ezsignformfieldgroup/{pkiEzsignformfieldgroupID}\r\n- GET /2/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /2/object/ezsigntemplate/{pkiEzsigntemplateID}\r\n- GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}\r\n- GET /2/object/ezsigntemplateformfieldgroup/{pkiEzsigntemplateformfieldgroupID}\r\n- GET /2/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}\r\n- GET /2/object/ezsigntemplatepackagemembership/{pkiEzsigntemplatepackagemembershipID}\r\n- GET /2/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}\r\n- GET /2/object/ezsigntemplatepackagesignermembership/{pkiEzsigntemplatepackagesignermembershipID}\r\n- GET /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- GET /2/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}\r\n- GET /2/object/webhook/{pkiWebhookID}\r\n- Accepted value 'Attachments' for field eEzsigntemplatesignatureType\r\n- Added property eEzsignfoldertypePrivacylevel in object ezsignbulksend-Response\r\n- Added properties bEzsignfoldertypeIncludeproofsigner and bEzsignfoldertypeIncludeproofuser in object ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Added properties bEzsigntemplatesignatureRequired, eEzsigntemplatesignatureAttachmentnamesource, sEzsigntemplatesignatureAttachmentdescription, iEzsigntemplatesignatureValidationstep in object ezsigntemplatesignature-Response and ezsigntemplatesignature-Response\r\n- Added selector ClonableUsers in /1/object/user/getAutocomplete/{sSelector}\r\n- New 422 error code UNPROCESSABLEENTITY_EZSIGNSIGNERCONNECTED\r\n- New 429 error codes TOOMANYREQUESTS and TOOMANYREQUESTS_THIRDPARTY\r\n- Rename sImageUrl to sComputedImageurl in object ezsigntemplatedocumentpage-Response and ezsignpage-Response\r\n\r\n#### Deprecated\r\n- GET /1/object/billingentityinternal/getAutocomplete/{sSelector}\r\n- GET /1/object/branding/getAutocomplete/{sSelector}\r\n- GET /1/object/department/getAutocomplete/{sSelector}\r\n- GET /1/object/ezmaxinvoicing/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsigntemplate/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsigntemplatepackage/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsigntsarequirement/getAutocomplete/{sSelector}\r\n- GET /1/object/secretquestion/getAutocomplete/{sSelector}\r\n- GET /1/object/taxassignment/getAutocomplete/{sSelector}\r\n- GET /1/object/timezone/getAutocomplete/{sSelector}\r\n- GET /1/object/user/getAutocomplete/{sSelector}\r\n- GET /1/object/usergroup/getAutocomplete/{sSelector}\r\n- GET /1/object/branding/{pkiBrandingID}\r\n- GET /1/object/ezmaxinvoicing/{pkiEzmaxinvoicingID}\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- GET /1/object/ezsignbulksenddocumentmapping/{pkiEzsignbulksenddocumentmappingID}\r\n- GET /1/object/ezsignbulksendsignermapping/{pkiEzsignbulksendsignermappingID}\r\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}\r\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\r\n- GET /1/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\r\n- GET /1/object/ezsignformfieldgroup/{pkiEzsignformfieldgroupID}\r\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /1/object/ezsigntemplate/{pkiEzsigntemplateID}\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}\r\n- GET /1/object/ezsigntemplateformfieldgroup/{pkiEzsigntemplateformfieldgroupID}\r\n- GET /1/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}\r\n- GET /1/object/ezsigntemplatepackagemembership/{pkiEzsigntemplatepackagemembershipID}\r\n- GET /1/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}\r\n- GET /1/object/ezsigntemplatepackagesignermembership/{pkiEzsigntemplatepackagesignermembershipID}\r\n- GET /1/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- GET /1/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}\r\n- GET /1/object/webhook/{pkiWebhookID}\r\n\r\n#### Fixed\r\n- (CSharpSDK) We now use the correct encoding of the fingerprint for signing requests\r\n- (CSharkSDK) We can now use variable properties object i.e: /1/object/notificationtest/{pkiNotificationtestID}/getElements\r\n\r\n### [1.1.12] - Skipped\r\n\r\n### [1.1.11] - Skipped\r\n\r\n### [1.1.10] - 2022-08-23\r\n\r\n#### Added\r\n- DELETE /1/object/webhook/{pkiWebhookID}\r\n- GET /1/object/branding/{pkiBrandingID}\r\n- GET /1/object/branding/getList\r\n- GET /1/object/department/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\r\n- GET /1/object/webhook/{pkiWebhookID}\r\n- GET /1/object/webhook/{pkiWebhookID}/getHistory\r\n- GET /1/object/webhook/getList\r\n- POST /1/object/branding\r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/importEzsignfoldersignerassociations\r\n- POST /1/object/ezsignfoldertype\r\n- POST /1/object/webhook\r\n- POST /1/object/webhook/{pkiWebhookID}/test\r\n- POST /2/object/ezsignfolder/{pkiEzsignfolderID}/send\r\n- PUT /1/object/branding/{pkiBrandingID}\r\n- PUT /1/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\r\n- PUT /1/object/webhook/{pkiWebhookID}\r\n- New supported eEzsignsignatureType: Attachments\r\n- Object Custom-EzsignfoldersignerassociationActionableElement-Response\r\n- Properties fkiUserID, bEzsignsignatureRequired, eEzsignsignatureAttachmentnamesource, sEzsignsignatureAttachmentdescription, iEzsignsignatureValidationstep in object ezsignsignature-Request\r\n- Properties fkiUserID, bEzsignsignatureRequired, eEzsignsignatureAttachmentnamesource, sEzsignsignatureAttachmentdescription, iEzsignsignatureValidationstep in object ezsignsignature-Response\r\n- Properties objNotificationsubsectionName and sNotificationsectionNameX in object notificationsubsection-Response\r\n- Properties objNotificationtestName and sNotificationtestNameX in object notificationtest-Response\r\n- Properties sBrandingDescriptionX, sBillingentityinternalDescriptionX, sEzsigntsarequirementDescriptionX, sUsergroupNameX and sUsergroupNameXRestricted in object ezsignfoldertype-Response\r\n- Property bActive in getAutocomplete endpoints\r\n- Property dtEzsignformCompleted in object ezsigndocument-Response\r\n- Property tEzsignfoldersignerassociationMessage in object ezsignfoldersignerassociation-Request (Optional)\r\n- Property tEzsignfoldersignerassociationMessage in object ezsignfoldersignerassociation-Response (Mandatory)\r\n- Query parameter eFilterActive in getAutocomplete endpoints\r\n\r\n### Changed\r\n- The return object for route GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociations is now of type Custom-EzsignfoldersignerassociationActionableElement-Response\r\n\r\n#### Deprecated\r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/send\r\n\r\n### [1.1.9] - 2022-06-20\r\n\r\n#### Changed\r\n- Property dtEzsigndocumentFirstsend in Ezsigndocument is no longer required\r\n- Property dtEzsigndocumentLastsend in Ezsigndocument is no longer required\r\n- Property dtEzsignfolderClose in Ezsignfolder is no longer required\r\n\r\n### [1.1.8] - 2022-06-20\r\n\r\n#### Added\r\n- GET /1/object/activesession/getCurrent fkiTimezoneID, eUserEzsignsendreminderfrequency, iUserInterfacecolor, bUserInterfacedark and iUserListresult\r\n- GET /1/object/billingentityinternal/getAutocomplete/{sSelector}\r\n- GET /1/object/branding/getAutocomplete/{sSelector}\r\n- GET /1/object/notificationtest/{pkiNotificationtestID}/getElements\r\n- GET /1/object/taxassignment/getAutocomplete/{sSelector}\r\n- GET /1/object/timezone/getAutocomplete/{sSelector}\r\n- GET /1/object/user/getAutocomplete/{sSelector}\r\n- GET /1/object/usergroup/getAutocomplete/{sSelector}\r\n- Warning Code MUSTVERIFY added to documentation\r\n \r\n#### Changed\r\n- Property dtEzsignfolderScheduledarchive in Ezsignfolder is no longer required\r\n- Property dtEzsignfolderScheduleddispose in Ezsignfolder is no longer required\r\n\r\n### [1.1.7] - 2022-05-17\r\n\r\n#### Added\r\n- DELETE /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- DELETE /1/object/ezsignbulksenddocumentmapping/{pkiEzsignbulksenddocumentmappingID}\r\n- DELETE /1/object/ezsignbulksendsignermapping/{pkiEzsignbulksendsignermappingID}\r\n- DELETE /1/object/ezsigntemplate/{pkiEzsigntemplateID}\r\n- DELETE /1/object/ezsigntemplateformfieldgroup/{pkiEzsigntemplateformfieldgroupID}\r\n- DELETE /1/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}\r\n- DELETE /1/object/ezsigntemplatepackagemembership/{pkiEzsigntemplatepackagemembershipID}\r\n- DELETE /1/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}\r\n- DELETE /1/object/ezsigntemplatepackagesignermembership/{pkiEzsigntemplatepackagesignermembershipID}\r\n- DELETE /1/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- DELETE /1/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}\r\n- GET /1/module/ezsign/suggestSigners\r\n- GET /1/module/ezsign/suggestTemplates\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}/getCsvTemplate\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}/getFormsData\r\n- GET /1/object/ezsignbulksenddocumentmapping/{pkiEzsignbulksenddocumentmappingID}\r\n- GET /1/object/ezsignbulksendsignermapping/{pkiEzsignbulksendsignermappingID}\r\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}/getCsvErrors\r\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}/getFormsData\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures eEzsignsignatureFont, tEzsignsignatureTooltip and eEzsignsignatureTooltipposition\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/batchDownload\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector} sValue\r\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID} eEzsignsignatureFont, tEzsignsignatureTooltip and eEzsignsignatureTooltipposition\r\n- GET /1/object/ezsigntemplate/{pkiEzsigntemplateID}\r\n- GET /1/object/ezsigntemplate/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsigntemplate/getList\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplateformfieldgroups\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatedocumentpages\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getWordsPositions\r\n- GET /1/object/ezsigntemplateformfieldgroup/{pkiEzsigntemplateformfieldgroupID}\r\n- GET /1/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}\r\n- GET /1/object/ezsigntemplatepackage/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsigntemplatepackagemembership/{pkiEzsigntemplatepackagemembershipID}\r\n- GET /1/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}\r\n- GET /1/object/ezsigntemplatepackagesignermembership/{pkiEzsigntemplatepackagesignermembershipID}\r\n- GET /1/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- GET /1/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}\r\n- GET /1/object/ezsigntsarequirement/getAutocomplete/{sSelector}\r\n- GET /1/object/notificationsection/{pkiNotificationsectionID}/getNotificationtests\r\n- GET /1/object/secretquestion/getAutocomplete/{sSelector}\r\n- PATCH /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}\r\n- POST /1/object/ezsignbulksend\r\n- POST /1/object/ezsignbulksend/{pkiEzsignbulksendID}/createEzsignbulksendtransmission\r\n- POST /1/object/ezsignbulksend/{pkiEzsignbulksendID}/reorder\r\n- POST /1/object/ezsignbulksenddocumentmapping\r\n- POST /1/object/ezsignbulksendsignermapping\r\n- POST /2/object/ezsigndocument eEzsigndocumentSource=Ezsigntemplate and fkiEzsigntemplateID\r\n- POST /1/object/ezsigndocument eEzsigndocumentForm and fkiEzsignfoldersignerassociationID\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/unsend\r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/archive\r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/reorder\r\n- POST /1/object/ezsignsignature eEzsignsignatureFont, tEzsignsignatureTooltip and eEzsignsignatureTooltipposition\r\n- POST /2/object/ezsignsignature eEzsignsignatureFont, tEzsignsignatureTooltip and eEzsignsignatureTooltipposition\r\n- POST /1/object/ezsignsignature/{pkiEzsignsignatureID}/sign\r\n- POST /1/object/ezsigntemplate\r\n- POST /1/object/ezsigntemplatedocument\r\n- POST /1/object/ezsigntemplateformfieldgroup\r\n- POST /1/object/ezsigntemplatepackage\r\n- POST /1/object/ezsigntemplatepackagemembership\r\n- POST /1/object/ezsigntemplatepackagesigner\r\n- POST /1/object/ezsigntemplatepackagesignermembership\r\n- POST /1/object/ezsigntemplatesignature\r\n- POST /1/object/ezsigntemplatesigner\r\n- PUT /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures eEzsignsignatureFont, tEzsignsignatureTooltip and eEzsignsignatureTooltipposition\r\n- PUT /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\r\n- PUT /1/object/ezsignsignature/{pkiEzsignsignatureID} eEzsignsignatureFont, tEzsignsignatureTooltip and eEzsignsignatureTooltipposition\r\n- PUT /1/object/ezsigntemplate\r\n- PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}\r\n- PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplateformfieldgroups\r\n- PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n- PUT /1/object/ezsigntemplateformfieldgroup/{pkiEzsigntemplateformfieldgroupID}\r\n- PUT /1/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}\r\n- PUT /1/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}/editEzsigntemplatepackagesigners\r\n- PUT /1/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}\r\n- PUT /1/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- PUT /1/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}\r\n- Error Code UNPROCESSABLEENTITY_DATA_MISSING added to documentation\r\n- Error Code UNPROCESSABLEENTITY_PDF_FORM\r\n- Error Code UNPROCESSABLEENTITY_PDF_FORM_AND_SIGNATURE\r\n\r\n#### Deprecated\r\n- /1/object/ezsignfoldertype/getAutocomplete/{sSelector} mValue\r\n\r\n### [1.1.6] - 2022-03-04\r\n\r\n#### Added\r\n- DELETE /1/object/ezsignformfieldgroup/{pkiEzsignformfieldgroupID}\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}/getEzsignbulksendtransmissions\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignformfieldgroups\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n- GET /1/object/ezsignformfieldgroup/{pkiEzsignformfieldgroupID}\r\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- POST /1/object/ezsignformfieldgroup\r\n- POST /2/object/apikey\r\n- POST /2/object/ezsigndocument\r\n- POST /2/object/ezsignfolder\r\n- POST /2/object/ezsignfoldersignerassociation\r\n- POST /2/object/ezsignsignature\r\n- POST /2/object/franchisereferalincome\r\n- PUT /1/object/ezsignformfieldgroup/{pkiEzsignformfieldgroupID}\r\n- PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n\r\n#### Changed\r\n- Audit in return response has been hierarchized\r\n\r\n#### Deprecated\r\n- POST /1/object/apikey\r\n- POST /1/object/ezsigndocument\r\n- POST /1/object/ezsignfolder\r\n- POST /1/object/ezsignfoldersignerassociation\r\n- POST /1/object/ezsignsignature\r\n- POST /1/object/franchisereferalincome\r\n\r\n### [1.1.4] - 2022-02-24\r\n\r\n#### Added\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID} Added status\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getTemporaryProof\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID} Added fkiBillingentityinternalID, dtEzsignfolderDuedate, sBillingentityinternalDescriptionX, sEzsignfoldertypeNameX, sEzsigntsarequirementDescriptionX, dtEzsignfolderScheduledarchive and dtEzsignfolderScheduleddestruction properties\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociations\r\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\r\n- PATCH /1/object/ezsigndocument/{pkiEzsigndocumentID}\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/endPrematurely\r\n- POST /1/object/ezsignsignature bEzsignsignatureCustomdate and a_objEzsignsignaturecustomdate\r\n- PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n- PUT /1/object/ezsignfolder/{pkiEzsignfolderID}\r\n- Error Code UNPROCESSABLEENTITY_UNMODIFIABLE_FIELD added to documentation\r\n- Error Code UNPROCESSABLEENTITY_CANNOTMODIFY added to documentation\r\n- Error Code UNPROCESSABLEENTITY_DATA_VALIDATION added to documentation\r\n- Error Code UNPROCESSABLEENTITY_DATA_OUTOFBOUND added to documentation\r\n\r\n### [1.1.3] - 2021-12-17\r\n\r\n#### Added\r\n- GET /1/object/ezsignbulksend/getList\r\n- GET /1/object/ezsigntemplatepackage/getList\r\n- POST /1/object/ezsignfoldersignerassociation bEzsignfoldersignerassociationReceivecopy property\r\n- Error Code UNPROCESSABLEENTITY_DOWNLOAD_ERROR added to documentation\r\n- Error Code UNPROCESSABLEENTITY_PDF_REPAIRABLE added to documentation\r\n\r\n#### Changed\r\n- Changed all the OneOf used back to nullable types. When the generators will support 3.1 nullable polymorphism documentation will be improved\r\n\r\n#### Fixed\r\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters contained utf8 special chars\r\n- (CsharpSDK) OneOf not supported for polymorphism was preventing compilation\r\n- \r\n### [1.1.2] - 2021-10-26\r\n\r\n#### Added\r\n- GET /1/object/ezsignfolder/getList eEzsignfoldertypePrivacylevel property\r\n- POST /1/object/ezsigndocument returns a sTemporaryFileUrl on error 422 if error is recoverable\r\n- POST /1/object/ezsigndocument sEzsigndocumentUrl property\r\n- POST /1/object/ezsigndocument eEzsigndocumentSource property now accept \"Url\" as the source\r\n- POST /1/object/ezsigndocument bEzsigndocumentForcerepair property\r\n- Support for \"rg\" operator in date fields in sFilter\r\n- Range operator added to convention section of the documentation\r\n\r\n### [1.1.1] - 2021-10-22\r\n\r\n#### Added\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend\r\n- GET /1/module/list/listpresentation/{sListName}\r\n- POST /1/module/list/listpresentation/{sListName}\r\n- Variables convention documentation now contains type \"m\" for mixed type\r\n- POST /1/object/ezsigndocument/ sEzsigndocumentPassword property\r\n- Support for \"in\" operator for integer fields in sFilter\r\n- Support for \"in\" operator for enum fields in sFilter\r\n\r\n### [1.1.0] - 2021-10-19\r\n\r\n#### Added\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\r\n- GET /1/object/ezsignfolder/getList\r\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsignfoldertype/getList\r\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\r\n- Status Code 406 added to documentation\r\n- Status Code 501 added to documentation\r\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\r\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\r\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\r\n- Variables convention added to documentation\r\n- List Filter convention added to documentation\r\n\r\n#### Deprecated\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\r\n \r\n#### Removed\r\n- Support for typescript-angular\r\n- Support for typescript-aurelia\r\n- Support for typescript-fetch\r\n- Support for typescript-jquery\r\n- Support for typescript-node\r\n\r\n#### Fixed\r\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\r\n\r\n## 1.0.X Releases\r\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)",
+            "description": "All notable changes to this project will be documented in this section.\r\n\r\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\r\n\r\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\r\n\r\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\r\n\r\n**PATCH** will be incremented everytime changes and additions are released.\r\n\r\nFor each version, there will be the list of changes:\r\n* **Added** for new features.\r\n* **Changed** for changes in existing functionality.\r\n* **Deprecated** for soon-to-be removed features.\r\n* **Removed** for now removed features.\r\n* **Fixed** for any bug fixes.\r\n* **Security** in case of vulnerabilities.\r\n\r\n**Removal lifecycle**<br>\r\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\r\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\r\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\r\n\r\n## 1.1.X Releases\r\n\r\n### [1.1.19] - 2023-08-\r\n\r\n#### Added\r\n- DELETE /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- GET /1/object/activesession/getDocumentationUrl\r\n- GET /1/object/user/{pkiUserID}/getApikeys\r\n- GET /1/object/usergroup/{pkiUsergroupID}/getUsergroupdelegations\r\n- GET /2/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- POST /1/object/user/{pkiUserID}/sendPasswordReset\r\n- POST /1/object/usergroup/{pkiUsergroupID}/editUsergroupdelegations\r\n- POST /1/object/usergroupdelegation\r\n- PUT /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- Added property bVersionDeprecated in Common-Response-objDebugPayload\r\n- Added property eEzsigndocumentSteptype in ezsigndocument-ResponseCompound\r\n- Added property iEzsigntemplatesignatureWidth and iEzsigntemplatesignatureHeight in object ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Added property eEzsignformfieldgroupTextvalidation in ezsignformfieldgroup-Response\r\n- Added property eEzsigntemplateformfieldgroupTextvalidation in ezsigntemplateformfieldgroup-Request and ezsigntemplateformfieldgroup-Response\r\n- Added property iEzsignsignatureMaxlength in ezsignsignature-Request and ezsignsignature-Response\r\n- Added properties iEzsigntemplatesignatureMaxlength, sEzsigntemplatesignatureRegexp and eEzsigntemplatesignatureTextvalidation in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Added value AgentBrokerEzsignUserNormal for sSelector in GET /2/object/user/getAutocomplete/{sSelector}\r\n### [1.1.18] - 2023-07-22\r\n\r\n#### Added\r\n- DELETE /1/object/cors/{pkiCorsID}\r\n- DELETE /1/object/ezsignsignergroupmembership/{pkiEzsignsignergroupmembershipID}\r\n- DELETE /1/object/permission/{pkiPermissionID}\r\n- DELETE /1/object/signature/{pkiSignatureID}\r\n- DELETE /1/object/subnet/{pkiSubnetID}\r\n- DELETE /1/object/usergroupmembership/{pkiUsergroupmembershipID}\r\n- DELETE /2/scim/Groups/{groupId}\r\n- DELETE /2/scim/Users/{userId}\r\n- GET /1/object/apikey/getList\r\n- GET /1/object/apikey/{pkiApkiID}\r\n- GET /1/object/apikey/{pkiApkiID}/getCors\r\n- GET /1/object/apikey/{pkiApkiID}/getPermissions\r\n- GET /1/object/apikey/{pkiApkiID}/getSubnets\r\n- GET /1/module/report/getReportFromCache/{sReportgroupCacheID}\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociationsmine\r\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}/getEzsignsignatureattachment\r\n- GET /1/object/modulegroup/getAll/{eContext}\r\n- GET /1/object/user/getList\r\n- GET /1/object/user/{pkiUserID}/getEffectivePermissions\r\n- GET /1/object/user/{pkiUserID}/getPermissions\r\n- GET /1/object/user/{pkiUserID}/getSubnets\r\n- GET /1/object/usergroup/{pkiUsergroupID}/getPermissions\r\n- GET /1/object/usergroup/{pkiUsergroupID}/getUsergroupmemberships\r\n- GET /1/object/usergroupmembership/{pkiUsergroupmembershipID}\r\n- GET /2/object/company/getAutocomplete/{sSelector}\r\n- GET /2/object/cors/{pkiCorsID}\r\n- GET /2/object/emailtype/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsignsignergroupmembership/{pkiEzsignsignergroupmembershipID}\r\n- GET /2/object/permission/{pkiPermissionID}\r\n- GET /2/object/phonetype/getAutocomplete/{sSelector}\r\n- GET /2/object/signature/{pkiSignatureID}\r\n- GET /2/object/subnet/{pkiSubnetID} \r\n- GET /2/object/systemconfiguration/{pkiSystemconfigurationID}\r\n- GET /2/object/user/{pkiUserID}\r\n- GET /2/scim/Groups\r\n- GET /2/scim/Groups/{groupId}\r\n- GET /2/scim/ServiceProviderConfig\r\n- GET /2/scim/Users\r\n- GET /2/scim/Users/{userId}\r\n- POST /1/object/apikey/{pkiApikeyID}/regenerate\r\n- POST /1/object/cors\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/submitEzsignform\r\n- POST /1/object/ezsignpage/{pkiEzsignpageID}/consult\r\n- POST /1/object/ezsignsignergroupmembership\r\n- POST /1/object/permission\r\n- POST /1/object/signature\r\n- POST /1/object/subnet\r\n- POST /1/object/usergroupmembership\r\n- POST /1/object/userstaged/{pkiUserstagedID}/createUser\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/declineToSign\r\n- POST /1/object/user\r\n- POST /1/report/accountsreceivable/accountsreceivablereport\r\n- POST /2/scim/Groups\r\n- POST /2/scim/Users\r\n- PUT /1/object/apikey/{pkiApikeyID}\r\n- PUT /1/object/apikey/{pkiApikeyID}/editPermissions\r\n- PUT /1/object/cors/{pkiCorsID}\r\n- PUT /1/object/permission/{pkiPermissionID}  \r\n- PUT /1/object/signature/{pkiSignatureID} \r\n- PUT /1/object/subnet/{pkiSubnetID}\r\n- PUT /1/object/systemconfiguration/{pkiSystemconfigurationID}\r\n- PUT /1/object/user/{pkiUserID}\r\n- PUT /1/object/user/{pkiUserID}/editPermissions\r\n- PUT /1/object/usergroup/{pkiUsergroupID}/editPermissions\r\n- PUT /1/object/usergroup/{pkiUsergroupID}/editUsergroupmemberships\r\n- PUT /1/object/usergroupmembership/{pkiUsergroupmembershipID}\r\n- PUT /2/scim/Groups/{groupId}\r\n- PUT /2/scim/Users/{userId}\r\n- Webhook Userstaged Created in Userstaged\r\n- Websocket RequestServer-GetWebsocketID-V1\r\n- Websocket Response-Error-V1\r\n- Websocket Response-GetWebsocketID-V1\r\n- Websocket Response-Information-V1\r\n- Added property a_objBillingentityinternalproduct in billingentityinternal-RequestCompound and billingentityinternal-ResponseCompound\r\n- Added property bCommunicationPrivate in objet communication-Response\r\n- Added property eEzsignformfieldgroupTextvalidation in object ezsignformfieldgroup-Request and ezsignformfieldgroup-Response \r\n- Added property fkiEmailID, sBrandingName and sEmailAddress in object branding-Response \r\n- Added property fkiSignatureID in object activesession-Response\r\n- Added property iEzsignsignatureattachmentCount, iEzsignsignatureWidth, iEzsignsignatureHeight, sEzsignsignatureRegexp and eEzsignsignatureTextvalidation in object ezsignsignature-Request and ezsignsignature-Response\r\n- Added property sBrandingName and sEmailAddress in objet branding-Request\r\n- Added property sEmailAddress in object userstaged-Response\r\n- Added property sEzsignsignatureDescription and objSignature in object ezsignsignature-Response\r\n- Added property sDownloadUrl and objSignature in object communicationattachment-Response\r\n- Added property a_objFile, eDecision, sReason and sSvg in ezsignsignature-sign-v1-Request\r\n- Added value FieldText and FieldTextarea for property eEzsignsignatureType\r\n- Added Websocket section in servers section of the documentation\r\n- New 401 error code UNAUTHORIZED_EXPIRED\r\n- New 422 error code UNPROCESSABLEENTITY_EZSIGNFORM_VALIDATION\r\n- New 500 error code ERROR_CONFIGURATION\r\n\r\n\r\n### [1.1.17] - 2023-05-22\r\n\r\n#### Added\r\n- DELETE /1/object/ezsignannotation/{pkiEzsignannotationID}\r\n- DELETE /1/object/userstaged/{pkiUserstagedID}\r\n- GET /1/ezmaxclient/{pksEzmaxclientOs}/version\r\n- GET /1/ezmaxcustomer/{pksEzmaxcustomerCode}/getConfiguration\r\n- GET /1/object/activesession/getList\r\n- GET /1/object/billingentityinternal/getList\r\n- GET /1/object/clonehistory/getList\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}/getEzsignsignaturesAutomatic\r\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}/getEzsignsignaturesAutomatic\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignannotations\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignaturesAutomatic\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getCommunicationCount\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getCommunicationList\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignsignaturesAutomatic\r\n- GET /1/object/ezsignsignature/getEzsignsignaturesAutomatic\r\n- GET /1/object/paymentterm/getList\r\n- GET /1/object/usergroup/getList\r\n- GET /1/object/userstaged/getList\r\n- GET /2/object/billingentityinternal/{pkiBillingentityinternalID}\r\n- GET /2/object/billingentityexternal/getAutocomplete/{sSelector} \r\n- GET /2/object/communication/{pkiCommunicationID}\r\n- GET /2/object/ezmaxproduct/getAutocomplete/{sSelector} \r\n- GET /2/object/ezsignannotation/{pkiEzsignannotationID}\r\n- GET /2/object/paymentterm/{pkiPaymenttermID}\r\n- GET /2/object/paymentterm/getAutocomplete/{sSelector} \r\n- GET /1/object/sessionhistory/getList\r\n- GET /2/object/usergroup/{pkiUsergroupID}\r\n- GET /2/object/userstaged/{pkiUserstagedID}\r\n- POST /1/object/billingentityinternal\r\n- POST /1/object/ezsignannotation\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/flatten\r\n- POST /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/flatten\r\n- POST /1/object/paymentterm\r\n- POST /1/object/usergroup\r\n- POST /1/object/userstaged/{pkiUserstagedID}/map\r\n- PUT /1/object/billingentityinternal/{pkiBillingentityinternalID}\r\n- PUT /1/object/ezsignannotation/{pkiEzsignannotationID}\r\n- PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignannotations\r\n- PUT /1/object/paymentterm/{pkiPaymenttermID}\r\n- PUT /1/object/usergroup/{pkiUsergroupID}\r\n- Webhook Ezsignsigner Accept Clause in Ezsignfoldersignerassociation\r\n- Webhook Ezsignsigner Connect in Ezsignfoldersignerassociation\r\n- New 403 error code FORBIDDEN_PERMISSION\r\n- New 403 error code FORBIDDEN_USER_ORIGIN_EXTERNAL\r\n- New 403 error code UNPROCESSABLEENTITY_DATA_UNIQUE\r\n- New 422 error code UNPROCESSABLEENTITY_PDF_SIGNATURE\r\n- Added property bEzsigndocumentHassignedsignatures in object ezsigndocument-Response\r\n- Added property bEzsigntemplatedocumentHassignedsignatures in object ezsigntemplatedocument-Response\r\n- Added property dtEzsignsignatureDate in object ezsignsignature-Response\r\n- Added property eActivesessionUsertype in object activesession-Response\r\n- Added property objCreditcardtransaction in object ezsignsignature-Response\r\n- Added property objContactName in object ezsignsignature-Response\r\n- Added property sEzsignfolderDescription in object Custom-Ezsignfoldertransmission-Response\r\n- Added property sEzsigndocumentExternalid in object ezsigndocument-Request\r\n- Added property sEzsigndocumentExternalid in object ezsigndocument-Response\r\n- Added property sEzsignfolderExternalid in object ezsignfolder-Request\r\n- Added property sEzsignfolderExternalid in object ezsignfolder-Response\r\n- Added value AgentBrokerEmployeeNormalBuiltIn for sSelector in GET /2/object/user/getAutocomplete/{sSelector}\r\n- Added value EzsignuserBuiltIn for sSelector in GET /2/object/user/getAutocomplete/{sSelector}\r\n \r\n### Removed\r\n- GET /1/object/billingentityinternal/getAutocomplete/{sSelector}\r\n- GET /1/object/branding/{pkiBrandingID}\r\n- GET /1/object/branding/getAutocomplete/{sSelector}\r\n- GET /1/object/department/getAutocomplete/{sSelector}\r\n- GET /1/object/ezmaxinvoicing/{pkiEzmaxinvoicingID}\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- GET /1/object/ezsignbulksenddocumentmapping/{pkiEzsignbulksenddocumentmappingID}\r\n- GET /1/object/ezsignbulksendsignermapping/{pkiEzsignbulksendsignermappingID}\r\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}\r\n- GET /1/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\r\n- GET /1/object/ezsignformfieldgroup/{pkiEzsignformfieldgroupID}\r\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /1/object/ezsigntemplate/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}\r\n- GET /1/object/ezsigntemplateformfieldgroup/{pkiEzsigntemplateformfieldgroupID}\r\n- GET /1/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}\r\n- GET /1/object/ezsigntemplatepackage/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsigntemplatepackagemembership/{pkiEzsigntemplatepackagemembershipID}\r\n- GET /1/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}\r\n- GET /1/object/ezsigntemplatepackagesignermembership/{pkiEzsigntemplatepackagesignermembershipID}\r\n- GET /1/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- GET /1/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}\r\n- GET /1/object/ezsigntsarequirement/getAutocomplete/{sSelector}\r\n- GET /1/object/franchiseoffice/getAutocomplete/{sSelector}\r\n- GET /1/object/secretquestion/getAutocomplete/{sSelector}\r\n- GET /1/object/taxassignment/getAutocomplete/{sSelector}\r\n- GET /1/object/timezone/getAutocomplete/{sSelector}\r\n- GET /1/object/user/getAutocomplete/{sSelector}\r\n- GET /1/object/usergroup/getAutocomplete/{sSelector}\r\n- GET /1/object/versionhistory/{pkiVersionhistoryID}\r\n- GET /1/object/webhook/{pkiWebhookID}\r\n- POST /1/object/apikey\r\n\r\n### [1.1.16] - 2022-11-10\r\n\r\n#### Added\r\n- POST /1/object/ezsigntemplate/{pkiEzsigntemplateID}/copy\r\n- Properties fkiEzsignfoldersignerassociationIDDeclinedtosign and tEzsigndocumentDeclinedtosignreason in ezsigndocument-Response\r\n\r\n### [1.1.15] - 2022-11-07\r\n\r\n#### Added\r\n- PATCH /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\r\n- POST /3/object/ezsignfolder/{pkiEzsignfolderID}/send\r\n- Enum value 'PendingSend' for eEzsignfolderStep\r\n- Property bEzsignfoldersignerassociationDelayedsend in ezsignfoldersignerassociation-Response\r\n- Property dtEzsignfolderDelayedsenddate in ezsignfolder-Response\r\n\r\n#### Deprecated\r\n- POST /2/object/ezsignfolder/{pkiEzsignfolderID}/send\r\n\r\n\r\n### [1.1.14] - 2022-11-01\r\n\r\n#### Added\r\n- GET /2/object/period/getAutocomplete/{sSelector}\r\n- GET /2/object/franchisebroker/getAutocomplete/{sSelector}\r\n- GET /2/object/franchiseoffice/getAutocomplete/{sSelector}\r\n\r\n#### Deprecated\r\n- GET /1/object/period/getAutocomplete/{sSelector}\r\n- GET /1/object/franchisebroker/getAutocomplete/{sSelector}\r\n- GET /1/object/franchiseoffice/getAutocomplete/{sSelector}\r\n\r\n### [1.1.13] - 2022-10-28\r\n\r\n#### Added\r\n\r\n- GET /1/object/ezmaxinvoicing/getAutocomplete/{sSelector}\r\n- GET /1/object/ezmaxinvoicing/getProvisional\r\n- GET /1/object/ezmaxinvoicing/{pkiEzmaxinvoicingID}\r\n- GET /2/object/billingentityinternal/getAutocomplete/{sSelector}\r\n- GET /2/object/branding/getAutocomplete/{sSelector}\r\n- GET /2/object/department/getAutocomplete/{sSelector}\r\n- GET /2/object/ezmaxinvoicing/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsignfoldertype/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsigntemplate/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsigntemplatepackage/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsigntsarequirement/getAutocomplete/{sSelector}\r\n- GET /2/object/secretquestion/getAutocomplete/{sSelector}\r\n- GET /2/object/taxassignment/getAutocomplete/{sSelector}\r\n- GET /2/object/timezone/getAutocomplete/{sSelector}\r\n- GET /2/object/user/getAutocomplete/{sSelector}\r\n- GET /2/object/usergroup/getAutocomplete/{sSelector}\r\n- GET /2/object/branding/{pkiBrandingID}\r\n- GET /2/object/ezmaxinvoicing/{pkiEzmaxinvoicingID}\r\n- GET /2/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- GET /2/object/ezsignbulksenddocumentmapping/{pkiEzsignbulksenddocumentmappingID}\r\n- GET /2/object/ezsignbulksendsignermapping/{pkiEzsignbulksendsignermappingID}\r\n- GET /2/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}\r\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}\r\n- GET /2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\r\n- GET /2/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\r\n- GET /2/object/ezsignformfieldgroup/{pkiEzsignformfieldgroupID}\r\n- GET /2/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /2/object/ezsigntemplate/{pkiEzsigntemplateID}\r\n- GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}\r\n- GET /2/object/ezsigntemplateformfieldgroup/{pkiEzsigntemplateformfieldgroupID}\r\n- GET /2/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}\r\n- GET /2/object/ezsigntemplatepackagemembership/{pkiEzsigntemplatepackagemembershipID}\r\n- GET /2/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}\r\n- GET /2/object/ezsigntemplatepackagesignermembership/{pkiEzsigntemplatepackagesignermembershipID}\r\n- GET /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- GET /2/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}\r\n- GET /2/object/webhook/{pkiWebhookID}\r\n- Accepted value 'Attachments' for field eEzsigntemplatesignatureType\r\n- Added property eEzsignfoldertypePrivacylevel in object ezsignbulksend-Response\r\n- Added properties bEzsignfoldertypeIncludeproofsigner and bEzsignfoldertypeIncludeproofuser in object ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Added properties bEzsigntemplatesignatureRequired, eEzsigntemplatesignatureAttachmentnamesource, sEzsigntemplatesignatureAttachmentdescription, iEzsigntemplatesignatureValidationstep in object ezsigntemplatesignature-Response and ezsigntemplatesignature-Response\r\n- Added selector ClonableUsers in /1/object/user/getAutocomplete/{sSelector}\r\n- New 422 error code UNPROCESSABLEENTITY_EZSIGNSIGNERCONNECTED\r\n- New 429 error codes TOOMANYREQUESTS and TOOMANYREQUESTS_THIRDPARTY\r\n- Rename sImageUrl to sComputedImageurl in object ezsigntemplatedocumentpage-Response and ezsignpage-Response\r\n\r\n#### Deprecated\r\n- GET /1/object/billingentityinternal/getAutocomplete/{sSelector}\r\n- GET /1/object/branding/getAutocomplete/{sSelector}\r\n- GET /1/object/department/getAutocomplete/{sSelector}\r\n- GET /1/object/ezmaxinvoicing/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsigntemplate/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsigntemplatepackage/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsigntsarequirement/getAutocomplete/{sSelector}\r\n- GET /1/object/secretquestion/getAutocomplete/{sSelector}\r\n- GET /1/object/taxassignment/getAutocomplete/{sSelector}\r\n- GET /1/object/timezone/getAutocomplete/{sSelector}\r\n- GET /1/object/user/getAutocomplete/{sSelector}\r\n- GET /1/object/usergroup/getAutocomplete/{sSelector}\r\n- GET /1/object/branding/{pkiBrandingID}\r\n- GET /1/object/ezmaxinvoicing/{pkiEzmaxinvoicingID}\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- GET /1/object/ezsignbulksenddocumentmapping/{pkiEzsignbulksenddocumentmappingID}\r\n- GET /1/object/ezsignbulksendsignermapping/{pkiEzsignbulksendsignermappingID}\r\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}\r\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\r\n- GET /1/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\r\n- GET /1/object/ezsignformfieldgroup/{pkiEzsignformfieldgroupID}\r\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /1/object/ezsigntemplate/{pkiEzsigntemplateID}\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}\r\n- GET /1/object/ezsigntemplateformfieldgroup/{pkiEzsigntemplateformfieldgroupID}\r\n- GET /1/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}\r\n- GET /1/object/ezsigntemplatepackagemembership/{pkiEzsigntemplatepackagemembershipID}\r\n- GET /1/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}\r\n- GET /1/object/ezsigntemplatepackagesignermembership/{pkiEzsigntemplatepackagesignermembershipID}\r\n- GET /1/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- GET /1/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}\r\n- GET /1/object/webhook/{pkiWebhookID}\r\n\r\n#### Fixed\r\n- (CSharpSDK) We now use the correct encoding of the fingerprint for signing requests\r\n- (CSharkSDK) We can now use variable properties object i.e: /1/object/notificationtest/{pkiNotificationtestID}/getElements\r\n\r\n### [1.1.12] - Skipped\r\n\r\n### [1.1.11] - Skipped\r\n\r\n### [1.1.10] - 2022-08-23\r\n\r\n#### Added\r\n- DELETE /1/object/webhook/{pkiWebhookID}\r\n- GET /1/object/branding/{pkiBrandingID}\r\n- GET /1/object/branding/getList\r\n- GET /1/object/department/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\r\n- GET /1/object/webhook/{pkiWebhookID}\r\n- GET /1/object/webhook/{pkiWebhookID}/getHistory\r\n- GET /1/object/webhook/getList\r\n- POST /1/object/branding\r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/importEzsignfoldersignerassociations\r\n- POST /1/object/ezsignfoldertype\r\n- POST /1/object/webhook\r\n- POST /1/object/webhook/{pkiWebhookID}/test\r\n- POST /2/object/ezsignfolder/{pkiEzsignfolderID}/send\r\n- PUT /1/object/branding/{pkiBrandingID}\r\n- PUT /1/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\r\n- PUT /1/object/webhook/{pkiWebhookID}\r\n- New supported eEzsignsignatureType: Attachments\r\n- Object Custom-EzsignfoldersignerassociationActionableElement-Response\r\n- Properties fkiUserID, bEzsignsignatureRequired, eEzsignsignatureAttachmentnamesource, sEzsignsignatureAttachmentdescription, iEzsignsignatureValidationstep in object ezsignsignature-Request\r\n- Properties fkiUserID, bEzsignsignatureRequired, eEzsignsignatureAttachmentnamesource, sEzsignsignatureAttachmentdescription, iEzsignsignatureValidationstep in object ezsignsignature-Response\r\n- Properties objNotificationsubsectionName and sNotificationsectionNameX in object notificationsubsection-Response\r\n- Properties objNotificationtestName and sNotificationtestNameX in object notificationtest-Response\r\n- Properties sBrandingDescriptionX, sBillingentityinternalDescriptionX, sEzsigntsarequirementDescriptionX, sUsergroupNameX and sUsergroupNameXRestricted in object ezsignfoldertype-Response\r\n- Property bActive in getAutocomplete endpoints\r\n- Property dtEzsignformCompleted in object ezsigndocument-Response\r\n- Property tEzsignfoldersignerassociationMessage in object ezsignfoldersignerassociation-Request (Optional)\r\n- Property tEzsignfoldersignerassociationMessage in object ezsignfoldersignerassociation-Response (Mandatory)\r\n- Query parameter eFilterActive in getAutocomplete endpoints\r\n\r\n### Changed\r\n- The return object for route GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociations is now of type Custom-EzsignfoldersignerassociationActionableElement-Response\r\n\r\n#### Deprecated\r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/send\r\n\r\n### [1.1.9] - 2022-06-20\r\n\r\n#### Changed\r\n- Property dtEzsigndocumentFirstsend in Ezsigndocument is no longer required\r\n- Property dtEzsigndocumentLastsend in Ezsigndocument is no longer required\r\n- Property dtEzsignfolderClose in Ezsignfolder is no longer required\r\n\r\n### [1.1.8] - 2022-06-20\r\n\r\n#### Added\r\n- GET /1/object/activesession/getCurrent fkiTimezoneID, eUserEzsignsendreminderfrequency, iUserInterfacecolor, bUserInterfacedark and iUserListresult\r\n- GET /1/object/billingentityinternal/getAutocomplete/{sSelector}\r\n- GET /1/object/branding/getAutocomplete/{sSelector}\r\n- GET /1/object/notificationtest/{pkiNotificationtestID}/getElements\r\n- GET /1/object/taxassignment/getAutocomplete/{sSelector}\r\n- GET /1/object/timezone/getAutocomplete/{sSelector}\r\n- GET /1/object/user/getAutocomplete/{sSelector}\r\n- GET /1/object/usergroup/getAutocomplete/{sSelector}\r\n- Warning Code MUSTVERIFY added to documentation\r\n \r\n#### Changed\r\n- Property dtEzsignfolderScheduledarchive in Ezsignfolder is no longer required\r\n- Property dtEzsignfolderScheduleddispose in Ezsignfolder is no longer required\r\n\r\n### [1.1.7] - 2022-05-17\r\n\r\n#### Added\r\n- DELETE /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- DELETE /1/object/ezsignbulksenddocumentmapping/{pkiEzsignbulksenddocumentmappingID}\r\n- DELETE /1/object/ezsignbulksendsignermapping/{pkiEzsignbulksendsignermappingID}\r\n- DELETE /1/object/ezsigntemplate/{pkiEzsigntemplateID}\r\n- DELETE /1/object/ezsigntemplateformfieldgroup/{pkiEzsigntemplateformfieldgroupID}\r\n- DELETE /1/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}\r\n- DELETE /1/object/ezsigntemplatepackagemembership/{pkiEzsigntemplatepackagemembershipID}\r\n- DELETE /1/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}\r\n- DELETE /1/object/ezsigntemplatepackagesignermembership/{pkiEzsigntemplatepackagesignermembershipID}\r\n- DELETE /1/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- DELETE /1/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}\r\n- GET /1/module/ezsign/suggestSigners\r\n- GET /1/module/ezsign/suggestTemplates\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}/getCsvTemplate\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}/getFormsData\r\n- GET /1/object/ezsignbulksenddocumentmapping/{pkiEzsignbulksenddocumentmappingID}\r\n- GET /1/object/ezsignbulksendsignermapping/{pkiEzsignbulksendsignermappingID}\r\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}/getCsvErrors\r\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}/getFormsData\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures eEzsignsignatureFont, tEzsignsignatureTooltip and eEzsignsignatureTooltipposition\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/batchDownload\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector} sValue\r\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID} eEzsignsignatureFont, tEzsignsignatureTooltip and eEzsignsignatureTooltipposition\r\n- GET /1/object/ezsigntemplate/{pkiEzsigntemplateID}\r\n- GET /1/object/ezsigntemplate/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsigntemplate/getList\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplateformfieldgroups\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatedocumentpages\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getWordsPositions\r\n- GET /1/object/ezsigntemplateformfieldgroup/{pkiEzsigntemplateformfieldgroupID}\r\n- GET /1/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}\r\n- GET /1/object/ezsigntemplatepackage/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsigntemplatepackagemembership/{pkiEzsigntemplatepackagemembershipID}\r\n- GET /1/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}\r\n- GET /1/object/ezsigntemplatepackagesignermembership/{pkiEzsigntemplatepackagesignermembershipID}\r\n- GET /1/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- GET /1/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}\r\n- GET /1/object/ezsigntsarequirement/getAutocomplete/{sSelector}\r\n- GET /1/object/notificationsection/{pkiNotificationsectionID}/getNotificationtests\r\n- GET /1/object/secretquestion/getAutocomplete/{sSelector}\r\n- PATCH /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}\r\n- POST /1/object/ezsignbulksend\r\n- POST /1/object/ezsignbulksend/{pkiEzsignbulksendID}/createEzsignbulksendtransmission\r\n- POST /1/object/ezsignbulksend/{pkiEzsignbulksendID}/reorder\r\n- POST /1/object/ezsignbulksenddocumentmapping\r\n- POST /1/object/ezsignbulksendsignermapping\r\n- POST /2/object/ezsigndocument eEzsigndocumentSource=Ezsigntemplate and fkiEzsigntemplateID\r\n- POST /1/object/ezsigndocument eEzsigndocumentForm and fkiEzsignfoldersignerassociationID\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/unsend\r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/archive\r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/reorder\r\n- POST /1/object/ezsignsignature eEzsignsignatureFont, tEzsignsignatureTooltip and eEzsignsignatureTooltipposition\r\n- POST /2/object/ezsignsignature eEzsignsignatureFont, tEzsignsignatureTooltip and eEzsignsignatureTooltipposition\r\n- POST /1/object/ezsignsignature/{pkiEzsignsignatureID}/sign\r\n- POST /1/object/ezsigntemplate\r\n- POST /1/object/ezsigntemplatedocument\r\n- POST /1/object/ezsigntemplateformfieldgroup\r\n- POST /1/object/ezsigntemplatepackage\r\n- POST /1/object/ezsigntemplatepackagemembership\r\n- POST /1/object/ezsigntemplatepackagesigner\r\n- POST /1/object/ezsigntemplatepackagesignermembership\r\n- POST /1/object/ezsigntemplatesignature\r\n- POST /1/object/ezsigntemplatesigner\r\n- PUT /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures eEzsignsignatureFont, tEzsignsignatureTooltip and eEzsignsignatureTooltipposition\r\n- PUT /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\r\n- PUT /1/object/ezsignsignature/{pkiEzsignsignatureID} eEzsignsignatureFont, tEzsignsignatureTooltip and eEzsignsignatureTooltipposition\r\n- PUT /1/object/ezsigntemplate\r\n- PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}\r\n- PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplateformfieldgroups\r\n- PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n- PUT /1/object/ezsigntemplateformfieldgroup/{pkiEzsigntemplateformfieldgroupID}\r\n- PUT /1/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}\r\n- PUT /1/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}/editEzsigntemplatepackagesigners\r\n- PUT /1/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}\r\n- PUT /1/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- PUT /1/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}\r\n- Error Code UNPROCESSABLEENTITY_DATA_MISSING added to documentation\r\n- Error Code UNPROCESSABLEENTITY_PDF_FORM\r\n- Error Code UNPROCESSABLEENTITY_PDF_FORM_AND_SIGNATURE\r\n\r\n#### Deprecated\r\n- /1/object/ezsignfoldertype/getAutocomplete/{sSelector} mValue\r\n\r\n### [1.1.6] - 2022-03-04\r\n\r\n#### Added\r\n- DELETE /1/object/ezsignformfieldgroup/{pkiEzsignformfieldgroupID}\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}/getEzsignbulksendtransmissions\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignformfieldgroups\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n- GET /1/object/ezsignformfieldgroup/{pkiEzsignformfieldgroupID}\r\n- GET /1/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- POST /1/object/ezsignformfieldgroup\r\n- POST /2/object/apikey\r\n- POST /2/object/ezsigndocument\r\n- POST /2/object/ezsignfolder\r\n- POST /2/object/ezsignfoldersignerassociation\r\n- POST /2/object/ezsignsignature\r\n- POST /2/object/franchisereferalincome\r\n- PUT /1/object/ezsignformfieldgroup/{pkiEzsignformfieldgroupID}\r\n- PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n\r\n#### Changed\r\n- Audit in return response has been hierarchized\r\n\r\n#### Deprecated\r\n- POST /1/object/apikey\r\n- POST /1/object/ezsigndocument\r\n- POST /1/object/ezsignfolder\r\n- POST /1/object/ezsignfoldersignerassociation\r\n- POST /1/object/ezsignsignature\r\n- POST /1/object/franchisereferalincome\r\n\r\n### [1.1.4] - 2022-02-24\r\n\r\n#### Added\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID} Added status\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getTemporaryProof\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID} Added fkiBillingentityinternalID, dtEzsignfolderDuedate, sBillingentityinternalDescriptionX, sEzsignfoldertypeNameX, sEzsigntsarequirementDescriptionX, dtEzsignfolderScheduledarchive and dtEzsignfolderScheduleddestruction properties\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociations\r\n- GET /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\r\n- PATCH /1/object/ezsigndocument/{pkiEzsigndocumentID}\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/endPrematurely\r\n- POST /1/object/ezsignsignature bEzsignsignatureCustomdate and a_objEzsignsignaturecustomdate\r\n- PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n- PUT /1/object/ezsignfolder/{pkiEzsignfolderID}\r\n- Error Code UNPROCESSABLEENTITY_UNMODIFIABLE_FIELD added to documentation\r\n- Error Code UNPROCESSABLEENTITY_CANNOTMODIFY added to documentation\r\n- Error Code UNPROCESSABLEENTITY_DATA_VALIDATION added to documentation\r\n- Error Code UNPROCESSABLEENTITY_DATA_OUTOFBOUND added to documentation\r\n\r\n### [1.1.3] - 2021-12-17\r\n\r\n#### Added\r\n- GET /1/object/ezsignbulksend/getList\r\n- GET /1/object/ezsigntemplatepackage/getList\r\n- POST /1/object/ezsignfoldersignerassociation bEzsignfoldersignerassociationReceivecopy property\r\n- Error Code UNPROCESSABLEENTITY_DOWNLOAD_ERROR added to documentation\r\n- Error Code UNPROCESSABLEENTITY_PDF_REPAIRABLE added to documentation\r\n\r\n#### Changed\r\n- Changed all the OneOf used back to nullable types. When the generators will support 3.1 nullable polymorphism documentation will be improved\r\n\r\n#### Fixed\r\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters contained utf8 special chars\r\n- (CsharpSDK) OneOf not supported for polymorphism was preventing compilation\r\n- \r\n### [1.1.2] - 2021-10-26\r\n\r\n#### Added\r\n- GET /1/object/ezsignfolder/getList eEzsignfoldertypePrivacylevel property\r\n- POST /1/object/ezsigndocument returns a sTemporaryFileUrl on error 422 if error is recoverable\r\n- POST /1/object/ezsigndocument sEzsigndocumentUrl property\r\n- POST /1/object/ezsigndocument eEzsigndocumentSource property now accept \"Url\" as the source\r\n- POST /1/object/ezsigndocument bEzsigndocumentForcerepair property\r\n- Support for \"rg\" operator in date fields in sFilter\r\n- Range operator added to convention section of the documentation\r\n\r\n### [1.1.1] - 2021-10-22\r\n\r\n#### Added\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/unsend\r\n- GET /1/module/list/listpresentation/{sListName}\r\n- POST /1/module/list/listpresentation/{sListName}\r\n- Variables convention documentation now contains type \"m\" for mixed type\r\n- POST /1/object/ezsigndocument/ sEzsigndocumentPassword property\r\n- Support for \"in\" operator for integer fields in sFilter\r\n- Support for \"in\" operator for enum fields in sFilter\r\n\r\n### [1.1.0] - 2021-10-19\r\n\r\n#### Added\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignpages\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getFormData\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getFormsData\r\n- GET /1/object/ezsignfolder/getList\r\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsignfoldertype/getList\r\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions\r\n- Status Code 406 added to documentation\r\n- Status Code 501 added to documentation\r\n- Error Code NOTACCEPTABLE_CONTENT added to documentation\r\n- Error Code NOTACCEPTABLE_LANGUAGE added to documentation\r\n- Error Code ERROR_NOTIMPLEMENTED added to documentation\r\n- Variables convention added to documentation\r\n- List Filter convention added to documentation\r\n\r\n#### Deprecated\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyezsigntemplate\r\n \r\n#### Removed\r\n- Support for typescript-angular\r\n- Support for typescript-aurelia\r\n- Support for typescript-fetch\r\n- Support for typescript-jquery\r\n- Support for typescript-node\r\n\r\n#### Fixed\r\n- (AxiosSDK) Fingerprint header on GET requests was invalid when url parameters were used\r\n\r\n## 1.0.X Releases\r\nDocumentation and changelog for version 1.0x can be found here: [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)",
             "x-displayName": "Changelog"
         },
         {
@@ -40926,6 +41801,11 @@
             "name": "Object_Usergroup",
             "description": "Usergroup contains detail about a group of users",
             "x-displayName": "Usergroup"
+        },
+        {
+            "name": "Object_Usergroupdelegation",
+            "description": "Usergroupdelegation contains details about Usergroupdelegations",
+            "x-displayName": "Usergroupdelegation"
         },
         {
             "name": "Object_Usergroupmembership",
@@ -41386,6 +42266,7 @@
                 "Object_Timezone",
                 "Object_User",
                 "Object_Usergroup",
+                "Object_Usergroupdelegation",
                 "Object_Usergroupmembership",
                 "Object_Userstaged",
                 "Object_Variableexpense",
