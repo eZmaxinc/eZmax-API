@@ -16,4 +16,3 @@ We are also serving simplified versions of the documentation containing only the
 ## Partial documentations
 - [eZmax API Documentation (Ezsign)](https://ezmaxinc.github.io/eZmax-API/docs/partial/ezsign/ezmax.v1.2.html)
 - [eZmax API Documentation (RemaxQC)](https://ezmaxinc.github.io/eZmax-API/docs/partial/remaxqc/ezmax.v1.2.html)
-- 
