@@ -117,6 +117,7 @@
                 "x-superadmin": false,
                 "x-presentations": [],
                 "x-permissions": [],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -173,6 +174,7 @@
                 "x-superadmin": false,
                 "x-presentations": [],
                 "x-permissions": [],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -216,6 +218,7 @@
                 "x-superadmin": false,
                 "x-presentations": [],
                 "x-permissions": [],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -259,6 +262,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -301,6 +305,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -358,6 +363,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -417,6 +423,7 @@
                 "x-permissions": [
                     "ElectronicSignatureConfiguration_CreateeZsignuser"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -474,6 +481,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -561,6 +569,7 @@
                 ],
                 "operationId": "Activesession_GetList_V1",
                 "summary": "Retrieve Activesession list",
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": [],
@@ -613,6 +622,7 @@
                 "x-permissions": [
                     "Management_APIKeyGeneration"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -648,6 +658,7 @@
                 "x-permissions": [
                     "Management_APIKeyGeneration"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -709,6 +720,7 @@
                 "x-permissions": [
                     "Management_APIKeyGeneration"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -770,6 +782,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -817,6 +830,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -864,6 +878,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -911,6 +926,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -969,6 +985,7 @@
                 "x-permissions": [
                     "Management_APIKeyGeneration"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -1060,6 +1077,7 @@
                 "x-permissions": [
                     "Management_APIKeyGeneration"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -1115,6 +1133,7 @@
                 "x-permissions": [
                     "EzmaxInvoicing_Access"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -1173,6 +1192,7 @@
                 "x-permissions": [
                     "Management_Billingentities"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -1210,6 +1230,7 @@
                 "x-permissions": [
                     "Management_Billingentities"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -1270,6 +1291,7 @@
                 "x-permissions": [
                     "Management_Billingentities"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -1340,6 +1362,7 @@
                     "EzmaxInvoicing_Access",
                     "ElectronicSignature_CreationModificationFolderTypes"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -1423,6 +1446,7 @@
                 "x-permissions": [
                     "Management_Billingentities"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -1471,6 +1495,7 @@
                 "x-permissions": [
                     "Branding_CreationModification"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -1510,6 +1535,7 @@
                 "x-permissions": [
                     "Branding_CreationModification"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -1569,6 +1595,7 @@
                 "x-permissions": [
                     "Branding_CreationModification"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -1638,6 +1665,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -1739,6 +1767,7 @@
                 "x-permissions": [
                     "Branding_CreationModification"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -1826,6 +1855,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker",
                     "Assistant"
@@ -1868,6 +1898,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -1933,6 +1964,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -1992,6 +2024,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -2030,6 +2063,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -2092,6 +2126,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -2127,6 +2162,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -2197,6 +2233,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -2269,6 +2306,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
                 ],
@@ -2323,6 +2361,7 @@
                 "x-permissions": [
                     "EzmaxInvoicing_Access"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -2390,6 +2429,7 @@
                 "x-permissions": [
                     "Management_Billingentities"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -2461,6 +2501,7 @@
                 "x-permissions": [
                     "Management_Billingentities"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -2513,6 +2554,7 @@
                     "EzmaxInvoicing_Access",
                     "Management_Billingentities"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -2569,6 +2611,7 @@
                     "EzmaxInvoicing_Access",
                     "Management_Billingentities"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -2633,6 +2676,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -2671,6 +2715,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -2733,6 +2778,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -2772,6 +2818,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -2830,6 +2877,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -2897,6 +2945,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -2945,6 +2994,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -2991,6 +3041,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3050,6 +3101,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3108,6 +3160,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3211,6 +3264,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -3258,6 +3312,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -3294,6 +3349,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3341,6 +3397,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3395,6 +3452,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -3431,6 +3489,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3478,6 +3537,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3526,6 +3586,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3578,6 +3639,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3624,6 +3686,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3683,6 +3746,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3742,6 +3806,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -3793,6 +3858,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -3831,6 +3897,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -3880,6 +3947,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -3919,6 +3987,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "patch": {
@@ -3968,6 +4037,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4029,6 +4099,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4089,6 +4160,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4146,6 +4218,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner",
                     "AgentBroker"
@@ -4212,6 +4285,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4271,6 +4345,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4332,6 +4407,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4393,6 +4469,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4442,6 +4519,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -4495,6 +4573,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker",
                     "EzsignSigner"
@@ -4549,6 +4628,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -4611,6 +4691,7 @@
                 "operationId": "Ezsigndocument_GetEzsignannotations_V1",
                 "summary": "Retrieve an existing Ezsigndocument's Ezsignannotations",
                 "description": "",
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ],
@@ -4669,6 +4750,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4718,6 +4800,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -4771,6 +4854,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4817,6 +4901,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4886,6 +4971,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4937,6 +5023,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4998,6 +5085,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5059,6 +5147,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner",
                     "AgentBroker"
@@ -5123,6 +5212,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5179,6 +5269,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": true,
                 "x-usertypeextra": []
             }
         },
@@ -5227,6 +5318,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -5265,6 +5357,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -5314,6 +5407,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "put": {
@@ -5363,6 +5457,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -5401,6 +5496,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5462,6 +5558,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5525,6 +5622,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5586,6 +5684,7 @@
                 "x-permissions": [
                     "ElectronicSignature_DisposalofeZsignfolders"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5635,6 +5734,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5681,6 +5781,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5727,6 +5828,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5775,6 +5877,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -5825,6 +5928,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5871,6 +5975,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5930,6 +6035,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5994,6 +6100,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6055,6 +6162,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6115,6 +6223,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6176,6 +6285,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6236,6 +6346,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6296,6 +6407,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6357,6 +6469,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6417,6 +6530,7 @@
                 "x-permissions": [
                     "ElectronicSignature_DisposalofeZsignfolders"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -6510,6 +6624,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -6556,6 +6671,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -6604,6 +6720,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -6642,6 +6759,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6690,6 +6808,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "put": {
@@ -6739,6 +6858,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -6778,6 +6898,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "patch": {
@@ -6826,6 +6947,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6887,6 +7009,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6938,6 +7061,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6994,6 +7118,7 @@
                 "x-permissions": [
                     "ElectronicSignature_CreationModificationFolderTypes"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -7032,6 +7157,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7094,6 +7220,7 @@
                 "x-permissions": [
                     "ElectronicSignature_CreationModificationFolderTypes"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7163,6 +7290,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7236,6 +7364,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7328,6 +7457,7 @@
                 "x-permissions": [
                     "ElectronicSignature_CreationModificationFolderTypes"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -7374,6 +7504,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -7412,6 +7543,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7474,6 +7606,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -7513,6 +7646,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7570,6 +7704,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ],
@@ -7632,6 +7767,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -7680,6 +7816,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -7718,6 +7855,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7780,6 +7918,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -7819,6 +7958,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7866,6 +8006,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker",
                     "EzsignSigner"
@@ -7932,6 +8073,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -7977,6 +8119,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -8019,6 +8162,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": [
@@ -8058,6 +8202,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": [
@@ -8122,6 +8267,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -8154,6 +8300,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": [
@@ -8216,6 +8363,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -8262,6 +8410,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -8316,6 +8465,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": [
@@ -8355,6 +8505,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": [
@@ -8405,6 +8556,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": [
@@ -8466,6 +8618,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -8504,6 +8657,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -8552,6 +8706,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "put": {
@@ -8601,6 +8756,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -8637,6 +8793,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -8695,6 +8852,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -8764,6 +8922,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -8869,6 +9028,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -8918,6 +9078,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -8956,6 +9117,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -9018,6 +9180,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "patch": {
@@ -9064,6 +9227,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -9123,6 +9287,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -9182,6 +9347,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -9243,6 +9409,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -9289,6 +9456,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -9340,6 +9508,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -9391,6 +9560,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -9449,6 +9619,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -9505,6 +9676,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -9543,6 +9715,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -9605,6 +9778,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -9641,6 +9815,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -9695,6 +9870,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -9731,6 +9907,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -9791,6 +9968,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -9825,6 +10003,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -9884,6 +10063,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -9953,6 +10133,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10057,6 +10238,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -10104,6 +10286,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -10140,6 +10323,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10187,6 +10371,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10241,6 +10426,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -10277,6 +10463,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10337,6 +10524,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -10371,6 +10559,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10428,6 +10617,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -10464,6 +10654,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10511,6 +10702,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10567,6 +10759,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -10605,6 +10798,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10667,6 +10861,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -10703,6 +10898,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10759,6 +10955,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -10798,6 +10995,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10860,6 +11058,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -10896,6 +11095,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10963,6 +11163,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11043,6 +11244,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11116,6 +11318,7 @@
                 "x-permissions": [
                     "RemaxFranchise_ReferencedIncomeAccess"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11188,6 +11391,7 @@
                 "x-permissions": [
                     "RemaxFranchise_ReferencedIncomeAccess"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11263,6 +11467,7 @@
                     "Invoicing_Reports",
                     "RemaxFranchise_ReferencedIncomeAccess"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11323,6 +11528,7 @@
                 "x-permissions": [
                     "RemaxFranchise_ReferencedIncomeAccess"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -11371,6 +11577,7 @@
                 "x-permissions": [
                     "RemaxFranchise_ReferencedIncomeAccess"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -11407,6 +11614,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -11471,6 +11679,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11519,6 +11728,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11576,6 +11786,7 @@
                 "x-permissions": [
                     "Management_PaymentTerms"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -11613,6 +11824,7 @@
                 "x-permissions": [
                     "Management_PaymentTerms"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11673,6 +11885,7 @@
                 "x-permissions": [
                     "Management_PaymentTerms"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11741,6 +11954,7 @@
                     "RemaxFranchise_CreationModification",
                     "Purchases_CreationModification"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11833,6 +12047,7 @@
                 "x-permissions": [
                     "Management_PaymentTerms"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -11901,6 +12116,7 @@
                     "Inscription_Inspections",
                     "RemaxFranchise_ReferencedIncomeAccess"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11985,6 +12201,7 @@
                     "Inscription_Inspections",
                     "RemaxFranchise_ReferencedIncomeAccess"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -12048,6 +12265,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -12086,6 +12304,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -12148,6 +12367,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -12183,6 +12403,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -12251,6 +12472,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
                 ],
@@ -12326,6 +12548,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -12421,6 +12644,7 @@
                 ],
                 "operationId": "Sessionhistory_GetList_V1",
                 "summary": "Retrieve Sessionhistory list",
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": [],
@@ -12486,6 +12710,7 @@
                     "Management_UsersAgentBroker",
                     "Management_UsersEzsignUser"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker",
                     "EzsignSigner"
@@ -12528,6 +12753,7 @@
                     "Management_UsersAgentBroker",
                     "Management_UsersEzsignUser"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker",
                     "EzsignSigner"
@@ -12594,6 +12820,7 @@
                     "Management_UsersAgentBroker",
                     "Management_UsersEzsignUser"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker",
                     "EzsignSigner"
@@ -12633,6 +12860,7 @@
                     "Management_UsersAgentBroker",
                     "Management_UsersEzsignUser"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker",
                     "EzsignSigner"
@@ -12695,6 +12923,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -12733,6 +12962,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -12795,6 +13025,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -12833,6 +13064,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -12881,6 +13113,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker",
                     "Assistant"
@@ -12945,6 +13178,7 @@
                 "x-permissions": [
                     "Management_SystemconfigurationEdit"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -13015,6 +13249,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -13087,6 +13322,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -13148,6 +13384,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -13189,6 +13426,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -13254,6 +13492,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -13315,6 +13554,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -13361,6 +13601,7 @@
                 "x-permissions": [
                     "Management_APIKeyGeneration"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": [
@@ -13411,6 +13652,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -13458,6 +13700,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -13505,6 +13748,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -13565,6 +13809,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -13636,6 +13881,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -13747,6 +13993,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -13791,6 +14038,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -13829,6 +14077,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -13889,6 +14138,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -13948,6 +14198,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -14007,6 +14258,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -14067,6 +14319,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -14113,6 +14366,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -14160,6 +14414,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -14207,6 +14462,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -14276,6 +14532,7 @@
                 "x-permissions": [
                     "ElectronicSignature_CreationModificationFolderTypes"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -14363,6 +14620,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -14407,6 +14665,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -14444,6 +14703,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -14505,6 +14765,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -14539,6 +14800,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -14595,6 +14857,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -14633,6 +14896,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -14694,6 +14958,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -14729,6 +14994,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": []
@@ -14777,6 +15043,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": [
@@ -14827,6 +15094,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": [
@@ -14887,6 +15155,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": [
@@ -14950,6 +15219,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": [
@@ -15040,6 +15310,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": [],
                 "x-superadmin": false,
                 "x-presentations": [
@@ -15088,6 +15359,7 @@
                 "x-permissions": [
                     "Management_VariableExpenses"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -15125,6 +15397,7 @@
                 "x-permissions": [
                     "Management_VariableExpenses"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -15185,6 +15458,7 @@
                 "x-permissions": [
                     "Management_VariableExpenses"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -15252,6 +15526,7 @@
                 "x-permissions": [
                     "Purchases_CreationModification"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -15343,6 +15618,7 @@
                 "x-permissions": [
                     "Management_VariableExpenses"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -15379,6 +15655,7 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -15435,6 +15712,7 @@
                 "x-permissions": [
                     "Management_Webhook"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -15473,6 +15751,7 @@
                 "x-permissions": [
                     "Management_Webhook"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -15532,6 +15811,7 @@
                 "x-permissions": [
                     "Management_Webhook"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -15568,6 +15848,7 @@
                 "x-permissions": [
                     "Management_Webhook"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -15634,6 +15915,7 @@
                 "x-permissions": [
                     "Management_Webhook"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -15692,6 +15974,7 @@
                 "x-permissions": [
                     "Management_Webhook"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -15789,6 +16072,7 @@
                 "x-permissions": [
                     "Management_Webhook"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -15832,6 +16116,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "post": {
@@ -15872,6 +16157,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -15914,6 +16200,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "put": {
@@ -15964,6 +16251,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -15997,6 +16285,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -16025,6 +16314,7 @@
                 "x-superadmin": false,
                 "x-presentations": [],
                 "x-permissions": [],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -16069,6 +16359,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "post": {
@@ -16110,6 +16401,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -16153,6 +16445,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "put": {
@@ -16204,6 +16497,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -16238,6 +16532,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
+                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         }
