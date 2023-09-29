@@ -4564,10 +4564,11 @@
                 },
                 {
                     "name": "eDocumentType",
-                    "description": "The type of document to retrieve.\n\n1. **Initial** Is the initial document before any signature were applied.\n2. **Signed** Is the final document once all signatures were applied.\n3. **Proofdocument** Is the evidence report.\n4. **Proof** Is the complete evidence archive including all of the above and more.\n",
+                    "description": "The type of document to retrieve.\n\n1. **Initial** Is the initial document before any signature were applied.\n2. **SignatureReady** Is the version containing the annotations/form to show the signer.\n3. **Signed** Is the final document once all signatures were applied.\n4. **Proofdocument** Is the evidence report.\n5. **Proof** Is the complete evidence archive including all of the above and more.\n",
                     "schema": {
                         "enum": [
                             "Initial",
+                            "SignatureReady",
                             "Signed",
                             "Proof",
                             "Proofdocument"
@@ -5825,56 +5826,6 @@
                     "All"
                 ],
                 "x-usertypeextra": []
-            },
-            "parameters": [
-                {
-                    "name": "pkiEzsignfolderID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociationsmine": {
-            "get": {
-                "tags": [
-                    "Object_Ezsignfolder"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ezsignfolder-getEzsignfoldersignerassociationsmine-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": []
-                    }
-                ],
-                "operationId": "Ezsignfolder_GetEzsignfoldersignerassociationsmine_V1",
-                "summary": "Retrieve your own Ezsignfoldersignerassociations from an existing Ezsignfolder",
-                "description": "",
-                "x-superadmin": false,
-                "x-presentations": [
-                    "Ezsign"
-                ],
-                "x-permissions": [
-                    "All"
-                ],
-                "x-usertypeextra": [
-                    "EzsignSigner"
-                ]
             },
             "parameters": [
                 {
@@ -17561,22 +17512,6 @@
                     }
                 }
             },
-            "Custom-Ezsignfoldersignerassociationmine-Response": {
-                "description": "A custom Ezsignfoldersignerassociation Object",
-                "required": [
-                    "pkiEzsignfoldersignerassociationID",
-                    "fkiEzsignfolderID"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiEzsignfoldersignerassociationID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID"
-                    },
-                    "fkiEzsignfolderID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
-                    }
-                }
-            },
             "Custom-Ezsignfoldersignerassociationstatus-Response": {
                 "description": "A Ezsignfoldersignerassociationstatus Object and children to create a complete structure",
                 "required": [
@@ -17673,10 +17608,7 @@
                 "allOf": [
                     {
                         "required": [
-                            "pkiEzsignfoldertypeID",
-                            "sEzsignfoldertypeNameX",
-                            "bEzsignfoldertypeIncludeproofsigner",
-                            "bEzsignfoldertypeIncludeproofuser"
+                            "pkiEzsignfoldertypeID"
                         ],
                         "type": "object",
                         "properties": {
@@ -18450,6 +18382,10 @@
                 "type": "boolean",
                 "example": false
             },
+            "Field-bEzsignformfieldAutocomplete": {
+                "description": "Whether the Ezsignformfield allows the use of the autocomplete of the browser.\n\nThis can only be set if eEzsignformfieldgroupType is **Text**",
+                "type": "boolean"
+            },
             "Field-bEzsignformfieldSelected": {
                 "description": "Whether the Ezsignformfield is selected or not by default.\n\nThis can only be set if eEzsignformfieldgroupType is **Checkbox** or **Radio**",
                 "type": "boolean"
@@ -18483,6 +18419,10 @@
                 "description": "If the Ezsigntemplatedocument contains signed signatures (From internal or external sources)",
                 "type": "boolean",
                 "example": true
+            },
+            "Field-bEzsigntemplateformfieldAutocomplete": {
+                "description": "Whether the Ezsigntemplateformfield allows the use of the autocomplete of the browser.\n\nThis can only be set if eEzsigntemplateformfieldgroupType is **Text**",
+                "type": "boolean"
             },
             "Field-bEzsigntemplateformfieldSelected": {
                 "description": "Whether the Ezsigntemplateformfield is selected or not by default.\n\nThis can only be set if eEzsigntemplateformfieldgroupType is **Checkbox** or **Radio**",
@@ -29100,41 +29040,6 @@
                     }
                 }
             },
-            "ezsignfolder-getEzsignfoldersignerassociationsmine-v1-Response": {
-                "description": "Response for GET /1/object/ezsignfolder/{pkiEzsignfolder}/getEzsignfoldersignerassociationsmine",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "mPayload"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "mPayload": {
-                                "$ref": "#/components/schemas/ezsignfolder-getEzsignfoldersignerassociationsmine-v1-Response-mPayload"
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Response"
-                    }
-                ]
-            },
-            "ezsignfolder-getEzsignfoldersignerassociationsmine-v1-Response-mPayload": {
-                "description": "Payload for GET /1/object/ezsignfolder/{pkiEzsignfolder}/getEzsignfoldersignerassociationsmine",
-                "required": [
-                    "a_objEzsignfoldersignerassociation"
-                ],
-                "type": "object",
-                "properties": {
-                    "a_objEzsignfoldersignerassociation": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Custom-Ezsignfoldersignerassociationmine-Response"
-                        }
-                    }
-                }
-            },
             "ezsignfolder-getEzsignsignaturesAutomatic-v1-Response": {
                 "description": "Response for GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignsignaturesAutomatic",
                 "type": "object",
@@ -30515,6 +30420,9 @@
                     "iEzsignformfieldHeight": {
                         "$ref": "#/components/schemas/Field-iEzsignformfieldHeight"
                     },
+                    "bEzsignformfieldAutocomplete": {
+                        "$ref": "#/components/schemas/Field-bEzsignformfieldAutocomplete"
+                    },
                     "bEzsignformfieldSelected": {
                         "$ref": "#/components/schemas/Field-bEzsignformfieldSelected"
                     },
@@ -30569,6 +30477,9 @@
                     "iEzsignformfieldHeight": {
                         "$ref": "#/components/schemas/Field-iEzsignformfieldHeight"
                     },
+                    "bEzsignformfieldAutocomplete": {
+                        "$ref": "#/components/schemas/Field-bEzsignformfieldAutocomplete"
+                    },
                     "bEzsignformfieldSelected": {
                         "$ref": "#/components/schemas/Field-bEzsignformfieldSelected"
                     },
@@ -30594,7 +30505,6 @@
                     "eEzsignformfieldgroupSignerrequirement",
                     "sEzsignformfieldgroupLabel",
                     "iEzsignformfieldgroupStep",
-                    "sEzsignformfieldgroupDefaultvalue",
                     "iEzsignformfieldgroupFilledmin",
                     "iEzsignformfieldgroupFilledmax",
                     "bEzsignformfieldgroupReadonly"
@@ -33327,6 +33237,9 @@
                     "iEzsigntemplateformfieldHeight": {
                         "$ref": "#/components/schemas/Field-iEzsigntemplateformfieldHeight"
                     },
+                    "bEzsigntemplateformfieldAutocomplete": {
+                        "$ref": "#/components/schemas/Field-bEzsigntemplateformfieldAutocomplete"
+                    },
                     "bEzsigntemplateformfieldSelected": {
                         "$ref": "#/components/schemas/Field-bEzsigntemplateformfieldSelected"
                     }
@@ -33377,6 +33290,9 @@
                     },
                     "iEzsigntemplateformfieldHeight": {
                         "$ref": "#/components/schemas/Field-iEzsigntemplateformfieldHeight"
+                    },
+                    "bEzsigntemplateformfieldAutocomplete": {
+                        "$ref": "#/components/schemas/Field-bEzsigntemplateformfieldAutocomplete"
                     },
                     "bEzsigntemplateformfieldSelected": {
                         "$ref": "#/components/schemas/Field-bEzsigntemplateformfieldSelected"
@@ -40653,7 +40569,7 @@
     "tags": [
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\r\n\r\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\r\n\r\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\r\n\r\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\r\n\r\n**PATCH** will be incremented everytime changes and additions are released.\r\n\r\nFor each version, there will be the list of changes:\r\n* **Added** for new features.\r\n* **Changed** for changes in existing functionality.\r\n* **Deprecated** for soon-to-be removed features.\r\n* **Removed** for now removed features.\r\n* **Fixed** for any bug fixes.\r\n* **Security** in case of vulnerabilities.\r\n\r\n**Removal lifecycle**<br>\r\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\r\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\r\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\r\n\r\n## 1.2.X Releases\r\n\r\n### [1.2.0] - 2023-09-24\r\n\r\n#### Added\r\n- DELETE /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- GET /1/object/activesession/getDocumentationUrl\r\n- GET /1/object/user/{pkiUserID}/getApikeys\r\n- GET /1/object/usergroup/{pkiUsergroupID}/getUsergroupdelegations\r\n- GET /2/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- POST /1/object/user/{pkiUserID}/sendPasswordReset\r\n- POST /1/object/usergroup/{pkiUsergroupID}/editUsergroupdelegations\r\n- POST /1/object/usergroupdelegation\r\n- PUT /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- Added avanced search filters sContactFirstname, sContactLastname and sEzsigndocumentName to Ezsignfolder list\r\n- Added property bVersionDeprecated in Common-Response-objDebugPayload\r\n- Added property eEzsigndocumentSteptype in ezsigndocument-ResponseCompound\r\n- Added property iEzsigntemplatesignatureWidth and iEzsigntemplatesignatureHeight in object ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Added property eEzsignformfieldgroupTextvalidation in ezsignformfieldgroup-Response\r\n- Added property eEzsigntemplateformfieldgroupTextvalidation in ezsigntemplateformfieldgroup-Request and ezsigntemplateformfieldgroup-Response\r\n- Added property iEzsignsignatureMaxlength in ezsignsignature-Request and ezsignsignature-Response\r\n- Added properties iEzsigntemplatesignatureMaxlength, sEzsigntemplatesignatureRegexp and eEzsigntemplatesignatureTextvalidation in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Added property objContactNameDelegation in ezsignsignature-Response\r\n- Added property objEzsignfoldertype in ezsignfolder-Response\r\n- Added properties bEzsignfoldertypeDelegate and bEzsignfoldertypeReassign in Custom-Ezsignfoldertype-Response, ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Added value AgentBrokerEzsignUserNormal for sSelector in GET /2/object/user/getAutocomplete/{sSelector}\r\n- Added value AllButEveryone for sSelector in GET /2/object/usergroup/getAutocomplete/{sSelector}\r\n- New 401 error code UNAUTHORIZED_REQUEST_APIKEY\r\n- New 401 error code UNAUTHORIZED_REQUEST_PRESIGNED \r\n\r\n## Older Releases\r\nDocumentation and changelog for older releases can be found here\r\n- [1.1.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.1.html)\r\n- [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)",
+            "description": "All notable changes to this project will be documented in this section.\r\n\r\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\r\n\r\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\r\n\r\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\r\n\r\n**PATCH** will be incremented everytime changes and additions are released.\r\n\r\nFor each version, there will be the list of changes:\r\n* **Added** for new features.\r\n* **Changed** for changes in existing functionality.\r\n* **Deprecated** for soon-to-be removed features.\r\n* **Removed** for now removed features.\r\n* **Fixed** for any bug fixes.\r\n* **Security** in case of vulnerabilities.\r\n\r\n**Removal lifecycle**<br>\r\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\r\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\r\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\r\n\r\n## 1.2.X Releases\r\n\r\n### [1.2.0] - 2023-09-24\r\n\r\n#### Added\r\n- DELETE /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- GET /1/object/activesession/getDocumentationUrl\r\n- GET /1/object/user/{pkiUserID}/getApikeys\r\n- GET /1/object/usergroup/{pkiUsergroupID}/getUsergroupdelegations\r\n- GET /2/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- POST /1/object/user/{pkiUserID}/sendPasswordReset\r\n- POST /1/object/usergroup/{pkiUsergroupID}/editUsergroupdelegations\r\n- POST /1/object/usergroupdelegation\r\n- PUT /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- Added avanced search filters sContactFirstname, sContactLastname and sEzsigndocumentName to Ezsignfolder list\r\n- Added property bVersionDeprecated in Common-Response-objDebugPayload\r\n- Added property eEzsigndocumentSteptype in ezsigndocument-ResponseCompound\r\n- Added property iEzsigntemplatesignatureWidth and iEzsigntemplatesignatureHeight in object ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Added property eEzsignformfieldgroupTextvalidation in ezsignformfieldgroup-Response\r\n- Added property eEzsigntemplateformfieldgroupTextvalidation in ezsigntemplateformfieldgroup-Request and ezsigntemplateformfieldgroup-Response\r\n- Added property iEzsignsignatureMaxlength in ezsignsignature-Request and ezsignsignature-Response\r\n- Added properties iEzsigntemplatesignatureMaxlength, sEzsigntemplatesignatureRegexp and eEzsigntemplatesignatureTextvalidation in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Added property objContactNameDelegation in ezsignsignature-Response\r\n- Added property objEzsignfoldertype in ezsignfolder-Response\r\n- Added property bEzsignformfieldAutocomplete in ezsignformfield-Request and ezsignformfield-Responce\r\n- Added property bEzsigntemplateformfieldAutocomplete in ezsigntemplateformfield-Request and ezsigntemplateformfield-Responce\r\n- Added properties bEzsignfoldertypeDelegate and bEzsignfoldertypeReassign in Custom-Ezsignfoldertype-Response, ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Added value AgentBrokerEzsignUserNormal for sSelector in GET /2/object/user/getAutocomplete/{sSelector}\r\n- Added value AllButEveryone for sSelector in GET /2/object/usergroup/getAutocomplete/{sSelector}\r\n- New 401 error code UNAUTHORIZED_REQUEST_APIKEY\r\n- New 401 error code UNAUTHORIZED_REQUEST_PRESIGNED \r\n\r\n## Older Releases\r\nDocumentation and changelog for older releases can be found here\r\n- [1.1.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.1.html)\r\n- [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)",
             "x-displayName": "Changelog"
         },
         {
