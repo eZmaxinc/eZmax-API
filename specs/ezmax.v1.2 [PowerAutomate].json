@@ -589,17 +589,5 @@
       }
     }
   },
-  "x-presentations": [
-    "Ezsign",
-    "RemaxQC"
-  ],
-  "x-tagGroups": [
-    {
-      "tags": [
-        "Object_Ezsignfolder"
-      ],
-      "name": "Object"
-    }
-  ],
-  "x-webhooks": {}
+  "x-tagGroups": []
 }
