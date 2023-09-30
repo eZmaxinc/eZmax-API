@@ -481,7 +481,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
+                "x-powerautomate": true,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -22902,7 +22902,7 @@
                     "sCompanyNameX",
                     "pksCustomerCode",
                     "sDepartmentNameX",
-                    "pkiSystemconfigurationtypeID"
+                    "fkiSystemconfigurationtypeID"
                 ],
                 "type": "object",
                 "properties": {
@@ -22950,7 +22950,6 @@
                     },
                     {
                         "required": [
-                            "a_Permissions",
                             "a_eModuleInternalname",
                             "objUserReal",
                             "a_pkiPermissionID"
