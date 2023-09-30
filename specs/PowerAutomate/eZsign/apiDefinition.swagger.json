@@ -948,6 +948,11 @@
       "type": "apiKey"
     }
   },
+  "security": [
+    {
+      "API Key": []
+    }
+  ],
   "x-components": {
     "parameters": {},
     "responses": {
