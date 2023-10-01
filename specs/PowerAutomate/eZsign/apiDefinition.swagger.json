@@ -123,21 +123,6 @@
       "pattern": "^.{0,64}$",
       "type": "string"
     },
-    "Common-Response": {
-      "description": "All API response will inherit this based Response",
-      "properties": {
-        "objDebug": {
-          "$ref": "#/definitions/Common-Response-objDebug"
-        },
-        "objDebugPayload": {
-          "$ref": "#/definitions/Common-Response-objDebugPayload"
-        }
-      },
-      "required": [
-        "objDebugPayload"
-      ],
-      "type": "object"
-    },
     "Common-Response-Error": {
       "description": "Generic Error Message",
       "properties": {
@@ -155,14 +140,6 @@
       "type": "object"
     },
     "Common-Response-Error-EzsignformValidation": {
-      "allOf": [
-        {
-          "type": "object"
-        },
-        {
-          "$ref": "#/definitions/Common-Response-Error"
-        }
-      ],
       "description": "Generic Error Message",
       "properties": {
         "a_objEzsignformfielderror": {
@@ -171,42 +148,56 @@
             "$ref": "#/definitions/Custom-Ezsignformfielderror-Response"
           },
           "type": "array"
+        },
+        "eErrorCode": {
+          "$ref": "#/definitions/Field-eErrorCode"
+        },
+        "sErrorMessage": {
+          "$ref": "#/definitions/Field-sErrorMessage"
         }
       },
       "required": [
-        "a_objEzsignformfielderror"
+        "a_objEzsignformfielderror",
+        "sErrorMessage",
+        "eErrorCode"
       ],
       "type": "object"
     },
     "Common-Response-Error-TooManyRequests": {
-      "allOf": [
-        {
-          "type": "object"
-        },
-        {
-          "$ref": "#/definitions/Common-Response-Error"
-        }
-      ],
       "description": "Generic Error Message",
+      "properties": {
+        "eErrorCode": {
+          "$ref": "#/definitions/Field-eErrorCode"
+        },
+        "sErrorMessage": {
+          "$ref": "#/definitions/Field-sErrorMessage"
+        }
+      },
+      "required": [
+        "sErrorMessage",
+        "eErrorCode"
+      ],
       "type": "object"
     },
     "Common-Response-Error-sTemporaryFileUrl": {
-      "allOf": [
-        {
-          "properties": {
-            "sTemporaryFileUrl": {
-              "description": "The Temporary File Url of the document that was uploaded. That url can be reused instead of uploading the file again.",
-              "example": "http://www.example.com/document.pdf",
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        {
-          "$ref": "#/definitions/Common-Response-Error"
-        }
-      ],
       "description": "Generic Error Message",
+      "properties": {
+        "eErrorCode": {
+          "$ref": "#/definitions/Field-eErrorCode"
+        },
+        "sErrorMessage": {
+          "$ref": "#/definitions/Field-sErrorMessage"
+        },
+        "sTemporaryFileUrl": {
+          "description": "The Temporary File Url of the document that was uploaded. That url can be reused instead of uploading the file again.",
+          "example": "http://www.example.com/document.pdf",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sErrorMessage",
+        "eErrorCode"
+      ],
       "type": "object"
     },
     "Common-Response-Redirect-sSecretquestionTextX": {
@@ -337,53 +328,43 @@
       "type": "string"
     },
     "Custom-Ezsignformfielderror-Response": {
-      "allOf": [
-        {
-          "properties": {
-            "a_objEzsignformfielderrortest": {
-              "description": "",
-              "items": {
-                "$ref": "#/definitions/Custom-Ezsignformfielderrortest-Response"
-              },
-              "type": "array"
-            },
-            "sEzsignformfieldLabel": {
-              "$ref": "#/definitions/Field-sEzsignformfieldLabel"
-            }
-          },
-          "required": [
-            "sEzsignformfieldLabel",
-            "a_objEzsignformfielderrortest"
-          ],
-          "type": "object"
-        }
-      ],
       "description": "A Custom Ezsignformfield Object to contain an error list",
+      "properties": {
+        "a_objEzsignformfielderrortest": {
+          "description": "",
+          "items": {
+            "$ref": "#/definitions/Custom-Ezsignformfielderrortest-Response"
+          },
+          "type": "array"
+        },
+        "sEzsignformfieldLabel": {
+          "$ref": "#/definitions/Field-sEzsignformfieldLabel"
+        }
+      },
+      "required": [
+        "sEzsignformfieldLabel",
+        "a_objEzsignformfielderrortest"
+      ],
       "type": "object"
     },
     "Custom-Ezsignformfielderrortest-Response": {
-      "allOf": [
-        {
-          "properties": {
-            "sEzsignformfielderrortestDetail": {
-              "description": "The detail why the test failed",
-              "pattern": "^.{0,255}$",
-              "type": "string"
-            },
-            "sEzsignformfielderrortestName": {
-              "description": "The name of the test",
-              "pattern": "^.{0,50}$",
-              "type": "string"
-            }
-          },
-          "required": [
-            "sEzsignformfielderrortestName",
-            "sEzsignformfielderrortestDetail"
-          ],
-          "type": "object"
-        }
-      ],
       "description": "A Custom Ezsignformfielderrortest Object to contain the detail of the test error",
+      "properties": {
+        "sEzsignformfielderrortestDetail": {
+          "description": "The detail why the test failed",
+          "pattern": "^.{0,255}$",
+          "type": "string"
+        },
+        "sEzsignformfielderrortestName": {
+          "description": "The name of the test",
+          "pattern": "^.{0,50}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sEzsignformfielderrortestName",
+        "sEzsignformfielderrortestDetail"
+      ],
       "type": "object"
     },
     "Field-bActivesessionDebug": {
@@ -658,99 +639,6 @@
       "example": "This is a note",
       "type": "string"
     },
-    "activesession-Response": {
-      "description": "An Activesession Object",
-      "properties": {
-        "bActivesessionDebug": {
-          "$ref": "#/definitions/Field-bActivesessionDebug"
-        },
-        "bActivesessionIssuperadmin": {
-          "$ref": "#/definitions/Field-bActivesessionIssuperadmin"
-        },
-        "eActivesessionOrigin": {
-          "$ref": "#/definitions/Field-eActivesessionOrigin"
-        },
-        "eActivesessionUsertype": {
-          "$ref": "#/definitions/Field-eActivesessionUsertype"
-        },
-        "eActivesessionWeekdaystart": {
-          "$ref": "#/definitions/Field-eActivesessionWeekdaystart"
-        },
-        "fkiLanguageID": {
-          "$ref": "#/definitions/Field-pkiLanguageID"
-        },
-        "fkiSignatureID": {
-          "$ref": "#/definitions/Field-pkiSignatureID"
-        },
-        "fkiSystemconfigurationtypeID": {
-          "$ref": "#/definitions/Field-pkiSystemconfigurationtypeID"
-        },
-        "pksCustomerCode": {
-          "$ref": "#/definitions/Field-pksCustomerCode"
-        },
-        "sCompanyNameX": {
-          "$ref": "#/definitions/Field-sCompanyNameX"
-        },
-        "sDepartmentNameX": {
-          "$ref": "#/definitions/Field-sDepartmentNameX"
-        }
-      },
-      "required": [
-        "eActivesessionUsertype",
-        "eActivesessionOrigin",
-        "eActivesessionWeekdaystart",
-        "bActivesessionDebug",
-        "bActivesessionIssuperadmin",
-        "fkiLanguageID",
-        "sCompanyNameX",
-        "pksCustomerCode",
-        "sDepartmentNameX",
-        "fkiSystemconfigurationtypeID"
-      ],
-      "type": "object"
-    },
-    "activesession-ResponseCompound": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/activesession-Response"
-        },
-        {
-          "properties": {
-            "a_eModuleInternalname": {
-              "description": "An Array of Registered modules.\n\nThese are the modules that are Licensed to be used by the User or the API Key.",
-              "items": {
-                "$ref": "#/definitions/Field-eModuleInternalname"
-              },
-              "type": "array"
-            },
-            "a_pkiPermissionID": {
-              "description": "An array of permissions granted to the user or api key",
-              "items": {
-                "$ref": "#/definitions/Field-pkiModulesectionID"
-              },
-              "type": "array"
-            },
-            "objApikey": {
-              "$ref": "#/definitions/activesession-ResponseCompound-Apikey"
-            },
-            "objUserCloned": {
-              "$ref": "#/definitions/activesession-ResponseCompound-User"
-            },
-            "objUserReal": {
-              "$ref": "#/definitions/activesession-ResponseCompound-User"
-            }
-          },
-          "required": [
-            "a_eModuleInternalname",
-            "objUserReal",
-            "a_pkiPermissionID"
-          ],
-          "type": "object"
-        }
-      ],
-      "description": "Payload for GET /1/object/activesession/getCurrent",
-      "type": "object"
-    },
     "activesession-ResponseCompound-Apikey": {
       "description": "An Activesession->Apikey object and children to create a complete structure",
       "properties": {
@@ -816,36 +704,103 @@
       "type": "object"
     },
     "activesession-getCurrent-v1-Response": {
-      "allOf": [
-        {
-          "properties": {
-            "mPayload": {
-              "$ref": "#/definitions/activesession-getCurrent-v1-Response-mPayload"
-            }
-          },
-          "required": [
-            "mPayload"
-          ],
-          "type": "object"
-        },
-        {
-          "$ref": "#/definitions/Common-Response"
-        }
-      ],
       "description": "Response for GET /1/object/activesession/getCurrent",
+      "properties": {
+        "mPayload": {
+          "$ref": "#/definitions/activesession-getCurrent-v1-Response-mPayload"
+        },
+        "objDebug": {
+          "$ref": "#/definitions/Common-Response-objDebug"
+        },
+        "objDebugPayload": {
+          "$ref": "#/definitions/Common-Response-objDebugPayload"
+        }
+      },
+      "required": [
+        "mPayload",
+        "objDebugPayload"
+      ],
       "type": "object"
     },
     "activesession-getCurrent-v1-Response-mPayload": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/activesession-ResponseCompound"
-        }
-      ],
       "description": "Payload for GET /1/object/activesession/getCurrent",
+      "properties": {
+        "a_eModuleInternalname": {
+          "description": "An Array of Registered modules.\n\nThese are the modules that are Licensed to be used by the User or the API Key.",
+          "items": {
+            "$ref": "#/definitions/Field-eModuleInternalname"
+          },
+          "type": "array"
+        },
+        "a_pkiPermissionID": {
+          "description": "An array of permissions granted to the user or api key",
+          "items": {
+            "$ref": "#/definitions/Field-pkiModulesectionID"
+          },
+          "type": "array"
+        },
+        "bActivesessionDebug": {
+          "$ref": "#/definitions/Field-bActivesessionDebug"
+        },
+        "bActivesessionIssuperadmin": {
+          "$ref": "#/definitions/Field-bActivesessionIssuperadmin"
+        },
+        "eActivesessionOrigin": {
+          "$ref": "#/definitions/Field-eActivesessionOrigin"
+        },
+        "eActivesessionUsertype": {
+          "$ref": "#/definitions/Field-eActivesessionUsertype"
+        },
+        "eActivesessionWeekdaystart": {
+          "$ref": "#/definitions/Field-eActivesessionWeekdaystart"
+        },
+        "fkiLanguageID": {
+          "$ref": "#/definitions/Field-pkiLanguageID"
+        },
+        "fkiSignatureID": {
+          "$ref": "#/definitions/Field-pkiSignatureID"
+        },
+        "fkiSystemconfigurationtypeID": {
+          "$ref": "#/definitions/Field-pkiSystemconfigurationtypeID"
+        },
+        "objApikey": {
+          "$ref": "#/definitions/activesession-ResponseCompound-Apikey"
+        },
+        "objUserCloned": {
+          "$ref": "#/definitions/activesession-ResponseCompound-User"
+        },
+        "objUserReal": {
+          "$ref": "#/definitions/activesession-ResponseCompound-User"
+        },
+        "pksCustomerCode": {
+          "$ref": "#/definitions/Field-pksCustomerCode"
+        },
+        "sCompanyNameX": {
+          "$ref": "#/definitions/Field-sCompanyNameX"
+        },
+        "sDepartmentNameX": {
+          "$ref": "#/definitions/Field-sDepartmentNameX"
+        }
+      },
+      "required": [
+        "eActivesessionUsertype",
+        "eActivesessionOrigin",
+        "eActivesessionWeekdaystart",
+        "bActivesessionDebug",
+        "bActivesessionIssuperadmin",
+        "fkiLanguageID",
+        "sCompanyNameX",
+        "pksCustomerCode",
+        "sDepartmentNameX",
+        "fkiSystemconfigurationtypeID",
+        "a_eModuleInternalname",
+        "objUserReal",
+        "a_pkiPermissionID"
+      ],
       "type": "object"
     },
-    "ezsignfolder-Request": {
-      "description": "An Ezsignfolder Object",
+    "ezsignfolder-RequestCompound": {
+      "description": "An Ezsignfolder Object and children to create a complete structure",
       "properties": {
         "eEzsignfolderSendreminderfrequency": {
           "$ref": "#/definitions/Field-eEzsignfolderSendreminderfrequency"
@@ -877,15 +832,6 @@
       ],
       "type": "object"
     },
-    "ezsignfolder-RequestCompound": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/ezsignfolder-Request"
-        }
-      ],
-      "description": "An Ezsignfolder Object and children to create a complete structure",
-      "type": "object"
-    },
     "ezsignfolder-createObject-v2-Request": {
       "description": "Request for POST /2/object/ezsignfolder",
       "properties": {
@@ -903,23 +849,22 @@
       "type": "object"
     },
     "ezsignfolder-createObject-v2-Response": {
-      "allOf": [
-        {
-          "properties": {
-            "mPayload": {
-              "$ref": "#/definitions/ezsignfolder-createObject-v2-Response-mPayload"
-            }
-          },
-          "required": [
-            "mPayload"
-          ],
-          "type": "object"
-        },
-        {
-          "$ref": "#/definitions/Common-Response"
-        }
-      ],
       "description": "Response for POST /2/object/ezsignfolder",
+      "properties": {
+        "mPayload": {
+          "$ref": "#/definitions/ezsignfolder-createObject-v2-Response-mPayload"
+        },
+        "objDebug": {
+          "$ref": "#/definitions/Common-Response-objDebug"
+        },
+        "objDebugPayload": {
+          "$ref": "#/definitions/Common-Response-objDebugPayload"
+        }
+      },
+      "required": [
+        "mPayload",
+        "objDebugPayload"
+      ],
       "type": "object"
     },
     "ezsignfolder-createObject-v2-Response-mPayload": {

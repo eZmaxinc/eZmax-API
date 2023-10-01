@@ -16905,27 +16905,27 @@
             },
             "Common-Response-Error-EzsignformValidation": {
                 "description": "Generic Error Message",
-                "required": [
-                    "a_objEzsignformfielderror"
-                ],
                 "type": "object",
                 "allOf": [
                     {
-                        "type": "object"
+                        "required": [
+                            "a_objEzsignformfielderror"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "a_objEzsignformfielderror": {
+                                "description": "",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Custom-Ezsignformfielderror-Response"
+                                }
+                            }
+                        }
                     },
                     {
                         "$ref": "#/components/schemas/Common-Response-Error"
                     }
-                ],
-                "properties": {
-                    "a_objEzsignformfielderror": {
-                        "description": "",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Custom-Ezsignformfielderror-Response"
-                        }
-                    }
-                }
+                ]
             },
             "Common-Response-Error-TooManyRequests": {
                 "description": "Generic Error Message",
@@ -17489,7 +17489,6 @@
                 "description": "A Communication List Element",
                 "required": [
                     "pkiCommunicationID",
-                    "pkiCommunicationID",
                     "dtCreatedDate",
                     "eCommunicationDirection",
                     "eCommunicationImportance",
@@ -17549,7 +17548,7 @@
             "Custom-Creditcardtransaction-Response": {
                 "description": "A custom Creditcardtransaction Object",
                 "required": [
-                    "sCreditcardtypeCodename",
+                    "eCreditcardtypeCodename",
                     "dCreditcardtransactionAmount",
                     "sCreditcardtransactionPartiallydecryptednumber",
                     "sCreditcardtransactionReferencenumber"
@@ -17775,7 +17774,7 @@
                     {
                         "required": [
                             "bEzsignfoldersignerassociationHasactionableelementsCurrent",
-                            "bEzsignfoldersignerassociationHasctionableelementsFuture"
+                            "bEzsignfoldersignerassociationHasactionableelementsFuture"
                         ],
                         "type": "object",
                         "properties": {
@@ -17794,8 +17793,7 @@
             "Custom-Ezsignfoldersignerassociationmessage-Request": {
                 "description": "A custom message Object in the context of an Ezsignfolder's send function",
                 "required": [
-                    "fkiEzsignfoldersignerassociationID",
-                    "tEzignfoldersignerassociationMessage"
+                    "fkiEzsignfoldersignerassociationID"
                 ],
                 "type": "object",
                 "properties": {
@@ -18275,9 +18273,6 @@
                 "description": "A User Object",
                 "required": [
                     "pkiUserID",
-                    "fkiEzsignfoldersignerassociationID",
-                    "sContactFirstname",
-                    "sContactLastname",
                     "sUserLastname",
                     "sUserFirstname",
                     "sEmailAddress"
@@ -23709,7 +23704,7 @@
             "billingentityexternal-getAutocomplete-v2-Response-mPayload": {
                 "description": "Payload for POST /2/object/billingentityexternal/getAutocomplete",
                 "required": [
-                    "a_objbillingentityexternal"
+                    "a_objBillingentityexternal"
                 ],
                 "type": "object",
                 "properties": {
@@ -24298,9 +24293,6 @@
             },
             "branding-ResponseCompound": {
                 "description": "A Branding Object",
-                "required": [
-                    "sBrandingDescriptionX"
-                ],
                 "type": "object",
                 "allOf": [
                     {
@@ -24924,7 +24916,7 @@
             "company-getAutocomplete-v2-Response-mPayload": {
                 "description": "Payload for POST /2/object/company/getAutocomplete",
                 "required": [
-                    "a_objcompany"
+                    "a_objCompany"
                 ],
                 "type": "object",
                 "properties": {
@@ -25447,7 +25439,7 @@
             "emailtype-getAutocomplete-v2-Response-mPayload": {
                 "description": "Payload for POST /2/object/emailtype/getAutocomplete",
                 "required": [
-                    "a_objemailtype"
+                    "a_objEmailtype"
                 ],
                 "type": "object",
                 "properties": {
@@ -25850,9 +25842,6 @@
             },
             "ezmaxinvoicingcommission-ResponseCompound": {
                 "description": "A Ezmaxinvoicingcommission Object",
-                "required": [
-                    "objContactName"
-                ],
                 "type": "object",
                 "allOf": [
                     {
@@ -26355,7 +26344,7 @@
             "ezmaxproduct-getAutocomplete-v2-Response-mPayload": {
                 "description": "Payload for POST /2/object/ezmaxproduct/getAutocomplete",
                 "required": [
-                    "a_objezmaxproduct"
+                    "a_objEzmaxproduct"
                 ],
                 "type": "object",
                 "properties": {
@@ -28577,7 +28566,6 @@
             "ezsigndocument-getWordsPositions-v1-Request": {
                 "description": "Request for POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/getWordsPositions",
                 "required": [
-                    "eSearchFor",
                     "eGet",
                     "bWordCaseSensitive"
                 ],
@@ -28656,7 +28644,6 @@
                 "description": "Request for POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/submitEzsignform",
                 "required": [
                     "bEzsignformIsdraft",
-                    "iEzsignformStep",
                     "a_objEzsignformfieldgroup"
                 ],
                 "type": "object",
@@ -32471,7 +32458,6 @@
                 "required": [
                     "pkiEzsigntemplateID",
                     "fkiLanguageID",
-                    "sEzsigntemplatepackageTypedescriptionX",
                     "sEzsigntemplateDescription",
                     "bEzsigntemplateIncomplete",
                     "sEzsignfoldertypeNameX",
@@ -33374,7 +33360,6 @@
             "ezsigntemplatedocument-getWordsPositions-v1-Request": {
                 "description": "Request for POST /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getWordsPositions",
                 "required": [
-                    "eSearchFor",
                     "eGet",
                     "bWordCaseSensitive"
                 ],
@@ -35665,7 +35650,7 @@
             "font-getAutocomplete-v2-Response-mPayload": {
                 "description": "Payload for POST /2/object/font/getAutocomplete",
                 "required": [
-                    "a_objfont"
+                    "a_objFont"
                 ],
                 "type": "object",
                 "properties": {
@@ -35721,7 +35706,7 @@
             "franchisebroker-getAutocomplete-v2-Response-mPayload": {
                 "description": "Payload for POST /2/object/franchisebroker/getAutocomplete",
                 "required": [
-                    "a_objfranchisebroker"
+                    "a_objFranchisebroker"
                 ],
                 "type": "object",
                 "properties": {
@@ -35777,7 +35762,7 @@
             "franchiseoffice-getAutocomplete-v2-Response-mPayload": {
                 "description": "Payload for POST /2/object/franchiseoffice/getAutocomplete",
                 "required": [
-                    "a_objfranchiseoffice"
+                    "a_objFranchiseoffice"
                 ],
                 "type": "object",
                 "properties": {
@@ -35802,7 +35787,6 @@
                     "dFranchisereferalincomeAgentamount",
                     "dtFranchisereferalincomeDisbursed",
                     "tFranchisereferalincomeComment",
-                    "objAddress",
                     "fkiFranchiseofficeID",
                     "sFranchisereferalincomeRemoteid"
                 ],
@@ -36068,9 +36052,6 @@
             },
             "module-ResponseCompound": {
                 "description": "A Module Object",
-                "required": [
-                    "a_objModulesection"
-                ],
                 "type": "object",
                 "allOf": [
                     {
@@ -36107,9 +36088,6 @@
             },
             "modulegroup-ResponseCompound": {
                 "description": "A Modulegroup Object",
-                "required": [
-                    "a_objModule"
-                ],
                 "type": "object",
                 "allOf": [
                     {
@@ -36189,9 +36167,6 @@
             },
             "modulesection-ResponseCompound": {
                 "description": "A Modulesection Object",
-                "required": [
-                    "a_objPermission"
-                ],
                 "type": "object",
                 "allOf": [
                     {
@@ -36324,7 +36299,7 @@
                 "required": [
                     "pkiNotificationtestID",
                     "sNotificationtestFunction",
-                    "a_sProperty",
+                    "a_sVariableobjectProperty",
                     "a_objVariableobject"
                 ],
                 "type": "object",
@@ -36588,7 +36563,7 @@
             "paymentterm-getAutocomplete-v2-Response-mPayload": {
                 "description": "Payload for POST /2/object/paymentterm/getAutocomplete",
                 "required": [
-                    "a_objpaymentterm"
+                    "a_objPaymentterm"
                 ],
                 "type": "object",
                 "properties": {
@@ -36719,7 +36694,7 @@
             "period-getAutocomplete-v2-Response-mPayload": {
                 "description": "Payload for POST /2/object/period/getAutocomplete",
                 "required": [
-                    "a_objperiod"
+                    "a_objPeriod"
                 ],
                 "type": "object",
                 "properties": {
@@ -37071,7 +37046,7 @@
             "phonetype-getAutocomplete-v2-Response-mPayload": {
                 "description": "Payload for POST /2/object/phonetype/getAutocomplete",
                 "required": [
-                    "a_objphonetype"
+                    "a_objPhonetype"
                 ],
                 "type": "object",
                 "properties": {
@@ -37651,7 +37626,6 @@
                     "pkiSystemconfigurationID",
                     "fkiSystemconfigurationtypeID",
                     "sSystemconfigurationtypeDescriptionX",
-                    "objSystemconfigurationLanguage",
                     "eSystemconfigurationNewexternaluseraction",
                     "eSystemconfigurationLanguage1",
                     "eSystemconfigurationLanguage2",
@@ -40091,7 +40065,7 @@
             "variableexpense-getAutocomplete-v2-Response-mPayload": {
                 "description": "Payload for POST /2/object/variableexpense/getAutocomplete",
                 "required": [
-                    "a_objvariableexpense"
+                    "a_objVariableexpense"
                 ],
                 "type": "object",
                 "properties": {
@@ -40374,7 +40348,6 @@
                     "sWebhookDescription",
                     "eWebhookModule",
                     "sWebhookUrl",
-                    "bWebhookTest",
                     "bWebhookSkipsslvalidation",
                     "sWebhookEmailfailed"
                 ],
@@ -40417,9 +40390,6 @@
             },
             "webhook-ResponseCompound": {
                 "description": "A Webhook Object",
-                "required": [
-                    "sWebhookEvent"
-                ],
                 "type": "object",
                 "allOf": [
                     {
