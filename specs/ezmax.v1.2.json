@@ -8922,7 +8922,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
+                "x-powerautomate": true,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -13249,7 +13249,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
+                "x-powerautomate": true,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -20873,7 +20873,16 @@
                 "description": "The unique ID of the Ezsignfoldertype.",
                 "minimum": 0,
                 "type": "integer",
-                "example": 5
+                "example": 5,
+                "x-ms-dynamic-values": {
+                    "operationId": "Ezsignfoldertype_GetAutocomplete_V2",
+                    "value-path": "pkiEzsignfoldertypeID",
+                    "value-title": "sEzsignfoldertypeNameX",
+                    "value-collection": "mPayload/a_objEzsignfoldertype",
+                    "parameters": {
+                        "sSelector": "Active"
+                    }
+                }
             },
             "Field-pkiEzsignformfieldID": {
                 "description": "The unique ID of the Ezsignformfield",
@@ -20942,7 +20951,16 @@
                 "description": "The unique ID of the Ezsigntemplate",
                 "minimum": 0,
                 "type": "integer",
-                "example": 36
+                "example": 36,
+                "x-ms-dynamic-values": {
+                    "operationId": "Ezsigntemplate_GetAutocomplete_V2",
+                    "value-path": "pkiEzsigntemplateID",
+                    "value-title": "sEzsigntemplateDescription",
+                    "value-collection": "mPayload/a_objEzsigntemplate",
+                    "parameters": {
+                        "sSelector": "All"
+                    }
+                }
             },
             "Field-pkiEzsigntemplatedocumentID": {
                 "description": "The unique ID of the Ezsigntemplatedocument",
@@ -21718,7 +21736,7 @@
             "Field-sEzsigntsarequirementDescriptionX": {
                 "description": "The description of the Ezsigntsarequirement in the language of the requester",
                 "type": "string",
-                "example": "Default"
+                "example": "No"
             },
             "Field-sFilter": {
                 "description": "The filter to apply to the request to limit results.",

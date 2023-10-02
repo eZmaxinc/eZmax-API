@@ -76,35 +76,34 @@
       }
     },
     "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getDownloadUrl/{eDocumentType}": {
-      "parameters": [
-        {
-          "description": "The unique ID of the Ezsigndocument",
-          "in": "path",
-          "minimum": 0,
-          "name": "pkiEzsigndocumentID",
-          "required": true,
-          "type": "integer"
-        },
-        {
-          "description": "The type of document to retrieve.\n\n1. **Initial** Is the initial document before any signature were applied.\n2. **SignatureReady** Is the version containing the annotations/form to show the signer.\n3. **Signed** Is the final document once all signatures were applied.\n4. **Proofdocument** Is the evidence report.\n5. **Proof** Is the complete evidence archive including all of the above and more.\n",
-          "enum": [
-            "Initial",
-            "SignatureReady",
-            "Signed",
-            "Proof",
-            "Proofdocument"
-          ],
-          "in": "path",
-          "name": "eDocumentType",
-          "required": true,
-          "type": "string"
-        }
-      ],
       "get": {
         "produces": [
           "application/json"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "description": "The unique ID of the Ezsigndocument",
+            "in": "path",
+            "minimum": 0,
+            "name": "pkiEzsigndocumentID",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "The type of document to retrieve.\n\n1. **Initial** Is the initial document before any signature were applied.\n2. **SignatureReady** Is the version containing the annotations/form to show the signer.\n3. **Signed** Is the final document once all signatures were applied.\n4. **Proofdocument** Is the evidence report.\n5. **Proof** Is the complete evidence archive including all of the above and more.\n",
+            "enum": [
+              "Initial",
+              "SignatureReady",
+              "Signed",
+              "Proof",
+              "Proofdocument"
+            ],
+            "in": "path",
+            "name": "eDocumentType",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -142,16 +141,6 @@
       }
     },
     "/1/object/ezsignfolder/{pkiEzsignfolderID}/dispose": {
-      "parameters": [
-        {
-          "description": "The unique ID of the Ezsignfolder",
-          "in": "path",
-          "minimum": 0,
-          "name": "pkiEzsignfolderID",
-          "required": true,
-          "type": "integer"
-        }
-      ],
       "post": {
         "consumes": [
           "application/json"
@@ -160,6 +149,14 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "description": "The unique ID of the Ezsignfolder",
+            "in": "path",
+            "minimum": 0,
+            "name": "pkiEzsignfolderID",
+            "required": true,
+            "type": "integer"
+          },
           {
             "in": "body",
             "name": "body",
@@ -250,16 +247,6 @@
       }
     },
     "/2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate": {
-      "parameters": [
-        {
-          "description": "The unique ID of the Ezsigndocument",
-          "in": "path",
-          "minimum": 0,
-          "name": "pkiEzsigndocumentID",
-          "required": true,
-          "type": "integer"
-        }
-      ],
       "post": {
         "consumes": [
           "application/json"
@@ -268,6 +255,14 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "description": "The unique ID of the Ezsigndocument",
+            "in": "path",
+            "minimum": 0,
+            "name": "pkiEzsigndocumentID",
+            "required": true,
+            "type": "integer"
+          },
           {
             "in": "body",
             "name": "body",
@@ -392,24 +387,22 @@
       }
     },
     "/2/object/ezsignfoldertype/getAutocomplete/{sSelector}": {
-      "parameters": [
-        {
-          "description": "The type of Ezsignfoldertypes to return",
-          "enum": [
-            "Active",
-            "All"
-          ],
-          "in": "path",
-          "name": "sSelector",
-          "required": true,
-          "type": "string"
-        }
-      ],
       "get": {
         "produces": [
           "application/json"
         ],
         "parameters": [
+          {
+            "description": "The type of Ezsignfoldertypes to return",
+            "enum": [
+              "Active",
+              "All"
+            ],
+            "in": "path",
+            "name": "sSelector",
+            "required": true,
+            "type": "string"
+          },
           {
             "default": "Active",
             "description": "Specify which results we want to display.",
@@ -465,32 +458,101 @@
         "x-usertypeextra": []
       }
     },
-    "/2/object/user/getAutocomplete/{sSelector}": {
-      "parameters": [
-        {
-          "description": "The type of Users to return",
-          "enum": [
-            "All",
-            "AgentBrokerEmployeeEzsignUserNormal",
-            "AgentBrokerEmployeeNormalBuiltIn",
-            "AgentBrokerEzsignuserNormal",
-            "ClonableUsers",
-            "EzsignuserBuiltIn",
-            "Normal",
-            "NormalEzsignSigner",
-            "UsergroupDelegated"
-          ],
-          "in": "path",
-          "name": "sSelector",
-          "required": true,
-          "type": "string"
-        }
-      ],
+    "/2/object/ezsigntemplate/getAutocomplete/{sSelector}": {
       "get": {
         "produces": [
           "application/json"
         ],
         "parameters": [
+          {
+            "description": "The type of Ezsigntemplates to return",
+            "enum": [
+              "All"
+            ],
+            "in": "path",
+            "name": "sSelector",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": "Active",
+            "description": "Specify which results we want to display.",
+            "enum": [
+              "All",
+              "Active",
+              "Inactive"
+            ],
+            "in": "query",
+            "name": "eFilterActive",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Allow to filter the returned results",
+            "in": "query",
+            "name": "sQuery",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "The language of the returned content.\n\n1. **\\*** (or header not defined) Default language\n2. **en** English\n2. **fr** French\n\n",
+            "enum": [
+              "*",
+              "en",
+              "fr"
+            ],
+            "in": "header",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ezsigntemplate-getAutocomplete-v2-Response"
+            }
+          }
+        },
+        "description": "Get the list of Ezsigntemplate to be used in a dropdown or autocomplete control.",
+        "operationId": "Ezsigntemplate_GetAutocomplete_V2",
+        "summary": "Retrieve Ezsigntemplates and IDs",
+        "x-permissions": [
+          "All"
+        ],
+        "x-powerautomate": true,
+        "x-presentations": [
+          "Ezsign"
+        ],
+        "x-superadmin": false,
+        "x-usertypeextra": []
+      }
+    },
+    "/2/object/user/getAutocomplete/{sSelector}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The type of Users to return",
+            "enum": [
+              "All",
+              "AgentBrokerEmployeeEzsignUserNormal",
+              "AgentBrokerEmployeeNormalBuiltIn",
+              "AgentBrokerEzsignuserNormal",
+              "ClonableUsers",
+              "EzsignuserBuiltIn",
+              "Normal",
+              "NormalEzsignSigner",
+              "UsergroupDelegated"
+            ],
+            "in": "path",
+            "name": "sSelector",
+            "required": true,
+            "type": "string"
+          },
           {
             "default": "Active",
             "description": "Specify which results we want to display.",
@@ -547,16 +609,6 @@
       }
     },
     "/3/object/ezsignfolder/{pkiEzsignfolderID}/send": {
-      "parameters": [
-        {
-          "description": "The unique ID of the Ezsignfolder",
-          "in": "path",
-          "minimum": 0,
-          "name": "pkiEzsignfolderID",
-          "required": true,
-          "type": "integer"
-        }
-      ],
       "post": {
         "consumes": [
           "application/json"
@@ -565,6 +617,14 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "description": "The unique ID of the Ezsignfolder",
+            "in": "path",
+            "minimum": 0,
+            "name": "pkiEzsignfolderID",
+            "required": true,
+            "type": "integer"
+          },
           {
             "in": "body",
             "name": "body",
@@ -884,6 +944,11 @@
       "example": true,
       "type": "boolean"
     },
+    "Field-bEzsigntemplateIsactive": {
+      "description": "Whether the Ezsigntemplate is active or not",
+      "example": true,
+      "type": "boolean"
+    },
     "Field-bUserInterfacedark": {
       "description": "Whether to use a dark mode interface",
       "example": false,
@@ -1083,7 +1148,16 @@
       "description": "The unique ID of the Ezsignfoldertype.",
       "example": 5,
       "minimum": 0,
-      "type": "integer"
+      "type": "integer",
+      "x-ms-dynamic-values": {
+        "parameters": {
+          "sSelector": "Active"
+        },
+        "operationId": "Ezsignfoldertype_GetAutocomplete_V2",
+        "value-collection": "mPayload/a_objEzsignfoldertype",
+        "value-path": "pkiEzsignfoldertypeID",
+        "value-title": "sEzsignfoldertypeNameX"
+      }
     },
     "Field-pkiEzsignsignergroupID": {
       "description": "The unique ID of the Ezsignsignergroup",
@@ -1096,7 +1170,16 @@
       "description": "The unique ID of the Ezsigntemplate",
       "example": 36,
       "minimum": 0,
-      "type": "integer"
+      "type": "integer",
+      "x-ms-dynamic-values": {
+        "parameters": {
+          "sSelector": "All"
+        },
+        "operationId": "Ezsigntemplate_GetAutocomplete_V2",
+        "value-collection": "mPayload/a_objEzsigntemplate",
+        "value-path": "pkiEzsigntemplateID",
+        "value-title": "sEzsigntemplateDescription"
+      }
     },
     "Field-pkiEzsigntsarequirementID": {
       "description": "The unique ID of the Ezsigntsarequirement.\n\nDetermine if a Time Stamping Authority should add a timestamp on each of the signature.\nValid values:\n\n|Value|Description|\n|-|-|\n|1|No. TSA Timestamping will requested. This will make all signatures a lot faster since no round-trip to the TSA server will be required. Timestamping will be made using eZsign server's time.|\n|2|Best effort. Timestamping from a Time Stamping Authority will be requested but is not mandatory. In the very improbable case it cannot be completed, the timestamping will be made using eZsign server's time. **Additional fee applies**|\n|3|Mandatory. Timestamping from a Time Stamping Authority will be requested and is mandatory. In the very improbable case it cannot be completed, the signature will fail and the user will be asked to retry. **Additional fee applies**|",
@@ -1223,6 +1306,11 @@
     "Field-sEzsignformfieldLabel": {
       "description": "The Label for the Ezsignformfield",
       "example": "Peanuts",
+      "type": "string"
+    },
+    "Field-sEzsigntemplateDescription": {
+      "description": "The description of the Ezsigntemplate",
+      "example": "Standard Contract",
       "type": "string"
     },
     "Field-sEzsigntemplatesigner": {
@@ -2019,6 +2107,65 @@
         "sContactFirstname",
         "sContactLastname",
         "fkiLanguageID"
+      ],
+      "type": "object"
+    },
+    "ezsigntemplate-AutocompleteElement-Response": {
+      "description": "A Ezsigntemplate AutocompleteElement Response",
+      "properties": {
+        "bEzsigntemplateIsactive": {
+          "$ref": "#/definitions/Field-bEzsigntemplateIsactive"
+        },
+        "eEzsignfoldertypePrivacylevel": {
+          "$ref": "#/definitions/Field-eEzsignfoldertypePrivacylevel"
+        },
+        "pkiEzsigntemplateID": {
+          "$ref": "#/definitions/Field-pkiEzsigntemplateID"
+        },
+        "sEzsigntemplateDescription": {
+          "$ref": "#/definitions/Field-sEzsigntemplateDescription"
+        }
+      },
+      "required": [
+        "eEzsignfoldertypePrivacylevel",
+        "sEzsigntemplateDescription",
+        "pkiEzsigntemplateID",
+        "bEzsigntemplateIsactive"
+      ],
+      "type": "object"
+    },
+    "ezsigntemplate-getAutocomplete-v2-Response": {
+      "description": "Response for GET /2/object/ezsigntemplate/getAutocomplete",
+      "properties": {
+        "mPayload": {
+          "$ref": "#/definitions/ezsigntemplate-getAutocomplete-v2-Response-mPayload"
+        },
+        "objDebug": {
+          "$ref": "#/definitions/Common-Response-objDebug"
+        },
+        "objDebugPayload": {
+          "$ref": "#/definitions/Common-Response-objDebugPayload"
+        }
+      },
+      "required": [
+        "mPayload",
+        "objDebugPayload"
+      ],
+      "type": "object"
+    },
+    "ezsigntemplate-getAutocomplete-v2-Response-mPayload": {
+      "description": "Payload for POST /2/object/ezsigntemplate/getAutocomplete",
+      "properties": {
+        "a_objEzsigntemplate": {
+          "description": "An array of Ezsigntemplate autocomplete element response.",
+          "items": {
+            "$ref": "#/definitions/ezsigntemplate-AutocompleteElement-Response"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "a_objEzsigntemplate"
       ],
       "type": "object"
     },
