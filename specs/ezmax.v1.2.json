@@ -3806,7 +3806,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
+                "x-powerautomate": true,
                 "x-usertypeextra": []
             }
         },
@@ -4099,7 +4099,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
+                "x-powerautomate": true,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4628,7 +4628,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
+                "x-powerautomate": true,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -5684,7 +5684,7 @@
                 "x-permissions": [
                     "ElectronicSignature_DisposalofeZsignfolders"
                 ],
-                "x-powerautomate": false,
+                "x-powerautomate": true,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6285,7 +6285,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
+                "x-powerautomate": true,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6671,7 +6671,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
+                "x-powerautomate": true,
                 "x-usertypeextra": []
             }
         },
@@ -7290,7 +7290,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
+                "x-powerautomate": true,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11163,7 +11163,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
+                "x-powerautomate": true,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -13881,7 +13881,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
+                "x-powerautomate": true,
                 "x-usertypeextra": []
             },
             "parameters": [
