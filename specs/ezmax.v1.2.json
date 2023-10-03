@@ -482,6 +482,7 @@
                     "All"
                 ],
                 "x-powerautomate": true,
+                "x-ms-visibility": "advanced",
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -7291,6 +7292,7 @@
                     "All"
                 ],
                 "x-powerautomate": true,
+                "x-ms-visibility": "advanced",
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -8923,6 +8925,7 @@
                     "All"
                 ],
                 "x-powerautomate": true,
+                "x-ms-visibility": "advanced",
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11164,6 +11167,7 @@
                     "All"
                 ],
                 "x-powerautomate": true,
+                "x-ms-visibility": "advanced",
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -13250,6 +13254,7 @@
                     "All"
                 ],
                 "x-powerautomate": true,
+                "x-ms-visibility": "advanced",
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -13882,6 +13887,7 @@
                     "All"
                 ],
                 "x-powerautomate": true,
+                "x-ms-visibility": "advanced",
                 "x-usertypeextra": []
             },
             "parameters": [
