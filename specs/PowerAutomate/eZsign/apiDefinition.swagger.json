@@ -1779,7 +1779,6 @@
       "required": [
         "fkiEzsignfoldertypeID",
         "sEzsignfolderDescription",
-        "tEzsignfolderNote",
         "eEzsignfolderSendreminderfrequency"
       ],
       "type": "object"
@@ -1872,7 +1871,6 @@
         }
       },
       "required": [
-        "tEzsignfolderMessage",
         "a_fkiEzsignfoldersignerassociationID"
       ],
       "type": "object"

@@ -28825,7 +28825,6 @@
                 "required": [
                     "fkiEzsignfoldertypeID",
                     "sEzsignfolderDescription",
-                    "tEzsignfolderNote",
                     "eEzsignfolderSendreminderfrequency"
                 ],
                 "type": "object",
@@ -29719,7 +29718,6 @@
             "ezsignfolder-send-v3-Request": {
                 "description": "Request for POST /3/object/ezsignfolder/{pkiEzsignfolderID}/send",
                 "required": [
-                    "tEzsignfolderMessage",
                     "a_fkiEzsignfoldersignerassociationID"
                 ],
                 "type": "object",
