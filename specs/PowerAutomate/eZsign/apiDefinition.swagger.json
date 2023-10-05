@@ -564,6 +564,71 @@
         "x-usertypeextra": []
       }
     },
+    "/2/object/language/getAutocomplete/{sSelector}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The type of Languages to return",
+            "enum": [
+              "All"
+            ],
+            "in": "path",
+            "name": "sSelector",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": "Active",
+            "description": "Specify which results we want to display.",
+            "enum": [
+              "All",
+              "Active",
+              "Inactive"
+            ],
+            "in": "query",
+            "name": "eFilterActive",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Allow to filter the returned results",
+            "in": "query",
+            "name": "sQuery",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "The language of the returned content.\n\n1. **\\*** (or header not defined) Default language\n2. **en** English\n2. **fr** French\n\n",
+            "enum": [
+              "*",
+              "en",
+              "fr"
+            ],
+            "in": "header",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/language-getAutocomplete-v2-Response"
+            }
+          }
+        },
+        "description": "Get the list of Language to be used in a dropdown or autocomplete control.",
+        "operationId": "Language_GetAutocomplete_V2",
+        "summary": "Retrieve Languages and IDs",
+        "x-permissions": [],
+        "x-powerautomate": true,
+        "x-usertypeextra": []
+      }
+    },
     "/2/object/user/getAutocomplete/{sSelector}": {
       "get": {
         "produces": [
@@ -982,6 +1047,11 @@
       "example": true,
       "type": "boolean"
     },
+    "Field-bLanguageIsactive": {
+      "description": "Whether the Language is active or not",
+      "example": true,
+      "type": "boolean"
+    },
     "Field-bUserInterfacedark": {
       "description": "Whether to use a dark mode interface",
       "example": false,
@@ -1378,6 +1448,11 @@
     "Field-sEzsigntemplatesigner": {
       "description": "The First name of the user",
       "example": "John",
+      "type": "string"
+    },
+    "Field-sLanguageNameX": {
+      "description": "The Name of the Language in the language of the requester",
+      "example": "English",
       "type": "string"
     },
     "Field-sPhoneE164": {
@@ -2287,6 +2362,61 @@
       },
       "required": [
         "a_objEzsigntemplatepackage"
+      ],
+      "type": "object"
+    },
+    "language-AutocompleteElement-Response": {
+      "description": "A Language AutocompleteElement Response",
+      "properties": {
+        "bLanguageIsactive": {
+          "$ref": "#/definitions/Field-bLanguageIsactive"
+        },
+        "pkiLanguageID": {
+          "$ref": "#/definitions/Field-pkiLanguageID"
+        },
+        "sLanguageNameX": {
+          "$ref": "#/definitions/Field-sLanguageNameX"
+        }
+      },
+      "required": [
+        "pkiLanguageID",
+        "sLanguageNameX",
+        "bLanguageIsactive"
+      ],
+      "type": "object"
+    },
+    "language-getAutocomplete-v2-Response": {
+      "description": "Response for GET /2/object/language/getAutocomplete",
+      "properties": {
+        "mPayload": {
+          "$ref": "#/definitions/language-getAutocomplete-v2-Response-mPayload"
+        },
+        "objDebug": {
+          "$ref": "#/definitions/Common-Response-objDebug"
+        },
+        "objDebugPayload": {
+          "$ref": "#/definitions/Common-Response-objDebugPayload"
+        }
+      },
+      "required": [
+        "mPayload",
+        "objDebugPayload"
+      ],
+      "type": "object"
+    },
+    "language-getAutocomplete-v2-Response-mPayload": {
+      "description": "Payload for POST /2/object/language/getAutocomplete",
+      "properties": {
+        "a_objLanguage": {
+          "description": "An array of Language autocomplete element response.",
+          "items": {
+            "$ref": "#/definitions/language-AutocompleteElement-Response"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "a_objLanguage"
       ],
       "type": "object"
     },

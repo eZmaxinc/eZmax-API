@@ -454,7 +454,6 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-ms-visibility": "advanced",
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -6784,7 +6783,6 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-ms-visibility": "advanced",
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -8276,7 +8274,6 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-ms-visibility": "advanced",
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10346,7 +10343,6 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-ms-visibility": "advanced",
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10739,6 +10735,73 @@
                 ],
                 "x-usertypeextra": []
             }
+        },
+        "/2/object/language/getAutocomplete/{sSelector}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Language"
+                ],
+                "parameters": [
+                    {
+                        "name": "eFilterActive",
+                        "description": "Specify which results we want to display.",
+                        "schema": {
+                            "default": "Active",
+                            "enum": [
+                                "All",
+                                "Active",
+                                "Inactive"
+                            ],
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false
+                    },
+                    {
+                        "$ref": "#/components/parameters/sQuery"
+                    },
+                    {
+                        "$ref": "#/components/parameters/AcceptLanguage"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/language-getAutocomplete-v2-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Language_GetAutocomplete_V2",
+                "summary": "Retrieve Languages and IDs",
+                "description": "Get the list of Language to be used in a dropdown or autocomplete control.",
+                "x-permissions": [],
+                "x-usertypeextra": []
+            },
+            "parameters": [
+                {
+                    "name": "sSelector",
+                    "description": "The type of Languages to return",
+                    "schema": {
+                        "enum": [
+                            "All"
+                        ],
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
         },
         "/1/object/modulegroup/getAll/{eContext}": {
             "description": "",
@@ -12321,7 +12384,6 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-ms-visibility": "advanced",
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -12917,7 +12979,6 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-ms-visibility": "advanced",
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -17647,6 +17708,11 @@
                 "type": "boolean",
                 "example": true
             },
+            "Field-bLanguageIsactive": {
+                "description": "Whether the Language is active or not",
+                "type": "boolean",
+                "example": true
+            },
             "Field-bModuleRegistered": {
                 "description": "Whether the Module is registered or not",
                 "type": "boolean",
@@ -19848,16 +19914,7 @@
                 "description": "The unique ID of the Ezsignfoldertype.",
                 "minimum": 0,
                 "type": "integer",
-                "example": 5,
-                "x-ms-dynamic-values": {
-                    "operationId": "Ezsignfoldertype_GetAutocomplete_V2",
-                    "value-path": "pkiEzsignfoldertypeID",
-                    "value-title": "sEzsignfoldertypeNameX",
-                    "value-collection": "mPayload/a_objEzsignfoldertype",
-                    "parameters": {
-                        "sSelector": "Active"
-                    }
-                }
+                "example": 5
             },
             "Field-pkiEzsignformfieldID": {
                 "description": "The unique ID of the Ezsignformfield",
@@ -19926,16 +19983,7 @@
                 "description": "The unique ID of the Ezsigntemplate",
                 "minimum": 0,
                 "type": "integer",
-                "example": 36,
-                "x-ms-dynamic-values": {
-                    "operationId": "Ezsigntemplate_GetAutocomplete_V2",
-                    "value-path": "pkiEzsigntemplateID",
-                    "value-title": "sEzsigntemplateDescription",
-                    "value-collection": "mPayload/a_objEzsigntemplate",
-                    "parameters": {
-                        "sSelector": "All"
-                    }
-                }
+                "example": 36
             },
             "Field-pkiEzsigntemplatedocumentID": {
                 "description": "The unique ID of the Ezsigntemplatedocument",
@@ -19978,16 +20026,7 @@
                 "description": "The unique ID of the Ezsigntemplatepackage",
                 "minimum": 0,
                 "type": "integer",
-                "example": 99,
-                "x-ms-dynamic-values": {
-                    "operationId": "Ezsigntemplatepackage_GetAutocomplete_V2",
-                    "value-path": "pkiEzsigntemplatepackageID",
-                    "value-title": "sEzsigntemplatepackageDescription",
-                    "value-collection": "mPayload/a_objEzsigntemplatepackage",
-                    "parameters": {
-                        "sSelector": "All"
-                    }
-                }
+                "example": 99
             },
             "Field-pkiEzsigntemplatepackagemembershipID": {
                 "description": "The unique ID of the Ezsigntemplatepackagemembership",
@@ -20073,16 +20112,7 @@
                 "maximum": 2,
                 "minimum": 1,
                 "type": "integer",
-                "example": 2,
-                "x-ms-dynamic-values": {
-                    "operationId": "Language_GetAutocomplete_V2",
-                    "value-path": "pkiLanguageID",
-                    "value-title": "sLanguageNameX",
-                    "value-collection": "mPayload/a_objLanguage",
-                    "parameters": {
-                        "sSelector": "All"
-                    }
-                }
+                "example": 2
             },
             "Field-pkiModuleID": {
                 "description": "The unique ID of the Module",
@@ -35320,6 +35350,62 @@
                     }
                 }
             },
+            "language-AutocompleteElement-Response": {
+                "description": "A Language AutocompleteElement Response",
+                "required": [
+                    "pkiLanguageID",
+                    "sLanguageNameX",
+                    "bLanguageIsactive"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiLanguageID": {
+                        "$ref": "#/components/schemas/Field-pkiLanguageID"
+                    },
+                    "sLanguageNameX": {
+                        "$ref": "#/components/schemas/Field-sLanguageNameX"
+                    },
+                    "bLanguageIsactive": {
+                        "$ref": "#/components/schemas/Field-bLanguageIsactive"
+                    }
+                }
+            },
+            "language-getAutocomplete-v2-Response": {
+                "description": "Response for GET /2/object/language/getAutocomplete",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/language-getAutocomplete-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "language-getAutocomplete-v2-Response-mPayload": {
+                "description": "Payload for POST /2/object/language/getAutocomplete",
+                "required": [
+                    "a_objLanguage"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objLanguage": {
+                        "description": "An array of Language autocomplete element response.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/language-AutocompleteElement-Response"
+                        }
+                    }
+                }
+            },
             "module-Response": {
                 "description": "A Module Object",
                 "required": [
@@ -40409,6 +40495,11 @@
             "x-displayName": "Franchisereferalincome"
         },
         {
+            "name": "Object_Language",
+            "description": "Language contains details about Languages",
+            "x-displayName": "Language"
+        },
+        {
             "name": "Object_Modulegroup",
             "description": "Modulegroup contains details about Modulegroups",
             "x-displayName": "Modulegroup"
@@ -40908,6 +40999,7 @@
                 "Object_Franchisebroker",
                 "Object_Franchiseoffice",
                 "Object_Franchisereferalincome",
+                "Object_Language",
                 "Object_Modulegroup",
                 "Object_Notificationsection",
                 "Object_Notificationtest",
