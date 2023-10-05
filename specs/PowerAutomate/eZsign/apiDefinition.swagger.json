@@ -67,10 +67,6 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-superadmin": false,
         "x-usertypeextra": [
           "EzsignSigner"
         ]
@@ -132,10 +128,6 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-superadmin": false,
         "x-usertypeextra": [
           "EzsignSigner"
         ]
@@ -194,10 +186,6 @@
           "ElectronicSignature_DisposalofeZsignfolders"
         ],
         "x-powerautomate": true,
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-superadmin": false,
         "x-usertypeextra": []
       }
     },
@@ -240,10 +228,6 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-superadmin": false,
         "x-usertypeextra": []
       }
     },
@@ -300,10 +284,6 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-superadmin": false,
         "x-usertypeextra": []
       }
     },
@@ -340,10 +320,6 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-superadmin": false,
         "x-usertypeextra": []
       }
     },
@@ -380,10 +356,6 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-superadmin": false,
         "x-usertypeextra": []
       }
     },
@@ -453,10 +425,6 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-superadmin": false,
         "x-usertypeextra": []
       }
     },
@@ -525,10 +493,74 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-presentations": [
-          "Ezsign"
+        "x-usertypeextra": []
+      }
+    },
+    "/2/object/ezsigntemplatepackage/getAutocomplete/{sSelector}": {
+      "get": {
+        "produces": [
+          "application/json"
         ],
-        "x-superadmin": false,
+        "parameters": [
+          {
+            "description": "The type of Ezsigntemplatepackages to return",
+            "enum": [
+              "All",
+              "AllMultipleCopiesDisabled"
+            ],
+            "in": "path",
+            "name": "sSelector",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": "Active",
+            "description": "Specify which results we want to display.",
+            "enum": [
+              "All",
+              "Active",
+              "Inactive"
+            ],
+            "in": "query",
+            "name": "eFilterActive",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Allow to filter the returned results",
+            "in": "query",
+            "name": "sQuery",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "The language of the returned content.\n\n1. **\\*** (or header not defined) Default language\n2. **en** English\n2. **fr** French\n\n",
+            "enum": [
+              "*",
+              "en",
+              "fr"
+            ],
+            "in": "header",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ezsigntemplatepackage-getAutocomplete-v2-Response"
+            }
+          }
+        },
+        "description": "Get the list of Ezsigntemplatepackage to be used in a dropdown or autocomplete control.",
+        "operationId": "Ezsigntemplatepackage_GetAutocomplete_V2",
+        "summary": "Retrieve Ezsigntemplatepackages and IDs",
+        "x-permissions": [
+          "All"
+        ],
+        "x-powerautomate": true,
         "x-usertypeextra": []
       }
     },
@@ -605,10 +637,6 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-superadmin": false,
         "x-usertypeextra": []
       }
     },
@@ -665,10 +693,6 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-superadmin": false,
         "x-usertypeextra": []
       }
     }
@@ -953,6 +977,11 @@
       "example": true,
       "type": "boolean"
     },
+    "Field-bEzsigntemplatepackageIsactive": {
+      "description": "Whether the Ezsigntemplatepackage is active or not",
+      "example": true,
+      "type": "boolean"
+    },
     "Field-bUserInterfacedark": {
       "description": "Whether to use a dark mode interface",
       "example": false,
@@ -1185,6 +1214,21 @@
         "value-title": "sEzsigntemplateDescription"
       }
     },
+    "Field-pkiEzsigntemplatepackageID": {
+      "description": "The unique ID of the Ezsigntemplatepackage",
+      "example": 99,
+      "minimum": 0,
+      "type": "integer",
+      "x-ms-dynamic-values": {
+        "parameters": {
+          "sSelector": "All"
+        },
+        "operationId": "Ezsigntemplatepackage_GetAutocomplete_V2",
+        "value-collection": "mPayload/a_objEzsigntemplatepackage",
+        "value-path": "pkiEzsigntemplatepackageID",
+        "value-title": "sEzsigntemplatepackageDescription"
+      }
+    },
     "Field-pkiEzsigntsarequirementID": {
       "description": "The unique ID of the Ezsigntsarequirement.\n\nDetermine if a Time Stamping Authority should add a timestamp on each of the signature.\nValid values:\n\n|Value|Description|\n|-|-|\n|1|No. TSA Timestamping will requested. This will make all signatures a lot faster since no round-trip to the TSA server will be required. Timestamping will be made using eZsign server's time.|\n|2|Best effort. Timestamping from a Time Stamping Authority will be requested but is not mandatory. In the very improbable case it cannot be completed, the timestamping will be made using eZsign server's time. **Additional fee applies**|\n|3|Mandatory. Timestamping from a Time Stamping Authority will be requested and is mandatory. In the very improbable case it cannot be completed, the signature will fail and the user will be asked to retry. **Additional fee applies**|",
       "example": 1,
@@ -1197,7 +1241,16 @@
       "example": 2,
       "maximum": 2,
       "minimum": 1,
-      "type": "integer"
+      "type": "integer",
+      "x-ms-dynamic-values": {
+        "parameters": {
+          "sSelector": "All"
+        },
+        "operationId": "Language_GetAutocomplete_V2",
+        "value-collection": "mPayload/a_objLanguage",
+        "value-path": "pkiLanguageID",
+        "value-title": "sLanguageNameX"
+      }
     },
     "Field-pkiModulesectionID": {
       "description": "The unique ID of the Modulesection",
@@ -1315,6 +1368,11 @@
     "Field-sEzsigntemplateDescription": {
       "description": "The description of the Ezsigntemplate",
       "example": "Standard Contract",
+      "type": "string"
+    },
+    "Field-sEzsigntemplatepackageDescription": {
+      "description": "The description of the Ezsigntemplatepackage",
+      "example": "Package for new clients",
       "type": "string"
     },
     "Field-sEzsigntemplatesigner": {
@@ -2165,6 +2223,70 @@
       },
       "required": [
         "a_objEzsigntemplate"
+      ],
+      "type": "object"
+    },
+    "ezsigntemplatepackage-AutocompleteElement-Response": {
+      "description": "A Ezsigntemplatepackage AutocompleteElement Response",
+      "properties": {
+        "bDisabled": {
+          "description": "Indicates if the element is disabled in the context",
+          "type": "boolean"
+        },
+        "bEzsigntemplatepackageIsactive": {
+          "$ref": "#/definitions/Field-bEzsigntemplatepackageIsactive"
+        },
+        "eEzsignfoldertypePrivacylevel": {
+          "$ref": "#/definitions/Field-eEzsignfoldertypePrivacylevel"
+        },
+        "pkiEzsigntemplatepackageID": {
+          "$ref": "#/definitions/Field-pkiEzsigntemplatepackageID"
+        },
+        "sEzsigntemplatepackageDescription": {
+          "$ref": "#/definitions/Field-sEzsigntemplatepackageDescription"
+        }
+      },
+      "required": [
+        "eEzsignfoldertypePrivacylevel",
+        "sEzsigntemplatepackageDescription",
+        "pkiEzsigntemplatepackageID",
+        "bEzsigntemplatepackageIsactive",
+        "bDisabled"
+      ],
+      "type": "object"
+    },
+    "ezsigntemplatepackage-getAutocomplete-v2-Response": {
+      "description": "Response for GET /2/object/ezsigntemplatepackage/getAutocomplete",
+      "properties": {
+        "mPayload": {
+          "$ref": "#/definitions/ezsigntemplatepackage-getAutocomplete-v2-Response-mPayload"
+        },
+        "objDebug": {
+          "$ref": "#/definitions/Common-Response-objDebug"
+        },
+        "objDebugPayload": {
+          "$ref": "#/definitions/Common-Response-objDebugPayload"
+        }
+      },
+      "required": [
+        "mPayload",
+        "objDebugPayload"
+      ],
+      "type": "object"
+    },
+    "ezsigntemplatepackage-getAutocomplete-v2-Response-mPayload": {
+      "description": "Payload for POST /2/object/ezsigntemplatepackage/getAutocomplete",
+      "properties": {
+        "a_objEzsigntemplatepackage": {
+          "description": "An array of Ezsigntemplatepackage autocomplete element response.",
+          "items": {
+            "$ref": "#/definitions/ezsigntemplatepackage-AutocompleteElement-Response"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "a_objEzsigntemplatepackage"
       ],
       "type": "object"
     },
