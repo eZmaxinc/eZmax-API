@@ -224,6 +224,7 @@
         "description": "The endpoint allows to create one or many elements at once.",
         "operationId": "Ezsigndocument_CreateObject_V2",
         "summary": "Create a new Ezsigndocument",
+        "x-ms-visibility": "important",
         "x-permissions": [
           "All"
         ],
@@ -280,6 +281,7 @@
         "description": "This endpoint applies a predefined template to the ezsign document.\nThis allows to automatically apply all the form and signature fields on a document in a single step.\n\nThe document must not already have fields otherwise an error will be returned.",
         "operationId": "Ezsigndocument_ApplyEzsigntemplate_V2",
         "summary": "Apply an Ezsigntemplate to the Ezsigndocument.",
+        "x-ms-visibility": "important",
         "x-permissions": [
           "All"
         ],
@@ -316,6 +318,7 @@
         "description": "The endpoint allows to create one or many elements at once.",
         "operationId": "Ezsignfolder_CreateObject_V2",
         "summary": "Create a new Ezsignfolder",
+        "x-ms-visibility": "important",
         "x-permissions": [
           "All"
         ],
@@ -352,6 +355,7 @@
         "description": "The endpoint allows to create one or many elements at once.",
         "operationId": "Ezsignfoldersignerassociation_CreateObject_V2",
         "summary": "Create a new Ezsignfoldersignerassociation",
+        "x-ms-visibility": "important",
         "x-permissions": [
           "All"
         ],
@@ -557,6 +561,94 @@
         "description": "Get the list of Ezsigntemplatepackage to be used in a dropdown or autocomplete control.",
         "operationId": "Ezsigntemplatepackage_GetAutocomplete_V2",
         "summary": "Retrieve Ezsigntemplatepackages and IDs",
+        "x-ms-visibility": "advanced",
+        "x-permissions": [
+          "All"
+        ],
+        "x-powerautomate": true,
+        "x-usertypeextra": []
+      }
+    },
+    "/2/object/ezsigntsarequirement/getAutocomplete/{sSelector}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The type of Ezsigntsarequirements to return",
+            "enum": [
+              "All",
+              "User",
+              "Usergroup"
+            ],
+            "in": "path",
+            "name": "sSelector",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The unique ID of the Ezsignfoldertype.",
+            "in": "query",
+            "minimum": 0,
+            "name": "fkiEzsignfoldertypeID",
+            "required": false,
+            "type": "integer",
+            "x-ms-dynamic-values": {
+              "parameters": {
+                "sSelector": "Active"
+              },
+              "operationId": "Ezsignfoldertype_GetAutocomplete_V2",
+              "value-collection": "mPayload/a_objEzsignfoldertype",
+              "value-path": "pkiEzsignfoldertypeID",
+              "value-title": "sEzsignfoldertypeNameX"
+            }
+          },
+          {
+            "default": "Active",
+            "description": "Specify which results we want to display.",
+            "enum": [
+              "All",
+              "Active",
+              "Inactive"
+            ],
+            "in": "query",
+            "name": "eFilterActive",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Allow to filter the returned results",
+            "in": "query",
+            "name": "sQuery",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "The language of the returned content.\n\n1. **\\*** (or header not defined) Default language\n2. **en** English\n2. **fr** French\n\n",
+            "enum": [
+              "*",
+              "en",
+              "fr"
+            ],
+            "in": "header",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ezsigntsarequirement-getAutocomplete-v2-Response"
+            }
+          }
+        },
+        "description": "Get the list of Ezsigntsarequirement to be used in a dropdown or autocomplete control.",
+        "operationId": "Ezsigntsarequirement_GetAutocomplete_V2",
+        "summary": "Retrieve Ezsigntsarequirements and IDs",
+        "x-ms-visibility": "advanced",
         "x-permissions": [
           "All"
         ],
@@ -624,7 +716,147 @@
         "description": "Get the list of Language to be used in a dropdown or autocomplete control.",
         "operationId": "Language_GetAutocomplete_V2",
         "summary": "Retrieve Languages and IDs",
-        "x-permissions": [],
+        "x-ms-visibility": "advanced",
+        "x-permissions": [
+          "All"
+        ],
+        "x-powerautomate": true,
+        "x-usertypeextra": []
+      }
+    },
+    "/2/object/secretquestion/getAutocomplete/{sSelector}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The type of Secretquestions to return",
+            "enum": [
+              "All"
+            ],
+            "in": "path",
+            "name": "sSelector",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": "Active",
+            "description": "Specify which results we want to display.",
+            "enum": [
+              "All",
+              "Active",
+              "Inactive"
+            ],
+            "in": "query",
+            "name": "eFilterActive",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Allow to filter the returned results",
+            "in": "query",
+            "name": "sQuery",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "The language of the returned content.\n\n1. **\\*** (or header not defined) Default language\n2. **en** English\n2. **fr** French\n\n",
+            "enum": [
+              "*",
+              "en",
+              "fr"
+            ],
+            "in": "header",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/secretquestion-getAutocomplete-v2-Response"
+            }
+          }
+        },
+        "description": "Get the list of Secretquestion to be used in a dropdown or autocomplete control.",
+        "operationId": "Secretquestion_GetAutocomplete_V2",
+        "summary": "Retrieve Secretquestions and IDs",
+        "x-ms-visibility": "advanced",
+        "x-permissions": [
+          "All"
+        ],
+        "x-powerautomate": true,
+        "x-usertypeextra": []
+      }
+    },
+    "/2/object/taxassignment/getAutocomplete/{sSelector}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The type of Taxassignments to return",
+            "enum": [
+              "All",
+              "AllButNonrecoverable"
+            ],
+            "in": "path",
+            "name": "sSelector",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": "Active",
+            "description": "Specify which results we want to display.",
+            "enum": [
+              "All",
+              "Active",
+              "Inactive"
+            ],
+            "in": "query",
+            "name": "eFilterActive",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Allow to filter the returned results",
+            "in": "query",
+            "name": "sQuery",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "The language of the returned content.\n\n1. **\\*** (or header not defined) Default language\n2. **en** English\n2. **fr** French\n\n",
+            "enum": [
+              "*",
+              "en",
+              "fr"
+            ],
+            "in": "header",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/taxassignment-getAutocomplete-v2-Response"
+            }
+          }
+        },
+        "description": "Get the list of Taxassignment to be used in a dropdown or autocomplete control.",
+        "operationId": "Taxassignment_GetAutocomplete_V2",
+        "summary": "Retrieve Taxassignments and IDs",
+        "x-ms-visibility": "advanced",
+        "x-permissions": [
+          "All"
+        ],
         "x-powerautomate": true,
         "x-usertypeextra": []
       }
@@ -638,14 +870,12 @@
           {
             "description": "The type of Users to return",
             "enum": [
-              "All",
               "AgentBrokerEmployeeEzsignUserNormal",
               "AgentBrokerEmployeeNormalBuiltIn",
               "AgentBrokerEzsignuserNormal",
               "ClonableUsers",
               "EzsignuserBuiltIn",
               "Normal",
-              "NormalEzsignSigner",
               "UsergroupDelegated"
             ],
             "in": "path",
@@ -705,6 +935,74 @@
         "x-usertypeextra": []
       }
     },
+    "/2/object/userlogintype/getAutocomplete/{sSelector}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "The type of Userlogintypes to return",
+            "enum": [
+              "All"
+            ],
+            "in": "path",
+            "name": "sSelector",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": "Active",
+            "description": "Specify which results we want to display.",
+            "enum": [
+              "All",
+              "Active",
+              "Inactive"
+            ],
+            "in": "query",
+            "name": "eFilterActive",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Allow to filter the returned results",
+            "in": "query",
+            "name": "sQuery",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "The language of the returned content.\n\n1. **\\*** (or header not defined) Default language\n2. **en** English\n2. **fr** French\n\n",
+            "enum": [
+              "*",
+              "en",
+              "fr"
+            ],
+            "in": "header",
+            "name": "Accept-Language",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/userlogintype-getAutocomplete-v2-Response"
+            }
+          }
+        },
+        "description": "Get the list of Userlogintype to be used in a dropdown or autocomplete control.",
+        "operationId": "Userlogintype_GetAutocomplete_V2",
+        "summary": "Retrieve Userlogintypes and IDs",
+        "x-ms-visibility": "advanced",
+        "x-permissions": [
+          "All"
+        ],
+        "x-powerautomate": true,
+        "x-usertypeextra": []
+      }
+    },
     "/3/object/ezsignfolder/{pkiEzsignfolderID}/send": {
       "post": {
         "consumes": [
@@ -754,6 +1052,7 @@
         "description": "",
         "operationId": "Ezsignfolder_Send_V3",
         "summary": "Send the Ezsignfolder to the signatories for signature",
+        "x-ms-visibility": "important",
         "x-permissions": [
           "All"
         ],
@@ -767,7 +1066,8 @@
       "description": "This field can be used to store an External ID from the client's system.\n\nAnything can be stored in this field, it will never be evaluated by the eZmax system and will be returned\nAS-IS.\n\nTo store multiple values, consider using a JSON formatted structure, a URL encoded string, a CSV or any other custom format.\n",
       "example": "{\"ID\": 1234, \"TAGS\": [\"tag1\", \"tag2\", \"tag3\"]}",
       "pattern": "^.{0,64}$",
-      "type": "string"
+      "type": "string",
+      "x-ms-visibility": "advanced"
     },
     "Common-Response-Error": {
       "description": "Generic Error Message",
@@ -1047,8 +1347,23 @@
       "example": true,
       "type": "boolean"
     },
+    "Field-bEzsigntsarequirementIsactive": {
+      "description": "Whether the Ezsigntsarequirement is active or not",
+      "example": true,
+      "type": "boolean"
+    },
     "Field-bLanguageIsactive": {
       "description": "Whether the Language is active or not",
+      "example": true,
+      "type": "boolean"
+    },
+    "Field-bSecretquestionIsactive": {
+      "description": "Whether the Secretquestion is active or not",
+      "example": true,
+      "type": "boolean"
+    },
+    "Field-bTaxassignmentIsactive": {
+      "description": "Whether the Taxassignment is active or not",
       "example": true,
       "type": "boolean"
     },
@@ -1059,6 +1374,11 @@
     },
     "Field-bUserIsactive": {
       "description": "Whether the User is active or not",
+      "example": true,
+      "type": "boolean"
+    },
+    "Field-bUserlogintypeIsactive": {
+      "description": "Whether the Userlogintype is active or not",
       "example": true,
       "type": "boolean"
     },
@@ -1304,7 +1624,16 @@
       "example": 1,
       "maximum": 3,
       "minimum": 1,
-      "type": "integer"
+      "type": "integer",
+      "x-ms-dynamic-values": {
+        "parameters": {
+          "sSelector": "All"
+        },
+        "operationId": "Ezsigntsarequirement_GetAutocomplete_V2",
+        "value-collection": "mPayload/a_objEzsigntsarequirement",
+        "value-path": "pkiEzsigntsarequirementID",
+        "value-title": "sEzsigntsarequirementDescriptionX"
+      }
     },
     "Field-pkiLanguageID": {
       "description": "The unique ID of the Language.\n\nValid values:\n\n|Value|Description|\n|-|-|\n|1|French|\n|2|English|",
@@ -1332,7 +1661,16 @@
       "description": "The unique ID of the Secretquestion.\n\nValid values:\n\n|Value|Description|\n|-|-|\n|1|The name of the hospital in which you were born|\n|2|The name of your grade school|\n|3|The last name of your favorite teacher|\n|4|Your favorite sports team|\n|5|Your favorite TV show|\n|6|Your favorite movie|\n|7|The name of the street on which you grew up|\n|8|The name of your first employer|\n|9|Your first car|\n|10|Your favorite food|\n|11|The name of your first pet|\n|12|Favorite musician/band|\n|13|What instrument you play|\n|14|Your father's middle name|\n|15|Your mother's maiden name|\n|16|Name of your eldest child|\n|17|Your spouse's middle name|\n|18|Favorite restaurant|\n|19|Childhood nickname|\n|20|Favorite vacation destination|\n|21|Your boat's name|\n|22|Date of Birth (YYYY-MM-DD)|",
       "example": 7,
       "minimum": 0,
-      "type": "integer"
+      "type": "integer",
+      "x-ms-dynamic-values": {
+        "parameters": {
+          "sSelector": "All"
+        },
+        "operationId": "Secretquestion_GetAutocomplete_V2",
+        "value-collection": "mPayload/a_objSecretquestion",
+        "value-path": "pkiSecretquestionID",
+        "value-title": "sSecretquestionTextX"
+      }
     },
     "Field-pkiSignatureID": {
       "description": "The unique ID of the Signature",
@@ -1352,7 +1690,16 @@
       "example": 1,
       "maximum": 15,
       "minimum": 0,
-      "type": "integer"
+      "type": "integer",
+      "x-ms-dynamic-values": {
+        "parameters": {
+          "sSelector": "All"
+        },
+        "operationId": "Taxassignment_GetAutocomplete_V2",
+        "value-collection": "mPayload/a_objTaxassignment",
+        "value-path": "pkiTaxassignmentID",
+        "value-title": "sTaxassignmentDescriptionX"
+      }
     },
     "Field-pkiTimezoneID": {
       "description": "The unique ID of the Timezone",
@@ -1364,13 +1711,31 @@
       "description": "The unique ID of the User",
       "example": 70,
       "minimum": 0,
-      "type": "integer"
+      "type": "integer",
+      "x-ms-dynamic-values": {
+        "parameters": {
+          "sSelector": "AgentBrokerEzsignuserNormal"
+        },
+        "operationId": "User_GetAutocomplete_V2",
+        "value-collection": "mPayload/a_objUser",
+        "value-path": "pkiUserID",
+        "value-title": "sUserName"
+      }
     },
     "Field-pkiUserlogintypeID": {
       "description": "The unique ID of the Userlogintype\n\nValid values:\n\n|Value|Description|Detail|\n|-|-|-|\n|1|**Email Only**|The Ezsignsigner will receive a secure link by email|\n|2|**Email and phone or SMS**|The Ezsignsigner will receive a secure link by email and will need to authenticate using SMS or Phone call. **Additional fee applies**|\n|3|**Email and secret question**|The Ezsignsigner will receive a secure link by email and will need to authenticate using a predefined question and answer|\n|4|**In person only**|The Ezsignsigner will only be able to sign \"In-Person\" and there won't be any authentication. No email will be sent for invitation to sign. Make sure you evaluate the risk of signature denial and at minimum, we recommend you use a handwritten signature type|\n|5|**In person with phone or SMS**|The Ezsignsigner will only be able to sign \"In-Person\" and will need to authenticate using SMS or Phone call. No email will be sent for invitation to sign. **Additional fee applies**|",
       "example": 2,
       "minimum": 0,
-      "type": "integer"
+      "type": "integer",
+      "x-ms-dynamic-values": {
+        "parameters": {
+          "sSelector": "All"
+        },
+        "operationId": "Userlogintype_GetAutocomplete_V2",
+        "value-collection": "mPayload/a_objUserlogintype",
+        "value-path": "pkiUserlogintypeID",
+        "value-title": "sUserlogintypeDescriptionX"
+      }
     },
     "Field-pksCustomerCode": {
       "description": "The customer code assigned to your account",
@@ -1450,6 +1815,11 @@
       "example": "John",
       "type": "string"
     },
+    "Field-sEzsigntsarequirementDescriptionX": {
+      "description": "The description of the Ezsigntsarequirement in the language of the requester",
+      "example": "No",
+      "type": "string"
+    },
     "Field-sLanguageNameX": {
       "description": "The Name of the Language in the language of the requester",
       "example": "English",
@@ -1471,6 +1841,11 @@
       "example": "The name of the hospital in which you were born",
       "type": "string"
     },
+    "Field-sTaxassignmentDescriptionX": {
+      "description": "The description of the Taxassignment  in the language of the requester",
+      "example": "Default",
+      "type": "string"
+    },
     "Field-sUserFirstname": {
       "description": "The first name of the user",
       "example": "John",
@@ -1479,6 +1854,11 @@
     "Field-sUserLastname": {
       "description": "The last name of the user",
       "example": "Doe",
+      "type": "string"
+    },
+    "Field-sUserlogintypeDescriptionX": {
+      "description": "The description of the Userlogintype in the language of the requester",
+      "example": "Email and phone or SMS",
       "type": "string"
     },
     "Field-tEzsignfolderMessage": {
@@ -1672,7 +2052,8 @@
         "bEzsigndocumentForcerepair": {
           "default": true,
           "description": "Try to repair the document or flatten it if it cannot be used for electronic signature. ",
-          "type": "boolean"
+          "type": "boolean",
+          "x-ms-visibility": "advanced"
         },
         "dtEzsigndocumentDuedate": {
           "$ref": "#/definitions/Field-dtEzsigndocumentDuedate"
@@ -1683,7 +2064,8 @@
             "Keep",
             "Convert"
           ],
-          "type": "string"
+          "type": "string",
+          "x-ms-visibility": "advanced"
         },
         "eEzsigndocumentFormat": {
           "description": "Indicates the format of the document.",
@@ -1736,7 +2118,8 @@
         "sEzsigndocumentPassword": {
           "description": "If the source document is password protected, the password to open/modify it.",
           "example": "SecretPassword123",
-          "type": "string"
+          "type": "string",
+          "x-ms-visibility": "advanced"
         },
         "sEzsigndocumentUrl": {
           "description": "The url where the document content resides.\n\nThis field is Required when eEzsigndocumentSource = Url.",
@@ -2183,7 +2566,8 @@
           "$ref": "#/definitions/Field-pkiSecretquestionID"
         },
         "fkiTaxassignmentID": {
-          "$ref": "#/definitions/Field-pkiTaxassignmentID"
+          "$ref": "#/definitions/Field-pkiTaxassignmentID",
+          "x-ms-visibility": "advanced"
         },
         "fkiUserlogintypeID": {
           "$ref": "#/definitions/Field-pkiUserlogintypeID"
@@ -2365,6 +2749,66 @@
       ],
       "type": "object"
     },
+    "ezsigntsarequirement-AutocompleteElement-Response": {
+      "description": "A Ezsigntsarequirement AutocompleteElement Response",
+      "properties": {
+        "bDisabled": {
+          "description": "Indicates if the element is disabled in the context",
+          "type": "boolean"
+        },
+        "bEzsigntsarequirementIsactive": {
+          "$ref": "#/definitions/Field-bEzsigntsarequirementIsactive"
+        },
+        "pkiEzsigntsarequirementID": {
+          "$ref": "#/definitions/Field-pkiEzsigntsarequirementID"
+        },
+        "sEzsigntsarequirementDescriptionX": {
+          "$ref": "#/definitions/Field-sEzsigntsarequirementDescriptionX"
+        }
+      },
+      "required": [
+        "sEzsigntsarequirementDescriptionX",
+        "pkiEzsigntsarequirementID",
+        "bEzsigntsarequirementIsactive",
+        "bDisabled"
+      ],
+      "type": "object"
+    },
+    "ezsigntsarequirement-getAutocomplete-v2-Response": {
+      "description": "Response for GET /2/object/ezsigntsarequirement/getAutocomplete",
+      "properties": {
+        "mPayload": {
+          "$ref": "#/definitions/ezsigntsarequirement-getAutocomplete-v2-Response-mPayload"
+        },
+        "objDebug": {
+          "$ref": "#/definitions/Common-Response-objDebug"
+        },
+        "objDebugPayload": {
+          "$ref": "#/definitions/Common-Response-objDebugPayload"
+        }
+      },
+      "required": [
+        "mPayload",
+        "objDebugPayload"
+      ],
+      "type": "object"
+    },
+    "ezsigntsarequirement-getAutocomplete-v2-Response-mPayload": {
+      "description": "Payload for POST /2/object/ezsigntsarequirement/getAutocomplete",
+      "properties": {
+        "a_objEzsigntsarequirement": {
+          "description": "An array of Ezsigntsarequirement autocomplete element response.",
+          "items": {
+            "$ref": "#/definitions/ezsigntsarequirement-AutocompleteElement-Response"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "a_objEzsigntsarequirement"
+      ],
+      "type": "object"
+    },
     "language-AutocompleteElement-Response": {
       "description": "A Language AutocompleteElement Response",
       "properties": {
@@ -2417,6 +2861,116 @@
       },
       "required": [
         "a_objLanguage"
+      ],
+      "type": "object"
+    },
+    "secretquestion-AutocompleteElement-Response": {
+      "description": "A Secretquestion AutocompleteElement Response",
+      "properties": {
+        "bSecretquestionIsactive": {
+          "$ref": "#/definitions/Field-bSecretquestionIsactive"
+        },
+        "pkiSecretquestionID": {
+          "$ref": "#/definitions/Field-pkiSecretquestionID"
+        },
+        "sSecretquestionTextX": {
+          "$ref": "#/definitions/Field-sSecretquestionTextX"
+        }
+      },
+      "required": [
+        "sSecretquestionTextX",
+        "pkiSecretquestionID",
+        "bSecretquestionIsactive"
+      ],
+      "type": "object"
+    },
+    "secretquestion-getAutocomplete-v2-Response": {
+      "description": "Response for GET /2/object/secretquestion/getAutocomplete",
+      "properties": {
+        "mPayload": {
+          "$ref": "#/definitions/secretquestion-getAutocomplete-v2-Response-mPayload"
+        },
+        "objDebug": {
+          "$ref": "#/definitions/Common-Response-objDebug"
+        },
+        "objDebugPayload": {
+          "$ref": "#/definitions/Common-Response-objDebugPayload"
+        }
+      },
+      "required": [
+        "mPayload",
+        "objDebugPayload"
+      ],
+      "type": "object"
+    },
+    "secretquestion-getAutocomplete-v2-Response-mPayload": {
+      "description": "Payload for POST /2/object/secretquestion/getAutocomplete",
+      "properties": {
+        "a_objSecretquestion": {
+          "description": "An array of Secretquestion autocomplete element response.",
+          "items": {
+            "$ref": "#/definitions/secretquestion-AutocompleteElement-Response"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "a_objSecretquestion"
+      ],
+      "type": "object"
+    },
+    "taxassignment-AutocompleteElement-Response": {
+      "description": "A Taxassignment AutocompleteElement Response",
+      "properties": {
+        "bTaxassignmentIsactive": {
+          "$ref": "#/definitions/Field-bTaxassignmentIsactive"
+        },
+        "pkiTaxassignmentID": {
+          "$ref": "#/definitions/Field-pkiTaxassignmentID"
+        },
+        "sTaxassignmentDescriptionX": {
+          "$ref": "#/definitions/Field-sTaxassignmentDescriptionX"
+        }
+      },
+      "required": [
+        "sTaxassignmentDescriptionX",
+        "pkiTaxassignmentID",
+        "bTaxassignmentIsactive"
+      ],
+      "type": "object"
+    },
+    "taxassignment-getAutocomplete-v2-Response": {
+      "description": "Response for GET /2/object/taxassignment/getAutocomplete",
+      "properties": {
+        "mPayload": {
+          "$ref": "#/definitions/taxassignment-getAutocomplete-v2-Response-mPayload"
+        },
+        "objDebug": {
+          "$ref": "#/definitions/Common-Response-objDebug"
+        },
+        "objDebugPayload": {
+          "$ref": "#/definitions/Common-Response-objDebugPayload"
+        }
+      },
+      "required": [
+        "mPayload",
+        "objDebugPayload"
+      ],
+      "type": "object"
+    },
+    "taxassignment-getAutocomplete-v2-Response-mPayload": {
+      "description": "Payload for POST /2/object/taxassignment/getAutocomplete",
+      "properties": {
+        "a_objTaxassignment": {
+          "description": "An array of Taxassignment autocomplete element response.",
+          "items": {
+            "$ref": "#/definitions/taxassignment-AutocompleteElement-Response"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "a_objTaxassignment"
       ],
       "type": "object"
     },
@@ -2476,6 +3030,61 @@
       },
       "required": [
         "a_objUser"
+      ],
+      "type": "object"
+    },
+    "userlogintype-AutocompleteElement-Response": {
+      "description": "A Userlogintype AutocompleteElement Response",
+      "properties": {
+        "bUserlogintypeIsactive": {
+          "$ref": "#/definitions/Field-bUserlogintypeIsactive"
+        },
+        "pkiUserlogintypeID": {
+          "$ref": "#/definitions/Field-pkiUserlogintypeID"
+        },
+        "sUserlogintypeDescriptionX": {
+          "$ref": "#/definitions/Field-sUserlogintypeDescriptionX"
+        }
+      },
+      "required": [
+        "pkiUserlogintypeID",
+        "sUserlogintypeDescriptionX",
+        "bUserlogintypeIsactive"
+      ],
+      "type": "object"
+    },
+    "userlogintype-getAutocomplete-v2-Response": {
+      "description": "Response for GET /2/object/userlogintype/getAutocomplete",
+      "properties": {
+        "mPayload": {
+          "$ref": "#/definitions/userlogintype-getAutocomplete-v2-Response-mPayload"
+        },
+        "objDebug": {
+          "$ref": "#/definitions/Common-Response-objDebug"
+        },
+        "objDebugPayload": {
+          "$ref": "#/definitions/Common-Response-objDebugPayload"
+        }
+      },
+      "required": [
+        "mPayload",
+        "objDebugPayload"
+      ],
+      "type": "object"
+    },
+    "userlogintype-getAutocomplete-v2-Response-mPayload": {
+      "description": "Payload for POST /2/object/userlogintype/getAutocomplete",
+      "properties": {
+        "a_objUserlogintype": {
+          "description": "An array of Userlogintype autocomplete element response.",
+          "items": {
+            "$ref": "#/definitions/userlogintype-AutocompleteElement-Response"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "a_objUserlogintype"
       ],
       "type": "object"
     }

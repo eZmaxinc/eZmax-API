@@ -10351,6 +10351,7 @@
                     "description": "The type of Ezsigntsarequirements to return",
                     "schema": {
                         "enum": [
+                            "All",
                             "User",
                             "Usergroup"
                         ],
@@ -10785,7 +10786,9 @@
                 "operationId": "Language_GetAutocomplete_V2",
                 "summary": "Retrieve Languages and IDs",
                 "description": "Get the list of Language to be used in a dropdown or autocomplete control.",
-                "x-permissions": [],
+                "x-permissions": [
+                    "All"
+                ],
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -12987,14 +12990,12 @@
                     "description": "The type of Users to return",
                     "schema": {
                         "enum": [
-                            "All",
                             "AgentBrokerEmployeeEzsignUserNormal",
                             "AgentBrokerEmployeeNormalBuiltIn",
                             "AgentBrokerEzsignuserNormal",
                             "ClonableUsers",
                             "EzsignuserBuiltIn",
                             "Normal",
-                            "NormalEzsignSigner",
                             "UsergroupDelegated"
                         ],
                         "type": "string"
@@ -14044,6 +14045,75 @@
                     },
                     "in": "path",
                     "required": true
+                }
+            ]
+        },
+        "/2/object/userlogintype/getAutocomplete/{sSelector}": {
+            "description": "",
+            "get": {
+                "description": "Get the list of Userlogintype to be used in a dropdown or autocomplete control.",
+                "operationId": "Userlogintype_GetAutocomplete_V2",
+                "parameters": [
+                    {
+                        "name": "eFilterActive",
+                        "description": "Specify which results we want to display.",
+                        "schema": {
+                            "default": "Active",
+                            "enum": [
+                                "All",
+                                "Active",
+                                "Inactive"
+                            ],
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false
+                    },
+                    {
+                        "$ref": "#/components/parameters/sQuery"
+                    },
+                    {
+                        "$ref": "#/components/parameters/AcceptLanguage"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/userlogintype-getAutocomplete-v2-Response"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "summary": "Retrieve Userlogintypes and IDs",
+                "tags": [
+                    "Object_Userlogintype"
+                ],
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": []
+            },
+            "parameters": [
+                {
+                    "description": "The type of Userlogintypes to return",
+                    "in": "path",
+                    "name": "sSelector",
+                    "required": true,
+                    "schema": {
+                        "enum": [
+                            "All"
+                        ],
+                        "type": "string"
+                    }
                 }
             ]
         },
@@ -15564,7 +15634,8 @@
                 "description": "This field can be used to store an External ID from the client's system.\n\nAnything can be stored in this field, it will never be evaluated by the eZmax system and will be returned\nAS-IS.\n\nTo store multiple values, consider using a JSON formatted structure, a URL encoded string, a CSV or any other custom format.\n",
                 "pattern": "^.{0,64}$",
                 "type": "string",
-                "example": "{\"ID\": 1234, \"TAGS\": [\"tag1\", \"tag2\", \"tag3\"]}"
+                "example": "{\"ID\": 1234, \"TAGS\": [\"tag1\", \"tag2\", \"tag3\"]}",
+                "x-ms-visibility": "advanced"
             },
             "Common-Format-IP": {
                 "description": "Represent an IP address.",
@@ -17818,6 +17889,11 @@
                 "type": "boolean",
                 "example": true
             },
+            "Field-bUserlogintypeIsactive": {
+                "description": "Whether the Userlogintype is active or not",
+                "type": "boolean",
+                "example": true
+            },
             "Field-bVariableexpenseIsactive": {
                 "description": "Whether the variableexpense is active or not",
                 "type": "boolean",
@@ -18456,6 +18532,8 @@
                     "Sendcode",
                     "Badcode",
                     "Goodcode",
+                    "Badresponse",
+                    "Goodresponse",
                     "Authentication",
                     "Createpage",
                     "Download",
@@ -18475,6 +18553,8 @@
                     "SignatureAttachmentDeleted",
                     "DeclinedToSign",
                     "DelayedSendEmail",
+                    "AnnotationAdded",
+                    "Flatten",
                     "RegeneratePage",
                     "RegeneratePageForm",
                     "Reassign"
@@ -26685,12 +26765,14 @@
                     "bEzsigndocumentForcerepair": {
                         "description": "Try to repair the document or flatten it if it cannot be used for electronic signature. ",
                         "default": true,
-                        "type": "boolean"
+                        "type": "boolean",
+                        "x-ms-visibility": "advanced"
                     },
                     "sEzsigndocumentPassword": {
                         "description": "If the source document is password protected, the password to open/modify it.",
                         "type": "string",
-                        "example": "SecretPassword123"
+                        "example": "SecretPassword123",
+                        "x-ms-visibility": "advanced"
                     },
                     "eEzsigndocumentForm": {
                         "description": "If the document contains an existing PDF form this property must be set.\r\n**Keep** leaves the form as-is in the document.\r\n**Convert** removes the form and convert all the existing fields to Ezsignformfieldgroups and assign them to the specified **fkiEzsignfoldersignerassociationID**",
@@ -26698,7 +26780,8 @@
                             "Keep",
                             "Convert"
                         ],
-                        "type": "string"
+                        "type": "string",
+                        "x-ms-visibility": "advanced"
                     },
                     "dtEzsigndocumentDuedate": {
                         "$ref": "#/components/schemas/Field-dtEzsigndocumentDuedate"
@@ -31025,7 +31108,8 @@
                         "$ref": "#/components/schemas/Field-pkiUserlogintypeID"
                     },
                     "fkiTaxassignmentID": {
-                        "$ref": "#/components/schemas/Field-pkiTaxassignmentID"
+                        "$ref": "#/components/schemas/Field-pkiTaxassignmentID",
+                        "x-ms-visibility": "advanced"
                     },
                     "fkiSecretquestionID": {
                         "$ref": "#/components/schemas/Field-pkiSecretquestionID"
@@ -39027,6 +39111,62 @@
                     }
                 }
             },
+            "userlogintype-AutocompleteElement-Response": {
+                "description": "A Userlogintype AutocompleteElement Response",
+                "required": [
+                    "pkiUserlogintypeID",
+                    "sUserlogintypeDescriptionX",
+                    "bUserlogintypeIsactive"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiUserlogintypeID": {
+                        "$ref": "#/components/schemas/Field-pkiUserlogintypeID"
+                    },
+                    "sUserlogintypeDescriptionX": {
+                        "$ref": "#/components/schemas/Field-sUserlogintypeDescriptionX"
+                    },
+                    "bUserlogintypeIsactive": {
+                        "$ref": "#/components/schemas/Field-bUserlogintypeIsactive"
+                    }
+                }
+            },
+            "userlogintype-getAutocomplete-v2-Response": {
+                "description": "Response for GET /2/object/userlogintype/getAutocomplete",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/userlogintype-getAutocomplete-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "userlogintype-getAutocomplete-v2-Response-mPayload": {
+                "description": "Payload for POST /2/object/userlogintype/getAutocomplete",
+                "required": [
+                    "a_objUserlogintype"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objUserlogintype": {
+                        "description": "An array of Userlogintype autocomplete element response.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/userlogintype-AutocompleteElement-Response"
+                        }
+                    }
+                }
+            },
             "userstaged-ListElement": {
                 "description": "A Userstaged List Element",
                 "required": [
@@ -40590,6 +40730,11 @@
             "x-displayName": "Usergroupmembership"
         },
         {
+            "name": "Object_Userlogintype",
+            "description": "Userlogintype contains details about Userlogintypes",
+            "x-displayName": "Userlogintype"
+        },
+        {
             "name": "Object_Userstaged",
             "description": "Userstaged contains details about Userstageds",
             "x-displayName": "Userstaged"
@@ -41018,6 +41163,7 @@
                 "Object_Usergroup",
                 "Object_Usergroupdelegation",
                 "Object_Usergroupmembership",
+                "Object_Userlogintype",
                 "Object_Userstaged",
                 "Object_Variableexpense",
                 "Object_Versionhistory",
