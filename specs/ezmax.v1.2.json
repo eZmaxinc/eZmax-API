@@ -1019,6 +1019,53 @@
                 "x-usertypeextra": []
             }
         },
+        "/1/object/attachment/{pkiAttachmentID}/download": {
+            "get": {
+                "tags": [
+                    "Object_Attachment"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/attachment-download-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Attachment_Download_V1",
+                "summary": "Retrieve the content",
+                "description": "Using this endpoint, you can retrieve the content of an attachment.",
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiAttachmentID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiAttachmentID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/2/object/billingentityexternal/getAutocomplete/{sSelector}": {
             "description": "",
             "get": {
@@ -1666,6 +1713,50 @@
                 "x-usertypeextra": []
             }
         },
+        "/1/object/buyercontract/{pkiBuyercontractID}/getCommunicationList": {
+            "get": {
+                "tags": [
+                    "Object_Buyercontract"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/buyercontract-getCommunicationList-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Buyercontract_getCommunicationList_V1",
+                "summary": "Retrieve Communication list",
+                "description": "",
+                "x-permissions": [
+                    "Inscription_BuyersContracts"
+                ],
+                "x-usertypeextra": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiBuyercontractID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiBuyercontractID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/1/object/clonehistory/getList": {
             "description": "",
             "get": {
@@ -1756,25 +1847,32 @@
                 ]
             }
         },
-        "/2/object/communication/{pkiCommunicationID}": {
+        "/1/object/communication/send": {
             "description": "",
-            "get": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/communication-send-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "tags": [
                     "Object_Communication"
                 ],
                 "responses": {
-                    "200": {
+                    "201": {
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/communication-getObject-v2-Response"
+                                    "$ref": "#/components/schemas/communication-send-v1-Response"
                                 }
                             }
                         },
                         "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
                     }
                 },
                 "security": [
@@ -1782,24 +1880,16 @@
                         "Authorization": []
                     }
                 ],
-                "operationId": "Communication_GetObject_V2",
-                "summary": "Retrieve an existing Communication",
-                "description": "",
+                "operationId": "Communication_Send_V1",
+                "summary": "Send a new Communication",
+                "description": "The endpoint allows to send one or many elements at once.",
                 "x-permissions": [
                     "All"
                 ],
-                "x-usertypeextra": []
-            },
-            "parameters": [
-                {
-                    "name": "pkiCommunicationID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiCommunicationID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            }
         },
         "/2/object/company/getAutocomplete/{sSelector}": {
             "description": "",
@@ -2119,6 +2209,50 @@
                             "CompanyButDepartmentZero"
                         ],
                         "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/getCommunicationList": {
+            "get": {
+                "tags": [
+                    "Object_Electronicfundstransfer"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/electronicfundstransfer-getCommunicationList-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Eletronicfundstransfer_getCommunicationList_V1",
+                "summary": "Retrieve Communication list",
+                "description": "",
+                "x-permissions": [
+                    "Payments_ElectronicsFundsTransfer"
+                ],
+                "x-usertypeextra": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiElectronicfundstransferID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiElectronicfundstransferID"
                     },
                     "in": "path",
                     "required": true
@@ -5452,6 +5586,94 @@
                 }
             ]
         },
+        "/1/object/ezsignfolder/{pkiEzsignfolderID}/getCommunicationrecipients": {
+            "get": {
+                "tags": [
+                    "Object_Ezsignfolder"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfolder-getCommunicationrecipients-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezsignfolder_getCommunicationrecipients_V1",
+                "summary": "Retrieve Ezsignfolder's Communicationrecipient",
+                "description": "",
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignfolderID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsignfolder/{pkiEzsignfolderID}/getCommunicationsenders": {
+            "get": {
+                "tags": [
+                    "Object_Ezsignfolder"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfolder-getCommunicationsenders-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezsignfolder_getCommunicationsenders_V1",
+                "summary": "Retrieve Ezsignfolder's Communicationsender",
+                "description": "",
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignfolderID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments": {
             "get": {
                 "tags": [
@@ -6174,7 +6396,7 @@
                 ],
                 "operationId": "Ezsignfolder_GetList_V1",
                 "summary": "Retrieve Ezsignfolder list",
-                "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eEzsignfolderStep | Unsent<br>Sent<br>PartiallySigned<br>Expired<br>Completed<br>Archived<br>Disposed|\n| eEzsignfoldertypePrivacylevel | User<br>Usergroup |\n\nAdvanced filters that can be used in query parameter *sFilter*:\n\n| Variable |\n|---|\n| sContactFirstname |\n| sContactLastname |\n| sEzsigndocumentName |",
+                "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eEzsignfolderStep | Unsent<br>Sent<br>PartiallySigned<br>Expired<br>Completed<br>Archived<br>Disposed|\n| eEzsignfoldertypePrivacylevel | User<br>Usergroup |\n\nAdvanced filters that can be used in query parameter *sFilter*:\n\n| Variable |\n|---|\n| fkiUserID |\n| sContactFirstname |\n| sContactLastname |\n| sEzsigndocumentName |",
                 "x-permissions": [
                     "All"
                 ],
@@ -10737,6 +10959,194 @@
                 "x-usertypeextra": []
             }
         },
+        "/1/object/inscription/{pkiInscriptionID}/getCommunicationList": {
+            "get": {
+                "tags": [
+                    "Object_Inscription"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inscription-getCommunicationList-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Inscription_getCommunicationList_V1",
+                "summary": "Retrieve Communication list",
+                "description": "",
+                "x-permissions": [
+                    "Inscription_ReadOnlyMode",
+                    "Inscription_Inspections",
+                    "Inscription_Deals"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiInscriptionID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiInscriptionID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/getCommunicationList": {
+            "get": {
+                "tags": [
+                    "Object_Inscriptionnotauthenticated"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inscriptionnotauthenticated-getCommunicationList-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Inscriptionnotauthenticated_getCommunicationList_V1",
+                "summary": "Retrieve Communication list",
+                "description": "",
+                "x-permissions": [
+                    "Inscription_ReadOnlyMode",
+                    "Inscription_Inspections",
+                    "Inscription_Deals"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiInscriptionnotauthenticatedID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiInscriptionnotauthenticatedID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/inscriptiontemp/{pkiInscriptiontempID}/getCommunicationList": {
+            "get": {
+                "tags": [
+                    "Object_Inscriptiontemp"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inscriptiontemp-getCommunicationList-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Inscriptiontemp_getCommunicationList_V1",
+                "summary": "Retrieve Communication list",
+                "description": "",
+                "x-permissions": [
+                    "Inscription_TemporaryListingsAccess"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiInscriptiontempID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiInscriptiontempID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/invoice/{pkiInvoiceID}/getCommunicationList": {
+            "get": {
+                "tags": [
+                    "Object_Invoice"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/invoice-getCommunicationList-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Invoice_getCommunicationList_V1",
+                "summary": "Retrieve Communication list",
+                "description": "",
+                "x-permissions": [
+                    "Invoicing_Access"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiInvoiceID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiInvoiceID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/2/object/language/getAutocomplete/{sSelector}": {
             "description": "",
             "get": {
@@ -10950,6 +11360,52 @@
                     "name": "pkiNotificationtestID",
                     "schema": {
                         "$ref": "#/components/schemas/Field-pkiNotificationtestID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/otherincome/{pkiOtherincomeID}/getCommunicationList": {
+            "get": {
+                "tags": [
+                    "Object_Otherincome"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/otherincome-getCommunicationList-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Otherincome_getCommunicationList_V1",
+                "summary": "Retrieve Communication list",
+                "description": "",
+                "x-permissions": [
+                    "Inscription_OtherIncomeAccess"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiOtherincomeID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiOtherincomeID"
                     },
                     "in": "path",
                     "required": true
@@ -11664,6 +12120,52 @@
                             "All"
                         ],
                         "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/getCommunicationList": {
+            "get": {
+                "tags": [
+                    "Object_Rejectedoffertopurchase"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rejectedoffertopurchase-getCommunicationList-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Rejectedoffertopurchase_getCommunicationList_V1",
+                "summary": "Retrieve Communication list",
+                "description": "",
+                "x-permissions": [
+                    "Management_RefusedPromisestoPurchase"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiRejectedoffertopurchaseID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiRejectedoffertopurchaseID"
                     },
                     "in": "path",
                     "required": true
@@ -14051,8 +14553,9 @@
         "/2/object/userlogintype/getAutocomplete/{sSelector}": {
             "description": "",
             "get": {
-                "description": "Get the list of Userlogintype to be used in a dropdown or autocomplete control.",
-                "operationId": "Userlogintype_GetAutocomplete_V2",
+                "tags": [
+                    "Object_Userlogintype"
+                ],
                 "parameters": [
                     {
                         "name": "eFilterActive",
@@ -14078,14 +14581,14 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/userlogintype-getAutocomplete-v2-Response"
                                 }
                             }
-                        }
+                        },
+                        "description": "Successful response"
                     }
                 },
                 "security": [
@@ -14093,10 +14596,9 @@
                         "Authorization": []
                     }
                 ],
+                "operationId": "Userlogintype_GetAutocomplete_V2",
                 "summary": "Retrieve Userlogintypes and IDs",
-                "tags": [
-                    "Object_Userlogintype"
-                ],
+                "description": "Get the list of Userlogintype to be used in a dropdown or autocomplete control.",
                 "x-permissions": [
                     "All"
                 ],
@@ -14104,16 +14606,16 @@
             },
             "parameters": [
                 {
-                    "description": "The type of Userlogintypes to return",
-                    "in": "path",
                     "name": "sSelector",
-                    "required": true,
+                    "description": "The type of Userlogintypes to return",
                     "schema": {
                         "enum": [
                             "All"
                         ],
                         "type": "string"
-                    }
+                    },
+                    "in": "path",
+                    "required": true
                 }
             ]
         },
@@ -16402,11 +16904,6 @@
                 "type": "string",
                 "example": "http://www.example.com/logo.jpg"
             },
-            "Computed-sCommunicationBodyurl": {
-                "description": "The url of the body used as body in the Communication",
-                "type": "string",
-                "example": "http://www.example.com/4526.html"
-            },
             "Computed-sCommunicationRecipient": {
                 "description": "The recipients' name of the Communication",
                 "type": "string",
@@ -16523,6 +17020,186 @@
                     },
                     "sCommunicationRecipient": {
                         "$ref": "#/components/schemas/Computed-sCommunicationRecipient"
+                    }
+                }
+            },
+            "Custom-Communicationattachment-Request": {
+                "description": "A Custom Communicationattachment Object",
+                "type": "object",
+                "properties": {
+                    "objCommunicationattachment": {
+                        "$ref": "#/components/schemas/communicationattachment-RequestCompound"
+                    },
+                    "objCommunicationexternalattachment": {
+                        "$ref": "#/components/schemas/Common-File"
+                    }
+                }
+            },
+            "Custom-Communicationrecipientsgroup-Response": {
+                "description": "Generic CommunicationrecipientsGroup Response",
+                "required": [
+                    "sCommunicationrecipientsgroupLabel",
+                    "a_objCommunicationrecipientsrecipient"
+                ],
+                "type": "object",
+                "properties": {
+                    "sCommunicationrecipientsgroupLabel": {
+                        "description": "The label for the Communicationrecipientsgroup",
+                        "type": "string"
+                    },
+                    "a_objCommunicationrecipientsrecipient": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-Communicationrecipientsrecipient-Response"
+                        }
+                    }
+                }
+            },
+            "Custom-Communicationrecipientsrecipient-Response": {
+                "description": "Generic AutocompleteElement Response",
+                "required": [
+                    "objContactName",
+                    "eCommunicationrecipientsrecipientObjecttype"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiAgentID": {
+                        "$ref": "#/components/schemas/Field-pkiAgentID"
+                    },
+                    "fkiBrokerID": {
+                        "$ref": "#/components/schemas/Field-pkiBrokerID"
+                    },
+                    "fkiContactID": {
+                        "$ref": "#/components/schemas/Field-pkiContactID"
+                    },
+                    "fkiCustomerID": {
+                        "$ref": "#/components/schemas/Field-pkiCustomerID"
+                    },
+                    "fkiEmployeeID": {
+                        "$ref": "#/components/schemas/Field-pkiEmployeeID"
+                    },
+                    "fkiEzsignsignerID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignsignerID"
+                    },
+                    "fkiFranchiseofficeID": {
+                        "$ref": "#/components/schemas/Field-pkiFranchiseofficeID"
+                    },
+                    "fkiUserID": {
+                        "$ref": "#/components/schemas/Field-pkiUserID"
+                    },
+                    "fkiAgentincorporationID": {
+                        "$ref": "#/components/schemas/Field-pkiAgentincorporationID"
+                    },
+                    "fkiAssistantID": {
+                        "$ref": "#/components/schemas/Field-pkiAssistantID"
+                    },
+                    "fkiExternalbrokerID": {
+                        "$ref": "#/components/schemas/Field-pkiExternalbrokerID"
+                    },
+                    "fkiEzcomagentID": {
+                        "$ref": "#/components/schemas/Field-pkiEzcomagentID"
+                    },
+                    "fkiNotaryID": {
+                        "$ref": "#/components/schemas/Field-pkiNotaryID"
+                    },
+                    "fkiRewardmemberID": {
+                        "$ref": "#/components/schemas/Field-pkiRewardmemberID"
+                    },
+                    "fkiSupplierID": {
+                        "$ref": "#/components/schemas/Field-pkiSupplierID"
+                    },
+                    "eCommunicationrecipientsrecipientObjecttype": {
+                        "enum": [
+                            "Agent",
+                            "Agentincorporation",
+                            "Assistant",
+                            "Broker",
+                            "Contact",
+                            "Customer",
+                            "Employee",
+                            "Externalbroker",
+                            "Ezcomagent",
+                            "Ezcomcompany",
+                            "Ezsignsigner",
+                            "Franchiseoffice",
+                            "Notary",
+                            "Rewardmember",
+                            "Supplier",
+                            "User"
+                        ],
+                        "type": "string",
+                        "example": "User"
+                    },
+                    "objContactName": {
+                        "$ref": "#/components/schemas/Custom-ContactName-Response"
+                    },
+                    "objEmail": {
+                        "$ref": "#/components/schemas/email-ResponseCompound"
+                    },
+                    "objPhoneFax": {
+                        "$ref": "#/components/schemas/phone-ResponseCompound"
+                    },
+                    "objPhoneSMS": {
+                        "$ref": "#/components/schemas/phone-ResponseCompound"
+                    }
+                }
+            },
+            "Custom-Communicationsender-Request": {
+                "description": "A Communicationsender Object",
+                "type": "object",
+                "properties": {
+                    "fkiAgentID": {
+                        "$ref": "#/components/schemas/Field-pkiAgentID"
+                    },
+                    "fkiBrokerID": {
+                        "$ref": "#/components/schemas/Field-pkiBrokerID"
+                    },
+                    "fkiMailboxsharedID": {
+                        "$ref": "#/components/schemas/Field-pkiMailboxsharedID"
+                    },
+                    "fkiUserID": {
+                        "$ref": "#/components/schemas/Field-pkiUserID"
+                    }
+                }
+            },
+            "Custom-Communicationsender-Response": {
+                "description": "Generic Communicationsender Response",
+                "required": [
+                    "objContactName",
+                    "eCommunicationsenderObjecttype"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiAgentID": {
+                        "$ref": "#/components/schemas/Field-pkiAgentID"
+                    },
+                    "fkiBrokerID": {
+                        "$ref": "#/components/schemas/Field-pkiBrokerID"
+                    },
+                    "fkiUserID": {
+                        "$ref": "#/components/schemas/Field-pkiUserID"
+                    },
+                    "fkiMailboxsharedID": {
+                        "$ref": "#/components/schemas/Field-pkiMailboxsharedID"
+                    },
+                    "eCommunicationsenderObjecttype": {
+                        "enum": [
+                            "Agent",
+                            "Broker",
+                            "User",
+                            "Mailboxshared"
+                        ],
+                        "type": "string",
+                        "example": "User"
+                    },
+                    "objContactName": {
+                        "$ref": "#/components/schemas/Custom-ContactName-Response"
+                    },
+                    "sEmailAddress": {
+                        "$ref": "#/components/schemas/Field-sEmailAddress"
+                    },
+                    "sPhoneE164": {
+                        "$ref": "#/components/schemas/Field-sPhoneE164"
                     }
                 }
             },
@@ -18341,7 +19018,7 @@
                 "example": "Email"
             },
             "Field-eCommunicationexternalrecipientType": {
-                "description": "The type of Communicationexternalrecipient",
+                "description": "The type of Communicationexternalrecipient.\n\nOnly used when eCommunicationType is **Email**",
                 "enum": [
                     "To",
                     "Cc",
@@ -18350,31 +19027,8 @@
                 "type": "string",
                 "example": "To"
             },
-            "Field-eCommunicationrecipientObjecttype": {
-                "description": "The object type for the Communicationrecipient",
-                "enum": [
-                    "Agent",
-                    "Agentincorporation",
-                    "Assistant",
-                    "Broker",
-                    "Contact",
-                    "Customer",
-                    "Employee",
-                    "Externalbroker",
-                    "Ezcomagent",
-                    "Ezcomcompany",
-                    "Ezsignsigner",
-                    "Franchiseoffice",
-                    "Notary",
-                    "Rewardmember",
-                    "Supplier",
-                    "User"
-                ],
-                "type": "string",
-                "example": "User"
-            },
             "Field-eCommunicationrecipientType": {
-                "description": "The type for the Communicationrecipient",
+                "description": "The type for the Communicationrecipient.\n\nOnly used when eCommunicationType is **Email**",
                 "enum": [
                     "To",
                     "Cc",
@@ -19600,8 +20254,7 @@
                 "example": "1516"
             },
             "Field-iRowMax": {
-                "description": "The maximum numbers of results to be returned",
-                "default": 10000,
+                "description": "The maximum numbers of results to be returned.\n\nWhen the content-type is **application/json** there is an implicit default of 10 000.\n\nWhen it's **application/vnd.openxmlformats-officedocument.spreadsheetml.sheet** the is no implicit default so if you do not specify iRowMax, all records will be returned.",
                 "maximum": 10000,
                 "minimum": 1,
                 "type": "integer",
@@ -19730,6 +20383,13 @@
                 "type": "integer",
                 "example": 26
             },
+            "Field-pkiBuyercontractID": {
+                "description": "The unique ID of the Buyercontract",
+                "maximum": 65535,
+                "minimum": 1,
+                "type": "integer",
+                "example": 38
+            },
             "Field-pkiClonehistoryID": {
                 "description": "The unique ID of the Clonehistory",
                 "maximum": 16777215,
@@ -19758,6 +20418,13 @@
                 "minimum": 0,
                 "type": "integer",
                 "example": 1
+            },
+            "Field-pkiCommunicationreferenceID": {
+                "description": "The unique ID of the Communicationreference",
+                "maximum": 4294967295,
+                "minimum": 0,
+                "type": "integer",
+                "example": 1263
             },
             "Field-pkiCompanyID": {
                 "description": "The unique ID of the Company",
@@ -19810,11 +20477,12 @@
                 "type": "integer",
                 "example": 21
             },
-            "Field-pkiDescriptionstaticID": {
-                "description": "The unique ID of the Descriptionstatic",
-                "minimum": 0,
+            "Field-pkiElectronicfundstransferID": {
+                "description": "The unique ID of the Electronicfundstransfer",
+                "maximum": 65535,
+                "minimum": 1,
                 "type": "integer",
-                "example": 37
+                "example": 1262
             },
             "Field-pkiEmailID": {
                 "description": "The unique ID of the Email",
@@ -19822,12 +20490,6 @@
                 "minimum": 1,
                 "type": "integer",
                 "example": 22
-            },
-            "Field-pkiEmailstaticID": {
-                "description": "The unique ID of the Emailstatic",
-                "minimum": 0,
-                "type": "integer",
-                "example": 99
             },
             "Field-pkiEmailtypeID": {
                 "description": "The unique ID of the Emailtype.\n\nValid values:\n\n|Value|Description|\n|-|-|\n|1|Office|\n|2|Home|",
@@ -20181,6 +20843,25 @@
                 "type": "integer",
                 "example": 51
             },
+            "Field-pkiInscriptionID": {
+                "description": "The unique ID of the Inscription.",
+                "minimum": 0,
+                "type": "integer",
+                "example": 17
+            },
+            "Field-pkiInscriptionnotauthenticatedID": {
+                "description": "The unique ID of the Inscriptionnotauthenticated.",
+                "minimum": 0,
+                "type": "integer",
+                "example": 24
+            },
+            "Field-pkiInscriptiontempID": {
+                "description": "The unique ID of the Inscriptiontemp",
+                "maximum": 16777215,
+                "minimum": 1,
+                "type": "integer",
+                "example": 2445
+            },
             "Field-pkiInvoiceID": {
                 "description": "The unique ID of the Invoice.",
                 "minimum": 0,
@@ -20193,6 +20874,13 @@
                 "minimum": 1,
                 "type": "integer",
                 "example": 2
+            },
+            "Field-pkiMailboxsharedID": {
+                "description": "The unique ID of the Mailboxshared",
+                "maximum": 255,
+                "minimum": 0,
+                "type": "integer",
+                "example": 47
             },
             "Field-pkiModuleID": {
                 "description": "The unique ID of the Module",
@@ -20237,6 +20925,13 @@
                 "type": "integer",
                 "example": 14
             },
+            "Field-pkiOtherincomeID": {
+                "description": "The unique ID of the Otherincome",
+                "maximum": 65535,
+                "minimum": 1,
+                "type": "integer",
+                "example": 142
+            },
             "Field-pkiPaymenttermID": {
                 "description": "The unique ID of the Paymentterm",
                 "type": "integer",
@@ -20261,12 +20956,6 @@
                 "type": "integer",
                 "example": 1
             },
-            "Field-pkiPhonestaticID": {
-                "description": "The unique ID of the Phone.",
-                "minimum": 0,
-                "type": "integer",
-                "example": 1
-            },
             "Field-pkiPhonetypeID": {
                 "description": "The unique ID of the Phonetype.\n\nValid values:\n\n|Value|Description|\n|-|-|\n|1|Office|\n|2|Home|\n|3|Mobile|\n|4|Fax|\n|5|Pager|\n|6|Toll Free|",
                 "minimum": 0,
@@ -20278,6 +20967,13 @@
                 "minimum": 0,
                 "type": "integer",
                 "example": 11
+            },
+            "Field-pkiRejectedoffertopurchaseID": {
+                "description": "The unique ID of the Rejectedoffertopurchase",
+                "maximum": 65535,
+                "minimum": 1,
+                "type": "integer",
+                "example": 532
             },
             "Field-pkiRewardmemberID": {
                 "description": "The unique ID of the Rewardmember.",
@@ -20292,7 +20988,7 @@
                 "example": 1
             },
             "Field-pkiSecretquestionID": {
-                "description": "The unique ID of the Secretquestion.\n\nValid values:\n\n|Value|Description|\n|-|-|\n|1|The name of the hospital in which you were born|\n|2|The name of your grade school|\n|3|The last name of your favorite teacher|\n|4|Your favorite sports team|\n|5|Your favorite TV show|\n|6|Your favorite movie|\n|7|The name of the street on which you grew up|\n|8|The name of your first employer|\n|9|Your first car|\n|10|Your favorite food|\n|11|The name of your first pet|\n|12|Favorite musician/band|\n|13|What instrument you play|\n|14|Your father's middle name|\n|15|Your mother's maiden name|\n|16|Name of your eldest child|\n|17|Your spouse's middle name|\n|18|Favorite restaurant|\n|19|Childhood nickname|\n|20|Favorite vacation destination|\n|21|Your boat's name|\n|22|Date of Birth (YYYY-MM-DD)|",
+                "description": "The unique ID of the Secretquestion.\n\nValid values:\n\n|Value|Description|\n|-|-|\n|1|The name of the hospital in which you were born|\n|2|The name of your grade school|\n|3|The last name of your favorite teacher|\n|4|Your favorite sports team|\n|5|Your favorite TV show|\n|6|Your favorite movie|\n|7|The name of the street on which you grew up|\n|8|The name of your first employer|\n|9|Your first car|\n|10|Your favorite food|\n|11|The name of your first pet|\n|12|Favorite musician/band|\n|13|What instrument you play|\n|14|Your father's middle name|\n|15|Your mother's maiden name|\n|16|Name of your eldest child|\n|17|Your spouse's middle name|\n|18|Favorite restaurant|\n|19|Childhood nickname|\n|20|Favorite vacation destination|\n|21|Your boat's name|\n|22|Date of Birth (YYYY-MM-DD)|\n|22|Secret Code|\n|22|Your reference code|",
                 "minimum": 0,
                 "type": "integer",
                 "example": 7
@@ -20541,13 +21237,15 @@
             },
             "Field-sCommunicationSubject": {
                 "description": "The subject of the Communication",
+                "pattern": "^.{0,150}$",
                 "type": "string",
                 "example": "This is an example of subject"
             },
-            "Field-sCommunicationattachmentName": {
-                "description": "The name of the Communicationattachment",
+            "Field-sCommunicationexternalrecipientName": {
+                "description": "The name of the Communicationexternalrecipient",
+                "pattern": "^.{0,50}$",
                 "type": "string",
-                "example": "File.pdf"
+                "example": "John Doe"
             },
             "Field-sCompanyNameX": {
                 "description": "The Name of the Company in the language of the requester",
@@ -20598,17 +21296,7 @@
                 "type": "string",
                 "example": "Head Office"
             },
-            "Field-sDescriptionstaticDescription": {
-                "description": "The description of the Descriptionstatic",
-                "type": "string",
-                "example": "Static description"
-            },
             "Field-sEmailAddress": {
-                "description": "The email address.",
-                "type": "string",
-                "example": "email@example.com"
-            },
-            "Field-sEmailstaticAddress": {
                 "description": "The email address.",
                 "type": "string",
                 "example": "email@example.com"
@@ -21015,18 +21703,6 @@
                 "type": "string",
                 "example": "514"
             },
-            "Field-sPhonestaticE164": {
-                "description": "A phone number in E.164 Format",
-                "pattern": "^\\+[1-9]\\d{1,14}$",
-                "type": "string",
-                "example": "+15149901516"
-            },
-            "Field-sPhonestaticExtension": {
-                "description": "The extension of the phone number.",
-                "pattern": "^\\d$",
-                "type": "string",
-                "example": "123"
-            },
             "Field-sPhonetypeNameX": {
                 "description": "The name of the Phonetype in the language of the requester",
                 "pattern": "^.{0,20}$",
@@ -21083,7 +21759,7 @@
             },
             "Field-sUserLoginname": {
                 "description": "The login name of the User.",
-                "pattern": "^(?:([\\w\\.-]+@[\\w\\.-]+\\.\\w{2,4})|([a-zA-Z0-9]){1,32})$",
+                "pattern": "^(?:([\\w\\.-]+@[\\w\\.-]+\\.\\w{2,20})|([a-zA-Z0-9]){1,32})$",
                 "type": "string",
                 "example": "JohnDoe"
             },
@@ -22765,6 +23441,15 @@
                     }
                 }
             },
+            "attachment-download-v1-Response": {
+                "description": "Response for POST /1/object/ezsignfolder/{pkiEzsignfolderID}/send",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
             "attempt-Response": {
                 "description": "An Attempt object",
                 "required": [
@@ -23633,6 +24318,46 @@
                     }
                 }
             },
+            "buyercontract-getCommunicationList-v1-Response": {
+                "description": "Response for GET /1/object/buyercontract/{pkiBuyercontractID}/getCommunicationList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/buyercontract-getCommunicationList-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response_getList"
+                    }
+                ]
+            },
+            "buyercontract-getCommunicationList-v1-Response-mPayload": {
+                "description": "Response for GET /1/object/buyercontract/{pkiBuyercontractID}/getCommunicationList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "a_objCommunication"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "a_objCommunication": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
             "clonehistory-ListElement": {
                 "description": "A Clonehistory List Element",
                 "required": [
@@ -23727,17 +24452,12 @@
                     }
                 ]
             },
-            "communication-Response": {
-                "description": "A Communication Object",
+            "communication-Request": {
+                "description": "Request for POST /1/object/communication",
                 "required": [
-                    "pkiCommunicationID",
-                    "eCommunicationImportance",
                     "eCommunicationType",
-                    "sCommunicationSubject",
-                    "eCommunicationDirection",
-                    "iCommunicationrecipientCount",
-                    "bCommunicationPrivate",
-                    "objAudit"
+                    "tCommunicationBody",
+                    "bCommunicationPrivate"
                 ],
                 "type": "object",
                 "properties": {
@@ -23750,74 +24470,121 @@
                     "eCommunicationType": {
                         "$ref": "#/components/schemas/Field-eCommunicationType"
                     },
+                    "objCommunicationsender": {
+                        "$ref": "#/components/schemas/Custom-Communicationsender-Request"
+                    },
                     "sCommunicationSubject": {
                         "$ref": "#/components/schemas/Field-sCommunicationSubject"
                     },
-                    "sCommunicationBodyurl": {
-                        "$ref": "#/components/schemas/Computed-sCommunicationBodyurl"
-                    },
-                    "eCommunicationDirection": {
-                        "$ref": "#/components/schemas/Computed-eCommunicationDirection"
-                    },
-                    "iCommunicationrecipientCount": {
-                        "$ref": "#/components/schemas/Computed-iCommunicationrecipientCount"
+                    "tCommunicationBody": {
+                        "description": "The Body of the Communication",
+                        "type": "string"
                     },
                     "bCommunicationPrivate": {
                         "$ref": "#/components/schemas/Field-bCommunicationPrivate"
                     },
-                    "objDescriptionstaticSender": {
-                        "$ref": "#/components/schemas/descriptionstatic-Response"
+                    "eCommunicationAttachmenttype": {
+                        "description": "How the attachment should be included in the email. \n\nOnly used if eCommunicationType is **Email**",
+                        "enum": [
+                            "Attachment",
+                            "Url"
+                        ],
+                        "type": "string"
                     },
-                    "objEmailstaticSender": {
-                        "$ref": "#/components/schemas/emailstatic-Response"
+                    "iCommunicationAttachmentlinkexpiration": {
+                        "description": "The number of days before the attachment link expired. \n\nOnly used if eCommunicationType is **Email** and eCommunicationattachmentType is **Link**",
+                        "maximum": 30,
+                        "minimum": 1,
+                        "type": "integer"
                     },
-                    "objPhonestaticSender": {
-                        "$ref": "#/components/schemas/phonestatic-Response"
-                    },
-                    "objAudit": {
-                        "$ref": "#/components/schemas/Common-Audit"
+                    "bCommunicationReadreceipt": {
+                        "description": "Whether we ask for a read receipt or not.",
+                        "type": "boolean"
                     }
                 }
             },
-            "communication-ResponseCompound": {
-                "description": "A Communication Object",
+            "communication-RequestCompound": {
+                "description": "Request for POST /1/object/communication",
                 "type": "object",
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/communication-Response"
+                        "$ref": "#/components/schemas/communication-Request"
                     },
                     {
                         "required": [
                             "a_objCommunicationattachment",
                             "a_objCommunicationrecipient",
+                            "a_objCommunicationreference",
                             "a_objCommunicationexternalrecipient"
                         ],
                         "type": "object",
                         "properties": {
                             "a_objCommunicationattachment": {
+                                "minItems": 0,
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/components/schemas/communicationattachment-ResponseCompound"
+                                    "$ref": "#/components/schemas/Custom-Communicationattachment-Request"
                                 }
                             },
                             "a_objCommunicationrecipient": {
+                                "minItems": 0,
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/components/schemas/communicationrecipient-ResponseCompound"
+                                    "$ref": "#/components/schemas/communicationrecipient-RequestCompound"
+                                }
+                            },
+                            "a_objCommunicationreference": {
+                                "minItems": 0,
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/communicationreference-RequestCompound"
                                 }
                             },
                             "a_objCommunicationexternalrecipient": {
+                                "minItems": 0,
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/components/schemas/communicationexternalrecipient-ResponseCompound"
+                                    "$ref": "#/components/schemas/communicationexternalrecipient-RequestCompound"
                                 }
                             }
                         }
                     }
                 ]
             },
-            "communication-getObject-v2-Response": {
-                "description": "Response for GET /2/object/communication/{pkiCommunicationID}",
+            "communication-createObject-v1-Response-mPayload": {
+                "description": "Payload for POST /1/object/communication",
+                "required": [
+                    "a_pkiCommunicationID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiCommunicationID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Field-pkiCommunicationID"
+                        }
+                    }
+                }
+            },
+            "communication-send-v1-Request": {
+                "description": "Request for POST /1/object/communication",
+                "required": [
+                    "a_objCommunication"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objCommunication": {
+                        "minItems": 1,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/communication-RequestCompound"
+                        }
+                    }
+                }
+            },
+            "communication-send-v1-Response": {
+                "description": "Response for POST /1/object/communication",
                 "type": "object",
                 "allOf": [
                     {
@@ -23827,7 +24594,7 @@
                         "type": "object",
                         "properties": {
                             "mPayload": {
-                                "$ref": "#/components/schemas/communication-getObject-v2-Response-mPayload"
+                                "$ref": "#/components/schemas/communication-createObject-v1-Response-mPayload"
                             }
                         }
                     },
@@ -23836,24 +24603,8 @@
                     }
                 ]
             },
-            "communication-getObject-v2-Response-mPayload": {
-                "description": "Payload for GET /2/object/communication/{pkiCommunicationID}",
-                "required": [
-                    "objCommunication"
-                ],
-                "type": "object",
-                "properties": {
-                    "objCommunication": {
-                        "$ref": "#/components/schemas/communication-ResponseCompound"
-                    }
-                }
-            },
-            "communicationattachment-Response": {
+            "communicationattachment-Request": {
                 "description": "A Communicationattachment Object",
-                "required": [
-                    "pkiCommunicationattachmentID",
-                    "sCommunicationattachmentName"
-                ],
                 "type": "object",
                 "properties": {
                     "pkiCommunicationattachmentID": {
@@ -23867,89 +24618,72 @@
                     },
                     "fkiSalarypreparationID": {
                         "$ref": "#/components/schemas/Field-pkiSalarypreparationID"
-                    },
-                    "sCommunicationattachmentName": {
-                        "$ref": "#/components/schemas/Field-sCommunicationattachmentName"
-                    },
-                    "sDownloadUrl": {
-                        "description": "The Url to the requested document.\n\nUrl will expire after 3 hours.",
-                        "type": "string"
                     }
                 }
             },
-            "communicationattachment-ResponseCompound": {
-                "description": "A Communicationattachment Object",
+            "communicationattachment-RequestCompound": {
+                "description": "A Communicationattachment Object and children",
                 "type": "object",
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/communicationattachment-Response"
+                        "$ref": "#/components/schemas/communicationattachment-Request"
                     },
                     {
                         "type": "object"
                     }
                 ]
             },
-            "communicationexternalrecipient-Response": {
+            "communicationexternalrecipient-Request": {
                 "description": "A Communicationexternalrecipient Object",
                 "required": [
-                    "pkiCommunicationexternalrecipientID",
-                    "eCommunicationexternalrecipientType",
-                    "objDescriptionstatic"
+                    "sCommunicationexternalrecipientName"
                 ],
                 "type": "object",
                 "properties": {
                     "pkiCommunicationexternalrecipientID": {
                         "$ref": "#/components/schemas/Field-pkiCommunicationexternalrecipientID"
                     },
+                    "sEmailAddress": {
+                        "$ref": "#/components/schemas/Field-sEmailAddress"
+                    },
+                    "sPhoneE164": {
+                        "$ref": "#/components/schemas/Field-sPhoneE164"
+                    },
                     "eCommunicationexternalrecipientType": {
                         "$ref": "#/components/schemas/Field-eCommunicationexternalrecipientType"
                     },
-                    "objDescriptionstatic": {
-                        "$ref": "#/components/schemas/descriptionstatic-ResponseCompound"
-                    },
-                    "objEmailstatic": {
-                        "$ref": "#/components/schemas/emailstatic-ResponseCompound"
-                    },
-                    "objPhonestatic": {
-                        "$ref": "#/components/schemas/phonestatic-ResponseCompound"
+                    "sCommunicationexternalrecipientName": {
+                        "$ref": "#/components/schemas/Field-sCommunicationexternalrecipientName"
                     }
                 }
             },
-            "communicationexternalrecipient-ResponseCompound": {
-                "description": "A Communicationexternalrecipient Object",
+            "communicationexternalrecipient-RequestCompound": {
+                "description": "A Communicationexternalrecipient Object and children",
                 "type": "object",
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/communicationexternalrecipient-Response"
+                        "$ref": "#/components/schemas/communicationexternalrecipient-Request"
                     },
                     {
                         "type": "object"
                     }
                 ]
             },
-            "communicationrecipient-Response": {
+            "communicationrecipient-Request": {
                 "description": "A Communicationrecipient Object",
-                "required": [
-                    "pkiCommunicationrecipientID",
-                    "eCommunicationrecipientType",
-                    "objDescriptionstatic"
-                ],
                 "type": "object",
                 "properties": {
                     "pkiCommunicationrecipientID": {
                         "$ref": "#/components/schemas/Field-pkiCommunicationrecipientID"
                     },
-                    "eCommunicationrecipientObjecttype": {
-                        "$ref": "#/components/schemas/Field-eCommunicationrecipientObjecttype"
-                    },
                     "fkiAgentID": {
                         "$ref": "#/components/schemas/Field-pkiAgentID"
                     },
+                    "fkiAgentincorporationID": {
+                        "$ref": "#/components/schemas/Field-pkiAgentincorporationID"
+                    },
                     "fkiBrokerID": {
                         "$ref": "#/components/schemas/Field-pkiBrokerID"
-                    },
-                    "fkiContactID": {
-                        "$ref": "#/components/schemas/Field-pkiContactID"
                     },
                     "fkiCustomerID": {
                         "$ref": "#/components/schemas/Field-pkiCustomerID"
@@ -23957,59 +24691,80 @@
                     "fkiEmployeeID": {
                         "$ref": "#/components/schemas/Field-pkiEmployeeID"
                     },
-                    "fkiEzsignsignerID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsignsignerID"
-                    },
-                    "fkiFranchiseofficeID": {
-                        "$ref": "#/components/schemas/Field-pkiFranchiseofficeID"
-                    },
-                    "fkiUserID": {
-                        "$ref": "#/components/schemas/Field-pkiUserID"
-                    },
-                    "fkiAgentincorporationID": {
-                        "$ref": "#/components/schemas/Field-pkiAgentincorporationID"
-                    },
                     "fkiAssistantID": {
                         "$ref": "#/components/schemas/Field-pkiAssistantID"
                     },
                     "fkiExternalbrokerID": {
                         "$ref": "#/components/schemas/Field-pkiExternalbrokerID"
                     },
-                    "fkiEzcomagentID": {
-                        "$ref": "#/components/schemas/Field-pkiEzcomagentID"
+                    "fkiEzsignsignerID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignsignerID"
                     },
                     "fkiNotaryID": {
                         "$ref": "#/components/schemas/Field-pkiNotaryID"
                     },
-                    "fkiRewardmemberID": {
-                        "$ref": "#/components/schemas/Field-pkiRewardmemberID"
-                    },
                     "fkiSupplierID": {
                         "$ref": "#/components/schemas/Field-pkiSupplierID"
                     },
+                    "fkiUserID": {
+                        "$ref": "#/components/schemas/Field-pkiUserID"
+                    },
                     "eCommunicationrecipientType": {
                         "$ref": "#/components/schemas/Field-eCommunicationrecipientType"
-                    },
-                    "objDescriptionstatic": {
-                        "$ref": "#/components/schemas/descriptionstatic-ResponseCompound"
-                    },
-                    "objEmailstatic": {
-                        "$ref": "#/components/schemas/emailstatic-ResponseCompound"
-                    },
-                    "objPhonestatic": {
-                        "$ref": "#/components/schemas/phonestatic-ResponseCompound"
                     }
                 }
             },
-            "communicationrecipient-ResponseCompound": {
-                "description": "A Communicationreciient Object",
+            "communicationrecipient-RequestCompound": {
+                "description": "A Communicationrecipient Object and children",
                 "type": "object",
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/communicationrecipient-Response"
+                        "$ref": "#/components/schemas/communicationrecipient-Request"
                     },
                     {
                         "type": "object"
+                    }
+                ]
+            },
+            "communicationreference-Request": {
+                "description": "A Communicationreference Object",
+                "type": "object",
+                "properties": {
+                    "pkiCommunicationreferenceID": {
+                        "$ref": "#/components/schemas/Field-pkiCommunicationreferenceID"
+                    },
+                    "fkiBuyercontractID": {
+                        "$ref": "#/components/schemas/Field-pkiBuyercontractID"
+                    },
+                    "fkiEzsignfolderID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "fkiInscriptionID": {
+                        "$ref": "#/components/schemas/Field-pkiInscriptionID"
+                    },
+                    "fkiInscriptiontempID": {
+                        "$ref": "#/components/schemas/Field-pkiInscriptiontempID"
+                    },
+                    "fkiInvoiceID": {
+                        "$ref": "#/components/schemas/Field-pkiInvoiceID"
+                    },
+                    "fkiOtherincomeID": {
+                        "$ref": "#/components/schemas/Field-pkiOtherincomeID"
+                    },
+                    "fkiElectronicfundstransferID": {
+                        "$ref": "#/components/schemas/Field-pkiElectronicfundstransferID"
+                    },
+                    "fkiRejectedoffertopurchaseID": {
+                        "$ref": "#/components/schemas/Field-pkiRejectedoffertopurchaseID"
+                    }
+                }
+            },
+            "communicationreference-RequestCompound": {
+                "description": "A Communicationreference Object and children",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/communicationreference-Request"
                     }
                 ]
             },
@@ -24429,28 +25184,43 @@
                     }
                 }
             },
-            "descriptionstatic-Response": {
-                "description": "A Descriptionstatic Object",
-                "required": [
-                    "pkiDescriptionstaticID",
-                    "sDescriptionstaticDescription"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiDescriptionstaticID": {
-                        "$ref": "#/components/schemas/Field-pkiDescriptionstaticID"
-                    },
-                    "sDescriptionstaticDescription": {
-                        "$ref": "#/components/schemas/Field-sDescriptionstaticDescription"
-                    }
-                }
-            },
-            "descriptionstatic-ResponseCompound": {
-                "description": "A Descriptionstatic Object and children to create a complete structure",
+            "electronicfundstransfer-getCommunicationList-v1-Response": {
+                "description": "Response for GET /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/getCommunicationList",
                 "type": "object",
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/descriptionstatic-Response"
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/electronicfundstransfer-getCommunicationList-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response_getList"
+                    }
+                ]
+            },
+            "electronicfundstransfer-getCommunicationList-v1-Response-mPayload": {
+                "description": "Response for GET /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/getCommunicationList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "a_objCommunication"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "a_objCommunication": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
+                                }
+                            }
+                        }
                     }
                 ]
             },
@@ -24508,31 +25278,6 @@
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/email-Response"
-                    }
-                ]
-            },
-            "emailstatic-Response": {
-                "description": "An Emailstatic Object",
-                "required": [
-                    "pkiEmailstaticID",
-                    "sEmailstaticAddress"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiEmailstaticID": {
-                        "$ref": "#/components/schemas/Field-pkiEmailstaticID"
-                    },
-                    "sEmailstaticAddress": {
-                        "$ref": "#/components/schemas/Field-sEmailstaticAddress"
-                    }
-                }
-            },
-            "emailstatic-ResponseCompound": {
-                "description": "An Emailstatic Object and children to create a complete structure",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/emailstatic-Response"
                     }
                 ]
             },
@@ -28484,6 +29229,76 @@
                     }
                 ]
             },
+            "ezsignfolder-getCommunicationrecipients-v1-Response": {
+                "description": "Response for GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getCommunicationrecipients",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsignfolder-getCommunicationrecipients-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsignfolder-getCommunicationrecipients-v1-Response-mPayload": {
+                "description": "Response for GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getCommunicationrecipients",
+                "required": [
+                    "a_objCommunicationrecipientsgroup"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objCommunicationrecipientsgroup": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-Communicationrecipientsgroup-Response"
+                        }
+                    }
+                }
+            },
+            "ezsignfolder-getCommunicationsenders-v1-Response": {
+                "description": "Response for GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getCommunicationrecipients",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsignfolder-getCommunicationsenders-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsignfolder-getCommunicationsenders-v1-Response-mPayload": {
+                "description": "Response for GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getCommunicationsenders",
+                "required": [
+                    "a_objCommunicationsenders"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objCommunicationsenders": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-Communicationsender-Response"
+                        }
+                    }
+                }
+            },
             "ezsignfolder-getEzsigndocuments-v1-Response": {
                 "description": "Response for GET /1/object/ezsignfolder/{pkiEzsignfolder}/getEzsigndocuments",
                 "type": "object",
@@ -28882,7 +29697,7 @@
                 }
             },
             "ezsignfolder-send-v1-Response": {
-                "description": "Response for POST /1/object/ezsignfolder/{pkiEzsignfolderID}/send",
+                "description": "Response for GET /1/object/attachment/{pkiAttachmentID}/download",
                 "type": "object",
                 "allOf": [
                     {
@@ -35434,6 +36249,166 @@
                     }
                 }
             },
+            "inscription-getCommunicationList-v1-Response": {
+                "description": "Response for GET /1/object/inscription/{pkiInscriptionID}/getCommunicationList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/inscription-getCommunicationList-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response_getList"
+                    }
+                ]
+            },
+            "inscription-getCommunicationList-v1-Response-mPayload": {
+                "description": "Response for GET /1/object/inscription/{pkiInscriptionID}/getCommunicationList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "a_objCommunication"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "a_objCommunication": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "inscriptionnotauthenticated-getCommunicationList-v1-Response": {
+                "description": "Response for GET /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/getCommunicationList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/inscriptionnotauthenticated-getCommunicationList-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response_getList"
+                    }
+                ]
+            },
+            "inscriptionnotauthenticated-getCommunicationList-v1-Response-mPayload": {
+                "description": "Response for GET /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/getCommunicationList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "a_objCommunication"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "a_objCommunication": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "inscriptiontemp-getCommunicationList-v1-Response": {
+                "description": "Response for GET /1/object/inscriptiontemp/{pkiInscriptiontempID}/getCommunicationList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/inscriptiontemp-getCommunicationList-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response_getList"
+                    }
+                ]
+            },
+            "inscriptiontemp-getCommunicationList-v1-Response-mPayload": {
+                "description": "Response for GET /1/object/inscriptiontemp/{pkiInscriptiontempID}/getCommunicationList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "a_objCommunication"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "a_objCommunication": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "invoice-getCommunicationList-v1-Response": {
+                "description": "Response for GET /1/object/invoice/{pkiInvoiceID}/getCommunicationList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/invoice-getCommunicationList-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response_getList"
+                    }
+                ]
+            },
+            "invoice-getCommunicationList-v1-Response-mPayload": {
+                "description": "Response for GET /1/object/invoice/{pkiInvoiceID}/getCommunicationList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "a_objCommunication"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "a_objCommunication": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
             "language-AutocompleteElement-Response": {
                 "description": "A Language AutocompleteElement Response",
                 "required": [
@@ -35795,6 +36770,46 @@
                         }
                     }
                 }
+            },
+            "otherincome-getCommunicationList-v1-Response": {
+                "description": "Response for GET /1/object/otherincome/{pkiOtherincomeID}/getCommunicationList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/otherincome-getCommunicationList-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response_getList"
+                    }
+                ]
+            },
+            "otherincome-getCommunicationList-v1-Response-mPayload": {
+                "description": "Response for GET /1/object/otherincome/{pkiOtherincomeID}/getCommunicationList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "a_objCommunication"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "a_objCommunication": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
+                                }
+                            }
+                        }
+                    }
+                ]
             },
             "paymentterm-AutocompleteElement-Response": {
                 "description": "A Paymentterm AutocompleteElement Response",
@@ -36448,33 +37463,6 @@
                     }
                 ]
             },
-            "phonestatic-Response": {
-                "description": "A Phonestatic Object",
-                "required": [
-                    "pkiPhonestaticID"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiPhonestaticID": {
-                        "$ref": "#/components/schemas/Field-pkiPhonestaticID"
-                    },
-                    "sPhonestaticE164": {
-                        "$ref": "#/components/schemas/Field-sPhonestaticE164"
-                    },
-                    "sPhonestaticExtension": {
-                        "$ref": "#/components/schemas/Field-sPhonestaticExtension"
-                    }
-                }
-            },
-            "phonestatic-ResponseCompound": {
-                "description": "A Phonestatic Object and children to create a complete structure",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/phonestatic-Response"
-                    }
-                ]
-            },
             "phonetype-AutocompleteElement-Response": {
                 "description": "A Phonetype AutocompleteElement Response",
                 "required": [
@@ -36530,6 +37518,46 @@
                         }
                     }
                 }
+            },
+            "rejectedoffertopurchase-getCommunicationList-v1-Response": {
+                "description": "Response for GET /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/getCommunicationList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/rejectedoffertopurchase-getCommunicationList-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response_getList"
+                    }
+                ]
+            },
+            "rejectedoffertopurchase-getCommunicationList-v1-Response-mPayload": {
+                "description": "Response for GET /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/getCommunicationList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "a_objCommunication"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "a_objCommunication": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
+                                }
+                            }
+                        }
+                    }
+                ]
             },
             "secretquestion-AutocompleteElement-Response": {
                 "description": "A Secretquestion AutocompleteElement Response",
@@ -39877,6 +40905,7 @@
                     "eWebhookModule",
                     "sWebhookUrl",
                     "bWebhookSkipsslvalidation",
+                    "bWebhookIsactive",
                     "sWebhookEmailfailed"
                 ],
                 "type": "object",
@@ -40361,7 +41390,7 @@
     "tags": [
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\r\n\r\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\r\n\r\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\r\n\r\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\r\n\r\n**PATCH** will be incremented everytime changes and additions are released.\r\n\r\nFor each version, there will be the list of changes:\r\n* **Added** for new features.\r\n* **Changed** for changes in existing functionality.\r\n* **Deprecated** for soon-to-be removed features.\r\n* **Removed** for now removed features.\r\n* **Fixed** for any bug fixes.\r\n* **Security** in case of vulnerabilities.\r\n\r\n**Removal lifecycle**<br>\r\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\r\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\r\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\r\n\r\n## 1.2.X Releases\r\n\r\n### [1.2.0] - 2023-09-24\r\n\r\n#### Added\r\n- DELETE /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- GET /1/object/activesession/getDocumentationUrl\r\n- GET /1/object/user/{pkiUserID}/getApikeys\r\n- GET /1/object/usergroup/{pkiUsergroupID}/getUsergroupdelegations\r\n- GET /2/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- POST /1/object/user/{pkiUserID}/sendPasswordReset\r\n- POST /1/object/usergroup/{pkiUsergroupID}/editUsergroupdelegations\r\n- POST /1/object/usergroupdelegation\r\n- PUT /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- Added avanced search filters sContactFirstname, sContactLastname and sEzsigndocumentName to Ezsignfolder list\r\n- Added property a_objEzsignelementdependency in ezsignformfield-RequestCompound, ezsignformfield-ResponseCompound, ezsignsignature-RequestCompound and ezsignsignature-RequestCompound\r\n- Added property a_objEzsigntemplateelementdependency in ezsigntemplateformfield-RequestCompound, ezsigntemplateformfield-ResponseCompound, ezsigntemplatesignature-RequestCompound and ezsigntemplatesignature-RequestCompound\r\n- Added property bVersionDeprecated in Common-Response-objDebugPayload\r\n- Added property eEzsigndocumentSteptype in ezsigndocument-ResponseCompound\r\n- Added property iEzsigntemplatesignatureWidth and iEzsigntemplatesignatureHeight in object ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Added property eEzsignformfieldDependencyrequirement in object ezsignformfield-Request and ezsignformfield-Response\r\n- Added property eEzsignformfieldgroupTextvalidation in ezsignformfieldgroup-Response\r\n- Added property eEzsigntemplateformfieldDependencyrequirement in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response \r\n- Added property eEzsigntemplatesignatureDependencyrequirement in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response \r\n- Added property eEzsigntemplateformfieldgroupTextvalidation in ezsigntemplateformfieldgroup-Request and ezsigntemplateformfieldgroup-Response\r\n- Added properties iEzsignsignatureMaxlength, eEzsignsignatureDependencyrequirement in ezsignsignature-Request and ezsignsignature-Response\r\n- Added properties iEzsigntemplatesignatureMaxlength, sEzsigntemplatesignatureRegexp and eEzsigntemplatesignatureTextvalidation in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Added property objContactNameDelegation in ezsignsignature-Response\r\n- Added property objEzsignfoldertype in ezsignfolder-Response\r\n- Added property bEzsignformfieldAutocomplete in ezsignformfield-Request and ezsignformfield-Responce\r\n- Added property bEzsigntemplateformfieldAutocomplete in ezsigntemplateformfield-Request and ezsigntemplateformfield-Responce\r\n- Added properties bEzsignfoldertypeDelegate and bEzsignfoldertypeReassign in Custom-Ezsignfoldertype-Response, ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Added value AgentBrokerEzsignUserNormal for sSelector in GET /2/object/user/getAutocomplete/{sSelector}\r\n- Added value AllButEveryone for sSelector in GET /2/object/usergroup/getAutocomplete/{sSelector}\r\n- New 401 error code UNAUTHORIZED_REQUEST_APIKEY\r\n- New 401 error code UNAUTHORIZED_REQUEST_PRESIGNED \r\n\r\n## Older Releases\r\nDocumentation and changelog for older releases can be found here\r\n- [1.1.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.1.html)\r\n- [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)",
+            "description": "All notable changes to this project will be documented in this section.\r\n\r\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\r\n\r\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\r\n\r\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\r\n\r\n**PATCH** will be incremented everytime changes and additions are released.\r\n\r\nFor each version, there will be the list of changes:\r\n* **Added** for new features.\r\n* **Changed** for changes in existing functionality.\r\n* **Deprecated** for soon-to-be removed features.\r\n* **Removed** for now removed features.\r\n* **Fixed** for any bug fixes.\r\n* **Security** in case of vulnerabilities.\r\n\r\n**Removal lifecycle**<br>\r\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\r\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\r\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\r\n\r\n## 1.2.X Releases\r\n\r\n### [1.2.0] - 2023-09-24\r\n\r\n#### Added\r\n- DELETE /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- GET /1/object/activesession/getDocumentationUrl\r\n- GET /1/object/attachment/{pkiAttachmentID}/download\r\n- GET /1/object/buyercontract/{pkiBuyercontractID}/getCommunicationList\r\n- GET /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/getCommunicationList\r\n- GET /1/object/inscription/{pkiInscriptionID}/getCommunicationList\r\n- GET /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/getCommunicationList\r\n- GET /1/object/inscriptiontemp/{pkiInscriptiontempID}/getCommunicationList\r\n- GET /1/object/invoice/{pkiInvoiceID}/getCommunicationList\r\n- GET /1/object/otherincome/{pkiOtherincomeID}/getCommunicationList\r\n- GET /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/getCommunicationList\r\n- GET /1/object/user/{pkiUserID}/getApikeys\r\n- GET /1/object/usergroup/{pkiUsergroupID}/getUsergroupdelegations\r\n- GET /2/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- POST /1/object/user/{pkiUserID}/sendPasswordReset\r\n- POST /1/object/usergroup/{pkiUsergroupID}/editUsergroupdelegations\r\n- POST /1/object/usergroupdelegation\r\n- PUT /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- Added avanced search filters sContactFirstname, sContactLastname and sEzsigndocumentName to Ezsignfolder list\r\n- Added property a_objEzsignelementdependency in ezsignformfield-RequestCompound, ezsignformfield-ResponseCompound, ezsignsignature-RequestCompound and ezsignsignature-RequestCompound\r\n- Added property a_objEzsigntemplateelementdependency in ezsigntemplateformfield-RequestCompound, ezsigntemplateformfield-ResponseCompound, ezsigntemplatesignature-RequestCompound and ezsigntemplatesignature-RequestCompound\r\n- Added property bVersionDeprecated in Common-Response-objDebugPayload\r\n- Added property eEzsigndocumentSteptype in ezsigndocument-ResponseCompound\r\n- Added property iEzsigntemplatesignatureWidth and iEzsigntemplatesignatureHeight in object ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Added property eEzsignformfieldDependencyrequirement in object ezsignformfield-Request and ezsignformfield-Response\r\n- Added property eEzsignformfieldgroupTextvalidation in ezsignformfieldgroup-Response\r\n- Added property eEzsigntemplateformfieldDependencyrequirement in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response \r\n- Added property eEzsigntemplatesignatureDependencyrequirement in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response \r\n- Added property eEzsigntemplateformfieldgroupTextvalidation in ezsigntemplateformfieldgroup-Request and ezsigntemplateformfieldgroup-Response\r\n- Added properties iEzsignsignatureMaxlength, eEzsignsignatureDependencyrequirement in ezsignsignature-Request and ezsignsignature-Response\r\n- Added properties iEzsigntemplatesignatureMaxlength, sEzsigntemplatesignatureRegexp and eEzsigntemplatesignatureTextvalidation in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Added property objContactNameDelegation in ezsignsignature-Response\r\n- Added property objEzsignfoldertype in ezsignfolder-Response\r\n- Added property bEzsignformfieldAutocomplete in ezsignformfield-Request and ezsignformfield-Responce\r\n- Added property bEzsigntemplateformfieldAutocomplete in ezsigntemplateformfield-Request and ezsigntemplateformfield-Responce\r\n- Added properties bEzsignfoldertypeDelegate and bEzsignfoldertypeReassign in Custom-Ezsignfoldertype-Response, ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Added value AgentBrokerEzsignUserNormal for sSelector in GET /2/object/user/getAutocomplete/{sSelector}\r\n- Added value AllButEveryone for sSelector in GET /2/object/usergroup/getAutocomplete/{sSelector}\r\n- Added value fkiUserID for sFilter in GET /1/object/ezsignfolder/getList\r\n- New 401 error code UNAUTHORIZED_REQUEST_APIKEY\r\n- New 401 error code UNAUTHORIZED_REQUEST_PRESIGNED \r\n- New 422 error code UNPROCESSABLEENTITY_EZSIGNSIGNATURE_SIGNED \r\n\r\n## Older Releases\r\nDocumentation and changelog for older releases can be found here\r\n- [1.1.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.1.html)\r\n- [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)",
             "x-displayName": "Changelog"
         },
         {
@@ -40371,7 +41400,7 @@
         },
         {
             "name": "General_ErrorCodes",
-            "description": "When the API returns an HTTP status code in the range 400-599, a JSON object will be returned with 2 properties:\r\n- eErrorCode\r\n- sErrorMessage\r\n\r\nWe highly suggest you use **eErrorCode** to do any error validation logic in your code or to create your own error message for your users. **sErrorMessage** has more detail for a human to read, but is intended for the developper and is always returned in English.\r\n\r\nHere is the complete list of **eErrorCode** you could receive for each HTTP status code and examples of situations where they could be returned.\r\n\r\n### HTTP 400 (Bad Request)\r\n| eErrorCode           | Examples                                                                       |\r\n| -------------------- | ------------------------------------------------------------------------------ |\r\n| BADREQUEST           | Unserializable JSON, invalid parameter, invalid signature, invalid fingerprint |\r\n| BADREQUEST_CLOCKSKEW | The time on the client computer is wrong                                       |\r\n\r\n### HTTP 401 (Unauthorized)\r\n| eErrorCode           | Examples                                                           |\r\n| -------------------- | ------------------------------------------------------------------ |\r\n| UNAUTHORIZED_BADAUTH | Invalid credentials during Authentication                          |\r\n| UNAUTHORIZED_BADMFA  | Invalid response to the MFA challenge                              |\r\n| UNAUTHORIZED_EXPIRED | Credentials have expired                                           |\r\n| UNAUTHORIZED_REQUEST | The request is invalid (bad ip source, fingerprint, signature, etc)|\r\n| UNAUTHORIZED_REQUEST_APIKEY | The API Key is invalid                                      |\r\n| UNAUTHORIZED_REQUEST_PRESIGNED | The presigned URL is invalid                             |\r\n\r\n### HTTP 403 (Forbidden)\r\n| eErrorCode                     | Examples                                            |\r\n| ------------------------------ | --------------------------------------------------- |\r\n| FORBIDDEN                      | Generic Forbidden                                   |\r\n| FORBIDDEN_CONFIGURATION        | A configured setting prevent access to the element  |\r\n| FORBIDDEN_MODULE               | Module is not activated                             |\r\n| FORBIDDEN_NOACCESS             | Not allowed to access the element                   |\r\n| FORBIDDEN_PERMISSION           | Missing a permission to access the route            |\r\n| FORBIDDEN_SUBSCRIPTION         | No subscription, for example to eZsign              |\r\n| FORBIDDEN_USERTYPE             | This type of User is forbidden for the route        |\r\n| FORBIDDEN_USER_ORIGIN_EXTERNAL | Can't modify user informations.                     |\r\n\r\n### HTTP 404 (Not Found)\r\n| eErrorCode      | Examples                                    |\r\n| --------------- | ------------------------------------------- |\r\n| NOTFOUND        | Generic not found                           |\r\n| NOTFOUND_OBJECT | Object does not exist in database           |\r\n| NOTFOUND_ROUTE  | The route does not exist (url, API version) |\r\n\r\n### HTTP 405 (Method Not Allowed)\r\n| eErrorCode       | Examples                                                                      |\r\n| ---------------- | ----------------------------------------------------------------------------- |\r\n| METHODNOTALLOWED | The route is valid but the method is not allowed ex: POST on a GET only route |\r\n\r\n### HTTP 406 (Not Acceptable)\r\n| eErrorCode             | Examples                                                                                      |\r\n| ---------------------- | --------------------------------------------------------------------------------------------- |\r\n| NOTACCEPTABLE_CONTENT  | The route is valid but the Accept header is not allowed ex: \"application/json\" vs \"image/png\" |\r\n| NOTACCEPTABLE_LANGUAGE | The route is valid but the Accept-Language header is not allowed ex: \"en\" vs \"es\"             |\r\n\r\n### HTTP 422 (Unprocessable entity)\r\n| eErrorCode                             | Examples                                                               |\r\n| -------------------------------------- | ---------------------------------------------------------------------- |\r\n| UNPROCESSABLEENTITY_ACTIVESESSION_ALREADY_CLONING | The user is already cloning another user                    |\r\n| UNPROCESSABLEENTITY_CANNOTDELETE       | The element cannot be deleted                                          |\r\n| UNPROCESSABLEENTITY_CANNOTMODIFY       | The element cannot be modified                                         |\r\n| UNPROCESSABLEENTITY_CHANGEPASSWORD_INVALID_CURRENT   | The old password supplied does not match the user's current password |\r\n| UNPROCESSABLEENTITY_CHANGEPASSWORD_SAME    | The new password is the same as the old password |\r\n| UNPROCESSABLEENTITY_DATA_MISSING       | Some data is missing                                                   |\r\n| UNPROCESSABLEENTITY_DATA_UNIQUE        | The data fails unique check : value exist in other element             |\r\n| UNPROCESSABLEENTITY_DATA_VALIDATION    | The data fails some validation                                         |\r\n| UNPROCESSABLEENTITY_DATA_OUTOFBOUND    | The data contains a value that is out of bound                         |\r\n| UNPROCESSABLEENTITY_DOWNLOAD_ERROR     | We cannot retrieve ressource at supplied url                           |\r\n| UNPROCESSABLEENTITY_EZSIGNFORM_VALIDATION     | The validation of the Ezsignform returned some errors                           |\r\n| UNPROCESSABLEENTITY_EZSIGNSIGNERCONNECTED    | The Ezsignsigner is connected                                    |\r\n| UNPROCESSABLEENTITY_NOTHINGTODO        | The request was valid, but no action was necessary                     |\r\n| UNPROCESSABLEENTITY_NOTREADY           | The element is not in a state that allows the action (Sending a document without signature, downloading an unsigned document) |\r\n| UNPROCESSABLEENTITY_PDF_FORM           | The pdf document contains a form                                       |\r\n| UNPROCESSABLEENTITY_PDF_SIGNATURE      | The pdf document contains a signature(s)                               |\r\n| UNPROCESSABLEENTITY_PDF_FORM_AND_SIGNATURE | The pdf document contains a form and signature(s)                  |\r\n| UNPROCESSABLEENTITY_PDF_INCOMPATIBLE   | The pdf document cannot be signed                                      |\r\n| UNPROCESSABLEENTITY_PDF_PASSWORD       | The pdf document contains a password and cannot be signed              |\r\n| UNPROCESSABLEENTITY_PDF_WRONG_PASSWORD | The password cannot open the pdf document since it's incorrect         |\r\n| UNPROCESSABLEENTITY_PDF_REPAIRABLE     | The pdf document contains errors and can be repaired                   |\r\n| UNPROCESSABLEENTITY_PDF_XFA            | The pdf document contains XFA form and cannot be signed                |\r\n| UNPROCESSABLEENTITY_TEMPLATE_MISMATCH  | The number of pages between the document and the template do not match |\r\n| UNPROCESSABLEENTITY_UNMODIFIABLE_FIELD | The field is not modifiable in the current state                       |\r\n| UNPROCESSABLEENTITY_USER_STAGED        | The user can't connect since it's currently staged                      |\r\n\r\n### HTTP 429 (Too Many Requests)\r\n| eErrorCode                             | Examples                                                               |\r\n| -------------------------------------- | ---------------------------------------------------------------------- |\r\n| TOOMANYREQUESTS                        | The client reached the maximum number of requests allowed in the specific time |\r\n| TOOMANYREQUESTS_THIRDPARTY             | Our server encountered a 'Too Many Requests' error from a third party |\r\n\r\n### HTTP 500 (Internal Server Error)\r\n| eErrorCode     | Examples                  |\r\n| -------------- | ------------------------- |\r\n| ERROR_INTERNAL | Unhandled error on server |\r\n| ERROR_CONFIGURATION | A parameter on the server is not configured properly |\r\n\r\n### HTTP 501 (Not Implemented)\r\n| eErrorCode           | Examples                                                 |\r\n| -------------------- | -------------------------------------------------------- |\r\n| ERROR_NOTIMPLEMENTED | Endpoint not yet available in your region or environment |",
+            "description": "When the API returns an HTTP status code in the range 400-599, a JSON object will be returned with 2 properties:\r\n- eErrorCode\r\n- sErrorMessage\r\n\r\nWe highly suggest you use **eErrorCode** to do any error validation logic in your code or to create your own error message for your users. **sErrorMessage** has more detail for a human to read, but is intended for the developper and is always returned in English.\r\n\r\nHere is the complete list of **eErrorCode** you could receive for each HTTP status code and examples of situations where they could be returned.\r\n\r\n### HTTP 400 (Bad Request)\r\n| eErrorCode           | Examples                                                                       |\r\n| -------------------- | ------------------------------------------------------------------------------ |\r\n| BADREQUEST           | Unserializable JSON, invalid parameter, invalid signature, invalid fingerprint |\r\n| BADREQUEST_CLOCKSKEW | The time on the client computer is wrong                                       |\r\n\r\n### HTTP 401 (Unauthorized)\r\n| eErrorCode           | Examples                                                           |\r\n| -------------------- | ------------------------------------------------------------------ |\r\n| UNAUTHORIZED_BADAUTH | Invalid credentials during Authentication                          |\r\n| UNAUTHORIZED_BADMFA  | Invalid response to the MFA challenge                              |\r\n| UNAUTHORIZED_EXPIRED | Credentials have expired                                           |\r\n| UNAUTHORIZED_REQUEST | The request is invalid (bad ip source, fingerprint, signature, etc)|\r\n| UNAUTHORIZED_REQUEST_APIKEY | The API Key is invalid                                      |\r\n| UNAUTHORIZED_REQUEST_PRESIGNED | The presigned URL is invalid                             |\r\n\r\n### HTTP 403 (Forbidden)\r\n| eErrorCode                     | Examples                                            |\r\n| ------------------------------ | --------------------------------------------------- |\r\n| FORBIDDEN                      | Generic Forbidden                                   |\r\n| FORBIDDEN_CONFIGURATION        | A configured setting prevent access to the element  |\r\n| FORBIDDEN_MODULE               | Module is not activated                             |\r\n| FORBIDDEN_NOACCESS             | Not allowed to access the element                   |\r\n| FORBIDDEN_PERMISSION           | Missing a permission to access the route            |\r\n| FORBIDDEN_SUBSCRIPTION         | No subscription, for example to eZsign              |\r\n| FORBIDDEN_USERTYPE             | This type of User is forbidden for the route        |\r\n| FORBIDDEN_USER_ORIGIN_EXTERNAL | Can't modify user informations.                     |\r\n\r\n### HTTP 404 (Not Found)\r\n| eErrorCode      | Examples                                    |\r\n| --------------- | ------------------------------------------- |\r\n| NOTFOUND        | Generic not found                           |\r\n| NOTFOUND_OBJECT | Object does not exist in database           |\r\n| NOTFOUND_ROUTE  | The route does not exist (url, API version) |\r\n\r\n### HTTP 405 (Method Not Allowed)\r\n| eErrorCode       | Examples                                                                      |\r\n| ---------------- | ----------------------------------------------------------------------------- |\r\n| METHODNOTALLOWED | The route is valid but the method is not allowed ex: POST on a GET only route |\r\n\r\n### HTTP 406 (Not Acceptable)\r\n| eErrorCode             | Examples                                                                                      |\r\n| ---------------------- | --------------------------------------------------------------------------------------------- |\r\n| NOTACCEPTABLE_CONTENT  | The route is valid but the Accept header is not allowed ex: \"application/json\" vs \"image/png\" |\r\n| NOTACCEPTABLE_LANGUAGE | The route is valid but the Accept-Language header is not allowed ex: \"en\" vs \"es\"             |\r\n\r\n### HTTP 422 (Unprocessable entity)\r\n| eErrorCode                             | Examples                                                               |\r\n| -------------------------------------- | ---------------------------------------------------------------------- |\r\n| UNPROCESSABLEENTITY_ACTIVESESSION_ALREADY_CLONING | The user is already cloning another user                    |\r\n| UNPROCESSABLEENTITY_CANNOTDELETE       | The element cannot be deleted                                          |\r\n| UNPROCESSABLEENTITY_CANNOTMODIFY       | The element cannot be modified                                         |\r\n| UNPROCESSABLEENTITY_CHANGEPASSWORD_INVALID_CURRENT   | The old password supplied does not match the user's current password |\r\n| UNPROCESSABLEENTITY_CHANGEPASSWORD_SAME    | The new password is the same as the old password |\r\n| UNPROCESSABLEENTITY_DATA_MISSING       | Some data is missing                                                   |\r\n| UNPROCESSABLEENTITY_DATA_UNIQUE        | The data fails unique check : value exist in other element             |\r\n| UNPROCESSABLEENTITY_DATA_VALIDATION    | The data fails some validation                                         |\r\n| UNPROCESSABLEENTITY_DATA_OUTOFBOUND    | The data contains a value that is out of bound                         |\r\n| UNPROCESSABLEENTITY_DOWNLOAD_ERROR     | We cannot retrieve ressource at supplied url                           |\r\n| UNPROCESSABLEENTITY_EZSIGNFORM_VALIDATION     | The validation of the Ezsignform returned some errors                           |\r\n| UNPROCESSABLEENTITY_EZSIGNELEMENTDEPENDENCY_LOOP | We detected a loop in the Ezsignelementdependcy              |\r\n| UNPROCESSABLEENTITY_EZSIGNELEMENTDEPENDENCY_MISSINGEZSIGNTEMPLATESIGNERREFERENCE | An Ezsignelementdependency has an Ezsigntemplatesigner not assigned |\r\n| UNPROCESSABLEENTITY_EZSIGNSIGNATURE_SIGNED | The Ezsignsignature is already signed |\r\n| UNPROCESSABLEENTITY_EZSIGNSIGNERCONNECTED    | The Ezsignsigner is connected                                    |\r\n| UNPROCESSABLEENTITY_NOTHINGTODO        | The request was valid, but no action was necessary                     |\r\n| UNPROCESSABLEENTITY_NOTREADY           | The element is not in a state that allows the action (Sending a document without signature, downloading an unsigned document) |\r\n| UNPROCESSABLEENTITY_PDF_FORM           | The pdf document contains a form                                       |\r\n| UNPROCESSABLEENTITY_PDF_SIGNATURE      | The pdf document contains a signature(s)                               |\r\n| UNPROCESSABLEENTITY_PDF_FORM_AND_SIGNATURE | The pdf document contains a form and signature(s)                  |\r\n| UNPROCESSABLEENTITY_PDF_INCOMPATIBLE   | The pdf document cannot be signed                                      |\r\n| UNPROCESSABLEENTITY_PDF_PASSWORD       | The pdf document contains a password and cannot be signed              |\r\n| UNPROCESSABLEENTITY_PDF_WRONG_PASSWORD | The password cannot open the pdf document since it's incorrect         |\r\n| UNPROCESSABLEENTITY_PDF_REPAIRABLE     | The pdf document contains errors and can be repaired                   |\r\n| UNPROCESSABLEENTITY_PDF_XFA            | The pdf document contains XFA form and cannot be signed                |\r\n| UNPROCESSABLEENTITY_TEMPLATE_MISMATCH  | The number of pages between the document and the template do not match |\r\n| UNPROCESSABLEENTITY_UNMODIFIABLE_FIELD | The field is not modifiable in the current state                       |\r\n| UNPROCESSABLEENTITY_USER_STAGED        | The user can't connect since it's currently staged                      |\r\n\r\n### HTTP 429 (Too Many Requests)\r\n| eErrorCode                             | Examples                                                               |\r\n| -------------------------------------- | ---------------------------------------------------------------------- |\r\n| TOOMANYREQUESTS                        | The client reached the maximum number of requests allowed in the specific time |\r\n| TOOMANYREQUESTS_THIRDPARTY             | Our server encountered a 'Too Many Requests' error from a third party |\r\n\r\n### HTTP 500 (Internal Server Error)\r\n| eErrorCode     | Examples                  |\r\n| -------------- | ------------------------- |\r\n| ERROR_INTERNAL | Unhandled error on server |\r\n| ERROR_CONFIGURATION | A parameter on the server is not configured properly |\r\n\r\n### HTTP 501 (Not Implemented)\r\n| eErrorCode           | Examples                                                 |\r\n| -------------------- | -------------------------------------------------------- |\r\n| ERROR_NOTIMPLEMENTED | Endpoint not yet available in your region or environment |",
             "x-displayName": "Error Codes"
         },
         {
@@ -40445,6 +41474,11 @@
             "x-displayName": "Apikey"
         },
         {
+            "name": "Object_Attachment",
+            "description": "Attachment contains detail about an attachment",
+            "x-displayName": "Attachment"
+        },
+        {
             "name": "Object_Billingentityexternal",
             "description": "Billingentityexternal is used to automatically send the invoice to a customer's system.",
             "x-displayName": "Billingentityexternal"
@@ -40458,6 +41492,11 @@
             "name": "Object_Branding",
             "description": "Branding contains detail about a company Branding",
             "x-displayName": "Branding"
+        },
+        {
+            "name": "Object_Buyercontract",
+            "description": "Buyercontract contains detail about a company Buyercontract",
+            "x-displayName": "Buyercontract"
         },
         {
             "name": "Object_Clonehistory",
@@ -40483,6 +41522,11 @@
             "name": "Object_Department",
             "description": "Department contains detail about a Department",
             "x-displayName": "Department"
+        },
+        {
+            "name": "Object_Electronicfundstransfer",
+            "description": "Electronicfundstransfer contains detail about an Electronicfundstransfer",
+            "x-displayName": "Electronicfundstransfer"
         },
         {
             "name": "Object_Emailtype",
@@ -40635,6 +41679,26 @@
             "x-displayName": "Franchisereferalincome"
         },
         {
+            "name": "Object_Inscription",
+            "description": "Inscription contains detail about an Inscription",
+            "x-displayName": "Inscription"
+        },
+        {
+            "name": "Object_Inscriptionnotauthenticated",
+            "description": "Inscriptionnotauthenticated contains detail about an Inscriptionnotauthenticated",
+            "x-displayName": "Inscriptionnotauthenticated"
+        },
+        {
+            "name": "Object_Inscriptiontemp",
+            "description": "Inscriptiontemp contains detail about an Inscriptiontemp",
+            "x-displayName": "Inscriptiontemp"
+        },
+        {
+            "name": "Object_Invoice",
+            "description": "Invoice contains detail about an Invoice",
+            "x-displayName": "Invoice"
+        },
+        {
             "name": "Object_Language",
             "description": "Language contains details about Languages",
             "x-displayName": "Language"
@@ -40655,8 +41719,13 @@
             "x-displayName": "Notificationtest"
         },
         {
+            "name": "Object_Otherincome",
+            "description": "Otherincome contains detail about an Otherincome",
+            "x-displayName": "Otherincome"
+        },
+        {
             "name": "Object_Paymentterm",
-            "description": "Paymentterm contains detail about a payment term",
+            "description": "Paymentterm contains detail about a Paymentterm",
             "x-displayName": "Paymentterm"
         },
         {
@@ -40673,6 +41742,11 @@
             "name": "Object_Phonetype",
             "description": "Phonetype contains details about Phonetypes",
             "x-displayName": "Phonetype"
+        },
+        {
+            "name": "Object_Rejectedoffertopurchase",
+            "description": "Rejectedoffertopurchase contains detail about a Rejectedoffertopurchase",
+            "x-displayName": "Rejectedoffertopurchase"
         },
         {
             "name": "Object_Secretquestion",
@@ -41106,14 +42180,17 @@
             "tags": [
                 "Object_Activesession",
                 "Object_Apikey",
+                "Object_Attachment",
                 "Object_Billingentityexternal",
                 "Object_Billingentityinternal",
                 "Object_Branding",
+                "Object_Buyercontract",
                 "Object_Clonehistory",
                 "Object_Communication",
                 "Object_Company",
                 "Object_Cors",
                 "Object_Department",
+                "Object_Electronicfundstransfer",
                 "Object_Emailtype",
                 "Object_Ezmaxinvoicing",
                 "Object_Ezmaxproduct",
@@ -41144,14 +42221,20 @@
                 "Object_Franchisebroker",
                 "Object_Franchiseoffice",
                 "Object_Franchisereferalincome",
+                "Object_Inscription",
+                "Object_Inscriptionnotauthenticated",
+                "Object_Inscriptiontemp",
+                "Object_Invoice",
                 "Object_Language",
                 "Object_Modulegroup",
                 "Object_Notificationsection",
                 "Object_Notificationtest",
+                "Object_Otherincome",
                 "Object_Paymentterm",
                 "Object_Period",
                 "Object_Permission",
                 "Object_Phonetype",
+                "Object_Rejectedoffertopurchase",
                 "Object_Secretquestion",
                 "Object_Sessionhistory",
                 "Object_Signature",
