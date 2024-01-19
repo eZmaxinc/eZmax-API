@@ -2402,6 +2402,516 @@
                 }
             ]
         },
+        "/1/object/discussion": {
+            "description": "",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/discussion-createObject-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Discussion"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/discussion-createObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Discussion_CreateObject_V1",
+                "summary": "Create a new Discussion",
+                "description": "The endpoint allows to create one or many elements at once.",
+                "x-powerautomate": false,
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "EzsignSigner",
+                    "AgentBroker"
+                ],
+                "x-presentations": []
+            }
+        },
+        "/2/object/discussion/{pkiDiscussionID}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Discussion"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/discussion-getObject-v2-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Discussion_GetObject_V2",
+                "summary": "Retrieve an existing Discussion",
+                "description": "",
+                "x-powerautomate": false,
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "EzsignSigner",
+                    "AgentBroker"
+                ],
+                "x-presentations": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiDiscussionID",
+                    "description": "The unique ID of the Discussion",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/discussion/{pkiDiscussionID}": {
+            "description": "",
+            "delete": {
+                "tags": [
+                    "Object_Discussion"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/discussion-deleteObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Discussion_DeleteObject_V1",
+                "summary": "Delete an existing Discussion",
+                "description": "",
+                "x-powerautomate": false,
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "EzsignSigner",
+                    "AgentBroker"
+                ],
+                "x-presentations": []
+            },
+            "patch": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/discussion-patchObject-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Discussion"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/discussion-patchObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Discussion_PatchObject_V1",
+                "summary": "Patch an existing Discussion",
+                "description": "",
+                "x-powerautomate": false,
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "EzsignSigner",
+                    "AgentBroker"
+                ],
+                "x-presentations": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiDiscussionID",
+                    "description": "The unique ID of the Discussion",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/discussion/{pkiDiscussionID}/updateDiscussionreadstatus": {
+            "description": "",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/discussion-updateDiscussionreadstatus-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Discussion"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/discussion-updateDiscussionreadstatus-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Discussion_UpdateDiscussionreadstatus_V1",
+                "summary": "Update the read status of the discussion",
+                "x-powerautomate": false,
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "EzsignSigner",
+                    "AgentBroker"
+                ],
+                "x-presentations": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiDiscussionID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/discussionmembership": {
+            "description": "",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/discussionmembership-createObject-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Discussionmembership"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/discussionmembership-createObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Discussionmembership_CreateObject_V1",
+                "summary": "Create a new Discussionmembership",
+                "description": "The endpoint allows to create one or many elements at once.",
+                "x-powerautomate": false,
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "EzsignSigner",
+                    "AgentBroker"
+                ],
+                "x-presentations": []
+            }
+        },
+        "/1/object/discussionmembership/{pkiDiscussionmembershipID}": {
+            "description": "",
+            "delete": {
+                "tags": [
+                    "Object_Discussionmembership"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/discussionmembership-deleteObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Discussionmembership_DeleteObject_V1",
+                "summary": "Delete an existing Discussionmembership",
+                "description": "",
+                "x-powerautomate": false,
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "EzsignSigner",
+                    "AgentBroker"
+                ],
+                "x-presentations": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiDiscussionmembershipID",
+                    "description": "The unique ID of the Discussionmembership",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionmembershipID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/discussionmessage": {
+            "description": "",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/discussionmessage-createObject-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Discussionmessage"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/discussionmessage-createObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Discussionmessage_CreateObject_V1",
+                "summary": "Create a new Discussionmessage",
+                "description": "The endpoint allows to create one or many elements at once.",
+                "x-powerautomate": false,
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "EzsignSigner",
+                    "AgentBroker"
+                ],
+                "x-presentations": []
+            }
+        },
+        "/1/object/discussionmessage/{pkiDiscussionmessageID}": {
+            "description": "",
+            "delete": {
+                "tags": [
+                    "Object_Discussionmessage"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/discussionmessage-deleteObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Discussionmessage_DeleteObject_V1",
+                "summary": "Delete an existing Discussionmessage",
+                "description": "",
+                "x-powerautomate": false,
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "EzsignSigner",
+                    "AgentBroker"
+                ],
+                "x-presentations": []
+            },
+            "patch": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/discussionmessage-patchObject-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Discussionmessage"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/discussionmessage-patchObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Discussionmessage_PatchObject_V1",
+                "summary": "Patch an existing Discussionmessage",
+                "description": "",
+                "x-powerautomate": false,
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "EzsignSigner",
+                    "AgentBroker"
+                ],
+                "x-presentations": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiDiscussionmessageID",
+                    "description": "The unique ID of the Discussionmessage",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionmessageID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/getCommunicationList": {
             "get": {
                 "tags": [
@@ -3926,6 +4436,155 @@
                 }
             ]
         },
+        "/1/object/ezsigndiscussion": {
+            "description": "",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezsigndiscussion-createObject-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Ezsigndiscussion"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigndiscussion-createObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezsigndiscussion_CreateObject_V1",
+                "summary": "Create a new Ezsigndiscussion",
+                "description": "The endpoint allows to create one or many elements at once.",
+                "x-powerautomate": false,
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "EzsignSigner",
+                    "AgentBroker"
+                ],
+                "x-presentations": []
+            }
+        },
+        "/2/object/ezsigndiscussion/{pkiEzsigndiscussionID}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Ezsigndiscussion"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigndiscussion-getObject-v2-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezsigndiscussion_GetObject_V2",
+                "summary": "Retrieve an existing Ezsigndiscussion",
+                "description": "",
+                "x-powerautomate": false,
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "EzsignSigner",
+                    "AgentBroker"
+                ],
+                "x-presentations": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigndiscussionID",
+                    "description": "The unique ID of the Ezsigndiscussion",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigndiscussionID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsigndiscussion/{pkiEzsigndiscussionID}": {
+            "description": "",
+            "delete": {
+                "tags": [
+                    "Object_Ezsigndiscussion"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigndiscussion-deleteObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezsigndiscussion_DeleteObject_V1",
+                "summary": "Delete an existing Ezsigndiscussion",
+                "description": "",
+                "x-powerautomate": false,
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "EzsignSigner",
+                    "AgentBroker"
+                ],
+                "x-presentations": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigndiscussionID",
+                    "description": "The unique ID of the Ezsigndiscussion",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigndiscussionID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/2/object/ezsigndocument": {
             "description": "",
             "post": {
@@ -4321,6 +4980,67 @@
                     "All"
                 ],
                 "x-powerautomate": false,
+                "x-usertypeextra": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigndocumentID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezsigndocument-createEzsignelementsPositionedByWord-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Ezsigndocument"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigndocument-createEzsignelementsPositionedByWord-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezsigndocument_CreateEzsignelementsPositionedByWord_V1",
+                "summary": "Create multiple Ezsignsignatures/Ezsignformfieldgroups",
+                "description": "Using this endpoint, you can create multiple Ezsignsignatures/Ezsignformfieldgroups positioned by word at the same time.",
+                "x-presentations": [
+                    "Ezsign"
+                ],
+                "x-permissions": [
+                    "All"
+                ],
+                "x-powerautomate": true,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4844,7 +5564,7 @@
                 },
                 {
                     "name": "eDocumentType",
-                    "description": "The type of document to retrieve.\n\n1. **Initial** Is the initial document before any signature were applied.\n2. **SignatureReady** Is the version containing the annotations/form to show the signer.\n3. **Signed** Is the final document once all signatures were applied.\n4. **Proofdocument** Is the evidence report.\n5. **Proof** Is the complete evidence archive including all of the above and more.\n",
+                    "description": "The type of document to retrieve.\n\n1. **Initial** Is the initial document before any signature were applied.\n2. **SignatureReady** Is the version containing the annotations/form to show the signer.\n3. **Signed** Is the final document once all signatures were applied in current document if eEzsignfolderCompletion is PerEzsigndocument.<br>\n    Is the final document once all signatures were applied in all documents if eEzsignfolderCompletion is PerEzsignfolder.\n4. **Proofdocument** Is the evidence report.\n5. **Proof** Is the complete evidence archive including all of the above and more.\n",
                     "schema": {
                         "enum": [
                             "Initial",
@@ -4898,6 +5618,59 @@
                 "x-presentations": [],
                 "x-permissions": [
                     "All"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigndocumentID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsigndiscussions": {
+            "get": {
+                "tags": [
+                    "Object_Ezsigndocument"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigndocument-getEzsigndiscussions-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezsigndocument_GetEzsigndiscussions_V1",
+                "summary": "Retrieve an existing Ezsigndocument's Ezsigndiscussions",
+                "description": "",
+                "x-presentations": [
+                    "Ezsign"
+                ],
+                "x-permissions": [
+                    "All"
+                ],
+                "x-powerautomate": false,
+                "x-usertypeextra": [
+                    "EzsignSigner"
                 ]
             },
             "parameters": [
@@ -18464,6 +19237,31 @@
                     }
                 }
             },
+            "Computed-bDiscussionconfigurationCompletehistorywhenadded": {
+                "description": "If the added Discussionmembership will have access to the entire history or not",
+                "type": "boolean",
+                "example": true
+            },
+            "Computed-bDiscussionconfigurationCreateallowed": {
+                "description": "If the the creation of the Discussion is allowed or not",
+                "type": "boolean",
+                "example": true
+            },
+            "Computed-bDiscussionconfigurationDeleteallowed": {
+                "description": "If the the destruction of the Discussion is allowed or not",
+                "type": "boolean",
+                "example": true
+            },
+            "Computed-bDiscussionconfigurationDeletediscussionmessageallowed": {
+                "description": "If the the destruction of the Discussionmessage is allowed or not",
+                "type": "boolean",
+                "example": true
+            },
+            "Computed-bDiscussionconfigurationEditdiscussionmessageallowed": {
+                "description": "If the the creation of the Discussionmessage is allowed or not",
+                "type": "boolean",
+                "example": true
+            },
             "Computed-bEzsigndocumentEzsignform": {
                 "description": "If the Ezsigndocument contains an Ezsignform or not",
                 "type": "boolean",
@@ -18483,6 +19281,11 @@
                 "description": "Indicate the phone number is an international phone number.",
                 "type": "boolean",
                 "example": true
+            },
+            "Computed-dtDiscussionLastread": {
+                "description": "The date the Discussion was last read",
+                "type": "string",
+                "example": "2020-12-31 23:59:59"
             },
             "Computed-dtEzsignfolderDuedate": {
                 "description": "The maximum date and time at which the Ezsignfolder can be signed.",
@@ -18532,6 +19335,21 @@
                 "description": "The count of Communicationrecipient",
                 "type": "integer",
                 "example": 8
+            },
+            "Computed-iDiscussionmessageCount": {
+                "description": "The count of Attachment.",
+                "type": "integer",
+                "example": 4
+            },
+            "Computed-iDiscussionmessageCountunread": {
+                "description": "The count of Attachment.",
+                "type": "integer",
+                "example": 4
+            },
+            "Computed-iEzsigndiscussionPagenumber": {
+                "description": "The page number in the Ezsigndocument for the Ezsigndiscussion",
+                "type": "integer",
+                "example": 4
             },
             "Computed-iEzsigndocumentEzsignsignatureattachmenttotal": {
                 "description": "The number of Ezsigndocumentattachment total",
@@ -18606,6 +19424,12 @@
             },
             "Computed-sCommunicationSender": {
                 "description": "The sender name of the Communication",
+                "type": "string",
+                "example": "John Doe"
+            },
+            "Computed-sDiscussionmembershipDescription": {
+                "description": "The Description containing the detail of who the Discussionmembership refers to",
+                "pattern": "^.{0,100}$",
                 "type": "string",
                 "example": "John Doe"
             },
@@ -18975,6 +19799,40 @@
                     }
                 }
             },
+            "Custom-CreateEzsignelementsPositionedByWord-Request": {
+                "description": "A CreateEzsignelementsPositionedByWord object",
+                "required": [
+                    "sCreateezsignelementspositionedbywordPattern",
+                    "iCreateezsignelementspositionedbywordOffsetx",
+                    "iCreateezsignelementspositionedbywordOffsety",
+                    "eCreateezsignelementspositionedbywordOccurance"
+                ],
+                "type": "object",
+                "properties": {
+                    "sCreateezsignelementspositionedbywordPattern": {
+                        "description": "The word to search",
+                        "pattern": "^.{1,35}$",
+                        "type": "string"
+                    },
+                    "iCreateezsignelementspositionedbywordOffsetx": {
+                        "description": "The X offset",
+                        "type": "integer"
+                    },
+                    "iCreateezsignelementspositionedbywordOffsety": {
+                        "description": "The Y offset",
+                        "type": "integer"
+                    },
+                    "eCreateezsignelementspositionedbywordOccurance": {
+                        "description": "The occurance in the search to add the ezsign element",
+                        "enum": [
+                            "All",
+                            "First",
+                            "Last"
+                        ],
+                        "type": "string"
+                    }
+                }
+            },
             "Custom-Creditcardtransaction-Response": {
                 "description": "A custom Creditcardtransaction Object",
                 "required": [
@@ -18998,6 +19856,39 @@
                         "$ref": "#/components/schemas/Field-sCreditcardtransactionReferencenumber"
                     }
                 }
+            },
+            "Custom-Discussionconfiguration-Response": {
+                "description": "A Custom Discussionconfiguration Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "bDiscussionconfigurationCompletehistorywhenadded",
+                            "bDiscussionconfigurationCreateallowed",
+                            "bDiscussionconfigurationDeleteallowed",
+                            "bDiscussionconfigurationDeletediscussionmessageallowed",
+                            "bDiscussionconfigurationEditdiscussionmessageallowed"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "bDiscussionconfigurationCompletehistorywhenadded": {
+                                "$ref": "#/components/schemas/Computed-bDiscussionconfigurationCompletehistorywhenadded"
+                            },
+                            "bDiscussionconfigurationCreateallowed": {
+                                "$ref": "#/components/schemas/Computed-bDiscussionconfigurationCreateallowed"
+                            },
+                            "bDiscussionconfigurationDeleteallowed": {
+                                "$ref": "#/components/schemas/Computed-bDiscussionconfigurationDeleteallowed"
+                            },
+                            "bDiscussionconfigurationDeletediscussionmessageallowed": {
+                                "$ref": "#/components/schemas/Computed-bDiscussionconfigurationDeletediscussionmessageallowed"
+                            },
+                            "bDiscussionconfigurationEditdiscussionmessageallowed": {
+                                "$ref": "#/components/schemas/Computed-bDiscussionconfigurationEditdiscussionmessageallowed"
+                            }
+                        }
+                    }
+                ]
             },
             "Custom-DropdownElement-Request": {
                 "description": "Generic DropdownElement Request",
@@ -19070,6 +19961,9 @@
                             "fkiEzsignfolderID": {
                                 "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
                             },
+                            "fkiBillingentityinternalID": {
+                                "$ref": "#/components/schemas/Field-pkiBillingentityinternalID"
+                            },
                             "sName": {
                                 "type": "string"
                             },
@@ -19104,6 +19998,9 @@
                         "properties": {
                             "fkiEzsignfolderID": {
                                 "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                            },
+                            "fkiBillingentityinternalID": {
+                                "$ref": "#/components/schemas/Field-pkiBillingentityinternalID"
                             },
                             "sEzsignfolderDescription": {
                                 "$ref": "#/components/schemas/Field-sEzsignfolderDescription"
@@ -19361,6 +20258,12 @@
                             },
                             "bEzsignfoldertypeReassign": {
                                 "$ref": "#/components/schemas/Field-bEzsignfoldertypeReassign"
+                            },
+                            "bEzsignfoldertypeReassignezsignsigner": {
+                                "$ref": "#/components/schemas/Field-bEzsignfoldertypeReassignezsignsigner"
+                            },
+                            "bEzsignfoldertypeReassignuser": {
+                                "$ref": "#/components/schemas/Field-bEzsignfoldertypeReassignuser"
                             }
                         }
                     }
@@ -19462,6 +20365,46 @@
                                 "items": {
                                     "$ref": "#/components/schemas/Custom-Ezsignformfield-Request"
                                 }
+                            }
+                        }
+                    }
+                ]
+            },
+            "Custom-EzsignformfieldgroupCreateEzsignelementsPositionedByWord-Request": {
+                "description": "An Ezsignformfieldgroup Object in the context of a createEzsignelementsPositionedByWord path",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsignformfieldgroup-RequestCompound"
+                    },
+                    {
+                        "required": [
+                            "objCreateezsignelementspositionedbyword"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "objCreateezsignelementspositionedbyword": {
+                                "$ref": "#/components/schemas/Custom-CreateEzsignelementsPositionedByWord-Request"
+                            }
+                        }
+                    }
+                ]
+            },
+            "Custom-EzsignsignatureCreateEzsignelementsPositionedByWord-Request": {
+                "description": "An Ezsignsignature Object in the context of an CreateEzsignelementsPositionedByWord path",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsignsignature-RequestCompound"
+                    },
+                    {
+                        "required": [
+                            "objCreateezsignelementspositionedbyword"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "objCreateezsignelementspositionedbyword": {
+                                "$ref": "#/components/schemas/Custom-CreateEzsignelementsPositionedByWord-Request"
                             }
                         }
                     }
@@ -19944,6 +20887,11 @@
                 "type": "boolean",
                 "example": true
             },
+            "Field-bDiscussionClosed": {
+                "description": "Whether if it's an closed",
+                "type": "boolean",
+                "example": true
+            },
             "Field-bEmailtypeIsactive": {
                 "description": "Whether the Emailtype is active or not",
                 "type": "boolean",
@@ -20078,6 +21026,16 @@
             },
             "Field-bEzsignfoldertypeReassign": {
                 "description": "Wheter if Reassignment of signature is allowed to another signatory or not",
+                "type": "boolean",
+                "example": true
+            },
+            "Field-bEzsignfoldertypeReassignezsignsigner": {
+                "description": "Wheter if Reassignment of signature is allowed by a signatory to another signatory or not",
+                "type": "boolean",
+                "example": true
+            },
+            "Field-bEzsignfoldertypeReassignuser": {
+                "description": "Wheter if Reassignment of signature is allowed by a user to a signatory or another user or not",
                 "type": "boolean",
                 "example": true
             },
@@ -20640,6 +21598,12 @@
                 "type": "string",
                 "example": "2020-12-31 23:59:59"
             },
+            "Field-dtDiscussionmembershipJoined": {
+                "description": "The joined date of the Discussionmembership",
+                "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) ([01]?[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$",
+                "type": "string",
+                "example": "2020-12-31 23:59:59"
+            },
             "Field-dtEzmaxinvoicingcommissionEnd": {
                 "description": "The end date for the Ezmaxinvoicingcommission",
                 "type": "string",
@@ -21015,6 +21979,16 @@
                 "type": "string",
                 "example": "visa"
             },
+            "Field-eDiscussionmessageStatus": {
+                "description": "The status of the Discussionmessage",
+                "enum": [
+                    "New",
+                    "Edited",
+                    "Deleted"
+                ],
+                "type": "string",
+                "example": "New"
+            },
             "Field-eErrorCode": {
                 "description": "The error code. See documentation for valid values",
                 "enum": [
@@ -21140,6 +22114,7 @@
                     "PartiallySigned",
                     "DeclinedToSign",
                     "PrematurelyEnded",
+                    "PendingCompletion",
                     "Completed",
                     "Disposed"
                 ],
@@ -21212,6 +22187,16 @@
                 "type": "string",
                 "example": "Value"
             },
+            "Field-eEzsignfolderCompletion": {
+                "description": "Indicates if the Ezsigndocument is completed when all signatures of this Ezsigndocument were applied or when all signatures of all Ezsigndocument  were applied",
+                "default": "PerEzsigndocument",
+                "enum": [
+                    "PerEzsigndocument",
+                    "PerEzsignfolder"
+                ],
+                "type": "string",
+                "example": "PerEzsigndocument"
+            },
             "Field-eEzsignfolderSendreminderfrequency": {
                 "description": "Frequency at which reminders will be sent to signers that haven't signed the documents",
                 "enum": [
@@ -21236,6 +22221,16 @@
                 ],
                 "type": "string",
                 "example": "Completed"
+            },
+            "Field-eEzsignfoldertypeCompletion": {
+                "description": "Indicates if the Ezsigndocument is completed when all signatures of this Ezsigndocument were applied or when all signatures of all Ezsigndocument  were applied",
+                "default": "PerEzsigndocument",
+                "enum": [
+                    "PerEzsigndocument",
+                    "PerEzsignfolder"
+                ],
+                "type": "string",
+                "example": "PerEzsigndocument"
             },
             "Field-eEzsignfoldertypeDisposal": {
                 "description": "The type of disposal",
@@ -21367,7 +22362,8 @@
                     "Attachments",
                     "AttachmentsConfirmation",
                     "FieldText",
-                    "FieldTextarea"
+                    "FieldTextarea",
+                    "Consultation"
                 ],
                 "type": "string",
                 "example": "Name"
@@ -21408,6 +22404,26 @@
                 ],
                 "type": "string",
                 "example": "AllOf"
+            },
+            "Field-eEzsigntemplateformfieldPositioning": {
+                "description": "How the positioning of the Ezsigntemplateformfield will be done",
+                "default": "PerCoordinates",
+                "enum": [
+                    "PerCoordinates",
+                    "PerPositioningPattern"
+                ],
+                "type": "string",
+                "example": "PerCoordinates"
+            },
+            "Field-eEzsigntemplateformfieldPositioningoccurence": {
+                "description": "The occurence of the pattern to add the Ezsigntemplateformfield\n\nThis will be required if **eEzsigntemplateformfieldPositioning** is set to **PerCoordinates**",
+                "enum": [
+                    "All",
+                    "First",
+                    "Last"
+                ],
+                "type": "string",
+                "example": "All"
             },
             "Field-eEzsigntemplateformfieldgroupSignerrequirement": {
                 "description": "The Signer requirement of the Ezsigntemplateformfieldgroup. **All** means anyone can fill it, **One** means a specific person must fill it.",
@@ -21475,6 +22491,25 @@
                 "type": "string",
                 "example": "Normal"
             },
+            "Field-eEzsigntemplatesignaturePositioning": {
+                "description": "How the positioning of the Ezsigntemplatesignature will be done",
+                "enum": [
+                    "PerCoordinates",
+                    "PerPositioningPattern"
+                ],
+                "type": "string",
+                "example": "PerCoordinates"
+            },
+            "Field-eEzsigntemplatesignaturePositioningoccurence": {
+                "description": "The occurence of the pattern to add the Ezsigntemplatesignature\n\nThis will be required if **eEzsigntemplatesignaturePositioning** is set to **PerCoordinates**",
+                "enum": [
+                    "All",
+                    "First",
+                    "Last"
+                ],
+                "type": "string",
+                "example": "All"
+            },
             "Field-eEzsigntemplatesignatureTooltipposition": {
                 "description": "The location of the tooltip relative to the Ezsigntemplatesignature's location.",
                 "enum": [
@@ -21501,7 +22536,8 @@
                     "NameReason",
                     "Attachments",
                     "FieldText",
-                    "FieldTextarea"
+                    "FieldTextarea",
+                    "Consultation"
                 ],
                 "type": "string",
                 "example": "Name"
@@ -21910,6 +22946,20 @@
                 "type": "integer",
                 "example": 1
             },
+            "Field-iEzsigndiscussionX": {
+                "description": "The x of the Ezsigndiscussion",
+                "maximum": 65535,
+                "minimum": 0,
+                "type": "integer",
+                "example": 57208
+            },
+            "Field-iEzsigndiscussionY": {
+                "description": "The y of the Ezsigndiscussion",
+                "maximum": 65535,
+                "minimum": 0,
+                "type": "integer",
+                "example": 57652
+            },
             "Field-iEzsigndocumentOrder": {
                 "description": "The order in which the Ezsigndocument will be presented to the signatory in the Ezsignfolder.",
                 "minimum": 1,
@@ -22052,6 +23102,11 @@
                 "type": "integer",
                 "example": 1
             },
+            "Field-iEzsignsignatureStepadjusted": {
+                "description": "The step when the Ezsignsigner will be invited to sign",
+                "type": "integer",
+                "example": 1
+            },
             "Field-iEzsignsignatureValidationstep": {
                 "description": "The step when the Ezsignsigner will be invited to validate the Ezsignsignature of eEzsignsignatureType Attachments",
                 "type": "integer",
@@ -22129,6 +23184,16 @@
                 "type": "integer",
                 "example": 22
             },
+            "Field-iEzsigntemplateformfieldPositioningoffsetx": {
+                "description": "The offset X\n\nThis will be required if **eEzsigntemplateformfieldPositioning** is set to **PerCoordinates**",
+                "type": "integer",
+                "example": 200
+            },
+            "Field-iEzsigntemplateformfieldPositioningoffsety": {
+                "description": "The offset Y\n\nThis will be required if **eEzsigntemplateformfieldPositioning** is set to **PerCoordinates**",
+                "type": "integer",
+                "example": 200
+            },
             "Field-iEzsigntemplateformfieldWidth": {
                 "description": "The Width of the Ezsigntemplateformfield in pixels calculated at 100 DPI\n\nThe allowed values are varying based on the eEzsigntemplateformfieldgroupType.\n\n| eEzsigntemplateformfieldgroupType | Valid values |\n| ------------------------- | ------------ |\n| Checkbox                  | 22           |\n| Dropdown                  | 22-65535     |\n| Radio                     | 22           |\n| Text                      | 22-65535     |\n| Textarea                  | 22-65535     |",
                 "minimum": 0,
@@ -22197,6 +23262,16 @@
                 "type": "integer",
                 "example": 75
             },
+            "Field-iEzsigntemplatesignaturePositioningoffsetx": {
+                "description": "The offset X\n\nThis will be required if **eEzsigntemplatesignaturePositioning** is set to **PerCoordinates**",
+                "type": "integer",
+                "example": 200
+            },
+            "Field-iEzsigntemplatesignaturePositioningoffsety": {
+                "description": "The offset Y\n\nThis will be required if **eEzsigntemplatesignaturePositioning** is set to **PerCoordinates**",
+                "type": "integer",
+                "example": 200
+            },
             "Field-iEzsigntemplatesignatureStep": {
                 "description": "The step when the Ezsigntemplatesigner will be invited to sign",
                 "minimum": 1,
@@ -22226,13 +23301,27 @@
                 "type": "integer",
                 "example": 300
             },
+            "Field-iEzsigntemplatesignaturecustomdateOffsetx": {
+                "description": "The X coordinate (Horizontal) where to put the Ezsigntemplatesignaturecustomdate on the page.\n\nCoordinate is calculated at 100dpi (dot per inch). So for example, if you want to put the Ezsigntemplatesignaturecustomdate 2 inches from the left of the signature, you would use \"200\" for the X coordinate.",
+                "minimum": 0,
+                "type": "integer",
+                "example": 200
+            },
+            "Field-iEzsigntemplatesignaturecustomdateOffsety": {
+                "description": "The X coordinate (Horizontal) where to put the Ezsigntemplatesignaturecustomdate on the page.\n\nCoordinate is calculated at 100dpi (dot per inch). So for example, if you want to put the Ezsigntemplatesignaturecustomdate 2 inches from the top of the signature, you would use \"200\" for the Y coordinate.",
+                "minimum": 0,
+                "type": "integer",
+                "example": 200
+            },
             "Field-iEzsigntemplatesignaturecustomdateX": {
+                "deprecated": true,
                 "description": "The X coordinate (Horizontal) where to put the Ezsigntemplatesignaturecustomdate on the page.\n\nCoordinate is calculated at 100dpi (dot per inch). So for example, if you want to put the Ezsigntemplatesignaturecustomdate 2 inches from the left border of the page, you would use \"200\" for the X coordinate.",
                 "minimum": 0,
                 "type": "integer",
                 "example": 200
             },
             "Field-iEzsigntemplatesignaturecustomdateY": {
+                "deprecated": true,
                 "description": "The Y coordinate (Vertical) where to put the Ezsigntemplatesignaturecustomdate on the page.\n\nCoordinate is calculated at 100dpi (dot per inch). So for example, if you want to put the Ezsigntemplatesignaturecustomdate 3 inches from the top border of the page, you would use \"300\" for the Y coordinate.",
                 "minimum": 0,
                 "type": "integer",
@@ -22524,6 +23613,27 @@
                 "type": "integer",
                 "example": 51
             },
+            "Field-pkiDiscussionID": {
+                "description": "The unique ID of the Discussion",
+                "maximum": 16777215,
+                "minimum": 0,
+                "type": "integer",
+                "example": 125
+            },
+            "Field-pkiDiscussionmembershipID": {
+                "description": "The unique ID of the Discussionmembership",
+                "maximum": 16777215,
+                "minimum": 0,
+                "type": "integer",
+                "example": 165
+            },
+            "Field-pkiDiscussionmessageID": {
+                "description": "The unique ID of the Discussionmessage",
+                "maximum": 16777215,
+                "minimum": 0,
+                "type": "integer",
+                "example": 123
+            },
             "Field-pkiElectronicfundstransferID": {
                 "description": "The unique ID of the Electronicfundstransfer",
                 "maximum": 65535,
@@ -22687,6 +23797,13 @@
                 "minimum": 0,
                 "type": "integer",
                 "example": 21
+            },
+            "Field-pkiEzsigndiscussionID": {
+                "description": "The unique ID of the Ezsigndiscussion",
+                "maximum": 16777215,
+                "minimum": 0,
+                "type": "integer",
+                "example": 194
             },
             "Field-pkiEzsigndocumentID": {
                 "description": "The unique ID of the Ezsigndocument",
@@ -23581,6 +24698,12 @@
                 "type": "string",
                 "example": "Head Office"
             },
+            "Field-sDiscussionDescription": {
+                "description": "The description of the Discussion",
+                "pattern": "^.{0,75}$",
+                "type": "string",
+                "example": "John Doe"
+            },
             "Field-sEmailAddress": {
                 "description": "The email address.",
                 "type": "string",
@@ -23684,7 +24807,7 @@
                 "example": "Default"
             },
             "Field-sEzsignformfieldEnteredvalue": {
-                "description": "This is the value enterred for the Ezsignformfield\n\nThis can only be set if eEzsignformfieldgroupType is **Dropdown**, **Text** or **Textarea**",
+                "description": "This is the value enterred for the Ezsignformfield\n\nThis can only be set if eEzsignformfieldgroupType is **Dropdown**, **Text** or **Textarea**\n\nYou can use the codes below and they will be replaced at signature time.\n\n\n\n| Code | Description | Example |\n| ------------------------- | ------------ | ------------ |\n| {sUserFirstname} | The first name of the contact | John |\n| {sUserLastname} | The last name of the contact | Doe |\n| {sUserJobtitle} | The job title | Sales Representative |\n| {sEmailAddress} | The email address | email@example.com |\n| {sPhoneE164} | A phone number in E.164 Format | +15149901516 |\n| {sPhoneE164Cell} | A phone number in E.164 Format | +15149901516 |",
                 "type": "string",
                 "example": "Montreal"
             },
@@ -23792,6 +24915,12 @@
                 "type": "string",
                 "example": "Peanuts"
             },
+            "Field-sEzsigntemplateformfieldPositioningpattern": {
+                "description": "The string pattern to search for the positioning. **This is not a regexp**\n\nThis will be required if **eEzsigntemplateformfieldPositioning** is set to **PerCoordinates**",
+                "pattern": "^.{0,30}$",
+                "type": "string",
+                "example": "Signature"
+            },
             "Field-sEzsigntemplateformfieldValue": {
                 "description": "The value for the Ezsigntemplateformfield",
                 "type": "string",
@@ -23829,6 +24958,12 @@
                 "description": "The description attached to the attachment name added in Ezsigntemplatesignature of eEzsigntemplatesignatureType Attachments",
                 "type": "string",
                 "example": "Attachment"
+            },
+            "Field-sEzsigntemplatesignaturePositioningpattern": {
+                "description": "The string pattern to search for the positioning. **This is not a regexp**\n\nThis will be required if **eEzsigntemplatesignaturePositioning** is set to **PerCoordinates**",
+                "pattern": "^.{0,30}$",
+                "type": "string",
+                "example": "Signature"
             },
             "Field-sEzsigntemplatesignatureRegexp": {
                 "description": "A regular expression to indicate what values are acceptable for the Ezsigntemplatesignature.\n\nThis can only be set if eEzsigntemplatesignatureType is **Text** or **Textarea**",
@@ -24055,6 +25190,12 @@
                 "type": "string",
                 "example": "John"
             },
+            "Field-sUserJobtitle": {
+                "description": "The job title of the user",
+                "pattern": "^.{0,50}$",
+                "type": "string",
+                "example": "Sales Representative"
+            },
             "Field-sUserLastname": {
                 "description": "The last name of the user",
                 "type": "string",
@@ -24178,6 +25319,12 @@
                 "pattern": "^.{0,65535}$",
                 "type": "string",
                 "example": "Unreadable"
+            },
+            "Field-tDiscussionmessageContent": {
+                "description": "The content of the Discussionmessage",
+                "pattern": "^.{0,65535}$",
+                "type": "string",
+                "example": "Hello, this is an example of content in a message"
             },
             "Field-tExtraMessage": {
                 "description": "A custom text message that will be added to the email sent.",
@@ -27847,6 +28994,580 @@
                     }
                 }
             },
+            "discussion-Request": {
+                "description": "A Discussion Object",
+                "required": [
+                    "sDiscussionDescription"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiDiscussionID": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionID"
+                    },
+                    "sDiscussionDescription": {
+                        "$ref": "#/components/schemas/Field-sDiscussionDescription"
+                    },
+                    "bDiscussionClosed": {
+                        "$ref": "#/components/schemas/Field-bDiscussionClosed"
+                    }
+                }
+            },
+            "discussion-RequestCompound": {
+                "description": "A Discussion Object and children",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/discussion-Request"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "discussion-RequestPatch": {
+                "description": "A Discussion Object",
+                "type": "object",
+                "properties": {
+                    "sDiscussionDescription": {
+                        "$ref": "#/components/schemas/Field-sDiscussionDescription"
+                    },
+                    "bDiscussionClosed": {
+                        "$ref": "#/components/schemas/Field-bDiscussionClosed"
+                    }
+                }
+            },
+            "discussion-Response": {
+                "description": "A Discussion Object",
+                "required": [
+                    "pkiDiscussionID",
+                    "sDiscussionDescription",
+                    "bDiscussionClosed",
+                    "iDiscussionmessageCount",
+                    "iDiscussionmessageCountunread"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiDiscussionID": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionID"
+                    },
+                    "sDiscussionDescription": {
+                        "$ref": "#/components/schemas/Field-sDiscussionDescription"
+                    },
+                    "bDiscussionClosed": {
+                        "$ref": "#/components/schemas/Field-bDiscussionClosed"
+                    },
+                    "dtDiscussionLastread": {
+                        "$ref": "#/components/schemas/Computed-dtDiscussionLastread"
+                    },
+                    "iDiscussionmessageCount": {
+                        "$ref": "#/components/schemas/Computed-iDiscussionmessageCount"
+                    },
+                    "iDiscussionmessageCountunread": {
+                        "$ref": "#/components/schemas/Computed-iDiscussionmessageCountunread"
+                    },
+                    "objDiscussionconfiguration": {
+                        "$ref": "#/components/schemas/Custom-Discussionconfiguration-Response"
+                    }
+                }
+            },
+            "discussion-ResponseCompound": {
+                "description": "A Discussion Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/discussion-Response"
+                    },
+                    {
+                        "required": [
+                            "a_objDiscussionmembership",
+                            "a_objDiscussionmessage"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "a_objDiscussionmembership": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/discussionmembership-ResponseCompound"
+                                }
+                            },
+                            "a_objDiscussionmessage": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/discussionmessage-ResponseCompound"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "discussion-createObject-v1-Request": {
+                "description": "Request for POST /1/object/discussion",
+                "required": [
+                    "a_objDiscussion"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objDiscussion": {
+                        "minItems": 1,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/discussion-RequestCompound"
+                        }
+                    }
+                }
+            },
+            "discussion-createObject-v1-Response": {
+                "description": "Response for POST /1/object/discussion",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/discussion-createObject-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "discussion-createObject-v1-Response-mPayload": {
+                "description": "Payload for POST /1/object/discussion",
+                "required": [
+                    "a_pkiDiscussionID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiDiscussionID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Field-pkiDiscussionID"
+                        }
+                    }
+                }
+            },
+            "discussion-deleteObject-v1-Response": {
+                "description": "Response for DELETE /1/object/discussion/{pkiDiscussionID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "discussion-getObject-v2-Response": {
+                "description": "Response for GET /2/object/discussion/{pkiDiscussionID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/discussion-getObject-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "discussion-getObject-v2-Response-mPayload": {
+                "description": "Payload for GET /2/object/discussion/{pkiDiscussionID}",
+                "required": [
+                    "objDiscussion"
+                ],
+                "type": "object",
+                "properties": {
+                    "objDiscussion": {
+                        "$ref": "#/components/schemas/discussion-ResponseCompound"
+                    }
+                }
+            },
+            "discussion-patchObject-v1-Request": {
+                "description": "Request for PATCH /1/object/discussion/{pkiDiscussionID}",
+                "required": [
+                    "objDiscussion"
+                ],
+                "type": "object",
+                "properties": {
+                    "objDiscussion": {
+                        "$ref": "#/components/schemas/discussion-RequestPatch"
+                    }
+                }
+            },
+            "discussion-patchObject-v1-Response": {
+                "description": "Response for PATCH /1/object/discussion/{pkiDiscussionID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "discussion-updateDiscussionreadstatus-v1-Request": {
+                "description": "Request for POST /1/object/discussion/{pkiDiscussionID}/updateDiscussionreadstatus",
+                "type": "object",
+                "properties": {
+                    "dtDiscussionreadstatusDate": {
+                        "description": "The date of the last discussion message read",
+                        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) ([01]?[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$",
+                        "type": "string",
+                        "example": "2020-12-31 23:59:59"
+                    }
+                }
+            },
+            "discussion-updateDiscussionreadstatus-v1-Response": {
+                "description": "Response for GET /1/object/discussion/{pkiDiscussionID}/updateDiscussionreadstatus",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "discussionmembership-Request": {
+                "description": "A Discussionmembership Object",
+                "required": [
+                    "fkiDiscussionID",
+                    "dtDiscussionmembershipJoined"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiDiscussionmembershipID": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionmembershipID"
+                    },
+                    "fkiDiscussionID": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionID"
+                    },
+                    "fkiUserID": {
+                        "$ref": "#/components/schemas/Field-pkiUserID"
+                    },
+                    "fkiUsergroupID": {
+                        "$ref": "#/components/schemas/Field-pkiUsergroupID"
+                    },
+                    "fkiModulesectionID": {
+                        "$ref": "#/components/schemas/Field-pkiModulesectionID"
+                    },
+                    "dtDiscussionmembershipJoined": {
+                        "$ref": "#/components/schemas/Field-dtDiscussionmembershipJoined"
+                    }
+                }
+            },
+            "discussionmembership-RequestCompound": {
+                "description": "A Discussionmembership Object and children",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/discussionmembership-Request"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "discussionmembership-Response": {
+                "description": "A Discussionmembership Object",
+                "required": [
+                    "pkiDiscussionmembershipID",
+                    "fkiDiscussionID",
+                    "sDiscussionmembershipDescription",
+                    "dtDiscussionmembershipJoined"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiDiscussionmembershipID": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionmembershipID"
+                    },
+                    "fkiDiscussionID": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionID"
+                    },
+                    "fkiUserID": {
+                        "$ref": "#/components/schemas/Field-pkiUserID"
+                    },
+                    "fkiUsergroupID": {
+                        "$ref": "#/components/schemas/Field-pkiUsergroupID"
+                    },
+                    "fkiModulesectionID": {
+                        "$ref": "#/components/schemas/Field-pkiModulesectionID"
+                    },
+                    "sDiscussionmembershipDescription": {
+                        "$ref": "#/components/schemas/Computed-sDiscussionmembershipDescription"
+                    },
+                    "dtDiscussionmembershipJoined": {
+                        "$ref": "#/components/schemas/Field-dtDiscussionmembershipJoined"
+                    }
+                }
+            },
+            "discussionmembership-ResponseCompound": {
+                "description": "A Discussionmembership Object and children",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/discussionmembership-Response"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "discussionmembership-createObject-v1-Request": {
+                "description": "Request for POST /1/object/discussionmembership",
+                "required": [
+                    "a_objDiscussionmembership"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objDiscussionmembership": {
+                        "minItems": 1,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/discussionmembership-RequestCompound"
+                        }
+                    }
+                }
+            },
+            "discussionmembership-createObject-v1-Response": {
+                "description": "Response for POST /1/object/discussionmembership",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/discussionmembership-createObject-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "discussionmembership-createObject-v1-Response-mPayload": {
+                "description": "Payload for POST /1/object/discussionmembership",
+                "required": [
+                    "a_pkiDiscussionmembershipID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiDiscussionmembershipID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Field-pkiDiscussionmembershipID"
+                        }
+                    }
+                }
+            },
+            "discussionmembership-deleteObject-v1-Response": {
+                "description": "Response for DELETE /1/object/discussionmembership/{pkiDiscussionmembershipID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "discussionmessage-Request": {
+                "description": "A Discussionmessage Object",
+                "required": [
+                    "fkiDiscussionID",
+                    "tDiscussionmessageContent"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiDiscussionmessageID": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionmessageID"
+                    },
+                    "fkiDiscussionID": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionID"
+                    },
+                    "fkiDiscussionmembershipIDActionrequired": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionmembershipID"
+                    },
+                    "tDiscussionmessageContent": {
+                        "$ref": "#/components/schemas/Field-tDiscussionmessageContent"
+                    }
+                }
+            },
+            "discussionmessage-RequestCompound": {
+                "description": "A Discussionmessage Object and children",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/discussionmessage-Request"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "discussionmessage-RequestPatch": {
+                "description": "A Discussionmessage Object",
+                "type": "object",
+                "properties": {
+                    "fkiDiscussionmembershipIDActionrequired": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionmembershipID"
+                    },
+                    "tDiscussionmessageContent": {
+                        "$ref": "#/components/schemas/Field-tDiscussionmessageContent"
+                    }
+                }
+            },
+            "discussionmessage-Response": {
+                "description": "A Discussionmessage Object",
+                "required": [
+                    "pkiDiscussionmessageID",
+                    "fkiDiscussionID",
+                    "eDiscussionmessageStatus",
+                    "tDiscussionmessageContent",
+                    "sDiscussionmessageCreatorname",
+                    "objAudit"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiDiscussionmessageID": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionmessageID"
+                    },
+                    "fkiDiscussionID": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionID"
+                    },
+                    "fkiDiscussionmembershipID": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionmembershipID"
+                    },
+                    "fkiDiscussionmembershipIDActionrequired": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionmembershipID"
+                    },
+                    "eDiscussionmessageStatus": {
+                        "$ref": "#/components/schemas/Field-eDiscussionmessageStatus"
+                    },
+                    "tDiscussionmessageContent": {
+                        "$ref": "#/components/schemas/Field-tDiscussionmessageContent"
+                    },
+                    "sDiscussionmessageCreatorname": {
+                        "description": "The name the creator of the Discussionmessage.",
+                        "pattern": "^.{0,75}$",
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "sDiscussionmessageActionrequiredname": {
+                        "description": "The name the Actionrequired of the Discussionmessage.",
+                        "pattern": "^.{0,75}$",
+                        "type": "string",
+                        "example": "Jane Doe"
+                    },
+                    "objAudit": {
+                        "$ref": "#/components/schemas/Common-Audit"
+                    }
+                }
+            },
+            "discussionmessage-ResponseCompound": {
+                "description": "A Discussionmessage Object and children",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/discussionmessage-Response"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "discussionmessage-createObject-v1-Request": {
+                "description": "Request for POST /1/object/discussionmessage",
+                "required": [
+                    "a_objDiscussionmessage"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objDiscussionmessage": {
+                        "minItems": 1,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/discussionmessage-RequestCompound"
+                        }
+                    }
+                }
+            },
+            "discussionmessage-createObject-v1-Response": {
+                "description": "Response for POST /1/object/discussionmessage",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/discussionmessage-createObject-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "discussionmessage-createObject-v1-Response-mPayload": {
+                "description": "Payload for POST /1/object/discussionmessage",
+                "required": [
+                    "a_pkiDiscussionmessageID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiDiscussionmessageID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Field-pkiDiscussionmessageID"
+                        }
+                    }
+                }
+            },
+            "discussionmessage-deleteObject-v1-Response": {
+                "description": "Response for DELETE /1/object/discussionmessage/{pkiDiscussionmessageID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "discussionmessage-patchObject-v1-Request": {
+                "description": "Request for PATCH /1/object/discussionmessage/{pkiDiscussionmessageID}",
+                "required": [
+                    "objDiscussionmessage"
+                ],
+                "type": "object",
+                "properties": {
+                    "objDiscussionmessage": {
+                        "$ref": "#/components/schemas/discussionmessage-RequestPatch"
+                    }
+                }
+            },
+            "discussionmessage-patchObject-v1-Response": {
+                "description": "Response for PATCH /1/object/discussionmessage/{pkiDiscussionmessageID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
             "electronicfundstransfer-getCommunicationList-v1-Response": {
                 "description": "Response for GET /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/getCommunicationList",
                 "type": "object",
@@ -30109,6 +31830,190 @@
                     }
                 }
             },
+            "ezsigndiscussion-Request": {
+                "description": "An Ezsigndiscussion Object",
+                "required": [
+                    "fkiEzsigndocumentID",
+                    "iEzsigndiscussionPagenumber",
+                    "iEzsigndiscussionX",
+                    "iEzsigndiscussionY",
+                    "objDiscussion"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsigndiscussionID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigndiscussionID"
+                    },
+                    "fkiEzsigndocumentID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID"
+                    },
+                    "iEzsigndiscussionPagenumber": {
+                        "$ref": "#/components/schemas/Computed-iEzsigndiscussionPagenumber"
+                    },
+                    "iEzsigndiscussionX": {
+                        "$ref": "#/components/schemas/Field-iEzsigndiscussionX"
+                    },
+                    "iEzsigndiscussionY": {
+                        "$ref": "#/components/schemas/Field-iEzsigndiscussionY"
+                    },
+                    "objDiscussion": {
+                        "$ref": "#/components/schemas/discussion-Request"
+                    }
+                }
+            },
+            "ezsigndiscussion-RequestCompound": {
+                "description": "A Ezsigndiscussion Object and children",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsigndiscussion-Request"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "ezsigndiscussion-Response": {
+                "description": "A Ezsigndiscussion Object",
+                "required": [
+                    "pkiEzsigndiscussionID",
+                    "fkiEzsignpageID",
+                    "iEzsigndiscussionPagenumber",
+                    "fkiDiscussionID",
+                    "iEzsigndiscussionX",
+                    "iEzsigndiscussionY",
+                    "objDiscussion"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsigndiscussionID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigndiscussionID"
+                    },
+                    "fkiEzsignpageID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignpageID"
+                    },
+                    "fkiDiscussionID": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionID"
+                    },
+                    "iEzsigndiscussionX": {
+                        "$ref": "#/components/schemas/Field-iEzsigndiscussionX"
+                    },
+                    "iEzsigndiscussionY": {
+                        "$ref": "#/components/schemas/Field-iEzsigndiscussionY"
+                    },
+                    "iEzsigndiscussionPagenumber": {
+                        "$ref": "#/components/schemas/Computed-iEzsigndiscussionPagenumber"
+                    },
+                    "objDiscussion": {
+                        "$ref": "#/components/schemas/discussion-ResponseCompound"
+                    }
+                }
+            },
+            "ezsigndiscussion-ResponseCompound": {
+                "description": "A Ezsigndiscussion Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsigndiscussion-Response"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "ezsigndiscussion-createObject-v1-Request": {
+                "description": "Request for POST /1/object/ezsigndiscussion",
+                "required": [
+                    "a_objEzsigndiscussion"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objEzsigndiscussion": {
+                        "minItems": 1,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ezsigndiscussion-RequestCompound"
+                        }
+                    }
+                }
+            },
+            "ezsigndiscussion-createObject-v1-Response": {
+                "description": "Response for POST /1/object/ezsigndiscussion",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsigndiscussion-createObject-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsigndiscussion-createObject-v1-Response-mPayload": {
+                "description": "Payload for POST /1/object/ezsigndiscussion",
+                "required": [
+                    "a_pkiEzsigndiscussionID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiEzsigndiscussionID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Field-pkiEzsigndiscussionID"
+                        }
+                    }
+                }
+            },
+            "ezsigndiscussion-deleteObject-v1-Response": {
+                "description": "Response for DELETE /1/object/ezsigndiscussion/{pkiEzsigndiscussionID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsigndiscussion-getObject-v2-Response": {
+                "description": "Response for GET /2/object/ezsigndiscussion/{pkiEzsigndiscussionID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsigndiscussion-getObject-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsigndiscussion-getObject-v2-Response-mPayload": {
+                "description": "Payload for GET /2/object/ezsigndiscussion/{pkiEzsigndiscussionID}",
+                "required": [
+                    "objEzsigndiscussion"
+                ],
+                "type": "object",
+                "properties": {
+                    "objEzsigndiscussion": {
+                        "$ref": "#/components/schemas/ezsigndiscussion-ResponseCompound"
+                    }
+                }
+            },
             "ezsigndocument-Request": {
                 "description": "An Ezsigndocument Object",
                 "required": [
@@ -30421,8 +32326,83 @@
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/Common-Response"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "a_objWarning": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Common-Response-Warning"
+                                }
+                            }
+                        }
                     }
                 ]
+            },
+            "ezsigndocument-createEzsignelementsPositionedByWord-v1-Request": {
+                "description": "Request for POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord",
+                "required": [
+                    "a_objEzsignformfieldgroup",
+                    "a_objEzsignsignature"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objEzsignformfieldgroup": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-EzsignformfieldgroupCreateEzsignelementsPositionedByWord-Request"
+                        }
+                    },
+                    "a_objEzsignsignature": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-EzsignsignatureCreateEzsignelementsPositionedByWord-Request"
+                        }
+                    }
+                }
+            },
+            "ezsigndocument-createEzsignelementsPositionedByWord-v1-Response": {
+                "description": "Response for POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsigndocument-createEzsignelementsPositionedByWord-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsigndocument-createEzsignelementsPositionedByWord-v1-Response-mPayload": {
+                "description": "Payload for POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord",
+                "required": [
+                    "a_pkiEzsignsignatureID",
+                    "a_pkiEzsignformfieldgroupID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiEzsignsignatureID": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Field-pkiEzsignsignatureID"
+                        }
+                    },
+                    "a_pkiEzsignformfieldgroupID": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Field-pkiEzsignformfieldgroupID"
+                        }
+                    }
+                }
             },
             "ezsigndocument-createObject-v1-Request": {
                 "description": "Request for POST /1/object/ezsigndocument",
@@ -30872,6 +32852,41 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/ezsignannotation-ResponseCompound"
+                        }
+                    }
+                }
+            },
+            "ezsigndocument-getEzsigndiscussions-v1-Response": {
+                "description": "Response for GET /1/object/ezsigndocument/{pkiEzsigndocument}/getEzsigndiscussions",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsigndocument-getEzsigndiscussions-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsigndocument-getEzsigndiscussions-v1-Response-mPayload": {
+                "description": "Payload for GET /1/object/ezsigndocument/{pkiEzsigndocument}/getEzsigndiscussions",
+                "required": [
+                    "a_objEzsigndiscussion"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objEzsigndiscussion": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ezsigndiscussion-Response"
                         }
                     }
                 }
@@ -31453,6 +33468,9 @@
                     "dtCreatedDate": {
                         "$ref": "#/components/schemas/Field-dtCreatedDate"
                     },
+                    "dtEzsignfolderDelayedsenddate": {
+                        "$ref": "#/components/schemas/Field-dtEzsignfolderDelayedsenddate"
+                    },
                     "dtEzsignfolderSentdate": {
                         "$ref": "#/components/schemas/Field-dtEzsignfolderSentdate"
                     },
@@ -31534,6 +33552,9 @@
                     },
                     "objEzsignfoldertype": {
                         "$ref": "#/components/schemas/Custom-Ezsignfoldertype-Response"
+                    },
+                    "eEzsignfolderCompletion": {
+                        "$ref": "#/components/schemas/Field-eEzsignfolderCompletion"
                     },
                     "sEzsignfoldertypeNameX": {
                         "deprecated": true,
@@ -33051,6 +35072,9 @@
                     "eEzsignfoldertypeDisposal": {
                         "$ref": "#/components/schemas/Field-eEzsignfoldertypeDisposal"
                     },
+                    "eEzsignfoldertypeCompletion": {
+                        "$ref": "#/components/schemas/Field-eEzsignfoldertypeCompletion"
+                    },
                     "iEzsignfoldertypeDisposaldays": {
                         "$ref": "#/components/schemas/Field-iEzsignfoldertypeDisposaldays"
                     },
@@ -33062,6 +35086,12 @@
                     },
                     "bEzsignfoldertypeReassign": {
                         "$ref": "#/components/schemas/Field-bEzsignfoldertypeReassign"
+                    },
+                    "bEzsignfoldertypeReassignezsignsigner": {
+                        "$ref": "#/components/schemas/Field-bEzsignfoldertypeReassignezsignsigner"
+                    },
+                    "bEzsignfoldertypeReassignuser": {
+                        "$ref": "#/components/schemas/Field-bEzsignfoldertypeReassignuser"
                     },
                     "bEzsignfoldertypeSendattatchmentsigner": {
                         "$ref": "#/components/schemas/Field-bEzsignfoldertypeSendattatchmentsigner"
@@ -33239,6 +35269,9 @@
                     "eEzsignfoldertypeDisposal": {
                         "$ref": "#/components/schemas/Field-eEzsignfoldertypeDisposal"
                     },
+                    "eEzsignfoldertypeCompletion": {
+                        "$ref": "#/components/schemas/Field-eEzsignfoldertypeCompletion"
+                    },
                     "iEzsignfoldertypeDisposaldays": {
                         "$ref": "#/components/schemas/Field-iEzsignfoldertypeDisposaldays"
                     },
@@ -33250,6 +35283,12 @@
                     },
                     "bEzsignfoldertypeReassign": {
                         "$ref": "#/components/schemas/Field-bEzsignfoldertypeReassign"
+                    },
+                    "bEzsignfoldertypeReassignezsignsigner": {
+                        "$ref": "#/components/schemas/Field-bEzsignfoldertypeReassignezsignsigner"
+                    },
+                    "bEzsignfoldertypeReassignuser": {
+                        "$ref": "#/components/schemas/Field-bEzsignfoldertypeReassignuser"
                     },
                     "bEzsignfoldertypeSendattatchmentsigner": {
                         "$ref": "#/components/schemas/Field-bEzsignfoldertypeSendattatchmentsigner"
@@ -34260,6 +36299,9 @@
                     },
                     "iEzsignsignatureStep": {
                         "$ref": "#/components/schemas/Field-iEzsignsignatureStep"
+                    },
+                    "iEzsignsignatureStepadjusted": {
+                        "$ref": "#/components/schemas/Field-iEzsignsignatureStepadjusted"
                     },
                     "eEzsignsignatureType": {
                         "$ref": "#/components/schemas/Field-eEzsignsignatureType"
@@ -36791,8 +38833,6 @@
                 "required": [
                     "iEzsigntemplatedocumentpagePagenumber",
                     "sEzsigntemplateformfieldLabel",
-                    "iEzsigntemplateformfieldX",
-                    "iEzsigntemplateformfieldY",
                     "iEzsigntemplateformfieldWidth",
                     "iEzsigntemplateformfieldHeight"
                 ],
@@ -36800,6 +38840,9 @@
                 "properties": {
                     "pkiEzsigntemplateformfieldID": {
                         "$ref": "#/components/schemas/Field-pkiEzsigntemplateformfieldID"
+                    },
+                    "eEzsigntemplateformfieldPositioning": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplateformfieldPositioning"
                     },
                     "iEzsigntemplatedocumentpagePagenumber": {
                         "$ref": "#/components/schemas/Field-iEzsigntemplatedocumentpagePagenumber"
@@ -36830,6 +38873,18 @@
                     },
                     "eEzsigntemplateformfieldDependencyrequirement": {
                         "$ref": "#/components/schemas/Field-eEzsigntemplateformfieldDependencyrequirement"
+                    },
+                    "sEzsigntemplateformfieldPositioningpattern": {
+                        "$ref": "#/components/schemas/Field-sEzsigntemplateformfieldPositioningpattern"
+                    },
+                    "iEzsigntemplateformfieldPositioningoffsetx": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplateformfieldPositioningoffsetx"
+                    },
+                    "iEzsigntemplateformfieldPositioningoffsety": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplateformfieldPositioningoffsety"
+                    },
+                    "eEzsigntemplateformfieldPositioningoccurence": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplateformfieldPositioningoccurence"
                     }
                 }
             },
@@ -36859,8 +38914,6 @@
                     "pkiEzsigntemplateformfieldID",
                     "iEzsigntemplatedocumentpagePagenumber",
                     "sEzsigntemplateformfieldLabel",
-                    "iEzsigntemplateformfieldX",
-                    "iEzsigntemplateformfieldY",
                     "iEzsigntemplateformfieldWidth",
                     "iEzsigntemplateformfieldHeight"
                 ],
@@ -36868,6 +38921,9 @@
                 "properties": {
                     "pkiEzsigntemplateformfieldID": {
                         "$ref": "#/components/schemas/Field-pkiEzsigntemplateformfieldID"
+                    },
+                    "eEzsigntemplateformfieldPositioning": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplateformfieldPositioning"
                     },
                     "iEzsigntemplatedocumentpagePagenumber": {
                         "$ref": "#/components/schemas/Field-iEzsigntemplatedocumentpagePagenumber"
@@ -36898,6 +38954,18 @@
                     },
                     "eEzsigntemplateformfieldDependencyrequirement": {
                         "$ref": "#/components/schemas/Field-eEzsigntemplateformfieldDependencyrequirement"
+                    },
+                    "sEzsigntemplateformfieldPositioningpattern": {
+                        "$ref": "#/components/schemas/Field-sEzsigntemplateformfieldPositioningpattern"
+                    },
+                    "iEzsigntemplateformfieldPositioningoffsetx": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplateformfieldPositioningoffsetx"
+                    },
+                    "iEzsigntemplateformfieldPositioningoffsety": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplateformfieldPositioningoffsety"
+                    },
+                    "eEzsigntemplateformfieldPositioningoccurence": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplateformfieldPositioningoccurence"
                     }
                 }
             },
@@ -38310,8 +40378,6 @@
                     "fkiEzsigntemplatedocumentID",
                     "fkiEzsigntemplatesignerID",
                     "iEzsigntemplatedocumentpagePagenumber",
-                    "iEzsigntemplatesignatureX",
-                    "iEzsigntemplatesignatureY",
                     "iEzsigntemplatesignatureStep",
                     "eEzsigntemplatesignatureType"
                 ],
@@ -38328,6 +40394,9 @@
                     },
                     "fkiEzsigntemplatesignerIDValidation": {
                         "$ref": "#/components/schemas/Field-pkiEzsigntemplatesignerID"
+                    },
+                    "eEzsigntemplatesignaturePositioning": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplatesignaturePositioning"
                     },
                     "iEzsigntemplatedocumentpagePagenumber": {
                         "$ref": "#/components/schemas/Field-iEzsigntemplatedocumentpagePagenumber"
@@ -38382,6 +40451,18 @@
                     },
                     "eEzsigntemplatesignatureDependencyrequirement": {
                         "$ref": "#/components/schemas/Field-eEzsigntemplatesignatureDependencyrequirement"
+                    },
+                    "sEzsigntemplatesignaturePositioningpattern": {
+                        "$ref": "#/components/schemas/Field-sEzsigntemplatesignaturePositioningpattern"
+                    },
+                    "iEzsigntemplatesignaturePositioningoffsetx": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplatesignaturePositioningoffsetx"
+                    },
+                    "iEzsigntemplatesignaturePositioningoffsety": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplatesignaturePositioningoffsety"
+                    },
+                    "eEzsigntemplatesignaturePositioningoccurence": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplatesignaturePositioningoccurence"
                     }
                 }
             },
@@ -38422,8 +40503,6 @@
                     "fkiEzsigntemplatedocumentID",
                     "fkiEzsigntemplatesignerID",
                     "iEzsigntemplatedocumentpagePagenumber",
-                    "iEzsigntemplatesignatureX",
-                    "iEzsigntemplatesignatureY",
                     "iEzsigntemplatesignatureStep",
                     "eEzsigntemplatesignatureType"
                 ],
@@ -38440,6 +40519,9 @@
                     },
                     "fkiEzsigntemplatesignerIDValidation": {
                         "$ref": "#/components/schemas/Field-pkiEzsigntemplatesignerID"
+                    },
+                    "eEzsigntemplatesignaturePositioning": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplatesignaturePositioning"
                     },
                     "iEzsigntemplatedocumentpagePagenumber": {
                         "$ref": "#/components/schemas/Field-iEzsigntemplatedocumentpagePagenumber"
@@ -38494,6 +40576,18 @@
                     },
                     "eEzsigntemplatesignatureDependencyrequirement": {
                         "$ref": "#/components/schemas/Field-eEzsigntemplatesignatureDependencyrequirement"
+                    },
+                    "sEzsigntemplatesignaturePositioningpattern": {
+                        "$ref": "#/components/schemas/Field-sEzsigntemplatesignaturePositioningpattern"
+                    },
+                    "iEzsigntemplatesignaturePositioningoffsetx": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplatesignaturePositioningoffsetx"
+                    },
+                    "iEzsigntemplatesignaturePositioningoffsety": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplatesignaturePositioningoffsety"
+                    },
+                    "eEzsigntemplatesignaturePositioningoccurence": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplatesignaturePositioningoccurence"
                     }
                 }
             },
@@ -38645,8 +40739,6 @@
             "ezsigntemplatesignaturecustomdate-Request": {
                 "description": "An Ezsigntemplatesignaturecustomdate Object",
                 "required": [
-                    "iEzsigntemplatesignaturecustomdateX",
-                    "iEzsigntemplatesignaturecustomdateY",
                     "sEzsigntemplatesignaturecustomdateFormat"
                 ],
                 "type": "object",
@@ -38659,6 +40751,12 @@
                     },
                     "iEzsigntemplatesignaturecustomdateY": {
                         "$ref": "#/components/schemas/Field-iEzsigntemplatesignaturecustomdateY"
+                    },
+                    "iEzsigntemplatesignaturecustomdateOffsetx": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplatesignaturecustomdateOffsetx"
+                    },
+                    "iEzsigntemplatesignaturecustomdateOffsety": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplatesignaturecustomdateOffsety"
                     },
                     "sEzsigntemplatesignaturecustomdateFormat": {
                         "$ref": "#/components/schemas/Common-Format-CustomDateFormat"
@@ -38678,8 +40776,6 @@
                 "description": "An Ezsigntemplatesignaturecustomdate Object",
                 "required": [
                     "pkiEzsigntemplatesignaturecustomdateID",
-                    "iEzsigntemplatesignaturecustomdateX",
-                    "iEzsigntemplatesignaturecustomdateY",
                     "sEzsigntemplatesignaturecustomdateFormat"
                 ],
                 "type": "object",
@@ -38692,6 +40788,12 @@
                     },
                     "iEzsigntemplatesignaturecustomdateY": {
                         "$ref": "#/components/schemas/Field-iEzsigntemplatesignaturecustomdateY"
+                    },
+                    "iEzsigntemplatesignaturecustomdateOffsetx": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplatesignaturecustomdateOffsetx"
+                    },
+                    "iEzsigntemplatesignaturecustomdateOffsety": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplatesignaturecustomdateOffsety"
                     },
                     "sEzsigntemplatesignaturecustomdateFormat": {
                         "$ref": "#/components/schemas/Common-Format-CustomDateFormat"
@@ -41705,6 +43807,9 @@
                     },
                     "sEmailAddress": {
                         "$ref": "#/components/schemas/Field-sEmailAddress"
+                    },
+                    "sUserJobtitle": {
+                        "$ref": "#/components/schemas/Field-sUserJobtitle"
                     }
                 }
             },
@@ -41789,6 +43894,9 @@
                     },
                     "sUserLoginname": {
                         "$ref": "#/components/schemas/Field-sUserLoginname"
+                    },
+                    "sUserJobtitle": {
+                        "$ref": "#/components/schemas/Field-sUserJobtitle"
                     },
                     "eUserEzsignaccess": {
                         "$ref": "#/components/schemas/Field-eUserEzsignaccess"
@@ -41930,6 +44038,9 @@
                     },
                     "sUserLoginname": {
                         "$ref": "#/components/schemas/Field-sUserLoginname"
+                    },
+                    "sUserJobtitle": {
+                        "$ref": "#/components/schemas/Field-sUserJobtitle"
                     },
                     "eUserEzsignaccess": {
                         "$ref": "#/components/schemas/Field-eUserEzsignaccess"
@@ -44153,7 +46264,8 @@
                     "bWebhookSkipsslvalidation",
                     "bWebhookIsactive",
                     "bWebhookIssigned",
-                    "sWebhookEmailfailed"
+                    "sWebhookEmailfailed",
+                    "objAudit"
                 ],
                 "type": "object",
                 "properties": {
@@ -44200,6 +46312,9 @@
                     },
                     "bWebhookSkipsslvalidation": {
                         "$ref": "#/components/schemas/Field-bWebhookSkipsslvalidation"
+                    },
+                    "objAudit": {
+                        "$ref": "#/components/schemas/Common-Audit"
                     }
                 }
             },
@@ -44744,7 +46859,7 @@
     "tags": [
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\r\n\r\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\r\n\r\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\r\n\r\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\r\n\r\n**PATCH** will be incremented everytime changes and additions are released.\r\n\r\nFor each version, there will be the list of changes:\r\n* **Added** for new features.\r\n* **Changed** for changes in existing functionality.\r\n* **Deprecated** for soon-to-be removed features.\r\n* **Removed** for now removed features.\r\n* **Fixed** for any bug fixes.\r\n* **Security** in case of vulnerabilities.\r\n\r\n**Removal lifecycle**<br>\r\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\r\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\r\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\r\n\r\n## 1.2.X Releases\r\n\r\n### [1.2.0] - 2023-09-24\r\n\r\n#### Added\r\n- DELETE /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- GET /1/object/activesession/getDocumentationUrl\r\n- GET /1/object/attachment/{pkiAttachmentID}/download\r\n- GET /1/object/attachment/{pkiAttachmentID}/getAttachmentlogs\r\n- GET /1/object/buyercontract/{pkiBuyercontractID}/getCommunicationList\r\n- GET /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/getCommunicationList\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getAttachments\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getAttachmentCount\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getAttachments\r\n- GET /1/object/ezsignsigningreason/getAutocomplete\r\n- GET /1/object/ezsignsigningreason/getList\r\n- GET /1/object/ezsignsigningreason/{pkiEzsignsigningreasonID}\r\n- GET /1/object/inscription/{pkiInscriptionID}/getAttachments\r\n- GET /1/object/inscription/{pkiInscriptionID}/getCommunicationList\r\n- GET /1/object/inscription/{pkiInscriptionID}/getCommunicationsenders\r\n- GET /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/getCommunicationList\r\n- GET /1/object/inscriptiontemp/{pkiInscriptiontempID}/getCommunicationList\r\n- GET /1/object/invoice/{pkiInvoiceID}/getAttachments\r\n- GET /1/object/invoice/{pkiInvoiceID}/getCommunicationList\r\n- GET /1/object/otherincome/{pkiOtherincomeID}/getCommunicationList\r\n- GET /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/getCommunicationList\r\n- GET /1/object/user/{pkiUserID}/getApikeys\r\n- GET /1/object/usergroup/{pkiUsergroupID}/getUsergroupdelegations\r\n- GET /2/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- POST /1/object/ezsignsigningreason\r\n- POST /1/object/user/{pkiUserID}/sendPasswordReset\r\n- POST /1/object/usergroup/{pkiUsergroupID}/editUsergroupdelegations\r\n- POST /1/object/usergroupdelegation\r\n- POST /1/object/webhook/{pkiWebhookID}/regenerateApikey\r\n- POST /2/object/webhook\r\n- PUT /1/object/ezsignsigningreason/{pkiEzsignsigningreasonID}\r\n- PUT /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- Added avanced search filters sContactFirstname, sContactLastname and sEzsigndocumentName to Ezsignfolder list\r\n- Added property a_objEzsignelementdependency in ezsignformfield-RequestCompound, ezsignformfield-ResponseCompound, ezsignsignature-RequestCompound and ezsignsignature-RequestCompound\r\n- Added property a_objEzsigntemplateelementdependency in ezsigntemplateformfield-RequestCompound, ezsigntemplateformfield-ResponseCompound, ezsigntemplatesignature-RequestCompound and ezsigntemplatesignature-RequestCompound\r\n- Added property bVersionDeprecated in Common-Response-objDebugPayload\r\n- Added property eEzsigndocumentSteptype in ezsigndocument-ResponseCompound\r\n- Added property iEzsigntemplatesignatureWidth and iEzsigntemplatesignatureHeight in object ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Added property eEzsignformfieldDependencyrequirement in object ezsignformfield-Request and ezsignformfield-Response\r\n- Added property eEzsignformfieldgroupTextvalidation in ezsignformfieldgroup-Response\r\n- Added property eEzsigntemplateformfieldDependencyrequirement in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response \r\n- Added property iEzsigntemplatesignatureWidth and iEzsigntemplatesignatureHeight in object ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Added property eEzsignformfieldDependencyrequirement in object ezsignformfield-Request and ezsignformfield-Response\r\n- Added property eEzsignformfieldgroupTextvalidation in ezsignformfieldgroup-Response\r\n- Added property eEzsigntemplateformfieldDependencyrequirement in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response \r\n- Added property eEzsigntemplatesignatureDependencyrequirement in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response \r\n- Added property eEzsigntemplateformfieldgroupTextvalidation in ezsigntemplateformfieldgroup-Request and ezsigntemplateformfieldgroup-Response\r\n- Added property fkiEzsignsigningreasonID in ezsignsignature-sign-v1-Request\r\n- Added properties iEzsignsignatureMaxlength, eEzsignsignatureDependencyrequirement in ezsignsignature-Request and ezsignsignature-Response\r\n- Added properties iEzsigntemplatesignatureMaxlength, sEzsigntemplatesignatureRegexp and eEzsigntemplatesignatureTextvalidation in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Added property objContactNameDelegation in ezCustom-Ezsignfoldertype-Responsesignsignature-Response\r\n- Added property objEzsignfoldertype in ezsignfolder-Response\r\n- Added property bEzsignformfieldAutocomplete in ezsignformfield-Request and ezsignformfield-Response\r\n- Added property bEzsigntemplateformfieldAutocomplete in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response\r\n- Added property bPhoneInternational in phone-ResponseCompound\r\n- Added properties bEzsignfoldertypeDelegate, bEzsignfoldertypeReassign, bEzsignfoldertypeAllowdownloadattachmentezsignsigner AND bEzsignfoldertypeAllowdownloadproofezsignsigner in Custom-Ezsignfoldertype-Response, ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Added properties bEzsignfoldertypeSendsignedtoezsignsigner, bEzsignfoldertypeSendattachmentezsignsigner, bEzsignfoldertypeSendproofezsignsigner, bEzsignfoldertypeSendsignedtouser, bEzsignfoldertypeSendattachmentuser, bEzsignfoldertypeSendproofuser, bEzsignfoldertypeSendproofemail, bEzsignfoldertypeAllowdownloadattachmentezsignsigner, bEzsignfoldertypeAllowdownloadproofezsignsigner and bEzsignfoldertypeSendproofreceivealldocument in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Added value AgentBrokerEzsignUserNormal for sSelector in GET /2/object/user/getAutocomplete/{sSelector}\r\n- Added value AllButEveryone for sSelector in GET /2/object/usergroup/getAutocomplete/{sSelector}\r\n- Added value fkiUserID for sFilter in GET /1/object/ezsignfolder/getList\r\n- Added value NameReason for eEzsignsignatureType\r\n- Added value NameReason for eEzsigntemplatesignatureType\r\n- Added value Number, Date in Field-eEzsignformfieldgroupType and Field-eEzsigntemplateformfieldgroupType\r\n- Added properties eUserEzsignaccess, eUserEzsignprepaid and dtUserEzsignprepaidexpiration in activesession-ResponseCompound\r\n- Remove properties bEzsignfoldertypeSendattatchmentsigner, bEzsignfoldertypeIncludeproofsigner and bEzsignfoldertypeSendsignedtolimitedgroup in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- New 401 error code UNAUTHORIZED_REQUEST_APIKEY\r\n- New 401 error code UNAUTHORIZED_REQUEST_PRESIGNED \r\n- New 422 error code UNPROCESSABLEENTITY_EZSIGNSIGNATURE_SIGNED \r\n- New Authorization key starting with \"W\" for webhooks\r\n- New iso environment for isolated customers \r\n- Webhook User-Agent\r\n- Webhook Request signing\r\n\r\n#### Deprecated\r\n- POST /1/object/webhook\r\n\r\n## Older Releases\r\nDocumentation and changelog for older releases can be found here\r\n- [1.1.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.1.html)\r\n- [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)",
+            "description": "All notable changes to this project will be documented in this section.\r\n\r\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\r\n\r\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\r\n\r\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\r\n\r\n**PATCH** will be incremented everytime changes and additions are released.\r\n\r\nFor each version, there will be the list of changes:\r\n* **Added** for new features.\r\n* **Changed** for changes in existing functionality.\r\n* **Deprecated** for soon-to-be removed features.\r\n* **Removed** for now removed features.\r\n* **Fixed** for any bug fixes.\r\n* **Security** in case of vulnerabilities.\r\n\r\n**Removal lifecycle**<br>\r\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\r\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\r\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\r\n\r\n## 1.2.X Releases\r\n\r\n### [1.2.0] - 2023-09-24\r\n\r\n#### Added\r\n- DELETE /1/object/discussion/{pkiDiscussionID}\r\n- DELETE /1/object/discussionmembership/{pkiDiscussionmembershipID}\r\n- DELETE /1/object/discussionmessage/{pkiDiscussionmessageID}\r\n- DELETE /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- GET /1/object/activesession/getDocumentationUrl\r\n- GET /1/object/attachment/{pkiAttachmentID}/download\r\n- GET /1/object/attachment/{pkiAttachmentID}/getAttachmentlogs\r\n- GET /1/object/buyercontract/{pkiBuyercontractID}/getCommunicationList\r\n- GET /1/object/discussion/{pkiDiscussionID}\r\n- GET /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/getCommunicationList\r\n- GET /1/object/ezsigndiscussion/{pkiEzsigndiscussionID}\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getAttachments\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsigndocumentdiscussions\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getAttachmentCount\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getAttachments\r\n- GET /1/object/ezsignsigningreason/getAutocomplete\r\n- GET /1/object/ezsignsigningreason/getList\r\n- GET /1/object/ezsignsigningreason/{pkiEzsignsigningreasonID}\r\n- GET /1/object/inscription/{pkiInscriptionID}/getAttachments\r\n- GET /1/object/inscription/{pkiInscriptionID}/getCommunicationList\r\n- GET /1/object/inscription/{pkiInscriptionID}/getCommunicationsenders\r\n- GET /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/getCommunicationList\r\n- GET /1/object/inscriptiontemp/{pkiInscriptiontempID}/getCommunicationList\r\n- GET /1/object/invoice/{pkiInvoiceID}/getAttachments\r\n- GET /1/object/invoice/{pkiInvoiceID}/getCommunicationList\r\n- GET /1/object/otherincome/{pkiOtherincomeID}/getCommunicationList\r\n- GET /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/getCommunicationList\r\n- GET /1/object/user/{pkiUserID}/getApikeys\r\n- GET /1/object/usergroup/{pkiUsergroupID}/getUsergroupdelegations\r\n- GET /2/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- PATCH /1/object/discussion/{pkiDiscussionID}\r\n- PATCH /1/object/discussionmessage/{pkiDiscussionmessageID}\r\n- POST /1/object/discussion\r\n- POST /1/object/discussion/{pkiDiscussionID}/updateDiscussionreadstatus\r\n- POST /1/object/discussionmembership\r\n- POST /1/object/discussionmessage\r\n- POST /1/object/ezsignsigningreason\r\n- POST /1/object/ezsigndocument{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n- POST /1/object/ezsignfolder{pkiEzsignfolderID}/reassign\r\n- POST /1/object/user/{pkiUserID}/sendPasswordReset\r\n- POST /1/object/usergroup/{pkiUsergroupID}/editUsergroupdelegations\r\n- POST /1/object/usergroupdelegation\r\n- POST /1/object/webhook/{pkiWebhookID}/regenerateApikey\r\n- POST /2/object/webhook\r\n- PUT /1/object/ezsignsigningreason/{pkiEzsignsigningreasonID}\r\n- PUT /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- Added avanced search filters sContactFirstname, sContactLastname and sEzsigndocumentName to Ezsignfolder list\r\n- Property a_objEzsignelementdependency in ezsignformfield-RequestCompound, ezsignformfield-ResponseCompound, ezsignsignature-RequestCompound and ezsignsignature-RequestCompound\r\n- Property a_objEzsigntemplateelementdependency in ezsigntemplateformfield-RequestCompound, ezsigntemplateformfield-ResponseCompound, ezsigntemplatesignature-RequestCompound and ezsigntemplatesignature-RequestCompound\r\n- Property a_objWarning in ezsigndocument-applyEzsigntemplate-v2-Response\r\n- Property bVersionDeprecated in Common-Response-objDebugPayload\r\n- Property eEzsigndocumentSteptype in ezsigndocument-ResponseCompound\r\n- Property iEzsigntemplatesignatureWidth and iEzsigntemplatesignatureHeight in object ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property eEzsignformfieldDependencyrequirement in object ezsignformfield-Request and ezsignformfield-Response\r\n- Property eEzsignformfieldgroupTextvalidation in ezsignformfieldgroup-Response\r\n- Property eEzsigntemplateformfieldDependencyrequirement in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response \r\n- Property iEzsigntemplatesignatureWidth and iEzsigntemplatesignatureHeight in object ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property eEzsignformfieldDependencyrequirement in object ezsignformfield-Request and ezsignformfield-Response\r\n- Property eEzsignformfieldgroupTextvalidation in ezsignformfieldgroup-Response\r\n- Property eEzsigntemplateformfieldDependencyrequirement in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response \r\n- Property eEzsigntemplatesignatureDependencyrequirement in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response \r\n- Property eEzsigntemplateformfieldgroupTextvalidation in ezsigntemplateformfieldgroup-Request and ezsigntemplateformfieldgroup-Response\r\n- Property fkiEzsignsigningreasonID in ezsignsignature-sign-v1-Request\r\n- Properties eEzsigntemplateformfieldPositioning, sEzsigntemplateformfieldPositioningpattern, iEzsigntemplateformfieldPositioningoffsetx, iEzsigntemplateformfieldPositioningoffsety, eEzsigntemplateformfieldPositioningoccurence in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response\r\n- Properties eEzsigntemplatesignaturePositioning, sEzsigntemplatesignaturePositioningpattern, iEzsigntemplatesignaturePositioningoffsetx, iEzsigntemplatesignaturePositioningoffsety, eEzsigntemplatesignaturePositioningoccurence in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Properties iEzsignsignatureMaxlength, eEzsignsignatureDependencyrequirement in ezsignsignature-Request and ezsignsignature-Response\r\n- Properties iEzsigntemplatesignatureMaxlength, sEzsigntemplatesignatureRegexp and eEzsigntemplatesignatureTextvalidation in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property objContactNameDelegation in ezCustom-Ezsignfoldertype-Responsesignsignature-Response\r\n- Property objEzsignfoldertype in ezsignfolder-Response\r\n- Property bEzsignformfieldAutocomplete in ezsignformfield-Request and ezsignformfield-Response\r\n- Property bEzsigntemplateformfieldAutocomplete in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response\r\n- Property bPhoneInternational in phone-ResponseCompound\r\n- Properties bEzsignfoldertypeDelegate, bEzsignfoldertypeReassign, bEzsignfoldertypeAllowdownloadattachmentezsignsigner AND bEzsignfoldertypeAllowdownloadproofezsignsigner in Custom-Ezsignfoldertype-Response, ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Added properties bEzsignfoldertypeSendsignedtoezsignsigner, bEzsignfoldertypeSendattachmentezsignsigner, bEzsignfoldertypeSendproofezsignsigner, bEzsignfoldertypeSendsignedtouser, bEzsignfoldertypeSendattachmentuser, bEzsignfoldertypeSendproofuser, bEzsignfoldertypeSendproofemail, bEzsignfoldertypeAllowdownloadattachmentezsignsigner, bEzsignfoldertypeAllowdownloadproofezsignsigner and bEzsignfoldertypeSendproofreceivealldocument in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property fkiBillingentityinternalID in Custom-EzmaxinvoicingEzsigndocument-Response and Custom-EzmaxinvoicingEzsignfolder-Response\r\n- Property eEzsignfolderCompletion in ezsignfolder-Response\r\n- Property eEzsignfoldertypeCompletion in ezsignfoldertype-Response and ezsignfoldertype-Response\r\n- Property sUserJobtitle in user-Request, user-Response and user-ListElement\r\n- Property dtEzsignfolderDelayedsenddate in ezsignfolder-ListElement\r\n- Property iEzsignsignatureStep in ezsignsignature-Response\r\n- Properties iEzsigntemplatesignaturecustomdateOffsetx and iEzsigntemplatesignaturecustomdateOffsety in ezsigntemplatesignaturecustomdate-Request and ezsigntemplatesignaturecustomdate-Response\r\n- Properties eUserEzsignaccess, eUserEzsignprepaid and dtUserEzsignprepaidexpiration in activesession-ResponseCompound\r\n- Properties bEzsignfoldertypeReassignezsignsigner and bEzsignfoldertypeReassignuser in Custom-Ezsignfoldertype-Response ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Value AgentBrokerEzsignUserNormal for sSelector in GET /2/object/user/getAutocomplete/{sSelector}\r\n- Value AllButEveryone for sSelector in GET /2/object/usergroup/getAutocomplete/{sSelector}\r\n- Value fkiUserID for sFilter in GET /1/object/ezsignfolder/getList\r\n- Value NameReason for eEzsignsignatureType\r\n- Value NameReason for eEzsigntemplatesignatureType\r\n- Value Number, Date in Field-eEzsignformfieldgroupType and Field-eEzsigntemplateformfieldgroupType\r\n- Value PendingCompletion for eEzsigndocumentStep\r\n- Value Consultation for eEzsignsignatureType and eEzsigntemplatesignatureType\r\n- New 401 error code UNAUTHORIZED_REQUEST_APIKEY\r\n- New 401 error code UNAUTHORIZED_REQUEST_PRESIGNED \r\n- New 422 error code UNPROCESSABLEENTITY_EZSIGNSIGNATURE_SIGNED \r\n- New Authorization key starting with \"W\" for webhooks\r\n- New iso environment for isolated customers \r\n- Webhook User-Agent\r\n- Webhook Request signing\r\n\r\n#### Remove\r\n- Properties bEzsignfoldertypeSendattatchmentsigner, bEzsignfoldertypeIncludeproofsigner and bEzsignfoldertypeSendsignedtolimitedgroup in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n\r\n#### Deprecated\r\n- POST /1/object/ezsignfoldersignerassociation/reassign\r\n- POST /1/object/webhook\r\n- Properties iEzsigntemplatesignaturecustomdateX and iEzsigntemplatesignaturecustomdateY\r\n\r\n## Older Releases\r\nDocumentation and changelog for older releases can be found here\r\n- [1.1.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.1.html)\r\n- [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)",
             "x-displayName": "Changelog"
         },
         {
@@ -44878,6 +46993,21 @@
             "x-displayName": "Department"
         },
         {
+            "name": "Object_Discussion",
+            "description": "Discussion contains details about Discussions",
+            "x-displayName": "Discussion"
+        },
+        {
+            "name": "Object_Discussionmembership",
+            "description": "Discussionmembership contains details about Discussionmemberships",
+            "x-displayName": "Discussionmembership"
+        },
+        {
+            "name": "Object_Discussionmessage",
+            "description": "Discussionmessage contains details about Discussionmessages",
+            "x-displayName": "Discussionmessage"
+        },
+        {
             "name": "Object_Electronicfundstransfer",
             "description": "Electronicfundstransfer contains detail about an Electronicfundstransfer",
             "x-displayName": "Electronicfundstransfer"
@@ -44916,6 +47046,11 @@
             "name": "Object_Ezsignbulksendtransmission",
             "description": "Ezsignbulksendtransmission contains detail about a batch of Ezsignfolders",
             "x-displayName": "Ezsignbulksendtransmission"
+        },
+        {
+            "name": "Object_Ezsigndiscussion",
+            "description": "Ezsigndiscussion contains details about Ezsigndiscussions",
+            "x-displayName": "Ezsigndiscussion"
         },
         {
             "name": "Object_Ezsigndocument",
@@ -45587,6 +47722,9 @@
                 "Object_Company",
                 "Object_Cors",
                 "Object_Department",
+                "Object_Discussion",
+                "Object_Discussionmembership",
+                "Object_Discussionmessage",
                 "Object_Electronicfundstransfer",
                 "Object_Emailtype",
                 "Object_Ezmaxinvoicing",
@@ -45595,6 +47733,7 @@
                 "Object_Ezsignbulksenddocumentmapping",
                 "Object_Ezsignbulksendsignermapping",
                 "Object_Ezsignbulksendtransmission",
+                "Object_Ezsigndiscussion",
                 "Object_Ezsigndocument",
                 "Object_Ezsignfolder",
                 "Object_Ezsignfoldersignerassociation",
