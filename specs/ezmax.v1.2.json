@@ -114,9 +114,7 @@
                 "operationId": "Global_Customer_GetEndpoint_V1",
                 "summary": "Get customer endpoint",
                 "description": "Retrieve the customer's specific server endpoint where to send requests. This will help locate the proper region (ie: sInfrastructureregionCode) and the proper environment (ie: sInfrastructureenvironmenttypeDescription) where the customer's data is stored.",
-                "x-presentations": [],
                 "x-permissions": [],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -170,9 +168,7 @@
                 "operationId": "Global_Ezmaxclient_Version_V1",
                 "summary": "Retrieve the latest version of the Ezmaxclient",
                 "description": "Retrieve the latest version of the Ezmaxclient that is available on the store.",
-                "x-presentations": [],
                 "x-permissions": [],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -213,9 +209,7 @@
                 "operationId": "Global_Ezmaxcustomer_GetConfiguration_V1",
                 "summary": "Get ezmaxcustomer configuration",
                 "description": "Retrieve the ezmaxcustomer's specific configuration. This will help locate the proper region (ie: sInfrastructureregionCode) and the proper environment (ie: sInfrastructureenvironmenttypeDescription) where the customer's data is stored.",
-                "x-presentations": [],
                 "x-permissions": [],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -254,11 +248,9 @@
                 "operationId": "Ezsign_SuggestSigners_V1",
                 "summary": "Suggest signers",
                 "description": "Retrieve previously used Ezsignsigners and all users from the system",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -296,11 +288,9 @@
                 "operationId": "Ezsign_SuggestTemplates_V1",
                 "summary": "Suggest templates",
                 "description": "Retrieve Ezsigntemplates and Ezsigntemplatepackages that can be imported in a Ezsignfolder",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -353,11 +343,9 @@
                 "operationId": "Report_GetReportFromCache_V1",
                 "summary": "Retrieve report from cache",
                 "description": "Retrieve a report that was previously generated and cached",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -410,13 +398,9 @@
                 "operationId": "User_CreateEzsignuser_V1",
                 "summary": "Create a new User of type Ezsignuser",
                 "description": "The endpoint allows to initiate the creation or a user of type Ezsignuser.\n\nThe user will be created only once the email verification process will be completed",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "ElectronicSignatureConfiguration_CreateeZsignuser"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -467,14 +451,9 @@
                 "operationId": "Activesession_GetCurrent_V1",
                 "summary": "Get Current Activesession",
                 "description": "Retrieve the details about the current activesession",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
-                "x-ms-visibility": "advanced",
                 "x-usertypeextra": [
                     "AgentBroker",
                     "EzsignSigner"
@@ -563,9 +542,7 @@
                 ],
                 "operationId": "Activesession_GetList_V1",
                 "summary": "Retrieve Activesession list",
-                "x-powerautomate": false,
                 "x-usertypeextra": [],
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
@@ -608,13 +585,9 @@
                 "operationId": "Apikey_CreateObject_V2",
                 "summary": "Create a new Apikey",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "Management_APIKeyGeneration"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -650,9 +623,7 @@
                 "x-permissions": [
                     "Management_APIKeyGeneration"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -711,9 +682,7 @@
                 "x-permissions": [
                     "Management_APIKeyGeneration"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -772,9 +741,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -819,9 +786,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -866,9 +831,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -913,9 +876,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -966,11 +927,9 @@
                 "operationId": "Apikey_Regenerate_V1",
                 "summary": "Regenerate the Apikey",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_APIKeyGeneration"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -1055,13 +1014,9 @@
                 "operationId": "Apikey_GetList_V1",
                 "summary": "Retrieve Apikey list",
                 "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "Management_APIKeyGeneration"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -1090,9 +1045,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -1136,9 +1089,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -1182,13 +1133,9 @@
                 "operationId": "Attachment_GetDownloadUrl_V1",
                 "summary": "Retrieve a URL to download attachments.",
                 "description": "This endpoint returns an URL to download the attachment.\n\nThese links will expire after 5 minutes so the download of the file should be made soon after retrieving the link.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -1256,9 +1203,7 @@
                 "x-permissions": [
                     "EzmaxInvoicing_Access"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -1314,9 +1259,7 @@
                 "x-permissions": [
                     "Management_Billingentities"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             }
         },
         "/2/object/billingentityinternal/{pkiBillingentityinternalID}": {
@@ -1351,9 +1294,7 @@
                 "x-permissions": [
                     "Management_Billingentities"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -1411,9 +1352,7 @@
                 "x-permissions": [
                     "Management_Billingentities"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -1475,12 +1414,10 @@
                 "operationId": "Billingentityinternal_GetAutocomplete_V2",
                 "summary": "Retrieve Billingentityinternals and IDs",
                 "description": "Get the list of Billingentityinternal to be used in a dropdown or autocomplete control.",
-                "x-presentations": [],
                 "x-permissions": [
                     "EzmaxInvoicing_Access",
                     "ElectronicSignature_CreationModificationFolderTypes"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -1564,9 +1501,7 @@
                 "x-permissions": [
                     "Management_Billingentities"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             }
         },
         "/1/object/branding": {
@@ -1605,13 +1540,9 @@
                 "operationId": "Branding_CreateObject_V1",
                 "summary": "Create a new Branding",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "Branding_CreationModification"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -1644,13 +1575,9 @@
                 "operationId": "Branding_GetObject_V2",
                 "summary": "Retrieve an existing Branding",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "Branding_CreationModification"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -1703,13 +1630,9 @@
                 "operationId": "Branding_EditObject_V1",
                 "summary": "Edit an existing Branding",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "Branding_CreationModification"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -1772,13 +1695,9 @@
                 "operationId": "Branding_GetAutocomplete_V2",
                 "summary": "Retrieve Brandings and IDs",
                 "description": "Get the list of Branding to be used in a dropdown or autocomplete control.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -1873,13 +1792,9 @@
                 "operationId": "Branding_GetList_V1",
                 "summary": "Retrieve Branding list",
                 "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eBrandingLogo | Default<br>JPEG<br>PNG |\n| eBrandingLogointerface | Default<br>JPEG<br>PNG |",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "Branding_CreationModification"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -1911,11 +1826,9 @@
                 "operationId": "Buyercontract_getCommunicationList_V1",
                 "summary": "Retrieve Communication list",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "Inscription_BuyersContracts"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -2013,12 +1926,10 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker",
                     "Assistant"
-                ],
-                "x-presentations": []
+                ]
             }
         },
         "/1/object/communication/send": {
@@ -2057,14 +1968,12 @@
                 "operationId": "Communication_Send_V1",
                 "summary": "Send a new Communication",
                 "description": "The endpoint allows to send one or many elements at once.",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "All"
                 ],
                 "x-usertypeextra": [
                     "AgentBroker"
-                ],
-                "x-presentations": []
+                ]
             }
         },
         "/2/object/company/getAutocomplete/{sSelector}": {
@@ -2119,9 +2028,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -2178,9 +2085,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             }
         },
         "/2/object/cors/{pkiCorsID}": {
@@ -2216,9 +2121,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -2278,9 +2181,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "delete": {
                 "tags": [
@@ -2313,9 +2214,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -2378,11 +2277,9 @@
                 "operationId": "Country_GetAutocomplete_V2",
                 "summary": "Retrieve Countries and IDs",
                 "description": "Get the list of Country to be used in a dropdown or autocomplete control.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
                 ]
@@ -2451,11 +2348,9 @@
                 "operationId": "Department_GetAutocomplete_V2",
                 "summary": "Retrieve Departments and IDs",
                 "description": "Get the list of Department to be used in a dropdown or autocomplete control.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
                 ]
@@ -2514,15 +2409,13 @@
                 "operationId": "Discussion_CreateObject_V1",
                 "summary": "Create a new Discussion",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "All"
                 ],
                 "x-usertypeextra": [
                     "EzsignSigner",
                     "AgentBroker"
-                ],
-                "x-presentations": []
+                ]
             }
         },
         "/2/object/discussion/{pkiDiscussionID}": {
@@ -2554,15 +2447,13 @@
                 "operationId": "Discussion_GetObject_V2",
                 "summary": "Retrieve an existing Discussion",
                 "description": "",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "All"
                 ],
                 "x-usertypeextra": [
                     "EzsignSigner",
                     "AgentBroker"
-                ],
-                "x-presentations": []
+                ]
             },
             "parameters": [
                 {
@@ -2605,15 +2496,13 @@
                 "operationId": "Discussion_DeleteObject_V1",
                 "summary": "Delete an existing Discussion",
                 "description": "",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "All"
                 ],
                 "x-usertypeextra": [
                     "EzsignSigner",
                     "AgentBroker"
-                ],
-                "x-presentations": []
+                ]
             },
             "patch": {
                 "requestBody": {
@@ -2655,15 +2544,13 @@
                 "operationId": "Discussion_PatchObject_V1",
                 "summary": "Patch an existing Discussion",
                 "description": "",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "All"
                 ],
                 "x-usertypeextra": [
                     "EzsignSigner",
                     "AgentBroker"
-                ],
-                "x-presentations": []
+                ]
             },
             "parameters": [
                 {
@@ -2718,15 +2605,13 @@
                 ],
                 "operationId": "Discussion_UpdateDiscussionreadstatus_V1",
                 "summary": "Update the read status of the discussion",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "All"
                 ],
                 "x-usertypeextra": [
                     "EzsignSigner",
                     "AgentBroker"
-                ],
-                "x-presentations": []
+                ]
             },
             "parameters": [
                 {
@@ -2775,15 +2660,13 @@
                 "operationId": "Discussionmembership_CreateObject_V1",
                 "summary": "Create a new Discussionmembership",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "All"
                 ],
                 "x-usertypeextra": [
                     "EzsignSigner",
                     "AgentBroker"
-                ],
-                "x-presentations": []
+                ]
             }
         },
         "/1/object/discussionmembership/{pkiDiscussionmembershipID}": {
@@ -2815,15 +2698,13 @@
                 "operationId": "Discussionmembership_DeleteObject_V1",
                 "summary": "Delete an existing Discussionmembership",
                 "description": "",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "All"
                 ],
                 "x-usertypeextra": [
                     "EzsignSigner",
                     "AgentBroker"
-                ],
-                "x-presentations": []
+                ]
             },
             "parameters": [
                 {
@@ -2873,15 +2754,13 @@
                 "operationId": "Discussionmessage_CreateObject_V1",
                 "summary": "Create a new Discussionmessage",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "All"
                 ],
                 "x-usertypeextra": [
                     "EzsignSigner",
                     "AgentBroker"
-                ],
-                "x-presentations": []
+                ]
             }
         },
         "/1/object/discussionmessage/{pkiDiscussionmessageID}": {
@@ -2916,15 +2795,13 @@
                 "operationId": "Discussionmessage_DeleteObject_V1",
                 "summary": "Delete an existing Discussionmessage",
                 "description": "",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "All"
                 ],
                 "x-usertypeextra": [
                     "EzsignSigner",
                     "AgentBroker"
-                ],
-                "x-presentations": []
+                ]
             },
             "patch": {
                 "requestBody": {
@@ -2966,15 +2843,13 @@
                 "operationId": "Discussionmessage_PatchObject_V1",
                 "summary": "Patch an existing Discussionmessage",
                 "description": "",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "All"
                 ],
                 "x-usertypeextra": [
                     "EzsignSigner",
                     "AgentBroker"
-                ],
-                "x-presentations": []
+                ]
             },
             "parameters": [
                 {
@@ -3016,11 +2891,9 @@
                 "operationId": "Electronicfundstransfer_getCommunicationList_V1",
                 "summary": "Retrieve Communication list",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "Payments_ElectronicsFundsTransfer"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3086,11 +2959,9 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
-                ],
-                "x-presentations": []
+                ]
             },
             "parameters": [
                 {
@@ -3135,11 +3006,9 @@
                 "operationId": "Ezmaxinvoicing_GetObject_V2",
                 "summary": "Retrieve an existing Ezmaxinvoicing",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "EzmaxInvoicing_Access"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3202,11 +3071,9 @@
                 "operationId": "Ezmaxinvoicing_GetAutocomplete_V2",
                 "summary": "Retrieve Ezmaxinvoicings and IDs",
                 "description": "Get the list of Ezmaxinvoicing to be used in a dropdown or autocomplete control.",
-                "x-presentations": [],
                 "x-permissions": [
                     "EzmaxInvoicing_Access"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3253,11 +3120,9 @@
                 "operationId": "Ezmaxinvoicing_GetProvisional_V1",
                 "summary": "Retrieve provisional Ezmaxinvoicing",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "EzmaxInvoicing_Access"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -3314,9 +3179,7 @@
                     "EzmaxInvoicing_Access",
                     "Management_Billingentities"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -3371,13 +3234,9 @@
                 "operationId": "Ezsignbulksend_CreateObject_V1",
                 "summary": "Create a new Ezsignbulksend",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -3409,13 +3268,9 @@
                 "operationId": "Ezsignbulksend_GetObject_V2",
                 "summary": "Retrieve an existing Ezsignbulksend",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3471,13 +3326,9 @@
                 "operationId": "Ezsignbulksend_EditObject_V1",
                 "summary": "Edit an existing Ezsignbulksend",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -3510,13 +3361,9 @@
                 "operationId": "Ezsignbulksend_DeleteObject_V1",
                 "summary": "Delete an existing Ezsignbulksend",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3570,11 +3417,9 @@
                 ],
                 "operationId": "Ezsignbulksend_CreateEzsignbulksendtransmission_V1",
                 "summary": "Create a new Ezsignbulksendtransmission in the Ezsignbulksend",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3637,11 +3482,9 @@
                 "operationId": "Ezsignbulksend_GetCsvTemplate_V1",
                 "summary": "Retrieve an existing Ezsignbulksend's empty Csv template",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3683,13 +3526,9 @@
                 "operationId": "Ezsignbulksend_GetEzsignbulksendtransmissions_V1",
                 "summary": "Retrieve an existing Ezsignbulksend's Ezsignbulksendtransmissions",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3731,11 +3570,9 @@
                 "operationId": "Ezsignbulksend_GetEzsignsignaturesAutomatic_V1",
                 "summary": "Retrieve an existing Ezsignbulksend's automatic Ezsignsignatures",
                 "description": "Return the Ezsignsignatures that can be signed by the current user at the current step in the process",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3788,13 +3625,9 @@
                 "operationId": "Ezsignbulksend_GetFormsData_V1",
                 "summary": "Retrieve an existing Ezsignbulksend's forms data",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3848,11 +3681,9 @@
                 ],
                 "operationId": "Ezsignbulksend_Reorder_V1",
                 "summary": "Reorder Ezsignbulksenddocumentmappings in the Ezsignbulksend",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -3949,13 +3780,9 @@
                 "operationId": "Ezsignbulksend_GetList_V1",
                 "summary": "Retrieve Ezsignbulksend list",
                 "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eEzsignfoldertypePrivacylevel | User<br>Usergroup |",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -3998,11 +3825,9 @@
                 "operationId": "Ezsignbulksenddocumentmapping_CreateObject_V1",
                 "summary": "Create a new Ezsignbulksenddocumentmapping",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -4034,11 +3859,9 @@
                 "operationId": "Ezsignbulksenddocumentmapping_GetObject_V2",
                 "summary": "Retrieve an existing Ezsignbulksenddocumentmapping",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4081,11 +3904,9 @@
                 "operationId": "Ezsignbulksenddocumentmapping_DeleteObject_V1",
                 "summary": "Delete an existing Ezsignbulksenddocumentmapping",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4135,11 +3956,9 @@
                 "operationId": "Ezsignbulksendsignermapping_CreateObject_V1",
                 "summary": "Create a new Ezsignbulksendsignermapping",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -4171,11 +3990,9 @@
                 "operationId": "Ezsignbulksendsignermapping_GetObject_V2",
                 "summary": "Retrieve an existing Ezsignbulksendsignermapping",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4218,11 +4035,9 @@
                 "operationId": "Ezsignbulksendsignermapping_DeleteObject_V1",
                 "summary": "Delete an existing Ezsignbulksendsignermapping",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4264,13 +4079,9 @@
                 "operationId": "Ezsignbulksendtransmission_GetObject_V2",
                 "summary": "Retrieve an existing Ezsignbulksendtransmission",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4318,11 +4129,9 @@
                 "operationId": "Ezsignbulksendtransmission_GetCsvErrors_V1",
                 "summary": "Retrieve an existing Ezsignbulksendtransmission's Csv containing errors",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4364,11 +4173,9 @@
                 "operationId": "Ezsignbulksendtransmission_GetEzsignsignaturesAutomatic_V1",
                 "summary": "Retrieve an existing Ezsignbulksendtransmission's automatic Ezsignsignatures",
                 "description": "Return the Ezsignsignatures that can be signed by the current user at the current step in the process",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4421,13 +4228,9 @@
                 "operationId": "Ezsignbulksendtransmission_GetFormsData_V1",
                 "summary": "Retrieve an existing Ezsignbulksendtransmission's forms data",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4477,15 +4280,13 @@
                 "operationId": "Ezsigndiscussion_CreateObject_V1",
                 "summary": "Create a new Ezsigndiscussion",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "All"
                 ],
                 "x-usertypeextra": [
                     "EzsignSigner",
                     "AgentBroker"
-                ],
-                "x-presentations": []
+                ]
             }
         },
         "/2/object/ezsigndiscussion/{pkiEzsigndiscussionID}": {
@@ -4517,15 +4318,13 @@
                 "operationId": "Ezsigndiscussion_GetObject_V2",
                 "summary": "Retrieve an existing Ezsigndiscussion",
                 "description": "",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "All"
                 ],
                 "x-usertypeextra": [
                     "EzsignSigner",
                     "AgentBroker"
-                ],
-                "x-presentations": []
+                ]
             },
             "parameters": [
                 {
@@ -4568,15 +4367,13 @@
                 "operationId": "Ezsigndiscussion_DeleteObject_V1",
                 "summary": "Delete an existing Ezsigndiscussion",
                 "description": "",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "All"
                 ],
                 "x-usertypeextra": [
                     "EzsignSigner",
                     "AgentBroker"
-                ],
-                "x-presentations": []
+                ]
             },
             "parameters": [
                 {
@@ -4629,14 +4426,9 @@
                 "operationId": "Ezsigndocument_CreateObject_V2",
                 "summary": "Create a new Ezsigndocument",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
-                "x-ms-visibility": "important",
                 "x-usertypeextra": []
             }
         },
@@ -4686,11 +4478,9 @@
                 "operationId": "Ezsigndocument_CreateObject_V1",
                 "summary": "Create a new Ezsigndocument",
                 "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -4722,13 +4512,9 @@
                 "operationId": "Ezsigndocument_GetObject_V2",
                 "summary": "Retrieve an existing Ezsigndocument",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -4773,11 +4559,9 @@
                 ],
                 "operationId": "Ezsigndocument_GetObject_V1",
                 "summary": "Retrieve an existing Ezsigndocument",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -4810,13 +4594,9 @@
                 "operationId": "Ezsigndocument_DeleteObject_V1",
                 "summary": "Delete an existing Ezsigndocument",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "patch": {
@@ -4859,13 +4639,9 @@
                 "operationId": "Ezsigndocument_PatchObject_V1",
                 "summary": "Patch an existing Ezsigndocument",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4920,14 +4696,9 @@
                 "operationId": "Ezsigndocument_ApplyEzsigntemplate_V2",
                 "summary": "Apply an Ezsigntemplate to the Ezsigndocument.",
                 "description": "This endpoint applies a predefined template to the ezsign document.\nThis allows to automatically apply all the form and signature fields on a document in a single step.\n\nThe document must not already have fields otherwise an error will be returned.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
-                "x-ms-visibility": "important",
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -4982,12 +4753,9 @@
                 "operationId": "Ezsigndocument_ApplyEzsigntemplateglobal_V1",
                 "summary": "Apply an Ezsigntemplateglobal to the Ezsigndocument.",
                 "description": "This endpoint applies a predefined template to the ezsign document.\nThis allows to automatically apply all the form and signature fields on a document in a single step.\n\nThe document must not already have fields otherwise an error will be returned.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
-                "x-ms-visibility": "important",
                 "x-usertypeextra": [
                     "AgentBroker"
                 ]
@@ -5045,11 +4813,9 @@
                 "operationId": "Ezsigndocument_ApplyEzsigntemplate_V1",
                 "summary": "Apply an Ezsigntemplate to the Ezsigndocument.",
                 "description": "This function is deprecated. Please use *applyEzsigntemplate* instead which is doing the same thing but with a capital \"E\" to normalize the nomenclature.\n\nThis endpoint applies a predefined template to the ezsign document.\nThis allows to automatically apply all the form and signature fields on a document in a single step.\n\nThe document must not already have fields otherwise an error will be returned.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5104,13 +4870,9 @@
                 "operationId": "Ezsigndocument_CreateEzsignelementsPositionedByWord_V1",
                 "summary": "Create multiple Ezsignsignatures/Ezsignformfieldgroups",
                 "description": "Using this endpoint, you can create multiple Ezsignsignatures/Ezsignformfieldgroups positioned by word at the same time.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5168,13 +4930,9 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner",
                     "AgentBroker"
-                ],
-                "x-presentations": [
-                    "Ezsign"
                 ]
             },
             "parameters": [
@@ -5229,11 +4987,9 @@
                 "operationId": "Ezsigndocument_EditEzsignformfieldgroups_V1",
                 "summary": "Edit multiple Ezsignformfieldgroups",
                 "description": "Using this endpoint, you can edit multiple Ezsignformfieldgroups at the same time.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5288,11 +5044,9 @@
                 "operationId": "Ezsigndocument_EditEzsignsignatures_V1",
                 "summary": "Edit multiple Ezsignsignatures",
                 "description": "Using this endpoint, you can edit multiple Ezsignsignatures at the same time.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5347,13 +5101,9 @@
                 "operationId": "Ezsigndocument_EndPrematurely_V1",
                 "summary": "End prematurely",
                 "description": "End prematurely an Ezsigndocument when some signatures are still required",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5408,13 +5158,9 @@
                 "operationId": "Ezsigndocument_Flatten_V1",
                 "summary": "Flatten",
                 "description": "Flatten an Ezsigndocument signatures, forms and annotations. This process finalizes the PDF so that the forms and annotations become part of the document content and cannot be edited.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5459,11 +5205,9 @@
                 "operationId": "Ezsigndocument_GetActionableElements_V1",
                 "summary": "Retrieve actionable elements for the Ezsigndocument",
                 "description": "Return the Ezsignsignatures that can be signed and Ezsignformfieldgroups that can be filled by the current user at the current step in the process",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -5507,11 +5251,9 @@
                 "operationId": "Ezsigndocument_getAttachments_V1",
                 "summary": "Retrieve Ezsigndocument's Attachments",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
                 ]
@@ -5558,13 +5300,9 @@
                 "operationId": "Ezsigndocument_GetCompletedElements_V1",
                 "summary": "Retrieve completed elements for the Ezsigndocument",
                 "description": "Return the completed Ezsignsignatures, Ezsignformfieldgroups and Ezsignannotations at the current step in the process",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker",
                     "EzsignSigner"
@@ -5612,13 +5350,9 @@
                 "operationId": "Ezsigndocument_GetDownloadUrl_V1",
                 "summary": "Retrieve a URL to download documents.",
                 "description": "This endpoint returns URLs to different files that can be downloaded during the signing process.\n\nThese links will expire after 5 minutes so the download of the file should be made soon after retrieving the link.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -5681,11 +5415,9 @@
                 "operationId": "Ezsigndocument_GetEzsignannotations_V1",
                 "summary": "Retrieve an existing Ezsigndocument's Ezsignannotations",
                 "description": "",
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ],
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ]
@@ -5732,13 +5464,9 @@
                 "operationId": "Ezsigndocument_GetEzsigndiscussions_V1",
                 "summary": "Retrieve an existing Ezsigndocument's Ezsigndiscussions",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -5785,13 +5513,9 @@
                 "operationId": "Ezsigndocument_GetEzsignformfieldgroups_V1",
                 "summary": "Retrieve an existing Ezsigndocument's Ezsignformfieldgroups",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5836,11 +5560,9 @@
                 "operationId": "Ezsigndocument_GetEzsignpages_V1",
                 "summary": "Retrieve an existing Ezsigndocument's Ezsignpages",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -5887,13 +5609,9 @@
                 "operationId": "Ezsigndocument_GetEzsignsignatures_V1",
                 "summary": "Retrieve an existing Ezsigndocument's Ezsignsignatures",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -5935,11 +5653,9 @@
                 "operationId": "Ezsigndocument_GetEzsignsignaturesAutomatic_V1",
                 "summary": "Retrieve an existing Ezsigndocument's automatic Ezsignsignatures",
                 "description": "Return the Ezsignsignatures that can be signed by the current user at the current step in the process",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6002,13 +5718,9 @@
                 "operationId": "Ezsigndocument_GetFormData_V1",
                 "summary": "Retrieve an existing Ezsigndocument's Form Data",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6053,13 +5765,9 @@
                 "operationId": "Ezsigndocument_GetTemporaryProof_V1",
                 "summary": "Retrieve the temporary proof",
                 "description": "Retrieve the temporary proof while the Ezsigndocument is being processed since the proof isn't available until the Ezsigndocument is completed",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6114,13 +5822,9 @@
                 "operationId": "Ezsigndocument_GetWordsPositions_V1",
                 "summary": "Retrieve positions X,Y of given words from a Ezsigndocument",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6175,13 +5879,9 @@
                 "operationId": "Ezsigndocument_SubmitEzsignform_V1",
                 "summary": "Submit the Ezsignform",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner",
                     "AgentBroker"
@@ -6239,13 +5939,9 @@
                 "operationId": "Ezsigndocument_Unsend_V1",
                 "summary": "Unsend the Ezsigndocument",
                 "description": "Once an Ezsigndocument has been sent to signatories, it cannot be modified.\n\nUsing this endpoint, you can unsend the Ezsigndocument and make it modifiable again.\n\nSignatories will receive an email informing them the signature process was aborted and they might receive a new invitation to sign.\n\n⚠️ Warning: Any signature previously made by signatories on this Ezsigndocumentswill be lost.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6295,14 +5991,9 @@
                 "operationId": "Ezsignfolder_CreateObject_V2",
                 "summary": "Create a new Ezsignfolder",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
-                "x-ms-visibility": "important",
                 "x-usertypeextra": []
             }
         },
@@ -6346,11 +6037,9 @@
                 "operationId": "Ezsignfolder_CreateObject_V1",
                 "summary": "Create a new Ezsignfolder",
                 "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -6382,13 +6071,9 @@
                 "operationId": "Ezsignfolder_GetObject_V2",
                 "summary": "Retrieve an existing Ezsignfolder",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -6433,11 +6118,9 @@
                 ],
                 "operationId": "Ezsignfolder_GetObject_V1",
                 "summary": "Retrieve an existing Ezsignfolder",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "put": {
@@ -6480,13 +6163,9 @@
                 "operationId": "Ezsignfolder_EditObject_V1",
                 "summary": "Edit an existing Ezsignfolder",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -6518,13 +6197,9 @@
                 ],
                 "operationId": "Ezsignfolder_DeleteObject_V1",
                 "summary": "Delete an existing Ezsignfolder",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6579,13 +6254,9 @@
                 "operationId": "Ezsignfolder_Archive_V1",
                 "summary": "Archive the Ezsignfolder",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6642,13 +6313,9 @@
                 ],
                 "operationId": "Ezsignfolder_BatchDownload_V1",
                 "summary": "Download multiples files from an Ezsignfolder",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6703,13 +6370,9 @@
                 "operationId": "Ezsignfolder_Dispose_V1",
                 "summary": "Dispose the Ezsignfolder",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "ElectronicSignature_DisposalofeZsignfolders"
                 ],
-                "x-powerautomate": true,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6764,14 +6427,10 @@
                 "operationId": "Ezsignfolder_EndPrematurely_V1",
                 "summary": "End prematurely",
                 "description": "End prematurely all Ezsigndocument of Ezsignfolder when some signatures are still required",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "All"
                 ],
-                "x-usertypeextra": [],
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -6815,11 +6474,9 @@
                 "operationId": "Ezsignfolder_GetActionableElements_V1",
                 "summary": "Retrieve actionable elements for the Ezsignfolder",
                 "description": "Return the Ezsignsignatures that can be signed and Ezsignformfieldgroups that can be filled by the current user at the current step in the process",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6861,11 +6518,9 @@
                 "operationId": "Ezsignfolder_getAttachmentCount_V1",
                 "summary": "Retrieve Attachment count",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -6907,11 +6562,9 @@
                 "operationId": "Ezsignfolder_getAttachments_V1",
                 "summary": "Retrieve Ezsignfolder's Attachments",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
                 ]
@@ -6955,11 +6608,9 @@
                 "operationId": "Ezsignfolder_getCommunicationCount_V1",
                 "summary": "Retrieve Communication count",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7001,11 +6652,9 @@
                 "operationId": "Ezsignfolder_getCommunicationList_V1",
                 "summary": "Retrieve Communication list",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7047,11 +6696,9 @@
                 "operationId": "Ezsignfolder_getCommunicationrecipients_V1",
                 "summary": "Retrieve Ezsignfolder's Communicationrecipient",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7093,11 +6740,9 @@
                 "operationId": "Ezsignfolder_getCommunicationsenders_V1",
                 "summary": "Retrieve Ezsignfolder's Communicationsender",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7139,13 +6784,9 @@
                 "operationId": "Ezsignfolder_GetEzsigndocuments_V1",
                 "summary": "Retrieve an existing Ezsignfolder's Ezsigndocuments",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -7189,13 +6830,9 @@
                 "operationId": "Ezsignfolder_GetEzsignfoldersignerassociations_V1",
                 "summary": "Retrieve an existing Ezsignfolder's Ezsignfoldersignerassociations",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7237,11 +6874,9 @@
                 "operationId": "Ezsignfolder_GetEzsignsignaturesAutomatic_V1",
                 "summary": "Retrieve an existing Ezsignfolder's automatic Ezsignsignatures",
                 "description": "Return the Ezsignsignatures that can be signed by the current user at the current step in the process",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7294,13 +6929,9 @@
                 "operationId": "Ezsignfolder_GetFormsData_V1",
                 "summary": "Retrieve an existing Ezsignfolder's forms data",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7358,13 +6989,9 @@
                 "operationId": "Ezsignfolder_ImportEzsignfoldersignerassociations_V1",
                 "summary": "Import an existing Ezsignfoldersignerassociation into this Ezsignfolder",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7419,13 +7046,9 @@
                 "operationId": "Ezsignfolder_ImportEzsigntemplatepackage_V1",
                 "summary": "Import an Ezsigntemplatepackage in the Ezsignfolder.",
                 "description": "This endpoint imports all of the Ezsigntemplates from the Ezsigntemplatepackage into the Ezsignfolder as Ezsigndocuments.\n\nThis allows to automatically apply all the Ezsigntemplateformfieldgroups and Ezsigntemplatesignatures on the newly created Ezsigndocuments in a single step.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7479,13 +7102,9 @@
                 ],
                 "operationId": "Ezsignfolder_Reorder_V1",
                 "summary": "Reorder Ezsigndocuments in the Ezsignfolder",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7540,14 +7159,9 @@
                 "operationId": "Ezsignfolder_Send_V3",
                 "summary": "Send the Ezsignfolder to the signatories for signature",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
-                "x-ms-visibility": "important",
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7603,11 +7217,9 @@
                 "operationId": "Ezsignfolder_Send_V1",
                 "summary": "Send the Ezsignfolder to the signatories for signature",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7662,13 +7274,9 @@
                 "operationId": "Ezsignfolder_Unsend_V1",
                 "summary": "Unsend the Ezsignfolder",
                 "description": "Once an Ezsignfolder has been sent to signatories, it cannot be modified.\n\nUsing this endpoint, you can unsend the Ezsignfolder and make it modifiable again.\n\nSignatories will receive an email informing them the signature process was aborted and they might receive a new invitation to sign.\n\n⚠️ Warning: Any signature previously made by signatories on \"Non-completed\" Ezsigndocuments will be lost.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -7724,11 +7332,9 @@
                 "operationId": "Ezsignfolder_DisposeEzsignfolders_V1",
                 "summary": "Dispose Ezsignfolders",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "ElectronicSignature_DisposalofeZsignfolders"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -7821,13 +7427,9 @@
                 "operationId": "Ezsignfolder_GetList_V1",
                 "summary": "Retrieve Ezsignfolder list",
                 "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eEzsignfolderStep | Unsent<br>Sent<br>PartiallySigned<br>Expired<br>Completed<br>Archived<br>Disposed|\n| eEzsignfoldertypePrivacylevel | User<br>Usergroup |\n\nAdvanced filters that can be used in query parameter *sFilter*:\n\n| Variable |\n|---|\n| fkiUserID |\n| sContactFirstname |\n| sContactLastname |\n| sEzsigndocumentName |",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -7867,14 +7469,9 @@
                 "operationId": "Ezsignfoldersignerassociation_CreateObject_V2",
                 "summary": "Create a new Ezsignfoldersignerassociation",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
-                "x-ms-visibility": "important",
                 "x-usertypeextra": []
             }
         },
@@ -7918,11 +7515,9 @@
                 "operationId": "Ezsignfoldersignerassociation_CreateObject_V1",
                 "summary": "Create a new Ezsignfoldersignerassociation",
                 "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -7954,13 +7549,9 @@
                 "operationId": "Ezsignfoldersignerassociation_GetObject_V2",
                 "summary": "Retrieve an existing Ezsignfoldersignerassociation",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -8004,11 +7595,9 @@
                 "operationId": "Ezsignfoldersignerassociation_GetObject_V1",
                 "summary": "Retrieve an existing Ezsignfoldersignerassociation",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "put": {
@@ -8051,13 +7640,9 @@
                 "operationId": "Ezsignfoldersignerassociation_EditObject_V1",
                 "summary": "Edit an existing Ezsignfoldersignerassociation",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -8090,13 +7675,9 @@
                 "operationId": "Ezsignfoldersignerassociation_DeleteObject_V1",
                 "summary": "Delete an existing Ezsignfoldersignerassociation",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "patch": {
@@ -8138,13 +7719,9 @@
                 ],
                 "operationId": "Ezsignfoldersignerassociation_PatchObject_V1",
                 "summary": "Patch an existing Ezsignfoldersignerassociation",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -8199,13 +7776,9 @@
                 "operationId": "Ezsignfoldersignerassociation_CreateEmbeddedUrl_V1",
                 "summary": "Creates an Url to allow embedded signing",
                 "description": "This endpoint creates an Url that can be used in a browser or embedded in an I-Frame to allow signing.\n\nThe signer Login type must be configured as Embedded.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -8260,13 +7833,9 @@
                 "operationId": "Ezsignfoldersignerassociation_ForceDisconnect_V1",
                 "summary": "Disconnects the Ezsignfoldersignerassociation",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -8311,13 +7880,9 @@
                 "operationId": "Ezsignfoldersignerassociation_GetInPersonLoginUrl_V1",
                 "summary": "Retrieve a Login Url to allow In-Person signing",
                 "description": "This endpoint returns a Login Url that can be used in a browser or embedded in an I-Frame to allow in person signing.\n\nThe signer Login type must be configured as In-Person.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -8367,13 +7932,9 @@
                 "operationId": "Ezsignfoldertype_CreateObject_V2",
                 "summary": "Create a new Ezsignfoldertype",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -8405,13 +7966,9 @@
                 "operationId": "Ezsignfoldertype_GetObject_V3",
                 "summary": "Retrieve an existing Ezsignfoldertype",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -8454,11 +8011,9 @@
                 "operationId": "Ezsignfoldertype_GetObject_V2",
                 "summary": "Retrieve an existing Ezsignfoldertype",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "put": {
@@ -8501,13 +8056,9 @@
                 "operationId": "Ezsignfoldertype_EditObject_V2",
                 "summary": "Edit an existing Ezsignfoldertype",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "ElectronicSignature_CreationModificationFolderTypes"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -8564,11 +8115,9 @@
                 "operationId": "Ezsignfoldertype_EditObject_V1",
                 "summary": "Edit an existing Ezsignfoldertype",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "ElectronicSignature_CreationModificationFolderTypes"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -8631,14 +8180,9 @@
                 "operationId": "Ezsignfoldertype_GetAutocomplete_V2",
                 "summary": "Retrieve Ezsignfoldertypes and IDs",
                 "description": "Get the list of Ezsignfoldertype to be used in a dropdown or autocomplete control.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
-                "x-ms-visibility": "advanced",
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -8726,13 +8270,9 @@
                 "operationId": "Ezsignfoldertype_GetList_V1",
                 "summary": "Retrieve Ezsignfoldertype list",
                 "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eEzsignfoldertypePrivacylevel | User<br>Usergroup |",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "ElectronicSignature_CreationModificationFolderTypes"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -8772,13 +8312,9 @@
                 "operationId": "Ezsignformfieldgroup_CreateObject_V1",
                 "summary": "Create a new Ezsignformfieldgroup",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -8810,13 +8346,9 @@
                 "operationId": "Ezsignformfieldgroup_GetObject_V2",
                 "summary": "Retrieve an existing Ezsignformfieldgroup",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -8872,13 +8404,9 @@
                 "operationId": "Ezsignformfieldgroup_EditObject_V1",
                 "summary": "Edit an existing Ezsignformfieldgroup",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -8911,13 +8439,9 @@
                 "operationId": "Ezsignformfieldgroup_DeleteObject_V1",
                 "summary": "Delete an existing Ezsignformfieldgroup",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -8975,12 +8499,8 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
-                ],
-                "x-presentations": [
-                    "Ezsign"
                 ]
             },
             "parameters": [
@@ -9030,13 +8550,9 @@
                 "operationId": "Ezsignsignature_CreateObject_V2",
                 "summary": "Create a new Ezsignsignature",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -9080,11 +8596,9 @@
                 "operationId": "Ezsignsignature_CreateObject_V1",
                 "summary": "Create a new Ezsignsignature",
                 "description": "The endpoint allows to create one or many elements at once.\n\nThe array can contain simple (Just the object) or compound (The object and its child) objects.\n\nCreating compound elements allows to reduce the multiple requests to create all child objects.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -9116,13 +8630,9 @@
                 "operationId": "Ezsignsignature_GetObject_V2",
                 "summary": "Retrieve an existing Ezsignsignature",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -9178,13 +8688,9 @@
                 "operationId": "Ezsignsignature_EditObject_V1",
                 "summary": "Edit an existing Ezsignsignature",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -9217,13 +8723,9 @@
                 "operationId": "Ezsignsignature_DeleteObject_V1",
                 "summary": "Delete an existing Ezsignsignature",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -9271,13 +8773,9 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker",
                     "EzsignSigner"
-                ],
-                "x-presentations": [
-                    "Ezsign"
                 ]
             },
             "parameters": [
@@ -9332,11 +8830,9 @@
                 "operationId": "Ezsignsignature_Sign_V1",
                 "summary": "Sign the Ezsignsignature",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -9377,11 +8873,9 @@
                 "operationId": "Ezsignsignature_GetEzsignsignaturesAutomatic_V1",
                 "summary": "Retrieve all automatic Ezsignsignatures",
                 "description": "Return all the Ezsignsignatures that can be signed by the current user",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -9424,11 +8918,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                "x-usertypeextra": []
             }
         },
         "/2/object/ezsignsignergroup/{pkiEzsignsignergroupID}": {
@@ -9463,11 +8953,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -9520,13 +9006,9 @@
                 "operationId": "Ezsignsignergroup_EditObject_V1",
                 "summary": "Edit an existing Ezsignsignergroup",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -9559,11 +9041,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -9621,9 +9099,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -9667,9 +9143,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -9721,11 +9195,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                "x-usertypeextra": []
             }
         },
         "/2/object/ezsignsignergroupmembership/{pkiEzsignsignergroupmembershipID}": {
@@ -9760,11 +9230,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -9810,11 +9276,7 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -9864,12 +9326,10 @@
                 "operationId": "Ezsignsigningreason_CreateObject_V1",
                 "summary": "Create a new Ezsignsigningreason",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "ElectronicSignature_CreationModificationEzsignsigningreason"
                 ],
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             }
         },
         "/2/object/ezsignsigningreason/{pkiEzsignsigningreasonID}": {
@@ -9901,12 +9361,10 @@
                 "operationId": "Ezsignsigningreason_GetObject_V2",
                 "summary": "Retrieve an existing Ezsignsigningreason",
                 "description": "",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "ElectronicSignature_CreationModificationEzsignsigningreason"
                 ],
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -9962,12 +9420,10 @@
                 "operationId": "Ezsignsigningreason_EditObject_V1",
                 "summary": "Edit an existing Ezsignsigningreason",
                 "description": "",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "ElectronicSignature_CreationModificationEzsignsigningreason"
                 ],
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -10030,14 +9486,12 @@
                 "operationId": "Ezsignsigningreason_GetAutocomplete_V2",
                 "summary": "Retrieve Ezsignsigningreasons and IDs",
                 "description": "Get the list of Ezsignsigningreason to be used in a dropdown or autocomplete control.",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "All"
                 ],
                 "x-usertypeextra": [
                     "EzsignSigner"
-                ],
-                "x-presentations": []
+                ]
             },
             "parameters": [
                 {
@@ -10120,12 +9574,10 @@
                 "operationId": "Ezsignsigningreason_GetList_V1",
                 "summary": "Retrieve Ezsignsigningreason list",
                 "description": "",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "ElectronicSignature_CreationModificationEzsignsigningreason"
                 ],
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             }
         },
         "/2/object/ezsigntemplate": {
@@ -10164,13 +9616,9 @@
                 "operationId": "Ezsigntemplate_CreateObject_V2",
                 "summary": "Create a new Ezsigntemplate",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -10211,11 +9659,9 @@
                 "operationId": "Ezsigntemplate_CreateObject_V1",
                 "summary": "Create a new Ezsigntemplate",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -10247,13 +9693,9 @@
                 "operationId": "Ezsigntemplate_GetObject_V2",
                 "summary": "Retrieve an existing Ezsigntemplate",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "put": {
@@ -10296,13 +9738,9 @@
                 "operationId": "Ezsigntemplate_EditObject_V2",
                 "summary": "Edit an existing Ezsigntemplate",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10346,11 +9784,9 @@
                 "operationId": "Ezsigntemplate_GetObject_V1",
                 "summary": "Retrieve an existing Ezsigntemplate",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "put": {
@@ -10394,11 +9830,9 @@
                 "operationId": "Ezsigntemplate_EditObject_V1",
                 "summary": "Edit an existing Ezsigntemplate",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -10428,13 +9862,9 @@
                 "operationId": "Ezsigntemplate_DeleteObject_V1",
                 "summary": "Delete an existing Ezsigntemplate",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10486,13 +9916,9 @@
                 "operationId": "Ezsigntemplate_Copy_V1",
                 "summary": "Copy the Ezsigntemplate",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10555,14 +9981,9 @@
                 "operationId": "Ezsigntemplate_GetAutocomplete_V2",
                 "summary": "Retrieve Ezsigntemplates and IDs",
                 "description": "Get the list of Ezsigntemplate to be used in a dropdown or autocomplete control.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
-                "x-ms-visibility": "advanced",
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10663,13 +10084,9 @@
                 "operationId": "Ezsigntemplate_GetList_V1",
                 "summary": "Retrieve Ezsigntemplate list",
                 "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eEzsigntemplateType | Company<br>Team<br>User<br>Usergroup |\n",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -10715,13 +10132,9 @@
                 "operationId": "Ezsigntemplatedocument_CreateObject_V1",
                 "summary": "Create a new Ezsigntemplatedocument",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -10753,13 +10166,9 @@
                 "operationId": "Ezsigntemplatedocument_GetObject_V2",
                 "summary": "Retrieve an existing Ezsigntemplatedocument",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10815,13 +10224,9 @@
                 "operationId": "Ezsigntemplatedocument_EditObject_V1",
                 "summary": "Edit an existing Ezsigntemplatedocument",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "patch": {
@@ -10861,13 +10266,9 @@
                 "operationId": "Ezsigntemplatedocument_PatchObject_V1",
                 "summary": "Patch an existing Ezsigntemplatedocument",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10922,11 +10323,9 @@
                 "operationId": "Ezsigntemplatedocument_EditEzsigntemplateformfieldgroups_V1",
                 "summary": "Edit multiple Ezsigntemplateformfieldgroups",
                 "description": "Using this endpoint, you can edit multiple Ezsigntemplateformfieldgroups at the same time.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -10981,11 +10380,9 @@
                 "operationId": "Ezsigntemplatedocument_EditEzsigntemplatesignatures_V1",
                 "summary": "Edit multiple Ezsigntemplatesignatures",
                 "description": "Using this endpoint, you can edit multiple Ezsigntemplatesignatures at the same time.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11040,13 +10437,9 @@
                 "operationId": "Ezsigntemplatedocument_Flatten_V1",
                 "summary": "Flatten",
                 "description": "Flatten an Ezsigntemplatedocument signatures, forms and annotations. This process finalizes the PDF so that the forms and annotations become part of the document content and cannot be edited.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11088,11 +10481,9 @@
                 "operationId": "Ezsigntemplatedocument_GetEzsigntemplatedocumentpages_V1",
                 "summary": "Retrieve an existing Ezsigntemplatedocument's Ezsigntemplatedocumentpages",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11137,13 +10528,9 @@
                 "operationId": "Ezsigntemplatedocument_GetEzsigntemplateformfieldgroups_V1",
                 "summary": "Retrieve an existing Ezsigntemplatedocument's Ezsigntemplateformfieldgroups",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11188,13 +10575,9 @@
                 "operationId": "Ezsigntemplatedocument_GetEzsigntemplatesignatures_V1",
                 "summary": "Retrieve an existing Ezsigntemplatedocument's Ezsigntemplatesignatures",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11246,13 +10629,9 @@
                 "operationId": "Ezsigntemplatedocument_GetWordsPositions_V1",
                 "summary": "Retrieve positions X,Y of given words from a Ezsigntemplatedocument",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11302,13 +10681,9 @@
                 "operationId": "Ezsigntemplateformfieldgroup_CreateObject_V1",
                 "summary": "Create a new Ezsigntemplateformfieldgroup",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -11340,13 +10715,9 @@
                 "operationId": "Ezsigntemplateformfieldgroup_GetObject_V2",
                 "summary": "Retrieve an existing Ezsigntemplateformfieldgroup",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11402,13 +10773,9 @@
                 "operationId": "Ezsigntemplateformfieldgroup_EditObject_V1",
                 "summary": "Edit an existing Ezsigntemplateformfieldgroup",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -11438,13 +10805,9 @@
                 "operationId": "Ezsigntemplateformfieldgroup_DeleteObject_V1",
                 "summary": "Delete an existing Ezsigntemplateformfieldgroup",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11486,11 +10849,9 @@
                 "operationId": "Ezsigntemplateglobal_GetObject_V2",
                 "summary": "Retrieve an existing Ezsigntemplateglobal",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
                 ]
@@ -11555,12 +10916,9 @@
                 "operationId": "Ezsigntemplateglobal_GetAutocomplete_V2",
                 "summary": "Retrieve Ezsigntemplateglobals and IDs",
                 "description": "Get the list of Ezsigntemplateglobal to be used in a dropdown or autocomplete control.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
-                "x-ms-visibility": "advanced",
                 "x-usertypeextra": [
                     "AgentBroker"
                 ]
@@ -11616,11 +10974,9 @@
                 "operationId": "Ezsigntemplatepackage_CreateObject_V1",
                 "summary": "Create a new Ezsigntemplatepackage",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -11652,11 +11008,9 @@
                 "operationId": "Ezsigntemplatepackage_GetObject_V2",
                 "summary": "Retrieve an existing Ezsigntemplatepackage",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11712,11 +11066,9 @@
                 "operationId": "Ezsigntemplatepackage_EditObject_V1",
                 "summary": "Edit an existing Ezsigntemplatepackage",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -11746,11 +11098,9 @@
                 "operationId": "Ezsigntemplatepackage_DeleteObject_V1",
                 "summary": "Delete an existing Ezsigntemplatepackage",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11805,11 +11155,9 @@
                 "operationId": "Ezsigntemplatepackage_EditEzsigntemplatepackagesigners_V1",
                 "summary": "Edit multiple Ezsigntemplatepackagesigners",
                 "description": "Using this endpoint, you can edit multiple Ezsigntemplatepackagesigners at the same time.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11872,14 +11220,9 @@
                 "operationId": "Ezsigntemplatepackage_GetAutocomplete_V2",
                 "summary": "Retrieve Ezsigntemplatepackages and IDs",
                 "description": "Get the list of Ezsigntemplatepackage to be used in a dropdown or autocomplete control.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
-                "x-ms-visibility": "advanced",
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -11977,13 +11320,9 @@
                 "operationId": "Ezsigntemplatepackage_GetList_V1",
                 "summary": "Retrieve Ezsigntemplatepackage list",
                 "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eEzsigntemplatepackageType | Company<br>Team<br>User<br>Usergroup |",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -12026,11 +11365,9 @@
                 "operationId": "Ezsigntemplatepackagemembership_CreateObject_V1",
                 "summary": "Create a new Ezsigntemplatepackagemembership",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -12062,11 +11399,9 @@
                 "operationId": "Ezsigntemplatepackagemembership_GetObject_V2",
                 "summary": "Retrieve an existing Ezsigntemplatepackagemembership",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -12109,11 +11444,9 @@
                 "operationId": "Ezsigntemplatepackagemembership_DeleteObject_V1",
                 "summary": "Delete an existing Ezsigntemplatepackagemembership",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -12163,11 +11496,9 @@
                 "operationId": "Ezsigntemplatepackagesigner_CreateObject_V1",
                 "summary": "Create a new Ezsigntemplatepackagesigner",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -12199,11 +11530,9 @@
                 "operationId": "Ezsigntemplatepackagesigner_GetObject_V2",
                 "summary": "Retrieve an existing Ezsigntemplatepackagesigner",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -12259,11 +11588,9 @@
                 "operationId": "Ezsigntemplatepackagesigner_EditObject_V1",
                 "summary": "Edit an existing Ezsigntemplatepackagesigner",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -12293,11 +11620,9 @@
                 "operationId": "Ezsigntemplatepackagesigner_DeleteObject_V1",
                 "summary": "Delete an existing Ezsigntemplatepackagesigner",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -12350,11 +11675,9 @@
                 "operationId": "Ezsigntemplatepackagesignermembership_CreateObject_V1",
                 "summary": "Create a new Ezsigntemplatepackagesignermembership",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -12386,11 +11709,9 @@
                 "operationId": "Ezsigntemplatepackagesignermembership_GetObject_V2",
                 "summary": "Retrieve an existing Ezsigntemplatepackagesignermembership",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -12433,11 +11754,9 @@
                 "operationId": "Ezsigntemplatepackagesignermembership_DeleteObject_V1",
                 "summary": "Delete an existing Ezsigntemplatepackagesignermembership",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -12487,13 +11806,9 @@
                 "operationId": "Ezsigntemplatesignature_CreateObject_V1",
                 "summary": "Create a new Ezsigntemplatesignature",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -12525,13 +11840,9 @@
                 "operationId": "Ezsigntemplatesignature_GetObject_V2",
                 "summary": "Retrieve an existing Ezsigntemplatesignature",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -12587,13 +11898,9 @@
                 "operationId": "Ezsigntemplatesignature_EditObject_V1",
                 "summary": "Edit an existing Ezsigntemplatesignature",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -12623,13 +11930,9 @@
                 "operationId": "Ezsigntemplatesignature_DeleteObject_V1",
                 "summary": "Delete an existing Ezsigntemplatesignature",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -12679,13 +11982,9 @@
                 "operationId": "Ezsigntemplatesigner_CreateObject_V1",
                 "summary": "Create a new Ezsigntemplatesigner",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -12718,13 +12017,9 @@
                 "operationId": "Ezsigntemplatesigner_GetObject_V2",
                 "summary": "Retrieve an existing Ezsigntemplatesigner",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -12780,13 +12075,9 @@
                 "operationId": "Ezsigntemplatesigner_EditObject_V1",
                 "summary": "Edit an existing Ezsigntemplatesigner",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -12816,13 +12107,9 @@
                 "operationId": "Ezsigntemplatesigner_DeleteObject_V1",
                 "summary": "Delete an existing Ezsigntemplatesigner",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -12885,14 +12172,9 @@
                 "operationId": "Ezsigntsarequirement_GetAutocomplete_V2",
                 "summary": "Retrieve Ezsigntsarequirements and IDs",
                 "description": "Get the list of Ezsigntsarequirement to be used in a dropdown or autocomplete control.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
-                "x-ms-visibility": "advanced",
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -12969,11 +12251,9 @@
                 "operationId": "Font_GetAutocomplete_V2",
                 "summary": "Retrieve Fonts and IDs",
                 "description": "Get the list of Font to be used in a dropdown or autocomplete control.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -13040,13 +12320,9 @@
                 "operationId": "Franchisebroker_GetAutocomplete_V2",
                 "summary": "Retrieve Franchisebrokers and IDs",
                 "description": "Get the list of Franchisebroker to be used in a dropdown or autocomplete control.",
-                "x-presentations": [
-                    "RemaxQC"
-                ],
                 "x-permissions": [
                     "RemaxFranchise_ReferencedIncomeAccess"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -13113,14 +12389,10 @@
                 "operationId": "Franchiseoffice_GetAutocomplete_V2",
                 "summary": "Retrieve Franchiseoffices and IDs",
                 "description": "Get the list of Franchiseoffice to be used in a dropdown or autocomplete control.",
-                "x-presentations": [
-                    "RemaxQC"
-                ],
                 "x-permissions": [
                     "Invoicing_Reports",
                     "RemaxFranchise_ReferencedIncomeAccess"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -13174,13 +12446,9 @@
                 "operationId": "Franchisereferalincome_CreateObject_V2",
                 "summary": "Create a new Franchisereferalincome",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [
-                    "RemaxQC"
-                ],
                 "x-permissions": [
                     "RemaxFranchise_ReferencedIncomeAccess"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -13212,13 +12480,11 @@
                 "operationId": "Inscription_getAttachments_V1",
                 "summary": "Retrieve Inscription's Attachments",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "Inscription_ReadOnlyMode",
                     "Inscription_Inspections",
                     "Inscription_Deals"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
                 ]
@@ -13262,13 +12528,11 @@
                 "operationId": "Inscription_getCommunicationList_V1",
                 "summary": "Retrieve Communication list",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "Inscription_ReadOnlyMode",
                     "Inscription_Inspections",
                     "Inscription_Deals"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
                 ]
@@ -13312,13 +12576,11 @@
                 "operationId": "Inscription_getCommunicationsenders_V1",
                 "summary": "Retrieve Inscription's Communicationsender",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "Inscription_ReadOnlyMode",
                     "Inscription_Inspections",
                     "Inscription_Deals"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -13360,13 +12622,11 @@
                 "operationId": "Inscriptionnotauthenticated_getCommunicationList_V1",
                 "summary": "Retrieve Communication list",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "Inscription_ReadOnlyMode",
                     "Inscription_Inspections",
                     "Inscription_Deals"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
                 ]
@@ -13410,11 +12670,9 @@
                 "operationId": "Inscriptiontemp_getCommunicationList_V1",
                 "summary": "Retrieve Communication list",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "Inscription_TemporaryListingsAccess"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
                 ]
@@ -13458,11 +12716,9 @@
                 "operationId": "Invoice_getAttachments_V1",
                 "summary": "Retrieve Invoice's Attachments",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "Invoicing_Access"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
                 ]
@@ -13506,11 +12762,9 @@
                 "operationId": "Invoice_getCommunicationList_V1",
                 "summary": "Retrieve Communication list",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "Invoicing_Access"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
                 ]
@@ -13575,15 +12829,10 @@
                 "operationId": "Language_GetAutocomplete_V2",
                 "summary": "Retrieve Languages and IDs",
                 "description": "Get the list of Language to be used in a dropdown or autocomplete control.",
-                "x-powerautomate": true,
-                "x-ms-visibility": "advanced",
                 "x-permissions": [
                     "All"
                 ],
-                "x-usertypeextra": [],
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -13649,7 +12898,6 @@
                 "operationId": "Module_GetAutocomplete_V2",
                 "summary": "Retrieve Modules and IDs",
                 "description": "Get the list of Module to be used in a dropdown or autocomplete control.",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_UsersAgentBroker",
                     "Management_UsersAssistant",
@@ -13657,7 +12905,6 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -13708,9 +12955,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -13767,11 +13012,9 @@
                 "operationId": "Notificationsection_GetNotificationtests_V1",
                 "summary": "Retrieve an existing Notificationsection's Notificationtests",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -13813,13 +13056,9 @@
                 "operationId": "Notificationtest_GetElements_V1",
                 "summary": "Retrieve an existing Notificationtest's Elements",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -13861,11 +13100,9 @@
                 "operationId": "Otherincome_getCommunicationList_V1",
                 "summary": "Retrieve Communication list",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "Inscription_OtherIncomeAccess"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
                 ]
@@ -13920,11 +13157,9 @@
                 "operationId": "Paymentterm_CreateObject_V1",
                 "summary": "Create a new Paymentterm",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_PaymentTerms"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -13957,11 +13192,9 @@
                 "operationId": "Paymentterm_GetObject_V2",
                 "summary": "Retrieve an existing Paymentterm",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_PaymentTerms"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -14017,11 +13250,9 @@
                 "operationId": "Paymentterm_EditObject_V1",
                 "summary": "Edit an existing Paymentterm",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_PaymentTerms"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -14084,12 +13315,10 @@
                 "operationId": "Paymentterm_GetAutocomplete_V2",
                 "summary": "Retrieve Paymentterms and IDs",
                 "description": "Get the list of Paymentterm to be used in a dropdown or autocomplete control.",
-                "x-presentations": [],
                 "x-permissions": [
                     "RemaxFranchise_CreationModification",
                     "Purchases_CreationModification"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -14177,11 +13406,9 @@
                 ],
                 "operationId": "Paymentterm_GetList_V1",
                 "summary": "Retrieve Paymentterm list",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_PaymentTerms"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -14234,9 +13461,6 @@
                 "operationId": "Period_GetAutocomplete_V2",
                 "summary": "Retrieve Periods and IDs",
                 "description": "Get the list of Period to be used in a dropdown or autocomplete control.",
-                "x-presentations": [
-                    "RemaxQC"
-                ],
                 "x-permissions": [
                     "Purchases_Access",
                     "Purchases_Reports",
@@ -14249,7 +13473,6 @@
                     "Inscription_Inspections",
                     "RemaxFranchise_ReferencedIncomeAccess"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -14313,9 +13536,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             }
         },
         "/2/object/permission/{pkiPermissionID}": {
@@ -14351,9 +13572,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -14413,9 +13632,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "delete": {
                 "tags": [
@@ -14448,9 +13665,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -14516,11 +13731,9 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
-                ],
-                "x-presentations": []
+                ]
             },
             "parameters": [
                 {
@@ -14586,11 +13799,9 @@
                 "operationId": "Province_GetAutocomplete_V2",
                 "summary": "Retrieve Provinces and IDs",
                 "description": "Get the list of Province to be used in a dropdown or autocomplete control.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
                 ]
@@ -14638,11 +13849,9 @@
                 "operationId": "Rejectedoffertopurchase_getCommunicationList_V1",
                 "summary": "Retrieve Communication list",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_RefusedPromisestoPurchase"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker"
                 ]
@@ -14707,14 +13916,9 @@
                 "operationId": "Secretquestion_GetAutocomplete_V2",
                 "summary": "Retrieve Secretquestions and IDs",
                 "description": "Get the list of Secretquestion to be used in a dropdown or autocomplete control.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
-                "x-ms-visibility": "advanced",
                 "x-usertypeextra": [
                     "EzsignSigner"
                 ]
@@ -14812,9 +14016,7 @@
                 ],
                 "operationId": "Sessionhistory_GetList_V1",
                 "summary": "Retrieve Sessionhistory list",
-                "x-powerautomate": false,
                 "x-usertypeextra": [],
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_UsersAgentBroker",
                     "Management_UsersAssistant",
@@ -14877,12 +14079,10 @@
                     "Management_UsersAgentBroker",
                     "Management_UsersEzsignUser"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker",
                     "EzsignSigner"
-                ],
-                "x-presentations": []
+                ]
             }
         },
         "/2/object/signature/{pkiSignatureID}": {
@@ -14919,12 +14119,10 @@
                     "Management_UsersAgentBroker",
                     "Management_UsersEzsignUser"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker",
                     "EzsignSigner"
-                ],
-                "x-presentations": []
+                ]
             },
             "parameters": [
                 {
@@ -14985,12 +14183,10 @@
                     "Management_UsersAgentBroker",
                     "Management_UsersEzsignUser"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker",
                     "EzsignSigner"
-                ],
-                "x-presentations": []
+                ]
             },
             "delete": {
                 "tags": [
@@ -15024,12 +14220,10 @@
                     "Management_UsersAgentBroker",
                     "Management_UsersEzsignUser"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker",
                     "EzsignSigner"
-                ],
-                "x-presentations": []
+                ]
             },
             "parameters": [
                 {
@@ -15086,9 +14280,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             }
         },
         "/2/object/subnet/{pkiSubnetID}": {
@@ -15124,9 +14316,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -15186,9 +14376,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "delete": {
                 "tags": [
@@ -15224,9 +14412,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -15272,12 +14458,10 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": [
                     "AgentBroker",
                     "Assistant"
-                ],
-                "x-presentations": []
+                ]
             },
             "parameters": [
                 {
@@ -15336,9 +14520,7 @@
                 "x-permissions": [
                     "Management_SystemconfigurationEdit"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -15401,14 +14583,9 @@
                 "operationId": "Taxassignment_GetAutocomplete_V2",
                 "summary": "Retrieve Taxassignments and IDs",
                 "description": "Get the list of Taxassignment to be used in a dropdown or autocomplete control.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
-                "x-ms-visibility": "advanced",
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -15476,11 +14653,9 @@
                 "operationId": "Timezone_GetAutocomplete_V2",
                 "summary": "Retrieve Timezones and IDs",
                 "description": "Get the list of Timezone to be used in a dropdown or autocomplete control.",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -15542,9 +14717,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             }
         },
         "/1/object/user": {
@@ -15590,9 +14763,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             }
         },
         "/2/object/user/{pkiUserID}": {
@@ -15631,9 +14802,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -15696,9 +14865,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -15757,9 +14924,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -15803,11 +14968,7 @@
                 "x-permissions": [
                     "Management_APIKeyGeneration"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -15853,9 +15014,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -15900,9 +15059,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -15947,9 +15104,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -15990,7 +15145,6 @@
                 ],
                 "operationId": "User_GetUsergroupexternals_V1",
                 "summary": "Get User's Usergroupexternals",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "Management_UsersAgentBroker",
                     "Management_UsersAssistant",
@@ -15998,8 +15152,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -16040,7 +15193,6 @@
                 ],
                 "operationId": "User_GetUsergroups_V1",
                 "summary": "Get User's Usergroups",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "Management_UsersAgentBroker",
                     "Management_UsersAssistant",
@@ -16048,8 +15200,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -16107,9 +15258,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -16171,14 +15320,9 @@
                 "operationId": "User_GetAutocomplete_V2",
                 "summary": "Retrieve Users and IDs",
                 "description": "Get the list of User to be used in a dropdown or autocomplete control.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": true,
-                "x-ms-visibility": "advanced",
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -16288,9 +15432,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             }
         },
         "/1/object/usergroup": {
@@ -16332,9 +15474,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             }
         },
         "/2/object/usergroup/{pkiUsergroupID}": {
@@ -16370,9 +15510,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -16430,9 +15568,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -16489,9 +15625,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -16548,9 +15682,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -16608,9 +15740,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -16654,9 +15784,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -16701,9 +15829,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -16748,9 +15874,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -16812,11 +15936,9 @@
                 "operationId": "Usergroup_GetAutocomplete_V2",
                 "summary": "Retrieve Usergroups and IDs",
                 "description": "Get the list of Usergroup to be used in a dropdown or autocomplete control.",
-                "x-presentations": [],
                 "x-permissions": [
                     "ElectronicSignature_CreationModificationFolderTypes"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -16904,9 +16026,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             }
         },
         "/1/object/usergroupdelegation": {
@@ -16948,9 +16068,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             }
         },
         "/2/object/usergroupdelegation/{pkiUsergroupdelegationID}": {
@@ -16985,9 +16103,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -17046,9 +16162,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "delete": {
                 "tags": [
@@ -17080,9 +16194,7 @@
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -17132,12 +16244,10 @@
                 "operationId": "Usergroupexternal_CreateObject_V1",
                 "summary": "Create a new Usergroupexternal",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "Management_Usergroupexternal"
                 ],
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             }
         },
         "/2/object/usergroupexternal/{pkiUsergroupexternalID}": {
@@ -17169,12 +16279,10 @@
                 "operationId": "Usergroupexternal_GetObject_V2",
                 "summary": "Retrieve an existing Usergroupexternal",
                 "description": "",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "Management_Usergroupexternal"
                 ],
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -17230,12 +16338,10 @@
                 "operationId": "Usergroupexternal_EditObject_V1",
                 "summary": "Edit an existing Usergroupexternal",
                 "description": "",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "Management_Usergroupexternal"
                 ],
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "delete": {
                 "tags": [
@@ -17267,12 +16373,10 @@
                 "operationId": "Usergroupexternal_DeleteObject_V1",
                 "summary": "Delete an existing Usergroupexternal",
                 "description": "",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "Management_Usergroupexternal"
                 ],
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -17317,9 +16421,7 @@
                 "x-permissions": [
                     "Management_Usergroupexternal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -17360,12 +16462,10 @@
                 ],
                 "operationId": "Usergroupexternal_GetUsergroups_V1",
                 "summary": "Get Usergroupexternal's Usergroups",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "Management_Usergroupexternal"
                 ],
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -17427,12 +16527,10 @@
                 "operationId": "Usergroupexternal_GetAutocomplete_V2",
                 "summary": "Retrieve Usergroupexternals and IDs",
                 "description": "Get the list of Usergroupexternal to be used in a dropdown or autocomplete control.",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "Management_Usergroupexternal"
                 ],
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -17514,12 +16612,10 @@
                 "operationId": "Usergroupexternal_GetList_V1",
                 "summary": "Retrieve Usergroupexternal list",
                 "description": "",
-                "x-powerautomate": false,
                 "x-permissions": [
                     "Management_Usergroupexternal"
                 ],
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             }
         },
         "/1/object/usergroupmembership": {
@@ -17562,9 +16658,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             }
         },
         "/2/object/usergroupmembership/{pkiUsergroupmembershipID}": {
@@ -17600,9 +16694,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -17661,9 +16753,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "delete": {
                 "tags": [
@@ -17696,9 +16786,7 @@
                     "Management_Usergroup",
                     "Management_UsergroupDelegated"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": []
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -17760,16 +16848,11 @@
                 "operationId": "Userlogintype_GetAutocomplete_V2",
                 "summary": "Retrieve Userlogintypes and IDs",
                 "description": "Get the list of Userlogintype to be used in a dropdown or autocomplete control.",
-                "x-powerautomate": true,
-                "x-ms-visibility": "advanced",
                 "x-permissions": [
                     "All"
                 ],
                 "x-usertypeextra": [
                     "EzsignSigner"
-                ],
-                "x-presentations": [
-                    "Ezsign"
                 ]
             },
             "parameters": [
@@ -17829,11 +16912,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -17879,11 +16958,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -17939,11 +17014,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -18002,11 +17073,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -18092,11 +17159,7 @@
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
-                "x-usertypeextra": [],
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                "x-usertypeextra": []
             }
         },
         "/1/object/variableexpense": {
@@ -18135,11 +17198,9 @@
                 "operationId": "Variableexpense_CreateObject_V1",
                 "summary": "Create a new Variableexpense",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_VariableExpenses"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -18172,11 +17233,9 @@
                 "operationId": "Variableexpense_GetObject_V2",
                 "summary": "Retrieve an existing Variableexpense",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_VariableExpenses"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -18232,11 +17291,9 @@
                 "operationId": "Variableexpense_EditObject_V1",
                 "summary": "Edit an existing Variableexpense",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_VariableExpenses"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -18299,11 +17356,9 @@
                 "operationId": "Variableexpense_GetAutocomplete_V2",
                 "summary": "Retrieve Variableexpenses and IDs",
                 "description": "Get the list of Variableexpense to be used in a dropdown or autocomplete control.",
-                "x-presentations": [],
                 "x-permissions": [
                     "Purchases_CreationModification"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -18390,11 +17445,9 @@
                 "operationId": "Variableexpense_GetList_V1",
                 "summary": "Retrieve Variableexpense list",
                 "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eVariableexpenseTaxable | Yes<br>No<br>Included |",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_VariableExpenses"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -18426,11 +17479,9 @@
                 "operationId": "Versionhistory_GetObject_V2",
                 "summary": "Retrieve an existing Versionhistory",
                 "description": "",
-                "x-presentations": [],
                 "x-permissions": [
                     "All"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -18480,13 +17531,9 @@
                 "operationId": "Webhook_CreateObject_V2",
                 "summary": "Create a new Webhook",
                 "description": "The endpoint allows to create one or many elements at once.",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "Management_Webhook"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -18518,13 +17565,9 @@
                 "operationId": "Webhook_GetObject_V2",
                 "summary": "Retrieve an existing Webhook",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "Management_Webhook"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -18577,13 +17620,9 @@
                 "operationId": "Webhook_EditObject_V1",
                 "summary": "Edit an existing Webhook",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "Management_Webhook"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -18613,13 +17652,9 @@
                 "operationId": "Webhook_DeleteObject_V1",
                 "summary": "Delete an existing Webhook",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "Management_Webhook"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -18679,13 +17714,9 @@
                 "operationId": "Webhook_GetHistory_V1",
                 "summary": "Retrieve the logs for recent Webhook calls",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "Management_Webhook"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -18737,13 +17768,9 @@
                 "operationId": "Webhook_RegenerateApikey_V1",
                 "summary": "Regenerate the Apikey",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "Management_Webhook"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -18795,13 +17822,9 @@
                 "operationId": "Webhook_Test_V1",
                 "summary": "Test the Webhook by calling the Url",
                 "description": "",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "Management_Webhook"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "parameters": [
@@ -18894,13 +17917,9 @@
                 "operationId": "Webhook_GetList_V1",
                 "summary": "Retrieve Webhook list",
                 "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eWebhookModule | Ezsign<br>Management |\n| eWebhookEzsignevent | DocumentCompleted<br>FolderCompleted |\n| eWebhookManagementevent | UserCreated |",
-                "x-presentations": [
-                    "Ezsign"
-                ],
                 "x-permissions": [
                     "Management_Webhook"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -18939,11 +17958,9 @@
                 ],
                 "operationId": "Groups_GetListScim_V2",
                 "summary": "Retrieve Usergroup list",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "post": {
@@ -18979,11 +17996,9 @@
                 ],
                 "operationId": "Groups_CreateObjectScim_V2",
                 "summary": "Create a new Usergroup",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -19021,11 +18036,9 @@
                 ],
                 "operationId": "Groups_GetObjectScim_V2",
                 "summary": "Retrieve an existing Usergroup",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "put": {
@@ -19071,11 +18084,9 @@
                 ],
                 "operationId": "Groups_EditObjectScim_V2",
                 "summary": "Edit an existing Usergroup",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -19104,11 +18115,9 @@
                 ],
                 "operationId": "Groups_DeleteObjectScim_V2",
                 "summary": "Delete an existing Usergroup",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_Usergroup"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -19134,9 +18143,7 @@
                 ],
                 "operationId": "ServiceProviderConfig_GetObjectScim_V2",
                 "summary": "Get Service Provider Configuration",
-                "x-presentations": [],
                 "x-permissions": [],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -19175,12 +18182,10 @@
                 ],
                 "operationId": "Users_GetListScim_V2",
                 "summary": "Retrieve User list",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "post": {
@@ -19216,12 +18221,10 @@
                 ],
                 "operationId": "Users_CreateObjectScim_V2",
                 "summary": "Create a new User",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         },
@@ -19259,12 +18262,10 @@
                 ],
                 "operationId": "Users_GetObjectScim_V2",
                 "summary": "Retrieve an existing User",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "put": {
@@ -19310,12 +18311,10 @@
                 ],
                 "operationId": "Users_EditObjectScim_V2",
                 "summary": "Edit an existing User",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             },
             "delete": {
@@ -19344,12 +18343,10 @@
                 ],
                 "operationId": "Users_DeleteObjectScim_V2",
                 "summary": "Delete an existing User",
-                "x-presentations": [],
                 "x-permissions": [
                     "Management_UsersEzsignUser",
                     "Management_UsersNormal"
                 ],
-                "x-powerautomate": false,
                 "x-usertypeextra": []
             }
         }
@@ -24741,16 +23738,7 @@
                 "maximum": 65535,
                 "minimum": 0,
                 "type": "integer",
-                "example": 5,
-                "x-ms-dynamic-values": {
-                    "operationId": "Ezsignfoldertype_GetAutocomplete_V2",
-                    "value-path": "pkiEzsignfoldertypeID",
-                    "value-title": "sEzsignfoldertypeNameX",
-                    "value-collection": "mPayload/a_objEzsignfoldertype",
-                    "parameters": {
-                        "sSelector": "Active"
-                    }
-                }
+                "example": 5
             },
             "Field-pkiEzsignformfieldID": {
                 "description": "The unique ID of the Ezsignformfield",
@@ -24826,16 +23814,7 @@
                 "description": "The unique ID of the Ezsigntemplate",
                 "minimum": 0,
                 "type": "integer",
-                "example": 36,
-                "x-ms-dynamic-values": {
-                    "operationId": "Ezsigntemplate_GetAutocomplete_V2",
-                    "value-path": "pkiEzsigntemplateID",
-                    "value-title": "sEzsigntemplateDescription",
-                    "value-collection": "mPayload/a_objEzsigntemplate",
-                    "parameters": {
-                        "sSelector": "All"
-                    }
-                }
+                "example": 36
             },
             "Field-pkiEzsigntemplatedocumentID": {
                 "description": "The unique ID of the Ezsigntemplatedocument",
@@ -24878,16 +23857,7 @@
                 "description": "The unique ID of the Ezsigntemplateglobal",
                 "minimum": 0,
                 "type": "integer",
-                "example": 36,
-                "x-ms-dynamic-values": {
-                    "operationId": "Ezsigntemplateglobal_GetAutocomplete_V2",
-                    "value-path": "pkiEzsigntemplateglobalID",
-                    "value-title": "sEzsigntemplateglobalDescription",
-                    "value-collection": "mPayload/a_objEzsigntemplateglobal",
-                    "parameters": {
-                        "sSelector": "All"
-                    }
-                }
+                "example": 36
             },
             "Field-pkiEzsigntemplateglobaldocumentID": {
                 "description": "The unique ID of the Ezsigntemplateglobaldocument",
@@ -24905,16 +23875,7 @@
                 "description": "The unique ID of the Ezsigntemplatepackage",
                 "minimum": 0,
                 "type": "integer",
-                "example": 99,
-                "x-ms-dynamic-values": {
-                    "operationId": "Ezsigntemplatepackage_GetAutocomplete_V2",
-                    "value-path": "pkiEzsigntemplatepackageID",
-                    "value-title": "sEzsigntemplatepackageDescription",
-                    "value-collection": "mPayload/a_objEzsigntemplatepackage",
-                    "parameters": {
-                        "sSelector": "All"
-                    }
-                }
+                "example": 99
             },
             "Field-pkiEzsigntemplatepackagemembershipID": {
                 "description": "The unique ID of the Ezsigntemplatepackagemembership",
@@ -24957,16 +23918,7 @@
                 "maximum": 3,
                 "minimum": 1,
                 "type": "integer",
-                "example": 1,
-                "x-ms-dynamic-values": {
-                    "operationId": "Ezsigntsarequirement_GetAutocomplete_V2",
-                    "value-path": "pkiEzsigntsarequirementID",
-                    "value-title": "sEzsigntsarequirementDescriptionX",
-                    "value-collection": "mPayload/a_objEzsigntsarequirement",
-                    "parameters": {
-                        "sSelector": "All"
-                    }
-                }
+                "example": 1
             },
             "Field-pkiFolderID": {
                 "description": "The unique ID of the Folder",
@@ -25070,16 +24022,7 @@
                 "maximum": 2,
                 "minimum": 1,
                 "type": "integer",
-                "example": 2,
-                "x-ms-dynamic-values": {
-                    "operationId": "Language_GetAutocomplete_V2",
-                    "value-path": "pkiLanguageID",
-                    "value-title": "sLanguageNameX",
-                    "value-collection": "mPayload/a_objLanguage",
-                    "parameters": {
-                        "sSelector": "All"
-                    }
-                }
+                "example": 2
             },
             "Field-pkiLeadID": {
                 "description": "The unique ID of the Lead",
@@ -25258,16 +24201,7 @@
                 "description": "The unique ID of the Secretquestion.\n\nValid values:\n\n|Value|Description|\n|-|-|\n|1|The name of the hospital in which you were born|\n|2|The name of your grade school|\n|3|The last name of your favorite teacher|\n|4|Your favorite sports team|\n|5|Your favorite TV show|\n|6|Your favorite movie|\n|7|The name of the street on which you grew up|\n|8|The name of your first employer|\n|9|Your first car|\n|10|Your favorite food|\n|11|The name of your first pet|\n|12|Favorite musician/band|\n|13|What instrument you play|\n|14|Your father's middle name|\n|15|Your mother's maiden name|\n|16|Name of your eldest child|\n|17|Your spouse's middle name|\n|18|Favorite restaurant|\n|19|Childhood nickname|\n|20|Favorite vacation destination|\n|21|Your boat's name|\n|22|Date of Birth (YYYY-MM-DD)|\n|22|Secret Code|\n|22|Your reference code|",
                 "minimum": 0,
                 "type": "integer",
-                "example": 7,
-                "x-ms-dynamic-values": {
-                    "operationId": "Secretquestion_GetAutocomplete_V2",
-                    "value-path": "pkiSecretquestionID",
-                    "value-title": "sSecretquestionTextX",
-                    "value-collection": "mPayload/a_objSecretquestion",
-                    "parameters": {
-                        "sSelector": "All"
-                    }
-                }
+                "example": 7
             },
             "Field-pkiSessionhistoryID": {
                 "description": "The unique ID of the Sessionhistory",
@@ -25314,16 +24248,7 @@
                 "maximum": 15,
                 "minimum": 0,
                 "type": "integer",
-                "example": 1,
-                "x-ms-dynamic-values": {
-                    "operationId": "Taxassignment_GetAutocomplete_V2",
-                    "value-path": "pkiTaxassignmentID",
-                    "value-title": "sTaxassignmentDescriptionX",
-                    "value-collection": "mPayload/a_objTaxassignment",
-                    "parameters": {
-                        "sSelector": "All"
-                    }
-                }
+                "example": 1
             },
             "Field-pkiTemplateID": {
                 "description": "The unique ID of the Template",
@@ -25355,16 +24280,7 @@
                 "description": "The unique ID of the User",
                 "minimum": 0,
                 "type": "integer",
-                "example": 70,
-                "x-ms-dynamic-values": {
-                    "operationId": "User_GetAutocomplete_V2",
-                    "value-path": "pkiUserID",
-                    "value-title": "sUserName",
-                    "value-collection": "mPayload/a_objUser",
-                    "parameters": {
-                        "sSelector": "AgentBrokerEzsignuserNormal"
-                    }
-                }
+                "example": 70
             },
             "Field-pkiUsergroupID": {
                 "description": "The unique ID of the Usergroup",
@@ -25405,16 +24321,7 @@
                 "description": "The unique ID of the Userlogintype\n\nValid values:\n\n|Value|Description|Detail|\n|-|-|-|\n|1|**Email Only**|The Ezsignsigner will receive a secure link by email|\n|2|**Email and phone or SMS**|The Ezsignsigner will receive a secure link by email and will need to authenticate using SMS or Phone call. **Additional fee applies**|\n|3|**Email and secret question**|The Ezsignsigner will receive a secure link by email and will need to authenticate using a predefined question and answer|\n|4|**In person only**|The Ezsignsigner will only be able to sign \"In-Person\" and there won't be any authentication. No email will be sent for invitation to sign. Make sure you evaluate the risk of signature denial and at minimum, we recommend you use a handwritten signature type|\n|5|**In person with phone or SMS**|The Ezsignsigner will only be able to sign \"In-Person\" and will need to authenticate using SMS or Phone call. No email will be sent for invitation to sign. **Additional fee applies**|",
                 "minimum": 0,
                 "type": "integer",
-                "example": 2,
-                "x-ms-dynamic-values": {
-                    "operationId": "Userlogintype_GetAutocomplete_V2",
-                    "value-path": "pkiUserlogintypeID",
-                    "value-title": "sUserlogintypeDescriptionX",
-                    "value-collection": "mPayload/a_objUserlogintype",
-                    "parameters": {
-                        "sSelector": "All"
-                    }
-                }
+                "example": 2
             },
             "Field-pkiUserstagedID": {
                 "description": "The unique ID of the Userstaged",
@@ -45013,6 +43920,7 @@
                         "$ref": "#/components/schemas/phone-Response"
                     },
                     {
+                        "type": "object",
                         "properties": {
                             "bPhoneInternational": {
                                 "$ref": "#/components/schemas/Computed-bPhoneInternational"
@@ -50419,11 +49327,7 @@
                     "204": {
                         "$ref": "#/components/responses/Response-Webhook-204"
                     }
-                },
-                "x-superadmin": false,
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                }
             }
         },
         "Webhook-Ezsign-DocumentFormCompleted": {
@@ -50453,11 +49357,7 @@
                     "204": {
                         "$ref": "#/components/responses/Response-Webhook-204"
                     }
-                },
-                "x-superadmin": false,
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                }
             }
         },
         "Webhook-Ezsign-DocumentUnsent": {
@@ -50487,11 +49387,7 @@
                     "204": {
                         "$ref": "#/components/responses/Response-Webhook-204"
                     }
-                },
-                "x-superadmin": false,
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                }
             }
         },
         "Webhook-Ezsign-EzsignsignerAcceptclause": {
@@ -50521,11 +49417,7 @@
                     "204": {
                         "$ref": "#/components/responses/Response-Webhook-204"
                     }
-                },
-                "x-superadmin": false,
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                }
             }
         },
         "Webhook-Ezsign-EzsignsignerConnect": {
@@ -50555,11 +49447,7 @@
                     "204": {
                         "$ref": "#/components/responses/Response-Webhook-204"
                     }
-                },
-                "x-superadmin": false,
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                }
             }
         },
         "Webhook-Ezsign-FolderCompleted": {
@@ -50589,11 +49477,7 @@
                     "204": {
                         "$ref": "#/components/responses/Response-Webhook-204"
                     }
-                },
-                "x-superadmin": false,
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                }
             }
         },
         "Webhook-Ezsign-FolderDisposed": {
@@ -50623,11 +49507,7 @@
                     "204": {
                         "$ref": "#/components/responses/Response-Webhook-204"
                     }
-                },
-                "x-superadmin": false,
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                }
             }
         },
         "Webhook-Ezsign-FolderSent": {
@@ -50657,11 +49537,7 @@
                     "204": {
                         "$ref": "#/components/responses/Response-Webhook-204"
                     }
-                },
-                "x-superadmin": false,
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                }
             }
         },
         "Webhook-Ezsign-FolderUnsent": {
@@ -50691,11 +49567,7 @@
                     "204": {
                         "$ref": "#/components/responses/Response-Webhook-204"
                     }
-                },
-                "x-superadmin": false,
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                }
             }
         },
         "Webhook-Ezsign-SignatureSigned": {
@@ -50725,11 +49597,7 @@
                     "204": {
                         "$ref": "#/components/responses/Response-Webhook-204"
                     }
-                },
-                "x-superadmin": false,
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                }
             }
         },
         "Webhook-User-UserCreated": {
@@ -50759,11 +49627,7 @@
                     "204": {
                         "$ref": "#/components/responses/Response-Webhook-204"
                     }
-                },
-                "x-superadmin": false,
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                }
             }
         },
         "Webhook-Userstaged-UserstagedCreated": {
@@ -50793,11 +49657,7 @@
                     "204": {
                         "$ref": "#/components/responses/Response-Webhook-204"
                     }
-                },
-                "x-superadmin": false,
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                }
             }
         },
         "Websocket-RequestServer-GetWebsocketID-V1": {
@@ -50824,11 +49684,7 @@
                     "101": {
                         "$ref": "#/components/responses/Response-Websocket"
                     }
-                },
-                "x-superadmin": false,
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                }
             }
         },
         "Websocket-Response-Error-V1": {
@@ -50855,9 +49711,7 @@
                     "101": {
                         "$ref": "#/components/responses/Response-Websocket"
                     }
-                },
-                "x-superadmin": false,
-                "x-presentations": []
+                }
             }
         },
         "Websocket-Response-GetWebsocketID-V1": {
@@ -50884,11 +49738,7 @@
                     "101": {
                         "$ref": "#/components/responses/Response-Websocket"
                     }
-                },
-                "x-superadmin": false,
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                }
             }
         },
         "Websocket-Response-Information-V1": {
@@ -50915,11 +49765,7 @@
                     "101": {
                         "$ref": "#/components/responses/Response-Websocket"
                     }
-                },
-                "x-superadmin": false,
-                "x-presentations": [
-                    "Ezsign"
-                ]
+                }
             }
         }
     },
