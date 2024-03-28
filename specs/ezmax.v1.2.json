@@ -34959,7 +34959,7 @@
                         "type": "string",
                         "example": "*.example.com"
                     },
-                    "bIsiframe": {
+                    "bIsIframe": {
                         "description": "Whether the url would be in an iFrame or not",
                         "type": "boolean"
                     }
