@@ -2299,6 +2299,432 @@
                 }
             ]
         },
+        "/1/object/creditcardclient": {
+            "description": "",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/creditcardclient-createObject-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Creditcardclient"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/creditcardclient-createObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Creditcardclient_CreateObject_V1",
+                "summary": "Create a new Creditcardclient",
+                "description": "The endpoint allows to create one or many elements at once.",
+                "x-permissions": [
+                    "Invoicing_Access",
+                    "Management_Clients",
+                    "Management_BrokersGeneralAccess"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            }
+        },
+        "/2/object/creditcardclient/{pkiCreditcardclientID}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Creditcardclient"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/creditcardclient-getObject-v2-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Creditcardclient_GetObject_V2",
+                "summary": "Retrieve an existing Creditcardclient",
+                "description": "",
+                "x-permissions": [
+                    "Invoicing_Access",
+                    "Management_Clients",
+                    "Management_BrokersGeneralAccess"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiCreditcardclientID",
+                    "description": "The unique ID of the Creditcardclient",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiCreditcardclientID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/creditcardclient/{pkiCreditcardclientID}": {
+            "description": "",
+            "put": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/creditcardclient-editObject-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Creditcardclient"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/creditcardclient-editObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Creditcardclient_EditObject_V1",
+                "summary": "Edit an existing Creditcardclient",
+                "description": "",
+                "x-permissions": [
+                    "Invoicing_Access",
+                    "Management_Clients",
+                    "Management_BrokersGeneralAccess"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Object_Creditcardclient"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/creditcardclient-deleteObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Creditcardclient_DeleteObject_V1",
+                "summary": "Delete an existing Creditcardclient",
+                "description": "",
+                "x-permissions": [
+                    "Invoicing_Access",
+                    "Management_Clients",
+                    "Management_BrokersGeneralAccess"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiCreditcardclientID",
+                    "description": "The unique ID of the Creditcardclient",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiCreditcardclientID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/2/object/creditcardclient/getAutocomplete/{sSelector}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Creditcardclient"
+                ],
+                "parameters": [
+                    {
+                        "name": "eFilterActive",
+                        "description": "Specify which results we want to display.",
+                        "schema": {
+                            "default": "Active",
+                            "enum": [
+                                "All",
+                                "Active",
+                                "Inactive"
+                            ],
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false
+                    },
+                    {
+                        "$ref": "#/components/parameters/sQuery"
+                    },
+                    {
+                        "$ref": "#/components/parameters/AcceptLanguage"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/creditcardclient-getAutocomplete-v2-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Creditcardclient_GetAutocomplete_V2",
+                "summary": "Retrieve Creditcardclients and IDs",
+                "description": "Get the list of Creditcardclient to be used in a dropdown or autocomplete control.",
+                "x-permissions": [
+                    "Invoicing_Access",
+                    "Management_Clients",
+                    "Management_BrokersGeneralAccess"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "sSelector",
+                    "description": "The type of Creditcardclients to return",
+                    "schema": {
+                        "enum": [
+                            "All"
+                        ],
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/creditcardclient/getList": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Creditcardclient"
+                ],
+                "parameters": [
+                    {
+                        "name": "eOrderBy",
+                        "description": "Specify how you want the results to be sorted",
+                        "schema": {
+                            "enum": [
+                                "pkiCreditcardclientID_ASC",
+                                "pkiCreditcardclientID_DESC",
+                                "fkiCreditcarddetailID_ASC",
+                                "fkiCreditcarddetailID_DESC",
+                                "bCreditcardclientrelationIsdefault_ASC",
+                                "bCreditcardclientrelationIsdefault_DESC",
+                                "sCreditcardclientDescription_ASC",
+                                "sCreditcardclientDescription_DESC",
+                                "bCreditcardclientIsactive_ASC",
+                                "bCreditcardclientIsactive_DESC",
+                                "bCreditcardclientAllowedagencypayment_ASC",
+                                "bCreditcardclientAllowedagencypayment_DESC",
+                                "bCreditcardclientAllowedroyallepageprotection_ASC",
+                                "bCreditcardclientAllowedroyallepageprotection_DESC",
+                                "bCreditcardclientAllowedtranquillit_ASC",
+                                "bCreditcardclientAllowedtranquillit_DESC",
+                                "iCreditcarddetailExpirationmonth_ASC",
+                                "iCreditcarddetailExpirationmonth_DESC",
+                                "iCreditcarddetailExpirationyear_ASC",
+                                "iCreditcarddetailExpirationyear_DESC"
+                            ],
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false
+                    },
+                    {
+                        "$ref": "#/components/parameters/iRowMax"
+                    },
+                    {
+                        "$ref": "#/components/parameters/iRowOffset"
+                    },
+                    {
+                        "$ref": "#/components/parameters/AcceptLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/sFilter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/creditcardclient-getList-v1-Response"
+                                }
+                            },
+                            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/File-Xlsx"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "406": {
+                        "$ref": "#/components/responses/Response-Error-406"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Creditcardclient_GetList_V1",
+                "summary": "Retrieve Creditcardclient list",
+                "description": "",
+                "x-permissions": [
+                    "Invoicing_Access",
+                    "Management_Clients",
+                    "Management_BrokersGeneralAccess"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            }
+        },
+        "/2/object/creditcardtype/getAutocomplete/{sSelector}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Creditcardtype"
+                ],
+                "parameters": [
+                    {
+                        "name": "eFilterActive",
+                        "description": "Specify which results we want to display.",
+                        "schema": {
+                            "default": "Active",
+                            "enum": [
+                                "All",
+                                "Active",
+                                "Inactive"
+                            ],
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false
+                    },
+                    {
+                        "$ref": "#/components/parameters/sQuery"
+                    },
+                    {
+                        "$ref": "#/components/parameters/AcceptLanguage"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/creditcardtype-getAutocomplete-v2-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Creditcardtype_GetAutocomplete_V2",
+                "summary": "Retrieve Creditcardtypes and IDs",
+                "description": "Get the list of Creditcardtype to be used in a dropdown or autocomplete control.",
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": []
+            },
+            "parameters": [
+                {
+                    "name": "sSelector",
+                    "description": "The type of Creditcardtypes to return",
+                    "schema": {
+                        "enum": [
+                            "All"
+                        ],
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/2/object/department/getAutocomplete/{sSelector}": {
             "description": "",
             "get": {
@@ -7775,7 +8201,7 @@
                 ],
                 "operationId": "Ezsignfoldersignerassociation_CreateEmbeddedUrl_V1",
                 "summary": "Creates an Url to allow embedded signing",
-                "description": "This endpoint creates an Url that can be used in a browser or embedded in an I-Frame to allow signing.\n\nThe signer Login type must be configured as Embedded.",
+                "description": "This endpoint creates an Url that can be used in a browser or embedded in an I-Frame to allow signing.\n\nThe signer Login type must be configured as Embedded.\n\nThere will be a list to retrieve informations after the signing happens in the embedded version. To do so, there is a list of parameter to add to your sReturnUrl.\n\nIn example: https://www.example.com/sReturl?sParameter1&sParameter2. The sParameter1 et sParameter2 will be replace when we will redirect on the url.",
                 "x-permissions": [
                     "All"
                 ],
@@ -8057,7 +8483,7 @@
                 "summary": "Edit an existing Ezsignfoldertype",
                 "description": "",
                 "x-permissions": [
-                    "ElectronicSignature_CreationModificationFolderTypes"
+                    "All"
                 ],
                 "x-usertypeextra": []
             },
@@ -8116,7 +8542,7 @@
                 "summary": "Edit an existing Ezsignfoldertype",
                 "description": "",
                 "x-permissions": [
-                    "ElectronicSignature_CreationModificationFolderTypes"
+                    "All"
                 ],
                 "x-usertypeextra": []
             },
@@ -8271,7 +8697,7 @@
                 "summary": "Retrieve Ezsignfoldertype list",
                 "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eEzsignfoldertypePrivacylevel | User<br>Usergroup |",
                 "x-permissions": [
-                    "ElectronicSignature_CreationModificationFolderTypes"
+                    "All"
                 ],
                 "x-usertypeextra": []
             }
@@ -13059,7 +13485,9 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-usertypeextra": []
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
             },
             "parameters": [
                 {
@@ -18450,7 +18878,7 @@
             },
             "Common-Format-ExternalID": {
                 "description": "This field can be used to store an External ID from the client's system.\n\nAnything can be stored in this field, it will never be evaluated by the eZmax system and will be returned\nAS-IS.\n\nTo store multiple values, consider using a JSON formatted structure, a URL encoded string, a CSV or any other custom format.\n",
-                "pattern": "^.{0,64}$",
+                "pattern": "^.{0,128}$",
                 "type": "string",
                 "example": "{\"ID\": 1234, \"TAGS\": [\"tag1\", \"tag2\", \"tag3\"]}",
                 "x-ms-visibility": "advanced"
@@ -18763,6 +19191,7 @@
                         "properties": {
                             "sTemporaryFileUrl": {
                                 "description": "The Temporary File Url of the document that was uploaded. That url can be reused instead of uploading the file again.",
+                                "pattern": "^(https|http):\\/\\/[^\\s\\/$.?#].[^\\s]*$",
                                 "type": "string",
                                 "example": "http://www.example.com/document.pdf"
                             }
@@ -18898,7 +19327,8 @@
                     "a_RequiredPermission",
                     "iVersionMax",
                     "iVersionMin",
-                    "bVersionDeprecated"
+                    "bVersionDeprecated",
+                    "dtResponseDate"
                 ],
                 "type": "object",
                 "properties": {
@@ -18924,6 +19354,9 @@
                         "description": "Wheter the current route is deprecated or not",
                         "type": "boolean",
                         "example": false
+                    },
+                    "dtResponseDate": {
+                        "$ref": "#/components/schemas/Common-Format-DateTime"
                     }
                 }
             },
@@ -19109,6 +19542,11 @@
                 "type": "boolean",
                 "example": false
             },
+            "Computed-bEzsignfoldersignerassociationAllowsigninginperson": {
+                "description": "If the Ezsignfoldersignerassociation is allowed to sign in person or not",
+                "type": "boolean",
+                "example": true
+            },
             "Computed-bEzsigntemplateIncomplete": {
                 "description": "Indicate the Ezsigntemplate is incomplete and cannot be used",
                 "type": "boolean",
@@ -19262,16 +19700,19 @@
             },
             "Computed-sAvatarUrl": {
                 "description": "The url of the picture used as avatar",
+                "pattern": "^(https|http):\\/\\/[^\\s\\/$.?#].[^\\s]*$",
                 "type": "string",
                 "example": "http://www.website.com/avatar.jpg"
             },
             "Computed-sBrandingLogointerfaceurl": {
                 "description": "The url of the picture used as logo in the Branding",
+                "pattern": "^(https|http):\\/\\/[^\\s\\/$.?#].[^\\s]*$",
                 "type": "string",
                 "example": "http://www.example.com/logo.jpg"
             },
             "Computed-sBrandingLogourl": {
                 "description": "The url of the picture used as logo in the Branding",
+                "pattern": "^(https|http):\\/\\/[^\\s\\/$.?#].[^\\s]*$",
                 "type": "string",
                 "example": "http://www.example.com/logo.jpg"
             },
@@ -19309,7 +19750,7 @@
             },
             "Computed-sSignatureUrl": {
                 "description": "The URL of the SVG file for the Signature",
-                "pattern": "^.{0,2048}$",
+                "pattern": "^(https|http):\\/\\/[^\\s\\/$.?#].[^\\s]*$",
                 "type": "string",
                 "example": "https://www.example.com/signature.svg"
             },
@@ -20688,6 +21129,31 @@
             },
             "Field-bCountryIsactive": {
                 "description": "Whether the Country is active or not",
+                "type": "boolean",
+                "example": true
+            },
+            "Field-bCreditcardclientAllowedagencypayment": {
+                "description": "Whether if it's an allowedagencypayment",
+                "type": "boolean",
+                "example": true
+            },
+            "Field-bCreditcardclientAllowedroyallepageprotection": {
+                "description": "Whether if it's an allowedroyallepageprotection",
+                "type": "boolean",
+                "example": true
+            },
+            "Field-bCreditcardclientAllowedtranquillit": {
+                "description": "Whether if it's an allowedtranquillit",
+                "type": "boolean",
+                "example": true
+            },
+            "Field-bCreditcardclientIsactive": {
+                "description": "Whether the creditcardclient is active or not",
+                "type": "boolean",
+                "example": true
+            },
+            "Field-bCreditcardclientrelationIsdefault": {
+                "description": "Whether if it's an relationisdefault",
                 "type": "boolean",
                 "example": true
             },
@@ -22645,6 +23111,12 @@
                 "type": "string",
                 "example": "doej"
             },
+            "Field-fksCreditcardtokenID": {
+                "description": "The creditcard token identifier",
+                "pattern": "^\\{?[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\\}?$",
+                "type": "string",
+                "example": "6B29FC40-CA47-1067-B31D-00DD010662DA"
+            },
             "Field-iAttachmentEDMmoduleflag": {
                 "description": "The edmmoduleflag of the Attachment",
                 "maximum": 255,
@@ -22714,6 +23186,20 @@
                 "minimum": 0,
                 "type": "integer",
                 "example": 15
+            },
+            "Field-iCreditcarddetailExpirationmonth": {
+                "description": "The expirationmonth of the Creditcarddetail",
+                "maximum": 12,
+                "minimum": 0,
+                "type": "integer",
+                "example": 10
+            },
+            "Field-iCreditcarddetailExpirationyear": {
+                "description": "The expirationyear of the Creditcarddetail",
+                "maximum": 2200,
+                "minimum": 0,
+                "type": "integer",
+                "example": 2024
             },
             "Field-iEzmaxinvoicingContractlength": {
                 "description": "The length of the contract in years",
@@ -23475,6 +23961,27 @@
                 "minimum": 0,
                 "type": "integer",
                 "example": 1
+            },
+            "Field-pkiCreditcardclientID": {
+                "description": "The unique ID of the Creditcardclient",
+                "maximum": 65535,
+                "minimum": 0,
+                "type": "integer",
+                "example": 114
+            },
+            "Field-pkiCreditcarddetailID": {
+                "description": "The unique ID of the Creditcarddetail",
+                "maximum": 65535,
+                "minimum": 0,
+                "type": "integer",
+                "example": 53
+            },
+            "Field-pkiCreditcardtypeID": {
+                "description": "The unique ID of the Creditcardtype",
+                "maximum": 255,
+                "minimum": 0,
+                "type": "integer",
+                "example": 2
             },
             "Field-pkiCustomerID": {
                 "description": "The unique ID of the Customer.",
@@ -24537,7 +25044,7 @@
             },
             "Field-sCorsEntryurl": {
                 "description": "The entryurl of the Cors",
-                "pattern": "^.{0,2048}$",
+                "pattern": "^(https|http):\\/\\/[^\\s\\/$.?#].[^\\s]*$",
                 "type": "string",
                 "example": "Https://www.example.com"
             },
@@ -24553,6 +25060,36 @@
                 "type": "string",
                 "example": "CA"
             },
+            "Field-sCreditcardclientDescription": {
+                "description": "The description of the Creditcardclient",
+                "pattern": "^.{0,50}$",
+                "type": "string",
+                "example": "Visa"
+            },
+            "Field-sCreditcarddetailCivic": {
+                "description": "The civic of the Creditcarddetail",
+                "pattern": "^.{0,8}$",
+                "type": "string",
+                "example": "2500"
+            },
+            "Field-sCreditcarddetailNumbermasked": {
+                "description": "The numbermasked of the Creditcarddetail",
+                "pattern": "^.{0,50}$",
+                "type": "string",
+                "example": "XXXX XXXX XXXX 4242"
+            },
+            "Field-sCreditcarddetailStreet": {
+                "description": "The street of the Creditcarddetail",
+                "pattern": "^.{0,40}$",
+                "type": "string",
+                "example": "Daniel-Johnson Blvd."
+            },
+            "Field-sCreditcarddetailZip": {
+                "description": "The zip of the Creditcarddetail",
+                "pattern": "^.{0,10}$",
+                "type": "string",
+                "example": "H7T 2P6"
+            },
             "Field-sCreditcardtransactionPartiallydecryptednumber": {
                 "description": "The partially decrypted credit card number used in the Creditcardtransaction",
                 "pattern": "^([X]{4}[ ]){3}(\\d){4}$",
@@ -24564,6 +25101,12 @@
                 "pattern": "^[\\d]{18}$",
                 "type": "string",
                 "example": "651447854715478415"
+            },
+            "Field-sCreditcardtypeName": {
+                "description": "The name of the Creditcardtype",
+                "pattern": "^.{1,30}$",
+                "type": "string",
+                "example": "Visa"
             },
             "Field-sDepartmentNameX": {
                 "description": "The Name of the Department in the language of the requester",
@@ -24578,6 +25121,7 @@
             },
             "Field-sEmailAddress": {
                 "description": "The email address.",
+                "pattern": "^[\\w.%+\\-!#$%&'*+\\/=?^`{|}~]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,20}$",
                 "type": "string",
                 "example": "email@example.com"
             },
@@ -25121,7 +25665,7 @@
             },
             "Field-sUserLoginname": {
                 "description": "The login name of the User.",
-                "pattern": "^(?:([\\w\\.-]+@[\\w\\.-]+\\.\\w{2,20})|([a-zA-Z0-9]){1,32})$",
+                "pattern": "^(?:([\\w.%+\\-!#$%&'*+\\/=?^`{|}~]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,20})|([a-zA-Z0-9]){1,32})$",
                 "type": "string",
                 "example": "JohnDoe"
             },
@@ -25236,6 +25780,7 @@
             },
             "Field-sWebhookUrl": {
                 "description": "The URL of the Webhook callback",
+                "pattern": "^(https|http):\\/\\/[^\\s\\/$.?#].[^\\s]*$",
                 "type": "string",
                 "example": "https://www.example.com"
             },
@@ -29109,6 +29654,521 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/country-AutocompleteElement-Response"
+                        }
+                    }
+                }
+            },
+            "creditcardclient-AutocompleteElement-Response": {
+                "description": "A Creditcardclient AutocompleteElement Response",
+                "required": [
+                    "pkiCreditcardclientID",
+                    "sCreditcardclientDescription",
+                    "bCreditcardclientIsactive"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiCreditcardclientID": {
+                        "$ref": "#/components/schemas/Field-pkiCreditcardclientID"
+                    },
+                    "sCreditcardclientDescription": {
+                        "$ref": "#/components/schemas/Field-sCreditcardclientDescription"
+                    },
+                    "bCreditcardclientIsactive": {
+                        "$ref": "#/components/schemas/Field-bCreditcardclientIsactive"
+                    }
+                }
+            },
+            "creditcardclient-ListElement": {
+                "description": "A Creditcardclient List Element",
+                "required": [
+                    "pkiCreditcardclientID",
+                    "fkiCreditcarddetailID",
+                    "bCreditcardclientrelationIsdefault",
+                    "sCreditcardclientDescription",
+                    "bCreditcardclientIsactive",
+                    "bCreditcardclientAllowedagencypayment",
+                    "bCreditcardclientAllowedroyallepageprotection",
+                    "bCreditcardclientAllowedtranquillit",
+                    "iCreditcarddetailExpirationmonth",
+                    "iCreditcarddetailExpirationyear",
+                    "sCreditcarddetailNumbermasked"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiCreditcardclientID": {
+                        "$ref": "#/components/schemas/Field-pkiCreditcardclientID"
+                    },
+                    "fkiCreditcarddetailID": {
+                        "$ref": "#/components/schemas/Field-pkiCreditcarddetailID"
+                    },
+                    "bCreditcardclientrelationIsdefault": {
+                        "$ref": "#/components/schemas/Field-bCreditcardclientrelationIsdefault"
+                    },
+                    "sCreditcardclientDescription": {
+                        "$ref": "#/components/schemas/Field-sCreditcardclientDescription"
+                    },
+                    "bCreditcardclientIsactive": {
+                        "$ref": "#/components/schemas/Field-bCreditcardclientIsactive"
+                    },
+                    "bCreditcardclientAllowedagencypayment": {
+                        "$ref": "#/components/schemas/Field-bCreditcardclientAllowedagencypayment"
+                    },
+                    "bCreditcardclientAllowedroyallepageprotection": {
+                        "$ref": "#/components/schemas/Field-bCreditcardclientAllowedroyallepageprotection"
+                    },
+                    "bCreditcardclientAllowedtranquillit": {
+                        "$ref": "#/components/schemas/Field-bCreditcardclientAllowedtranquillit"
+                    },
+                    "iCreditcarddetailExpirationmonth": {
+                        "$ref": "#/components/schemas/Field-iCreditcarddetailExpirationmonth"
+                    },
+                    "iCreditcarddetailExpirationyear": {
+                        "$ref": "#/components/schemas/Field-iCreditcarddetailExpirationyear"
+                    },
+                    "sCreditcarddetailNumbermasked": {
+                        "$ref": "#/components/schemas/Field-sCreditcarddetailNumbermasked",
+                        "description": ""
+                    }
+                }
+            },
+            "creditcardclient-Request": {
+                "description": "A Creditcardclient Object",
+                "required": [
+                    "bCreditcardclientrelationIsdefault",
+                    "sCreditcardclientDescription",
+                    "bCreditcardclientIsactive",
+                    "bCreditcardclientAllowedagencypayment",
+                    "bCreditcardclientAllowedroyallepageprotection",
+                    "bCreditcardclientAllowedtranquillit",
+                    "objCreditcarddetail",
+                    "sCreditcardclientCVV"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiCreditcardclientID": {
+                        "$ref": "#/components/schemas/Field-pkiCreditcardclientID"
+                    },
+                    "fksCreditcardtokenID": {
+                        "$ref": "#/components/schemas/Field-fksCreditcardtokenID"
+                    },
+                    "bCreditcardclientrelationIsdefault": {
+                        "$ref": "#/components/schemas/Field-bCreditcardclientrelationIsdefault"
+                    },
+                    "sCreditcardclientDescription": {
+                        "$ref": "#/components/schemas/Field-sCreditcardclientDescription"
+                    },
+                    "bCreditcardclientIsactive": {
+                        "$ref": "#/components/schemas/Field-bCreditcardclientIsactive"
+                    },
+                    "bCreditcardclientAllowedagencypayment": {
+                        "$ref": "#/components/schemas/Field-bCreditcardclientAllowedagencypayment"
+                    },
+                    "bCreditcardclientAllowedroyallepageprotection": {
+                        "$ref": "#/components/schemas/Field-bCreditcardclientAllowedroyallepageprotection"
+                    },
+                    "bCreditcardclientAllowedtranquillit": {
+                        "$ref": "#/components/schemas/Field-bCreditcardclientAllowedtranquillit"
+                    },
+                    "objCreditcarddetail": {
+                        "$ref": "#/components/schemas/creditcarddetail-Request"
+                    },
+                    "sCreditcardclientCVV": {
+                        "description": "The creditcard card CVV",
+                        "pattern": "^[0-9]{3,4}$",
+                        "type": "string"
+                    }
+                }
+            },
+            "creditcardclient-RequestCompound": {
+                "description": "A Creditcardclient Object and children",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/creditcardclient-Request"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "creditcardclient-Response": {
+                "description": "A Creditcardclient Object",
+                "required": [
+                    "pkiCreditcardclientID",
+                    "fkiCreditcarddetailID",
+                    "bCreditcardclientrelationIsdefault",
+                    "sCreditcardclientDescription",
+                    "bCreditcardclientIsactive",
+                    "bCreditcardclientAllowedagencypayment",
+                    "bCreditcardclientAllowedroyallepageprotection",
+                    "bCreditcardclientAllowedtranquillit",
+                    "objCreditcarddetail"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiCreditcardclientID": {
+                        "$ref": "#/components/schemas/Field-pkiCreditcardclientID"
+                    },
+                    "fkiCreditcarddetailID": {
+                        "$ref": "#/components/schemas/Field-pkiCreditcarddetailID"
+                    },
+                    "bCreditcardclientrelationIsdefault": {
+                        "$ref": "#/components/schemas/Field-bCreditcardclientrelationIsdefault"
+                    },
+                    "sCreditcardclientDescription": {
+                        "$ref": "#/components/schemas/Field-sCreditcardclientDescription"
+                    },
+                    "bCreditcardclientIsactive": {
+                        "$ref": "#/components/schemas/Field-bCreditcardclientIsactive"
+                    },
+                    "bCreditcardclientAllowedagencypayment": {
+                        "$ref": "#/components/schemas/Field-bCreditcardclientAllowedagencypayment"
+                    },
+                    "bCreditcardclientAllowedroyallepageprotection": {
+                        "$ref": "#/components/schemas/Field-bCreditcardclientAllowedroyallepageprotection"
+                    },
+                    "bCreditcardclientAllowedtranquillit": {
+                        "$ref": "#/components/schemas/Field-bCreditcardclientAllowedtranquillit"
+                    },
+                    "objCreditcarddetail": {
+                        "$ref": "#/components/schemas/creditcarddetail-ResponseCompound"
+                    }
+                }
+            },
+            "creditcardclient-ResponseCompound": {
+                "description": "A Creditcardclient Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/creditcardclient-Response"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "creditcardclient-createObject-v1-Request": {
+                "description": "Request for POST /1/object/creditcardclient",
+                "required": [
+                    "a_objCreditcardclient"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objCreditcardclient": {
+                        "minItems": 1,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/creditcardclient-RequestCompound"
+                        }
+                    }
+                }
+            },
+            "creditcardclient-createObject-v1-Response": {
+                "description": "Response for POST /1/object/creditcardclient",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/creditcardclient-createObject-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "creditcardclient-createObject-v1-Response-mPayload": {
+                "description": "Payload for POST /1/object/creditcardclient",
+                "required": [
+                    "a_pkiCreditcardclientID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiCreditcardclientID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Field-pkiCreditcardclientID"
+                        }
+                    }
+                }
+            },
+            "creditcardclient-deleteObject-v1-Response": {
+                "description": "Response for DELETE /1/object/creditcardclient/{pkiCreditcardclientID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "creditcardclient-editObject-v1-Request": {
+                "description": "Request for PUT /1/object/creditcardclient/{pkiCreditcardclientID}",
+                "required": [
+                    "objCreditcardclient"
+                ],
+                "type": "object",
+                "properties": {
+                    "objCreditcardclient": {
+                        "$ref": "#/components/schemas/creditcardclient-RequestCompound"
+                    }
+                }
+            },
+            "creditcardclient-editObject-v1-Response": {
+                "description": "Response for PUT /1/object/creditcardclient/{pkiCreditcardclientID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "creditcardclient-getAutocomplete-v2-Response": {
+                "description": "Response for GET /2/object/creditcardclient/getAutocomplete",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/creditcardclient-getAutocomplete-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "creditcardclient-getAutocomplete-v2-Response-mPayload": {
+                "description": "Payload for POST /2/object/creditcardclient/getAutocomplete",
+                "required": [
+                    "a_objCreditcardclient"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objCreditcardclient": {
+                        "description": "An array of Creditcardclient autocomplete element response.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/creditcardclient-AutocompleteElement-Response"
+                        }
+                    }
+                }
+            },
+            "creditcardclient-getList-v1-Response": {
+                "description": "Response for GET /1/object/creditcardclient/getList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/creditcardclient-getList-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response_getList"
+                    }
+                ]
+            },
+            "creditcardclient-getList-v1-Response-mPayload": {
+                "description": "Payload for GET /1/object/creditcardclient/getList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "a_objCreditcardclient"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "a_objCreditcardclient": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/creditcardclient-ListElement"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-getList-v1-Response-mPayload"
+                    }
+                ]
+            },
+            "creditcardclient-getObject-v2-Response": {
+                "description": "Response for GET /2/object/creditcardclient/{pkiCreditcardclientID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/creditcardclient-getObject-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "creditcardclient-getObject-v2-Response-mPayload": {
+                "description": "Payload for GET /2/object/creditcardclient/{pkiCreditcardclientID}",
+                "required": [
+                    "objCreditcardclient"
+                ],
+                "type": "object",
+                "properties": {
+                    "objCreditcardclient": {
+                        "$ref": "#/components/schemas/creditcardclient-ResponseCompound"
+                    }
+                }
+            },
+            "creditcarddetail-Request": {
+                "description": "A Creditcarddetail Object",
+                "required": [
+                    "iCreditcarddetailExpirationmonth",
+                    "iCreditcarddetailExpirationyear"
+                ],
+                "type": "object",
+                "properties": {
+                    "iCreditcarddetailExpirationmonth": {
+                        "$ref": "#/components/schemas/Field-iCreditcarddetailExpirationmonth"
+                    },
+                    "iCreditcarddetailExpirationyear": {
+                        "$ref": "#/components/schemas/Field-iCreditcarddetailExpirationyear"
+                    },
+                    "sCreditcarddetailCivic": {
+                        "$ref": "#/components/schemas/Field-sCreditcarddetailCivic"
+                    },
+                    "sCreditcarddetailStreet": {
+                        "$ref": "#/components/schemas/Field-sCreditcarddetailStreet"
+                    },
+                    "sCreditcarddetailZip": {
+                        "$ref": "#/components/schemas/Field-sCreditcarddetailZip"
+                    }
+                }
+            },
+            "creditcarddetail-Response": {
+                "description": "A Creditcarddetail Object",
+                "required": [
+                    "pkiCreditcarddetailID",
+                    "fkiCreditcardtypeID",
+                    "sCreditcarddetailNumbermasked",
+                    "iCreditcarddetailExpirationmonth",
+                    "iCreditcarddetailExpirationyear",
+                    "sCreditcarddetailCivic",
+                    "sCreditcarddetailStreet",
+                    "sCreditcarddetailZip"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiCreditcarddetailID": {
+                        "$ref": "#/components/schemas/Field-pkiCreditcarddetailID"
+                    },
+                    "fkiCreditcardtypeID": {
+                        "$ref": "#/components/schemas/Field-pkiCreditcardtypeID"
+                    },
+                    "sCreditcarddetailNumbermasked": {
+                        "$ref": "#/components/schemas/Field-sCreditcarddetailNumbermasked"
+                    },
+                    "iCreditcarddetailExpirationmonth": {
+                        "$ref": "#/components/schemas/Field-iCreditcarddetailExpirationmonth"
+                    },
+                    "iCreditcarddetailExpirationyear": {
+                        "$ref": "#/components/schemas/Field-iCreditcarddetailExpirationyear"
+                    },
+                    "sCreditcarddetailCivic": {
+                        "$ref": "#/components/schemas/Field-sCreditcarddetailCivic"
+                    },
+                    "sCreditcarddetailStreet": {
+                        "$ref": "#/components/schemas/Field-sCreditcarddetailStreet"
+                    },
+                    "sCreditcarddetailZip": {
+                        "$ref": "#/components/schemas/Field-sCreditcarddetailZip"
+                    }
+                }
+            },
+            "creditcarddetail-ResponseCompound": {
+                "description": "A Creditcarddetail Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/creditcarddetail-Response"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "creditcardtype-AutocompleteElement-Response": {
+                "description": "Creditcardtype AutocompleteElement Response",
+                "required": [
+                    "sCreditcardtypeName",
+                    "pkiCreditcardtypeID",
+                    "eCreditcardtypeCodename"
+                ],
+                "type": "object",
+                "properties": {
+                    "sCreditcardtypeName": {
+                        "$ref": "#/components/schemas/Field-sCreditcardtypeName"
+                    },
+                    "pkiCreditcardtypeID": {
+                        "$ref": "#/components/schemas/Field-pkiCreditcardtypeID"
+                    },
+                    "eCreditcardtypeCodename": {
+                        "$ref": "#/components/schemas/Field-eCreditcardtypeCodename"
+                    }
+                }
+            },
+            "creditcardtype-getAutocomplete-v2-Response": {
+                "description": "Response for GET /2/object/creditcardtype/getAutocomplete",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/creditcardtype-getAutocomplete-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "creditcardtype-getAutocomplete-v2-Response-mPayload": {
+                "description": "Payload for POST /2/object/creditcardtype/getAutocomplete",
+                "required": [
+                    "a_objCreditcardtype"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objCreditcardtype": {
+                        "description": "An array of Creditcardtype object containing the description, ID and active status about the element.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/creditcardtype-AutocompleteElement-Response"
                         }
                     }
                 }
@@ -34871,7 +35931,8 @@
                     "fkiEzsignfolderID",
                     "bEzsignfoldersignerassociationDelayedsend",
                     "bEzsignfoldersignerassociationReceivecopy",
-                    "tEzsignfoldersignerassociationMessage"
+                    "tEzsignfoldersignerassociationMessage",
+                    "bEzsignfoldersignerassociationAllowsigninginperson"
                 ],
                 "type": "object",
                 "properties": {
@@ -34889,6 +35950,9 @@
                     },
                     "tEzsignfoldersignerassociationMessage": {
                         "$ref": "#/components/schemas/Field-tEzsignfoldersignerassociationMessage"
+                    },
+                    "bEzsignfoldersignerassociationAllowsigninginperson": {
+                        "$ref": "#/components/schemas/Computed-bEzsignfoldersignerassociationAllowsigninginperson"
                     }
                 }
             },
@@ -34949,13 +36013,12 @@
                 "properties": {
                     "sReturnUrl": {
                         "description": "The return Url to redirect after the signing is completed",
-                        "pattern": "^.{0,2048}$",
+                        "pattern": "^(https|http):\\/\\/[^\\s\\/$.?#].[^\\s]*$",
                         "type": "string",
                         "example": "Https://www.example.com"
                     },
                     "sIframedomain": {
                         "description": "Domain protection for the iFrame",
-                        "pattern": "^.{0,2048}$",
                         "type": "string",
                         "example": "*.example.com"
                     },
@@ -48785,7 +49848,7 @@
     "tags": [
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\r\n\r\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\r\n\r\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\r\n\r\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\r\n\r\n**PATCH** will be incremented everytime changes and additions are released.\r\n\r\nFor each version, there will be the list of changes:\r\n* **Added** for new features.\r\n* **Changed** for changes in existing functionality.\r\n* **Deprecated** for soon-to-be removed features.\r\n* **Removed** for now removed features.\r\n* **Fixed** for any bug fixes.\r\n* **Security** in case of vulnerabilities.\r\n\r\n**Removal lifecycle**<br>\r\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\r\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\r\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\r\n\r\n## 1.2.X Releases\r\n\r\n### [1.2.0] - 2023-09-24\r\n\r\n#### Added\r\n- DELETE /1/object/discussion/{pkiDiscussionID}\r\n- DELETE /1/object/discussionmembership/{pkiDiscussionmembershipID}\r\n- DELETE /1/object/discussionmessage/{pkiDiscussionmessageID}\r\n- DELETE /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- DELETE /1/object/usergroupexternal/{pkiUsergroupexternalID}\r\n- GET /1/module/location/search\r\n- GET /1/object/activesession/getDocumentationUrl\r\n- GET /1/object/attachment/{pkiAttachmentID}/download\r\n- GET /1/object/attachment/{pkiAttachmentID}/getAttachmentlogs\r\n- GET /1/object/buyercontract/{pkiBuyercontractID}/getCommunicationList\r\n- GET /1/object/discussion/{pkiDiscussionID}\r\n- GET /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/getCommunicationList\r\n- GET /1/object/ezsigndiscussion/{pkiEzsigndiscussionID}\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getAttachments\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsigndocumentdiscussions\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getAttachmentCount\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getAttachments\r\n- GET /1/object/ezsignsigningreason/getAutocomplete\r\n- GET /1/object/ezsignsigningreason/getList\r\n- GET /1/object/ezsignsigningreason/{pkiEzsignsigningreasonID}\r\n- GET /1/object/inscription/{pkiInscriptionID}/getAttachments\r\n- GET /1/object/inscription/{pkiInscriptionID}/getCommunicationList\r\n- GET /1/object/inscription/{pkiInscriptionID}/getCommunicationsenders\r\n- GET /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/getCommunicationList\r\n- GET /1/object/inscriptiontemp/{pkiInscriptiontempID}/getCommunicationList\r\n- GET /1/object/invoice/{pkiInvoiceID}/getAttachments\r\n- GET /1/object/invoice/{pkiInvoiceID}/getCommunicationList\r\n- GET /1/object/otherincome/{pkiOtherincomeID}/getCommunicationList\r\n- GET /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/getCommunicationList\r\n- GET /1/object/user/{pkiUserID}/getApikeys\r\n- GET /1/object/user/{pkiUserID}/getUsergroupexternals\r\n- GET /1/object/user/{pkiUserID}/getUsergroups\r\n- GET /1/object/usergroup/{pkiUsergroupID}/getUsergroupdelegations\r\n- GET /1/object/usergroupexternal/getList\r\n- GET /1/object/usergroupexternal/{pkiUsergroupexternalID}/getMembers\r\n- GET /1/object/usergroupexternal/{pkiUsergroupexternalID}/getUsergroups\r\n- GET /2/module/location/{sLocationPlaceid}\r\n- GET /2/object/country/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsigntemplateglobal/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsigntemplateglobal/{pkiEzsigntemplateglobalID}\r\n- GET /2/object/module/getAutocomplete/{sSelector}\r\n- GET /2/object/province/getAutocomplete/{sSelector}\r\n- GET /2/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- GET /2/object/usergroupexternal/getAutocomplete/{sSelector}\r\n- GET /2/object/usergroupexternal/{pkiUsergroupexternalID}\r\n- PATCH /1/object/discussion/{pkiDiscussionID}\r\n- PATCH /1/object/discussionmessage/{pkiDiscussionmessageID}\r\n- POST /1/object/discussion\r\n- POST /1/object/discussion/{pkiDiscussionID}/updateDiscussionreadstatus\r\n- POST /1/object/discussionmembership\r\n- POST /1/object/discussionmessage\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplateglobal\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/endPrematurely\r\n- POST /1/object/ezsignfolder{pkiEzsignfolderID}/reassign\r\n- POST /1/object/ezsignsigningreason\r\n- POST /1/object/user/{pkiUserID}/sendPasswordReset\r\n- POST /1/object/usergroup/{pkiUsergroupID}/editUsergroupdelegations\r\n- POST /1/object/usergroupdelegation\r\n- POST /1/object/usergroupexternal\r\n- POST /1/object/webhook/{pkiWebhookID}/regenerateApikey\r\n- POST /2/object/ezsignfoldertype\r\n- POST /2/object/webhook\r\n- PUT /1/object/ezsignsigningreason/{pkiEzsignsigningreasonID}\r\n- PUT /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- PUT /1/object/usergroupexternal/{pkiUsergroupexternalID}\r\n- PUT /2/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\r\n- Avanced search filters sContactFirstname, sContactLastname and sEzsigndocumentName to Ezsignfolder list\r\n- New error code 413 Content too large\r\n- Property a_objEzsignelementdependency in ezsignformfield-RequestCompound, ezsignformfield-ResponseCompound, ezsignsignature-RequestCompound and ezsignsignature-RequestCompound\r\n- Property a_objEzsigntemplateelementdependency in ezsigntemplateformfield-RequestCompound, ezsigntemplateformfield-ResponseCompound, ezsigntemplatesignature-RequestCompound and ezsigntemplatesignature-RequestCompound\r\n- Property a_objEzsigntemplateglobal in ezsign-suggestTemplates-v1-Response-mPayload\r\n- Property a_objWarning in ezsigndocument-applyEzsigntemplate-v2-Response\r\n- Property bEzsignfoldertypeAllowdownloadattachmentezsignsigner in Custom-Ezsignfoldertype-Response, ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeAllowdownloadattachmentezsignsigner in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeAllowdownloadproofezsignsigner in Custom-Ezsignfoldertype-Response, ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeAllowdownloadproofezsignsigner in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeDelegate in Custom-Ezsignfoldertype-Response, ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeReassignezsignsigner in Custom-Ezsignfoldertype-Response ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeReassignuser in Custom-Ezsignfoldertype-Response ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendattachmentezsignsigner in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendattachmentuser in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendproofemail in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendproofezsignsigner in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendproofreceivealldocument in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendproofuser in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendsignedtoezsignsigner in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendsignedtouser in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignformHasdependencies in ezsignfolder-ListElement\r\n- Property bEzsignformfieldAutocomplete in ezsignformfield-Request and ezsignformfield-Response\r\n- Property bEzsigntemplateformfieldAutocomplete in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response\r\n- Property bPhoneInternational in phone-ResponseCompound\r\n- Property bVersionDeprecated in Common-Response-objDebugPayload\r\n- Property dEzsignfolderCompletedpercentage in ezsignfolder-ListElement\r\n- Property dtEzsignfolderDelayedsenddate in ezsignfolder-ListElement\r\n- Property dtUserEzsignprepaidexpiration in activesession-ResponseCompound\r\n- Property dtUserEzsignprepaidexpiration in activesession-ResponseCompound\r\n- Property eBrandingLogointerface in branding-Request and branding-Response\r\n- Property eEzsigndocumentSteptype in ezsigndocument-ResponseCompound\r\n- Property eEzsignfolderCompletion in ezsignfolder-Response\r\n- Property eEzsignfoldertypeCompletion in ezsignfoldertype-Response and ezsignfoldertype-Response\r\n- Property eEzsignformfieldDependencyrequirement in object ezsignformfield-Request and ezsignformfield-Response\r\n- Property eEzsignformfieldDependencyrequirement in object ezsignformfield-Request and ezsignformfield-Response\r\n- Property eEzsignformfieldgroupTextvalidation in ezsignformfieldgroup-Response\r\n- Property eEzsignformfieldgroupTextvalidation in ezsignformfieldgroup-Response\r\n- Property eEzsignsignatureDependencyrequirement in ezsignsignature-Request and ezsignsignature-Response\r\n- Property eEzsigntemplateformfieldDependencyrequirement in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response \r\n- Property eEzsigntemplateformfieldDependencyrequirement in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response \r\n- Property eEzsigntemplateformfieldPositioning in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response\r\n- Property eEzsigntemplateformfieldPositioningoccurence in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response\r\n- Property eEzsigntemplateformfieldgroupTextvalidation in ezsigntemplateformfieldgroup-Request and ezsigntemplateformfieldgroup-Response\r\n- Property eEzsigntemplatesignatureDependencyrequirement in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response \r\n- Property eEzsigntemplatesignaturePositioning in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property eEzsigntemplatesignaturePositioningoccurence in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property eEzsigntemplatesignatureTextvalidation in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property eUserEzsignaccess in activesession-ResponseCompound\r\n- Property eUserEzsignprepaid in activesession-ResponseCompound\r\n- Property fkiBillingentityinternalID in Custom-EzmaxinvoicingEzsigndocument-Response and Custom-EzmaxinvoicingEzsignfolder-Response\r\n- Property fkiEzsignsigningreasonID in ezsignsignature-sign-v1-Request\r\n- Property iBrandingInterfacecolor in branding-Request and branding-Response\r\n- Property iCommunicationattachmentSize in communicationattachment-Response\r\n- Property iEzsignformfieldgroup in ezsignfolder-ListElement\r\n- Property iEzsignformfieldgroupCompleted in ezsignfolder-ListElement\r\n- Property iEzsignsignatureMaxlength in ezsignsignature-Request and ezsignsignature-Response\r\n- Property iEzsignsignatureStep in ezsignsignature-Response\r\n- Property iEzsignsignaturecustomdateOffsetx in ezsignsignaturecustomdate-Request and ezsignsignaturecustomdate-Response\r\n- Property iEzsignsignaturecustomdateOffsety in ezsignsignaturecustomdate-Request and ezsignsignaturecustomdate-Response\r\n- Property iEzsigntemplateformfieldPositioningoffsetx in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response\r\n- Property iEzsigntemplateformfieldPositioningoffsety in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response\r\n- Property iEzsigntemplatesignatureHeight in object ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property iEzsigntemplatesignatureMaxlength in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property iEzsigntemplatesignaturePositioningoffsetx in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property iEzsigntemplatesignaturePositioningoffsety in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property iEzsigntemplatesignatureWidth in object ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property iEzsigntemplatesignaturecustomdateOffsetx in ezsigntemplatesignaturecustomdate-Request and ezsigntemplatesignaturecustomdate-Response\r\n- Property iEzsigntemplatesignaturecustomdateOffsety in ezsigntemplatesignaturecustomdate-Request and ezsigntemplatesignaturecustomdate-Response\r\n- Property objContactNameDelegation in ezCustom-Ezsignfoldertype-Responsesignsignature-Response\r\n- Property objEzsignfoldertype in ezsignfolder-Response\r\n- Property sBrandingLogointerfaceBase64 in branding-Request\r\n- Property sBrandingLogointerfaceurl in branding-ResponseCompound\r\n- Property sEzsigntemplateFilenamepattern in ezsigntemplate-Request and ezsigntemplate-Response\r\n- Property sEzsigntemplateformfieldPositioningpattern in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response\r\n- Property sEzsigntemplatesignaturePositioningpattern in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property sEzsigntemplatesignatureRegexp in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property sUserJobtitle in user-Request, user-Response and user-ListElement\r\n- Property sUsergroupNameX in usergroup-Response\r\n- Value AgentBrokerEzsignUserNormal for sSelector in GET /2/object/user/getAutocomplete/{sSelector}\r\n- Value AllButEveryone for sSelector in GET /2/object/usergroup/getAutocomplete/{sSelector}\r\n- Value Consultation for eEzsignsignatureType and eEzsigntemplatesignatureType\r\n- Value Discard in eEzsigndocumentForm and eEzsigntemplatedocumentForm\r\n- Value EzsignTemplateEdit in sSelector for /object/ezsignfoldertype/getAutocomplete\r\n- Value NameReason for eEzsignsignatureType\r\n- Value NameReason for eEzsigntemplatesignatureType\r\n- Value PendingCompletion for eEzsigndocumentStep\r\n- Value fkiUserID for sFilter in GET /1/object/ezsignfolder/getList\r\n- Values Number, Date in Field-eEzsignformfieldgroupType and Field-eEzsigntemplateformfieldgroupType\r\n- Values DocumentFormCompleted, DocumentUnsent, FolderDisposed, FolderSent, FolderUnsent and SignatureSigned for eWebhookEzsignevent\r\n- New 401 error code UNAUTHORIZED_REQUEST_APIKEY\r\n- New 401 error code UNAUTHORIZED_REQUEST_PRESIGNED \r\n- New 422 error code UNPROCESSABLEENTITY_EZSIGNSIGNATURE_SIGNED \r\n- New Authorization key starting with \"W\" for webhooks\r\n- New iso environment for isolated customers \r\n- Webhook Document Form Completed\r\n- Webhook Document Unsent\r\n- Webhook Folder Disposed\r\n- Webhook Folder Sent\r\n- Webhook Folder Unsent\r\n- Webhook Signature Signed\r\n- Webhook Request signing\r\n- Webhook User-Agent\r\n\r\n#### Remove\r\n- Property bEzsignfoldertypeIncludeproofsigner in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeIncludeproofuser in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendattatchmentsigner in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendsignedtolimitedgroup in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n\r\n#### Deprecated\r\n- POST /1/object/ezsignfoldersignerassociation/reassign\r\n- POST /1/object/webhook\r\n- Property iEzsigntemplatesignaturecustomdateX\r\n- Property iEzsigntemplatesignaturecustomdateY\r\n- Property eEzsignformfieldgroupSignerrequirement\r\n- Property eEzsigntemplateformfieldgroupSignerrequirement\r\n \r\n#### Deleted from documentation\r\n- GET /1/object/ezmaxinvoicing/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\r\n- GET /1/object/franchisebroker/getAutocomplete/{sSelector}\r\n- GET /1/object/period/getAutocomplete/{sSelector}\r\n- POST /1/object/activesession/answerSecretquestion\r\n- POST /1/object/ezsignfoldersignerassociation/reassign\r\n- POST /1/object/ezsignfoldertype\r\n- POST /1/object/franchisereferalincome\r\n- POST /1/object/webhook\r\n- POST /2/object/ezsignfolder/{pkiEzsignfolderID}/send\r\n\r\n\r\n## Older Releases\r\nDocumentation and changelog for older releases can be found here\r\n- [1.1.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.1.html)\r\n- [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)",
+            "description": "All notable changes to this project will be documented in this section.\r\n\r\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.23\r\n\r\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\r\n\r\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\r\n\r\n**PATCH** will be incremented everytime changes and additions are released.\r\n\r\nFor each version, there will be the list of changes:\r\n* **Added** for new features.\r\n* **Changed** for changes in existing functionality.\r\n* **Deprecated** for soon-to-be removed features.\r\n* **Removed** for now removed features.\r\n* **Fixed** for any bug fixes.\r\n* **Security** in case of vulnerabilities.\r\n\r\n**Removal lifecycle**<br>\r\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\r\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\r\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\r\n\r\n## 1.2.X Releases\r\n\r\n### [1.2.0] - 2024-04-14\r\n\r\n#### Added\r\n- DELETE /1/object/creditcardclient/{pkiCreditcardclientID}\r\n- DELETE /1/object/discussion/{pkiDiscussionID}\r\n- DELETE /1/object/discussionmembership/{pkiDiscussionmembershipID}\r\n- DELETE /1/object/discussionmessage/{pkiDiscussionmessageID}\r\n- DELETE /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- DELETE /1/object/usergroupexternal/{pkiUsergroupexternalID}\r\n- GET /1/module/location/search\r\n- GET /1/object/activesession/getDocumentationUrl\r\n- GET /1/object/attachment/{pkiAttachmentID}/download\r\n- GET /1/object/attachment/{pkiAttachmentID}/getAttachmentlogs\r\n- GET /1/object/buyercontract/{pkiBuyercontractID}/getCommunicationList\r\n- GET /1/object/creditcardclient/getList\r\n- GET /1/object/discussion/{pkiDiscussionID}\r\n- GET /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/getCommunicationList\r\n- GET /1/object/ezsigndiscussion/{pkiEzsigndiscussionID}\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getAttachments\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsigndocumentdiscussions\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getAttachmentCount\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getAttachments\r\n- GET /1/object/ezsignsigningreason/getAutocomplete\r\n- GET /1/object/ezsignsigningreason/getList\r\n- GET /1/object/ezsignsigningreason/{pkiEzsignsigningreasonID}\r\n- GET /1/object/inscription/{pkiInscriptionID}/getAttachments\r\n- GET /1/object/inscription/{pkiInscriptionID}/getCommunicationList\r\n- GET /1/object/inscription/{pkiInscriptionID}/getCommunicationsenders\r\n- GET /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/getCommunicationList\r\n- GET /1/object/inscriptiontemp/{pkiInscriptiontempID}/getCommunicationList\r\n- GET /1/object/invoice/{pkiInvoiceID}/getAttachments\r\n- GET /1/object/invoice/{pkiInvoiceID}/getCommunicationList\r\n- GET /1/object/otherincome/{pkiOtherincomeID}/getCommunicationList\r\n- GET /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/getCommunicationList\r\n- GET /1/object/user/{pkiUserID}/getApikeys\r\n- GET /1/object/user/{pkiUserID}/getUsergroupexternals\r\n- GET /1/object/user/{pkiUserID}/getUsergroups\r\n- GET /1/object/usergroup/{pkiUsergroupID}/getUsergroupdelegations\r\n- GET /1/object/usergroupexternal/getList\r\n- GET /1/object/usergroupexternal/{pkiUsergroupexternalID}/getMembers\r\n- GET /1/object/usergroupexternal/{pkiUsergroupexternalID}/getUsergroups\r\n- GET /2/module/location/{sLocationPlaceid}\r\n- GET /2/object/country/getAutocomplete/{sSelector}\r\n- GET /2/object/creditcardclient/getAutocomplete/{sSelector}\r\n- GET /2/object/creditcardclient/{pkiCreditcardclientID}\r\n- GET /2/object/ezsigntemplateglobal/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsigntemplateglobal/{pkiEzsigntemplateglobalID}\r\n- GET /2/object/module/getAutocomplete/{sSelector}\r\n- GET /2/object/province/getAutocomplete/{sSelector}\r\n- GET /2/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- GET /2/object/usergroupexternal/getAutocomplete/{sSelector}\r\n- GET /2/object/usergroupexternal/{pkiUsergroupexternalID}\r\n- PATCH /1/object/discussion/{pkiDiscussionID}\r\n- PATCH /1/object/discussionmessage/{pkiDiscussionmessageID}\r\n- POST /1/object/creditcardclient\r\n- POST /1/object/discussion\r\n- POST /1/object/discussion/{pkiDiscussionID}/updateDiscussionreadstatus\r\n- POST /1/object/discussionmembership\r\n- POST /1/object/discussionmessage\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplateglobal\r\n- POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/endPrematurely\r\n- POST /1/object/ezsignfolder{pkiEzsignfolderID}/reassign\r\n- POST /1/object/ezsignsigningreason\r\n- POST /1/object/user/{pkiUserID}/sendPasswordReset\r\n- POST /1/object/usergroup/{pkiUsergroupID}/editUsergroupdelegations\r\n- POST /1/object/usergroupdelegation\r\n- POST /1/object/usergroupexternal\r\n- POST /1/object/webhook/{pkiWebhookID}/regenerateApikey\r\n- POST /2/object/ezsignfoldertype\r\n- POST /2/object/webhook\r\n- PUT /1/object/creditcardclient/{pkiCreditcardclientID}\r\n- PUT /1/object/ezsignsigningreason/{pkiEzsignsigningreasonID}\r\n- PUT /1/object/usergroupdelegation/{pkiUsergroupdelegationID}\r\n- PUT /1/object/usergroupexternal/{pkiUsergroupexternalID}\r\n- PUT /2/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\r\n- Avanced search filters sContactFirstname, sContactLastname and sEzsigndocumentName to Ezsignfolder list\r\n- New error code 413 Content too large\r\n- Property a_objEzsignelementdependency in ezsignformfield-RequestCompound, ezsignformfield-ResponseCompound, ezsignsignature-RequestCompound and ezsignsignature-RequestCompound\r\n- Property a_objEzsigntemplateelementdependency in ezsigntemplateformfield-RequestCompound, ezsigntemplateformfield-ResponseCompound, ezsigntemplatesignature-RequestCompound and ezsigntemplatesignature-RequestCompound\r\n- Property a_objEzsigntemplateglobal in ezsign-suggestTemplates-v1-Response-mPayload\r\n- Property a_objWarning in ezsigndocument-applyEzsigntemplate-v2-Response\r\n- Property bEzsignfoldersignerassociationAllowsigninginperson in ezsignfoldersignerassociation-Response\r\n- Property bEzsignfoldertypeAllowdownloadattachmentezsignsigner in Custom-Ezsignfoldertype-Response, ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeAllowdownloadattachmentezsignsigner in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeAllowdownloadproofezsignsigner in Custom-Ezsignfoldertype-Response, ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeAllowdownloadproofezsignsigner in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeDelegate in Custom-Ezsignfoldertype-Response, ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeReassignezsignsigner in Custom-Ezsignfoldertype-Response ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeReassignuser in Custom-Ezsignfoldertype-Response ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendattachmentezsignsigner in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendattachmentuser in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendproofemail in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendproofezsignsigner in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendproofreceivealldocument in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendproofuser in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendsignedtoezsignsigner in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendsignedtouser in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignformHasdependencies in ezsignfolder-ListElement\r\n- Property bEzsignformfieldAutocomplete in ezsignformfield-Request and ezsignformfield-Response\r\n- Property bEzsigntemplateformfieldAutocomplete in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response\r\n- Property bPhoneInternational in phone-ResponseCompound\r\n- Property bVersionDeprecated in Common-Response-objDebugPayload\r\n- Property dEzsignfolderCompletedpercentage in ezsignfolder-ListElement\r\n- Property dtEzsignfolderDelayedsenddate in ezsignfolder-ListElement\r\n- Property dtResponseDate in Common-Response-objDebugPayload\r\n- Property dtUserEzsignprepaidexpiration in activesession-ResponseCompound\r\n- Property dtUserEzsignprepaidexpiration in activesession-ResponseCompound\r\n- Property eBrandingLogointerface in branding-Request and branding-Response\r\n- Property eEzsigndocumentSteptype in ezsigndocument-ResponseCompound\r\n- Property eEzsignfolderCompletion in ezsignfolder-Response\r\n- Property eEzsignfoldertypeCompletion in ezsignfoldertype-Response and ezsignfoldertype-Response\r\n- Property eEzsignformfieldDependencyrequirement in object ezsignformfield-Request and ezsignformfield-Response\r\n- Property eEzsignformfieldDependencyrequirement in object ezsignformfield-Request and ezsignformfield-Response\r\n- Property eEzsignformfieldgroupTextvalidation in ezsignformfieldgroup-Response\r\n- Property eEzsignformfieldgroupTextvalidation in ezsignformfieldgroup-Response\r\n- Property eEzsignsignatureDependencyrequirement in ezsignsignature-Request and ezsignsignature-Response\r\n- Property eEzsigntemplateformfieldDependencyrequirement in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response \r\n- Property eEzsigntemplateformfieldDependencyrequirement in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response \r\n- Property eEzsigntemplateformfieldPositioning in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response\r\n- Property eEzsigntemplateformfieldPositioningoccurence in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response\r\n- Property eEzsigntemplateformfieldgroupTextvalidation in ezsigntemplateformfieldgroup-Request and ezsigntemplateformfieldgroup-Response\r\n- Property eEzsigntemplatesignatureDependencyrequirement in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response \r\n- Property eEzsigntemplatesignaturePositioning in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property eEzsigntemplatesignaturePositioningoccurence in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property eEzsigntemplatesignatureTextvalidation in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property eUserEzsignaccess in activesession-ResponseCompound\r\n- Property eUserEzsignprepaid in activesession-ResponseCompound\r\n- Property fkiBillingentityinternalID in Custom-EzmaxinvoicingEzsigndocument-Response and Custom-EzmaxinvoicingEzsignfolder-Response\r\n- Property fkiEzsignsigningreasonID in ezsignsignature-sign-v1-Request\r\n- Property iBrandingInterfacecolor in branding-Request and branding-Response\r\n- Property iCommunicationattachmentSize in communicationattachment-Response\r\n- Property iEzsignformfieldgroup in ezsignfolder-ListElement\r\n- Property iEzsignformfieldgroupCompleted in ezsignfolder-ListElement\r\n- Property iEzsignsignatureMaxlength in ezsignsignature-Request and ezsignsignature-Response\r\n- Property iEzsignsignatureStep in ezsignsignature-Response\r\n- Property iEzsignsignaturecustomdateOffsetx in ezsignsignaturecustomdate-Request and ezsignsignaturecustomdate-Response\r\n- Property iEzsignsignaturecustomdateOffsety in ezsignsignaturecustomdate-Request and ezsignsignaturecustomdate-Response\r\n- Property iEzsigntemplateformfieldPositioningoffsetx in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response\r\n- Property iEzsigntemplateformfieldPositioningoffsety in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response\r\n- Property iEzsigntemplatesignatureHeight in object ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property iEzsigntemplatesignatureMaxlength in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property iEzsigntemplatesignaturePositioningoffsetx in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property iEzsigntemplatesignaturePositioningoffsety in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property iEzsigntemplatesignatureWidth in object ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property iEzsigntemplatesignaturecustomdateOffsetx in ezsigntemplatesignaturecustomdate-Request and ezsigntemplatesignaturecustomdate-Response\r\n- Property iEzsigntemplatesignaturecustomdateOffsety in ezsigntemplatesignaturecustomdate-Request and ezsigntemplatesignaturecustomdate-Response\r\n- Property objContactNameDelegation in ezCustom-Ezsignfoldertype-Responsesignsignature-Response\r\n- Property objEzsignfoldertype in ezsignfolder-Response\r\n- Property sBrandingLogointerfaceBase64 in branding-Request\r\n- Property sBrandingLogointerfaceurl in branding-ResponseCompound\r\n- Property sEzsigntemplateFilenamepattern in ezsigntemplate-Request and ezsigntemplate-Response\r\n- Property sEzsigntemplateformfieldPositioningpattern in ezsigntemplateformfield-Request and ezsigntemplateformfield-Response\r\n- Property sEzsigntemplatesignaturePositioningpattern in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property sEzsigntemplatesignatureRegexp in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property sUserJobtitle in user-Request, user-Response and user-ListElement\r\n- Property sUsergroupNameX in usergroup-Response\r\n- Value AgentBrokerEzsignUserNormal for sSelector in GET /2/object/user/getAutocomplete/{sSelector}\r\n- Value AllButEveryone for sSelector in GET /2/object/usergroup/getAutocomplete/{sSelector}\r\n- Value Consultation for eEzsignsignatureType and eEzsigntemplatesignatureType\r\n- Value Discard in eEzsigndocumentForm and eEzsigntemplatedocumentForm\r\n- Value EzsignTemplateEdit in sSelector for /object/ezsignfoldertype/getAutocomplete\r\n- Value NameReason for eEzsignsignatureType\r\n- Value NameReason for eEzsigntemplatesignatureType\r\n- Value PendingCompletion for eEzsigndocumentStep\r\n- Value fkiUserID for sFilter in GET /1/object/ezsignfolder/getList\r\n- Values Number, Date in Field-eEzsignformfieldgroupType and Field-eEzsigntemplateformfieldgroupType\r\n- Values DocumentFormCompleted, DocumentUnsent, FolderDisposed, FolderSent, FolderUnsent and SignatureSigned for eWebhookEzsignevent\r\n- New 401 error code UNAUTHORIZED_REQUEST_APIKEY\r\n- New 401 error code UNAUTHORIZED_REQUEST_PRESIGNED \r\n- New 422 error code UNPROCESSABLEENTITY_EZSIGNSIGNATURE_SIGNED \r\n- New Authorization key starting with \"W\" for webhooks\r\n- New iso environment for isolated customers \r\n- Webhook Document Form Completed\r\n- Webhook Document Unsent\r\n- Webhook Folder Disposed\r\n- Webhook Folder Sent\r\n- Webhook Folder Unsent\r\n- Webhook Signature Signed\r\n- Webhook Request signing\r\n- Webhook User-Agent\r\n- Support for PowerAutomate flows\r\n- Support for Salesforce flows\r\n\r\n#### Remove\r\n- GET /1/object/ezmaxinvoicing/getAutocomplete/{sSelector}\r\n- GET /1/object/ezsignfoldertype/getAutocomplete/{sSelector}\r\n- GET /1/object/franchisebroker/getAutocomplete/{sSelector}\r\n- GET /1/object/period/getAutocomplete/{sSelector}\r\n- POST /1/object/activesession/answerSecretquestion\r\n- POST /1/object/ezsignfoldersignerassociation/reassign\r\n- POST /1/object/ezsignfoldertype\r\n- POST /1/object/franchisereferalincome\r\n- POST /1/object/webhook\r\n- POST /2/object/ezsignfolder/{pkiEzsignfolderID}/send\r\n- Property bEzsignfoldertypeIncludeproofsigner in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeIncludeproofuser in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendattatchmentsigner in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Property bEzsignfoldertypeSendsignedtolimitedgroup in ezsignfoldertype-Request and ezsignfoldertype-Response\r\n- Support for eZmax-SDK-apex as we are moving to Salesforce flows\r\n- Support for eZmax-SDK-javascript please use eZmax-SDK-typescript-axios instead\r\n\r\n#### Deprecated\r\n- POST /1/object/ezsignfoldersignerassociation/reassign\r\n- POST /1/object/webhook\r\n- Property iEzsigntemplatesignaturecustomdateX\r\n- Property iEzsigntemplatesignaturecustomdateY\r\n- Property eEzsignformfieldgroupSignerrequirement\r\n- Property eEzsigntemplateformfieldgroupSignerrequirement\r\n \r\n## Older Releases\r\nDocumentation and changelog for older releases can be found here\r\n- [1.1.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.1.html)\r\n- [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)",
             "x-displayName": "Changelog"
         },
         {
@@ -48795,12 +49858,12 @@
         },
         {
             "name": "General_ErrorCodes",
-            "description": "When the API returns an HTTP status code in the range 400-599, a JSON object will be returned with 2 properties:\r\n- eErrorCode\r\n- sErrorMessage\r\n\r\nWe highly suggest you use **eErrorCode** to do any error validation logic in your code or to create your own error message for your users. **sErrorMessage** has more detail for a human to read, but is intended for the developper and is always returned in English.\r\n\r\nHere is the complete list of **eErrorCode** you could receive for each HTTP status code and examples of situations where they could be returned.\r\n\r\n### HTTP 400 (Bad Request)\r\n| eErrorCode           | Examples                                                                       |\r\n| -------------------- | ------------------------------------------------------------------------------ |\r\n| BADREQUEST           | Unserializable JSON, invalid parameter, invalid signature, invalid fingerprint |\r\n| BADREQUEST_CLOCKSKEW | The time on the client computer is wrong                                       |\r\n\r\n### HTTP 401 (Unauthorized)\r\n| eErrorCode           | Examples                                                           |\r\n| -------------------- | ------------------------------------------------------------------ |\r\n| UNAUTHORIZED_BADAUTH | Invalid credentials during Authentication                          |\r\n| UNAUTHORIZED_BADMFA  | Invalid response to the MFA challenge                              |\r\n| UNAUTHORIZED_EXPIRED | Credentials have expired                                           |\r\n| UNAUTHORIZED_REQUEST | The request is invalid (bad ip source, fingerprint, signature, etc)|\r\n| UNAUTHORIZED_REQUEST_APIKEY | The API Key is invalid                                      |\r\n| UNAUTHORIZED_REQUEST_PRESIGNED | The presigned URL is invalid                             |\r\n\r\n### HTTP 403 (Forbidden)\r\n| eErrorCode                     | Examples                                            |\r\n| ------------------------------ | --------------------------------------------------- |\r\n| FORBIDDEN                      | Generic Forbidden                                   |\r\n| FORBIDDEN_CONFIGURATION        | A configured setting prevent access to the element  |\r\n| FORBIDDEN_MODULE               | Module is not activated                             |\r\n| FORBIDDEN_NOACCESS             | Not allowed to access the element                   |\r\n| FORBIDDEN_PERMISSION           | Missing a permission to access the route            |\r\n| FORBIDDEN_SUBSCRIPTION         | Your plan does not allow access to this feature     |\r\n| FORBIDDEN_USERTYPE             | This type of User is forbidden for the route        |\r\n| FORBIDDEN_USER_ORIGIN_EXTERNAL | Can't modify user informations.                     |\r\n\r\n### HTTP 404 (Not Found)\r\n| eErrorCode      | Examples                                    |\r\n| --------------- | ------------------------------------------- |\r\n| NOTFOUND        | Generic not found                           |\r\n| NOTFOUND_OBJECT | Object does not exist in database           |\r\n| NOTFOUND_ROUTE  | The route does not exist (url, API version) |\r\n\r\n### HTTP 405 (Method Not Allowed)\r\n| eErrorCode       | Examples                                                                      |\r\n| ---------------- | ----------------------------------------------------------------------------- |\r\n| METHODNOTALLOWED | The route is valid but the method is not allowed ex: POST on a GET only route |\r\n\r\n### HTTP 406 (Not Acceptable)\r\n| eErrorCode             | Examples                                                                                      |\r\n| ---------------------- | --------------------------------------------------------------------------------------------- |\r\n| NOTACCEPTABLE_CONTENT  | The route is valid but the Accept header is not allowed ex: \"application/json\" vs \"image/png\" |\r\n| NOTACCEPTABLE_LANGUAGE | The route is valid but the Accept-Language header is not allowed ex: \"en\" vs \"es\"             |\r\n\r\n### HTTP 413 (Content Too Large)\r\n| eErrorCode             | Examples                                                                                      |\r\n| ---------------------- | --------------------------------------------------------------------------------------------- |\r\n| CONTENT_TOO_LARGE      | The content of the request is too large                                                       |\r\n\r\n### HTTP 422 (Unprocessable entity)\r\n| eErrorCode                             | Examples                                                               |\r\n| -------------------------------------- | ---------------------------------------------------------------------- |\r\n| UNPROCESSABLEENTITY_ACTIVESESSION_ALREADY_CLONING | The user is already cloning another user                    |\r\n| UNPROCESSABLEENTITY_CANNOTDELETE       | The element cannot be deleted                                          |\r\n| UNPROCESSABLEENTITY_CANNOTMODIFY       | The element cannot be modified                                         |\r\n| UNPROCESSABLEENTITY_CHANGEPASSWORD_INVALID_CURRENT   | The old password supplied does not match the user's current password |\r\n| UNPROCESSABLEENTITY_CHANGEPASSWORD_SAME    | The new password is the same as the old password |\r\n| UNPROCESSABLEENTITY_DATA_MISSING       | Some data is missing                                                   |\r\n| UNPROCESSABLEENTITY_DATA_UNIQUE        | The data fails unique check : value exist in other element             |\r\n| UNPROCESSABLEENTITY_DATA_VALIDATION    | The data fails some validation                                         |\r\n| UNPROCESSABLEENTITY_DATA_OUTOFBOUND    | The data contains a value that is out of bound                         |\r\n| UNPROCESSABLEENTITY_DOWNLOAD_ERROR     | We cannot retrieve ressource at supplied url                           |\r\n| UNPROCESSABLEENTITY_EZSIGNFORM_VALIDATION     | The validation of the Ezsignform returned some errors                           |\r\n| UNPROCESSABLEENTITY_EZSIGNELEMENTDEPENDENCY_LOOP | We detected a loop in the Ezsignelementdependcy              |\r\n| UNPROCESSABLEENTITY_EZSIGNELEMENTDEPENDENCY_MISSINGEZSIGNTEMPLATESIGNERREFERENCE | An Ezsignelementdependency has an Ezsigntemplatesigner not assigned |\r\n| UNPROCESSABLEENTITY_EZSIGNSIGNATURE_SIGNED | The Ezsignsignature is already signed |\r\n| UNPROCESSABLEENTITY_EZSIGNSIGNERCONNECTED    | The Ezsignsigner is connected                                    |\r\n| UNPROCESSABLEENTITY_NOTHINGTODO        | The request was valid, but no action was necessary                     |\r\n| UNPROCESSABLEENTITY_NOTREADY           | The element is not in a state that allows the action (Sending a document without signature, downloading an unsigned document) |\r\n| UNPROCESSABLEENTITY_PDF_FORM           | The pdf document contains a form                                       |\r\n| UNPROCESSABLEENTITY_PDF_SIGNATURE      | The pdf document contains a signature(s)                               |\r\n| UNPROCESSABLEENTITY_PDF_FORM_AND_SIGNATURE | The pdf document contains a form and signature(s)                  |\r\n| UNPROCESSABLEENTITY_PDF_INCOMPATIBLE   | The pdf document cannot be signed                                      |\r\n| UNPROCESSABLEENTITY_PDF_PASSWORD       | The pdf document contains a password and cannot be signed              |\r\n| UNPROCESSABLEENTITY_PDF_WRONG_PASSWORD | The password cannot open the pdf document since it's incorrect         |\r\n| UNPROCESSABLEENTITY_PDF_REPAIRABLE     | The pdf document contains errors and can be repaired                   |\r\n| UNPROCESSABLEENTITY_PDF_XFA            | The pdf document contains XFA form and cannot be signed                |\r\n| UNPROCESSABLEENTITY_TEMPLATE_MISMATCH  | The number of pages between the document and the template do not match |\r\n| UNPROCESSABLEENTITY_UNMODIFIABLE_FIELD | The field is not modifiable in the current state                       |\r\n| UNPROCESSABLEENTITY_USER_STAGED        | The user can't connect since it's currently staged                      |\r\n\r\n### HTTP 429 (Too Many Requests)\r\n| eErrorCode                             | Examples                                                               |\r\n| -------------------------------------- | ---------------------------------------------------------------------- |\r\n| TOOMANYREQUESTS                        | The client reached the maximum number of requests allowed in the specific time |\r\n| TOOMANYREQUESTS_THIRDPARTY             | Our server encountered a 'Too Many Requests' error from a third party |\r\n\r\n### HTTP 500 (Internal Server Error)\r\n| eErrorCode     | Examples                  |\r\n| -------------- | ------------------------- |\r\n| ERROR_INTERNAL | Unhandled error on server |\r\n| ERROR_CONFIGURATION | A parameter on the server is not configured properly |\r\n\r\n### HTTP 501 (Not Implemented)\r\n| eErrorCode           | Examples                                                 |\r\n| -------------------- | -------------------------------------------------------- |\r\n| ERROR_NOTIMPLEMENTED | Endpoint not yet available in your region or environment |",
+            "description": "When the API returns an HTTP status code in the range 400-599, a JSON object will be returned with 2 properties:\r\n- eErrorCode\r\n- sErrorMessage\r\n\r\nWe highly suggest you use **eErrorCode** to do any error validation logic in your code or to create your own error message for your users. **sErrorMessage** has more detail for a human to read, but is intended for the developper and is always returned in English.\r\n\r\nHere is the complete list of **eErrorCode** you could receive for each HTTP status code and examples of situations where they could be returned.\r\n\r\n### HTTP 400 (Bad Request)\r\n| eErrorCode           | Examples                                                                       |\r\n| -------------------- | ------------------------------------------------------------------------------ |\r\n| BADREQUEST           | Unserializable JSON, invalid parameter, invalid signature, invalid fingerprint |\r\n| BADREQUEST_CLOCKSKEW | The time on the client computer is wrong                                       |\r\n\r\n### HTTP 401 (Unauthorized)\r\n| eErrorCode           | Examples                                                           |\r\n| -------------------- | ------------------------------------------------------------------ |\r\n| UNAUTHORIZED_BADAUTH | Invalid credentials during Authentication                          |\r\n| UNAUTHORIZED_BADMFA  | Invalid response to the MFA challenge                              |\r\n| UNAUTHORIZED_EXPIRED | Credentials have expired                                           |\r\n| UNAUTHORIZED_REQUEST | The request is invalid (bad ip source, fingerprint, signature, etc)|\r\n| UNAUTHORIZED_REQUEST_APIKEY | The API Key is invalid                                      |\r\n| UNAUTHORIZED_REQUEST_PRESIGNED | The presigned URL is invalid                             |\r\n\r\n### HTTP 403 (Forbidden)\r\n| eErrorCode                            | Examples                                                  |\r\n| ------------------------------------- | --------------------------------------------------------- |\r\n| FORBIDDEN                             | Generic Forbidden                                         |\r\n| FORBIDDEN_CONFIGURATION               | A configured setting prevent access to the element        |\r\n| FORBIDDEN_MODULE                      | Module is not activated                                   |\r\n| FORBIDDEN_NOACCESS                    | Not allowed to access the element                         |\r\n| FORBIDDEN_PERMISSION                  | Missing a permission to access the route                  |\r\n| FORBIDDEN_SUBSCRIPTION                | Your plan does not allow access to this feature           |\r\n| FORBIDDEN_SUBSCRIPTION_EZSIGN_PLAN    | Your Ezsign plan does not allow access to this feature    |\r\n| FORBIDDEN_USERTYPE                    | This type of User is forbidden for the route              |\r\n| FORBIDDEN_USER_ORIGIN_EXTERNAL        | Can't modify user informations.                           |\r\n\r\n### HTTP 404 (Not Found)\r\n| eErrorCode      | Examples                                    |\r\n| --------------- | ------------------------------------------- |\r\n| NOTFOUND        | Generic not found                           |\r\n| NOTFOUND_OBJECT | Object does not exist in database           |\r\n| NOTFOUND_ROUTE  | The route does not exist (url, API version) |\r\n\r\n### HTTP 405 (Method Not Allowed)\r\n| eErrorCode       | Examples                                                                      |\r\n| ---------------- | ----------------------------------------------------------------------------- |\r\n| METHODNOTALLOWED | The route is valid but the method is not allowed ex: POST on a GET only route |\r\n\r\n### HTTP 406 (Not Acceptable)\r\n| eErrorCode             | Examples                                                                                      |\r\n| ---------------------- | --------------------------------------------------------------------------------------------- |\r\n| NOTACCEPTABLE_CONTENT  | The route is valid but the Accept header is not allowed ex: \"application/json\" vs \"image/png\" |\r\n| NOTACCEPTABLE_LANGUAGE | The route is valid but the Accept-Language header is not allowed ex: \"en\" vs \"es\"             |\r\n\r\n### HTTP 413 (Content Too Large)\r\n| eErrorCode             | Examples                                                                                      |\r\n| ---------------------- | --------------------------------------------------------------------------------------------- |\r\n| CONTENT_TOO_LARGE      | The content of the request is too large                                                       |\r\n\r\n### HTTP 422 (Unprocessable entity)\r\n| eErrorCode                             | Examples                                                               |\r\n| -------------------------------------- | ---------------------------------------------------------------------- |\r\n| UNPROCESSABLEENTITY_ACTIVESESSION_ALREADY_CLONING | The user is already cloning another user                    |\r\n| UNPROCESSABLEENTITY_CANNOTDELETE       | The element cannot be deleted                                          |\r\n| UNPROCESSABLEENTITY_CANNOTMODIFY       | The element cannot be modified                                         |\r\n| UNPROCESSABLEENTITY_CHANGEPASSWORD_INVALID_CURRENT   | The old password supplied does not match the user's current password |\r\n| UNPROCESSABLEENTITY_CHANGEPASSWORD_SAME    | The new password is the same as the old password |\r\n| UNPROCESSABLEENTITY_DATA_MISSING       | Some data is missing                                                   |\r\n| UNPROCESSABLEENTITY_DATA_UNIQUE        | The data fails unique check : value exist in other element             |\r\n| UNPROCESSABLEENTITY_DATA_VALIDATION    | The data fails some validation                                         |\r\n| UNPROCESSABLEENTITY_DATA_OUTOFBOUND    | The data contains a value that is out of bound                         |\r\n| UNPROCESSABLEENTITY_DOWNLOAD_ERROR     | We cannot retrieve ressource at supplied url                           |\r\n| UNPROCESSABLEENTITY_EZSIGNFORM_VALIDATION     | The validation of the Ezsignform returned some errors                           |\r\n| UNPROCESSABLEENTITY_EZSIGNELEMENTDEPENDENCY_LOOP | We detected a loop in the Ezsignelementdependcy              |\r\n| UNPROCESSABLEENTITY_EZSIGNELEMENTDEPENDENCY_MISSINGEZSIGNTEMPLATESIGNERREFERENCE | An Ezsignelementdependency has an Ezsigntemplatesigner not assigned |\r\n| UNPROCESSABLEENTITY_EZSIGNSIGNATURE_SIGNED | The Ezsignsignature is already signed |\r\n| UNPROCESSABLEENTITY_EZSIGNSIGNERCONNECTED    | The Ezsignsigner is connected                                    |\r\n| UNPROCESSABLEENTITY_NOTHINGTODO        | The request was valid, but no action was necessary                     |\r\n| UNPROCESSABLEENTITY_NOTREADY           | The element is not in a state that allows the action (Sending a document without signature, downloading an unsigned document) |\r\n| UNPROCESSABLEENTITY_PDF_FORM           | The pdf document contains a form                                       |\r\n| UNPROCESSABLEENTITY_PDF_SIGNATURE      | The pdf document contains a signature(s)                               |\r\n| UNPROCESSABLEENTITY_PDF_FORM_AND_SIGNATURE | The pdf document contains a form and signature(s)                  |\r\n| UNPROCESSABLEENTITY_PDF_INCOMPATIBLE   | The pdf document cannot be signed                                      |\r\n| UNPROCESSABLEENTITY_PDF_PASSWORD       | The pdf document contains a password and cannot be signed              |\r\n| UNPROCESSABLEENTITY_PDF_WRONG_PASSWORD | The password cannot open the pdf document since it's incorrect         |\r\n| UNPROCESSABLEENTITY_PDF_REPAIRABLE     | The pdf document contains errors and can be repaired                   |\r\n| UNPROCESSABLEENTITY_PDF_XFA            | The pdf document contains XFA form and cannot be signed                |\r\n| UNPROCESSABLEENTITY_TEMPLATE_MISMATCH  | The number of pages between the document and the template do not match |\r\n| UNPROCESSABLEENTITY_UNMODIFIABLE_FIELD | The field is not modifiable in the current state                       |\r\n| UNPROCESSABLEENTITY_USER_STAGED        | The user can't connect since it's currently staged                      |\r\n\r\n### HTTP 429 (Too Many Requests)\r\n| eErrorCode                             | Examples                                                               |\r\n| -------------------------------------- | ---------------------------------------------------------------------- |\r\n| TOOMANYREQUESTS                        | The client reached the maximum number of requests allowed in the specific time |\r\n| TOOMANYREQUESTS_THIRDPARTY             | Our server encountered a 'Too Many Requests' error from a third party |\r\n\r\n### HTTP 500 (Internal Server Error)\r\n| eErrorCode     | Examples                  |\r\n| -------------- | ------------------------- |\r\n| ERROR_INTERNAL | Unhandled error on server |\r\n| ERROR_CONFIGURATION | A parameter on the server is not configured properly |\r\n\r\n### HTTP 501 (Not Implemented)\r\n| eErrorCode           | Examples                                                 |\r\n| -------------------- | -------------------------------------------------------- |\r\n| ERROR_NOTIMPLEMENTED | Endpoint not yet available in your region or environment |",
             "x-displayName": "Error Codes"
         },
         {
             "name": "General_Introduction",
-            "description": "We publish everything related to our API on github at this location: <a href=\"https://github.com/eZmaxinc\" target=\"_blank\">https://github.com/eZmaxinc</a>. You'll find git repos for the specification, documentation, SDKs and samples.\n\nDocumentation, SDKs and samples are provided in English only for easier maintenance, but we also have French speaking integrators that can help you out.\n\nMost of our SDKs provide language specific documentation, but you'll find more details on this page about the general use of the API. Both the SDK's specific document (if you choose to use a SDK) and this documentation can be used in complementarity.\n\nIf you find any mistake or omission in the documentation, please notify us. We'll quickly fix the issue.\n\n## Onboarding\nWe highly recommend to schedule an online meeting with your technical team and an eZmax integrator. During this meeting, we go through requirements, business logic, configuration, api key generation, and we go through the list of functions you might need to implement to achieve your goals. Make sure you take this opportunity to speed up your integration project.\n\nIf you need help understanding how to use this API, don't waste too much time searching in it. Contact support-api@ezmax.ca, we're here to help. We are developpers so we know programmers don't like to waste time in documentation. If you don't find what you need in the documentation, let us know, we'll improve it and put you rapidly up on track.\n\n## Open API\nWe highly believe in open standards and open source. We have adopted the Open API vision where all of the functionnalities of our applications are accessible with open source definition files. We use our own public API's to build our interfaces so you can do pretty much everything we can do. Open API has a rich toolset from editor, generators, mock servers, validators, etc. Learn more at <a href=\"https://www.openapis.org/\" target=\"_blank\">OpenAPI Initiative</a>\n\nIf you need  our Open API Spec file to use in your toolset, here is a direct link to it: <a href=\"https://raw.githubusercontent.com/eZmaxinc/eZmax-API/master/specs/ezmax.v1.1.json\" target=\"_blank\">ezmax.v1.1.json</a>\n\n## SDK\nWe provide SDKs for customers. They are generated using <a href=\"https://openapi-generator.tech/\" target=\"_blank\">OpenAPI Generator</a>, we encourage customers to use them as we also provide samples for them. You can choose to build your own implementation manually or can use any compatible OpenAPI 3.0 generator like <a href=\"https://openapi-generator.tech/\" target=\"_blank\">OpenAPI Generator</a>, <a href=\"https://swagger.io/tools/swagger-codegen/\" target=\"_blank\">Swagger Codegen</a> or any commercial generators.\n\nWe try to make it as easy as possible for you to use our SDKs so we publish packages on NPM and Composer. If you don't find your favorite language supported or it we could make your life easier by automating package distribution, let us know !",
+            "description": "We publish everything related to our API on github at this location: <a href=\"https://github.com/eZmaxinc\" target=\"_blank\">https://github.com/eZmaxinc</a>. You'll find git repos for the specification, documentation, SDKs and samples.\n\nDocumentation, SDKs and samples are provided in English only for easier maintenance, but we also have French speaking integrators that can help you out.\n\nIf you find any mistake or omission in the documentation, please notify us. We'll quickly fix the issue.\n\n## Onboarding\nWe highly recommend to schedule an online meeting with your technical team and an eZmax integrator. During this meeting, we go through requirements, business logic, configuration, api key generation, and we go through the list of functions you might need to implement to achieve your goals. Make sure you take this opportunity to speed up your integration project.\n\nIf you need help understanding how to use this API, don't waste too much time searching in it. Contact support-api@ezmax.ca, we're here to help. We are developpers so we know programmers don't like to waste time in documentation. If you don't find what you need in the documentation, let us know, we'll improve it and put you rapidly up on track.\n\n## Open API\nWe highly believe in open standards and open source. We have adopted the Open API vision where all of the functionnalities of our applications are accessible with open source definition files. We use our own public API's to build our interfaces so you can do pretty much everything we can do. Open API has a rich toolset from editor, generators, mock servers, validators, etc. Learn more at <a href=\"https://www.openapis.org/\" target=\"_blank\">OpenAPI Initiative</a>\n\nIf you need our Open API Spec files to use in your toolset, you can find them in the <a href=\"https://github.com/eZmaxinc/eZmax-API/tree/master/specs/\" target=\"_blank\">specs</a> folder.\n\n## SDK\nWe provide SDKs for customers. They are generated using <a href=\"https://openapi-generator.tech/\" target=\"_blank\">OpenAPI Generator</a>, we encourage customers to use them as we also provide samples for them. \n\nMost of our SDKs provide language specific documentation, but you'll find more details on this page about the general use of the API. Both the SDK's specific document (if you choose to use a SDK) and this documentation can be used in complementarity.\n\nWe try to make it as easy as possible for you to use our SDKs so we publish packages on NPM and Composer. If you don't find your favorite language supported or it we could make your life easier by automating package distribution, let us know !\n\n## Custom SDK\nYou can choose to automatically build and personnalize your own SDK by using any compatible OpenAPI 3.0 generator like <a href=\"https://openapi-generator.tech/\" target=\"_blank\">OpenAPI Generator</a>, <a href=\"https://swagger.io/tools/swagger-codegen/\" target=\"_blank\">Swagger Codegen</a> or any commercial generators.\n\nTo do so, you just need to pass the specification file to your generator. You can find the latest version in the <a href=\"https://github.com/eZmaxinc/eZmax-API/tree/master/specs/\" target=\"_blank\">specs</a> folder.\n\n## Automation platforms\nWe are integrated into commercial automation platforms that allow users to create workflows to automate tasks and processes We currently support:\n- <a href=\"https://powerautomate.microsoft.com/\" target=\"_blank\">Microsoft Power Automate</a> which is part of Microsoft Office 365 suite\n- <a href=\"https://www.salesforce.com/flow/\" target=\"_blank\">Salesforce Flow</a>\n\n## Partners integrations\nVarious software vendors have seamlessly integrated our API into their solutions, simplifying the adoption process for their customers by eliminating the need for manual integration efforts.\nIf you're utilizing one of these integrated solutions, feel free to reach out to the respective software vendor to activate the functionality.\n\nBelow is a partial list of these integrations:\n- <a href=\"https://hopem.com/\" target=\"_blank\">Hopem</a>\n- <a href=\"https://pgsolutions.com/\" target=\"_blank\">PG Solutions</a>\n- <a href=\"https://www.planipret.com/\" target=\"_blank\">Planiprêt</a>\n\nContact us if you're interested in being included in this list.\n\n## Making REST Calls\nOccasionally, customers may find themselves utilizing a programming language that lacks support from any generator. Alternatively, some may prefer the straightforwardness of directly calling API endpoints without relying on an SDK. \n\nFortunately, as our API adheres to standard REST principles, you have the freedom to invoke the GET/POST/PUT/PATCH/DELETE methods with appropriate parameters and payloads. Following this approach allows you to handle responses by parsing them manually, offering a flexible and adaptable method for interacting with our services.\n\n## Postman\n<a href=\"https://www.postman.com/\" target=\"_blank\">Postman</a> is a software tool that facilitates API prototyping and debugging. You might find it useful while working with our Api.\n\nIf you want to use it, you can simply use our Postman definition files that you'll find in the <a href=\"https://github.com/eZmaxinc/eZmax-API/tree/master/specs/\" target=\"_blank\">specs</a> folder.\n\n",
             "x-displayName": "Introduction"
         },
         {
@@ -48810,7 +49873,7 @@
         },
         {
             "name": "General_Servers",
-            "description": "## Regional requests\nWhen you send your API requests, you'll need to send them in the proper region and proper environment where your customer data are stored. Based on your requirements (proximity and legislation), we will create your environment in one of our supported region's.\n\nThe general format of the URL where to send requests is:\nhttps://**{sInfrastructureenvironmenttypeDescription}**.api.appcluster01.**{sInfrastructureregionCode}**.ezmax.com/rest/\n\nWhere \"**{sInfrastructureenvironmenttypeDescription}**\" and \"**{sInfrastructureregionCode}**\" need to be replaced with one of the values in the table below.\n\n## Global requests\nSome of the functions needs to be called on the global infrastructure instead of the regional servers. These functions are all located in the **Global** section of the documentation.\n\nThe general format of the URL where to send requests is:\nhttps://**{sInfrastructureenvironmenttypeDescription}**.api.global.ezmax.com/\n\nWhere \"**{sInfrastructureenvironmenttypeDescription}**\" needs to be replaced with one of the values in the tables below.\n\n## Websocket requests\nWhen you send your Websocket requests, you'll need to send them in the proper region and proper environment where your customer data are stored. Based on your requirements (proximity and legislation), we will create your environment in one of our supported region's.\n\nThe general format of the URL where to send requests is:\nwss://ws.**{sInfrastructureregionCode}**.ezmax.com/**{sInfrastructureenvironmenttypeDescription}**/\n\nWhere \"**{sInfrastructureregionCode}**\" and \"**{sInfrastructureenvironmenttypeDescription}**\" need to be replaced with one of the values in the tables below.\n\n## Environments\n\n| sInfrastructureenvironmenttypeDescription | Description       |\n| ----------------------------------------- | ----------------- |\n| iso                                      | Isolated Customers       |\n| prod                                      | Production        |\n| stg                                       | Staging           |\n| qa                                        | Quality Assurance |\n| dev                                       | Development       |\n\nNote: You should always use \"prod\" for the environment unless otherwise instructed by eZmax's support.\n\n## Regions\n\n| sInfrastructureregionCode | Description                |\n| ------------------------- | -------------------------- |\n| af-south-1\t            | Africa (Cape Town)         |\n| ap-east-1\t                | Asia Pacific (Hong Kong)   |\n| ap-northeast-1\t        | Asia Pacific (Tokyo)       |\n| ap-northeast-2\t        | Asia Pacific (Seoul)       |\n| ap-northeast-3\t        | Asia Pacific (Osaka-Local) |\n| ap-south-1\t            | Asia Pacific (Mumbai)      |\n| ap-southeast-1\t        | Asia Pacific (Singapore)   |\n| ap-southeast-2\t        | Asia Pacific (Sydney)      |\n| ca-central-1\t            | Canada (Central)           |\n| eu-central-1\t            | Europe (Frankfurt)         |\n| eu-north-1\t            | Europe (Stockholm)         |\n| eu-south-1\t            | Europe (Milan)             |\n| eu-west-1\t                | Europe (Ireland)           |\n| eu-west-2\t                | Europe (London)            |\n| eu-west-3\t                | Europe (Paris)             |\n| sa-east-1\t                | South America (São Paulo)  |\n| us-east-1\t                | US East (N. Virginia)      |\n| us-east-2\t                | US East (Ohio)             |\n| us-west-1\t                | US West (N. California)    |\n| us-west-2\t                | US West (Oregon)           |\n\nNote Our SDKs have a default value of \"ca-central-1\". You will need to call \"setHost\" to change the default value if needed.",
+            "description": "## Regional requests\nWhen you send your API requests, you'll need to send them in the proper region and proper environment where your customer data are stored. Based on your requirements (proximity and legislation), we will create your environment in one of our supported region's.\n\nThe general format of the URL where to send requests is:\nhttps://**{sInfrastructureenvironmenttypeDescription}**.api.appcluster01.**{sInfrastructureregionCode}**.ezmax.com/rest/\n\nWhere \"**{sInfrastructureenvironmenttypeDescription}**\" and \"**{sInfrastructureregionCode}**\" need to be replaced with one of the values in the table below.\n\n## Global requests\nSome of the functions needs to be called on the global infrastructure instead of the regional servers. These functions are all located in the **Global** section of the documentation.\n\nThe general format of the URL where to send requests is:\nhttps://**{sInfrastructureenvironmenttypeDescription}**.api.global.ezmax.com/\n\nWhere \"**{sInfrastructureenvironmenttypeDescription}**\" needs to be replaced with one of the values in the tables below.\n\n## Websocket requests\nWhen you send your Websocket requests, you'll need to send them in the proper region and proper environment where your customer data are stored. Based on your requirements (proximity and legislation), we will create your environment in one of our supported region's.\n\nThe general format of the URL where to send requests is:\nwss://ws.**{sInfrastructureregionCode}**.ezmax.com/**{sInfrastructureenvironmenttypeDescription}**/\n\nWhere \"**{sInfrastructureregionCode}**\" and \"**{sInfrastructureenvironmenttypeDescription}**\" need to be replaced with one of the values in the tables below.\n\n## Environments\n\n| sInfrastructureenvironmenttypeDescription | Description        |\n| ----------------------------------------- | ------------------ |\n| iso                                       | Isolated Customers |\n| prod                                      | Production         |\n| stg                                       | Staging            |\n| qa                                        | Quality Assurance  |\n| dev                                       | Development        |\n\nNote: You should always use \"prod\" for the environment unless otherwise instructed by eZmax's support.\n\n## Regions\n\n| sInfrastructureregionCode | Description                |\n| ------------------------- | -------------------------- |\n| af-south-1\t            | Africa (Cape Town)         |\n| ap-east-1\t                | Asia Pacific (Hong Kong)   |\n| ap-northeast-1\t        | Asia Pacific (Tokyo)       |\n| ap-northeast-2\t        | Asia Pacific (Seoul)       |\n| ap-northeast-3\t        | Asia Pacific (Osaka)       |\n| ap-south-1\t            | Asia Pacific (Mumbai)      |\n| ap-south-2\t            | Asia Pacific (Hyderabad)   |\n| ap-southeast-1\t        | Asia Pacific (Singapore)   |\n| ap-southeast-2\t        | Asia Pacific (Sydney)      |\n| ap-southeast-3\t        | Asia Pacific (Jakarta)     |\n| ap-southeast-4\t        | Asia Pacific (Melbourne)   |\n| ca-central-1\t            | Canada (Central)           |\n| ca-west-1\t                | Canada West (Calgary)      |\n| eu-central-1\t            | Europe (Frankfurt)         |\n| eu-central-2\t            | Europe (Zurich)            |\n| eu-north-1\t            | Europe (Stockholm)         |\n| eu-south-1\t            | Europe (Milan)             |\n| eu-south-2\t            | Europe (Spain)             |\n| eu-west-1\t                | Europe (Ireland)           |\n| eu-west-2\t                | Europe (London)            |\n| eu-west-3\t                | Europe (Paris)             |\n| il-central-1\t            | Israel (Tel Aviv)          |\n| me-central-1\t            | Middle East (UAE)          |\n| me-south-1\t            | Middle East (Bahrain)      |\n| sa-east-1\t                | South America (São Paulo)  |\n| us-east-1\t                | US East (N. Virginia)      |\n| us-east-2\t                | US East (Ohio)             |\n| us-west-1\t                | US West (N. California)    |\n| us-west-2\t                | US West (Oregon)           |\n\nNote Our SDKs have a default value of \"ca-central-1\". You will need to call \"setHost\" to change the default value if needed.",
             "x-displayName": "Servers"
         },
         {
@@ -48917,6 +49980,16 @@
             "name": "Object_Country",
             "description": "Country contains detail about the types of Countries",
             "x-displayName": "Country"
+        },
+        {
+            "name": "Object_Creditcardclient",
+            "description": "Creditcardclient contains details about Creditcardclients",
+            "x-displayName": "Creditcardclient"
+        },
+        {
+            "name": "Object_Creditcardtype",
+            "description": "Creditcardtype contains details about Creditcardtypes",
+            "x-displayName": "Creditcardtype"
         },
         {
             "name": "Object_Department",
@@ -49815,6 +50888,8 @@
                 "Object_Company",
                 "Object_Cors",
                 "Object_Country",
+                "Object_Creditcardclient",
+                "Object_Creditcardtype",
                 "Object_Department",
                 "Object_Discussion",
                 "Object_Discussionmembership",

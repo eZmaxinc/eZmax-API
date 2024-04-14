@@ -1192,10 +1192,15 @@
     }
   },
   "definitions": {
+    "Common-Format-DateTime": {
+      "description": "Represent a Date Time.\nThe timezone is the one configured in the User's profile.",
+      "example": "2020-12-31 23:59:59",
+      "type": "string"
+    },
     "Common-Format-ExternalID": {
       "description": "This field can be used to store an External ID from the client's system.\n\nAnything can be stored in this field, it will never be evaluated by the eZmax system and will be returned\nAS-IS.\n\nTo store multiple values, consider using a JSON formatted structure, a URL encoded string, a CSV or any other custom format.\n",
       "example": "{\"ID\": 1234, \"TAGS\": [\"tag1\", \"tag2\", \"tag3\"]}",
-      "pattern": "^.{0,64}$",
+      "pattern": "^.{0,128}$",
       "type": "string",
       "x-ms-visibility": "advanced"
     },
@@ -1267,6 +1272,7 @@
         "sTemporaryFileUrl": {
           "description": "The Temporary File Url of the document that was uploaded. That url can be reused instead of uploading the file again.",
           "example": "http://www.example.com/document.pdf",
+          "pattern": "^(https|http):\\/\\/[^\\s\\/$.?#].[^\\s]*$",
           "type": "string"
         }
       },
@@ -1374,6 +1380,9 @@
           "example": false,
           "type": "boolean"
         },
+        "dtResponseDate": {
+          "$ref": "#/definitions/Common-Format-DateTime"
+        },
         "iVersionMax": {
           "description": "The maximum version of the function that can be called",
           "example": 2,
@@ -1389,7 +1398,8 @@
         "a_RequiredPermission",
         "iVersionMax",
         "iVersionMin",
-        "bVersionDeprecated"
+        "bVersionDeprecated",
+        "dtResponseDate"
       ],
       "type": "object"
     },
@@ -1419,6 +1429,7 @@
     "Computed-sAvatarUrl": {
       "description": "The url of the picture used as avatar",
       "example": "http://www.website.com/avatar.jpg",
+      "pattern": "^(https|http):\\/\\/[^\\s\\/$.?#].[^\\s]*$",
       "type": "string"
     },
     "Computed-sUserName": {
@@ -2039,6 +2050,7 @@
     "Field-sEmailAddress": {
       "description": "The email address.",
       "example": "email@example.com",
+      "pattern": "^[\\w.%+\\-!#$%&'*+\\/=?^`{|}~]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,20}$",
       "type": "string"
     },
     "Field-sErrorMessage": {
