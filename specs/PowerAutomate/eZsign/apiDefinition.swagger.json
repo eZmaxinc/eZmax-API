@@ -13,7 +13,7 @@
     },
     "termsOfService": "https://www.ezmax.ca/TODO",
     "title": "eZmax API Definition (PowerAutomate)",
-    "version": "1.2.0"
+    "version": "1.2.1"
   },
   "host": "prod.api.appcluster01.ca-central-1.ezmax.com",
   "basePath": "/rest",
