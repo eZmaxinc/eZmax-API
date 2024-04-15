@@ -2,27 +2,26 @@
 
 This repository contains the API documentation and definition for the eZmax and eZsign products.
 
-You can find more details about these products at these addresses
-[eZmax.com](https://ezmax.com "test" target="_blank")
-[eZsign.com](https://ezsign.com target="_blank")
-[Link Text](URL "Title" onclick="window.open(this.href,'_blank');return false;")
-<a href="http://www.example.com" target="_blank">Visit Example Website</a>
+For more details about these products, please visit:
+- [eZmax.com](https://ezmax.com)
+- [eZsign.com](https://ezsign.com)
 
-You can find the API specification files in the "specs" directory
+You can find the API specification files in the `specs` directory and the HTML documentation files in the `docs` directory.
 
-You can find the HTML documentation files in the "docs" directory
+We provide two versions of the documentation:
 
-We are serving the HTML Documentation for ease of access. The **Full** version contains all the endpoints (including deprecated ones).
+## Full Documentation
+- [eZmax API Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.2.html)
+  
+  The full documentation encompasses all endpoints, including both current and deprecated ones. It offers a comprehensive overview of the entire eZmax API, providing detailed information on every aspect of the API's functionality.
 
-We are also serving simplified versions of the documentation containing only the most frequently used functionnality for a specific project. You can use either version of the documentation based on your preference.
-
-## Full documentation
-- [eZmax API Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.2.html target="_blank")
-
-## Partial documentations
+## Partial Documentations
 - [eZmax API Documentation (Ezsign)](https://ezmaxinc.github.io/eZmax-API/docs/partial/ezsign/ezmax.v1.2.html)
 - [eZmax API Documentation (RemaxQC)](https://ezmaxinc.github.io/eZmax-API/docs/partial/remaxqc/ezmax.v1.2.html)
 
-## Definition files:
+  These customized documentation versions provide a focused insight into the API functionalities, catering to distinct projects or purposes.
+  They highlight the frequently utilized functionalities pertinent to their respective contexts, offering developers streamlined references tailored to their specific needs.
+  
+## Definition Files:
 - [eZmax API Definition (OpenAPI) (Full)](https://ezmaxinc.github.io/eZmax-API/specs/ezmax.v1.2.json)
 - [eZmax API Definition (Postman) (Full)](https://ezmaxinc.github.io/eZmax-API/specs/ezmax.v1.2%20%5BPostman%5D.json)
