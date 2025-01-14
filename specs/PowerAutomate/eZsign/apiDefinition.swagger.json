@@ -69,53 +69,46 @@
         "x-powerautomate": true,
         "x-usertypeextra": [
           "AgentBroker",
+          "Assistant",
           "EzsignSigner"
         ]
       }
     },
-    "/1/object/attachment/{pkiAttachmentID}/getDownloadUrl": {
+    "/1/object/communication/{pkiCommunicationID}/getCommunicationBody": {
       "get": {
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "description": "The unique ID of the Attachment.",
+            "description": "The unique ID of the Communication.",
             "in": "path",
             "minimum": 0,
-            "name": "pkiAttachmentID",
+            "name": "pkiCommunicationID",
             "required": true,
             "type": "integer"
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful response",
-            "schema": {
-              "$ref": "#/definitions/attachment-getDownloadUrl-v1-Response"
-            }
+          "302": {
+            "description": "The user has been redirected"
           },
           "404": {
             "description": "The request failed. The element on which you were trying to work does not exists. Look for detail about the error in the body",
             "schema": {
               "$ref": "#/definitions/Common-Response-Error"
             }
-          },
-          "422": {
-            "description": "The request was syntactically valid but failed because of an interdependance condition. Look for detail about the error in the body",
-            "schema": {
-              "$ref": "#/definitions/Common-Response-Error"
-            }
           }
         },
-        "description": "This endpoint returns an URL to download the attachment.\n\nThese links will expire after 5 minutes so the download of the file should be made soon after retrieving the link.",
-        "operationId": "Attachment_GetDownloadUrl_V1",
-        "summary": "Retrieve a URL to download attachments.",
+        "description": "This endpoint returns the communication body.",
+        "operationId": "Communication_GetCommunicationBody_V1",
+        "summary": "Retrieve the communication body.",
         "x-permissions": [
           "All"
         ],
         "x-powerautomate": true,
         "x-usertypeextra": [
+          "AgentBroker",
           "EzsignSigner"
         ]
       }
@@ -173,7 +166,9 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-usertypeextra": []
+        "x-usertypeextra": [
+          "AgentBroker"
+        ]
       }
     },
     "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getDownloadUrl/{eDocumentType}": {
@@ -233,6 +228,7 @@
         ],
         "x-powerautomate": true,
         "x-usertypeextra": [
+          "AgentBroker",
           "EzsignSigner"
         ]
       }
@@ -286,49 +282,6 @@
         "description": "",
         "operationId": "Ezsignfolder_Dispose_V1",
         "summary": "Dispose the Ezsignfolder",
-        "x-permissions": [
-          "ElectronicSignature_DisposalofeZsignfolders"
-        ],
-        "x-powerautomate": true,
-        "x-usertypeextra": []
-      }
-    },
-    "/2/object/ezsigndocument": {
-      "post": {
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ezsigndocument-createObject-v2-Request"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Successful response",
-            "schema": {
-              "$ref": "#/definitions/ezsigndocument-createObject-v2-Response"
-            }
-          },
-          "422": {
-            "description": "The request was syntactically valid but failed because of an interdependance condition. Look for detail about the error in the body. If the error is recoverable sTemporaryFileUrl will be set and you can use this url to try a new request without sending the file over again",
-            "schema": {
-              "$ref": "#/definitions/Common-Response-Error-sTemporaryFileUrl"
-            }
-          }
-        },
-        "description": "The endpoint allows to create one or many elements at once.",
-        "operationId": "Ezsigndocument_CreateObject_V2",
-        "summary": "Create a new Ezsigndocument",
-        "x-ms-visibility": "important",
         "x-permissions": [
           "All"
         ],
@@ -390,44 +343,9 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-usertypeextra": []
-      }
-    },
-    "/2/object/ezsignfolder": {
-      "post": {
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ezsignfolder-createObject-v2-Request"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Successful response",
-            "schema": {
-              "$ref": "#/definitions/ezsignfolder-createObject-v2-Response"
-            }
-          }
-        },
-        "description": "The endpoint allows to create one or many elements at once.",
-        "operationId": "Ezsignfolder_CreateObject_V2",
-        "summary": "Create a new Ezsignfolder",
-        "x-ms-visibility": "important",
-        "x-permissions": [
-          "All"
-        ],
-        "x-powerautomate": true,
-        "x-usertypeextra": []
+        "x-usertypeextra": [
+          "AgentBroker"
+        ]
       }
     },
     "/2/object/ezsignfoldersignerassociation": {
@@ -464,7 +382,9 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-usertypeextra": []
+        "x-usertypeextra": [
+          "AgentBroker"
+        ]
       }
     },
     "/2/object/ezsignfoldertype/getAutocomplete/{sSelector}": {
@@ -535,7 +455,9 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-usertypeextra": []
+        "x-usertypeextra": [
+          "AgentBroker"
+        ]
       }
     },
     "/2/object/ezsigntemplate/getAutocomplete/{sSelector}": {
@@ -547,7 +469,8 @@
           {
             "description": "The type of Ezsigntemplates to return",
             "enum": [
-              "All"
+              "All",
+              "Ezsigntemplatepublic"
             ],
             "in": "path",
             "name": "sSelector",
@@ -585,6 +508,12 @@
             "name": "Accept-Language",
             "required": false,
             "type": "string"
+          },
+          {
+            "description": "The fkiEzsignfoldertypeID to use with the selector Ezsigntemplatepublic",
+            "in": "query",
+            "name": "fkiEzsignfoldertypeID",
+            "type": "integer"
           }
         ],
         "responses": {
@@ -603,7 +532,9 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-usertypeextra": []
+        "x-usertypeextra": [
+          "AgentBroker"
+        ]
       }
     },
     "/2/object/ezsigntemplatepackage/getAutocomplete/{sSelector}": {
@@ -616,7 +547,8 @@
             "description": "The type of Ezsigntemplatepackages to return",
             "enum": [
               "All",
-              "AllMultipleCopiesDisabled"
+              "AllMultipleCopiesDisabled",
+              "Ezsigntemplatepublic"
             ],
             "in": "path",
             "name": "sSelector",
@@ -654,6 +586,12 @@
             "name": "Accept-Language",
             "required": false,
             "type": "string"
+          },
+          {
+            "description": "The fkiEzsignfoldertypeID to use with the selector Ezsigntemplatepublic",
+            "in": "query",
+            "name": "fkiEzsignfoldertypeID",
+            "type": "integer"
           }
         ],
         "responses": {
@@ -672,7 +610,9 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-usertypeextra": []
+        "x-usertypeextra": [
+          "AgentBroker"
+        ]
       }
     },
     "/2/object/ezsigntsarequirement/getAutocomplete/{sSelector}": {
@@ -760,7 +700,9 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-usertypeextra": []
+        "x-usertypeextra": [
+          "AgentBroker"
+        ]
       }
     },
     "/2/object/language/getAutocomplete/{sSelector}": {
@@ -979,11 +921,13 @@
           {
             "description": "The type of Users to return",
             "enum": [
+              "AgentBrokerAssistant",
               "AgentBrokerEmployeeEzsignUserNormal",
               "AgentBrokerEmployeeNormalBuiltIn",
               "AgentBrokerEzsignuserNormal",
               "ClonableUsers",
               "EzsignuserBuiltIn",
+              "Ezsignuser",
               "Normal",
               "UsergroupDelegated"
             ],
@@ -1041,7 +985,10 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-usertypeextra": []
+        "x-usertypeextra": [
+          "AgentBroker",
+          "Assistant"
+        ]
       }
     },
     "/2/object/userlogintype/getAutocomplete/{sSelector}": {
@@ -1054,7 +1001,8 @@
             "description": "The type of Userlogintypes to return",
             "enum": [
               "All",
-              "Ezsignfoldertype"
+              "Ezsignfoldertype",
+              "Ezsigntemplatepublic"
             ],
             "in": "path",
             "name": "sSelector",
@@ -1129,7 +1077,92 @@
         ],
         "x-powerautomate": true,
         "x-usertypeextra": [
+          "AgentBroker",
           "EzsignSigner"
+        ]
+      }
+    },
+    "/3/object/ezsigndocument": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ezsigndocument-createObject-v3-Request"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ezsigndocument-createObject-v3-Response"
+            }
+          },
+          "422": {
+            "description": "The request was syntactically valid but failed because of an interdependance condition. Look for detail about the error in the body. If the error is recoverable sTemporaryFileUrl will be set and you can use this url to try a new request without sending the file over again",
+            "schema": {
+              "$ref": "#/definitions/Common-Response-Error-sTemporaryFileUrl"
+            }
+          }
+        },
+        "description": "The endpoint allows to create one or many elements at once.",
+        "operationId": "Ezsigndocument_CreateObject_V3",
+        "summary": "Create a new Ezsigndocument",
+        "x-ms-visibility": "important",
+        "x-permissions": [
+          "All"
+        ],
+        "x-powerautomate": true,
+        "x-usertypeextra": [
+          "AgentBroker"
+        ]
+      }
+    },
+    "/3/object/ezsignfolder": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ezsignfolder-createObject-v3-Request"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ezsignfolder-createObject-v3-Response"
+            }
+          }
+        },
+        "description": "The endpoint allows to create one or many elements at once.",
+        "operationId": "Ezsignfolder_CreateObject_V3",
+        "summary": "Create a new Ezsignfolder",
+        "x-ms-visibility": "important",
+        "x-permissions": [
+          "All"
+        ],
+        "x-powerautomate": true,
+        "x-usertypeextra": [
+          "AgentBroker"
         ]
       }
     },
@@ -1187,7 +1220,9 @@
           "All"
         ],
         "x-powerautomate": true,
-        "x-usertypeextra": []
+        "x-usertypeextra": [
+          "AgentBroker"
+        ]
       }
     }
   },
@@ -1207,6 +1242,13 @@
     "Common-Response-Error": {
       "description": "Generic Error Message",
       "properties": {
+        "a_sErrorMessagedetail": {
+          "description": "More error message detail",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "eErrorCode": {
           "$ref": "#/definitions/Field-eErrorCode"
         },
@@ -1230,6 +1272,13 @@
           },
           "type": "array"
         },
+        "a_sErrorMessagedetail": {
+          "description": "More error message detail",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "eErrorCode": {
           "$ref": "#/definitions/Field-eErrorCode"
         },
@@ -1247,6 +1296,13 @@
     "Common-Response-Error-TooManyRequests": {
       "description": "Generic Error Message",
       "properties": {
+        "a_sErrorMessagedetail": {
+          "description": "More error message detail",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "eErrorCode": {
           "$ref": "#/definitions/Field-eErrorCode"
         },
@@ -1263,6 +1319,13 @@
     "Common-Response-Error-sTemporaryFileUrl": {
       "description": "Generic Error Message",
       "properties": {
+        "a_sErrorMessagedetail": {
+          "description": "More error message detail",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "eErrorCode": {
           "$ref": "#/definitions/Field-eErrorCode"
         },
@@ -1535,13 +1598,33 @@
       ],
       "type": "object"
     },
+    "Field-bActivesessionAttachment": {
+      "description": "Can access attachment when we clone a user",
+      "example": false,
+      "type": "boolean"
+    },
+    "Field-bActivesessionCanafe": {
+      "description": "Can access canafe when we clone a user",
+      "example": false,
+      "type": "boolean"
+    },
     "Field-bActivesessionDebug": {
       "description": "Whether the active session is in debug or not",
       "example": false,
       "type": "boolean"
     },
+    "Field-bActivesessionFinancial": {
+      "description": "Can access financial element when we clone a user",
+      "example": false,
+      "type": "boolean"
+    },
     "Field-bActivesessionIssuperadmin": {
       "description": "Whether the active session is superadmin or not",
+      "example": false,
+      "type": "boolean"
+    },
+    "Field-bActivesessionRealestatecompleted": {
+      "description": "Can access closed realestate folders when we clone a user",
       "example": false,
       "type": "boolean"
     },
@@ -1589,6 +1672,11 @@
       "example": true,
       "type": "boolean"
     },
+    "Field-bUserEzsigntrial": {
+      "description": "Whether the User's eZsign subscription is a trial",
+      "example": false,
+      "type": "boolean"
+    },
     "Field-bUserInterfacedark": {
       "description": "Whether to use a dark mode interface",
       "example": false,
@@ -1620,6 +1708,39 @@
       "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
       "type": "string"
     },
+    "Field-eActivesessionEzsign": {
+      "description": "Clone rights for eZsign folders.",
+      "enum": [
+        "No",
+        "Read",
+        "Modify",
+        "Full"
+      ],
+      "example": "Full",
+      "type": "string"
+    },
+    "Field-eActivesessionEzsignaccess": {
+      "description": "Whether the user is subscribed to eZsign and who pays for the subscription",
+      "enum": [
+        "No",
+        "PaidByOffice",
+        "PerDocument",
+        "Prepaid"
+      ],
+      "example": "Prepaid",
+      "type": "string"
+    },
+    "Field-eActivesessionEzsignprepaid": {
+      "description": "eZsign subscription level",
+      "enum": [
+        "No",
+        "Basic",
+        "Standard",
+        "Pro"
+      ],
+      "example": "Basic",
+      "type": "string"
+    },
     "Field-eActivesessionOrigin": {
       "description": "The Origin of User for the Activesession",
       "enum": [
@@ -1627,6 +1748,17 @@
         "External"
       ],
       "example": "BuiltIn",
+      "type": "string"
+    },
+    "Field-eActivesessionRealestateinprogress": {
+      "description": "Clone rights for active real estate folders",
+      "enum": [
+        "No",
+        "Read",
+        "Modify",
+        "Create"
+      ],
+      "example": "Create",
       "type": "string"
     },
     "Field-eActivesessionUsertype": {
@@ -1712,14 +1844,23 @@
       "example": "BADREQUEST",
       "type": "string"
     },
-    "Field-eEzsignfolderSendreminderfrequency": {
-      "description": "Frequency at which reminders will be sent to signers that haven't signed the documents",
+    "Field-eEzsignfolderDocumentdependency": {
+      "description": "Indicates if document dependencies apply to all users or just to Ezsignsigner",
       "enum": [
-        "None",
-        "Daily",
-        "Weekly"
+        "All",
+        "EzsignsignerOnly"
       ],
-      "example": "None",
+      "example": "All",
+      "type": "string"
+    },
+    "Field-eEzsignfolderMessageorder": {
+      "default": "GlobalFirst",
+      "description": "Message order of the Ezsignfolder.",
+      "enum": [
+        "GlobalFirst",
+        "PrivateFirst"
+      ],
+      "example": "GlobalFirst",
       "type": "string"
     },
     "Field-eEzsignfoldertypePrivacylevel": {
@@ -1788,6 +1929,20 @@
       "example": "EzsignUser",
       "type": "string"
     },
+    "Field-iEzsignfolderSendreminderfirstdays": {
+      "description": "The number of days before the the first reminder sending",
+      "example": 30,
+      "maximum": 255,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "Field-iEzsignfolderSendreminderotherdays": {
+      "description": "The number of days after the first reminder sending",
+      "example": 30,
+      "maximum": 255,
+      "minimum": 0,
+      "type": "integer"
+    },
     "Field-iUserInterfacecolor": {
       "description": "The int32 representation of the interface color. For example, RGB color #39435B would be 3752795",
       "example": 3752795,
@@ -1808,8 +1963,8 @@
       "minimum": 0,
       "type": "integer"
     },
-    "Field-pkiAttachmentID": {
-      "description": "The unique ID of the Attachment.",
+    "Field-pkiCommunicationID": {
+      "description": "The unique ID of the Communication.",
       "example": 1,
       "minimum": 0,
       "type": "integer"
@@ -1882,6 +2037,21 @@
         "value-title": "sEzsigntemplateDescription"
       }
     },
+    "Field-pkiEzsigntemplateglobalID": {
+      "description": "The unique ID of the Ezsigntemplateglobal",
+      "example": 36,
+      "minimum": 0,
+      "type": "integer",
+      "x-ms-dynamic-values": {
+        "parameters": {
+          "sSelector": "All"
+        },
+        "operationId": "Ezsigntemplateglobal_GetAutocomplete_V2",
+        "value-collection": "mPayload/a_objEzsigntemplateglobal",
+        "value-path": "pkiEzsigntemplateglobalID",
+        "value-title": "sEzsigntemplateglobalDescription"
+      }
+    },
     "Field-pkiEzsigntemplatepackageID": {
       "description": "The unique ID of the Ezsigntemplatepackage",
       "example": 99,
@@ -1912,6 +2082,13 @@
         "value-path": "pkiEzsigntsarequirementID",
         "value-title": "sEzsigntsarequirementDescriptionX"
       }
+    },
+    "Field-pkiEzsignuserID": {
+      "description": "The unique ID of the Ezsignuser",
+      "example": 94,
+      "maximum": 65535,
+      "minimum": 0,
+      "type": "integer"
     },
     "Field-pkiLanguageID": {
       "description": "The unique ID of the Language.\n\nValid values:\n\n|Value|Description|\n|-|-|\n|1|French|\n|2|English|",
@@ -2001,7 +2178,7 @@
       }
     },
     "Field-pkiUserlogintypeID": {
-      "description": "The unique ID of the Userlogintype\n\nValid values:\n\n|Value|Description|Detail|\n|-|-|-|\n|1|**Email Only**|The Ezsignsigner will receive a secure link by email|\n|2|**Email and phone or SMS**|The Ezsignsigner will receive a secure link by email and will need to authenticate using SMS or Phone call. **Additional fee applies**|\n|3|**Email and secret question**|The Ezsignsigner will receive a secure link by email and will need to authenticate using a predefined question and answer|\n|4|**In person only**|The Ezsignsigner will only be able to sign \"In-Person\" and there won't be any authentication. No email will be sent for invitation to sign. Make sure you evaluate the risk of signature denial and at minimum, we recommend you use a handwritten signature type|\n|5|**In person with phone or SMS**|The Ezsignsigner will only be able to sign \"In-Person\" and will need to authenticate using SMS or Phone call. No email will be sent for invitation to sign. **Additional fee applies**|",
+      "description": "The unique ID of the Userlogintype\n\nValid values:\n\n|Value|Description|Detail|\n|-|-|-|\n|1|**Email Only**|The Ezsignsigner will receive a secure link by email|\n|2|**Email and phone or SMS**|The Ezsignsigner will receive a secure link by email and will need to authenticate using SMS or Phone call. **Additional fee applies**|\n|3|**Email and secret question**|The Ezsignsigner will receive a secure link by email and will need to authenticate using a predefined question and answer|\n|4|**In person only**|The Ezsignsigner will only be able to sign \"In-Person\" and there won't be any authentication. No email will be sent for invitation to sign. Make sure you evaluate the risk of signature denial and at minimum, we recommend you use a handwritten signature type|\n|5|**In person with phone or SMS**|The Ezsignsigner will only be able to sign \"In-Person\" and will need to authenticate using SMS or Phone call. No email will be sent for invitation to sign. **Additional fee applies**|\n|6|**Embedded**|The Ezsignsigner will only be able to sign in the embedded solution. No email will be sent for invitation to sign. **Additional fee applies**|  \n|7|**Embedded with phone or SMS**|The Ezsignsigner will only be able to sign in the embedded solution and will need to authenticate using SMS or Phone call. No email will be sent for invitation to sign. **Additional fee applies**|  \n|8|**No validation**|The Ezsignsigner will not receive an email and won't have to validate his connection using 2 factor. **Additional fee applies**|     \n|9|**Sms only**|The Ezsignsigner will not receive an email but will will need to authenticate using SMS. **Additional fee applies**|     ",
       "example": 2,
       "minimum": 0,
       "type": "integer",
@@ -2067,6 +2244,7 @@
     "Field-sEzsignfolderDescription": {
       "description": "The description of the Ezsignfolder",
       "example": "Test eZsign Folder",
+      "pattern": "^.{0,75}$",
       "type": "string"
     },
     "Field-sEzsignfoldertypeNameX": {
@@ -2082,11 +2260,13 @@
     "Field-sEzsigntemplateDescription": {
       "description": "The description of the Ezsigntemplate",
       "example": "Standard Contract",
+      "pattern": "^.{0,80}$",
       "type": "string"
     },
     "Field-sEzsigntemplatepackageDescription": {
       "description": "The description of the Ezsigntemplatepackage",
       "example": "Package for new clients",
+      "pattern": "^.{0,80}$",
       "type": "string"
     },
     "Field-sEzsigntemplatesigner": {
@@ -2263,20 +2443,47 @@
           },
           "type": "array"
         },
+        "bActivesessionAttachment": {
+          "$ref": "#/definitions/Field-bActivesessionAttachment"
+        },
+        "bActivesessionCanafe": {
+          "$ref": "#/definitions/Field-bActivesessionCanafe"
+        },
         "bActivesessionDebug": {
           "$ref": "#/definitions/Field-bActivesessionDebug"
+        },
+        "bActivesessionFinancial": {
+          "$ref": "#/definitions/Field-bActivesessionFinancial"
         },
         "bActivesessionIssuperadmin": {
           "$ref": "#/definitions/Field-bActivesessionIssuperadmin"
         },
+        "bActivesessionRealestatecompleted": {
+          "$ref": "#/definitions/Field-bActivesessionRealestatecompleted"
+        },
         "bSystemconfigurationEzsignpaidbyoffice": {
           "$ref": "#/definitions/Field-bSystemconfigurationEzsignpaidbyoffice"
+        },
+        "bUserEzsigntrial": {
+          "$ref": "#/definitions/Field-bUserEzsigntrial"
         },
         "dtUserEzsignprepaidexpiration": {
           "$ref": "#/definitions/Field-dtUserEzsignprepaidexpiration"
         },
+        "eActivesessionEzsign": {
+          "$ref": "#/definitions/Field-eActivesessionEzsign"
+        },
+        "eActivesessionEzsignaccess": {
+          "$ref": "#/definitions/Field-eActivesessionEzsignaccess"
+        },
+        "eActivesessionEzsignprepaid": {
+          "$ref": "#/definitions/Field-eActivesessionEzsignprepaid"
+        },
         "eActivesessionOrigin": {
           "$ref": "#/definitions/Field-eActivesessionOrigin"
+        },
+        "eActivesessionRealestateinprogress": {
+          "$ref": "#/definitions/Field-eActivesessionRealestateinprogress"
         },
         "eActivesessionUsertype": {
           "$ref": "#/definitions/Field-eActivesessionUsertype"
@@ -2292,6 +2499,9 @@
         },
         "eUserEzsignprepaid": {
           "$ref": "#/definitions/Field-eUserEzsignprepaid"
+        },
+        "fkiEzsignuserID": {
+          "$ref": "#/definitions/Field-pkiEzsignuserID"
         },
         "fkiLanguageID": {
           "$ref": "#/definitions/Field-pkiLanguageID"
@@ -2327,6 +2537,7 @@
         "eActivesessionWeekdaystart",
         "bActivesessionDebug",
         "bActivesessionIssuperadmin",
+        "eActivesessionEzsignaccess",
         "fkiLanguageID",
         "sCompanyNameX",
         "pksCustomerCode",
@@ -2336,42 +2547,6 @@
         "a_eModuleInternalname",
         "objUserReal",
         "a_pkiPermissionID"
-      ],
-      "type": "object"
-    },
-    "attachment-getDownloadUrl-v1-Response": {
-      "description": "Response for GET /1/object/attachment/{pkiAttachmentID}/getDownloadUrl",
-      "properties": {
-        "mPayload": {
-          "$ref": "#/definitions/attachment-getDownloadUrl-v1-Response-mPayload"
-        },
-        "objDebug": {
-          "$ref": "#/definitions/Common-Response-objDebug"
-        },
-        "objDebugPayload": {
-          "$ref": "#/definitions/Common-Response-objDebugPayload"
-        }
-      },
-      "required": [
-        "mPayload",
-        "objDebugPayload"
-      ],
-      "type": "object"
-    },
-    "attachment-getDownloadUrl-v1-Response-mPayload": {
-      "description": "Payload for GET /1/object/attachment/{pkiAttachmentID}/getDownloadUrl",
-      "example": {
-        "sDownloadUrl": "http://www.example.com/document.pdf"
-      },
-      "properties": {
-        "sDownloadUrl": {
-          "description": "The Url to the requested attachment.\n\nUrl will expire after 5 minutes.",
-          "example": "http://www.example.com/document.pdf",
-          "type": "string"
-        }
-      },
-      "required": [
-        "sDownloadUrl"
       ],
       "type": "object"
     },
@@ -2388,11 +2563,12 @@
           "$ref": "#/definitions/Field-dtEzsigndocumentDuedate"
         },
         "eEzsigndocumentForm": {
-          "description": "If the document contains an existing PDF form this property must be set.\r\n**Keep** leaves the form as-is in the document.\r\n**Convert** removes the form and convert all the existing fields to Ezsignformfieldgroups and assign them to the specified **fkiEzsignfoldersignerassociationID**\r\n**Discard** removes the form from the document.",
+          "description": "If the document contains an existing PDF form this property must be set.\r\n**Keep** leaves the form as-is in the document.\r\n**Convert** removes the form and convert all the existing fields to Ezsignformfieldgroups and assign them to the specified **fkiEzsignfoldersignerassociationID**\r\n**Discard** removes the form from the document.\r\n**Flatten** prints the form values in the document.",
           "enum": [
             "Keep",
             "Convert",
-            "Discard"
+            "Discard",
+            "Flatten"
           ],
           "type": "string",
           "x-ms-visibility": "advanced"
@@ -2515,6 +2691,26 @@
       ],
       "type": "object"
     },
+    "ezsigndocument-createElement-v3-Response": {
+      "description": "A Ezsigndocument createObject Response",
+      "properties": {
+        "a_objMatchingtemplate": {
+          "description": "An array of possibly matching template.",
+          "items": {
+            "$ref": "#/definitions/ezsigndocument-matchingtemplate-v3-Response"
+          },
+          "type": "array"
+        },
+        "pkiEzsigndocumentID": {
+          "$ref": "#/definitions/Field-pkiEzsigndocumentID"
+        }
+      },
+      "required": [
+        "pkiEzsigndocumentID",
+        "a_objMatchingtemplate"
+      ],
+      "type": "object"
+    },
     "ezsigndocument-createEzsignelementsPositionedByWord-v1-Request": {
       "description": "Request for POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord",
       "properties": {
@@ -2578,8 +2774,8 @@
       ],
       "type": "object"
     },
-    "ezsigndocument-createObject-v2-Request": {
-      "description": "Request for POST /2/object/ezsigndocument",
+    "ezsigndocument-createObject-v3-Request": {
+      "description": "Request for POST /3/object/ezsigndocument",
       "properties": {
         "a_objEzsigndocument": {
           "items": {
@@ -2594,11 +2790,11 @@
       ],
       "type": "object"
     },
-    "ezsigndocument-createObject-v2-Response": {
-      "description": "Response for POST /2/object/ezsigndocument",
+    "ezsigndocument-createObject-v3-Response": {
+      "description": "Response for POST /3/object/ezsigndocument",
       "properties": {
         "mPayload": {
-          "$ref": "#/definitions/ezsigndocument-createObject-v2-Response-mPayload"
+          "$ref": "#/definitions/ezsigndocument-createObject-v3-Response-mPayload"
         },
         "objDebug": {
           "$ref": "#/definitions/Common-Response-objDebug"
@@ -2613,20 +2809,20 @@
       ],
       "type": "object"
     },
-    "ezsigndocument-createObject-v2-Response-mPayload": {
-      "description": "Payload for POST /2/object/ezsigndocument",
+    "ezsigndocument-createObject-v3-Response-mPayload": {
+      "description": "Payload for POST /3/object/ezsigndocument",
       "properties": {
-        "a_pkiEzsigndocumentID": {
-          "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+        "a_objEzsigndocument": {
+          "description": "An array of objets that contain unique IDs representing the object that were requested to be created and possibly matching template IDs.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
           "items": {
-            "$ref": "#/definitions/Field-pkiEzsigndocumentID"
+            "$ref": "#/definitions/ezsigndocument-createElement-v3-Response"
           },
           "minItems": 1,
           "type": "array"
         }
       },
       "required": [
-        "a_pkiEzsigndocumentID"
+        "a_objEzsigndocument"
       ],
       "type": "object"
     },
@@ -2666,17 +2862,39 @@
       ],
       "type": "object"
     },
-    "ezsignfolder-RequestCompound": {
+    "ezsigndocument-matchingtemplate-v3-Response": {
+      "description": "A Ezsigndocument createObject Response",
+      "properties": {
+        "pkiEzsigntemplateID": {
+          "$ref": "#/definitions/Field-pkiEzsigntemplateID"
+        },
+        "pkiEzsigntemplateglobalID": {
+          "$ref": "#/definitions/Field-pkiEzsigntemplateglobalID"
+        }
+      },
+      "required": [],
+      "type": "object"
+    },
+    "ezsignfolder-RequestCompoundV3": {
       "description": "An Ezsignfolder Object and children to create a complete structure",
       "properties": {
-        "eEzsignfolderSendreminderfrequency": {
-          "$ref": "#/definitions/Field-eEzsignfolderSendreminderfrequency"
+        "eEzsignfolderDocumentdependency": {
+          "$ref": "#/definitions/Field-eEzsignfolderDocumentdependency"
         },
         "fkiEzsignfoldertypeID": {
           "$ref": "#/definitions/Field-pkiEzsignfoldertypeID"
         },
         "fkiEzsigntsarequirementID": {
           "$ref": "#/definitions/Field-pkiEzsigntsarequirementID"
+        },
+        "fkiTimezoneID": {
+          "$ref": "#/definitions/Field-pkiTimezoneID"
+        },
+        "iEzsignfolderSendreminderfirstdays": {
+          "$ref": "#/definitions/Field-iEzsignfolderSendreminderfirstdays"
+        },
+        "iEzsignfolderSendreminderotherdays": {
+          "$ref": "#/definitions/Field-iEzsignfolderSendreminderotherdays"
         },
         "pkiEzsignfolderID": {
           "$ref": "#/definitions/Field-pkiEzsignfolderID"
@@ -2687,6 +2905,9 @@
         "sEzsignfolderExternalid": {
           "$ref": "#/definitions/Common-Format-ExternalID"
         },
+        "tEzsignfolderMessage": {
+          "$ref": "#/definitions/Field-tEzsignfolderMessage"
+        },
         "tEzsignfolderNote": {
           "$ref": "#/definitions/Field-tEzsignfolderNote"
         }
@@ -2694,16 +2915,17 @@
       "required": [
         "fkiEzsignfoldertypeID",
         "sEzsignfolderDescription",
-        "eEzsignfolderSendreminderfrequency"
+        "iEzsignfolderSendreminderfirstdays",
+        "iEzsignfolderSendreminderotherdays"
       ],
       "type": "object"
     },
-    "ezsignfolder-createObject-v2-Request": {
-      "description": "Request for POST /2/object/ezsignfolder",
+    "ezsignfolder-createObject-v3-Request": {
+      "description": "Request for POST /3/object/ezsignfolder",
       "properties": {
         "a_objEzsignfolder": {
           "items": {
-            "$ref": "#/definitions/ezsignfolder-RequestCompound"
+            "$ref": "#/definitions/ezsignfolder-RequestCompoundV3"
           },
           "minItems": 1,
           "type": "array"
@@ -2714,11 +2936,11 @@
       ],
       "type": "object"
     },
-    "ezsignfolder-createObject-v2-Response": {
-      "description": "Response for POST /2/object/ezsignfolder",
+    "ezsignfolder-createObject-v3-Response": {
+      "description": "Response for POST /3/object/ezsignfolder",
       "properties": {
         "mPayload": {
-          "$ref": "#/definitions/ezsignfolder-createObject-v2-Response-mPayload"
+          "$ref": "#/definitions/ezsignfolder-createObject-v3-Response-mPayload"
         },
         "objDebug": {
           "$ref": "#/definitions/Common-Response-objDebug"
@@ -2733,8 +2955,8 @@
       ],
       "type": "object"
     },
-    "ezsignfolder-createObject-v2-Response-mPayload": {
-      "description": "Payload for POST /2/object/ezsignfolder",
+    "ezsignfolder-createObject-v3-Response-mPayload": {
+      "description": "Payload for POST /3/object/ezsignfolder",
       "properties": {
         "a_pkiEzsignfolderID": {
           "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
@@ -2780,6 +3002,9 @@
         },
         "dtEzsignfolderDelayedsenddate": {
           "$ref": "#/definitions/Field-dtEzsignfolderDelayedsenddate"
+        },
+        "eEzsignfolderMessageorder": {
+          "$ref": "#/definitions/Field-eEzsignfolderMessageorder"
         },
         "tEzsignfolderMessage": {
           "$ref": "#/definitions/Field-tEzsignfolderMessage"
@@ -3553,6 +3778,9 @@
           }
         },
         "description": "The request was syntactically valid but failed because of an interdependance condition. Look for detail about the error in the body. If the error is recoverable sTemporaryFileUrl will be set and you can use this url to try a new request without sending the file over again"
+      },
+      "Response-Redirect-302": {
+        "description": "The user has been redirected"
       },
       "Response-Redirect-350": {
         "description": "The user must authenticate before he can continue with this request"
