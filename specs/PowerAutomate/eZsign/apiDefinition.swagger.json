@@ -21,59 +21,6 @@
     "https"
   ],
   "paths": {
-    "/1/object/activesession/getCurrent": {
-      "get": {
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/activesession-getCurrent-v1-Response"
-            }
-          },
-          "350": {
-            "description": "The user must authenticate before he can continue with this request"
-          },
-          "351": {
-            "description": "The user is configured with 2FA and needs to validate its phone number before he can continue with this request"
-          },
-          "352": {
-            "description": "The user is configured with 2FA and needs to answer a Secretquestion before he can continue with this request",
-            "schema": {
-              "$ref": "#/definitions/Common-Response-Redirect-sSecretquestionTextX"
-            }
-          },
-          "353": {
-            "description": "The user must accept clauses before he can continue with this request"
-          },
-          "354": {
-            "description": "The user's computer must be validated before he can continue with this request"
-          },
-          "355": {
-            "description": "The user must change its password before he can continue with this request"
-          },
-          "356": {
-            "description": "The user is not running the latest version of the native application. He must valide or update its version before he can continue with this request"
-          }
-        },
-        "description": "Retrieve the details about the current activesession",
-        "operationId": "Activesession_GetCurrent_V1",
-        "summary": "Get Current Activesession",
-        "x-ms-visibility": "advanced",
-        "x-permissions": [
-          "All"
-        ],
-        "x-powerautomate": true,
-        "x-usertypeextra": [
-          "AgentBroker",
-          "Assistant",
-          "EzsignSigner"
-        ]
-      }
-    },
     "/1/object/communication/{pkiCommunicationID}/getCommunicationBody": {
       "get": {
         "produces": [
@@ -287,6 +234,59 @@
         ],
         "x-powerautomate": true,
         "x-usertypeextra": []
+      }
+    },
+    "/2/object/activesession/getCurrent": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/activesession-getCurrent-v2-Response"
+            }
+          },
+          "350": {
+            "description": "The user must authenticate before he can continue with this request"
+          },
+          "351": {
+            "description": "The user is configured with 2FA and needs to validate its phone number before he can continue with this request"
+          },
+          "352": {
+            "description": "The user is configured with 2FA and needs to answer a Secretquestion before he can continue with this request",
+            "schema": {
+              "$ref": "#/definitions/Common-Response-Redirect-sSecretquestionTextX"
+            }
+          },
+          "353": {
+            "description": "The user must accept clauses before he can continue with this request"
+          },
+          "354": {
+            "description": "The user's computer must be validated before he can continue with this request"
+          },
+          "355": {
+            "description": "The user must change its password before he can continue with this request"
+          },
+          "356": {
+            "description": "The user is not running the latest version of the native application. He must valide or update its version before he can continue with this request"
+          }
+        },
+        "description": "Retrieve the details about the current activesession",
+        "operationId": "Activesession_GetCurrent_V2",
+        "summary": "Get Current Activesession",
+        "x-ms-visibility": "advanced",
+        "x-permissions": [
+          "All"
+        ],
+        "x-powerautomate": true,
+        "x-usertypeextra": [
+          "AgentBroker",
+          "Assistant",
+          "EzsignSigner"
+        ]
       }
     },
     "/2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate": {
@@ -2345,88 +2345,7 @@
       "example": "en",
       "type": "string"
     },
-    "activesession-ResponseCompound-Apikey": {
-      "description": "An Activesession->Apikey object and children to create a complete structure",
-      "properties": {
-        "pkiApikeyID": {
-          "$ref": "#/definitions/Field-pkiApikeyID"
-        },
-        "sApikeyDescriptionX": {
-          "$ref": "#/definitions/Field-sApikeyDescriptionX"
-        }
-      },
-      "required": [
-        "pkiApikeyID",
-        "sApikeyDescriptionX"
-      ],
-      "type": "object"
-    },
-    "activesession-ResponseCompound-User": {
-      "description": "An Activesession->User Object and children to create a complete structure",
-      "properties": {
-        "bUserInterfacedark": {
-          "$ref": "#/definitions/Field-bUserInterfacedark"
-        },
-        "eUserEzsignsendreminderfrequency": {
-          "$ref": "#/definitions/Field-eUserEzsignsendreminderfrequency"
-        },
-        "fkiTimezoneID": {
-          "$ref": "#/definitions/Field-pkiTimezoneID"
-        },
-        "iUserInterfacecolor": {
-          "$ref": "#/definitions/Field-iUserInterfacecolor"
-        },
-        "iUserListresult": {
-          "$ref": "#/definitions/Field-iUserListresult"
-        },
-        "pkiUserID": {
-          "$ref": "#/definitions/Field-pkiUserID"
-        },
-        "sAvatarUrl": {
-          "$ref": "#/definitions/Computed-sAvatarUrl"
-        },
-        "sEmailAddress": {
-          "$ref": "#/definitions/Field-sEmailAddress"
-        },
-        "sUserFirstname": {
-          "$ref": "#/definitions/Field-sUserFirstname"
-        },
-        "sUserLastname": {
-          "$ref": "#/definitions/Field-sUserLastname"
-        }
-      },
-      "required": [
-        "pkiUserID",
-        "fkiTimezoneID",
-        "sUserFirstname",
-        "sUserLastname",
-        "eUserEzsignsendreminderfrequency",
-        "iUserInterfacecolor",
-        "bUserInterfacedark",
-        "iUserListresult"
-      ],
-      "type": "object"
-    },
-    "activesession-getCurrent-v1-Response": {
-      "description": "Response for GET /1/object/activesession/getCurrent",
-      "properties": {
-        "mPayload": {
-          "$ref": "#/definitions/activesession-getCurrent-v1-Response-mPayload"
-        },
-        "objDebug": {
-          "$ref": "#/definitions/Common-Response-objDebug"
-        },
-        "objDebugPayload": {
-          "$ref": "#/definitions/Common-Response-objDebugPayload"
-        }
-      },
-      "required": [
-        "mPayload",
-        "objDebugPayload"
-      ],
-      "type": "object"
-    },
-    "activesession-getCurrent-v1-Response-mPayload": {
+    "activesession-ResponseCompound": {
       "description": "Payload for GET /1/object/activesession/getCurrent",
       "properties": {
         "a_eModuleInternalname": {
@@ -2547,6 +2466,99 @@
         "a_eModuleInternalname",
         "objUserReal",
         "a_pkiPermissionID"
+      ],
+      "type": "object"
+    },
+    "activesession-ResponseCompound-Apikey": {
+      "description": "An Activesession->Apikey object and children to create a complete structure",
+      "properties": {
+        "pkiApikeyID": {
+          "$ref": "#/definitions/Field-pkiApikeyID"
+        },
+        "sApikeyDescriptionX": {
+          "$ref": "#/definitions/Field-sApikeyDescriptionX"
+        }
+      },
+      "required": [
+        "pkiApikeyID",
+        "sApikeyDescriptionX"
+      ],
+      "type": "object"
+    },
+    "activesession-ResponseCompound-User": {
+      "description": "An Activesession->User Object and children to create a complete structure",
+      "properties": {
+        "bUserInterfacedark": {
+          "$ref": "#/definitions/Field-bUserInterfacedark"
+        },
+        "eUserEzsignsendreminderfrequency": {
+          "$ref": "#/definitions/Field-eUserEzsignsendreminderfrequency"
+        },
+        "fkiTimezoneID": {
+          "$ref": "#/definitions/Field-pkiTimezoneID"
+        },
+        "iUserInterfacecolor": {
+          "$ref": "#/definitions/Field-iUserInterfacecolor"
+        },
+        "iUserListresult": {
+          "$ref": "#/definitions/Field-iUserListresult"
+        },
+        "pkiUserID": {
+          "$ref": "#/definitions/Field-pkiUserID"
+        },
+        "sAvatarUrl": {
+          "$ref": "#/definitions/Computed-sAvatarUrl"
+        },
+        "sEmailAddress": {
+          "$ref": "#/definitions/Field-sEmailAddress"
+        },
+        "sUserFirstname": {
+          "$ref": "#/definitions/Field-sUserFirstname"
+        },
+        "sUserLastname": {
+          "$ref": "#/definitions/Field-sUserLastname"
+        }
+      },
+      "required": [
+        "pkiUserID",
+        "fkiTimezoneID",
+        "sUserFirstname",
+        "sUserLastname",
+        "eUserEzsignsendreminderfrequency",
+        "iUserInterfacecolor",
+        "bUserInterfacedark",
+        "iUserListresult"
+      ],
+      "type": "object"
+    },
+    "activesession-getCurrent-v2-Response": {
+      "description": "Response for GET /2/object/activesession/getCurrent",
+      "properties": {
+        "mPayload": {
+          "$ref": "#/definitions/activesession-getCurrent-v2-Response-mPayload"
+        },
+        "objDebug": {
+          "$ref": "#/definitions/Common-Response-objDebug"
+        },
+        "objDebugPayload": {
+          "$ref": "#/definitions/Common-Response-objDebugPayload"
+        }
+      },
+      "required": [
+        "mPayload",
+        "objDebugPayload"
+      ],
+      "type": "object"
+    },
+    "activesession-getCurrent-v2-Response-mPayload": {
+      "description": "Payload for GET /1/object/activesession/getCurrent",
+      "properties": {
+        "objActivesession": {
+          "$ref": "#/definitions/activesession-ResponseCompound"
+        }
+      },
+      "required": [
+        "objActivesession"
       ],
       "type": "object"
     },

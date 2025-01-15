@@ -380,6 +380,63 @@
                 ]
             }
         },
+        "/2/object/activesession/getCurrent": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Activesession"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/activesession-getCurrent-v2-Response"
+                                }
+                            }
+                        },
+                        "description": "OK"
+                    },
+                    "350": {
+                        "$ref": "#/components/responses/Response-Redirect-350"
+                    },
+                    "351": {
+                        "$ref": "#/components/responses/Response-Redirect-351"
+                    },
+                    "352": {
+                        "$ref": "#/components/responses/Response-Redirect-352"
+                    },
+                    "353": {
+                        "$ref": "#/components/responses/Response-Redirect-353"
+                    },
+                    "354": {
+                        "$ref": "#/components/responses/Response-Redirect-354"
+                    },
+                    "355": {
+                        "$ref": "#/components/responses/Response-Redirect-355"
+                    },
+                    "356": {
+                        "$ref": "#/components/responses/Response-Redirect-356"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Activesession_GetCurrent_V2",
+                "summary": "Get Current Activesession",
+                "description": "Retrieve the details about the current activesession",
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker",
+                    "Assistant",
+                    "EzsignSigner"
+                ]
+            }
+        },
         "/1/object/activesession/getCurrent": {
             "description": "",
             "get": {
@@ -419,6 +476,7 @@
                         "$ref": "#/components/responses/Response-Redirect-356"
                     }
                 },
+                "deprecated": true,
                 "security": [
                     {
                         "Authorization": []
@@ -33905,6 +33963,38 @@
                     }
                 ]
             },
+            "activesession-getCurrent-v2-Response": {
+                "description": "Response for GET /2/object/activesession/getCurrent",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/activesession-getCurrent-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "activesession-getCurrent-v2-Response-mPayload": {
+                "description": "Payload for GET /1/object/activesession/getCurrent",
+                "required": [
+                    "objActivesession"
+                ],
+                "type": "object",
+                "properties": {
+                    "objActivesession": {
+                        "$ref": "#/components/schemas/activesession-ResponseCompound"
+                    }
+                }
+            },
             "activesession-getList-v1-Response": {
                 "description": "Response for GET /1/object/activesession/getList",
                 "type": "object",
@@ -62447,23 +62537,18 @@
             },
             "webhook-getHistory-v1-Response-mPayload": {
                 "description": "Payload for GET /1/object/webhook/{pkiWebhookID}/getHistory",
+                "required": [
+                    "a_objWebhooklog"
+                ],
                 "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "a_objWebhooklog"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "a_objWebhooklog": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/Custom-Webhooklog-Response"
-                                }
-                            }
+                "properties": {
+                    "a_objWebhooklog": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-Webhooklog-Response"
                         }
                     }
-                ]
+                }
             },
             "webhook-getList-v1-Response": {
                 "description": "Response for GET /1/object/webhook/getList",
