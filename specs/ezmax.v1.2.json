@@ -36134,23 +36134,18 @@
             },
             "buyercontract-getCommunicationList-v1-Response-mPayload": {
                 "description": "Response for GET /1/object/buyercontract/{pkiBuyercontractID}/getCommunicationList",
+                "required": [
+                    "a_objCommunication"
+                ],
                 "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "a_objCommunication"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "a_objCommunication": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
-                                }
-                            }
+                "properties": {
+                    "a_objCommunication": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
                         }
                     }
-                ]
+                }
             },
             "buyercontract-getCommunicationrecipients-v1-Response": {
                 "description": "Response for GET /1/object/buyercontract/{pkiBuyercontractID}/getCommunicationrecipients",
@@ -39537,23 +39532,18 @@
             },
             "electronicfundstransfer-getCommunicationList-v1-Response-mPayload": {
                 "description": "Response for GET /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/getCommunicationList",
+                "required": [
+                    "a_objCommunication"
+                ],
                 "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "a_objCommunication"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "a_objCommunication": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
-                                }
-                            }
+                "properties": {
+                    "a_objCommunication": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
                         }
                     }
-                ]
+                }
             },
             "electronicfundstransfer-getCommunicationrecipients-v1-Response": {
                 "description": "Response for GET /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/getCommunicationrecipients",
@@ -45271,23 +45261,18 @@
             },
             "ezsignfolder-getCommunicationList-v1-Response-mPayload": {
                 "description": "Response for GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getCommunicationList",
+                "required": [
+                    "a_objCommunication"
+                ],
                 "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "a_objCommunication"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "a_objCommunication": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
-                                }
-                            }
+                "properties": {
+                    "a_objCommunication": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
                         }
                     }
-                ]
+                }
             },
             "ezsignfolder-getCommunicationrecipients-v1-Response": {
                 "description": "Response for GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getCommunicationrecipients",
@@ -55347,23 +55332,18 @@
             },
             "inscription-getCommunicationList-v1-Response-mPayload": {
                 "description": "Response for GET /1/object/inscription/{pkiInscriptionID}/getCommunicationList",
+                "required": [
+                    "a_objCommunication"
+                ],
                 "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "a_objCommunication"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "a_objCommunication": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
-                                }
-                            }
+                "properties": {
+                    "a_objCommunication": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
                         }
                     }
-                ]
+                }
             },
             "inscription-getCommunicationrecipients-v1-Response": {
                 "description": "Response for GET /1/object/inscription/{pkiInscriptionID}/getCommunicationrecipients",
@@ -55489,23 +55469,18 @@
             },
             "inscriptionnotauthenticated-getCommunicationList-v1-Response-mPayload": {
                 "description": "Response for GET /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/getCommunicationList",
+                "required": [
+                    "a_objCommunication"
+                ],
                 "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "a_objCommunication"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "a_objCommunication": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
-                                }
-                            }
+                "properties": {
+                    "a_objCommunication": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
                         }
                     }
-                ]
+                }
             },
             "inscriptionnotauthenticated-getCommunicationrecipients-v1-Response": {
                 "description": "Response for GET /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/getCommunicationrecipients",
@@ -55631,23 +55606,18 @@
             },
             "inscriptiontemp-getCommunicationList-v1-Response-mPayload": {
                 "description": "Response for GET /1/object/inscriptiontemp/{pkiInscriptiontempID}/getCommunicationList",
+                "required": [
+                    "a_objCommunication"
+                ],
                 "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "a_objCommunication"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "a_objCommunication": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
-                                }
-                            }
+                "properties": {
+                    "a_objCommunication": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
                         }
                     }
-                ]
+                }
             },
             "inscriptiontemp-getCommunicationrecipients-v1-Response": {
                 "description": "Response for GET /1/object/inscriptiontemp/{pkiInscriptiontempID}/getCommunicationrecipients",
@@ -55808,23 +55778,18 @@
             },
             "invoice-getCommunicationList-v1-Response-mPayload": {
                 "description": "Response for GET /1/object/invoice/{pkiInvoiceID}/getCommunicationList",
+                "required": [
+                    "a_objCommunication"
+                ],
                 "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "a_objCommunication"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "a_objCommunication": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
-                                }
-                            }
+                "properties": {
+                    "a_objCommunication": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
                         }
                     }
-                ]
+                }
             },
             "invoice-getCommunicationrecipients-v1-Response": {
                 "description": "Response for GET /1/object/invoice/{pkiInvoiceID}/getCommunicationrecipients",
@@ -56368,23 +56333,18 @@
             },
             "otherincome-getCommunicationList-v1-Response-mPayload": {
                 "description": "Response for GET /1/object/otherincome/{pkiOtherincomeID}/getCommunicationList",
+                "required": [
+                    "a_objCommunication"
+                ],
                 "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "a_objCommunication"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "a_objCommunication": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
-                                }
-                            }
+                "properties": {
+                    "a_objCommunication": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
                         }
                     }
-                ]
+                }
             },
             "otherincome-getCommunicationrecipients-v1-Response": {
                 "description": "Response for GET /1/object/otherincome/{pkiOtherincomeID}/getCommunicationrecipients",
@@ -57376,23 +57336,18 @@
             },
             "rejectedoffertopurchase-getCommunicationList-v1-Response-mPayload": {
                 "description": "Response for GET /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/getCommunicationList",
+                "required": [
+                    "a_objCommunication"
+                ],
                 "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "a_objCommunication"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "a_objCommunication": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
-                                }
-                            }
+                "properties": {
+                    "a_objCommunication": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
                         }
                     }
-                ]
+                }
             },
             "rejectedoffertopurchase-getCommunicationrecipients-v1-Response": {
                 "description": "Response for GET /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/getCommunicationrecipients",
@@ -58904,23 +58859,18 @@
             },
             "tranqcontract-getCommunicationList-v1-Response-mPayload": {
                 "description": "Response for GET /1/object/tranqcontract/{pkiTranqcontractID}/getCommunicationList",
+                "required": [
+                    "a_objCommunication"
+                ],
                 "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "a_objCommunication"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "a_objCommunication": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
-                                }
-                            }
+                "properties": {
+                    "a_objCommunication": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-CommunicationListElement-Response"
                         }
                     }
-                ]
+                }
             },
             "tranqcontract-getCommunicationrecipients-v1-Response": {
                 "description": "Response for GET /1/object/tranqcontract/{pkiTranqcontractID}/getCommunicationrecipients",
