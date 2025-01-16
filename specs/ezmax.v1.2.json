@@ -25239,24 +25239,19 @@
             },
             "Custom-Branding-Response": {
                 "description": "A Custom Branding Object",
+                "required": [
+                    "iBrandingColor",
+                    "sBrandingLogointerfaceurl"
+                ],
                 "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "iBrandingColor",
-                            "sBrandingLogointerfaceurl"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "iBrandingColor": {
-                                "$ref": "#/components/schemas/Field-iBrandingColor"
-                            },
-                            "sBrandingLogointerfaceurl": {
-                                "$ref": "#/components/schemas/Computed-sBrandingLogointerfaceurl"
-                            }
-                        }
+                "properties": {
+                    "iBrandingColor": {
+                        "$ref": "#/components/schemas/Field-iBrandingColor"
+                    },
+                    "sBrandingLogointerfaceurl": {
+                        "$ref": "#/components/schemas/Computed-sBrandingLogointerfaceurl"
                     }
-                ]
+                }
             },
             "Custom-CommunicationListElement-Response": {
                 "description": "A Communication List Element",
@@ -25594,36 +25589,31 @@
             },
             "Custom-Discussionconfiguration-Response": {
                 "description": "A Custom Discussionconfiguration Object",
+                "required": [
+                    "bDiscussionconfigurationCompletehistorywhenadded",
+                    "bDiscussionconfigurationCreateallowed",
+                    "bDiscussionconfigurationDeleteallowed",
+                    "bDiscussionconfigurationDeletediscussionmessageallowed",
+                    "bDiscussionconfigurationEditdiscussionmessageallowed"
+                ],
                 "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "bDiscussionconfigurationCompletehistorywhenadded",
-                            "bDiscussionconfigurationCreateallowed",
-                            "bDiscussionconfigurationDeleteallowed",
-                            "bDiscussionconfigurationDeletediscussionmessageallowed",
-                            "bDiscussionconfigurationEditdiscussionmessageallowed"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "bDiscussionconfigurationCompletehistorywhenadded": {
-                                "$ref": "#/components/schemas/Computed-bDiscussionconfigurationCompletehistorywhenadded"
-                            },
-                            "bDiscussionconfigurationCreateallowed": {
-                                "$ref": "#/components/schemas/Computed-bDiscussionconfigurationCreateallowed"
-                            },
-                            "bDiscussionconfigurationDeleteallowed": {
-                                "$ref": "#/components/schemas/Computed-bDiscussionconfigurationDeleteallowed"
-                            },
-                            "bDiscussionconfigurationDeletediscussionmessageallowed": {
-                                "$ref": "#/components/schemas/Computed-bDiscussionconfigurationDeletediscussionmessageallowed"
-                            },
-                            "bDiscussionconfigurationEditdiscussionmessageallowed": {
-                                "$ref": "#/components/schemas/Computed-bDiscussionconfigurationEditdiscussionmessageallowed"
-                            }
-                        }
+                "properties": {
+                    "bDiscussionconfigurationCompletehistorywhenadded": {
+                        "$ref": "#/components/schemas/Computed-bDiscussionconfigurationCompletehistorywhenadded"
+                    },
+                    "bDiscussionconfigurationCreateallowed": {
+                        "$ref": "#/components/schemas/Computed-bDiscussionconfigurationCreateallowed"
+                    },
+                    "bDiscussionconfigurationDeleteallowed": {
+                        "$ref": "#/components/schemas/Computed-bDiscussionconfigurationDeleteallowed"
+                    },
+                    "bDiscussionconfigurationDeletediscussionmessageallowed": {
+                        "$ref": "#/components/schemas/Computed-bDiscussionconfigurationDeletediscussionmessageallowed"
+                    },
+                    "bDiscussionconfigurationEditdiscussionmessageallowed": {
+                        "$ref": "#/components/schemas/Computed-bDiscussionconfigurationEditdiscussionmessageallowed"
                     }
-                ]
+                }
             },
             "Custom-Dnsrecord-Response": {
                 "description": "A Custom Dnsrecord Object",
@@ -26077,68 +26067,63 @@
             },
             "Custom-Ezsignfoldertype-Response": {
                 "description": "A Custom Ezsignfoldertype Object",
+                "required": [
+                    "pkiEzsignfoldertypeID"
+                ],
                 "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "pkiEzsignfoldertypeID"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "pkiEzsignfoldertypeID": {
-                                "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID"
-                            },
-                            "fkiFontIDAnnotation": {
-                                "$ref": "#/components/schemas/Field-pkiFontID"
-                            },
-                            "fkiFontIDFormfield": {
-                                "$ref": "#/components/schemas/Field-pkiFontID"
-                            },
-                            "fkiFontIDSignature": {
-                                "$ref": "#/components/schemas/Field-pkiFontID"
-                            },
-                            "sEzsignfoldertypeNameX": {
-                                "$ref": "#/components/schemas/Field-sEzsignfoldertypeNameX"
-                            },
-                            "bEzsignfoldertypeSendproofezsignsigner": {
-                                "$ref": "#/components/schemas/Field-bEzsignfoldertypeSendproofezsignsigner"
-                            },
-                            "bEzsignfoldertypeAllowdownloadattachmentezsignsigner": {
-                                "$ref": "#/components/schemas/Field-bEzsignfoldertypeAllowdownloadattachmentezsignsigner"
-                            },
-                            "bEzsignfoldertypeAllowdownloadproofezsignsigner": {
-                                "$ref": "#/components/schemas/Field-bEzsignfoldertypeAllowdownloadproofezsignsigner"
-                            },
-                            "bEzsignfoldertypeAutomaticsignature": {
-                                "$ref": "#/components/schemas/Field-bEzsignfoldertypeAutomaticsignature"
-                            },
-                            "bEzsignfoldertypeDelegate": {
-                                "$ref": "#/components/schemas/Field-bEzsignfoldertypeDelegate"
-                            },
-                            "bEzsignfoldertypeDiscussion": {
-                                "$ref": "#/components/schemas/Field-bEzsignfoldertypeDiscussion"
-                            },
-                            "bEzsignfoldertypeReassignezsignsigner": {
-                                "$ref": "#/components/schemas/Field-bEzsignfoldertypeReassignezsignsigner"
-                            },
-                            "bEzsignfoldertypeReassignuser": {
-                                "$ref": "#/components/schemas/Field-bEzsignfoldertypeReassignuser"
-                            },
-                            "bEzsignfoldertypeReassigngroup": {
-                                "$ref": "#/components/schemas/Field-bEzsignfoldertypeReassigngroup"
-                            },
-                            "iEzsignfoldertypeDeadlinedays": {
-                                "$ref": "#/components/schemas/Field-iEzsignfoldertypeDeadlinedays"
-                            },
-                            "iEzsignfoldertypeFontsizeannotation": {
-                                "$ref": "#/components/schemas/Field-iEzsignfoldertypeFontsizeannotation"
-                            },
-                            "iEzsignfoldertypeFontsizeformfield": {
-                                "$ref": "#/components/schemas/Field-iEzsignfoldertypeFontsizeformfield"
-                            }
-                        }
+                "properties": {
+                    "pkiEzsignfoldertypeID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfoldertypeID"
+                    },
+                    "fkiFontIDAnnotation": {
+                        "$ref": "#/components/schemas/Field-pkiFontID"
+                    },
+                    "fkiFontIDFormfield": {
+                        "$ref": "#/components/schemas/Field-pkiFontID"
+                    },
+                    "fkiFontIDSignature": {
+                        "$ref": "#/components/schemas/Field-pkiFontID"
+                    },
+                    "sEzsignfoldertypeNameX": {
+                        "$ref": "#/components/schemas/Field-sEzsignfoldertypeNameX"
+                    },
+                    "bEzsignfoldertypeSendproofezsignsigner": {
+                        "$ref": "#/components/schemas/Field-bEzsignfoldertypeSendproofezsignsigner"
+                    },
+                    "bEzsignfoldertypeAllowdownloadattachmentezsignsigner": {
+                        "$ref": "#/components/schemas/Field-bEzsignfoldertypeAllowdownloadattachmentezsignsigner"
+                    },
+                    "bEzsignfoldertypeAllowdownloadproofezsignsigner": {
+                        "$ref": "#/components/schemas/Field-bEzsignfoldertypeAllowdownloadproofezsignsigner"
+                    },
+                    "bEzsignfoldertypeAutomaticsignature": {
+                        "$ref": "#/components/schemas/Field-bEzsignfoldertypeAutomaticsignature"
+                    },
+                    "bEzsignfoldertypeDelegate": {
+                        "$ref": "#/components/schemas/Field-bEzsignfoldertypeDelegate"
+                    },
+                    "bEzsignfoldertypeDiscussion": {
+                        "$ref": "#/components/schemas/Field-bEzsignfoldertypeDiscussion"
+                    },
+                    "bEzsignfoldertypeReassignezsignsigner": {
+                        "$ref": "#/components/schemas/Field-bEzsignfoldertypeReassignezsignsigner"
+                    },
+                    "bEzsignfoldertypeReassignuser": {
+                        "$ref": "#/components/schemas/Field-bEzsignfoldertypeReassignuser"
+                    },
+                    "bEzsignfoldertypeReassigngroup": {
+                        "$ref": "#/components/schemas/Field-bEzsignfoldertypeReassigngroup"
+                    },
+                    "iEzsignfoldertypeDeadlinedays": {
+                        "$ref": "#/components/schemas/Field-iEzsignfoldertypeDeadlinedays"
+                    },
+                    "iEzsignfoldertypeFontsizeannotation": {
+                        "$ref": "#/components/schemas/Field-iEzsignfoldertypeFontsizeannotation"
+                    },
+                    "iEzsignfoldertypeFontsizeformfield": {
+                        "$ref": "#/components/schemas/Field-iEzsignfoldertypeFontsizeformfield"
                     }
-                ]
+                }
             },
             "Custom-Ezsignformfield-Request": {
                 "description": "A Custom Ezsignformfield Object to fill an Ezsignform using submitForm",
