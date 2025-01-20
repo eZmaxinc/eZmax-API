@@ -2884,7 +2884,6 @@
           "$ref": "#/definitions/Field-pkiEzsigntemplateglobalID"
         }
       },
-      "required": [],
       "type": "object"
     },
     "ezsignfolder-RequestCompoundV3": {

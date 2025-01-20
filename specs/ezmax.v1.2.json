@@ -44222,7 +44222,6 @@
             },
             "ezsigndocument-matchingtemplate-v3-Response": {
                 "description": "A Ezsigndocument createObject Response",
-                "required": [],
                 "type": "object",
                 "properties": {
                     "pkiEzsigntemplateID": {
