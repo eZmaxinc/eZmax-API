@@ -1664,7 +1664,7 @@
     },
     "Field-bSystemconfigurationEzsignpaidbyoffice": {
       "description": "Whether if Ezsign is paid by the company or not",
-      "example": "true",
+      "example": true,
       "type": "boolean"
     },
     "Field-bTaxassignmentIsactive": {
@@ -2212,11 +2212,13 @@
     "Field-sContactFirstname": {
       "description": "The First name of the contact",
       "example": "John",
+      "pattern": "^.{1,20}$",
       "type": "string"
     },
     "Field-sContactLastname": {
       "description": "The Last name of the contact",
       "example": "Doe",
+      "pattern": "^.{1,25}$",
       "type": "string"
     },
     "Field-sDepartmentNameX": {
