@@ -63,16 +63,7 @@
         "description": "Retrieve the details about the current activesession",
         "operationId": "Activesession_GetCurrent_V1",
         "summary": "Get Current Activesession",
-        "x-ms-visibility": "advanced",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [],
-        "x-usertypeextra": [
-          "AgentBroker",
-          "Assistant",
-          "EzsignSigner"
-        ]
+        "x-ms-visibility": "advanced"
       }
     },
     "/1/object/communication/{pkiCommunicationID}/getCommunicationBody": {
@@ -103,17 +94,7 @@
         },
         "description": "This endpoint returns the communication body.",
         "operationId": "Communication_GetCommunicationBody_V1",
-        "summary": "Retrieve the communication body.",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": [
-          "AgentBroker",
-          "EzsignSigner"
-        ]
+        "summary": "Retrieve the communication body."
       }
     },
     "/1/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplateglobal": {
@@ -165,14 +146,7 @@
         "description": "This endpoint applies a predefined template to the ezsign document.\nThis allows to automatically apply all the form and signature fields on a document in a single step.\n\nThe document must not already have fields otherwise an error will be returned.",
         "operationId": "Ezsigndocument_ApplyEzsigntemplateglobal_V1",
         "summary": "Apply an Ezsigntemplateglobal to the Ezsigndocument.",
-        "x-ms-visibility": "important",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [],
-        "x-usertypeextra": [
-          "AgentBroker"
-        ]
+        "x-ms-visibility": "important"
       }
     },
     "/1/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord": {
@@ -223,16 +197,7 @@
         },
         "description": "Using this endpoint, you can create multiple Ezsignsignatures/Ezsignformfieldgroups positioned by word at the same time.",
         "operationId": "Ezsigndocument_CreateEzsignelementsPositionedByWord_V1",
-        "summary": "Create multiple Ezsignsignatures/Ezsignformfieldgroups",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": [
-          "AgentBroker"
-        ]
+        "summary": "Create multiple Ezsignsignatures/Ezsignformfieldgroups"
       }
     },
     "/1/object/ezsigndocument/{pkiEzsigndocumentID}/getDownloadUrl/{eDocumentType}": {
@@ -286,17 +251,7 @@
         },
         "description": "This endpoint returns URLs to different files that can be downloaded during the signing process.\n\nThese links will expire after 5 minutes so the download of the file should be made soon after retrieving the link.",
         "operationId": "Ezsigndocument_GetDownloadUrl_V1",
-        "summary": "Retrieve a URL to download documents.",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": [
-          "AgentBroker",
-          "EzsignSigner"
-        ]
+        "summary": "Retrieve a URL to download documents."
       }
     },
     "/1/object/ezsignfolder/{pkiEzsignfolderID}/dispose": {
@@ -347,14 +302,7 @@
         },
         "description": "",
         "operationId": "Ezsignfolder_Dispose_V1",
-        "summary": "Dispose the Ezsignfolder",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": []
+        "summary": "Dispose the Ezsignfolder"
       }
     },
     "/2/object/activesession/getCurrent": {
@@ -398,18 +346,7 @@
         "description": "Retrieve the details about the current activesession",
         "operationId": "Activesession_GetCurrent_V2",
         "summary": "Get Current Activesession",
-        "x-ms-visibility": "advanced",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": [
-          "AgentBroker",
-          "Assistant",
-          "EzsignSigner"
-        ]
+        "x-ms-visibility": "advanced"
       }
     },
     "/2/object/ezsigndocument": {
@@ -448,12 +385,7 @@
         "description": "The endpoint allows to create one or many elements at once.",
         "operationId": "Ezsigndocument_CreateObject_V2",
         "summary": "Create a new Ezsigndocument",
-        "x-ms-visibility": "important",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [],
-        "x-usertypeextra": []
+        "x-ms-visibility": "important"
       }
     },
     "/2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate": {
@@ -505,16 +437,7 @@
         "description": "This endpoint applies a predefined template to the ezsign document.\nThis allows to automatically apply all the form and signature fields on a document in a single step.\n\nThe document must not already have fields otherwise an error will be returned.",
         "operationId": "Ezsigndocument_ApplyEzsigntemplate_V2",
         "summary": "Apply an Ezsigntemplate to the Ezsigndocument.",
-        "x-ms-visibility": "important",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": [
-          "AgentBroker"
-        ]
+        "x-ms-visibility": "important"
       }
     },
     "/2/object/ezsignfolder": {
@@ -547,12 +470,7 @@
         "description": "The endpoint allows to create one or many elements at once.",
         "operationId": "Ezsignfolder_CreateObject_V2",
         "summary": "Create a new Ezsignfolder",
-        "x-ms-visibility": "important",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [],
-        "x-usertypeextra": []
+        "x-ms-visibility": "important"
       }
     },
     "/2/object/ezsignfoldersignerassociation": {
@@ -584,16 +502,7 @@
         "description": "The endpoint allows to create one or many elements at once.",
         "operationId": "Ezsignfoldersignerassociation_CreateObject_V2",
         "summary": "Create a new Ezsignfoldersignerassociation",
-        "x-ms-visibility": "important",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": [
-          "AgentBroker"
-        ]
+        "x-ms-visibility": "important"
       }
     },
     "/2/object/ezsignfoldertype/getAutocomplete/{sSelector}": {
@@ -659,16 +568,7 @@
         "description": "Get the list of Ezsignfoldertype to be used in a dropdown or autocomplete control.",
         "operationId": "Ezsignfoldertype_GetAutocomplete_V2",
         "summary": "Retrieve Ezsignfoldertypes and IDs",
-        "x-ms-visibility": "advanced",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": [
-          "AgentBroker"
-        ]
+        "x-ms-visibility": "advanced"
       }
     },
     "/2/object/ezsigntemplate/getAutocomplete/{sSelector}": {
@@ -738,16 +638,7 @@
         "description": "Get the list of Ezsigntemplate to be used in a dropdown or autocomplete control.",
         "operationId": "Ezsigntemplate_GetAutocomplete_V2",
         "summary": "Retrieve Ezsigntemplates and IDs",
-        "x-ms-visibility": "advanced",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": [
-          "AgentBroker"
-        ]
+        "x-ms-visibility": "advanced"
       }
     },
     "/2/object/ezsigntemplateglobal/getAutocomplete/{sSelector}": {
@@ -810,16 +701,7 @@
         "description": "Get the list of Ezsigntemplateglobal to be used in a dropdown or autocomplete control.",
         "operationId": "Ezsigntemplateglobal_GetAutocomplete_V2",
         "summary": "Retrieve Ezsigntemplateglobals and IDs",
-        "x-ms-visibility": "advanced",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": [
-          "AgentBroker"
-        ]
+        "x-ms-visibility": "advanced"
       }
     },
     "/2/object/ezsigntemplatepackage/getAutocomplete/{sSelector}": {
@@ -890,16 +772,7 @@
         "description": "Get the list of Ezsigntemplatepackage to be used in a dropdown or autocomplete control.",
         "operationId": "Ezsigntemplatepackage_GetAutocomplete_V2",
         "summary": "Retrieve Ezsigntemplatepackages and IDs",
-        "x-ms-visibility": "advanced",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": [
-          "AgentBroker"
-        ]
+        "x-ms-visibility": "advanced"
       }
     },
     "/2/object/ezsigntsarequirement/getAutocomplete/{sSelector}": {
@@ -982,16 +855,7 @@
         "description": "Get the list of Ezsigntsarequirement to be used in a dropdown or autocomplete control.",
         "operationId": "Ezsigntsarequirement_GetAutocomplete_V2",
         "summary": "Retrieve Ezsigntsarequirements and IDs",
-        "x-ms-visibility": "advanced",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": [
-          "AgentBroker"
-        ]
+        "x-ms-visibility": "advanced"
       }
     },
     "/2/object/language/getAutocomplete/{sSelector}": {
@@ -1054,14 +918,7 @@
         "description": "Get the list of Language to be used in a dropdown or autocomplete control.",
         "operationId": "Language_GetAutocomplete_V2",
         "summary": "Retrieve Languages and IDs",
-        "x-ms-visibility": "advanced",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": []
+        "x-ms-visibility": "advanced"
       }
     },
     "/2/object/secretquestion/getAutocomplete/{sSelector}": {
@@ -1124,16 +981,7 @@
         "description": "Get the list of Secretquestion to be used in a dropdown or autocomplete control.",
         "operationId": "Secretquestion_GetAutocomplete_V2",
         "summary": "Retrieve Secretquestions and IDs",
-        "x-ms-visibility": "advanced",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": [
-          "EzsignSigner"
-        ]
+        "x-ms-visibility": "advanced"
       }
     },
     "/2/object/taxassignment/getAutocomplete/{sSelector}": {
@@ -1197,14 +1045,7 @@
         "description": "Get the list of Taxassignment to be used in a dropdown or autocomplete control.",
         "operationId": "Taxassignment_GetAutocomplete_V2",
         "summary": "Retrieve Taxassignments and IDs",
-        "x-ms-visibility": "advanced",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": []
+        "x-ms-visibility": "advanced"
       }
     },
     "/2/object/user/getAutocomplete/{sSelector}": {
@@ -1275,17 +1116,7 @@
         "description": "Get the list of User to be used in a dropdown or autocomplete control.",
         "operationId": "User_GetAutocomplete_V2",
         "summary": "Retrieve Users and IDs",
-        "x-ms-visibility": "advanced",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": [
-          "AgentBroker",
-          "Assistant"
-        ]
+        "x-ms-visibility": "advanced"
       }
     },
     "/2/object/userlogintype/getAutocomplete/{sSelector}": {
@@ -1368,17 +1199,7 @@
         "description": "Get the list of Userlogintype to be used in a dropdown or autocomplete control.",
         "operationId": "Userlogintype_GetAutocomplete_V2",
         "summary": "Retrieve Userlogintypes and IDs",
-        "x-ms-visibility": "advanced",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": [
-          "AgentBroker",
-          "EzsignSigner"
-        ]
+        "x-ms-visibility": "advanced"
       }
     },
     "/3/object/ezsigndocument": {
@@ -1416,16 +1237,7 @@
         "description": "The endpoint allows to create one or many elements at once.",
         "operationId": "Ezsigndocument_CreateObject_V3",
         "summary": "Create a new Ezsigndocument",
-        "x-ms-visibility": "important",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": [
-          "AgentBroker"
-        ]
+        "x-ms-visibility": "important"
       }
     },
     "/3/object/ezsignfolder": {
@@ -1457,16 +1269,7 @@
         "description": "The endpoint allows to create one or many elements at once.",
         "operationId": "Ezsignfolder_CreateObject_V3",
         "summary": "Create a new Ezsignfolder",
-        "x-ms-visibility": "important",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": [
-          "AgentBroker"
-        ]
+        "x-ms-visibility": "important"
       }
     },
     "/3/object/ezsignfolder/{pkiEzsignfolderID}/send": {
@@ -1518,16 +1321,7 @@
         "description": "",
         "operationId": "Ezsignfolder_Send_V3",
         "summary": "Send the Ezsignfolder to the signatories for signature",
-        "x-ms-visibility": "important",
-        "x-permissions": [
-          "All"
-        ],
-        "x-presentations": [
-          "Ezsign"
-        ],
-        "x-usertypeextra": [
-          "AgentBroker"
-        ]
+        "x-ms-visibility": "important"
       }
     }
   },
