@@ -3849,6 +3849,77 @@
                 }
             ]
         },
+        "/2/object/currency/getAutocomplete/{sSelector}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Currency"
+                ],
+                "parameters": [
+                    {
+                        "name": "eFilterActive",
+                        "description": "Specify which results we want to display.",
+                        "schema": {
+                            "default": "Active",
+                            "enum": [
+                                "All",
+                                "Active",
+                                "Inactive"
+                            ],
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false
+                    },
+                    {
+                        "$ref": "#/components/parameters/sQuery"
+                    },
+                    {
+                        "$ref": "#/components/parameters/AcceptLanguage"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/currency-getAutocomplete-v2-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Currency_GetAutocomplete_V2",
+                "summary": "Retrieve Currencies and IDs",
+                "description": "Get the list of Currency to be used in a dropdown or autocomplete control.",
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "sSelector",
+                    "description": "The type of Currencies to return",
+                    "schema": {
+                        "enum": [
+                            "All"
+                        ],
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/1/object/customer": {
             "description": "",
             "post": {
@@ -27328,6 +27399,11 @@
                 "type": "boolean",
                 "example": true
             },
+            "Field-bCurrencyIsactive": {
+                "description": "Whether the Currency is active or not",
+                "type": "boolean",
+                "example": true
+            },
             "Field-bCustomerAttendance": {
                 "description": "Whether if it's an attendance",
                 "type": "boolean",
@@ -30901,6 +30977,12 @@
                 "type": "integer",
                 "example": 2
             },
+            "Field-pkiCurrencyID": {
+                "description": "The unique ID of the Currency.",
+                "minimum": 0,
+                "type": "integer",
+                "example": 1
+            },
             "Field-pkiCustomerID": {
                 "description": "The unique ID of the Customer.",
                 "minimum": 0,
@@ -32245,6 +32327,12 @@
                 "pattern": "^.{1,30}$",
                 "type": "string",
                 "example": "Visa"
+            },
+            "Field-sCurrencyDescriptionX": {
+                "description": "The description of the Currency in the language of the requester",
+                "pattern": "^.{1,20}$",
+                "type": "string",
+                "example": "Canadian"
             },
             "Field-sCustomerCode": {
                 "description": "The code of the Customer",
@@ -39079,6 +39167,62 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/creditcardtype-AutocompleteElement-Response"
+                        }
+                    }
+                }
+            },
+            "currency-AutocompleteElement-Response": {
+                "description": "A Currency AutocompleteElement Response",
+                "required": [
+                    "pkiCurrencyID",
+                    "sCurrencyDescriptionX",
+                    "bCurrencyIsactive"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiCurrencyID": {
+                        "$ref": "#/components/schemas/Field-pkiCurrencyID"
+                    },
+                    "sCurrencyDescriptionX": {
+                        "$ref": "#/components/schemas/Field-sCurrencyDescriptionX"
+                    },
+                    "bCurrencyIsactive": {
+                        "$ref": "#/components/schemas/Field-bCurrencyIsactive"
+                    }
+                }
+            },
+            "currency-getAutocomplete-v2-Response": {
+                "description": "Response for GET /2/object/currency/getAutocomplete",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/currency-getAutocomplete-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "currency-getAutocomplete-v2-Response-mPayload": {
+                "description": "Payload for POST /2/object/currency/getAutocomplete",
+                "required": [
+                    "a_objCurrency"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objCurrency": {
+                        "description": "An array of Currency autocomplete element response.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/currency-AutocompleteElement-Response"
                         }
                     }
                 }
@@ -64171,6 +64315,11 @@
             "x-displayName": "Creditcardtype"
         },
         {
+            "name": "Object_Currency",
+            "description": "Currency contains details about Currencies",
+            "x-displayName": "Currency"
+        },
+        {
             "name": "Object_Customer",
             "description": "Customer contains details about Customers",
             "x-displayName": "Customer"
@@ -65142,6 +65291,7 @@
                 "Object_Creditcardclient",
                 "Object_Creditcardmerchant",
                 "Object_Creditcardtype",
+                "Object_Currency",
                 "Object_Customer",
                 "Object_Department",
                 "Object_Discussion",
