@@ -2,7 +2,7 @@
     "openapi": "3.0.3",
     "info": {
         "title": "eZmax API Definition (Full)",
-        "version": "1.3.0",
+        "version": "1.3.1",
         "description": "This API expose all the functionnalities for the eZmax and eZsign applications.",
         "termsOfService": "https://www.ezmax.ca/TODO",
         "contact": {
@@ -5101,7 +5101,8 @@
                 "summary": "Retrieve Customers and IDs",
                 "description": "Get the list of Customer to be used in a dropdown or autocomplete control.",
                 "x-permissions": [
-                    "FinancialsReports_ARReport"
+                    "FinancialsReports_ARReport",
+                    "Ezmaxcustomer_CreationModification"
                 ],
                 "x-usertypeextra": [],
                 "x-systemconfigurationtype": [
@@ -10265,7 +10266,6 @@
                         "$ref": "#/components/responses/Response-Error-422"
                     }
                 },
-                "deprecated": true,
                 "security": [
                     {
                         "Authorization": []
@@ -10328,6 +10328,7 @@
                         "$ref": "#/components/responses/Response-Error-422"
                     }
                 },
+                "deprecated": true,
                 "security": [
                     {
                         "Authorization": []
@@ -12301,6 +12302,20 @@
                     },
                     "in": "path",
                     "required": true
+                },
+                {
+                    "name": "Accept",
+                    "description": "Test csharp",
+                    "schema": {
+                        "enum": [
+                            "application/json",
+                            "application/zip",
+                            "application/pdf"
+                        ],
+                        "type": "string"
+                    },
+                    "in": "header",
+                    "required": false
                 }
             ]
         },
@@ -14109,6 +14124,69 @@
                 "operationId": "Ezsignfoldersignerassociation_CreateEmbeddedUrl_V2",
                 "summary": "Creates an Url to allow embedded signing",
                 "description": "This endpoint creates an Url that can be used in a browser or embedded in an I-Frame to allow signing.\n\nThe signer Login type must be configured as Embedded.\n\n### Iframe Communication (postMessage)\n\nIf the signing page is embedded in an `iframe`, the application sends events to the parent window via `window.postMessage`.\n\nThe message structure is defined as follows:\n\n```json\n{\n  \"source\": \"ezsign\",\n  \"type\": \"eEzsignEvent\",\n  \"payload\": \"CompletedEzsignfolder\"\n}\n```\n\n* **source**: Always `'ezsign'`.\n* **type**: Always `'eEzsignEvent'`.\n* **payload**: Corresponds to the **eEzsignEvent** values listed in the table above (e.g., `SessionTimeout`, `CompletedStep`, etc.).\n\n#### Example listener\n\n```javascript\nwindow.addEventListener('message', (event) => {\n    const { source, type, payload } = event.data;\n   \n    if (source === 'ezsign' && type === 'eEzsignEvent') {\n        console.log('Event received:', payload);\n    }\n});\n```\n",
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ],
+                "x-systemconfigurationtype": [
+                    "All"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignfoldersignerassociationID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezsignfoldersignerassociation-createEmbeddedUrl-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Ezsignfoldersignerassociation"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfoldersignerassociation-createEmbeddedUrl-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "deprecated": true,
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezsignfoldersignerassociation_CreateEmbeddedUrl_V1",
+                "summary": "Creates an Url to allow embedded signing",
+                "description": "This endpoint creates an Url that can be used in a browser or embedded in an I-Frame to allow signing.\n\nThe signer Login type must be configured as Embedded.",
                 "x-permissions": [
                     "All"
                 ],
@@ -16849,6 +16927,205 @@
                 ]
             }
         },
+        "/1/object/ezsigntemplateannotation": {
+            "description": "",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezsigntemplateannotation-createObject-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Ezsigntemplateannotation"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigntemplateannotation-createObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezsigntemplateannotation_CreateObject_V1",
+                "summary": "Create a new Ezsigntemplateannotation",
+                "description": "The endpoint allows to create one or many elements at once.",
+                "x-systemconfigurationtype": [
+                    "All"
+                ],
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            }
+        },
+        "/2/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Ezsigntemplateannotation"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigntemplateannotation-getObject-v2-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezsigntemplateannotation_GetObject_V2",
+                "summary": "Retrieve an existing Ezsigntemplateannotation",
+                "description": "",
+                "x-systemconfigurationtype": [
+                    "All"
+                ],
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigntemplateannotationID",
+                    "description": "The unique ID of the Ezsigntemplateannotation",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigntemplateannotationID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}": {
+            "description": "",
+            "put": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezsigntemplateannotation-editObject-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Ezsigntemplateannotation"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigntemplateannotation-editObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezsigntemplateannotation_EditObject_V1",
+                "summary": "Edit an existing Ezsigntemplateannotation",
+                "description": "",
+                "x-systemconfigurationtype": [
+                    "All"
+                ],
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Object_Ezsigntemplateannotation"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigntemplateannotation-deleteObject-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezsigntemplateannotation_DeleteObject_V1",
+                "summary": "Delete an existing Ezsigntemplateannotation",
+                "description": "",
+                "x-systemconfigurationtype": [
+                    "All"
+                ],
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigntemplateannotationID",
+                    "description": "The unique ID of the Ezsigntemplateannotation",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigntemplateannotationID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/1/object/ezsigntemplatedocument": {
             "description": "",
             "post": {
@@ -18257,6 +18534,57 @@
                             "All"
                         ],
                         "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/2/object/ezsigntemplateglobalannotation/{pkiEzsigntemplateglobalannotationID}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Ezsigntemplateglobalannotation"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsigntemplateglobalannotation-getObject-v2-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezsigntemplateglobalannotation_GetObject_V2",
+                "summary": "Retrieve an existing Ezsigntemplateglobalannotation",
+                "description": "",
+                "x-systemconfigurationtype": [
+                    "All"
+                ],
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsigntemplateglobalannotationID",
+                    "description": "The unique ID of the Ezsigntemplateglobalannotation",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigntemplateglobalannotationID"
                     },
                     "in": "path",
                     "required": true
@@ -27185,6 +27513,7 @@
                         "description": "Successful response"
                     }
                 },
+                "deprecated": true,
                 "security": [
                     {
                         "Authorization": []
@@ -37153,6 +37482,35 @@
                 "type": "string",
                 "example": "Ezsignfoldertype"
             },
+            "Field-eEzsigntemplateannotationHorizontalalignment": {
+                "description": "The horizontalalignment of the Ezsigntemplateannotation",
+                "enum": [
+                    "Center",
+                    "Left",
+                    "Right"
+                ],
+                "type": "string",
+                "example": "Center"
+            },
+            "Field-eEzsigntemplateannotationType": {
+                "description": "The type of the Ezsigntemplateannotation",
+                "enum": [
+                    "Dropdown",
+                    "Text"
+                ],
+                "type": "string",
+                "example": "Dropdown"
+            },
+            "Field-eEzsigntemplateannotationVerticalalignment": {
+                "description": "The verticalalignment of the Ezsigntemplateannotation",
+                "enum": [
+                    "Bottom",
+                    "Middle",
+                    "Top"
+                ],
+                "type": "string",
+                "example": "Bottom"
+            },
             "Field-eEzsigntemplatedocumentpagerecognitionOperator": {
                 "description": "The operator of the Ezsigntemplatedocumentpagerecognition",
                 "enum": [
@@ -37287,6 +37645,35 @@
                 ],
                 "type": "string",
                 "example": "Centris"
+            },
+            "Field-eEzsigntemplateglobalannotationHorizontalalignment": {
+                "description": "The horizontalalignment of the Ezsigntemplateglobalannotation",
+                "enum": [
+                    "Center",
+                    "Left",
+                    "Right"
+                ],
+                "type": "string",
+                "example": "Center"
+            },
+            "Field-eEzsigntemplateglobalannotationType": {
+                "description": "The type of the Ezsigntemplateglobalannotation",
+                "enum": [
+                    "Dropdown",
+                    "Text"
+                ],
+                "type": "string",
+                "example": "Dropdown"
+            },
+            "Field-eEzsigntemplateglobalannotationVerticalalignment": {
+                "description": "The verticalalignment of the Ezsigntemplateglobalannotation",
+                "enum": [
+                    "Bottom",
+                    "Middle",
+                    "Top"
+                ],
+                "type": "string",
+                "example": "Bottom"
             },
             "Field-eEzsigntemplatepackagesignerMapping": {
                 "description": "Mapping configuration to use when package is apply.\n\n1. **Manual** User need to choose mapping manually.\n2. **Creator** mapping will be set to creator of folderS.\n3. **User** mapping will be set to fkiUserID\n4. **Usergroup** mapping will be set to fkiUsergroupID.",
@@ -38298,6 +38685,34 @@
                 "type": "integer",
                 "example": 300
             },
+            "Field-iEzsigntemplateannotationHeight": {
+                "description": "The height of the Ezsigntemplateannotation",
+                "maximum": 65535,
+                "minimum": 0,
+                "type": "integer",
+                "example": 58213
+            },
+            "Field-iEzsigntemplateannotationWidth": {
+                "description": "The width of the Ezsigntemplateannotation",
+                "maximum": 65535,
+                "minimum": 0,
+                "type": "integer",
+                "example": 51755
+            },
+            "Field-iEzsigntemplateannotationX": {
+                "description": "The x of the Ezsigntemplateannotation",
+                "maximum": 65535,
+                "minimum": 0,
+                "type": "integer",
+                "example": 17864
+            },
+            "Field-iEzsigntemplateannotationY": {
+                "description": "The y of the Ezsigntemplateannotation",
+                "maximum": 65535,
+                "minimum": 0,
+                "type": "integer",
+                "example": 23342
+            },
             "Field-iEzsigntemplatedocumentPagetotal": {
                 "description": "The number of pages in the Ezsigntemplatedocument.",
                 "minimum": 1,
@@ -38427,6 +38842,34 @@
                 "minimum": 1,
                 "type": "integer",
                 "example": 1
+            },
+            "Field-iEzsigntemplateglobalannotationHeight": {
+                "description": "The height of the Ezsigntemplateglobalannotation",
+                "maximum": 65535,
+                "minimum": 0,
+                "type": "integer",
+                "example": 31702
+            },
+            "Field-iEzsigntemplateglobalannotationWidth": {
+                "description": "The width of the Ezsigntemplateglobalannotation",
+                "maximum": 65535,
+                "minimum": 0,
+                "type": "integer",
+                "example": 26049
+            },
+            "Field-iEzsigntemplateglobalannotationX": {
+                "description": "The x of the Ezsigntemplateglobalannotation",
+                "maximum": 65535,
+                "minimum": 0,
+                "type": "integer",
+                "example": 59074
+            },
+            "Field-iEzsigntemplateglobalannotationY": {
+                "description": "The y of the Ezsigntemplateglobalannotation",
+                "maximum": 65535,
+                "minimum": 0,
+                "type": "integer",
+                "example": 27324
             },
             "Field-iEzsigntemplatepackagemembershipOrder": {
                 "description": "The order in which the Ezsigntemplate will be imported when using an Ezsigntemplatepackage.",
@@ -39313,6 +39756,13 @@
                 "type": "integer",
                 "example": 36
             },
+            "Field-pkiEzsigntemplateannotationID": {
+                "description": "The unique ID of the Ezsigntemplateannotation",
+                "maximum": 16777215,
+                "minimum": 0,
+                "type": "integer",
+                "example": 79
+            },
             "Field-pkiEzsigntemplatedocumentID": {
                 "description": "The unique ID of the Ezsigntemplatedocument",
                 "minimum": 0,
@@ -39363,11 +39813,25 @@
                 "type": "integer",
                 "example": 36
             },
+            "Field-pkiEzsigntemplateglobalannotationID": {
+                "description": "The unique ID of the Ezsigntemplateglobalannotation",
+                "maximum": 16777215,
+                "minimum": 0,
+                "type": "integer",
+                "example": 200
+            },
             "Field-pkiEzsigntemplateglobaldocumentID": {
                 "description": "The unique ID of the Ezsigntemplateglobaldocument",
                 "minimum": 0,
                 "type": "integer",
                 "example": 133
+            },
+            "Field-pkiEzsigntemplateglobaldocumentpageID": {
+                "description": "The unique ID of the Ezsigntemplateglobaldocumentpage",
+                "maximum": 16777215,
+                "minimum": 0,
+                "type": "integer",
+                "example": 225
             },
             "Field-pkiEzsigntemplateglobalsignerID": {
                 "description": "The unique ID of the Ezsigntemplateglobalsigner",
@@ -40738,6 +41202,24 @@
                 "type": "string",
                 "example": "Contract"
             },
+            "Field-sEzsigntemplateannotationDefaulttext": {
+                "description": "The defaulttext of the Ezsigntemplateannotation",
+                "pattern": "^.{0,65535}$",
+                "type": "string",
+                "example": "John Doe"
+            },
+            "Field-sEzsigntemplateannotationDescription": {
+                "description": "The description of the Ezsigntemplateannotation",
+                "pattern": "^.{0,80}$",
+                "type": "string",
+                "example": "Name"
+            },
+            "Field-sEzsigntemplateannotationnDropdownvalues": {
+                "description": "The ndropdownvalues of the Ezsigntemplateannotation",
+                "pattern": "^.{0,65535}$",
+                "type": "string",
+                "example": "{\"Accepts\",\"Refuses\"}"
+            },
             "Field-sEzsigntemplatedocumentName": {
                 "description": "The name of the Ezsigntemplatedocument.",
                 "type": "string",
@@ -40800,6 +41282,24 @@
                 "description": "The description of the Ezsigntemplate",
                 "type": "string",
                 "example": "Standard Contract"
+            },
+            "Field-sEzsigntemplateglobalannotationDefaulttext": {
+                "description": "The defaulttext of the Ezsigntemplateglobalannotation",
+                "pattern": "^.{0,65535}$",
+                "type": "string",
+                "example": "John Doe"
+            },
+            "Field-sEzsigntemplateglobalannotationDescription": {
+                "description": "The description of the Ezsigntemplateglobalannotation",
+                "pattern": "^.{0,80}$",
+                "type": "string",
+                "example": "Name"
+            },
+            "Field-sEzsigntemplateglobalannotationDropdownvalues": {
+                "description": "The dropdownvalues of the Ezsigntemplateglobalannotation",
+                "pattern": "^.{0,65535}$",
+                "type": "string",
+                "example": "{\"Accepts\",\"Refuses\"}"
             },
             "Field-sEzsigntemplateglobaldocumentName": {
                 "description": "The name of the Ezsigntemplateglobaldocument.",
@@ -57318,6 +57818,60 @@
                     }
                 }
             },
+            "ezsignfoldersignerassociation-createEmbeddedUrl-v1-Request": {
+                "description": "Request for POST /1/object/ezsignfoldersignerassociation/createEmbeddedUrl",
+                "type": "object",
+                "properties": {
+                    "sReturnUrl": {
+                        "description": "The return Url to redirect after the signing is completed\n\n**Warning** Due to the potential for Ezsignsigners to cancel redirection, close their browser post-signing, or spoof the landing URL, it's advisable not to solely depend on the sReturnUrl for accurate status within your integration.\n\nOnce the Ezsignsigner finishes, they are directed back to your application. Your application can retain transaction state details by either storing data in a cookie or incorporating query parameters in the sReturnUrl. For example: https://www.example.com/sReturnUrl?sSessionID=ABC123\n\nThe actual url that will be called will have an extra url parameter appended to give details about the process. The possible values are listed in the table below. For example: https://www.example.com/sReturnUrl?sSessionID=ABC123&eEzsignEvent=CompletedEzsignfolder \n\n|**Query parameters appended**|\n|---|\n|eEzsignEvent|\n\n\n|**eEzsignEvent**|**Description**|\n|---|---|\n|SessionTimeout|The session timed out|\n|SessionLogout|The Ezsignsigner signed out|\n|DeclinedTermOfUse|The Ezsignsigner refused the terms|\n|DeclinedSign|The Ezsignsigner refused to sign|\n|Reassigned|The Ezsignsigner reassigned his signatures to someone else|\n|CompletedStep|The Ezsignsigner completed his step. There is other signatures to complete the Ezsigndocument|\n|CompletedEzsignfolder|The Ezsignfolder is completed. Everyone signed their signatures|",
+                        "pattern": "^(https|http):\\/\\/[^\\s\\/$.?#].[^\\s]*$",
+                        "type": "string",
+                        "example": "https://www.example.com"
+                    },
+                    "sIframedomain": {
+                        "description": "Domain protection for the iFrame",
+                        "type": "string",
+                        "example": "*.example.com"
+                    },
+                    "bIsIframe": {
+                        "description": "Whether the url would be in an iFrame or not",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ezsignfoldersignerassociation-createEmbeddedUrl-v1-Response": {
+                "description": "Response for POST /1/object/ezsignfoldersignerassociation/createEmbeddedUrl",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsignfoldersignerassociation-createEmbeddedUrl-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsignfoldersignerassociation-createEmbeddedUrl-v1-Response-mPayload": {
+                "description": "Payload for POST /1/object/ezsignfoldersignerassociation/createEmbeddedUrl",
+                "required": [
+                    "sEmbeddedUrl"
+                ],
+                "type": "object",
+                "properties": {
+                    "sEmbeddedUrl": {
+                        "description": "The embedded Url to the signing application.\r\n\r\nUrl will expire after 5 minutes.\r\n",
+                        "type": "string"
+                    }
+                }
+            },
             "ezsignfoldersignerassociation-createEmbeddedUrl-v2-Request": {
                 "description": "Request for POST /2/object/ezsignfoldersignerassociation/createEmbeddedUrl",
                 "type": "object",
@@ -61974,6 +62528,263 @@
                     }
                 }
             },
+            "ezsigntemplateannotation-Request": {
+                "description": "A Ezsigntemplateannotation Object",
+                "required": [
+                    "fkiEzsigntemplatedocumentpageID",
+                    "fkiTextstylestaticID",
+                    "eEzsigntemplateannotationHorizontalalignment",
+                    "eEzsigntemplateannotationVerticalalignment",
+                    "eEzsigntemplateannotationType",
+                    "iEzsigntemplateannotationX",
+                    "iEzsigntemplateannotationY",
+                    "iEzsigntemplateannotationWidth",
+                    "iEzsigntemplateannotationHeight",
+                    "sEzsigntemplateannotationDescription",
+                    "sEzsigntemplateannotationDefaulttext",
+                    "sEzsigntemplateannotationnDropdownvalues"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsigntemplateannotationID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigntemplateannotationID"
+                    },
+                    "fkiEzsigntemplatedocumentpageID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigntemplatedocumentpageID"
+                    },
+                    "fkiTextstylestaticID": {
+                        "$ref": "#/components/schemas/Field-pkiTextstylestaticID"
+                    },
+                    "eEzsigntemplateannotationHorizontalalignment": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplateannotationHorizontalalignment"
+                    },
+                    "eEzsigntemplateannotationVerticalalignment": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplateannotationVerticalalignment"
+                    },
+                    "eEzsigntemplateannotationType": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplateannotationType"
+                    },
+                    "iEzsigntemplateannotationX": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplateannotationX"
+                    },
+                    "iEzsigntemplateannotationY": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplateannotationY"
+                    },
+                    "iEzsigntemplateannotationWidth": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplateannotationWidth"
+                    },
+                    "iEzsigntemplateannotationHeight": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplateannotationHeight"
+                    },
+                    "sEzsigntemplateannotationDescription": {
+                        "$ref": "#/components/schemas/Field-sEzsigntemplateannotationDescription"
+                    },
+                    "sEzsigntemplateannotationDefaulttext": {
+                        "$ref": "#/components/schemas/Field-sEzsigntemplateannotationDefaulttext"
+                    },
+                    "sEzsigntemplateannotationnDropdownvalues": {
+                        "$ref": "#/components/schemas/Field-sEzsigntemplateannotationnDropdownvalues"
+                    }
+                }
+            },
+            "ezsigntemplateannotation-RequestCompound": {
+                "description": "A Ezsigntemplateannotation Object and children",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsigntemplateannotation-Request"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "ezsigntemplateannotation-Response": {
+                "description": "A Ezsigntemplateannotation Object",
+                "required": [
+                    "pkiEzsigntemplateannotationID",
+                    "fkiEzsigntemplatedocumentpageID",
+                    "fkiTextstylestaticID",
+                    "eEzsigntemplateannotationHorizontalalignment",
+                    "eEzsigntemplateannotationVerticalalignment",
+                    "eEzsigntemplateannotationType",
+                    "iEzsigntemplateannotationX",
+                    "iEzsigntemplateannotationY",
+                    "iEzsigntemplateannotationWidth",
+                    "iEzsigntemplateannotationHeight",
+                    "sEzsigntemplateannotationDescription",
+                    "sEzsigntemplateannotationDefaulttext",
+                    "sEzsigntemplateannotationnDropdownvalues"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsigntemplateannotationID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigntemplateannotationID"
+                    },
+                    "fkiEzsigntemplatedocumentpageID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigntemplatedocumentpageID"
+                    },
+                    "fkiTextstylestaticID": {
+                        "$ref": "#/components/schemas/Field-pkiTextstylestaticID"
+                    },
+                    "eEzsigntemplateannotationHorizontalalignment": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplateannotationHorizontalalignment"
+                    },
+                    "eEzsigntemplateannotationVerticalalignment": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplateannotationVerticalalignment"
+                    },
+                    "eEzsigntemplateannotationType": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplateannotationType"
+                    },
+                    "iEzsigntemplateannotationX": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplateannotationX"
+                    },
+                    "iEzsigntemplateannotationY": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplateannotationY"
+                    },
+                    "iEzsigntemplateannotationWidth": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplateannotationWidth"
+                    },
+                    "iEzsigntemplateannotationHeight": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplateannotationHeight"
+                    },
+                    "sEzsigntemplateannotationDescription": {
+                        "$ref": "#/components/schemas/Field-sEzsigntemplateannotationDescription"
+                    },
+                    "sEzsigntemplateannotationDefaulttext": {
+                        "$ref": "#/components/schemas/Field-sEzsigntemplateannotationDefaulttext"
+                    },
+                    "sEzsigntemplateannotationnDropdownvalues": {
+                        "$ref": "#/components/schemas/Field-sEzsigntemplateannotationnDropdownvalues"
+                    }
+                }
+            },
+            "ezsigntemplateannotation-ResponseCompound": {
+                "description": "A Ezsigntemplateannotation Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsigntemplateannotation-Response"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "ezsigntemplateannotation-createObject-v1-Request": {
+                "description": "Request for POST /1/object/ezsigntemplateannotation",
+                "required": [
+                    "a_objEzsigntemplateannotation"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objEzsigntemplateannotation": {
+                        "minItems": 1,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ezsigntemplateannotation-RequestCompound"
+                        }
+                    }
+                }
+            },
+            "ezsigntemplateannotation-createObject-v1-Response": {
+                "description": "Response for POST /1/object/ezsigntemplateannotation",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsigntemplateannotation-createObject-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsigntemplateannotation-createObject-v1-Response-mPayload": {
+                "description": "Payload for POST /1/object/ezsigntemplateannotation",
+                "required": [
+                    "a_pkiEzsigntemplateannotationID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiEzsigntemplateannotationID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Field-pkiEzsigntemplateannotationID"
+                        }
+                    }
+                }
+            },
+            "ezsigntemplateannotation-deleteObject-v1-Response": {
+                "description": "Response for DELETE /1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsigntemplateannotation-editObject-v1-Request": {
+                "description": "Request for PUT /1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}",
+                "required": [
+                    "objEzsigntemplateannotation"
+                ],
+                "type": "object",
+                "properties": {
+                    "objEzsigntemplateannotation": {
+                        "$ref": "#/components/schemas/ezsigntemplateannotation-RequestCompound"
+                    }
+                }
+            },
+            "ezsigntemplateannotation-editObject-v1-Response": {
+                "description": "Response for PUT /1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsigntemplateannotation-getObject-v2-Response": {
+                "description": "Response for GET /2/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsigntemplateannotation-getObject-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsigntemplateannotation-getObject-v2-Response-mPayload": {
+                "description": "Payload for GET /2/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}",
+                "required": [
+                    "objEzsigntemplateannotation"
+                ],
+                "type": "object",
+                "properties": {
+                    "objEzsigntemplateannotation": {
+                        "$ref": "#/components/schemas/ezsigntemplateannotation-ResponseCompound"
+                    }
+                }
+            },
             "ezsigntemplatedocument-Request": {
                 "description": "A Ezsigntemplatedocument Object",
                 "required": [
@@ -63810,6 +64621,110 @@
                 "properties": {
                     "objEzsigntemplateglobal": {
                         "$ref": "#/components/schemas/ezsigntemplateglobal-ResponseCompound"
+                    }
+                }
+            },
+            "ezsigntemplateglobalannotation-Response": {
+                "description": "A Ezsigntemplateglobalannotation Object",
+                "required": [
+                    "pkiEzsigntemplateglobalannotationID",
+                    "fkiEzsigntemplateglobaldocumentpageID",
+                    "fkiTextstylestaticID",
+                    "eEzsigntemplateglobalannotationHorizontalalignment",
+                    "eEzsigntemplateglobalannotationVerticalalignment",
+                    "eEzsigntemplateglobalannotationType",
+                    "iEzsigntemplateglobalannotationX",
+                    "iEzsigntemplateglobalannotationY",
+                    "iEzsigntemplateglobalannotationWidth",
+                    "iEzsigntemplateglobalannotationHeight",
+                    "sEzsigntemplateglobalannotationDescription",
+                    "sEzsigntemplateglobalannotationDefaulttext",
+                    "sEzsigntemplateglobalannotationDropdownvalues"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsigntemplateglobalannotationID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigntemplateglobalannotationID"
+                    },
+                    "fkiEzsigntemplateglobaldocumentpageID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsigntemplateglobaldocumentpageID"
+                    },
+                    "fkiTextstylestaticID": {
+                        "$ref": "#/components/schemas/Field-pkiTextstylestaticID"
+                    },
+                    "eEzsigntemplateglobalannotationHorizontalalignment": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplateglobalannotationHorizontalalignment"
+                    },
+                    "eEzsigntemplateglobalannotationVerticalalignment": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplateglobalannotationVerticalalignment"
+                    },
+                    "eEzsigntemplateglobalannotationType": {
+                        "$ref": "#/components/schemas/Field-eEzsigntemplateglobalannotationType"
+                    },
+                    "iEzsigntemplateglobalannotationX": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplateglobalannotationX"
+                    },
+                    "iEzsigntemplateglobalannotationY": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplateglobalannotationY"
+                    },
+                    "iEzsigntemplateglobalannotationWidth": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplateglobalannotationWidth"
+                    },
+                    "iEzsigntemplateglobalannotationHeight": {
+                        "$ref": "#/components/schemas/Field-iEzsigntemplateglobalannotationHeight"
+                    },
+                    "sEzsigntemplateglobalannotationDescription": {
+                        "$ref": "#/components/schemas/Field-sEzsigntemplateglobalannotationDescription"
+                    },
+                    "sEzsigntemplateglobalannotationDefaulttext": {
+                        "$ref": "#/components/schemas/Field-sEzsigntemplateglobalannotationDefaulttext"
+                    },
+                    "sEzsigntemplateglobalannotationDropdownvalues": {
+                        "$ref": "#/components/schemas/Field-sEzsigntemplateglobalannotationDropdownvalues"
+                    }
+                }
+            },
+            "ezsigntemplateglobalannotation-ResponseCompound": {
+                "description": "A Ezsigntemplateglobalannotation Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsigntemplateglobalannotation-Response"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "ezsigntemplateglobalannotation-getObject-v2-Response": {
+                "description": "Response for GET /2/object/ezsigntemplateglobalannotation/{pkiEzsigntemplateglobalannotationID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsigntemplateglobalannotation-getObject-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsigntemplateglobalannotation-getObject-v2-Response-mPayload": {
+                "description": "Payload for GET /2/object/ezsigntemplateglobalannotation/{pkiEzsigntemplateglobalannotationID}",
+                "required": [
+                    "objEzsigntemplateglobalannotation"
+                ],
+                "type": "object",
+                "properties": {
+                    "objEzsigntemplateglobalannotation": {
+                        "$ref": "#/components/schemas/ezsigntemplateglobalannotation-ResponseCompound"
                     }
                 }
             },
@@ -72419,6 +73334,10 @@
                         "description": "Whether is Disposal processus is active or not",
                         "type": "boolean"
                     },
+                    "bSystemconfigurationAllowcomplexcreditcardsignature": {
+                        "description": "Whether is the system allows to have a complex creditcard signature",
+                        "type": "boolean"
+                    },
                     "bSystemconfigurationSspr": {
                         "$ref": "#/components/schemas/Field-bSystemconfigurationSspr"
                     },
@@ -77016,7 +77935,7 @@
     "tags": [
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\r\n\r\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.34\r\n\r\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\r\n\r\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\r\n\r\n**PATCH** will be incremented everytime changes and additions are released.\r\n\r\nFor each version, there will be the list of changes:\r\n* **Breaking Changes** for breaking changes you need to take into consideration before updating.\r\n* **Added** for new features.\r\n* **Changed** for changes in existing functionality.\r\n* **Deprecated** for soon-to-be removed features.\r\n* **Removed** for now removed features.\r\n* **Fixed** for any bug fixes.\r\n* **Security** in case of vulnerabilities.\r\n\r\n**Removal lifecycle**<br>\r\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\r\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\r\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\r\n\r\n## 1.3.X Releases\r\n\r\n### ⚠️ Compatibility Warning\r\n\r\nStarting with **version 1.3.0**, several API endpoints have been updated to support a **major enhancement**:\r\nYou can now **combine and alternate form steps and signature steps** within the same signing workflow.\r\n\r\nThis provides greater flexibility, but it also changes how **step numbers** are defined and managed.\r\n\r\n\r\n* **Endpoints introduced in 1.3.0** (listed below) use the *new step numbering model*.\r\n* **Endpoints from previous versions (≤ 1.2.2)** use the *old step numbering model*.\r\n* These two models are **not compatible** — mixing old and new endpoints within the same implementation could cause inconsistencies.\r\n\r\nYou may continue using the old routes or migrate fully to the new ones, but **do not mix both** in a single integration.\r\n\r\n### Endpoints with Step Numbers (pre-1.3.0)\r\n\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n* GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n* GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n* GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}\r\n* GET /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* GET /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n* POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n* POST /1/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n* POST /2/object/ezsigntemplatesignature\r\n* POST /3/object/ezsignsignature\r\n* PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n* PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n* PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n* PUT /2/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* PUT /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n### Updated endpoints with Step Numbers (introduced in 1.3.0)\r\n\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n* GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n* GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n* GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n* GET /3/object/ezsigndocument/{pkiEzsigndocumentID}\r\n* GET /4/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* GET /4/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n* POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n* POST /2/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n* POST /3/object/ezsigntemplatesignature\r\n* POST /4/object/ezsignsignature\r\n* PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n* PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n* PUT /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n* PUT /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* PUT /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n---\r\n\r\n### [1.3.0] - 2026-01-24\r\n\r\n#### Added\r\n- GET /1/object/agent/getList\r\n- GET /1/object/broker/getList\r\n- GET /1/object/buyercontract/getList\r\n- GET /1/object/customer/getList\r\n- GET /1/object/employee/getList\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}/getBatchFile\r\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}/getBatchFile\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/download\r\n- GET /1/object/inscriptiontemp/getList\r\n- GET /1/object/lead/getList\r\n- GET /1/object/otherincome/getList\r\n- GET /1/object/rejectedoffertopurchase/getList\r\n- GET /1/object/supplier/getList\r\n- GET /2/object/agent/getAutocomplete/{sSelector}\r\n- GET /2/object/agenttype/getAutocomplete/{sSelector}\r\n- GET /2/object/broker/getAutocomplete/{sSelector}\r\n- GET /2/object/brokertype/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n- GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n- GET /2/object/inscriptionchecklist/getAutocomplete/{sSelector}\r\n- GET /2/object/leadsource/getAutocomplete/{sSelector}\r\n- GET /2/object/notificationtest/{pkiNotificationtestID}/getElements\r\n- GET /2/object/otherincometype/getAutocomplete/{sSelector}\r\n- GET /2/object/paymentmethod/getAutocomplete/{sSelector}\r\n- GET /3/object/ezsigndocument/{pkiEzsigndocumentID}\r\n- GET /3/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n- GET /3/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n- GET /4/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /4/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- POST /1/module/ezmaxcustomer/createCustomer\r\n- POST /1/object/activesession/setGoal\r\n- POST /1/object/agent/{pkiAgentID}/importIntoEDM\r\n- POST /1/object/broker/{pkiBrokerID}/importIntoEDM\r\n- POST /1/object/buyercontract/{pkiBuyercontractID}/importIntoEDM\r\n- POST /1/object/customer/{pkiCustomerID}/importIntoEDM\r\n- POST /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/importIntoEDM\r\n- POST /1/object/employee/{pkiEmployeeID}/importIntoEDM\r\n- POST /1/object/externalbroker/{pkiExternalbrokerID}/importIntoEDM\r\n- POST /1/object/inscription/{pkiInscriptionID}/importIntoEDM\r\n- POST /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/importIntoEDM\r\n- POST /1/object/inscriptiontemp/{pkiInscriptiontempID}/importIntoEDM\r\n- POST /1/object/invoice/{pkiInvoiceID}/importIntoEDM\r\n- POST /1/object/lead/{pkiLeadID}/importIntoEDM\r\n- POST /1/object/otherincome/{pkiOtherincomeID}/importIntoEDM\r\n- POST /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/importIntoEDM\r\n- POST /1/object/supplier/{pkiSupplierID}/importIntoEDM\r\n- POST /1/object/tranqcontract/{pkiTranqcontractID}/importIntoEDM\r\n- POST /1/report/accountspayable/accountspayable\r\n- POST /1/report/accountsreceivablevscommission/accountsreceivablevscommission\r\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n- POST /2/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n- POST /2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n- POST /3/object/ezsigntemplatesignature\r\n- POST /4/object/ezsignsignature\r\n- PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n- PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n- PUT /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n- PUT /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- PUT /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- Properties a_objContactPrivate, a_objContactShared in ezsign-suggestSigners-v1-Response-mPayload\r\n- Properties bEzsignfoldertypeSendsignatureattachmentezsignsigner, bEzsignfoldertypeSendsignatureattachment, bEzsignfoldertypeSendsignatureattachmentuser, bEzsignfoldertypeAllowdownloadsignatureattachmentezsignsigner, bEzsignfoldertypeSendsignatureattachmentreceivealldocument in ezsignfoldertype-RequestV3 and- ezsignfoldertype-ResponseV4\r\n- Properties eEzsignsignatureSignaturepadrequired, eEzsignsignatureSignaturepadrequired in ezsignsignature-Request and ezsignsignature-Response\r\n- Properties eEzsigntemplatesignatureSignaturepadrequired, eEzsigntemplatesignatureSignaturepadrequired in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property a_objEzsignsignaturepaymentdetail in ezsignsignature-RequestCompound\r\n- Property a_objEzsigntemplatesignaturepaymentdetail in ezsigntemplatesignature-RequestCompound, ezsigntemplatesignature-RequestCompoundV2, ezsigntemplatesignature-ResponseCompoundV3\r\n- Property bInscriptionInspection in inscription-ListElement\r\n- Property bInscriptionInspection in inscriptionnotauthenticated-ListElement\r\n- Property bInscriptionnotauthenticatedConditional in inscription-ListElement\r\n- Property bInscriptionnotauthenticatedConditional in inscriptionnotauthenticated-ListElement\r\n- Property bUserAddmeinezsignfolder in activesession-ResponseCompound-User\r\n- Property bUserAddmeinezsignfolder in user-getPreferences-v1-Response\r\n- Property bUserAddmeinezsignfolder in user-setPreferences-v1-Request\r\n- Property dtUserNpsrequest in activesession-ResponseCompound\r\n- Property eEzsignfolderCompletion in ezsignfolder-ListElement\r\n- Property eEzsignfolderDocumentmerge in ezsignfoldertype-RequestV3 and ezsignfoldertype-ResponseV4\r\n- Property eEzsignfolderMessageorder in ezsignfolder-Response\r\n- Property eUserType in ezsignfoldersignerassociation-ResponseCompound-User\r\n- Property fkiDepartmentID in agent-AutocompleteElement-Response\r\n- Property fkiDepartmentID in broker-AutocompleteElement-Response\r\n- Property fkiDepartmentID in customer-AutocompleteElement-Response\r\n- Property fkiEzsigntemplateglobalID in Custom-Ezsignimportdocument-Response\r\n- Property fkiModuleIDForm in user-getPreferences-v1-Response-mPayload\r\n- Property fkiModuleIDForm in user-setPreferences-v1-Request\r\n- Property fkiPaymentgatewayID in ezsignsignature-Response, ezsigntemplatesignature-Request, ezsigntemplatesignature-Response\r\n- Property iUserFrontendgoal in activesession-ResponseCompound-User\r\n- Property iSystemconfigurationEzsignreminderhoursend in systemconfiguration-Request and systemconfiguration-Response\r\n- Property objReportcellstyleCustom in Common-Reportrow\r\n- Property sEzsignsignergroupDescriptionX in Custom-EzsignfoldertransmissionSigner-Response\r\n- Property sEzsigntemplateglobalDescription in Custom-Ezsignimportdocument-Response\r\n- Property sCustomerCode in customer-AutocompleteElement-Response\r\n- Property sModuleNameX in user-getPreferences-v1-Response-mPayload\r\n- Property sReportsectionTabname in Common-Reportsection\r\n- Property sWebhookAuthentificationexternalerror in webhook-ResponseCompound\r\n- Selector EzsignfoldertypeReassign in /2/object/userlogintype/getAutocomplete/{sSelector}\r\n- Value PerEzsignfolderStepSync in eEzsignfolderCompletion\r\n- Value PerEzsignfolderStepSync in eEzsignfoldertypeCompletion\r\n- Value PendingPrematurelyEnded in eEzsigndocumentStep\r\n\r\n#### Deprecated\r\n- POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n\r\n#### Removed\r\n- Property bEzsignfolderPaymentused in Custom-EzmaxinvoicingEzsignfolder-Response\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n- GET /1/object/notificationtest/{pkiNotificationtestID}/getElements\r\n- GET /2/object/inscriptionchecklist/getAutocomplete\r\n- GET /2/object/signature/{pkiSignatureID}\r\n- GET /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID} \r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/reorder\r\n- POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n- PUT /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- PUT /1/object/systemconfiguration/{pkiSystemconfigurationID}\r\n- PUT /2/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- PUT /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n## Older Releases\r\nDocumentation and changelog for older releases can be found here\r\n- [1.2.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.2.html)\r\n- [1.1.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.1.html)\r\n- [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)",
+            "description": "All notable changes to this project will be documented in this section.\r\n\r\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.34\r\n\r\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\r\n\r\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\r\n\r\n**PATCH** will be incremented everytime changes and additions are released.\r\n\r\nFor each version, there will be the list of changes:\r\n* **Breaking Changes** for breaking changes you need to take into consideration before updating.\r\n* **Added** for new features.\r\n* **Changed** for changes in existing functionality.\r\n* **Deprecated** for soon-to-be removed features.\r\n* **Removed** for now removed features.\r\n* **Fixed** for any bug fixes.\r\n* **Security** in case of vulnerabilities.\r\n\r\n**Removal lifecycle**<br>\r\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\r\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\r\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\r\n\r\n## 1.3.X Releases\r\n\r\n### ⚠️ Compatibility Warning\r\n\r\nStarting with **version 1.3.0**, several API endpoints have been updated to support a **major enhancement**:\r\nYou can now **combine and alternate form steps and signature steps** within the same signing workflow.\r\n\r\nThis provides greater flexibility, but it also changes how **step numbers** are defined and managed.\r\n\r\n\r\n* **Endpoints introduced in 1.3.0** (listed below) use the *new step numbering model*.\r\n* **Endpoints from previous versions (≤ 1.2.2)** use the *old step numbering model*.\r\n* These two models are **not compatible** — mixing old and new endpoints within the same implementation could cause inconsistencies.\r\n\r\nYou may continue using the old routes or migrate fully to the new ones, but **do not mix both** in a single integration.\r\n\r\n### Endpoints with Step Numbers (pre-1.3.0)\r\n\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n* GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n* GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n* GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}\r\n* GET /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* GET /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n* POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n* POST /1/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n* POST /2/object/ezsigntemplatesignature\r\n* POST /3/object/ezsignsignature\r\n* PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n* PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n* PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n* PUT /2/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* PUT /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n### Updated endpoints with Step Numbers (introduced in 1.3.0)\r\n\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n* GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n* GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n* GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n* GET /3/object/ezsigndocument/{pkiEzsigndocumentID}\r\n* GET /4/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* GET /4/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n* POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n* POST /2/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n* POST /3/object/ezsigntemplatesignature\r\n* POST /4/object/ezsignsignature\r\n* PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n* PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n* PUT /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n* PUT /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* PUT /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n---\r\n\r\n### [1.3.1] - 2026-XX-XX\r\n\r\n#### Added\r\n- DELETE /1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\r\n- POST /1/object/ezsigntemplateannotation\r\n- PUT /1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\r\n- GET /2/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\r\n- GET /2/object/ezsigntemplateglobalannotation/{pkiEzsigntemplateglobalannotationID}\r\n\r\n\r\n### [1.3.0] - 2026-01-24\r\n\r\n#### Added\r\n- GET /1/object/agent/getList\r\n- GET /1/object/broker/getList\r\n- GET /1/object/buyercontract/getList\r\n- GET /1/object/customer/getList\r\n- GET /1/object/employee/getList\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}/getBatchFile\r\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}/getBatchFile\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/download\r\n- GET /1/object/inscriptiontemp/getList\r\n- GET /1/object/lead/getList\r\n- GET /1/object/otherincome/getList\r\n- GET /1/object/rejectedoffertopurchase/getList\r\n- GET /1/object/supplier/getList\r\n- GET /2/object/agent/getAutocomplete/{sSelector}\r\n- GET /2/object/agenttype/getAutocomplete/{sSelector}\r\n- GET /2/object/broker/getAutocomplete/{sSelector}\r\n- GET /2/object/brokertype/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n- GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n- GET /2/object/inscriptionchecklist/getAutocomplete/{sSelector}\r\n- GET /2/object/leadsource/getAutocomplete/{sSelector}\r\n- GET /2/object/notificationtest/{pkiNotificationtestID}/getElements\r\n- GET /2/object/otherincometype/getAutocomplete/{sSelector}\r\n- GET /2/object/paymentmethod/getAutocomplete/{sSelector}\r\n- GET /3/object/ezsigndocument/{pkiEzsigndocumentID}\r\n- GET /3/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n- GET /3/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n- GET /4/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /4/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- POST /1/module/ezmaxcustomer/createCustomer\r\n- POST /1/object/activesession/setGoal\r\n- POST /1/object/agent/{pkiAgentID}/importIntoEDM\r\n- POST /1/object/broker/{pkiBrokerID}/importIntoEDM\r\n- POST /1/object/buyercontract/{pkiBuyercontractID}/importIntoEDM\r\n- POST /1/object/customer/{pkiCustomerID}/importIntoEDM\r\n- POST /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/importIntoEDM\r\n- POST /1/object/employee/{pkiEmployeeID}/importIntoEDM\r\n- POST /1/object/externalbroker/{pkiExternalbrokerID}/importIntoEDM\r\n- POST /1/object/inscription/{pkiInscriptionID}/importIntoEDM\r\n- POST /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/importIntoEDM\r\n- POST /1/object/inscriptiontemp/{pkiInscriptiontempID}/importIntoEDM\r\n- POST /1/object/invoice/{pkiInvoiceID}/importIntoEDM\r\n- POST /1/object/lead/{pkiLeadID}/importIntoEDM\r\n- POST /1/object/otherincome/{pkiOtherincomeID}/importIntoEDM\r\n- POST /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/importIntoEDM\r\n- POST /1/object/supplier/{pkiSupplierID}/importIntoEDM\r\n- POST /1/object/tranqcontract/{pkiTranqcontractID}/importIntoEDM\r\n- POST /1/report/accountspayable/accountspayable\r\n- POST /1/report/accountsreceivablevscommission/accountsreceivablevscommission\r\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n- POST /2/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n- POST /2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n- POST /3/object/ezsigntemplatesignature\r\n- POST /4/object/ezsignsignature\r\n- PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n- PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n- PUT /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n- PUT /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- PUT /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- Properties a_objContactPrivate, a_objContactShared in ezsign-suggestSigners-v1-Response-mPayload\r\n- Properties bEzsignfoldertypeSendsignatureattachmentezsignsigner, bEzsignfoldertypeSendsignatureattachment, bEzsignfoldertypeSendsignatureattachmentuser, bEzsignfoldertypeAllowdownloadsignatureattachmentezsignsigner, bEzsignfoldertypeSendsignatureattachmentreceivealldocument in ezsignfoldertype-RequestV3 and- ezsignfoldertype-ResponseV4\r\n- Properties eEzsignsignatureSignaturepadrequired, eEzsignsignatureSignaturepadrequired in ezsignsignature-Request and ezsignsignature-Response\r\n- Properties eEzsigntemplatesignatureSignaturepadrequired, eEzsigntemplatesignatureSignaturepadrequired in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property a_objEzsignsignaturepaymentdetail in ezsignsignature-RequestCompound\r\n- Property a_objEzsigntemplatesignaturepaymentdetail in ezsigntemplatesignature-RequestCompound, ezsigntemplatesignature-RequestCompoundV2, ezsigntemplatesignature-ResponseCompoundV3\r\n- Property bInscriptionInspection in inscription-ListElement\r\n- Property bInscriptionInspection in inscriptionnotauthenticated-ListElement\r\n- Property bInscriptionnotauthenticatedConditional in inscription-ListElement\r\n- Property bInscriptionnotauthenticatedConditional in inscriptionnotauthenticated-ListElement\r\n- Property bUserAddmeinezsignfolder in activesession-ResponseCompound-User\r\n- Property bUserAddmeinezsignfolder in user-getPreferences-v1-Response\r\n- Property bUserAddmeinezsignfolder in user-setPreferences-v1-Request\r\n- Property dtUserNpsrequest in activesession-ResponseCompound\r\n- Property eEzsignfolderCompletion in ezsignfolder-ListElement\r\n- Property eEzsignfolderDocumentmerge in ezsignfoldertype-RequestV3 and ezsignfoldertype-ResponseV4\r\n- Property eEzsignfolderMessageorder in ezsignfolder-Response\r\n- Property eUserType in ezsignfoldersignerassociation-ResponseCompound-User\r\n- Property fkiDepartmentID in agent-AutocompleteElement-Response\r\n- Property fkiDepartmentID in broker-AutocompleteElement-Response\r\n- Property fkiDepartmentID in customer-AutocompleteElement-Response\r\n- Property fkiEzsigntemplateglobalID in Custom-Ezsignimportdocument-Response\r\n- Property fkiModuleIDForm in user-getPreferences-v1-Response-mPayload\r\n- Property fkiModuleIDForm in user-setPreferences-v1-Request\r\n- Property fkiPaymentgatewayID in ezsignsignature-Response, ezsigntemplatesignature-Request, ezsigntemplatesignature-Response\r\n- Property iUserFrontendgoal in activesession-ResponseCompound-User\r\n- Property iSystemconfigurationEzsignreminderhoursend in systemconfiguration-Request and systemconfiguration-Response\r\n- Property objReportcellstyleCustom in Common-Reportrow\r\n- Property sEzsignsignergroupDescriptionX in Custom-EzsignfoldertransmissionSigner-Response\r\n- Property sEzsigntemplateglobalDescription in Custom-Ezsignimportdocument-Response\r\n- Property sCustomerCode in customer-AutocompleteElement-Response\r\n- Property sModuleNameX in user-getPreferences-v1-Response-mPayload\r\n- Property sReportsectionTabname in Common-Reportsection\r\n- Property sWebhookAuthentificationexternalerror in webhook-ResponseCompound\r\n- Selector EzsignfoldertypeReassign in /2/object/userlogintype/getAutocomplete/{sSelector}\r\n- Value PerEzsignfolderStepSync in eEzsignfolderCompletion\r\n- Value PerEzsignfolderStepSync in eEzsignfoldertypeCompletion\r\n- Value PendingPrematurelyEnded in eEzsigndocumentStep\r\n\r\n#### Deprecated\r\n- POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n\r\n#### Removed\r\n- Property bEzsignfolderPaymentused in Custom-EzmaxinvoicingEzsignfolder-Response\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n- GET /1/object/notificationtest/{pkiNotificationtestID}/getElements\r\n- GET /2/object/inscriptionchecklist/getAutocomplete\r\n- GET /2/object/signature/{pkiSignatureID}\r\n- GET /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID} \r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/reorder\r\n- POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n- PUT /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- PUT /1/object/systemconfiguration/{pkiSystemconfigurationID}\r\n- PUT /2/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- PUT /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n## Older Releases\r\nDocumentation and changelog for older releases can be found here\r\n- [1.2.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.2.html)\r\n- [1.1.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.1.html)\r\n- [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)",
             "x-displayName": "Changelog"
         },
         {
@@ -77375,6 +78294,11 @@
             "x-displayName": "Ezsigntemplate"
         },
         {
+            "name": "Object_Ezsigntemplateannotation",
+            "description": "Ezsigntemplateannotation contains details about Ezsigntemplateannotations",
+            "x-displayName": "Ezsigntemplateannotation"
+        },
+        {
             "name": "Object_Ezsigntemplatedocument",
             "description": "Ezsigntemplatedocument contains detail about a document in an Ezsigntemplate",
             "x-displayName": "Ezsigntemplatedocument"
@@ -77393,6 +78317,11 @@
             "name": "Object_Ezsigntemplateglobal",
             "description": "Ezsigntemplateglobal contains detail about Document types and block templates",
             "x-displayName": "Ezsigntemplateglobal"
+        },
+        {
+            "name": "Object_Ezsigntemplateglobalannotation",
+            "description": "Ezsigntemplateglobalannotation contains details about Ezsigntemplateglobalannotations",
+            "x-displayName": "Ezsigntemplateglobalannotation"
         },
         {
             "name": "Object_Ezsigntemplatepackage",
@@ -78296,10 +79225,12 @@
                 "Object_Ezsignsignergroupmembership",
                 "Object_Ezsignsigningreason",
                 "Object_Ezsigntemplate",
+                "Object_Ezsigntemplateannotation",
                 "Object_Ezsigntemplatedocument",
                 "Object_Ezsigntemplatedocumentpagerecognition",
                 "Object_Ezsigntemplateformfieldgroup",
                 "Object_Ezsigntemplateglobal",
+                "Object_Ezsigntemplateglobalannotation",
                 "Object_Ezsigntemplatepackage",
                 "Object_Ezsigntemplatepackagemembership",
                 "Object_Ezsigntemplatepackagesigner",
