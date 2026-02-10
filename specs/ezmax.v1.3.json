@@ -12302,20 +12302,6 @@
                     },
                     "in": "path",
                     "required": true
-                },
-                {
-                    "name": "Accept",
-                    "description": "Test csharp",
-                    "schema": {
-                        "enum": [
-                            "application/json",
-                            "application/zip",
-                            "application/pdf"
-                        ],
-                        "type": "string"
-                    },
-                    "in": "header",
-                    "required": false
                 }
             ]
         },
