@@ -2,7 +2,7 @@
     "openapi": "3.0.3",
     "info": {
         "title": "eZmax API Definition (Full)",
-        "version": "1.3.1",
+        "version": "1.3.2",
         "description": "This API expose all the functionnalities for the eZmax and eZsign applications.",
         "termsOfService": "https://www.ezmax.ca/TODO",
         "contact": {
@@ -12926,7 +12926,9 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-usertypeextra": [],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ],
                 "x-systemconfigurationtype": [
                     "All"
                 ]
@@ -13694,6 +13696,55 @@
                 }
             ]
         },
+        "/2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociations": {
+            "get": {
+                "tags": [
+                    "Object_Ezsignfolder"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfolder-getEzsignfoldersignerassociations-v2-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezsignfolder_GetEzsignfoldersignerassociations_V2",
+                "summary": "Retrieve an existing Ezsignfolder's Ezsignfoldersignerassociations",
+                "description": "",
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ],
+                "x-systemconfigurationtype": [
+                    "All"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignfolderID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociations": {
             "get": {
                 "tags": [
@@ -13714,6 +13765,7 @@
                         "$ref": "#/components/responses/Response-Error-404"
                     }
                 },
+                "deprecated": true,
                 "security": [
                     {
                         "Authorization": []
@@ -14614,6 +14666,53 @@
                 ]
             }
         },
+        "/3/object/ezsignfoldersignerassociation": {
+            "description": "",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezsignfoldersignerassociation-createObject-v3-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Ezsignfoldersignerassociation"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfoldersignerassociation-createObject-v3-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezsignfoldersignerassociation_CreateObject_V3",
+                "summary": "Create a new Ezsignfoldersignerassociation",
+                "description": "The endpoint allows to create one or many elements at once.",
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ],
+                "x-systemconfigurationtype": [
+                    "All"
+                ]
+            }
+        },
         "/2/object/ezsignfoldersignerassociation": {
             "description": "",
             "post": {
@@ -14642,6 +14741,7 @@
                         "description": "Successful response"
                     }
                 },
+                "deprecated": true,
                 "security": [
                     {
                         "Authorization": []
@@ -14710,6 +14810,55 @@
                 ]
             }
         },
+        "/3/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}": {
+            "get": {
+                "tags": [
+                    "Object_Ezsignfoldersignerassociation"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfoldersignerassociation-getObject-v3-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezsignfoldersignerassociation_GetObject_V3",
+                "summary": "Retrieve an existing Ezsignfoldersignerassociation",
+                "description": "",
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ],
+                "x-systemconfigurationtype": [
+                    "All"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzsignfoldersignerassociationID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}": {
             "get": {
                 "tags": [
@@ -14730,6 +14879,7 @@
                         "$ref": "#/components/responses/Response-Error-404"
                     }
                 },
+                "deprecated": true,
                 "security": [
                     {
                         "Authorization": []
@@ -14737,6 +14887,56 @@
                 ],
                 "operationId": "Ezsignfoldersignerassociation_GetObject_V2",
                 "summary": "Retrieve an existing Ezsignfoldersignerassociation",
+                "description": "",
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ],
+                "x-systemconfigurationtype": [
+                    "All"
+                ]
+            },
+            "put": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezsignfoldersignerassociation-editObject-v2-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Ezsignfoldersignerassociation"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezsignfoldersignerassociation-editObject-v2-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezsignfoldersignerassociation_EditObject_V2",
+                "summary": "Edit an existing Ezsignfoldersignerassociation",
                 "description": "",
                 "x-permissions": [
                     "All"
@@ -14829,6 +15029,7 @@
                         "$ref": "#/components/responses/Response-Error-422"
                     }
                 },
+                "deprecated": true,
                 "security": [
                     {
                         "Authorization": []
@@ -22292,6 +22493,58 @@
                 }
             ]
         },
+        "/2/object/inscription/{pkiInscriptionID}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Inscription"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inscription-getObject-v2-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Inscription_GetObject_V2",
+                "summary": "Retrieve an existing Inscription",
+                "description": "",
+                "x-systemconfigurationtype": [
+                    "All"
+                ],
+                "x-permissions": [
+                    "Inscription_ReadOnlyMode",
+                    "Inscription_Inspections"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiInscriptionID",
+                    "description": "The unique ID of the Inscription",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiInscriptionID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/1/object/inscription/{pkiInscriptionID}/getAttachments": {
             "get": {
                 "tags": [
@@ -22539,6 +22792,56 @@
                 "x-systemconfigurationtype": [
                     "EdmStandalone",
                     "RealEstate"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiInscriptionID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiInscriptionID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/inscription/{pkiInscriptionID}/getInscriptionnotauthenticateds": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Inscription"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inscription-getInscriptionnotauthenticateds-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Inscription_GetInscriptionnotauthenticateds_V1",
+                "summary": "Retrieve Inscriptionnotauthenticated list",
+                "x-systemconfigurationtype": [
+                    "All"
+                ],
+                "x-permissions": [
+                    "Inscription_ReadOnlyMode",
+                    "Inscription_Inspections"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
                 ]
             },
             "parameters": [
@@ -22953,6 +23256,57 @@
                             "All"
                         ],
                         "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/2/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Inscriptionnotauthenticated"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inscriptionnotauthenticated-getObject-v2-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Inscriptionnotauthenticated_GetObject_V2",
+                "summary": "Retrieve an existing Inscriptionnotauthenticated",
+                "description": "",
+                "x-systemconfigurationtype": [
+                    "All"
+                ],
+                "x-permissions": [
+                    "Inscription_Deals"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiInscriptionnotauthenticatedID",
+                    "description": "The unique ID of the Inscriptionnotauthenticated",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiInscriptionnotauthenticatedID"
                     },
                     "in": "path",
                     "required": true
@@ -23393,6 +23747,8 @@
                                 "bInscriptionnotauthenticatedConditional_DESC",
                                 "bInscriptionnotauthenticatedIsactive_ASC",
                                 "bInscriptionnotauthenticatedIsactive_DESC",
+                                "bInscriptionnotauthenticatedDraft_ASC",
+                                "bInscriptionnotauthenticatedDraft_DESC",
                                 "sAddressCivic_ASC",
                                 "sAddressCivic_DESC",
                                 "sAddressStreet_ASC",
@@ -35469,6 +35825,32 @@
                     }
                 ]
             },
+            "Custom-EzsignfoldersignerassociationActionableElement-ResponseV2": {
+                "description": "A Ezsignfoldersignerassociation Object with actionable elements",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsignfoldersignerassociation-ResponseCompoundV3"
+                    },
+                    {
+                        "required": [
+                            "bEzsignfoldersignerassociationHasactionableelementsCurrent",
+                            "bEzsignfoldersignerassociationHasactionableelementsFuture"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "bEzsignfoldersignerassociationHasactionableelementsCurrent": {
+                                "description": "Indicates if the Ezsignfoldersignerassociation has actionable elements in the current step",
+                                "type": "boolean"
+                            },
+                            "bEzsignfoldersignerassociationHasactionableelementsFuture": {
+                                "description": "Indicates if the Ezsignfoldersignerassociation has actionable elements in a future step",
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                ]
+            },
             "Custom-Ezsignfoldersignerassociationstatus-Response": {
                 "description": "A Ezsignfoldersignerassociationstatus Object and children to create a complete structure",
                 "required": [
@@ -37193,6 +37575,11 @@
                 "type": "boolean",
                 "example": true
             },
+            "Field-bInscriptionHomeowner": {
+                "description": "Whether if it's an homeowner",
+                "type": "boolean",
+                "example": true
+            },
             "Field-bInscriptionInspection": {
                 "description": "Whether the inscription can be acces by an inspector",
                 "type": "boolean",
@@ -37200,6 +37587,41 @@
             },
             "Field-bInscriptionIsactive": {
                 "description": "Whether the inscription is active or not",
+                "type": "boolean",
+                "example": true
+            },
+            "Field-bInscriptionIssolicitation": {
+                "description": "Whether if it's an issolicitation",
+                "type": "boolean",
+                "example": true
+            },
+            "Field-bInscriptionLitigation": {
+                "description": "Whether if it's an litigation",
+                "type": "boolean",
+                "example": true
+            },
+            "Field-bInscriptionNew": {
+                "description": "Whether if it's an new",
+                "type": "boolean",
+                "example": true
+            },
+            "Field-bInscriptionReference": {
+                "description": "Whether if it's an reference",
+                "type": "boolean",
+                "example": true
+            },
+            "Field-bInscriptionRepossession": {
+                "description": "Whether if it's an repossession",
+                "type": "boolean",
+                "example": true
+            },
+            "Field-bInscriptionSalebyowner": {
+                "description": "Whether if it's an salebyowner",
+                "type": "boolean",
+                "example": true
+            },
+            "Field-bInscriptionSoldwithoutlegalwarranty": {
+                "description": "Whether if it's an soldwithoutlegalwarranty",
                 "type": "boolean",
                 "example": true
             },
@@ -37213,8 +37635,23 @@
                 "type": "boolean",
                 "example": true
             },
+            "Field-bInscriptionnotauthenticatedDraft": {
+                "description": "Whether the inscriptionnotauthenticated is a draft or not",
+                "type": "boolean",
+                "example": true
+            },
+            "Field-bInscriptionnotauthenticatedHomeowner": {
+                "description": "Whether if it's an homeowner",
+                "type": "boolean",
+                "example": true
+            },
             "Field-bInscriptionnotauthenticatedIsactive": {
                 "description": "Whether the inscriptionnotauthenticated is active or not",
+                "type": "boolean",
+                "example": true
+            },
+            "Field-bInscriptionnotauthenticatedMortgageisreferenced": {
+                "description": "Whether if it's an mortgageisreferenced",
                 "type": "boolean",
                 "example": true
             },
@@ -37714,6 +38151,54 @@
                 "type": "string",
                 "example": "500275.62"
             },
+            "Field-dInscriptionInitialsaleprice": {
+                "description": "The initialsaleprice of the Inscription",
+                "maxLength": 13,
+                "minLength": 4,
+                "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
+                "type": "string",
+                "example": "849000.00"
+            },
+            "Field-dInscriptionMortgagesold": {
+                "description": "The mortgagesold of the Inscription",
+                "maxLength": 13,
+                "minLength": 4,
+                "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
+                "type": "string",
+                "example": "123456.10"
+            },
+            "Field-dInscriptionRemuneration": {
+                "description": "The remuneration of the Inscription",
+                "maxLength": 13,
+                "minLength": 4,
+                "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
+                "type": "string",
+                "example": "25235.20"
+            },
+            "Field-dInscriptionRemunerationinscriptorseller": {
+                "description": "The remunerationinscriptorseller of the Inscription",
+                "maxLength": 13,
+                "minLength": 4,
+                "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
+                "type": "string",
+                "example": "7500.60"
+            },
+            "Field-dInscriptionRemunerationreference": {
+                "description": "The remunerationreference of the Inscription",
+                "maxLength": 13,
+                "minLength": 4,
+                "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
+                "type": "string",
+                "example": "2000.23"
+            },
+            "Field-dInscriptionRemunerationtotal": {
+                "description": "The remunerationtotal of the Inscription",
+                "maxLength": 13,
+                "minLength": 4,
+                "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
+                "type": "string",
+                "example": "5000.50"
+            },
             "Field-dInscriptionRentprice": {
                 "description": "The rentprice of the Inscription",
                 "maxLength": 13,
@@ -37729,6 +38214,54 @@
                 "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
                 "type": "string",
                 "example": "200000.00"
+            },
+            "Field-dInscriptionnotauthenticatedMortgageloan": {
+                "description": "The mortgageloan of the Inscriptionnotauthenticated",
+                "maxLength": 13,
+                "minLength": 4,
+                "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
+                "type": "string",
+                "example": "204720.00"
+            },
+            "Field-dInscriptionnotauthenticatedRemuneration": {
+                "description": "The remuneration of the Inscriptionnotauthenticated",
+                "maxLength": 13,
+                "minLength": 4,
+                "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
+                "type": "string",
+                "example": "11070.36"
+            },
+            "Field-dInscriptionnotauthenticatedRemunerationsubtotal": {
+                "description": "The remunerationsubtotal of the Inscriptionnotauthenticated",
+                "maxLength": 13,
+                "minLength": 4,
+                "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
+                "type": "string",
+                "example": "14025.00"
+            },
+            "Field-dInscriptionnotauthenticatedRemunerationtotal": {
+                "description": "The remunerationtotal of the Inscriptionnotauthenticated",
+                "maxLength": 13,
+                "minLength": 4,
+                "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
+                "type": "string",
+                "example": "12728.15"
+            },
+            "Field-dInscriptionnotauthenticatedSelleronlyretribution": {
+                "description": "The selleronlyretribution of the Inscriptionnotauthenticated",
+                "maxLength": 8,
+                "minLength": 5,
+                "pattern": "^-{0,1}[\\d]{1,3}?\\.[\\d]{3}$",
+                "type": "string",
+                "example": "1500.14"
+            },
+            "Field-dInscriptionnotauthenticatedTransactionprice": {
+                "description": "The transactionprice of the Inscriptionnotauthenticated",
+                "maxLength": 13,
+                "minLength": 4,
+                "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
+                "type": "string",
+                "example": "225000.00"
             },
             "Field-dOtherincomeRemunerationsubtotal": {
                 "description": "The remuneration subtotal of the Otherincome",
@@ -38033,6 +38566,12 @@
                 "type": "string",
                 "example": "2020-12-31"
             },
+            "Field-dtInscriptionCancellationdate": {
+                "description": "The cancellationdate of the Inscription",
+                "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
+                "type": "string",
+                "example": "2020-12-31"
+            },
             "Field-dtInscriptionDate": {
                 "description": "The date of the Inscription",
                 "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
@@ -38045,8 +38584,44 @@
                 "type": "string",
                 "example": "2020-12-31"
             },
+            "Field-dtInscriptionInitialexpirationdate": {
+                "description": "The initialexpirationdate of the Inscription",
+                "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
+                "type": "string",
+                "example": "2020-12-31"
+            },
             "Field-dtInscriptionNotarydate": {
                 "description": "The notarydate of the Inscription",
+                "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
+                "type": "string",
+                "example": "2020-12-31"
+            },
+            "Field-dtInscriptionNotaryentereddate": {
+                "description": "The notaryentereddate of the Inscription",
+                "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
+                "type": "string",
+                "example": "2020-12-31"
+            },
+            "Field-dtInscriptionnotauthenticatedCancellationdate": {
+                "description": "The cancellationdate of the Inscriptionnotauthenticated",
+                "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
+                "type": "string",
+                "example": "2020-12-31"
+            },
+            "Field-dtInscriptionnotauthenticatedConditiondeadlinedate": {
+                "description": "The conditiondeadlinedate of the Inscriptionnotauthenticated",
+                "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
+                "type": "string",
+                "example": "2020-12-31"
+            },
+            "Field-dtInscriptionnotauthenticatedDepositdate": {
+                "description": "The depositdate of the Inscriptionnotauthenticated",
+                "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
+                "type": "string",
+                "example": "2020-12-31"
+            },
+            "Field-dtInscriptionnotauthenticatedFinancingscheduledate": {
+                "description": "The financingscheduledate of the Inscriptionnotauthenticated",
                 "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
                 "type": "string",
                 "example": "2020-12-31"
@@ -38056,6 +38631,12 @@
                 "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
                 "type": "string",
                 "example": "2020-12-31"
+            },
+            "Field-dtInscriptionnotauthenticatedPossessiondate": {
+                "description": "The possessiondate of the Inscriptionnotauthenticated",
+                "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) ([01]?[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$",
+                "type": "string",
+                "example": "2020-12-31 23:59:59"
             },
             "Field-dtInscriptionnotauthenticatedTransactiondate": {
                 "description": "The transactiondate of the Inscriptionnotauthenticated",
@@ -38920,6 +39501,16 @@
                 "type": "string",
                 "example": "Completed"
             },
+            "Field-eEzsignfoldersignerassociationRole": {
+                "description": "The type of the EzsignfoldersignerassociationRole.\n\n1. **CC** receive a copy of all documents.\n2. **Signer** sign document.\n3. **SignerAndCC** sign document and receive a copy of all documents.",
+                "enum": [
+                    "CC",
+                    "Signer",
+                    "SignerAndCC"
+                ],
+                "type": "string",
+                "example": "Signer"
+            },
             "Field-eEzsignfoldertypeCompletion": {
                 "description": "Indicates if the Ezsigndocument is completed when all signatures of this Ezsigndocument were applied or when all signatures of all Ezsigndocument were applied. When eEzsignfoldertypeCompletion equals PerEzsignfolderStepSync, the document steps are synchronized. All documents move to a new step when all forms or signatures from the previous step have been completed for all documents.",
                 "enum": [
@@ -39542,6 +40133,51 @@
                 "type": "string",
                 "example": "Manual"
             },
+            "Field-eInscriptionRemunerationinscriptorsellertype": {
+                "description": "The remunerationinscriptorsellertype of the Inscription",
+                "enum": [
+                    "Percentage",
+                    "Dollars"
+                ],
+                "type": "string",
+                "example": "Percentage"
+            },
+            "Field-eInscriptionRemunerationreferencetype": {
+                "description": "The remunerationreferencetype of the Inscription",
+                "enum": [
+                    "Percentage",
+                    "Dollars"
+                ],
+                "type": "string",
+                "example": "Percentage"
+            },
+            "Field-eInscriptionRemunerationtotaltype": {
+                "description": "The remunerationtotaltype of the Inscription",
+                "enum": [
+                    "Percentage",
+                    "Dollars"
+                ],
+                "type": "string",
+                "example": "Percentage"
+            },
+            "Field-eInscriptionRemunerationtype": {
+                "description": "The remunerationtype of the Inscription",
+                "enum": [
+                    "Percentage",
+                    "Dollars"
+                ],
+                "type": "string",
+                "example": "Percentage"
+            },
+            "Field-eInscriptionResidenceType": {
+                "description": "The residencetype of the Inscription",
+                "enum": [
+                    "Principal",
+                    "Secondary"
+                ],
+                "type": "string",
+                "example": "Principal"
+            },
             "Field-eInscriptionStep": {
                 "description": "The step of the Inscription",
                 "enum": [
@@ -39559,6 +40195,46 @@
                 ],
                 "type": "string",
                 "example": "TemporaryNotAuthenticated"
+            },
+            "Field-eInscriptionType": {
+                "description": "The type of the Inscription",
+                "enum": [
+                    "Rent",
+                    "Sale",
+                    "RentOrSale"
+                ],
+                "type": "string",
+                "example": "Rent"
+            },
+            "Field-eInscriptionnotauthenticatedRemunerationtype": {
+                "description": "The remunerationtype of the Inscriptionnotauthenticated",
+                "enum": [
+                    "Percentage",
+                    "PercentageTaxesIncluded",
+                    "Dollars",
+                    "DollarsTaxesIncluded"
+                ],
+                "type": "string",
+                "example": "Percentage"
+            },
+            "Field-eInscriptionnotauthenticatedResidenceType": {
+                "description": "The residencetype of the Inscriptionnotauthenticated",
+                "enum": [
+                    "Principal",
+                    "Secondary"
+                ],
+                "type": "string",
+                "example": "Principal"
+            },
+            "Field-eInscriptionnotauthenticatedType": {
+                "description": "The type of the Inscriptionnotauthenticated",
+                "enum": [
+                    "Rent",
+                    "Sale",
+                    "Reference"
+                ],
+                "type": "string",
+                "example": "Rent"
             },
             "Field-eInscriptiontempStatus": {
                 "description": "The status of the Inscriptiontemp",
@@ -39806,6 +40482,15 @@
                 "type": "string",
                 "example": "Normal"
             },
+            "Field-eWebhookEzmaxpartnerevent": {
+                "description": "The Ezmaxpartnerevent of the Ezmaxpartnerproductstagewebhook",
+                "enum": [
+                    "ProductstageSubscribe",
+                    "ProductstageUnsubscribe"
+                ],
+                "type": "string",
+                "example": "ProductstageSubscribe"
+            },
             "Field-eWebhookEzsignevent": {
                 "description": "This Ezsign Event. This property will be set only if the Module is \"Ezsign\"",
                 "enum": [
@@ -39835,11 +40520,26 @@
             "Field-eWebhookModule": {
                 "description": "The module for the Webhook",
                 "enum": [
+                    "Ezmaxpartner",
                     "Ezsign",
                     "Management"
                 ],
                 "type": "string",
                 "example": "Ezsign"
+            },
+            "Field-etInscriptionnotauthenticatedMortgagetype": {
+                "description": "The mortgagetype of the Inscriptionnotauthenticated",
+                "enum": [
+                    "",
+                    "Cash",
+                    "Assumption",
+                    "WithoutAgent",
+                    "Institution",
+                    "Agent",
+                    "Broker"
+                ],
+                "type": "string",
+                "example": "Cash"
             },
             "Field-fAddressLatitude": {
                 "description": "The Latitude of the Address",
@@ -40717,6 +41417,34 @@
                 "minimum": 0,
                 "type": "integer",
                 "example": 2000
+            },
+            "Field-iInscriptionConstructionyear": {
+                "description": "The constructionyear of the Inscription",
+                "maximum": 65535,
+                "minimum": 0,
+                "type": "integer",
+                "example": 25689
+            },
+            "Field-iInscriptionSellerdeclaration": {
+                "description": "The sellerdeclaration of the Inscription",
+                "maximum": 16777215,
+                "minimum": 0,
+                "type": "integer",
+                "example": 5037238
+            },
+            "Field-iInscriptionUnit": {
+                "description": "The unit of the Inscription",
+                "maximum": 255,
+                "minimum": 0,
+                "type": "integer",
+                "example": 247
+            },
+            "Field-iInscriptionnotauthenticatedOrder": {
+                "description": "The order of the Inscriptionnotauthenticated",
+                "maximum": 255,
+                "minimum": 0,
+                "type": "integer",
+                "example": 19
             },
             "Field-iPaymenttermDay": {
                 "description": "The day of the Paymentterm",
@@ -41664,6 +42392,13 @@
                 "type": "integer",
                 "example": 94
             },
+            "Field-pkiFinancialinstitutionID": {
+                "description": "The unique ID of the Financialinstitution",
+                "maximum": 65535,
+                "minimum": 0,
+                "type": "integer",
+                "example": 211
+            },
             "Field-pkiFolderID": {
                 "description": "The unique ID of the Folder",
                 "maximum": 65535,
@@ -41758,6 +42493,20 @@
                 "minimum": 0,
                 "type": "integer",
                 "example": 17
+            },
+            "Field-pkiInscriptionbuildingtypeID": {
+                "description": "The unique ID of the Inscriptionbuildingtype",
+                "maximum": 255,
+                "minimum": 0,
+                "type": "integer",
+                "example": 182
+            },
+            "Field-pkiInscriptioncategoryID": {
+                "description": "The unique ID of the Inscriptioncategory",
+                "maximum": 255,
+                "minimum": 0,
+                "type": "integer",
+                "example": 185
             },
             "Field-pkiInscriptionchecklistID": {
                 "description": "The unique ID of the Inscriptionchecklist",
@@ -41869,6 +42618,13 @@
                 "minimum": 0,
                 "type": "integer",
                 "example": 53
+            },
+            "Field-pkiMortgagesupplierID": {
+                "description": "The unique ID of the Mortgagesupplier",
+                "maximum": 255,
+                "minimum": 0,
+                "type": "integer",
+                "example": 68
             },
             "Field-pkiNotaryID": {
                 "description": "The unique ID of the Notary.",
@@ -42815,6 +43571,18 @@
                 "type": "string",
                 "example": "The name of the hospital in which you were born"
             },
+            "Field-sEzmaxpartnerLogourl1": {
+                "description": "The url of the french logo of the Ezmaxpartner",
+                "pattern": "^(https|http):\\/\\/[^\\s\\/$.?#].[^\\s]*$",
+                "type": "string",
+                "example": "http://www.website.com/avatar.jpg"
+            },
+            "Field-sEzmaxpartnerLogourl2": {
+                "description": "The url of the english logo of the Ezmaxpartner",
+                "pattern": "^(https|http):\\/\\/[^\\s\\/$.?#].[^\\s]*$",
+                "type": "string",
+                "example": "http://www.website.com/avatar.jpg"
+            },
             "Field-sEzmaxpartnerName1": {
                 "description": "The name of the Ezmaxpartner in french",
                 "pattern": "^.{0,50}$",
@@ -43297,6 +44065,12 @@
                 "type": "string",
                 "example": "bField1 eq true and iField2 gte 0 and iField2 lte 1000 and sField3 eq 'Other' and eField4 eq 'Paid' and sField5 like '%needle%' and iField6 in '1,2,3' and dtField7 rg '=m,=3mm'"
             },
+            "Field-sFinancialinstitutionNameX": {
+                "description": "The name of the Financialinstitution in the language of the requester",
+                "pattern": "^.{0,50}$",
+                "type": "string",
+                "example": "TD CANADA TRUST"
+            },
             "Field-sFontName": {
                 "description": "The name of the Font",
                 "pattern": "^.{0,50}$",
@@ -43345,6 +44119,18 @@
                 "pattern": "^.{0,20}$",
                 "type": "string",
                 "example": "X00000"
+            },
+            "Field-sInscriptionbuildingtypeNameX": {
+                "description": "The name of the Inscriptionbuildingtype in the language of the requester",
+                "pattern": "^.{0,20}$",
+                "type": "string",
+                "example": "Semi-detached"
+            },
+            "Field-sInscriptioncategoryNameX": {
+                "description": "The name of the Inscriptioncategory in the language of the requester",
+                "pattern": "^.{0,30}$",
+                "type": "string",
+                "example": "Bungalow"
             },
             "Field-sInscriptionchecklistelementNameX": {
                 "description": "The name of the Inscriptionchecklistelement in the language of the requester",
@@ -43413,6 +44199,12 @@
                 "description": "The Name of the Modulesection in the language of the requester",
                 "type": "string",
                 "example": "Access"
+            },
+            "Field-sMortgagesupplierNameX": {
+                "description": "The name of the Mortagesupplier in the language of the requester",
+                "pattern": "^.{0,25}$",
+                "type": "string",
+                "example": "Desjardins"
             },
             "Field-sNotificationsectionNameX": {
                 "description": "The name of the Notificationsection in the language of the requester",
@@ -43995,6 +44787,30 @@
                 "type": "string",
                 "example": "This is a comment"
             },
+            "Field-tInscriptionCadastre": {
+                "description": "The cadastre of the Inscription",
+                "pattern": "^.{0,16777215}$",
+                "type": "string",
+                "example": "5400366"
+            },
+            "Field-tInscriptionChecklistnote": {
+                "description": "The checklistnote of the Inscription",
+                "pattern": "^.{0,16777215}$",
+                "type": "string",
+                "example": "New lot"
+            },
+            "Field-tInscriptionnotauthenticatedChecklistnote": {
+                "description": "The checklistnote of the Inscriptionnotauthenticated",
+                "pattern": "^.{0,16777215}$",
+                "type": "string",
+                "example": "Include original signatures"
+            },
+            "Field-tInscriptionnotauthenticatedConditions": {
+                "description": "The conditions of the Inscriptionnotauthenticated",
+                "pattern": "^.{0,16777215}$",
+                "type": "string",
+                "example": "Property Inspection"
+            },
             "Field-tInscriptionnotauthenticatedconditionComment": {
                 "description": "The comment of the Inscriptionnotauthenticatedcondition",
                 "pattern": "^.{0,65535}$",
@@ -44205,6 +45021,18 @@
                     },
                     "sEzmaxpartnerEmailaddress2": {
                         "$ref": "#/components/schemas/Field-sEmailAddress"
+                    }
+                }
+            },
+            "Multilingual-EzmaxpartnerLogourl": {
+                "description": "Logo url of the Ezmaxpartner",
+                "type": "object",
+                "properties": {
+                    "sEzmaxpartnerLogourl1": {
+                        "$ref": "#/components/schemas/Field-sEzmaxpartnerLogourl1"
+                    },
+                    "sEzmaxpartnerLogourl2": {
+                        "$ref": "#/components/schemas/Field-sEzmaxpartnerLogourl2"
                     }
                 }
             },
@@ -54401,7 +55229,8 @@
                     "objEzmaxpartnerName",
                     "objEzmaxpartnerPhoneE164",
                     "objEzmaxpartnerShortdescription",
-                    "objEzmaxpartnerUrl"
+                    "objEzmaxpartnerUrl",
+                    "objEzmaxpartnerLogourl"
                 ],
                 "type": "object",
                 "properties": {
@@ -54431,6 +55260,9 @@
                     },
                     "bEzmaxpartnerIsactive": {
                         "$ref": "#/components/schemas/Field-bEzmaxpartnerIsactive"
+                    },
+                    "objEzmaxpartnerLogourl": {
+                        "$ref": "#/components/schemas/Multilingual-EzmaxpartnerLogourl"
                     }
                 }
             },
@@ -59948,6 +60780,41 @@
                     }
                 }
             },
+            "ezsignfolder-getEzsignfoldersignerassociations-v2-Response": {
+                "description": "Response for GET /1/object/ezsignfolder/{pkiEzsignfolder}/getEzsignfoldersignerassociations",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsignfolder-getEzsignfoldersignerassociations-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsignfolder-getEzsignfoldersignerassociations-v2-Response-mPayload": {
+                "description": "Payload for GET /2/object/ezsignfolder/{pkiEzsignfolder}/getEzsignfoldersignerassociations",
+                "required": [
+                    "a_objEzsignfoldersignerassociation"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objEzsignfoldersignerassociation": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-EzsignfoldersignerassociationActionableElement-ResponseV2"
+                        }
+                    }
+                }
+            },
             "ezsignfolder-getEzsignformfieldgroups-v1-Response": {
                 "description": "Response for GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignformfieldgroups",
                 "type": "object",
@@ -60610,10 +61477,55 @@
                     }
                 ]
             },
+            "ezsignfoldersignerassociation-RequestCompoundV2": {
+                "description": "An Ezsignfoldersignerassociation Object and children to create a complete structure",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsignfoldersignerassociation-RequestV2"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "objEzsignsigner": {
+                                "$ref": "#/components/schemas/ezsignsigner-RequestCompound"
+                            }
+                        }
+                    }
+                ]
+            },
             "ezsignfoldersignerassociation-RequestPatch": {
                 "description": "An Ezsignfoldersignerassociation Object",
                 "type": "object",
                 "properties": {
+                    "tEzsignfoldersignerassociationMessage": {
+                        "$ref": "#/components/schemas/Field-tEzsignfoldersignerassociationMessage"
+                    }
+                }
+            },
+            "ezsignfoldersignerassociation-RequestV2": {
+                "description": "An Ezsignfoldersignerassociation Object",
+                "required": [
+                    "fkiEzsignfolderID",
+                    "eEzsignfoldersignerassociationRole"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsignfoldersignerassociationID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID"
+                    },
+                    "fkiUserID": {
+                        "$ref": "#/components/schemas/Field-pkiUserID"
+                    },
+                    "fkiEzsignsignergroupID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignsignergroupID"
+                    },
+                    "fkiEzsignfolderID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "eEzsignfoldersignerassociationRole": {
+                        "$ref": "#/components/schemas/Field-eEzsignfoldersignerassociationRole"
+                    },
                     "tEzsignfoldersignerassociationMessage": {
                         "$ref": "#/components/schemas/Field-tEzsignfoldersignerassociationMessage"
                     }
@@ -60703,6 +61615,61 @@
                     },
                     "eUserType": {
                         "$ref": "#/components/schemas/Field-eUserType"
+                    }
+                }
+            },
+            "ezsignfoldersignerassociation-ResponseCompoundV3": {
+                "description": "An Ezsignfoldersignerassociation Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezsignfoldersignerassociation-ResponseV3"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "objEzsignsignergroup": {
+                                "$ref": "#/components/schemas/ezsignsignergroup-ResponseCompound"
+                            },
+                            "objUser": {
+                                "$ref": "#/components/schemas/ezsignfoldersignerassociation-ResponseCompound-User"
+                            },
+                            "objEzsignsigner": {
+                                "$ref": "#/components/schemas/ezsignsigner-ResponseCompound"
+                            }
+                        }
+                    }
+                ]
+            },
+            "ezsignfoldersignerassociation-ResponseV3": {
+                "description": "An Ezsignfoldersignerassociation Object",
+                "required": [
+                    "pkiEzsignfoldersignerassociationID",
+                    "fkiEzsignfolderID",
+                    "bEzsignfoldersignerassociationDelayedsend",
+                    "eEzsignfoldersignerassociationRole",
+                    "tEzsignfoldersignerassociationMessage",
+                    "bEzsignfoldersignerassociationAllowsigninginperson"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzsignfoldersignerassociationID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID"
+                    },
+                    "fkiEzsignfolderID": {
+                        "$ref": "#/components/schemas/Field-pkiEzsignfolderID"
+                    },
+                    "bEzsignfoldersignerassociationDelayedsend": {
+                        "$ref": "#/components/schemas/Field-bEzsignfoldersignerassociationDelayedsend"
+                    },
+                    "eEzsignfoldersignerassociationRole": {
+                        "$ref": "#/components/schemas/Field-eEzsignfoldersignerassociationRole"
+                    },
+                    "tEzsignfoldersignerassociationMessage": {
+                        "$ref": "#/components/schemas/Field-tEzsignfoldersignerassociationMessage"
+                    },
+                    "bEzsignfoldersignerassociationAllowsigninginperson": {
+                        "$ref": "#/components/schemas/Computed-bEzsignfoldersignerassociationAllowsigninginperson"
                     }
                 }
             },
@@ -60913,6 +61880,59 @@
                     }
                 }
             },
+            "ezsignfoldersignerassociation-createObject-v3-Request": {
+                "description": "Request for POST /2/object/ezsignfoldersignerassociation",
+                "required": [
+                    "a_objEzsignfoldersignerassociation"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objEzsignfoldersignerassociation": {
+                        "minItems": 1,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ezsignfoldersignerassociation-RequestCompoundV2"
+                        }
+                    }
+                }
+            },
+            "ezsignfoldersignerassociation-createObject-v3-Response": {
+                "description": "Response for POST /2/object/ezsignfoldersignerassociation",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsignfoldersignerassociation-createObject-v3-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsignfoldersignerassociation-createObject-v3-Response-mPayload": {
+                "description": "Payload for POST /2/object/ezsignfoldersignerassociation",
+                "required": [
+                    "a_pkiEzsignfoldersignerassociationID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiEzsignfoldersignerassociationID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "minItems": 1,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Field-pkiEzsignfoldersignerassociationID"
+                        }
+                    }
+                }
+            },
             "ezsignfoldersignerassociation-deleteObject-v1-Response": {
                 "description": "Response for DELETE /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}",
                 "type": "object",
@@ -60936,6 +61956,27 @@
             },
             "ezsignfoldersignerassociation-editObject-v1-Response": {
                 "description": "Response for PUT /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsignfoldersignerassociation-editObject-v2-Request": {
+                "description": "Request for PUT /2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}",
+                "required": [
+                    "objEzsignfoldersignerassociation"
+                ],
+                "type": "object",
+                "properties": {
+                    "objEzsignfoldersignerassociation": {
+                        "$ref": "#/components/schemas/ezsignfoldersignerassociation-RequestCompoundV2"
+                    }
+                }
+            },
+            "ezsignfoldersignerassociation-editObject-v2-Response": {
+                "description": "Response for PUT /2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}",
                 "type": "object",
                 "allOf": [
                     {
@@ -61047,6 +62088,38 @@
                 "properties": {
                     "objEzsignfoldersignerassociation": {
                         "$ref": "#/components/schemas/ezsignfoldersignerassociation-ResponseCompound"
+                    }
+                }
+            },
+            "ezsignfoldersignerassociation-getObject-v3-Response": {
+                "description": "Response for GET /3/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezsignfoldersignerassociation-getObject-v3-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezsignfoldersignerassociation-getObject-v3-Response-mPayload": {
+                "description": "Payload for GET /3/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}",
+                "required": [
+                    "objEzsignfoldersignerassociation"
+                ],
+                "type": "object",
+                "properties": {
+                    "objEzsignfoldersignerassociation": {
+                        "$ref": "#/components/schemas/ezsignfoldersignerassociation-ResponseCompoundV3"
                     }
                 }
             },
@@ -71707,6 +72780,239 @@
                     }
                 }
             },
+            "inscription-Response": {
+                "description": "A Inscription Object",
+                "required": [
+                    "pkiInscriptionID",
+                    "fkiCompanyID",
+                    "fkiDepartmentID",
+                    "fkiRealestateboardID",
+                    "fkiAddressID",
+                    "fkiInscriptionbuildingtypeID",
+                    "fkiInscriptiontypeID",
+                    "fkiInscriptioncategoryID",
+                    "eInscriptionStep",
+                    "eInscriptionResidenceType",
+                    "sInscriptionCivicend",
+                    "sInscriptionMLS",
+                    "sInscriptionContract",
+                    "iInscriptionSellerdeclaration",
+                    "eInscriptionType",
+                    "dInscriptionInitialsaleprice",
+                    "dInscriptionSaleprice",
+                    "dInscriptionRentprice",
+                    "eInscriptionRemunerationtype",
+                    "eInscriptionRemunerationinscriptorsellertype",
+                    "eInscriptionRemunerationreferencetype",
+                    "eInscriptionRemunerationtotaltype",
+                    "dInscriptionRemuneration",
+                    "dInscriptionRemunerationinscriptorseller",
+                    "dInscriptionRemunerationreference",
+                    "dInscriptionRemunerationtotal",
+                    "dInscriptionMortgagesold",
+                    "dtInscriptionDate",
+                    "dtInscriptionCancellationdate",
+                    "dtInscriptionInitialexpirationdate",
+                    "dtInscriptionExpirationdate",
+                    "dtInscriptionNotarydate",
+                    "dtInscriptionNotaryentereddate",
+                    "tInscriptionCadastre",
+                    "bInscriptionReference",
+                    "bInscriptionInspection",
+                    "bInscriptionIsactive",
+                    "tInscriptionChecklistnote",
+                    "bInscriptionNew",
+                    "bInscriptionHomeowner",
+                    "bInscriptionArchived",
+                    "bInscriptionLitigation",
+                    "bInscriptionRepossession",
+                    "bInscriptionIssolicitation",
+                    "bInscriptionSalebyowner",
+                    "bInscriptionSoldwithoutlegalwarranty",
+                    "iInscriptionConstructionyear",
+                    "iInscriptionUnit"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiInscriptionID": {
+                        "$ref": "#/components/schemas/Field-pkiInscriptionID"
+                    },
+                    "fkiCompanyID": {
+                        "$ref": "#/components/schemas/Field-pkiCompanyID"
+                    },
+                    "sCompanyNameX": {
+                        "$ref": "#/components/schemas/Field-sCompanyNameX"
+                    },
+                    "fkiDepartmentID": {
+                        "$ref": "#/components/schemas/Field-pkiDepartmentID"
+                    },
+                    "sDepartmentNameX": {
+                        "$ref": "#/components/schemas/Field-sDepartmentNameX"
+                    },
+                    "fkiRealestateboardID": {
+                        "$ref": "#/components/schemas/Field-pkiRealestateboardID"
+                    },
+                    "sRealestateboardNameX": {
+                        "$ref": "#/components/schemas/Field-sRealestateboardNameX"
+                    },
+                    "fkiAddressID": {
+                        "$ref": "#/components/schemas/Field-pkiAddressID"
+                    },
+                    "sAddress": {
+                        "$ref": "#/components/schemas/Computed-sAddress"
+                    },
+                    "fkiInscriptionbuildingtypeID": {
+                        "$ref": "#/components/schemas/Field-pkiInscriptionbuildingtypeID"
+                    },
+                    "sInscriptionbuildingtypeNameX": {
+                        "$ref": "#/components/schemas/Field-sInscriptionbuildingtypeNameX"
+                    },
+                    "fkiInscriptiontypeID": {
+                        "$ref": "#/components/schemas/Field-pkiInscriptiontypeID"
+                    },
+                    "sInscriptiontypeNameX": {
+                        "$ref": "#/components/schemas/Field-sInscriptiontypeNameX"
+                    },
+                    "fkiInscriptioncategoryID": {
+                        "$ref": "#/components/schemas/Field-pkiInscriptioncategoryID"
+                    },
+                    "sInscriptioncategoryNameX": {
+                        "$ref": "#/components/schemas/Field-sInscriptioncategoryNameX"
+                    },
+                    "eInscriptionStep": {
+                        "$ref": "#/components/schemas/Field-eInscriptionStep"
+                    },
+                    "eInscriptionResidenceType": {
+                        "$ref": "#/components/schemas/Field-eInscriptionResidenceType"
+                    },
+                    "sInscriptionCivicend": {
+                        "$ref": "#/components/schemas/Field-sInscriptionCivicend"
+                    },
+                    "sInscriptionMLS": {
+                        "$ref": "#/components/schemas/Field-sInscriptionMLS"
+                    },
+                    "sInscriptionContract": {
+                        "$ref": "#/components/schemas/Field-sInscriptionContract"
+                    },
+                    "iInscriptionSellerdeclaration": {
+                        "$ref": "#/components/schemas/Field-iInscriptionSellerdeclaration"
+                    },
+                    "eInscriptionType": {
+                        "$ref": "#/components/schemas/Field-eInscriptionType"
+                    },
+                    "dInscriptionInitialsaleprice": {
+                        "$ref": "#/components/schemas/Field-dInscriptionInitialsaleprice"
+                    },
+                    "dInscriptionSaleprice": {
+                        "$ref": "#/components/schemas/Field-dInscriptionSaleprice"
+                    },
+                    "dInscriptionRentprice": {
+                        "$ref": "#/components/schemas/Field-dInscriptionRentprice"
+                    },
+                    "eInscriptionRemunerationtype": {
+                        "$ref": "#/components/schemas/Field-eInscriptionRemunerationtype"
+                    },
+                    "eInscriptionRemunerationinscriptorsellertype": {
+                        "$ref": "#/components/schemas/Field-eInscriptionRemunerationinscriptorsellertype"
+                    },
+                    "eInscriptionRemunerationreferencetype": {
+                        "$ref": "#/components/schemas/Field-eInscriptionRemunerationreferencetype"
+                    },
+                    "eInscriptionRemunerationtotaltype": {
+                        "$ref": "#/components/schemas/Field-eInscriptionRemunerationtotaltype"
+                    },
+                    "dInscriptionRemuneration": {
+                        "$ref": "#/components/schemas/Field-dInscriptionRemuneration"
+                    },
+                    "dInscriptionRemunerationinscriptorseller": {
+                        "$ref": "#/components/schemas/Field-dInscriptionRemunerationinscriptorseller"
+                    },
+                    "dInscriptionRemunerationreference": {
+                        "$ref": "#/components/schemas/Field-dInscriptionRemunerationreference"
+                    },
+                    "dInscriptionRemunerationtotal": {
+                        "$ref": "#/components/schemas/Field-dInscriptionRemunerationtotal"
+                    },
+                    "dInscriptionMortgagesold": {
+                        "$ref": "#/components/schemas/Field-dInscriptionMortgagesold"
+                    },
+                    "dtInscriptionDate": {
+                        "$ref": "#/components/schemas/Field-dtInscriptionDate"
+                    },
+                    "dtInscriptionCancellationdate": {
+                        "$ref": "#/components/schemas/Field-dtInscriptionCancellationdate"
+                    },
+                    "dtInscriptionInitialexpirationdate": {
+                        "$ref": "#/components/schemas/Field-dtInscriptionInitialexpirationdate"
+                    },
+                    "dtInscriptionExpirationdate": {
+                        "$ref": "#/components/schemas/Field-dtInscriptionExpirationdate"
+                    },
+                    "dtInscriptionNotarydate": {
+                        "$ref": "#/components/schemas/Field-dtInscriptionNotarydate"
+                    },
+                    "dtInscriptionNotaryentereddate": {
+                        "$ref": "#/components/schemas/Field-dtInscriptionNotaryentereddate"
+                    },
+                    "tInscriptionCadastre": {
+                        "$ref": "#/components/schemas/Field-tInscriptionCadastre"
+                    },
+                    "bInscriptionReference": {
+                        "$ref": "#/components/schemas/Field-bInscriptionReference"
+                    },
+                    "bInscriptionInspection": {
+                        "$ref": "#/components/schemas/Field-bInscriptionInspection"
+                    },
+                    "bInscriptionIsactive": {
+                        "$ref": "#/components/schemas/Field-bInscriptionIsactive"
+                    },
+                    "tInscriptionChecklistnote": {
+                        "$ref": "#/components/schemas/Field-tInscriptionChecklistnote"
+                    },
+                    "bInscriptionNew": {
+                        "$ref": "#/components/schemas/Field-bInscriptionNew"
+                    },
+                    "bInscriptionHomeowner": {
+                        "$ref": "#/components/schemas/Field-bInscriptionHomeowner"
+                    },
+                    "bInscriptionArchived": {
+                        "$ref": "#/components/schemas/Field-bInscriptionArchived"
+                    },
+                    "bInscriptionLitigation": {
+                        "$ref": "#/components/schemas/Field-bInscriptionLitigation"
+                    },
+                    "bInscriptionRepossession": {
+                        "$ref": "#/components/schemas/Field-bInscriptionRepossession"
+                    },
+                    "bInscriptionIssolicitation": {
+                        "$ref": "#/components/schemas/Field-bInscriptionIssolicitation"
+                    },
+                    "bInscriptionSalebyowner": {
+                        "$ref": "#/components/schemas/Field-bInscriptionSalebyowner"
+                    },
+                    "bInscriptionSoldwithoutlegalwarranty": {
+                        "$ref": "#/components/schemas/Field-bInscriptionSoldwithoutlegalwarranty"
+                    },
+                    "iInscriptionConstructionyear": {
+                        "$ref": "#/components/schemas/Field-iInscriptionConstructionyear"
+                    },
+                    "iInscriptionUnit": {
+                        "$ref": "#/components/schemas/Field-iInscriptionUnit"
+                    }
+                }
+            },
+            "inscription-ResponseCompound": {
+                "description": "A Inscription Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/inscription-Response"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
             "inscription-getAttachments-v1-Response": {
                 "description": "Response for GET /1/object/inscription/{pkiInscriptionID}/getAttachments",
                 "type": "object",
@@ -71879,6 +73185,30 @@
                     }
                 }
             },
+            "inscription-getInscriptionnotauthenticateds-v1-Response": {
+                "description": "Response for GET /1/object/inscription/{pkiInscriptionID}/getInscriptionnotauthenticateds",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/inscription-getInscriptionnotauthenticateds-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "inscription-getInscriptionnotauthenticateds-v1-Response-mPayload": {
+                "description": "Response for GET /1/object/inscription/{pkiInscriptionID}/getInscriptionnotauthenticateds",
+                "type": "object"
+            },
             "inscription-getList-v1-Response": {
                 "description": "Response for GET /1/object/inscription/getList",
                 "type": "object",
@@ -71921,6 +73251,38 @@
                         "$ref": "#/components/schemas/Common-getList-v1-Response-mPayload"
                     }
                 ]
+            },
+            "inscription-getObject-v2-Response": {
+                "description": "Response for GET /2/object/inscription/{pkiInscriptionID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/inscription-getObject-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "inscription-getObject-v2-Response-mPayload": {
+                "description": "Payload for GET /2/object/inscription/{pkiInscriptionID}",
+                "required": [
+                    "objInscription"
+                ],
+                "type": "object",
+                "properties": {
+                    "objInscription": {
+                        "$ref": "#/components/schemas/inscription-ResponseCompound"
+                    }
+                }
             },
             "inscription-importIntoEDM-v1-Request": {
                 "description": "Request for POST /1/report/accountspayable/accountspayable",
@@ -72160,6 +73522,9 @@
                     "bInscriptionnotauthenticatedIsactive": {
                         "$ref": "#/components/schemas/Field-bInscriptionnotauthenticatedIsactive"
                     },
+                    "bInscriptionnotauthenticatedDraft": {
+                        "$ref": "#/components/schemas/Field-bInscriptionnotauthenticatedDraft"
+                    },
                     "sAddressCivic": {
                         "$ref": "#/components/schemas/Field-sAddressCivic"
                     },
@@ -72191,6 +73556,184 @@
                         "$ref": "#/components/schemas/Field-sInscriptionnotauthenticatedOffertopurchasenumber"
                     }
                 }
+            },
+            "inscriptionnotauthenticated-Response": {
+                "description": "A Inscriptionnotauthenticated Object",
+                "required": [
+                    "pkiInscriptionnotauthenticatedID",
+                    "fkiCompanyID",
+                    "fkiInscriptionID",
+                    "fkiDepartmentID",
+                    "fkiFinancialinstitutionID",
+                    "fkiBuyercontractID",
+                    "fkiMortgagesupplierID",
+                    "fkiTaxassignmentID",
+                    "dtInscriptionnotauthenticatedTransactiondate",
+                    "dtInscriptionnotauthenticatedTransactiondateReal",
+                    "dtInscriptionnotauthenticatedDepositdate",
+                    "eInscriptionnotauthenticatedType",
+                    "dInscriptionnotauthenticatedMortgageloan",
+                    "etInscriptionnotauthenticatedMortgagetype",
+                    "dInscriptionnotauthenticatedTransactionprice",
+                    "eInscriptionnotauthenticatedRemunerationtype",
+                    "dInscriptionnotauthenticatedRemuneration",
+                    "dInscriptionnotauthenticatedRemunerationsubtotal",
+                    "dInscriptionnotauthenticatedRemunerationtotal",
+                    "dtInscriptionnotauthenticatedCancellationdate",
+                    "dtInscriptionnotauthenticatedPossessiondate",
+                    "sInscriptionnotauthenticatedOffertopurchasenumber",
+                    "dtInscriptionnotauthenticatedNotaryscheduledate",
+                    "dtInscriptionnotauthenticatedFinancingscheduledate",
+                    "bInscriptionnotauthenticatedConditional",
+                    "bInscriptionnotauthenticatedMortgageisreferenced",
+                    "bInscriptionnotauthenticatedHomeowner",
+                    "tInscriptionnotauthenticatedConditions",
+                    "dtInscriptionnotauthenticatedConditiondeadlinedate",
+                    "iInscriptionnotauthenticatedOrder",
+                    "bInscriptionnotauthenticatedIsactive",
+                    "eInscriptionnotauthenticatedResidenceType",
+                    "tInscriptionnotauthenticatedChecklistnote",
+                    "dInscriptionnotauthenticatedSelleronlyretribution",
+                    "bInscriptionnotauthenticatedDraft"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiInscriptionnotauthenticatedID": {
+                        "$ref": "#/components/schemas/Field-pkiInscriptionnotauthenticatedID"
+                    },
+                    "fkiCompanyID": {
+                        "$ref": "#/components/schemas/Field-pkiCompanyID"
+                    },
+                    "sCompanyNameX": {
+                        "$ref": "#/components/schemas/Field-sCompanyNameX"
+                    },
+                    "fkiInscriptionID": {
+                        "$ref": "#/components/schemas/Field-pkiInscriptionID"
+                    },
+                    "fkiDepartmentID": {
+                        "$ref": "#/components/schemas/Field-pkiDepartmentID"
+                    },
+                    "sDepartmentNameX": {
+                        "$ref": "#/components/schemas/Field-sDepartmentNameX"
+                    },
+                    "fkiFinancialinstitutionID": {
+                        "$ref": "#/components/schemas/Field-pkiFinancialinstitutionID"
+                    },
+                    "sFinancialinstitutionNameX": {
+                        "$ref": "#/components/schemas/Field-sFinancialinstitutionNameX"
+                    },
+                    "fkiBuyercontractID": {
+                        "$ref": "#/components/schemas/Field-pkiBuyercontractID"
+                    },
+                    "sBuyercontractContract": {
+                        "$ref": "#/components/schemas/Field-sBuyercontractContract"
+                    },
+                    "fkiMortgagesupplierID": {
+                        "$ref": "#/components/schemas/Field-pkiMortgagesupplierID"
+                    },
+                    "sMortgagesupplierNameX": {
+                        "$ref": "#/components/schemas/Field-sMortgagesupplierNameX"
+                    },
+                    "fkiTaxassignmentID": {
+                        "$ref": "#/components/schemas/Field-pkiTaxassignmentID"
+                    },
+                    "sTaxassignmentDescriptionX": {
+                        "$ref": "#/components/schemas/Field-sTaxassignmentDescriptionX"
+                    },
+                    "dtInscriptionnotauthenticatedTransactiondate": {
+                        "$ref": "#/components/schemas/Field-dtInscriptionnotauthenticatedTransactiondate"
+                    },
+                    "dtInscriptionnotauthenticatedTransactiondateReal": {
+                        "$ref": "#/components/schemas/Field-dtInscriptionnotauthenticatedTransactiondateReal"
+                    },
+                    "dtInscriptionnotauthenticatedDepositdate": {
+                        "$ref": "#/components/schemas/Field-dtInscriptionnotauthenticatedDepositdate"
+                    },
+                    "eInscriptionnotauthenticatedType": {
+                        "$ref": "#/components/schemas/Field-eInscriptionnotauthenticatedType"
+                    },
+                    "dInscriptionnotauthenticatedMortgageloan": {
+                        "$ref": "#/components/schemas/Field-dInscriptionnotauthenticatedMortgageloan"
+                    },
+                    "etInscriptionnotauthenticatedMortgagetype": {
+                        "$ref": "#/components/schemas/Field-etInscriptionnotauthenticatedMortgagetype"
+                    },
+                    "dInscriptionnotauthenticatedTransactionprice": {
+                        "$ref": "#/components/schemas/Field-dInscriptionnotauthenticatedTransactionprice"
+                    },
+                    "eInscriptionnotauthenticatedRemunerationtype": {
+                        "$ref": "#/components/schemas/Field-eInscriptionnotauthenticatedRemunerationtype"
+                    },
+                    "dInscriptionnotauthenticatedRemuneration": {
+                        "$ref": "#/components/schemas/Field-dInscriptionnotauthenticatedRemuneration"
+                    },
+                    "dInscriptionnotauthenticatedRemunerationsubtotal": {
+                        "$ref": "#/components/schemas/Field-dInscriptionnotauthenticatedRemunerationsubtotal"
+                    },
+                    "dInscriptionnotauthenticatedRemunerationtotal": {
+                        "$ref": "#/components/schemas/Field-dInscriptionnotauthenticatedRemunerationtotal"
+                    },
+                    "dtInscriptionnotauthenticatedCancellationdate": {
+                        "$ref": "#/components/schemas/Field-dtInscriptionnotauthenticatedCancellationdate"
+                    },
+                    "dtInscriptionnotauthenticatedPossessiondate": {
+                        "$ref": "#/components/schemas/Field-dtInscriptionnotauthenticatedPossessiondate"
+                    },
+                    "sInscriptionnotauthenticatedOffertopurchasenumber": {
+                        "$ref": "#/components/schemas/Field-sInscriptionnotauthenticatedOffertopurchasenumber"
+                    },
+                    "dtInscriptionnotauthenticatedNotaryscheduledate": {
+                        "$ref": "#/components/schemas/Field-dtInscriptionnotauthenticatedNotaryscheduledate"
+                    },
+                    "dtInscriptionnotauthenticatedFinancingscheduledate": {
+                        "$ref": "#/components/schemas/Field-dtInscriptionnotauthenticatedFinancingscheduledate"
+                    },
+                    "bInscriptionnotauthenticatedConditional": {
+                        "$ref": "#/components/schemas/Field-bInscriptionnotauthenticatedConditional"
+                    },
+                    "bInscriptionnotauthenticatedMortgageisreferenced": {
+                        "$ref": "#/components/schemas/Field-bInscriptionnotauthenticatedMortgageisreferenced"
+                    },
+                    "bInscriptionnotauthenticatedHomeowner": {
+                        "$ref": "#/components/schemas/Field-bInscriptionnotauthenticatedHomeowner"
+                    },
+                    "tInscriptionnotauthenticatedConditions": {
+                        "$ref": "#/components/schemas/Field-tInscriptionnotauthenticatedConditions"
+                    },
+                    "dtInscriptionnotauthenticatedConditiondeadlinedate": {
+                        "$ref": "#/components/schemas/Field-dtInscriptionnotauthenticatedConditiondeadlinedate"
+                    },
+                    "iInscriptionnotauthenticatedOrder": {
+                        "$ref": "#/components/schemas/Field-iInscriptionnotauthenticatedOrder"
+                    },
+                    "bInscriptionnotauthenticatedIsactive": {
+                        "$ref": "#/components/schemas/Field-bInscriptionnotauthenticatedIsactive"
+                    },
+                    "eInscriptionnotauthenticatedResidenceType": {
+                        "$ref": "#/components/schemas/Field-eInscriptionnotauthenticatedResidenceType"
+                    },
+                    "tInscriptionnotauthenticatedChecklistnote": {
+                        "$ref": "#/components/schemas/Field-tInscriptionnotauthenticatedChecklistnote"
+                    },
+                    "dInscriptionnotauthenticatedSelleronlyretribution": {
+                        "$ref": "#/components/schemas/Field-dInscriptionnotauthenticatedSelleronlyretribution"
+                    },
+                    "bInscriptionnotauthenticatedDraft": {
+                        "$ref": "#/components/schemas/Field-bInscriptionnotauthenticatedDraft"
+                    }
+                }
+            },
+            "inscriptionnotauthenticated-ResponseCompound": {
+                "description": "A Inscriptionnotauthenticated Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/inscriptionnotauthenticated-Response"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
             },
             "inscriptionnotauthenticated-fillInscriptionnotauthenticatedcondition-v1-Request": {
                 "description": "Request for POST /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/fillInscriptionnotauthenticatedcondition",
@@ -72433,6 +73976,38 @@
                         "$ref": "#/components/schemas/Common-getList-v1-Response-mPayload"
                     }
                 ]
+            },
+            "inscriptionnotauthenticated-getObject-v2-Response": {
+                "description": "Response for GET /2/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/inscriptionnotauthenticated-getObject-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "inscriptionnotauthenticated-getObject-v2-Response-mPayload": {
+                "description": "Payload for GET /2/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}",
+                "required": [
+                    "objInscriptionnotauthenticated"
+                ],
+                "type": "object",
+                "properties": {
+                    "objInscriptionnotauthenticated": {
+                        "$ref": "#/components/schemas/inscriptionnotauthenticated-ResponseCompound"
+                    }
+                }
             },
             "inscriptionnotauthenticated-importIntoEDM-v1-Request": {
                 "description": "Request for POST /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/importIntoEDM",
@@ -80865,6 +82440,9 @@
                     "eWebhookModule": {
                         "$ref": "#/components/schemas/Field-eWebhookModule"
                     },
+                    "eWebhookEzmaxpartnerevent": {
+                        "$ref": "#/components/schemas/Field-eWebhookEzmaxpartnerevent"
+                    },
                     "eWebhookEzsignevent": {
                         "$ref": "#/components/schemas/Field-eWebhookEzsignevent"
                     },
@@ -81570,7 +83148,7 @@
     "tags": [
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\r\n\r\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.34\r\n\r\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\r\n\r\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\r\n\r\n**PATCH** will be incremented everytime changes and additions are released.\r\n\r\nFor each version, there will be the list of changes:\r\n* **Breaking Changes** for breaking changes you need to take into consideration before updating.\r\n* **Added** for new features.\r\n* **Changed** for changes in existing functionality.\r\n* **Deprecated** for soon-to-be removed features.\r\n* **Removed** for now removed features.\r\n* **Fixed** for any bug fixes.\r\n* **Security** in case of vulnerabilities.\r\n\r\n**Removal lifecycle**<br>\r\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\r\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\r\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\r\n\r\n## 1.3.X Releases\r\n\r\n### ⚠️ Compatibility Warning\r\n\r\nStarting with **version 1.3.0**, several API endpoints have been updated to support a **major enhancement**:\r\nYou can now **combine and alternate form steps and signature steps** within the same signing workflow.\r\n\r\nThis provides greater flexibility, but it also changes how **step numbers** are defined and managed.\r\n\r\n\r\n* **Endpoints introduced in 1.3.0** (listed below) use the *new step numbering model*.\r\n* **Endpoints from previous versions (≤ 1.2.2)** use the *old step numbering model*.\r\n* These two models are **not compatible** — mixing old and new endpoints within the same implementation could cause inconsistencies.\r\n\r\nYou may continue using the old routes or migrate fully to the new ones, but **do not mix both** in a single integration.\r\n\r\n### Endpoints with Step Numbers (pre-1.3.0)\r\n\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n* GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n* GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n* GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}\r\n* GET /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* GET /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n* POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n* POST /1/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n* POST /2/object/ezsigntemplatesignature\r\n* POST /3/object/ezsignsignature\r\n* PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n* PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n* PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n* PUT /2/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* PUT /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n### Updated endpoints with Step Numbers (introduced in 1.3.0)\r\n\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n* GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n* GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n* GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n* GET /3/object/ezsigndocument/{pkiEzsigndocumentID}\r\n* GET /4/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* GET /4/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n* POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n* POST /2/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n* POST /3/object/ezsigntemplatesignature\r\n* POST /4/object/ezsignsignature\r\n* PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n* PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n* PUT /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n* PUT /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* PUT /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n---\r\n\r\n### [1.3.1] - 2026-06-17\r\n\r\n#### Added\r\n- DELETE /1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\r\n- GET /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagepermissions\r\n- GET /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagewebhooks\r\n- GET /1/object/ezmaxmaillinglist/getList\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElementsForSigner\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplateannotations\r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/duplicate\r\n- POST /1/object/ezsigntemplateannotation\r\n- POST /4/object/ezsignfoldertype\r\n- PUT /1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\r\n- PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplateannotations\r\n- PUT /4/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElementsForSigner\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignannotations\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignformfieldgroups\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignsignatures\r\n- GET /2/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\r\n- GET /2/object/ezsigntemplateglobalannotation/{pkiEzsigntemplateglobalannotationID}\r\n- POST /1/module/ezmaxmaillinglist/subscribe\r\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplateglobal\r\n- POST /3/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\r\n- POST /3/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n- Selector AgentBrokerEmployeeEzsignUserNormal in GET /2/object/user/getAutocomplete/{sSelector}\r\n- Properties dtAgentContractdate, dtAgentTransferdate, dtAgentSenioritydate, dtAgentSickleavestart and dtAgentSickleaveend in agent-ListElement\r\n- Properties fkiCountryID and fkiProvinceID in agent-ListElement, broker-ListElement, customer-ListElement, employee-ListElement, inscription-ListElement, inscriptionnotauthenticated-ListElement, rejectedoffertopurchase-ListElement and supplier-ListElement  \r\n- Properties fkiEzsignbulksendID, sEzsignbulksendDescription, fkiEzsignbulksendtransmissionID, sEzsignbulksendtransmissionDescription, fkiEzsigntemplatepublicID, sEzsigntemplatepublicDescription, eEzsignfolderSource in object ezsignfolder-ListElement\r\n- Properties bEzsignfoldertypeSenddocumentmergetoemail, bEzsignfoldertypeSenddocumentmergetoezsignsigner, bEzsignfoldertypeSenddocumentmergetoreceivealldocument and bEzsignfoldertypeSenddocumentmergetouser in ezsignfoldertype-RequestV3 and ezsignfoldertype-ResponseV4\r\n- Property a_objEzsigntemplateannotation in ezsigntemplate-ResponseCompound\r\n- Property a_objEzsigntemplateannotation in ezsigntemplate-ResponseCompoundV3\r\n- Property a_objEzsigntemplateglobalannotation in ezsigntemplateglobal-ResponseCompound\r\n- Property fkiEzmaxpartnerID in user-Response\r\n- Property fkiEzmaxpartnerproductstageID in apikey-ResponseCompound\r\n- Property iEzsignfolderStepcurrent in ezsignfolder-ResponseV3\r\n- Property iEzsignfoldertypeArchivaldays in ezsignfoldertype-getDefaults-v2-Response-mPayload\r\n- Property sBuyercontractContract in buyercontract-ListElement\r\n- Value Optional in Field-eEzsignsignatureConsultationtrigger\r\n- Value Suspended in Field-eSessionhistoryEndby\r\n\r\n\r\n### [1.3.0] - 2026-01-24\r\n\r\n#### Added\r\n- GET /1/object/agent/getList\r\n- GET /1/object/broker/getList\r\n- GET /1/object/buyercontract/getList\r\n- GET /1/object/customer/getList\r\n- GET /1/object/employee/getList\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}/getBatchFile\r\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}/getBatchFile\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/download\r\n- GET /1/object/inscriptiontemp/getList\r\n- GET /1/object/lead/getList\r\n- GET /1/object/otherincome/getList\r\n- GET /1/object/rejectedoffertopurchase/getList\r\n- GET /1/object/supplier/getList\r\n- GET /2/object/agent/getAutocomplete/{sSelector}\r\n- GET /2/object/agenttype/getAutocomplete/{sSelector}\r\n- GET /2/object/broker/getAutocomplete/{sSelector}\r\n- GET /2/object/brokertype/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n- GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n- GET /2/object/inscriptionchecklist/getAutocomplete/{sSelector}\r\n- GET /2/object/leadsource/getAutocomplete/{sSelector}\r\n- GET /2/object/notificationtest/{pkiNotificationtestID}/getElements\r\n- GET /2/object/otherincometype/getAutocomplete/{sSelector}\r\n- GET /2/object/paymentmethod/getAutocomplete/{sSelector}\r\n- GET /3/object/ezsigndocument/{pkiEzsigndocumentID}\r\n- GET /3/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n- GET /3/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n- GET /4/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /4/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- POST /1/module/ezmaxcustomer/createCustomer\r\n- POST /1/object/activesession/setGoal\r\n- POST /1/object/agent/{pkiAgentID}/importIntoEDM\r\n- POST /1/object/broker/{pkiBrokerID}/importIntoEDM\r\n- POST /1/object/buyercontract/{pkiBuyercontractID}/importIntoEDM\r\n- POST /1/object/customer/{pkiCustomerID}/importIntoEDM\r\n- POST /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/importIntoEDM\r\n- POST /1/object/employee/{pkiEmployeeID}/importIntoEDM\r\n- POST /1/object/externalbroker/{pkiExternalbrokerID}/importIntoEDM\r\n- POST /1/object/inscription/{pkiInscriptionID}/importIntoEDM\r\n- POST /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/importIntoEDM\r\n- POST /1/object/inscriptiontemp/{pkiInscriptiontempID}/importIntoEDM\r\n- POST /1/object/invoice/{pkiInvoiceID}/importIntoEDM\r\n- POST /1/object/lead/{pkiLeadID}/importIntoEDM\r\n- POST /1/object/otherincome/{pkiOtherincomeID}/importIntoEDM\r\n- POST /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/importIntoEDM\r\n- POST /1/object/supplier/{pkiSupplierID}/importIntoEDM\r\n- POST /1/object/tranqcontract/{pkiTranqcontractID}/importIntoEDM\r\n- POST /1/report/accountspayable/accountspayable\r\n- POST /1/report/accountsreceivablevscommission/accountsreceivablevscommission\r\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n- POST /2/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n- POST /2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n- POST /3/object/ezsigntemplatesignature\r\n- POST /4/object/ezsignsignature\r\n- PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n- PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n- PUT /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n- PUT /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- PUT /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- Properties a_objContactPrivate, a_objContactShared in ezsign-suggestSigners-v1-Response-mPayload\r\n- Properties bEzsignfoldertypeSendsignatureattachmentezsignsigner, bEzsignfoldertypeSendsignatureattachment, bEzsignfoldertypeSendsignatureattachmentuser, bEzsignfoldertypeAllowdownloadsignatureattachmentezsignsigner, bEzsignfoldertypeSendsignatureattachmentreceivealldocument in ezsignfoldertype-RequestV3 and- ezsignfoldertype-ResponseV4\r\n- Properties eEzsignsignatureSignaturepadrequired, eEzsignsignatureSignaturepadrequired in ezsignsignature-Request and ezsignsignature-Response\r\n- Properties eEzsigntemplatesignatureSignaturepadrequired, eEzsigntemplatesignatureSignaturepadrequired in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property a_objEzsignsignaturepaymentdetail in ezsignsignature-RequestCompound\r\n- Property a_objEzsigntemplatesignaturepaymentdetail in ezsigntemplatesignature-RequestCompound, ezsigntemplatesignature-RequestCompoundV2, ezsigntemplatesignature-ResponseCompoundV3\r\n- Property bInscriptionInspection in inscription-ListElement\r\n- Property bInscriptionInspection in inscriptionnotauthenticated-ListElement\r\n- Property bInscriptionnotauthenticatedConditional in inscription-ListElement\r\n- Property bInscriptionnotauthenticatedConditional in inscriptionnotauthenticated-ListElement\r\n- Property bUserAddmeinezsignfolder in activesession-ResponseCompound-User\r\n- Property bUserAddmeinezsignfolder in user-getPreferences-v1-Response\r\n- Property bUserAddmeinezsignfolder in user-setPreferences-v1-Request\r\n- Property dtUserNpsrequest in activesession-ResponseCompound\r\n- Property eEzsignfolderCompletion in ezsignfolder-ListElement\r\n- Property eEzsignfolderDocumentmerge in ezsignfoldertype-RequestV3 and ezsignfoldertype-ResponseV4\r\n- Property eEzsignfolderMessageorder in ezsignfolder-Response\r\n- Property eUserType in ezsignfoldersignerassociation-ResponseCompound-User\r\n- Property fkiDepartmentID in agent-AutocompleteElement-Response\r\n- Property fkiDepartmentID in broker-AutocompleteElement-Response\r\n- Property fkiDepartmentID in customer-AutocompleteElement-Response\r\n- Property fkiEzsigntemplateglobalID in Custom-Ezsignimportdocument-Response\r\n- Property fkiModuleIDForm in user-getPreferences-v1-Response-mPayload\r\n- Property fkiModuleIDForm in user-setPreferences-v1-Request\r\n- Property fkiPaymentgatewayID in ezsignsignature-Response, ezsigntemplatesignature-Request, ezsigntemplatesignature-Response\r\n- Property iUserFrontendgoal in activesession-ResponseCompound-User\r\n- Property iSystemconfigurationEzsignreminderhoursend in systemconfiguration-Request and systemconfiguration-Response\r\n- Property objReportcellstyleCustom in Common-Reportrow\r\n- Property sEzsignsignergroupDescriptionX in Custom-EzsignfoldertransmissionSigner-Response\r\n- Property sEzsigntemplateglobalDescription in Custom-Ezsignimportdocument-Response\r\n- Property sCustomerCode in customer-AutocompleteElement-Response\r\n- Property sModuleNameX in user-getPreferences-v1-Response-mPayload\r\n- Property sReportsectionTabname in Common-Reportsection\r\n- Property sWebhookAuthentificationexternalerror in webhook-ResponseCompound\r\n- Selector EzsignfoldertypeReassign in /2/object/userlogintype/getAutocomplete/{sSelector}\r\n- Value PerEzsignfolderStepSync in eEzsignfolderCompletion\r\n- Value PerEzsignfolderStepSync in eEzsignfoldertypeCompletion\r\n- Value PendingPrematurelyEnded in eEzsigndocumentStep\r\n\r\n#### Deprecated\r\n- POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n\r\n#### Removed\r\n- Property bEzsignfolderPaymentused in Custom-EzmaxinvoicingEzsignfolder-Response\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n- GET /1/object/notificationtest/{pkiNotificationtestID}/getElements\r\n- GET /2/object/inscriptionchecklist/getAutocomplete\r\n- GET /2/object/signature/{pkiSignatureID}\r\n- GET /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID} \r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/reorder\r\n- POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n- PUT /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- PUT /1/object/systemconfiguration/{pkiSystemconfigurationID}\r\n- PUT /2/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- PUT /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n## Older Releases\r\nDocumentation and changelog for older releases can be found here\r\n- [1.2.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.2.html)\r\n- [1.1.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.1.html)\r\n- [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)",
+            "description": "All notable changes to this project will be documented in this section.\r\n\r\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.34\r\n\r\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\r\n\r\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\r\n\r\n**PATCH** will be incremented everytime changes and additions are released.\r\n\r\nFor each version, there will be the list of changes:\r\n* **Breaking Changes** for breaking changes you need to take into consideration before updating.\r\n* **Added** for new features.\r\n* **Changed** for changes in existing functionality.\r\n* **Deprecated** for soon-to-be removed features.\r\n* **Removed** for now removed features.\r\n* **Fixed** for any bug fixes.\r\n* **Security** in case of vulnerabilities.\r\n\r\n**Removal lifecycle**<br>\r\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\r\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\r\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\r\n\r\n## 1.3.X Releases\r\n\r\n### ⚠️ Compatibility Warning\r\n\r\nStarting with **version 1.3.0**, several API endpoints have been updated to support a **major enhancement**:\r\nYou can now **combine and alternate form steps and signature steps** within the same signing workflow.\r\n\r\nThis provides greater flexibility, but it also changes how **step numbers** are defined and managed.\r\n\r\n\r\n* **Endpoints introduced in 1.3.0** (listed below) use the *new step numbering model*.\r\n* **Endpoints from previous versions (≤ 1.2.2)** use the *old step numbering model*.\r\n* These two models are **not compatible** — mixing old and new endpoints within the same implementation could cause inconsistencies.\r\n\r\nYou may continue using the old routes or migrate fully to the new ones, but **do not mix both** in a single integration.\r\n\r\n### Endpoints with Step Numbers (pre-1.3.0)\r\n\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n* GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n* GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n* GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}\r\n* GET /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* GET /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n* POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n* POST /1/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n* POST /2/object/ezsigntemplatesignature\r\n* POST /3/object/ezsignsignature\r\n* PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n* PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n* PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n* PUT /2/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* PUT /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n### Updated endpoints with Step Numbers (introduced in 1.3.0)\r\n\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n* GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n* GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n* GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n* GET /3/object/ezsigndocument/{pkiEzsigndocumentID}\r\n* GET /4/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* GET /4/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n* POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n* POST /2/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n* POST /3/object/ezsigntemplatesignature\r\n* POST /4/object/ezsignsignature\r\n* PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n* PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n* PUT /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n* PUT /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* PUT /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n---\r\n\r\n### [1.3.2] - 2026-XX-XX\r\n\r\n#### Added\r\n- GET /2/module/ezsign/suggestSigners\r\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociations\r\n- GET /3/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\r\n- POST /2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\r\n- POST /3/object/ezsignfoldersignerassociation\r\n- Property bInscriptionnotauthenticatedDraft in inscriptionnotauthenticated-ListElement\r\n\r\n\r\n### [1.3.1] - 2026-06-17\r\n\r\n#### Added\r\n- DELETE /1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\r\n- GET /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagepermissions\r\n- GET /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagewebhooks\r\n- GET /1/object/ezmaxmaillinglist/getList\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElementsForSigner\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplateannotations\r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/duplicate\r\n- POST /1/object/ezsigntemplateannotation\r\n- POST /4/object/ezsignfoldertype\r\n- PUT /1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\r\n- PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplateannotations\r\n- PUT /4/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElementsForSigner\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignannotations\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignformfieldgroups\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignsignatures\r\n- GET /2/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\r\n- GET /2/object/ezsigntemplateglobalannotation/{pkiEzsigntemplateglobalannotationID}\r\n- POST /1/module/ezmaxmaillinglist/subscribe\r\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplateglobal\r\n- POST /3/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\r\n- POST /3/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n- Selector AgentBrokerEmployeeEzsignUserNormal in GET /2/object/user/getAutocomplete/{sSelector}\r\n- Properties dtAgentContractdate, dtAgentTransferdate, dtAgentSenioritydate, dtAgentSickleavestart and dtAgentSickleaveend in agent-ListElement\r\n- Properties fkiCountryID and fkiProvinceID in agent-ListElement, broker-ListElement, customer-ListElement, employee-ListElement, inscription-ListElement, inscriptionnotauthenticated-ListElement, rejectedoffertopurchase-ListElement and supplier-ListElement  \r\n- Properties fkiEzsignbulksendID, sEzsignbulksendDescription, fkiEzsignbulksendtransmissionID, sEzsignbulksendtransmissionDescription, fkiEzsigntemplatepublicID, sEzsigntemplatepublicDescription, eEzsignfolderSource in object ezsignfolder-ListElement\r\n- Properties bEzsignfoldertypeSenddocumentmergetoemail, bEzsignfoldertypeSenddocumentmergetoezsignsigner, bEzsignfoldertypeSenddocumentmergetoreceivealldocument and bEzsignfoldertypeSenddocumentmergetouser in ezsignfoldertype-RequestV3 and ezsignfoldertype-ResponseV4\r\n- Property a_objEzsigntemplateannotation in ezsigntemplate-ResponseCompound\r\n- Property a_objEzsigntemplateannotation in ezsigntemplate-ResponseCompoundV3\r\n- Property a_objEzsigntemplateglobalannotation in ezsigntemplateglobal-ResponseCompound\r\n- Property fkiEzmaxpartnerID in user-Response\r\n- Property fkiEzmaxpartnerproductstageID in apikey-ResponseCompound\r\n- Property iEzsignfolderStepcurrent in ezsignfolder-ResponseV3\r\n- Property iEzsignfoldertypeArchivaldays in ezsignfoldertype-getDefaults-v2-Response-mPayload\r\n- Property sBuyercontractContract in buyercontract-ListElement\r\n- Value Optional in Field-eEzsignsignatureConsultationtrigger\r\n- Value Suspended in Field-eSessionhistoryEndby\r\n\r\n\r\n### [1.3.0] - 2026-01-24\r\n\r\n#### Added\r\n- GET /1/object/agent/getList\r\n- GET /1/object/broker/getList\r\n- GET /1/object/buyercontract/getList\r\n- GET /1/object/customer/getList\r\n- GET /1/object/employee/getList\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}/getBatchFile\r\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}/getBatchFile\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/download\r\n- GET /1/object/inscriptiontemp/getList\r\n- GET /1/object/lead/getList\r\n- GET /1/object/otherincome/getList\r\n- GET /1/object/rejectedoffertopurchase/getList\r\n- GET /1/object/supplier/getList\r\n- GET /2/object/agent/getAutocomplete/{sSelector}\r\n- GET /2/object/agenttype/getAutocomplete/{sSelector}\r\n- GET /2/object/broker/getAutocomplete/{sSelector}\r\n- GET /2/object/brokertype/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n- GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n- GET /2/object/inscriptionchecklist/getAutocomplete/{sSelector}\r\n- GET /2/object/leadsource/getAutocomplete/{sSelector}\r\n- GET /2/object/notificationtest/{pkiNotificationtestID}/getElements\r\n- GET /2/object/otherincometype/getAutocomplete/{sSelector}\r\n- GET /2/object/paymentmethod/getAutocomplete/{sSelector}\r\n- GET /3/object/ezsigndocument/{pkiEzsigndocumentID}\r\n- GET /3/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n- GET /3/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n- GET /4/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /4/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- POST /1/module/ezmaxcustomer/createCustomer\r\n- POST /1/object/activesession/setGoal\r\n- POST /1/object/agent/{pkiAgentID}/importIntoEDM\r\n- POST /1/object/broker/{pkiBrokerID}/importIntoEDM\r\n- POST /1/object/buyercontract/{pkiBuyercontractID}/importIntoEDM\r\n- POST /1/object/customer/{pkiCustomerID}/importIntoEDM\r\n- POST /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/importIntoEDM\r\n- POST /1/object/employee/{pkiEmployeeID}/importIntoEDM\r\n- POST /1/object/externalbroker/{pkiExternalbrokerID}/importIntoEDM\r\n- POST /1/object/inscription/{pkiInscriptionID}/importIntoEDM\r\n- POST /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/importIntoEDM\r\n- POST /1/object/inscriptiontemp/{pkiInscriptiontempID}/importIntoEDM\r\n- POST /1/object/invoice/{pkiInvoiceID}/importIntoEDM\r\n- POST /1/object/lead/{pkiLeadID}/importIntoEDM\r\n- POST /1/object/otherincome/{pkiOtherincomeID}/importIntoEDM\r\n- POST /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/importIntoEDM\r\n- POST /1/object/supplier/{pkiSupplierID}/importIntoEDM\r\n- POST /1/object/tranqcontract/{pkiTranqcontractID}/importIntoEDM\r\n- POST /1/report/accountspayable/accountspayable\r\n- POST /1/report/accountsreceivablevscommission/accountsreceivablevscommission\r\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n- POST /2/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n- POST /2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n- POST /3/object/ezsigntemplatesignature\r\n- POST /4/object/ezsignsignature\r\n- PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n- PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n- PUT /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n- PUT /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- PUT /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- Properties a_objContactPrivate, a_objContactShared in ezsign-suggestSigners-v1-Response-mPayload\r\n- Properties bEzsignfoldertypeSendsignatureattachmentezsignsigner, bEzsignfoldertypeSendsignatureattachment, bEzsignfoldertypeSendsignatureattachmentuser, bEzsignfoldertypeAllowdownloadsignatureattachmentezsignsigner, bEzsignfoldertypeSendsignatureattachmentreceivealldocument in ezsignfoldertype-RequestV3 and- ezsignfoldertype-ResponseV4\r\n- Properties eEzsignsignatureSignaturepadrequired, eEzsignsignatureSignaturepadrequired in ezsignsignature-Request and ezsignsignature-Response\r\n- Properties eEzsigntemplatesignatureSignaturepadrequired, eEzsigntemplatesignatureSignaturepadrequired in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property a_objEzsignsignaturepaymentdetail in ezsignsignature-RequestCompound\r\n- Property a_objEzsigntemplatesignaturepaymentdetail in ezsigntemplatesignature-RequestCompound, ezsigntemplatesignature-RequestCompoundV2, ezsigntemplatesignature-ResponseCompoundV3\r\n- Property bInscriptionInspection in inscription-ListElement\r\n- Property bInscriptionInspection in inscriptionnotauthenticated-ListElement\r\n- Property bInscriptionnotauthenticatedConditional in inscription-ListElement\r\n- Property bInscriptionnotauthenticatedConditional in inscriptionnotauthenticated-ListElement\r\n- Property bUserAddmeinezsignfolder in activesession-ResponseCompound-User\r\n- Property bUserAddmeinezsignfolder in user-getPreferences-v1-Response\r\n- Property bUserAddmeinezsignfolder in user-setPreferences-v1-Request\r\n- Property dtUserNpsrequest in activesession-ResponseCompound\r\n- Property eEzsignfolderCompletion in ezsignfolder-ListElement\r\n- Property eEzsignfolderDocumentmerge in ezsignfoldertype-RequestV3 and ezsignfoldertype-ResponseV4\r\n- Property eEzsignfolderMessageorder in ezsignfolder-Response\r\n- Property eUserType in ezsignfoldersignerassociation-ResponseCompound-User\r\n- Property fkiDepartmentID in agent-AutocompleteElement-Response\r\n- Property fkiDepartmentID in broker-AutocompleteElement-Response\r\n- Property fkiDepartmentID in customer-AutocompleteElement-Response\r\n- Property fkiEzsigntemplateglobalID in Custom-Ezsignimportdocument-Response\r\n- Property fkiModuleIDForm in user-getPreferences-v1-Response-mPayload\r\n- Property fkiModuleIDForm in user-setPreferences-v1-Request\r\n- Property fkiPaymentgatewayID in ezsignsignature-Response, ezsigntemplatesignature-Request, ezsigntemplatesignature-Response\r\n- Property iUserFrontendgoal in activesession-ResponseCompound-User\r\n- Property iSystemconfigurationEzsignreminderhoursend in systemconfiguration-Request and systemconfiguration-Response\r\n- Property objReportcellstyleCustom in Common-Reportrow\r\n- Property sEzsignsignergroupDescriptionX in Custom-EzsignfoldertransmissionSigner-Response\r\n- Property sEzsigntemplateglobalDescription in Custom-Ezsignimportdocument-Response\r\n- Property sCustomerCode in customer-AutocompleteElement-Response\r\n- Property sModuleNameX in user-getPreferences-v1-Response-mPayload\r\n- Property sReportsectionTabname in Common-Reportsection\r\n- Property sWebhookAuthentificationexternalerror in webhook-ResponseCompound\r\n- Selector EzsignfoldertypeReassign in /2/object/userlogintype/getAutocomplete/{sSelector}\r\n- Value PerEzsignfolderStepSync in eEzsignfolderCompletion\r\n- Value PerEzsignfolderStepSync in eEzsignfoldertypeCompletion\r\n- Value PendingPrematurelyEnded in eEzsigndocumentStep\r\n\r\n#### Deprecated\r\n- POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n\r\n#### Removed\r\n- Property bEzsignfolderPaymentused in Custom-EzmaxinvoicingEzsignfolder-Response\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n- GET /1/object/notificationtest/{pkiNotificationtestID}/getElements\r\n- GET /2/object/inscriptionchecklist/getAutocomplete\r\n- GET /2/object/signature/{pkiSignatureID}\r\n- GET /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID} \r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/reorder\r\n- POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n- PUT /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- PUT /1/object/systemconfiguration/{pkiSystemconfigurationID}\r\n- PUT /2/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- PUT /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n## Older Releases\r\nDocumentation and changelog for older releases can be found here\r\n- [1.2.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.2.html)\r\n- [1.1.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.1.html)\r\n- [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)",
             "x-displayName": "Changelog"
         },
         {
