@@ -2,7 +2,7 @@
     "openapi": "3.0.3",
     "info": {
         "title": "eZmax API Definition (Full)",
-        "version": "1.3.2",
+        "version": "1.3.3",
         "description": "This API expose all the functionnalities for the eZmax and eZsign applications.",
         "termsOfService": "https://www.ezmax.ca/TODO",
         "contact": {
@@ -22832,7 +22832,7 @@
                     }
                 ],
                 "operationId": "Inscription_GetInscriptionnotauthenticateds_V1",
-                "summary": "Retrieve Inscriptionnotauthenticated list",
+                "summary": "Retrieve Inscription's Inscriptionnotauthenticated",
                 "x-systemconfigurationtype": [
                     "All"
                 ],
@@ -23295,7 +23295,8 @@
                     "All"
                 ],
                 "x-permissions": [
-                    "Inscription_Deals"
+                    "Inscription_Deals",
+                    "Inscription_Inspections"
                 ],
                 "x-usertypeextra": [
                     "AgentBroker"
@@ -37602,7 +37603,7 @@
                 "example": true
             },
             "Field-bInscriptionIssolicitation": {
-                "description": "Whether if it's an issolicitation",
+                "description": "Whether if it's a solicitation",
                 "type": "boolean",
                 "example": true
             },
@@ -37627,12 +37628,12 @@
                 "example": true
             },
             "Field-bInscriptionSalebyowner": {
-                "description": "Whether if it's an salebyowner",
+                "description": "Whether if it's a sale by the owner",
                 "type": "boolean",
                 "example": true
             },
             "Field-bInscriptionSoldwithoutlegalwarranty": {
-                "description": "Whether if it's an soldwithoutlegalwarranty",
+                "description": "Whether if it's sold without the legal warranty",
                 "type": "boolean",
                 "example": true
             },
@@ -37647,12 +37648,12 @@
                 "example": true
             },
             "Field-bInscriptionnotauthenticatedDraft": {
-                "description": "Whether the inscriptionnotauthenticated is a draft or not",
+                "description": "Whether the Inscriptionnotauthenticated is a draft or not",
                 "type": "boolean",
                 "example": true
             },
             "Field-bInscriptionnotauthenticatedHomeowner": {
-                "description": "Whether if it's an homeowner",
+                "description": "Whether if it's an home owner",
                 "type": "boolean",
                 "example": true
             },
@@ -37662,7 +37663,7 @@
                 "example": true
             },
             "Field-bInscriptionnotauthenticatedMortgageisreferenced": {
-                "description": "Whether if it's an mortgageisreferenced",
+                "description": "Whether if the mortgage is referenced",
                 "type": "boolean",
                 "example": true
             },
@@ -38163,7 +38164,7 @@
                 "example": "500275.62"
             },
             "Field-dInscriptionInitialsaleprice": {
-                "description": "The initialsaleprice of the Inscription",
+                "description": "The initial sale price of the Inscription",
                 "maxLength": 13,
                 "minLength": 4,
                 "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
@@ -38171,7 +38172,7 @@
                 "example": "849000.00"
             },
             "Field-dInscriptionMortgagesold": {
-                "description": "The mortgagesold of the Inscription",
+                "description": "The balande for the mortgage of the Inscription",
                 "maxLength": 13,
                 "minLength": 4,
                 "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
@@ -38179,7 +38180,7 @@
                 "example": "123456.10"
             },
             "Field-dInscriptionRemuneration": {
-                "description": "The remuneration of the Inscription",
+                "description": "The remuneration amount of the Inscription",
                 "maxLength": 13,
                 "minLength": 4,
                 "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
@@ -38187,7 +38188,7 @@
                 "example": "25235.20"
             },
             "Field-dInscriptionRemunerationinscriptorseller": {
-                "description": "The remunerationinscriptorseller of the Inscription",
+                "description": "The remuneration amount for the inscriptor or seller of the Inscription",
                 "maxLength": 13,
                 "minLength": 4,
                 "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
@@ -38195,7 +38196,7 @@
                 "example": "7500.60"
             },
             "Field-dInscriptionRemunerationreference": {
-                "description": "The remunerationreference of the Inscription",
+                "description": "The remuneration amount for the reference of the Inscription",
                 "maxLength": 13,
                 "minLength": 4,
                 "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
@@ -38203,7 +38204,7 @@
                 "example": "2000.23"
             },
             "Field-dInscriptionRemunerationtotal": {
-                "description": "The remunerationtotal of the Inscription",
+                "description": "The remuneration amount total of the Inscription",
                 "maxLength": 13,
                 "minLength": 4,
                 "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
@@ -38211,7 +38212,7 @@
                 "example": "5000.50"
             },
             "Field-dInscriptionRentprice": {
-                "description": "The rentprice of the Inscription",
+                "description": "The rent price of the Inscription",
                 "maxLength": 13,
                 "minLength": 4,
                 "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
@@ -38227,7 +38228,7 @@
                 "example": "200000.00"
             },
             "Field-dInscriptionnotauthenticatedMortgageloan": {
-                "description": "The mortgageloan of the Inscriptionnotauthenticated",
+                "description": "The amount of the mortgage loan of the Inscriptionnotauthenticated",
                 "maxLength": 13,
                 "minLength": 4,
                 "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
@@ -38235,7 +38236,7 @@
                 "example": "204720.00"
             },
             "Field-dInscriptionnotauthenticatedRemuneration": {
-                "description": "The remuneration of the Inscriptionnotauthenticated",
+                "description": "The amount for the remuneration of the Inscriptionnotauthenticated",
                 "maxLength": 13,
                 "minLength": 4,
                 "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
@@ -38243,7 +38244,7 @@
                 "example": "11070.36"
             },
             "Field-dInscriptionnotauthenticatedRemunerationsubtotal": {
-                "description": "The remunerationsubtotal of the Inscriptionnotauthenticated",
+                "description": "The subtotal for the remuneration of the Inscriptionnotauthenticated",
                 "maxLength": 13,
                 "minLength": 4,
                 "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
@@ -38251,7 +38252,7 @@
                 "example": "14025.00"
             },
             "Field-dInscriptionnotauthenticatedRemunerationtotal": {
-                "description": "The remunerationtotal of the Inscriptionnotauthenticated",
+                "description": "The total for the remuneration of the Inscriptionnotauthenticated",
                 "maxLength": 13,
                 "minLength": 4,
                 "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
@@ -38259,7 +38260,7 @@
                 "example": "12728.15"
             },
             "Field-dInscriptionnotauthenticatedSelleronlyretribution": {
-                "description": "The selleronlyretribution of the Inscriptionnotauthenticated",
+                "description": "The amount retribution for the seller only of the Inscriptionnotauthenticated",
                 "maxLength": 8,
                 "minLength": 5,
                 "pattern": "^-{0,1}[\\d]{1,3}?\\.[\\d]{3}$",
@@ -38267,7 +38268,7 @@
                 "example": "1500.14"
             },
             "Field-dInscriptionnotauthenticatedTransactionprice": {
-                "description": "The transactionprice of the Inscriptionnotauthenticated",
+                "description": "The transaction price of the Inscriptionnotauthenticated",
                 "maxLength": 13,
                 "minLength": 4,
                 "pattern": "^-{0,1}[\\d]{1,9}?\\.[\\d]{2}$",
@@ -38578,7 +38579,7 @@
                 "example": "2020-12-31"
             },
             "Field-dtInscriptionCancellationdate": {
-                "description": "The cancellationdate of the Inscription",
+                "description": "The cancellation date of the Inscription",
                 "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
                 "type": "string",
                 "example": "2020-12-31"
@@ -38590,73 +38591,73 @@
                 "example": "2020-12-31"
             },
             "Field-dtInscriptionExpirationdate": {
-                "description": "The expirationdate of the Inscription",
+                "description": "The expiration date of the Inscription",
                 "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
                 "type": "string",
                 "example": "2020-12-31"
             },
             "Field-dtInscriptionInitialexpirationdate": {
-                "description": "The initialexpirationdate of the Inscription",
+                "description": "The initial expiration date of the Inscription",
                 "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
                 "type": "string",
                 "example": "2020-12-31"
             },
             "Field-dtInscriptionNotarydate": {
-                "description": "The notarydate of the Inscription",
+                "description": "The notary date of the Inscription",
                 "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
                 "type": "string",
                 "example": "2020-12-31"
             },
             "Field-dtInscriptionNotaryentereddate": {
-                "description": "The notaryentereddate of the Inscription",
+                "description": "The notary entered date of the Inscription",
                 "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
                 "type": "string",
                 "example": "2020-12-31"
             },
             "Field-dtInscriptionnotauthenticatedCancellationdate": {
-                "description": "The cancellationdate of the Inscriptionnotauthenticated",
+                "description": "The cancellation date of the Inscriptionnotauthenticated",
                 "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
                 "type": "string",
                 "example": "2020-12-31"
             },
             "Field-dtInscriptionnotauthenticatedConditiondeadlinedate": {
-                "description": "The conditiondeadlinedate of the Inscriptionnotauthenticated",
+                "description": "The condition deadline date of the Inscriptionnotauthenticated",
                 "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
                 "type": "string",
                 "example": "2020-12-31"
             },
             "Field-dtInscriptionnotauthenticatedDepositdate": {
-                "description": "The depositdate of the Inscriptionnotauthenticated",
+                "description": "The deposit date of the Inscriptionnotauthenticated",
                 "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
                 "type": "string",
                 "example": "2020-12-31"
             },
             "Field-dtInscriptionnotauthenticatedFinancingscheduledate": {
-                "description": "The financingscheduledate of the Inscriptionnotauthenticated",
+                "description": "The financing schedule date of the Inscriptionnotauthenticated",
                 "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
                 "type": "string",
                 "example": "2020-12-31"
             },
             "Field-dtInscriptionnotauthenticatedNotaryscheduledate": {
-                "description": "The notaryscheduledate of the Inscriptionnotauthenticated",
+                "description": "The notary schedule date of the Inscriptionnotauthenticated",
                 "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
                 "type": "string",
                 "example": "2020-12-31"
             },
             "Field-dtInscriptionnotauthenticatedPossessiondate": {
-                "description": "The possessiondate of the Inscriptionnotauthenticated",
+                "description": "The possession date of the Inscriptionnotauthenticated",
                 "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) ([01]?[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$",
                 "type": "string",
                 "example": "2020-12-31 23:59:59"
             },
             "Field-dtInscriptionnotauthenticatedTransactiondate": {
-                "description": "The transactiondate of the Inscriptionnotauthenticated",
+                "description": "The transaction date of the Inscriptionnotauthenticated",
                 "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
                 "type": "string",
                 "example": "2020-12-31"
             },
             "Field-dtInscriptionnotauthenticatedTransactiondateReal": {
-                "description": "The transactiondatereal of the Inscriptionnotauthenticated",
+                "description": "The real transactiondate of the Inscriptionnotauthenticated",
                 "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$",
                 "type": "string",
                 "example": "2020-12-31"
@@ -40154,7 +40155,7 @@
                 "example": "Manual"
             },
             "Field-eInscriptionRemunerationinscriptorsellertype": {
-                "description": "The remunerationinscriptorsellertype of the Inscription",
+                "description": "The type of remuneration for inscriptor and seller of the Inscription",
                 "enum": [
                     "Percentage",
                     "Dollars"
@@ -40163,7 +40164,7 @@
                 "example": "Percentage"
             },
             "Field-eInscriptionRemunerationreferencetype": {
-                "description": "The remunerationreferencetype of the Inscription",
+                "description": "The type of remuneration for reference of the Inscription",
                 "enum": [
                     "Percentage",
                     "Dollars"
@@ -40172,7 +40173,7 @@
                 "example": "Percentage"
             },
             "Field-eInscriptionRemunerationtotaltype": {
-                "description": "The remunerationtotaltype of the Inscription",
+                "description": "The type for the remuneration total of the Inscription",
                 "enum": [
                     "Percentage",
                     "Dollars"
@@ -40181,7 +40182,7 @@
                 "example": "Percentage"
             },
             "Field-eInscriptionRemunerationtype": {
-                "description": "The remunerationtype of the Inscription",
+                "description": "The type of remuneration of the Inscription",
                 "enum": [
                     "Percentage",
                     "Dollars"
@@ -40190,7 +40191,7 @@
                 "example": "Percentage"
             },
             "Field-eInscriptionResidenceType": {
-                "description": "The residencetype of the Inscription",
+                "description": "The residence type of the Inscription",
                 "enum": [
                     "Principal",
                     "Secondary"
@@ -40227,7 +40228,7 @@
                 "example": "Rent"
             },
             "Field-eInscriptionnotauthenticatedRemunerationtype": {
-                "description": "The remunerationtype of the Inscriptionnotauthenticated",
+                "description": "The type of remuneration of the Inscriptionnotauthenticated",
                 "enum": [
                     "Percentage",
                     "PercentageTaxesIncluded",
@@ -40238,7 +40239,7 @@
                 "example": "Percentage"
             },
             "Field-eInscriptionnotauthenticatedResidenceType": {
-                "description": "The residencetype of the Inscriptionnotauthenticated",
+                "description": "The residence type of the Inscriptionnotauthenticated",
                 "enum": [
                     "Principal",
                     "Secondary"
@@ -40549,7 +40550,7 @@
                 "example": "Ezsign"
             },
             "Field-eWebhookRealestateevent": {
-                "description": "The realestateevent of the Webhook",
+                "description": "The Realestateevent of the Webhook",
                 "enum": [
                     "InscriptionCreated",
                     "InscriptionModified",
@@ -40560,7 +40561,7 @@
                 "example": "InscriptionCreated"
             },
             "Field-etInscriptionnotauthenticatedMortgagetype": {
-                "description": "The mortgagetype of the Inscriptionnotauthenticated",
+                "description": "The type of mortgage of the Inscriptionnotauthenticated",
                 "enum": [
                     "",
                     "Cash",
@@ -41451,21 +41452,21 @@
                 "example": 2000
             },
             "Field-iInscriptionConstructionyear": {
-                "description": "The constructionyear of the Inscription",
+                "description": "The construction year of the Inscription",
                 "maximum": 65535,
                 "minimum": 0,
                 "type": "integer",
                 "example": 25689
             },
             "Field-iInscriptionSellerdeclaration": {
-                "description": "The sellerdeclaration of the Inscription",
+                "description": "The seller declaration number of the Inscription",
                 "maximum": 16777215,
                 "minimum": 0,
                 "type": "integer",
                 "example": 5037238
             },
             "Field-iInscriptionUnit": {
-                "description": "The unit of the Inscription",
+                "description": "The number of unit for the Inscription",
                 "maximum": 255,
                 "minimum": 0,
                 "type": "integer",
@@ -44135,7 +44136,7 @@
                 "example": "ca-central-1"
             },
             "Field-sInscriptionCivicend": {
-                "description": "The civicend of the Inscription",
+                "description": "The address civic end of the Inscription",
                 "pattern": "^.{0,6}$",
                 "type": "string",
                 "example": "630"
@@ -44171,7 +44172,7 @@
                 "example": "Loan deed"
             },
             "Field-sInscriptionnotauthenticatedOffertopurchasenumber": {
-                "description": "The Offer to purchase number",
+                "description": "The offer to purchase number of the Inscriptionnotauthenticated",
                 "pattern": "^.{0,15}$",
                 "type": "string",
                 "example": "PL32216"
@@ -44826,13 +44827,13 @@
                 "example": "5400366"
             },
             "Field-tInscriptionChecklistnote": {
-                "description": "The checklistnote of the Inscription",
+                "description": "The checklist note of the Inscription",
                 "pattern": "^.{0,65535}$",
                 "type": "string",
                 "example": "New lot"
             },
             "Field-tInscriptionnotauthenticatedChecklistnote": {
-                "description": "The checklistnote of the Inscriptionnotauthenticated",
+                "description": "The checklist note of the Inscriptionnotauthenticated",
                 "pattern": "^.{0,65535}$",
                 "type": "string",
                 "example": "Include original signatures"
@@ -45795,11 +45796,11 @@
                 "allOf": [
                     {
                         "required": [
-                            "objEzmaxpartnerproduct"
+                            "objInscription"
                         ],
                         "type": "object",
                         "properties": {
-                            "objEzmaxpartnerproduct": {
+                            "objInscription": {
                                 "$ref": "#/components/schemas/inscription-Response"
                             }
                         }
@@ -45815,11 +45816,11 @@
                 "allOf": [
                     {
                         "required": [
-                            "objEzmaxpartnerproduct"
+                            "objInscription"
                         ],
                         "type": "object",
                         "properties": {
-                            "objEzmaxpartnerproduct": {
+                            "objInscription": {
                                 "$ref": "#/components/schemas/inscription-Response"
                             }
                         }
@@ -45835,11 +45836,11 @@
                 "allOf": [
                     {
                         "required": [
-                            "objEzmaxpartnerproduct"
+                            "objInscriptionnotauthenticated"
                         ],
                         "type": "object",
                         "properties": {
-                            "objEzmaxpartnerproduct": {
+                            "objInscriptionnotauthenticated": {
                                 "$ref": "#/components/schemas/inscriptionnotauthenticated-Response"
                             }
                         }
@@ -45855,11 +45856,11 @@
                 "allOf": [
                     {
                         "required": [
-                            "objEzmaxpartnerproduct"
+                            "objInscriptionnotauthenticated"
                         ],
                         "type": "object",
                         "properties": {
-                            "objEzmaxpartnerproduct": {
+                            "objInscriptionnotauthenticated": {
                                 "$ref": "#/components/schemas/inscriptionnotauthenticated-Response"
                             }
                         }
@@ -72933,8 +72934,6 @@
                 "description": "A Inscription Object",
                 "required": [
                     "pkiInscriptionID",
-                    "fkiCompanyID",
-                    "fkiDepartmentID",
                     "fkiRealestateboardID",
                     "fkiAddressID",
                     "fkiInscriptionbuildingtypeID",
@@ -72943,7 +72942,6 @@
                     "eInscriptionStep",
                     "eInscriptionResidenceType",
                     "sInscriptionCivicend",
-                    "sInscriptionMLS",
                     "sInscriptionContract",
                     "iInscriptionSellerdeclaration",
                     "eInscriptionType",
@@ -72959,12 +72957,6 @@
                     "dInscriptionRemunerationreference",
                     "dInscriptionRemunerationtotal",
                     "dInscriptionMortgagesold",
-                    "dtInscriptionDate",
-                    "dtInscriptionCancellationdate",
-                    "dtInscriptionInitialexpirationdate",
-                    "dtInscriptionExpirationdate",
-                    "dtInscriptionNotarydate",
-                    "dtInscriptionNotaryentereddate",
                     "tInscriptionCadastre",
                     "bInscriptionReference",
                     "bInscriptionInspection",
@@ -72986,12 +72978,6 @@
                     "pkiInscriptionID": {
                         "$ref": "#/components/schemas/Field-pkiInscriptionID"
                     },
-                    "fkiCompanyID": {
-                        "$ref": "#/components/schemas/Field-pkiCompanyID"
-                    },
-                    "sCompanyNameX": {
-                        "$ref": "#/components/schemas/Field-sCompanyNameX"
-                    },
                     "fkiDepartmentID": {
                         "$ref": "#/components/schemas/Field-pkiDepartmentID"
                     },
@@ -73007,8 +72993,8 @@
                     "fkiAddressID": {
                         "$ref": "#/components/schemas/Field-pkiAddressID"
                     },
-                    "sAddress": {
-                        "$ref": "#/components/schemas/Computed-sAddress"
+                    "objAddress": {
+                        "$ref": "#/components/schemas/address-ResponseCompound"
                     },
                     "fkiInscriptionbuildingtypeID": {
                         "$ref": "#/components/schemas/Field-pkiInscriptionbuildingtypeID"
@@ -73147,6 +73133,9 @@
                     },
                     "iInscriptionUnit": {
                         "$ref": "#/components/schemas/Field-iInscriptionUnit"
+                    },
+                    "objAudit": {
+                        "$ref": "#/components/schemas/Common-Audit"
                     }
                 }
             },
@@ -73356,7 +73345,18 @@
             },
             "inscription-getInscriptionnotauthenticateds-v1-Response-mPayload": {
                 "description": "Response for GET /1/object/inscription/{pkiInscriptionID}/getInscriptionnotauthenticateds",
-                "type": "object"
+                "required": [
+                    "a_objInscriptionnotauthenticated"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objInscriptionnotauthenticated": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/inscriptionnotauthenticated-ResponseCompound"
+                        }
+                    }
+                }
             },
             "inscription-getList-v1-Response": {
                 "description": "Response for GET /1/object/inscription/getList",
@@ -73734,16 +73734,8 @@
                 "description": "A Inscriptionnotauthenticated Object",
                 "required": [
                     "pkiInscriptionnotauthenticatedID",
-                    "fkiCompanyID",
                     "fkiInscriptionID",
-                    "fkiDepartmentID",
-                    "fkiFinancialinstitutionID",
-                    "fkiBuyercontractID",
-                    "fkiMortgagesupplierID",
                     "fkiTaxassignmentID",
-                    "dtInscriptionnotauthenticatedTransactiondate",
-                    "dtInscriptionnotauthenticatedTransactiondateReal",
-                    "dtInscriptionnotauthenticatedDepositdate",
                     "eInscriptionnotauthenticatedType",
                     "dInscriptionnotauthenticatedMortgageloan",
                     "etInscriptionnotauthenticatedMortgagetype",
@@ -73752,16 +73744,11 @@
                     "dInscriptionnotauthenticatedRemuneration",
                     "dInscriptionnotauthenticatedRemunerationsubtotal",
                     "dInscriptionnotauthenticatedRemunerationtotal",
-                    "dtInscriptionnotauthenticatedCancellationdate",
-                    "dtInscriptionnotauthenticatedPossessiondate",
                     "sInscriptionnotauthenticatedOffertopurchasenumber",
-                    "dtInscriptionnotauthenticatedNotaryscheduledate",
-                    "dtInscriptionnotauthenticatedFinancingscheduledate",
                     "bInscriptionnotauthenticatedConditional",
                     "bInscriptionnotauthenticatedMortgageisreferenced",
                     "bInscriptionnotauthenticatedHomeowner",
                     "tInscriptionnotauthenticatedConditions",
-                    "dtInscriptionnotauthenticatedConditiondeadlinedate",
                     "iInscriptionnotauthenticatedOrder",
                     "bInscriptionnotauthenticatedIsactive",
                     "eInscriptionnotauthenticatedResidenceType",
@@ -73773,12 +73760,6 @@
                 "properties": {
                     "pkiInscriptionnotauthenticatedID": {
                         "$ref": "#/components/schemas/Field-pkiInscriptionnotauthenticatedID"
-                    },
-                    "fkiCompanyID": {
-                        "$ref": "#/components/schemas/Field-pkiCompanyID"
-                    },
-                    "sCompanyNameX": {
-                        "$ref": "#/components/schemas/Field-sCompanyNameX"
                     },
                     "fkiInscriptionID": {
                         "$ref": "#/components/schemas/Field-pkiInscriptionID"
@@ -83333,7 +83314,7 @@
     "tags": [
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\r\n\r\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.34\r\n\r\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\r\n\r\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\r\n\r\n**PATCH** will be incremented everytime changes and additions are released.\r\n\r\nFor each version, there will be the list of changes:\r\n* **Breaking Changes** for breaking changes you need to take into consideration before updating.\r\n* **Added** for new features.\r\n* **Changed** for changes in existing functionality.\r\n* **Deprecated** for soon-to-be removed features.\r\n* **Removed** for now removed features.\r\n* **Fixed** for any bug fixes.\r\n* **Security** in case of vulnerabilities.\r\n\r\n**Removal lifecycle**<br>\r\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\r\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\r\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\r\n\r\n## 1.3.X Releases\r\n\r\n### ⚠️ Compatibility Warning\r\n\r\nStarting with **version 1.3.0**, several API endpoints have been updated to support a **major enhancement**:\r\nYou can now **combine and alternate form steps and signature steps** within the same signing workflow.\r\n\r\nThis provides greater flexibility, but it also changes how **step numbers** are defined and managed.\r\n\r\n\r\n* **Endpoints introduced in 1.3.0** (listed below) use the *new step numbering model*.\r\n* **Endpoints from previous versions (≤ 1.2.2)** use the *old step numbering model*.\r\n* These two models are **not compatible** — mixing old and new endpoints within the same implementation could cause inconsistencies.\r\n\r\nYou may continue using the old routes or migrate fully to the new ones, but **do not mix both** in a single integration.\r\n\r\n### Endpoints with Step Numbers (pre-1.3.0)\r\n\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n* GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n* GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n* GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}\r\n* GET /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* GET /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n* POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n* POST /1/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n* POST /2/object/ezsigntemplatesignature\r\n* POST /3/object/ezsignsignature\r\n* PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n* PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n* PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n* PUT /2/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* PUT /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n### Updated endpoints with Step Numbers (introduced in 1.3.0)\r\n\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n* GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n* GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n* GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n* GET /3/object/ezsigndocument/{pkiEzsigndocumentID}\r\n* GET /4/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* GET /4/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n* POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n* POST /2/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n* POST /3/object/ezsigntemplatesignature\r\n* POST /4/object/ezsignsignature\r\n* PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n* PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n* PUT /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n* PUT /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* PUT /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n---\r\n\r\n### [1.3.2] - 2026-07-21\r\n\r\n#### Added\r\n- GET /2/module/ezsign/suggestSigners\r\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociations\r\n- GET /3/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\r\n- GET /2/object/inscription/{pkiInscriptionID}\r\n- GET /1/object/inscription/{pkiInscriptionID}/getInscriptionnotauthenticateds\r\n- GET /2/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}\r\n- POST /2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\r\n- POST /3/object/ezsignfoldersignerassociation\r\n- Enum value 'Realestate' for eWebhookModule\r\n- Properties pkiInscriptionbuildingtypeID, sInscriptionbuildingtypeNameX, pkiInscriptioncategoryID, sInscriptioncategoryNameX, iInscriptionUnit in inscription-Listelement\r\n- Properties pkiInscriptionbuildingtypeID, sInscriptionbuildingtypeNameX, pkiInscriptioncategoryID, sInscriptioncategoryNameX, iInscriptionUnit in inscriptionnotauthenticated-Listelement\r\n- Property eAgentSchedule in agent-ListElement\r\n- Property bInscriptionnotauthenticatedDraft in inscriptionnotauthenticated-ListElement\r\n- Webhook Realestate InscriptionCreated\r\n- Webhook Realestate InscriptionModified\r\n- Webhook Realestate InscriptionnotauthenticatedCreated\r\n- Webhook Realestate InscriptionnotauthenticatedModified\r\n\r\n\r\n\r\n### [1.3.1] - 2026-06-17\r\n\r\n#### Added\r\n- DELETE /1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\r\n- GET /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagepermissions\r\n- GET /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagewebhooks\r\n- GET /1/object/ezmaxmaillinglist/getList\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElementsForSigner\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplateannotations\r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/duplicate\r\n- POST /1/object/ezsigntemplateannotation\r\n- POST /4/object/ezsignfoldertype\r\n- PUT /1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\r\n- PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplateannotations\r\n- PUT /4/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElementsForSigner\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignannotations\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignformfieldgroups\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignsignatures\r\n- GET /2/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\r\n- GET /2/object/ezsigntemplateglobalannotation/{pkiEzsigntemplateglobalannotationID}\r\n- POST /1/module/ezmaxmaillinglist/subscribe\r\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplateglobal\r\n- POST /3/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\r\n- POST /3/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n- Selector AgentBrokerEmployeeEzsignUserNormal in GET /2/object/user/getAutocomplete/{sSelector}\r\n- Properties dtAgentContractdate, dtAgentTransferdate, dtAgentSenioritydate, dtAgentSickleavestart and dtAgentSickleaveend in agent-ListElement\r\n- Properties fkiCountryID and fkiProvinceID in agent-ListElement, broker-ListElement, customer-ListElement, employee-ListElement, inscription-ListElement, inscriptionnotauthenticated-ListElement, rejectedoffertopurchase-ListElement and supplier-ListElement  \r\n- Properties fkiEzsignbulksendID, sEzsignbulksendDescription, fkiEzsignbulksendtransmissionID, sEzsignbulksendtransmissionDescription, fkiEzsigntemplatepublicID, sEzsigntemplatepublicDescription, eEzsignfolderSource in object ezsignfolder-ListElement\r\n- Properties bEzsignfoldertypeSenddocumentmergetoemail, bEzsignfoldertypeSenddocumentmergetoezsignsigner, bEzsignfoldertypeSenddocumentmergetoreceivealldocument and bEzsignfoldertypeSenddocumentmergetouser in ezsignfoldertype-RequestV3 and ezsignfoldertype-ResponseV4\r\n- Property a_objEzsigntemplateannotation in ezsigntemplate-ResponseCompound\r\n- Property a_objEzsigntemplateannotation in ezsigntemplate-ResponseCompoundV3\r\n- Property a_objEzsigntemplateglobalannotation in ezsigntemplateglobal-ResponseCompound\r\n- Property fkiEzmaxpartnerID in user-Response\r\n- Property fkiEzmaxpartnerproductstageID in apikey-ResponseCompound\r\n- Property iEzsignfolderStepcurrent in ezsignfolder-ResponseV3\r\n- Property iEzsignfoldertypeArchivaldays in ezsignfoldertype-getDefaults-v2-Response-mPayload\r\n- Property sBuyercontractContract in buyercontract-ListElement\r\n- Value Optional in Field-eEzsignsignatureConsultationtrigger\r\n- Value Suspended in Field-eSessionhistoryEndby\r\n\r\n\r\n### [1.3.0] - 2026-01-24\r\n\r\n#### Added\r\n- GET /1/object/agent/getList\r\n- GET /1/object/broker/getList\r\n- GET /1/object/buyercontract/getList\r\n- GET /1/object/customer/getList\r\n- GET /1/object/employee/getList\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}/getBatchFile\r\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}/getBatchFile\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/download\r\n- GET /1/object/inscriptiontemp/getList\r\n- GET /1/object/lead/getList\r\n- GET /1/object/otherincome/getList\r\n- GET /1/object/rejectedoffertopurchase/getList\r\n- GET /1/object/supplier/getList\r\n- GET /2/object/agent/getAutocomplete/{sSelector}\r\n- GET /2/object/agenttype/getAutocomplete/{sSelector}\r\n- GET /2/object/broker/getAutocomplete/{sSelector}\r\n- GET /2/object/brokertype/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n- GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n- GET /2/object/inscriptionchecklist/getAutocomplete/{sSelector}\r\n- GET /2/object/leadsource/getAutocomplete/{sSelector}\r\n- GET /2/object/notificationtest/{pkiNotificationtestID}/getElements\r\n- GET /2/object/otherincometype/getAutocomplete/{sSelector}\r\n- GET /2/object/paymentmethod/getAutocomplete/{sSelector}\r\n- GET /3/object/ezsigndocument/{pkiEzsigndocumentID}\r\n- GET /3/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n- GET /3/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n- GET /4/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /4/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- POST /1/module/ezmaxcustomer/createCustomer\r\n- POST /1/object/activesession/setGoal\r\n- POST /1/object/agent/{pkiAgentID}/importIntoEDM\r\n- POST /1/object/broker/{pkiBrokerID}/importIntoEDM\r\n- POST /1/object/buyercontract/{pkiBuyercontractID}/importIntoEDM\r\n- POST /1/object/customer/{pkiCustomerID}/importIntoEDM\r\n- POST /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/importIntoEDM\r\n- POST /1/object/employee/{pkiEmployeeID}/importIntoEDM\r\n- POST /1/object/externalbroker/{pkiExternalbrokerID}/importIntoEDM\r\n- POST /1/object/inscription/{pkiInscriptionID}/importIntoEDM\r\n- POST /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/importIntoEDM\r\n- POST /1/object/inscriptiontemp/{pkiInscriptiontempID}/importIntoEDM\r\n- POST /1/object/invoice/{pkiInvoiceID}/importIntoEDM\r\n- POST /1/object/lead/{pkiLeadID}/importIntoEDM\r\n- POST /1/object/otherincome/{pkiOtherincomeID}/importIntoEDM\r\n- POST /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/importIntoEDM\r\n- POST /1/object/supplier/{pkiSupplierID}/importIntoEDM\r\n- POST /1/object/tranqcontract/{pkiTranqcontractID}/importIntoEDM\r\n- POST /1/report/accountspayable/accountspayable\r\n- POST /1/report/accountsreceivablevscommission/accountsreceivablevscommission\r\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n- POST /2/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n- POST /2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n- POST /3/object/ezsigntemplatesignature\r\n- POST /4/object/ezsignsignature\r\n- PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n- PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n- PUT /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n- PUT /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- PUT /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- Properties a_objContactPrivate, a_objContactShared in ezsign-suggestSigners-v1-Response-mPayload\r\n- Properties bEzsignfoldertypeSendsignatureattachmentezsignsigner, bEzsignfoldertypeSendsignatureattachment, bEzsignfoldertypeSendsignatureattachmentuser, bEzsignfoldertypeAllowdownloadsignatureattachmentezsignsigner, bEzsignfoldertypeSendsignatureattachmentreceivealldocument in ezsignfoldertype-RequestV3 and- ezsignfoldertype-ResponseV4\r\n- Properties eEzsignsignatureSignaturepadrequired, eEzsignsignatureSignaturepadrequired in ezsignsignature-Request and ezsignsignature-Response\r\n- Properties eEzsigntemplatesignatureSignaturepadrequired, eEzsigntemplatesignatureSignaturepadrequired in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property a_objEzsignsignaturepaymentdetail in ezsignsignature-RequestCompound\r\n- Property a_objEzsigntemplatesignaturepaymentdetail in ezsigntemplatesignature-RequestCompound, ezsigntemplatesignature-RequestCompoundV2, ezsigntemplatesignature-ResponseCompoundV3\r\n- Property bInscriptionInspection in inscription-ListElement\r\n- Property bInscriptionInspection in inscriptionnotauthenticated-ListElement\r\n- Property bInscriptionnotauthenticatedConditional in inscription-ListElement\r\n- Property bInscriptionnotauthenticatedConditional in inscriptionnotauthenticated-ListElement\r\n- Property bUserAddmeinezsignfolder in activesession-ResponseCompound-User\r\n- Property bUserAddmeinezsignfolder in user-getPreferences-v1-Response\r\n- Property bUserAddmeinezsignfolder in user-setPreferences-v1-Request\r\n- Property dtUserNpsrequest in activesession-ResponseCompound\r\n- Property eEzsignfolderCompletion in ezsignfolder-ListElement\r\n- Property eEzsignfolderDocumentmerge in ezsignfoldertype-RequestV3 and ezsignfoldertype-ResponseV4\r\n- Property eEzsignfolderMessageorder in ezsignfolder-Response\r\n- Property eUserType in ezsignfoldersignerassociation-ResponseCompound-User\r\n- Property fkiDepartmentID in agent-AutocompleteElement-Response\r\n- Property fkiDepartmentID in broker-AutocompleteElement-Response\r\n- Property fkiDepartmentID in customer-AutocompleteElement-Response\r\n- Property fkiEzsigntemplateglobalID in Custom-Ezsignimportdocument-Response\r\n- Property fkiModuleIDForm in user-getPreferences-v1-Response-mPayload\r\n- Property fkiModuleIDForm in user-setPreferences-v1-Request\r\n- Property fkiPaymentgatewayID in ezsignsignature-Response, ezsigntemplatesignature-Request, ezsigntemplatesignature-Response\r\n- Property iUserFrontendgoal in activesession-ResponseCompound-User\r\n- Property iSystemconfigurationEzsignreminderhoursend in systemconfiguration-Request and systemconfiguration-Response\r\n- Property objReportcellstyleCustom in Common-Reportrow\r\n- Property sEzsignsignergroupDescriptionX in Custom-EzsignfoldertransmissionSigner-Response\r\n- Property sEzsigntemplateglobalDescription in Custom-Ezsignimportdocument-Response\r\n- Property sCustomerCode in customer-AutocompleteElement-Response\r\n- Property sModuleNameX in user-getPreferences-v1-Response-mPayload\r\n- Property sReportsectionTabname in Common-Reportsection\r\n- Property sWebhookAuthentificationexternalerror in webhook-ResponseCompound\r\n- Selector EzsignfoldertypeReassign in /2/object/userlogintype/getAutocomplete/{sSelector}\r\n- Value PerEzsignfolderStepSync in eEzsignfolderCompletion\r\n- Value PerEzsignfolderStepSync in eEzsignfoldertypeCompletion\r\n- Value PendingPrematurelyEnded in eEzsigndocumentStep\r\n\r\n#### Deprecated\r\n- POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n\r\n#### Removed\r\n- Property bEzsignfolderPaymentused in Custom-EzmaxinvoicingEzsignfolder-Response\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n- GET /1/object/notificationtest/{pkiNotificationtestID}/getElements\r\n- GET /2/object/inscriptionchecklist/getAutocomplete\r\n- GET /2/object/signature/{pkiSignatureID}\r\n- GET /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID} \r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/reorder\r\n- POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n- PUT /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- PUT /1/object/systemconfiguration/{pkiSystemconfigurationID}\r\n- PUT /2/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- PUT /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n## Older Releases\r\nDocumentation and changelog for older releases can be found here\r\n- [1.2.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.2.html)\r\n- [1.1.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.1.html)\r\n- [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)",
+            "description": "All notable changes to this project will be documented in this section.\r\n\r\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.34\r\n\r\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\r\n\r\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\r\n\r\n**PATCH** will be incremented everytime changes and additions are released.\r\n\r\nFor each version, there will be the list of changes:\r\n* **Breaking Changes** for breaking changes you need to take into consideration before updating.\r\n* **Added** for new features.\r\n* **Changed** for changes in existing functionality.\r\n* **Deprecated** for soon-to-be removed features.\r\n* **Removed** for now removed features.\r\n* **Fixed** for any bug fixes.\r\n* **Security** in case of vulnerabilities.\r\n\r\n**Removal lifecycle**<br>\r\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\r\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\r\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\r\n\r\n## 1.3.X Releases\r\n\r\n### ⚠️ Compatibility Warning\r\n\r\nStarting with **version 1.3.0**, several API endpoints have been updated to support a **major enhancement**:\r\nYou can now **combine and alternate form steps and signature steps** within the same signing workflow.\r\n\r\nThis provides greater flexibility, but it also changes how **step numbers** are defined and managed.\r\n\r\n\r\n* **Endpoints introduced in 1.3.0** (listed below) use the *new step numbering model*.\r\n* **Endpoints from previous versions (≤ 1.2.2)** use the *old step numbering model*.\r\n* These two models are **not compatible** — mixing old and new endpoints within the same implementation could cause inconsistencies.\r\n\r\nYou may continue using the old routes or migrate fully to the new ones, but **do not mix both** in a single integration.\r\n\r\n### Endpoints with Step Numbers (pre-1.3.0)\r\n\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n* GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n* GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n* GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}\r\n* GET /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* GET /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n* POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n* POST /1/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n* POST /2/object/ezsigntemplatesignature\r\n* POST /3/object/ezsignsignature\r\n* PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n* PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n* PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n* PUT /2/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* PUT /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n### Updated endpoints with Step Numbers (introduced in 1.3.0)\r\n\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n* GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n* GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n* GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n* GET /3/object/ezsigndocument/{pkiEzsigndocumentID}\r\n* GET /4/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* GET /4/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n* POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n* POST /2/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n* POST /3/object/ezsigntemplatesignature\r\n* POST /4/object/ezsignsignature\r\n* PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n* PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n* PUT /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n* PUT /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n* PUT /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n---\r\n\r\n### [1.3.3] - 2026-07-22\r\n\r\n#### Added\r\n#### Fixed\r\n- Minor structurals changes\r\n\r\n\r\n### [1.3.2] - 2026-07-21\r\n\r\n#### Added\r\n- GET /2/module/ezsign/suggestSigners\r\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociations\r\n- GET /3/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\r\n- GET /2/object/inscription/{pkiInscriptionID}\r\n- GET /1/object/inscription/{pkiInscriptionID}/getInscriptionnotauthenticateds\r\n- GET /2/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}\r\n- POST /2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\r\n- POST /3/object/ezsignfoldersignerassociation\r\n- Enum value 'Realestate' for eWebhookModule\r\n- Properties pkiInscriptionbuildingtypeID, sInscriptionbuildingtypeNameX, pkiInscriptioncategoryID, sInscriptioncategoryNameX, iInscriptionUnit in inscription-Listelement\r\n- Properties pkiInscriptionbuildingtypeID, sInscriptionbuildingtypeNameX, pkiInscriptioncategoryID, sInscriptioncategoryNameX, iInscriptionUnit in inscriptionnotauthenticated-Listelement\r\n- Property eAgentSchedule in agent-ListElement\r\n- Property bInscriptionnotauthenticatedDraft in inscriptionnotauthenticated-ListElement\r\n- Webhook Realestate InscriptionCreated\r\n- Webhook Realestate InscriptionModified\r\n- Webhook Realestate InscriptionnotauthenticatedCreated\r\n- Webhook Realestate InscriptionnotauthenticatedModified\r\n\r\n\r\n\r\n### [1.3.1] - 2026-06-17\r\n\r\n#### Added\r\n- DELETE /1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\r\n- GET /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagepermissions\r\n- GET /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagewebhooks\r\n- GET /1/object/ezmaxmaillinglist/getList\r\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElementsForSigner\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplateannotations\r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/duplicate\r\n- POST /1/object/ezsigntemplateannotation\r\n- POST /4/object/ezsignfoldertype\r\n- PUT /1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\r\n- PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplateannotations\r\n- PUT /4/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElementsForSigner\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignannotations\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignformfieldgroups\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignsignatures\r\n- GET /2/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\r\n- GET /2/object/ezsigntemplateglobalannotation/{pkiEzsigntemplateglobalannotationID}\r\n- POST /1/module/ezmaxmaillinglist/subscribe\r\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplateglobal\r\n- POST /3/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\r\n- POST /3/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n- Selector AgentBrokerEmployeeEzsignUserNormal in GET /2/object/user/getAutocomplete/{sSelector}\r\n- Properties dtAgentContractdate, dtAgentTransferdate, dtAgentSenioritydate, dtAgentSickleavestart and dtAgentSickleaveend in agent-ListElement\r\n- Properties fkiCountryID and fkiProvinceID in agent-ListElement, broker-ListElement, customer-ListElement, employee-ListElement, inscription-ListElement, inscriptionnotauthenticated-ListElement, rejectedoffertopurchase-ListElement and supplier-ListElement  \r\n- Properties fkiEzsignbulksendID, sEzsignbulksendDescription, fkiEzsignbulksendtransmissionID, sEzsignbulksendtransmissionDescription, fkiEzsigntemplatepublicID, sEzsigntemplatepublicDescription, eEzsignfolderSource in object ezsignfolder-ListElement\r\n- Properties bEzsignfoldertypeSenddocumentmergetoemail, bEzsignfoldertypeSenddocumentmergetoezsignsigner, bEzsignfoldertypeSenddocumentmergetoreceivealldocument and bEzsignfoldertypeSenddocumentmergetouser in ezsignfoldertype-RequestV3 and ezsignfoldertype-ResponseV4\r\n- Property a_objEzsigntemplateannotation in ezsigntemplate-ResponseCompound\r\n- Property a_objEzsigntemplateannotation in ezsigntemplate-ResponseCompoundV3\r\n- Property a_objEzsigntemplateglobalannotation in ezsigntemplateglobal-ResponseCompound\r\n- Property fkiEzmaxpartnerID in user-Response\r\n- Property fkiEzmaxpartnerproductstageID in apikey-ResponseCompound\r\n- Property iEzsignfolderStepcurrent in ezsignfolder-ResponseV3\r\n- Property iEzsignfoldertypeArchivaldays in ezsignfoldertype-getDefaults-v2-Response-mPayload\r\n- Property sBuyercontractContract in buyercontract-ListElement\r\n- Value Optional in Field-eEzsignsignatureConsultationtrigger\r\n- Value Suspended in Field-eSessionhistoryEndby\r\n\r\n\r\n### [1.3.0] - 2026-01-24\r\n\r\n#### Added\r\n- GET /1/object/agent/getList\r\n- GET /1/object/broker/getList\r\n- GET /1/object/buyercontract/getList\r\n- GET /1/object/customer/getList\r\n- GET /1/object/employee/getList\r\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}/getBatchFile\r\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}/getBatchFile\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/download\r\n- GET /1/object/inscriptiontemp/getList\r\n- GET /1/object/lead/getList\r\n- GET /1/object/otherincome/getList\r\n- GET /1/object/rejectedoffertopurchase/getList\r\n- GET /1/object/supplier/getList\r\n- GET /2/object/agent/getAutocomplete/{sSelector}\r\n- GET /2/object/agenttype/getAutocomplete/{sSelector}\r\n- GET /2/object/broker/getAutocomplete/{sSelector}\r\n- GET /2/object/brokertype/getAutocomplete/{sSelector}\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\r\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\r\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n- GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n- GET /2/object/inscriptionchecklist/getAutocomplete/{sSelector}\r\n- GET /2/object/leadsource/getAutocomplete/{sSelector}\r\n- GET /2/object/notificationtest/{pkiNotificationtestID}/getElements\r\n- GET /2/object/otherincometype/getAutocomplete/{sSelector}\r\n- GET /2/object/paymentmethod/getAutocomplete/{sSelector}\r\n- GET /3/object/ezsigndocument/{pkiEzsigndocumentID}\r\n- GET /3/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\r\n- GET /3/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\r\n- GET /4/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /4/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- POST /1/module/ezmaxcustomer/createCustomer\r\n- POST /1/object/activesession/setGoal\r\n- POST /1/object/agent/{pkiAgentID}/importIntoEDM\r\n- POST /1/object/broker/{pkiBrokerID}/importIntoEDM\r\n- POST /1/object/buyercontract/{pkiBuyercontractID}/importIntoEDM\r\n- POST /1/object/customer/{pkiCustomerID}/importIntoEDM\r\n- POST /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/importIntoEDM\r\n- POST /1/object/employee/{pkiEmployeeID}/importIntoEDM\r\n- POST /1/object/externalbroker/{pkiExternalbrokerID}/importIntoEDM\r\n- POST /1/object/inscription/{pkiInscriptionID}/importIntoEDM\r\n- POST /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/importIntoEDM\r\n- POST /1/object/inscriptiontemp/{pkiInscriptiontempID}/importIntoEDM\r\n- POST /1/object/invoice/{pkiInvoiceID}/importIntoEDM\r\n- POST /1/object/lead/{pkiLeadID}/importIntoEDM\r\n- POST /1/object/otherincome/{pkiOtherincomeID}/importIntoEDM\r\n- POST /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/importIntoEDM\r\n- POST /1/object/supplier/{pkiSupplierID}/importIntoEDM\r\n- POST /1/object/tranqcontract/{pkiTranqcontractID}/importIntoEDM\r\n- POST /1/report/accountspayable/accountspayable\r\n- POST /1/report/accountsreceivablevscommission/accountsreceivablevscommission\r\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\r\n- POST /2/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\r\n- POST /2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n- POST /3/object/ezsigntemplatesignature\r\n- POST /4/object/ezsignsignature\r\n- PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\r\n- PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\r\n- PUT /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\r\n- PUT /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- PUT /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n- Properties a_objContactPrivate, a_objContactShared in ezsign-suggestSigners-v1-Response-mPayload\r\n- Properties bEzsignfoldertypeSendsignatureattachmentezsignsigner, bEzsignfoldertypeSendsignatureattachment, bEzsignfoldertypeSendsignatureattachmentuser, bEzsignfoldertypeAllowdownloadsignatureattachmentezsignsigner, bEzsignfoldertypeSendsignatureattachmentreceivealldocument in ezsignfoldertype-RequestV3 and- ezsignfoldertype-ResponseV4\r\n- Properties eEzsignsignatureSignaturepadrequired, eEzsignsignatureSignaturepadrequired in ezsignsignature-Request and ezsignsignature-Response\r\n- Properties eEzsigntemplatesignatureSignaturepadrequired, eEzsigntemplatesignatureSignaturepadrequired in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\r\n- Property a_objEzsignsignaturepaymentdetail in ezsignsignature-RequestCompound\r\n- Property a_objEzsigntemplatesignaturepaymentdetail in ezsigntemplatesignature-RequestCompound, ezsigntemplatesignature-RequestCompoundV2, ezsigntemplatesignature-ResponseCompoundV3\r\n- Property bInscriptionInspection in inscription-ListElement\r\n- Property bInscriptionInspection in inscriptionnotauthenticated-ListElement\r\n- Property bInscriptionnotauthenticatedConditional in inscription-ListElement\r\n- Property bInscriptionnotauthenticatedConditional in inscriptionnotauthenticated-ListElement\r\n- Property bUserAddmeinezsignfolder in activesession-ResponseCompound-User\r\n- Property bUserAddmeinezsignfolder in user-getPreferences-v1-Response\r\n- Property bUserAddmeinezsignfolder in user-setPreferences-v1-Request\r\n- Property dtUserNpsrequest in activesession-ResponseCompound\r\n- Property eEzsignfolderCompletion in ezsignfolder-ListElement\r\n- Property eEzsignfolderDocumentmerge in ezsignfoldertype-RequestV3 and ezsignfoldertype-ResponseV4\r\n- Property eEzsignfolderMessageorder in ezsignfolder-Response\r\n- Property eUserType in ezsignfoldersignerassociation-ResponseCompound-User\r\n- Property fkiDepartmentID in agent-AutocompleteElement-Response\r\n- Property fkiDepartmentID in broker-AutocompleteElement-Response\r\n- Property fkiDepartmentID in customer-AutocompleteElement-Response\r\n- Property fkiEzsigntemplateglobalID in Custom-Ezsignimportdocument-Response\r\n- Property fkiModuleIDForm in user-getPreferences-v1-Response-mPayload\r\n- Property fkiModuleIDForm in user-setPreferences-v1-Request\r\n- Property fkiPaymentgatewayID in ezsignsignature-Response, ezsigntemplatesignature-Request, ezsigntemplatesignature-Response\r\n- Property iUserFrontendgoal in activesession-ResponseCompound-User\r\n- Property iSystemconfigurationEzsignreminderhoursend in systemconfiguration-Request and systemconfiguration-Response\r\n- Property objReportcellstyleCustom in Common-Reportrow\r\n- Property sEzsignsignergroupDescriptionX in Custom-EzsignfoldertransmissionSigner-Response\r\n- Property sEzsigntemplateglobalDescription in Custom-Ezsignimportdocument-Response\r\n- Property sCustomerCode in customer-AutocompleteElement-Response\r\n- Property sModuleNameX in user-getPreferences-v1-Response-mPayload\r\n- Property sReportsectionTabname in Common-Reportsection\r\n- Property sWebhookAuthentificationexternalerror in webhook-ResponseCompound\r\n- Selector EzsignfoldertypeReassign in /2/object/userlogintype/getAutocomplete/{sSelector}\r\n- Value PerEzsignfolderStepSync in eEzsignfolderCompletion\r\n- Value PerEzsignfolderStepSync in eEzsignfoldertypeCompletion\r\n- Value PendingPrematurelyEnded in eEzsigndocumentStep\r\n\r\n#### Deprecated\r\n- POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n\r\n#### Removed\r\n- Property bEzsignfolderPaymentused in Custom-EzmaxinvoicingEzsignfolder-Response\r\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\r\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\r\n- GET /1/object/notificationtest/{pkiNotificationtestID}/getElements\r\n- GET /2/object/inscriptionchecklist/getAutocomplete\r\n- GET /2/object/signature/{pkiSignatureID}\r\n- GET /3/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- GET /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID} \r\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/reorder\r\n- POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\r\n- PUT /1/object/ezsignbulksend/{pkiEzsignbulksendID}\r\n- PUT /1/object/systemconfiguration/{pkiSystemconfigurationID}\r\n- PUT /2/object/ezsignsignature/{pkiEzsignsignatureID}\r\n- PUT /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\r\n\r\n## Older Releases\r\nDocumentation and changelog for older releases can be found here\r\n- [1.2.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.2.html)\r\n- [1.1.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.1.html)\r\n- [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)",
             "x-displayName": "Changelog"
         },
         {
