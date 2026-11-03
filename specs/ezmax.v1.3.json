@@ -2532,70 +2532,9 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-usertypeextra": []
-            },
-            "parameters": [
-                {
-                    "name": "pkiAttachmentID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiAttachmentID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/attachment/{pkiAttachmentID}/documentType": {
-            "post": {
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/attachment-documentType-v1-Request"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "tags": [
-                    "Object_Attachment"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/attachment-documentType-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/Response-Error-403"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/Response-Error-422"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": []
-                    }
-                ],
-                "operationId": "Attachment_DocumentType_V1",
-                "summary": "Change attachment document type",
-                "description": "The endpoint allows to change the checklist document type for an attachment.",
-                "x-systemconfigurationtype": [
-                    "All"
-                ],
-                "x-permissions": [
-                    "All"
-                ],
-                "x-usertypeextra": []
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
             },
             "parameters": [
                 {
@@ -2689,69 +2628,6 @@
                 "x-systemconfigurationtype": [
                     "All"
                 ]
-            },
-            "parameters": [
-                {
-                    "name": "pkiAttachmentID",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiAttachmentID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
-        "/1/object/attachment/{pkiAttachmentID}/privacy": {
-            "post": {
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/attachment-privacy-v1-Request"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "tags": [
-                    "Object_Attachment"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/attachment-privacy-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/Response-Error-403"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/Response-Error-422"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": []
-                    }
-                ],
-                "operationId": "Attachment_Privacy_V1",
-                "summary": "Change the attachment privacy",
-                "description": "The endpoint allows to change an attachment's access privacy.",
-                "x-systemconfigurationtype": [
-                    "All"
-                ],
-                "x-permissions": [
-                    "All"
-                ],
-                "x-usertypeextra": []
             },
             "parameters": [
                 {
@@ -2885,7 +2761,139 @@
                 "x-permissions": [
                     "All"
                 ],
-                "x-usertypeextra": []
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiAttachmentID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiAttachmentID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/attachment/{pkiAttachmentID}/setDocumentType": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/attachment-setDocumentType-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Attachment"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/attachment-setDocumentType-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Response-Error-403"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Attachment_SetDocumentType_V1",
+                "summary": "Change attachment document type",
+                "description": "The endpoint allows to change the checklist document type for an attachment.",
+                "x-systemconfigurationtype": [
+                    "All"
+                ],
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiAttachmentID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiAttachmentID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/attachment/{pkiAttachmentID}/setPrivacy": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/attachment-setPrivacy-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Attachment"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/attachment-setPrivacy-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Response-Error-403"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Attachment_SetPrivacy_V1",
+                "summary": "Change the attachment privacy",
+                "description": "The endpoint allows to change an attachment's access privacy.",
+                "x-systemconfigurationtype": [
+                    "All"
+                ],
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
             },
             "parameters": [
                 {
@@ -10047,8 +10055,6 @@
         "/1/object/documenttype": {
             "description": "",
             "post": {
-                "description": "The endpoint allows to create one or many elements at once.",
-                "operationId": "Documenttype_CreateObject_V1",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -10059,16 +10065,19 @@
                     },
                     "required": true
                 },
+                "tags": [
+                    "Object_Documenttype"
+                ],
                 "responses": {
                     "201": {
-                        "description": "Successful response",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/documenttype-createObject-v1-Response"
                                 }
                             }
-                        }
+                        },
+                        "description": "Successful response"
                     }
                 },
                 "security": [
@@ -10076,43 +10085,34 @@
                         "Authorization": []
                     }
                 ],
+                "operationId": "Documenttype_CreateObject_V1",
                 "summary": "Create a new Documenttype",
-                "tags": [
-                    "Object_Documenttype"
-                ],
+                "description": "The endpoint allows to create one or many elements at once.",
                 "x-systemconfigurationtype": [
                     "All"
                 ],
-                "x-permissions": [],
+                "x-permissions": [
+                    "Management_RequiredDocuments"
+                ],
                 "x-usertypeextra": []
             }
         },
         "/2/object/documenttype/{pkiDocumenttypeID}": {
             "description": "",
-            "parameters": [
-                {
-                    "description": "The unique ID of the Documenttype",
-                    "in": "path",
-                    "name": "pkiDocumenttypeID",
-                    "required": true,
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiDocumenttypeID"
-                    }
-                }
-            ],
             "get": {
-                "description": "",
-                "operationId": "Documenttype_GetObject_V2",
+                "tags": [
+                    "Object_Documenttype"
+                ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/documenttype-getObject-v2-Response"
                                 }
                             }
-                        }
+                        },
+                        "description": "Successful response"
                     },
                     "404": {
                         "$ref": "#/components/responses/Response-Error-404"
@@ -10123,33 +10123,32 @@
                         "Authorization": []
                     }
                 ],
+                "operationId": "Documenttype_GetObject_V2",
                 "summary": "Retrieve an existing Documenttype",
-                "tags": [
-                    "Object_Documenttype"
-                ],
+                "description": "",
                 "x-systemconfigurationtype": [
                     "All"
                 ],
-                "x-permissions": [],
+                "x-permissions": [
+                    "All"
+                ],
                 "x-usertypeextra": []
-            }
+            },
+            "parameters": [
+                {
+                    "name": "pkiDocumenttypeID",
+                    "description": "The unique ID of the Documenttype",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiDocumenttypeID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
         },
         "/1/object/documenttype/{pkiDocumenttypeID}": {
             "description": "",
-            "parameters": [
-                {
-                    "description": "The unique ID of the Documenttype",
-                    "in": "path",
-                    "name": "pkiDocumenttypeID",
-                    "required": true,
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiDocumenttypeID"
-                    }
-                }
-            ],
             "put": {
-                "description": "",
-                "operationId": "Documenttype_EditObject_V1",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -10160,16 +10159,19 @@
                     },
                     "required": true
                 },
+                "tags": [
+                    "Object_Documenttype"
+                ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/documenttype-editObject-v1-Response"
                                 }
                             }
-                        }
+                        },
+                        "description": "Successful response"
                     },
                     "404": {
                         "$ref": "#/components/responses/Response-Error-404"
@@ -10183,69 +10185,35 @@
                         "Authorization": []
                     }
                 ],
+                "operationId": "Documenttype_EditObject_V1",
                 "summary": "Edit an existing Documenttype",
-                "tags": [
-                    "Object_Documenttype"
-                ],
+                "description": "",
                 "x-systemconfigurationtype": [
                     "All"
                 ],
-                "x-permissions": [],
+                "x-permissions": [
+                    "Management_RequiredDocuments"
+                ],
                 "x-usertypeextra": []
             },
-            "delete": {
-                "description": "",
-                "operationId": "Documenttype_DeleteObject_V1",
-                "responses": {
-                    "200": {
-                        "description": "Successful response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/documenttype-deleteObject-v1-Response"
-                                }
-                            }
-                        }
+            "parameters": [
+                {
+                    "name": "pkiDocumenttypeID",
+                    "description": "The unique ID of the Documenttype",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiDocumenttypeID"
                     },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": []
-                    }
-                ],
-                "summary": "Delete an existing Documenttype",
-                "tags": [
-                    "Object_Documenttype"
-                ],
-                "x-systemconfigurationtype": [
-                    "All"
-                ],
-                "x-permissions": [],
-                "x-usertypeextra": []
-            }
+                    "in": "path",
+                    "required": true
+                }
+            ]
         },
         "/2/object/documenttype/getAutocomplete/{sSelector}": {
             "description": "",
-            "parameters": [
-                {
-                    "description": "The type of Documenttypes to return",
-                    "in": "path",
-                    "name": "sSelector",
-                    "required": true,
-                    "schema": {
-                        "enum": [
-                            "All"
-                        ],
-                        "type": "string"
-                    }
-                }
-            ],
             "get": {
-                "description": "Get the list of Documenttype to be used in a dropdown or autocomplete control.",
-                "operationId": "Documenttype_GetAutocomplete_V2",
+                "tags": [
+                    "Object_Documenttype"
+                ],
                 "parameters": [
                     {
                         "name": "eFilterActive",
@@ -10271,14 +10239,14 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/documenttype-getAutocomplete-v2-Response"
                                 }
                             }
-                        }
+                        },
+                        "description": "Successful response"
                     }
                 },
                 "security": [
@@ -10286,28 +10254,42 @@
                         "Authorization": []
                     }
                 ],
+                "operationId": "Documenttype_GetAutocomplete_V2",
                 "summary": "Retrieve Documenttypes and IDs",
-                "tags": [
-                    "Object_Documenttype"
-                ],
+                "description": "Get the list of Documenttype to be used in a dropdown or autocomplete control.",
                 "x-systemconfigurationtype": [
                     "All"
                 ],
-                "x-permissions": [],
+                "x-permissions": [
+                    "All"
+                ],
                 "x-usertypeextra": []
-            }
+            },
+            "parameters": [
+                {
+                    "name": "sSelector",
+                    "description": "The type of Documenttypes to return",
+                    "schema": {
+                        "enum": [
+                            "All"
+                        ],
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
         },
         "/1/object/documenttype/getList": {
             "description": "",
             "get": {
-                "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n | Agentbroker<br>Buyercontract<br>Inscription<br>NotAuthenticated<br>Otherincome<br>RejectedOfferToPurchase |\n| eDocumenttypeEzcom | PromiseToPurchase<br>Annex<br>Modification<br>CounterOffer<br>Conditions<br>BankApproval<br>Other |\n| eDocumenttypePrivacydefault | Administration<br>Administrator<br>All<br>Creator<br>Inscriptor<br>Myself<br>Seller |\n| eDocumenttypeStatusdefault | Not required<br>Required |\n| eDocumenttypeSalebyowner | All<br>Yes<br>No |\n| eDocumenttypeSaledisplaybyrole | InscriptorSeller<br>Inscriptor<br>Seller |\n| eDocumenttypeTransactiontype | All<br>Inscriptor<br>InscriptorOnly<br>Seller<br>SellerOnly<br>InscriptorSeller |\n| eDocumenttypeRepossession | All<br>No<br>Yes |",
-                "operationId": "Documenttype_GetList_V1",
+                "tags": [
+                    "Object_Documenttype"
+                ],
                 "parameters": [
                     {
-                        "description": "Specify how you want the results to be sorted",
-                        "in": "query",
                         "name": "eOrderBy",
-                        "required": false,
+                        "description": "Specify how you want the results to be sorted",
                         "schema": {
                             "enum": [
                                 "pkiDocumenttypeID_ASC",
@@ -10358,7 +10340,9 @@
                                 "eDocumenttypeRepossession_DESC"
                             ],
                             "type": "string"
-                        }
+                        },
+                        "in": "query",
+                        "required": false
                     },
                     {
                         "$ref": "#/components/parameters/iRowMax"
@@ -10375,7 +10359,6 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -10387,7 +10370,8 @@
                                     "$ref": "#/components/schemas/File-Xlsx"
                                 }
                             }
-                        }
+                        },
+                        "description": "Successful response"
                     },
                     "406": {
                         "$ref": "#/components/responses/Response-Error-406"
@@ -10398,86 +10382,34 @@
                         "Authorization": []
                     }
                 ],
+                "operationId": "Documenttype_GetList_V1",
                 "summary": "Retrieve Documenttype list",
-                "tags": [
-                    "Object_Documenttype"
-                ],
+                "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n | Agentbroker<br>Buyercontract<br>Inscription<br>NotAuthenticated<br>Otherincome<br>RejectedOfferToPurchase |\n| eDocumenttypeEzcom | PromiseToPurchase<br>Annex<br>Modification<br>CounterOffer<br>Conditions<br>BankApproval<br>Other |\n| eDocumenttypePrivacydefault | Administration<br>Administrator<br>All<br>Creator<br>Inscriptor<br>Myself<br>Seller |\n| eDocumenttypeStatusdefault | Not required<br>Required |\n| eDocumenttypeSalebyowner | All<br>Yes<br>No |\n| eDocumenttypeSaledisplaybyrole | InscriptorSeller<br>Inscriptor<br>Seller |\n| eDocumenttypeTransactiontype | All<br>Inscriptor<br>InscriptorOnly<br>Seller<br>SellerOnly<br>InscriptorSeller |\n| eDocumenttypeRepossession | All<br>No<br>Yes |",
                 "x-systemconfigurationtype": [
                     "All"
                 ],
-                "x-permissions": [],
+                "x-permissions": [
+                    "All"
+                ],
                 "x-usertypeextra": []
             }
         },
-        "/1/object/documenttypechecklist": {
+        "/1/object/documenttypechecklist/{pkiDocumenttypechecklistID}": {
             "description": "",
-            "post": {
-                "description": "The endpoint allows to create one or many elements at once.",
-                "operationId": "Documenttypechecklist_CreateObject_V1",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/documenttypechecklist-createObject-v1-Request"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/documenttypechecklist-createObject-v1-Response"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": []
-                    }
-                ],
-                "summary": "Create a new Documenttypechecklist",
+            "delete": {
                 "tags": [
                     "Object_Documenttypechecklist"
                 ],
-                "x-systemconfigurationtype": [
-                    "All"
-                ],
-                "x-permissions": [],
-                "x-usertypeextra": []
-            }
-        },
-        "/2/object/documenttypechecklist/{pkiDocumenttypechecklistID}": {
-            "description": "",
-            "parameters": [
-                {
-                    "description": "The unique ID of the Documenttypechecklist",
-                    "in": "path",
-                    "name": "pkiDocumenttypechecklistID",
-                    "required": true,
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiDocumenttypechecklistID"
-                    }
-                }
-            ],
-            "get": {
-                "description": "",
-                "operationId": "Documenttypechecklist_GetObject_V2",
                 "responses": {
                     "200": {
-                        "description": "Successful response",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/documenttypechecklist-getObject-v2-Response"
+                                    "$ref": "#/components/schemas/documenttypechecklist-deleteObject-v1-Response"
                                 }
                             }
-                        }
+                        },
+                        "description": "Successful response"
                     },
                     "404": {
                         "$ref": "#/components/responses/Response-Error-404"
@@ -10488,53 +10420,41 @@
                         "Authorization": []
                     }
                 ],
-                "summary": "Retrieve an existing Documenttypechecklist",
-                "tags": [
-                    "Object_Documenttypechecklist"
-                ],
+                "operationId": "Documenttypechecklist_DeleteObject_V1",
+                "summary": "Delete an existing Documenttypechecklist",
+                "description": "",
                 "x-systemconfigurationtype": [
                     "All"
                 ],
-                "x-permissions": [],
+                "x-permissions": [
+                    "All"
+                ],
                 "x-usertypeextra": []
-            }
-        },
-        "/1/object/documenttypechecklist/{pkiDocumenttypechecklistID}": {
-            "description": "",
-            "parameters": [
-                {
-                    "description": "The unique ID of the Documenttypechecklist",
-                    "in": "path",
-                    "name": "pkiDocumenttypechecklistID",
-                    "required": true,
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiDocumenttypechecklistID"
-                    }
-                }
-            ],
-            "put": {
-                "description": "",
-                "operationId": "Documenttypechecklist_EditObject_V1",
+            },
+            "patch": {
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/documenttypechecklist-editObject-v1-Request"
+                                "$ref": "#/components/schemas/documenttypechecklist-patchObject-v1-Request"
                             }
                         }
                     },
                     "required": true
                 },
+                "tags": [
+                    "Object_Documenttypechecklist"
+                ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/documenttypechecklist-editObject-v1-Response"
+                                    "$ref": "#/components/schemas/documenttypechecklist-patchObject-v1-Response"
                                 }
                             }
-                        }
+                        },
+                        "description": "Successful response"
                     },
                     "404": {
                         "$ref": "#/components/responses/Response-Error-404"
@@ -10548,123 +10468,28 @@
                         "Authorization": []
                     }
                 ],
-                "summary": "Edit an existing Documenttypechecklist",
-                "tags": [
-                    "Object_Documenttypechecklist"
-                ],
+                "operationId": "Documenttypechecklist_PatchObject_V1",
+                "summary": "Patch an existing Documenttypechecklist",
+                "description": "",
                 "x-systemconfigurationtype": [
                     "All"
                 ],
-                "x-permissions": [],
+                "x-permissions": [
+                    "All"
+                ],
                 "x-usertypeextra": []
             },
-            "delete": {
-                "description": "",
-                "operationId": "Documenttypechecklist_DeleteObject_V1",
-                "responses": {
-                    "200": {
-                        "description": "Successful response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/documenttypechecklist-deleteObject-v1-Response"
-                                }
-                            }
-                        }
+            "parameters": [
+                {
+                    "name": "pkiDocumenttypechecklistID",
+                    "description": "The unique ID of the Documenttypechecklist",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiDocumenttypechecklistID"
                     },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": []
-                    }
-                ],
-                "summary": "Delete an existing Documenttypechecklist",
-                "tags": [
-                    "Object_Documenttypechecklist"
-                ],
-                "x-systemconfigurationtype": [
-                    "All"
-                ],
-                "x-permissions": [],
-                "x-usertypeextra": []
-            }
-        },
-        "/1/object/documenttypechecklist/getList": {
-            "description": "",
-            "get": {
-                "description": "Enum values that can be filtered in query parameter *sFilter*:\n\n| Variable | Valid values |\n|---|---|\n| eDocumenttypechecklistStatus | Not required<br>Required<br>Filed<br>Justified |",
-                "operationId": "Documenttypechecklist_GetList_V1",
-                "parameters": [
-                    {
-                        "description": "Specify how you want the results to be sorted",
-                        "in": "query",
-                        "name": "eOrderBy",
-                        "required": false,
-                        "schema": {
-                            "enum": [
-                                "pkiDocumenttypechecklistID_ASC",
-                                "pkiDocumenttypechecklistID_DESC",
-                                "fkiDocumenttypeID_ASC",
-                                "fkiDocumenttypeID_DESC",
-                                "eDocumenttypechecklistStatus_ASC",
-                                "eDocumenttypechecklistStatus_DESC",
-                                "tDocumenttypechecklistComment_ASC",
-                                "tDocumenttypechecklistComment_DESC"
-                            ],
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "$ref": "#/components/parameters/iRowMax"
-                    },
-                    {
-                        "$ref": "#/components/parameters/iRowOffset"
-                    },
-                    {
-                        "$ref": "#/components/parameters/AcceptLanguage"
-                    },
-                    {
-                        "$ref": "#/components/parameters/sFilter"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/documenttypechecklist-getList-v1-Response"
-                                }
-                            },
-                            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/File-Xlsx"
-                                }
-                            }
-                        }
-                    },
-                    "406": {
-                        "$ref": "#/components/responses/Response-Error-406"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": []
-                    }
-                ],
-                "summary": "Retrieve Documenttypechecklist list",
-                "tags": [
-                    "Object_Documenttypechecklist"
-                ],
-                "x-systemconfigurationtype": [
-                    "All"
-                ],
-                "x-permissions": [],
-                "x-usertypeextra": []
-            }
+                    "in": "path",
+                    "required": true
+                }
+            ]
         },
         "/1/object/domain": {
             "description": "",
@@ -29802,6 +29627,68 @@
                 }
             ]
         },
+        "/1/object/inscription/{pkiInscriptionID}/synchronizationDocumenttype": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/inscription-synchronizationDocumenttype-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Inscription"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inscription-synchronizationDocumenttype-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Inscription_synchronizationDocumenttype_V1",
+                "summary": "Synchronization of the Documenttype in the Inscription",
+                "description": "",
+                "x-permissions": [
+                    "Inscription_ReadOnlyMode",
+                    "Inscription_Inspections",
+                    "Inscription_Deals"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ],
+                "x-systemconfigurationtype": [
+                    "EdmStandalone",
+                    "RealEstate"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "pkiInscriptionID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiInscriptionID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
         "/1/object/inscription/getList": {
             "description": "",
             "get": {
@@ -44916,6 +44803,19 @@
                 "type": "string",
                 "example": "Outbound"
             },
+            "Computed-eDocumenttypeStep": {
+                "description": "The step of the Documenttype",
+                "enum": [
+                    "Agentbroker",
+                    "Buyercontract",
+                    "Inscription",
+                    "NotAuthenticated",
+                    "Otherincome",
+                    "RejectedOfferToPurchase"
+                ],
+                "type": "string",
+                "example": "Inscription"
+            },
             "Computed-eEzsigndocumentSteptype": {
                 "description": "Indicates whether the current step is a form or signatures.",
                 "enum": [
@@ -47127,6 +47027,26 @@
                     },
                     "sEzsigntemplatepackagesignerDescription": {
                         "$ref": "#/components/schemas/Field-sEzsigntemplatepackagesignerDescription"
+                    }
+                }
+            },
+            "Custom-Inscription": {
+                "description": "A custom Inscription object",
+                "required": [
+                    "pkiInscriptionID",
+                    "fkiAddressID",
+                    "objAddress"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiInscriptionID": {
+                        "$ref": "#/components/schemas/Field-pkiInscriptionID"
+                    },
+                    "fkiAddressID": {
+                        "$ref": "#/components/schemas/Field-pkiAddressID"
+                    },
+                    "objAddress": {
+                        "$ref": "#/components/schemas/address-ResponseCompound"
                     }
                 }
             },
@@ -49935,6 +49855,7 @@
                     "ImportedFromProspects",
                     "Move",
                     "OpenFromEmail",
+                    "Pending",
                     "Purged",
                     "Reject",
                     "Rename",
@@ -54368,11 +54289,11 @@
             },
             "Field-sAttachmentlogDetail": {
                 "description": "The additionnal detail",
-                "pattern": "^.{0,75}$",
+                "pattern": "[\\s\\S]{0,65535}$",
                 "type": "string",
                 "example": "System"
             },
-            "Field-sAttachmentrejectreasonnameX": {
+            "Field-sAttachmentrejectreasonNameX": {
                 "description": "The name of the Attachmentrejectreason in the language of the requester",
                 "pattern": "^.{0,75}$",
                 "type": "string",
@@ -54703,21 +54624,21 @@
             },
             "Field-sDocumenttypeDefaultfilename": {
                 "description": "The defaultfilename of the Documenttype",
+                "pattern": "^.{0,50}$",
                 "type": "string",
-                "example": "invoice.pdf",
-                "pattern": "^.{0,50}$"
+                "example": "invoice.pdf"
             },
             "Field-sDocumenttypeName1": {
                 "description": "The name1 of the Documenttype",
+                "pattern": "^.{0,50}$",
                 "type": "string",
-                "example": "Facture",
-                "pattern": "^.{0,50}$"
+                "example": "Facture"
             },
             "Field-sDocumenttypeName2": {
                 "description": "The name2 of the Documenttype",
+                "pattern": "^.{0,50}$",
                 "type": "string",
-                "example": "Invoice",
-                "pattern": "^.{0,50}$"
+                "example": "Invoice"
             },
             "Field-sDocumenttypeNameX": {
                 "description": "The name of the Documenttype in the language of the requester",
@@ -56000,9 +55921,9 @@
             },
             "Field-tDocumenttypechecklistComment": {
                 "description": "The comment of the Documenttypechecklist",
+                "pattern": "^.{0,255}$",
                 "type": "string",
-                "example": "This document is optional.",
-                "pattern": "^.{0,255}$"
+                "example": "This document is optional."
             },
             "Field-tExtraMessage": {
                 "description": "A custom text message that will be added to the email sent.",
@@ -59687,50 +59608,6 @@
                     }
                 }
             },
-            "attachment-documentType-v1-Request": {
-                "description": "Request for POST /1/object/attachment/{pkiAttachmentID}/documentType",
-                "required": [
-                    "fkiDocumenttypechecklistID"
-                ],
-                "type": "object",
-                "properties": {
-                    "fkiDocumenttypechecklistID": {
-                        "$ref": "#/components/schemas/Field-pkiDocumenttypechecklistID-Nullable"
-                    }
-                }
-            },
-            "attachment-documentType-v1-Response": {
-                "description": "Response for POST /1/object/attachment/{pkiAttachmentID}/documentType",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "mPayload"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "mPayload": {
-                                "$ref": "#/components/schemas/attachment-documentType-v1-Response-mPayload"
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Response"
-                    }
-                ]
-            },
-            "attachment-documentType-v1-Response-mPayload": {
-                "description": "Response for POST /1/object/attachment/{pkiAttachmentID}/documentType",
-                "required": [
-                    "pkiAttachmentID"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiAttachmentID": {
-                        "$ref": "#/components/schemas/Field-pkiAttachmentID"
-                    }
-                }
-            },
             "attachment-getAttachmentlogs-v1-Response": {
                 "description": "Response for GET /1/object/attachment/{pkiAttachmentID}/getAttachmentlogs",
                 "type": "object",
@@ -59763,53 +59640,6 @@
                         "items": {
                             "$ref": "#/components/schemas/attachmentlog-ResponseCompound"
                         }
-                    }
-                }
-            },
-            "attachment-privacy-v1-Request": {
-                "description": "Request for POST /1/object/attachment/{pkiAttachmentID}/privacy",
-                "required": [
-                    "eAttachmentPrivacy"
-                ],
-                "type": "object",
-                "properties": {
-                    "eAttachmentPrivacy": {
-                        "$ref": "#/components/schemas/Field-eAttachmentPrivacy"
-                    },
-                    "fkiUserIDSpecific": {
-                        "$ref": "#/components/schemas/Field-pkiUserID"
-                    }
-                }
-            },
-            "attachment-privacy-v1-Response": {
-                "description": "Response for POST /1/object/attachment/{pkiAttachmentID}/privacy",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "mPayload"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "mPayload": {
-                                "$ref": "#/components/schemas/attachment-privacy-v1-Response-mPayload"
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Response"
-                    }
-                ]
-            },
-            "attachment-privacy-v1-Response-mPayload": {
-                "description": "Response for POST /1/object/attachment/{pkiAttachmentID}/privacy",
-                "required": [
-                    "pkiAttachmentID"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiAttachmentID": {
-                        "$ref": "#/components/schemas/Field-pkiAttachmentID"
                     }
                 }
             },
@@ -59900,6 +59730,97 @@
             },
             "attachment-restore-v1-Response-mPayload": {
                 "description": "Response for POST /1/object/attachment/{pkiAttachmentID}/restore",
+                "required": [
+                    "pkiAttachmentID"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiAttachmentID": {
+                        "$ref": "#/components/schemas/Field-pkiAttachmentID"
+                    }
+                }
+            },
+            "attachment-setDocumentType-v1-Request": {
+                "description": "Request for POST /1/object/attachment/{pkiAttachmentID}/setDocumentType",
+                "required": [
+                    "fkiDocumenttypechecklistID"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiDocumenttypechecklistID": {
+                        "$ref": "#/components/schemas/Field-pkiDocumenttypechecklistID-Nullable"
+                    }
+                }
+            },
+            "attachment-setDocumentType-v1-Response": {
+                "description": "Response for POST /1/object/attachment/{pkiAttachmentID}/setDocumentType",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/attachment-setDocumentType-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "attachment-setDocumentType-v1-Response-mPayload": {
+                "description": "Response for POST /1/object/attachment/{pkiAttachmentID}/setDocumentType",
+                "required": [
+                    "pkiAttachmentID"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiAttachmentID": {
+                        "$ref": "#/components/schemas/Field-pkiAttachmentID"
+                    }
+                }
+            },
+            "attachment-setPrivacy-v1-Request": {
+                "description": "Request for POST /1/object/attachment/{pkiAttachmentID}/setPrivacy",
+                "required": [
+                    "eAttachmentPrivacy"
+                ],
+                "type": "object",
+                "properties": {
+                    "eAttachmentPrivacy": {
+                        "$ref": "#/components/schemas/Field-eAttachmentPrivacy"
+                    },
+                    "fkiUserIDSpecific": {
+                        "$ref": "#/components/schemas/Field-pkiUserID"
+                    }
+                }
+            },
+            "attachment-setPrivacy-v1-Response": {
+                "description": "Response for POST /1/object/attachment/{pkiAttachmentID}/setPrivacy",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/attachment-setPrivacy-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "attachment-setPrivacy-v1-Response-mPayload": {
+                "description": "Response for POST /1/object/attachment/{pkiAttachmentID}/setPrivacy",
                 "required": [
                     "pkiAttachmentID"
                 ],
@@ -60026,7 +59947,7 @@
                 "description": "A Attachmentrejectreason AutocompleteElement Response",
                 "required": [
                     "pkiAttachmentrejectreasonID",
-                    "sAttachmentrejectreasonnameX",
+                    "sAttachmentrejectreasonNameX",
                     "bAttachmentrejectreasonIsactive"
                 ],
                 "type": "object",
@@ -60034,8 +59955,8 @@
                     "pkiAttachmentrejectreasonID": {
                         "$ref": "#/components/schemas/Field-pkiAttachmentrejectreasonID"
                     },
-                    "sAttachmentrejectreasonnameX": {
-                        "$ref": "#/components/schemas/Field-sAttachmentrejectreasonnameX"
+                    "sAttachmentrejectreasonNameX": {
+                        "$ref": "#/components/schemas/Field-sAttachmentrejectreasonNameX"
                     },
                     "bAttachmentrejectreasonIsactive": {
                         "$ref": "#/components/schemas/Field-bAttachmentrejectreasonIsactive"
@@ -67312,7 +67233,6 @@
                     "bDocumenttypeForeclosedsale",
                     "bDocumenttypeCommercialfunding",
                     "bDocumenttypeCanafe",
-                    "eDocumenttypeEzcom",
                     "eDocumenttypePrivacydefault",
                     "eDocumenttypeStatusdefault",
                     "eDocumenttypeSalebyowner",
@@ -67397,6 +67317,7 @@
                 "description": "A Documenttype Object",
                 "required": [
                     "objDocumenttypeName",
+                    "eDocumenttypeStep",
                     "sDocumenttypeDefaultfilename",
                     "bDocumenttypeShowagent",
                     "bDocumenttypeIsactive",
@@ -67411,13 +67332,13 @@
                     "bDocumenttypeForeclosedsale",
                     "bDocumenttypeCommercialfunding",
                     "bDocumenttypeCanafe",
-                    "eDocumenttypeEzcom",
                     "eDocumenttypePrivacydefault",
                     "eDocumenttypeStatusdefault",
                     "eDocumenttypeSalebyowner",
                     "eDocumenttypeSaledisplaybyrole",
                     "eDocumenttypeTransactiontype",
-                    "eDocumenttypeRepossession"
+                    "eDocumenttypeRepossession",
+                    "a_fkiInscriptiontypeID"
                 ],
                 "type": "object",
                 "properties": {
@@ -67426,6 +67347,9 @@
                     },
                     "objDocumenttypeName": {
                         "$ref": "#/components/schemas/Multilingual-DocumenttypeName"
+                    },
+                    "eDocumenttypeStep": {
+                        "$ref": "#/components/schemas/Computed-eDocumenttypeStep"
                     },
                     "sDocumenttypeDefaultfilename": {
                         "$ref": "#/components/schemas/Field-sDocumenttypeDefaultfilename"
@@ -67489,6 +67413,12 @@
                     },
                     "eDocumenttypeRepossession": {
                         "$ref": "#/components/schemas/Field-eDocumenttypeRepossession"
+                    },
+                    "a_fkiInscriptiontypeID": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Field-pkiInscriptiontypeID"
+                        }
                     }
                 }
             },
@@ -67500,8 +67430,7 @@
                         "$ref": "#/components/schemas/documenttype-Request"
                     },
                     {
-                        "type": "object",
-                        "properties": {}
+                        "type": "object"
                     }
                 ]
             },
@@ -67510,10 +67439,12 @@
                 "required": [
                     "pkiDocumenttypeID",
                     "objDocumenttypeName",
+                    "eDocumenttypeStep",
                     "sDocumenttypeDefaultfilename",
                     "bDocumenttypeShowagent",
                     "bDocumenttypeIsactive",
-                    "bDocumenttypeIsrequired"
+                    "bDocumenttypeIsrequired",
+                    "a_fkiInscriptiontypeID"
                 ],
                 "type": "object",
                 "properties": {
@@ -67522,6 +67453,9 @@
                     },
                     "objDocumenttypeName": {
                         "$ref": "#/components/schemas/Multilingual-DocumenttypeName"
+                    },
+                    "eDocumenttypeStep": {
+                        "$ref": "#/components/schemas/Computed-eDocumenttypeStep"
                     },
                     "sDocumenttypeDefaultfilename": {
                         "$ref": "#/components/schemas/Field-sDocumenttypeDefaultfilename"
@@ -67585,6 +67519,12 @@
                     },
                     "eDocumenttypeRepossession": {
                         "$ref": "#/components/schemas/Field-eDocumenttypeRepossession"
+                    },
+                    "a_fkiInscriptiontypeID": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Field-pkiInscriptiontypeID"
+                        }
                     }
                 }
             },
@@ -67596,12 +67536,12 @@
                         "$ref": "#/components/schemas/documenttype-Response"
                     },
                     {
-                        "type": "object",
-                        "properties": {}
+                        "type": "object"
                     }
                 ]
             },
             "documenttype-createObject-v1-Request": {
+                "description": "Request for POST /1/object/documenttype",
                 "required": [
                     "a_objDocumenttype"
                 ],
@@ -67614,8 +67554,7 @@
                             "$ref": "#/components/schemas/documenttype-RequestCompound"
                         }
                     }
-                },
-                "description": "Request for POST /1/object/documenttype"
+                }
             },
             "documenttype-createObject-v1-Response": {
                 "description": "Response for POST /1/object/documenttype",
@@ -67652,15 +67591,6 @@
                         }
                     }
                 }
-            },
-            "documenttype-deleteObject-v1-Response": {
-                "description": "Response for DELETE /1/object/documenttype/{pkiDocumenttypeID}",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/Common-Response"
-                    }
-                ]
             },
             "documenttype-editObject-v1-Request": {
                 "description": "Request for PUT /1/object/documenttype/{pkiDocumenttypeID}",
@@ -67794,389 +67724,15 @@
                     }
                 }
             },
-            "documenttypechecklist-ListElement": {
-                "description": "A Documenttypechecklist List Element",
-                "required": [
-                    "pkiDocumenttypechecklistID",
-                    "fkiDocumenttypeID",
-                    "eDocumenttypechecklistStatus",
-                    "tDocumenttypechecklistComment"
-                ],
+            "documenttypechecklist-RequestPatch": {
+                "description": "A Documenttypechecklist Object",
                 "type": "object",
                 "properties": {
-                    "pkiDocumenttypechecklistID": {
-                        "$ref": "#/components/schemas/Field-pkiDocumenttypechecklistID"
-                    },
-                    "fkiDocumenttypeID": {
-                        "$ref": "#/components/schemas/Field-pkiDocumenttypeID"
-                    },
                     "eDocumenttypechecklistStatus": {
                         "$ref": "#/components/schemas/Field-eDocumenttypechecklistStatus"
                     },
                     "tDocumenttypechecklistComment": {
                         "$ref": "#/components/schemas/Field-tDocumenttypechecklistComment"
-                    }
-                }
-            },
-            "documenttypechecklist-Request": {
-                "description": "A Documenttypechecklist Object",
-                "required": [
-                    "fkiDocumenttypeID",
-                    "eDocumenttypechecklistStatus",
-                    "tDocumenttypechecklistComment"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiDocumenttypechecklistID": {
-                        "$ref": "#/components/schemas/Field-pkiDocumenttypechecklistID"
-                    },
-                    "fkiDocumenttypeID": {
-                        "$ref": "#/components/schemas/Field-pkiDocumenttypeID"
-                    },
-                    "eDocumenttypechecklistStatus": {
-                        "$ref": "#/components/schemas/Field-eDocumenttypechecklistStatus"
-                    },
-                    "tDocumenttypechecklistComment": {
-                        "$ref": "#/components/schemas/Field-tDocumenttypechecklistComment"
-                    },
-                    "fkiAdjustmentID": {
-                        "$ref": "#/components/schemas/Field-pkiAdjustmentID"
-                    },
-                    "fkiAgentID": {
-                        "$ref": "#/components/schemas/Field-pkiAgentID"
-                    },
-                    "fkiBankaccountID": {
-                        "$ref": "#/components/schemas/Field-pkiBankaccountID"
-                    },
-                    "fkiBrokerID": {
-                        "$ref": "#/components/schemas/Field-pkiBrokerID"
-                    },
-                    "fkiCommissionadvanceID": {
-                        "$ref": "#/components/schemas/Field-pkiCommissionadvanceID"
-                    },
-                    "fkiCommunicationID": {
-                        "$ref": "#/components/schemas/Field-pkiCommunicationID"
-                    },
-                    "fkiCustomerID": {
-                        "$ref": "#/components/schemas/Field-pkiCustomerID"
-                    },
-                    "fkiCustomertemplateID": {
-                        "$ref": "#/components/schemas/Field-pkiCustomertemplateID"
-                    },
-                    "fkiDepositID": {
-                        "$ref": "#/components/schemas/Field-pkiDepositID"
-                    },
-                    "fkiDeposittransitchequeID": {
-                        "$ref": "#/components/schemas/Field-pkiDeposittransitchequeID"
-                    },
-                    "fkiElectronicfundstransferID": {
-                        "$ref": "#/components/schemas/Field-pkiElectronicfundstransferID"
-                    },
-                    "fkiEmployeeID": {
-                        "$ref": "#/components/schemas/Field-pkiEmployeeID"
-                    },
-                    "fkiExternalbrokerID": {
-                        "$ref": "#/components/schemas/Field-pkiExternalbrokerID"
-                    },
-                    "fkiEzcomadvanceserverID": {
-                        "$ref": "#/components/schemas/Field-pkiEzcomadvanceserverID"
-                    },
-                    "fkiEzcomcompanyID": {
-                        "$ref": "#/components/schemas/Field-pkiEzcomcompanyID"
-                    },
-                    "fkiEzsigndocumentID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID"
-                    },
-                    "fkiGhacqcontractID": {
-                        "$ref": "#/components/schemas/Field-pkiGhacqcontractID"
-                    },
-                    "fkiInscriptionID": {
-                        "$ref": "#/components/schemas/Field-pkiInscriptionID"
-                    },
-                    "fkiInscriptiontempID": {
-                        "$ref": "#/components/schemas/Field-pkiInscriptiontempID"
-                    },
-                    "fkiInscriptionnotauthenticatedID": {
-                        "$ref": "#/components/schemas/Field-pkiInscriptionnotauthenticatedID"
-                    },
-                    "fkiInvoiceID": {
-                        "$ref": "#/components/schemas/Field-pkiInvoiceID"
-                    },
-                    "fkiBuyercontractID": {
-                        "$ref": "#/components/schemas/Field-pkiBuyercontractID"
-                    },
-                    "fkiFranchisebrokerID": {
-                        "$ref": "#/components/schemas/Field-pkiFranchisebrokerID"
-                    },
-                    "fkiFranchiseagenceID": {
-                        "$ref": "#/components/schemas/Field-pkiFranchiseagenceID"
-                    },
-                    "fkiFranchiseofficeID": {
-                        "$ref": "#/components/schemas/Field-pkiFranchiseofficeID"
-                    },
-                    "fkiFranchisefranchiseID": {
-                        "$ref": "#/components/schemas/Field-pkiFranchisefranchiseID"
-                    },
-                    "fkiFranchisecomplaintID": {
-                        "$ref": "#/components/schemas/Field-pkiFranchisecomplaintID"
-                    },
-                    "fkiLeadID": {
-                        "$ref": "#/components/schemas/Field-pkiLeadID"
-                    },
-                    "fkiMarketingprogramID": {
-                        "$ref": "#/components/schemas/Field-pkiMarketingprogramID"
-                    },
-                    "fkiMarketingfollowID": {
-                        "$ref": "#/components/schemas/Field-pkiMarketingfollowID"
-                    },
-                    "fkiNotaryID": {
-                        "$ref": "#/components/schemas/Field-pkiNotaryID"
-                    },
-                    "fkiOfficetaxreportID": {
-                        "$ref": "#/components/schemas/Field-pkiOfficetaxreportID"
-                    },
-                    "fkiOtherincomeID": {
-                        "$ref": "#/components/schemas/Field-pkiOtherincomeID"
-                    },
-                    "fkiPaymentpreparationID": {
-                        "$ref": "#/components/schemas/Field-pkiPaymentpreparationID"
-                    },
-                    "fkiPurchaseID": {
-                        "$ref": "#/components/schemas/Field-pkiPurchaseID"
-                    },
-                    "fkiSalaryID": {
-                        "$ref": "#/components/schemas/Field-pkiSalaryID"
-                    },
-                    "fkiSupplierID": {
-                        "$ref": "#/components/schemas/Field-pkiSupplierID"
-                    },
-                    "fkiTranqcontractID": {
-                        "$ref": "#/components/schemas/Field-pkiTranqcontractID"
-                    },
-                    "fkiTemplateID": {
-                        "$ref": "#/components/schemas/Field-pkiTemplateID"
-                    }
-                }
-            },
-            "documenttypechecklist-RequestCompound": {
-                "description": "A Documenttypechecklist Object and children",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/documenttypechecklist-Request"
-                    },
-                    {
-                        "type": "object",
-                        "properties": {}
-                    }
-                ]
-            },
-            "documenttypechecklist-Response": {
-                "description": "A Documenttypechecklist Object",
-                "required": [
-                    "pkiDocumenttypechecklistID",
-                    "fkiDocumenttypeID",
-                    "eDocumenttypechecklistStatus",
-                    "tDocumenttypechecklistComment"
-                ],
-                "type": "object",
-                "properties": {
-                    "pkiDocumenttypechecklistID": {
-                        "$ref": "#/components/schemas/Field-pkiDocumenttypechecklistID"
-                    },
-                    "fkiDocumenttypeID": {
-                        "$ref": "#/components/schemas/Field-pkiDocumenttypeID"
-                    },
-                    "sDocumenttypeNameX": {
-                        "$ref": "#/components/schemas/Field-sDocumenttypeNameX"
-                    },
-                    "eDocumenttypechecklistStatus": {
-                        "$ref": "#/components/schemas/Field-eDocumenttypechecklistStatus"
-                    },
-                    "tDocumenttypechecklistComment": {
-                        "$ref": "#/components/schemas/Field-tDocumenttypechecklistComment"
-                    },
-                    "fkiAdjustmentID": {
-                        "$ref": "#/components/schemas/Field-pkiAdjustmentID"
-                    },
-                    "fkiAgentID": {
-                        "$ref": "#/components/schemas/Field-pkiAgentID"
-                    },
-                    "fkiBankaccountID": {
-                        "$ref": "#/components/schemas/Field-pkiBankaccountID"
-                    },
-                    "fkiBrokerID": {
-                        "$ref": "#/components/schemas/Field-pkiBrokerID"
-                    },
-                    "fkiCommissionadvanceID": {
-                        "$ref": "#/components/schemas/Field-pkiCommissionadvanceID"
-                    },
-                    "fkiCommunicationID": {
-                        "$ref": "#/components/schemas/Field-pkiCommunicationID"
-                    },
-                    "fkiCustomerID": {
-                        "$ref": "#/components/schemas/Field-pkiCustomerID"
-                    },
-                    "fkiCustomertemplateID": {
-                        "$ref": "#/components/schemas/Field-pkiCustomertemplateID"
-                    },
-                    "fkiDepositID": {
-                        "$ref": "#/components/schemas/Field-pkiDepositID"
-                    },
-                    "fkiDeposittransitchequeID": {
-                        "$ref": "#/components/schemas/Field-pkiDeposittransitchequeID"
-                    },
-                    "fkiElectronicfundstransferID": {
-                        "$ref": "#/components/schemas/Field-pkiElectronicfundstransferID"
-                    },
-                    "fkiEmployeeID": {
-                        "$ref": "#/components/schemas/Field-pkiEmployeeID"
-                    },
-                    "fkiExternalbrokerID": {
-                        "$ref": "#/components/schemas/Field-pkiExternalbrokerID"
-                    },
-                    "fkiEzcomadvanceserverID": {
-                        "$ref": "#/components/schemas/Field-pkiEzcomadvanceserverID"
-                    },
-                    "fkiEzcomcompanyID": {
-                        "$ref": "#/components/schemas/Field-pkiEzcomcompanyID"
-                    },
-                    "fkiEzsigndocumentID": {
-                        "$ref": "#/components/schemas/Field-pkiEzsigndocumentID"
-                    },
-                    "fkiGhacqcontractID": {
-                        "$ref": "#/components/schemas/Field-pkiGhacqcontractID"
-                    },
-                    "fkiInscriptionID": {
-                        "$ref": "#/components/schemas/Field-pkiInscriptionID"
-                    },
-                    "fkiInscriptiontempID": {
-                        "$ref": "#/components/schemas/Field-pkiInscriptiontempID"
-                    },
-                    "fkiInscriptionnotauthenticatedID": {
-                        "$ref": "#/components/schemas/Field-pkiInscriptionnotauthenticatedID"
-                    },
-                    "fkiInvoiceID": {
-                        "$ref": "#/components/schemas/Field-pkiInvoiceID"
-                    },
-                    "fkiBuyercontractID": {
-                        "$ref": "#/components/schemas/Field-pkiBuyercontractID"
-                    },
-                    "fkiFranchisebrokerID": {
-                        "$ref": "#/components/schemas/Field-pkiFranchisebrokerID"
-                    },
-                    "fkiFranchiseagenceID": {
-                        "$ref": "#/components/schemas/Field-pkiFranchiseagenceID"
-                    },
-                    "fkiFranchiseofficeID": {
-                        "$ref": "#/components/schemas/Field-pkiFranchiseofficeID"
-                    },
-                    "fkiFranchisefranchiseID": {
-                        "$ref": "#/components/schemas/Field-pkiFranchisefranchiseID"
-                    },
-                    "fkiFranchisecomplaintID": {
-                        "$ref": "#/components/schemas/Field-pkiFranchisecomplaintID"
-                    },
-                    "fkiLeadID": {
-                        "$ref": "#/components/schemas/Field-pkiLeadID"
-                    },
-                    "fkiMarketingprogramID": {
-                        "$ref": "#/components/schemas/Field-pkiMarketingprogramID"
-                    },
-                    "fkiMarketingfollowID": {
-                        "$ref": "#/components/schemas/Field-pkiMarketingfollowID"
-                    },
-                    "fkiNotaryID": {
-                        "$ref": "#/components/schemas/Field-pkiNotaryID"
-                    },
-                    "fkiOfficetaxreportID": {
-                        "$ref": "#/components/schemas/Field-pkiOfficetaxreportID"
-                    },
-                    "fkiOtherincomeID": {
-                        "$ref": "#/components/schemas/Field-pkiOtherincomeID"
-                    },
-                    "fkiPaymentpreparationID": {
-                        "$ref": "#/components/schemas/Field-pkiPaymentpreparationID"
-                    },
-                    "fkiPurchaseID": {
-                        "$ref": "#/components/schemas/Field-pkiPurchaseID"
-                    },
-                    "fkiSalaryID": {
-                        "$ref": "#/components/schemas/Field-pkiSalaryID"
-                    },
-                    "fkiSupplierID": {
-                        "$ref": "#/components/schemas/Field-pkiSupplierID"
-                    },
-                    "fkiTranqcontractID": {
-                        "$ref": "#/components/schemas/Field-pkiTranqcontractID"
-                    },
-                    "fkiTemplateID": {
-                        "$ref": "#/components/schemas/Field-pkiTemplateID"
-                    }
-                }
-            },
-            "documenttypechecklist-ResponseCompound": {
-                "description": "A Documenttypechecklist Object",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/documenttypechecklist-Response"
-                    },
-                    {
-                        "type": "object",
-                        "properties": {}
-                    }
-                ]
-            },
-            "documenttypechecklist-createObject-v1-Request": {
-                "required": [
-                    "a_objDocumenttypechecklist"
-                ],
-                "type": "object",
-                "properties": {
-                    "a_objDocumenttypechecklist": {
-                        "minItems": 1,
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/documenttypechecklist-RequestCompound"
-                        }
-                    }
-                },
-                "description": "Request for POST /1/object/documenttypechecklist"
-            },
-            "documenttypechecklist-createObject-v1-Response": {
-                "description": "Response for POST /1/object/documenttypechecklist",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "mPayload"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "mPayload": {
-                                "$ref": "#/components/schemas/documenttypechecklist-createObject-v1-Response-mPayload"
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Response"
-                    }
-                ]
-            },
-            "documenttypechecklist-createObject-v1-Response-mPayload": {
-                "description": "Payload for POST /1/object/documenttypechecklist",
-                "required": [
-                    "a_pkiDocumenttypechecklistID"
-                ],
-                "type": "object",
-                "properties": {
-                    "a_pkiDocumenttypechecklistID": {
-                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Field-pkiDocumenttypechecklistID"
-                        }
                     }
                 }
             },
@@ -68189,101 +67745,26 @@
                     }
                 ]
             },
-            "documenttypechecklist-editObject-v1-Request": {
-                "description": "Request for PUT /1/object/documenttypechecklist/{pkiDocumenttypechecklistID}",
+            "documenttypechecklist-patchObject-v1-Request": {
+                "description": "Request for PATCH /1/object/documenttypechecklist/{pkiDocumenttypechecklistID}",
                 "required": [
                     "objDocumenttypechecklist"
                 ],
                 "type": "object",
                 "properties": {
                     "objDocumenttypechecklist": {
-                        "$ref": "#/components/schemas/documenttypechecklist-RequestCompound"
+                        "$ref": "#/components/schemas/documenttypechecklist-RequestPatch"
                     }
                 }
             },
-            "documenttypechecklist-editObject-v1-Response": {
-                "description": "Response for PUT /1/object/documenttypechecklist/{pkiDocumenttypechecklistID}",
+            "documenttypechecklist-patchObject-v1-Response": {
+                "description": "Response for PATCH /1/object/documenttypechecklist/{pkiDocumenttypechecklistID}",
                 "type": "object",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/Common-Response"
                     }
                 ]
-            },
-            "documenttypechecklist-getList-v1-Response": {
-                "description": "Response for GET /1/object/documenttypechecklist/getList",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "mPayload"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "mPayload": {
-                                "$ref": "#/components/schemas/documenttypechecklist-getList-v1-Response-mPayload"
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Response_getList"
-                    }
-                ]
-            },
-            "documenttypechecklist-getList-v1-Response-mPayload": {
-                "description": "Payload for GET /1/object/documenttypechecklist/getList",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "a_objDocumenttypechecklist"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "a_objDocumenttypechecklist": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/documenttypechecklist-ListElement"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-getList-v1-Response-mPayload"
-                    }
-                ]
-            },
-            "documenttypechecklist-getObject-v2-Response": {
-                "description": "Response for GET /2/object/documenttypechecklist/{pkiDocumenttypechecklistID}",
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "mPayload"
-                        ],
-                        "type": "object",
-                        "properties": {
-                            "mPayload": {
-                                "$ref": "#/components/schemas/documenttypechecklist-getObject-v2-Response-mPayload"
-                            }
-                        }
-                    },
-                    {
-                        "$ref": "#/components/schemas/Common-Response"
-                    }
-                ]
-            },
-            "documenttypechecklist-getObject-v2-Response-mPayload": {
-                "description": "Payload for GET /2/object/documenttypechecklist/{pkiDocumenttypechecklistID}",
-                "required": [
-                    "objDocumenttypechecklist"
-                ],
-                "type": "object",
-                "properties": {
-                    "objDocumenttypechecklist": {
-                        "$ref": "#/components/schemas/documenttypechecklist-ResponseCompound"
-                    }
-                }
             },
             "domain-AutocompleteElement-Response": {
                 "description": "A Domain AutocompleteElement Response",
@@ -90823,6 +90304,19 @@
                     }
                 }
             },
+            "inscription-synchronizationDocumenttype-v1-Request": {
+                "description": "Request for POST /1/object/inscription/{pkiInscriptionID}/synchronizationDocumenttype\\n\\nIntentionally empty for future-proofing,",
+                "type": "object"
+            },
+            "inscription-synchronizationDocumenttype-v1-Response": {
+                "description": "Response for POST /1/object/inscription/{pkiInscriptionID}/synchronizationDocumenttype",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
             "inscriptionchecklist-AutocompleteElement-Response": {
                 "description": "A Inscriptionchecklist AutocompleteElement Response",
                 "required": [
@@ -91028,6 +90522,7 @@
                 "required": [
                     "pkiInscriptionnotauthenticatedID",
                     "fkiInscriptionID",
+                    "objInscription",
                     "fkiTaxassignmentID",
                     "eInscriptionnotauthenticatedType",
                     "dInscriptionnotauthenticatedMortgageloan",
@@ -91056,6 +90551,9 @@
                     },
                     "fkiInscriptionID": {
                         "$ref": "#/components/schemas/Field-pkiInscriptionID"
+                    },
+                    "objInscription": {
+                        "$ref": "#/components/schemas/Custom-Inscription"
                     },
                     "fkiDepartmentID": {
                         "$ref": "#/components/schemas/Field-pkiDepartmentID"
@@ -102707,6 +102205,9 @@
                             "eWebhookEzsignevent": {
                                 "$ref": "#/components/schemas/Custom-eWebhookEzsignevent"
                             },
+                            "eWebhookEzmaxpartnerevent": {
+                                "$ref": "#/components/schemas/Field-eWebhookEzmaxpartnerevent"
+                            },
                             "eWebhookManagementevent": {
                                 "$ref": "#/components/schemas/Field-eWebhookManagementevent"
                             },
@@ -103118,7 +102619,7 @@
         },
         {
             "name": "General_Changelog",
-            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.34\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nFor each version, there will be the list of changes:\n* **Breaking Changes** for breaking changes you need to take into consideration before updating.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n**Removal lifecycle**<br>\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\n\n## 1.3.X Releases\n\n### ⚠️ Compatibility Warning\n\nStarting with **version 1.3.0**, several API endpoints have been updated to support a **major enhancement**:\nYou can now **combine and alternate form steps and signature steps** within the same signing workflow.\n\nThis provides greater flexibility, but it also changes how **step numbers** are defined and managed.\n\n\n* **Endpoints introduced in 1.3.0** (listed below) use the *new step numbering model*.\n* **Endpoints from previous versions (≤ 1.2.2)** use the *old step numbering model*.\n* These two models are **not compatible** — mixing old and new endpoints within the same implementation could cause inconsistencies.\n\nYou may continue using the old routes or migrate fully to the new ones, but **do not mix both** in a single integration.\n\n### Endpoints with Step Numbers (pre-1.3.0)\n\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\n* GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\n* GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\n* GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}\n* GET /3/object/ezsignsignature/{pkiEzsignsignatureID}\n* GET /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\n* POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\n* POST /1/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\n* POST /2/object/ezsigntemplatesignature\n* POST /3/object/ezsignsignature\n* PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\n* PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\n* PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\n* PUT /2/object/ezsignsignature/{pkiEzsignsignatureID}\n* PUT /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\n\n### Updated endpoints with Step Numbers (introduced in 1.3.0)\n\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\n* GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\n* GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\n* GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\n* GET /3/object/ezsigndocument/{pkiEzsigndocumentID}\n* GET /4/object/ezsignsignature/{pkiEzsignsignatureID}\n* GET /4/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\n* POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\n* POST /2/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\n* POST /3/object/ezsigntemplatesignature\n* POST /4/object/ezsignsignature\n* PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\n* PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\n* PUT /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\n* PUT /3/object/ezsignsignature/{pkiEzsignsignatureID}\n* PUT /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\n\n---\n\n### [1.3.4] - 2026-XX-XX\n\n#### Added\n- DELETE /1/object/documenttype/{pkiDocumenttypeID}\n- DELETE /1/object/documenttypechecklist/{pkiDocumenttypechecklistID}\n- GET /1/object/adjustment/{pkiAdjustmentID}/getAttachments\n- GET /1/object/adjustment/{pkiAdjustmentID}/getCommunicationCount\n- GET /1/object/adjustment/{pkiAdjustmentID}/getCommunicationList\n- GET /1/object/adjustment/{pkiAdjustmentID}/getCommunicationrecipients\n- GET /1/object/adjustment/{pkiAdjustmentID}/getCommunicationsenders\n- GET /1/object/adjustment/getList\n- GET /1/object/adjustmentreminder/getList\n- GET /1/object/bankaccount/getList\n- GET /1/object/deposit/getList\n- GET /1/object/deposittransitcheque/getList\n- GET /1/object/disclosure/getList\n- GET /1/object/electronicfundstransfer/getList\n- GET /1/object/electronicfundstransfertransaction/getList\n- GET /1/object/invoice/getList\n- GET /1/object/notary/getList\n- GET /1/object/officetaxreport/getList\n- GET /1/object/purchase/getList\n- GET /1/object/salary/getList\n- GET /2/module/ezsign/suggestTemplates\n- GET /2/object/attachmentrejectreason/getAutocomplete/{sSelector}\n- GET /2/object/ezsignbulksenddocumentmapping/{pkiEzsignbulksenddocumentmappingID}\n- GET /3/object/ezsignbulksendsignermapping/{pkiEzsignbulksendsignermappingID}\n- GET /3/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}\n- GET /3/object/ezsigntemplatepackagemembership/{pkiEzsigntemplatepackagemembershipID}\n- GET /3/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}\n- GET /3/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}\n- GET /4/object/ezsignbulksend/{pkiEzsignbulksendID}\n- GET /4/object/ezsigntemplate/{pkiEzsigntemplateID}\n- GET /1/object/documenttype/getList\n- GET /2/object/documenttype/{pkiDocumenttypeID}\n- GET /2/object/documenttype/getAutocomplete/{sSelector}\n- GET /1/object/documenttypechecklist/getList\n- GET /2/object/documenttypechecklist/{pkiDocumenttypechecklistID}\n- PUT /2/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}/editEzsigntemplatepackagesigners\n- PUT /2/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}\n- PUT /2/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}\n- PUT /1/object/documenttype/{pkiDocumenttypeID}\n- PUT /1/object/documenttypechecklist/{pkiDocumenttypechecklistID}\n- POST /1/object/adjustment/{pkiAdjustmentID}/importIntoEDM\n- POST /2/object/ezsignbulksendsignermapping\n- POST /2/object/ezsigntemplatepackagesigner\n- POST /2/object/ezsigntemplatesigner\n- POST /1/object/attachment/{pkiAttachmentID}/delete\n- POST /1/object/attachment/{pkiAttachmentID}/rename\n- POST /1/object/attachment/{pkiAttachmentID}/restore\n- POST /1/object/attachment/{pkiAttachmentID}/validate\n- POST /1/object/documenttype\n- POST /1/object/documenttypechecklist\n- PATCH /1/object/attachment/{pkiAttachmentID}/documentType\n- PATCH /1/object/attachment/{pkiAttachmentID}/permission\n- Selector AttachmentSpecificUser in GET /2/object/user/getAutocomplete/{sSelector}\n- Parameter fkiAttachmentID in GET /2/object/user/getAutocomplete/{sSelector}\n- Property dtAgentPermitexpiration in agent-ListElement\n- Property dtEzsignformfieldgroupCompleted in ezsignformfieldgroup-Response\n- Property eEzmaxcaseGooddaytaskstatus in ezmaxcase-Response and ezmaxcase-Listelement\n- Property eEzsignfoldersignerassociationRole in ezsignfoldersignerassociation-RequestPatch\n- Property fkiAgentID in user-ListElement\n- Property fkiBrokerID in user-ListElement\n- Property sAttachmentCategory in attachment-Response\n- Property objUserSpecific in attachment-Response\n- Enum value 'Optional' for Field-eEzsigntemplatesignatureConsultationtrigger\n- Enum value 'CCDeleted' for Field-eEzsignfoldersignerassociationRole\n- Enum value 'BuyercontractCreated' for Field-eWebhookRealestateevent\n- Enum value 'BuyercontractModified' for Field-eWebhookRealestateevent\n- Enum value 'CONFLICT' for Field-eErrorCode\n- Enum value 'Pending' for Field-eAttachmentVerified\n- Webhook Buyercontract BuyercontractCreated\n- Webhook Buyercontract BuyercontractModified\n\n\n### [1.3.3] - 2026-07-22\n\n#### Fixed\n- Minor structurals changes\n\n\n### [1.3.2] - 2026-07-21\n\n#### Added\n- GET /2/module/ezsign/suggestSigners\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociations\n- GET /3/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n- GET /2/object/inscription/{pkiInscriptionID}\n- GET /1/object/inscription/{pkiInscriptionID}/getInscriptionnotauthenticateds\n- GET /2/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}\n- POST /2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n- POST /3/object/ezsignfoldersignerassociation\n- Enum value 'Realestate' for eWebhookModule\n- Properties pkiInscriptionbuildingtypeID, sInscriptionbuildingtypeNameX, pkiInscriptioncategoryID, sInscriptioncategoryNameX, iInscriptionUnit in inscription-Listelement\n- Properties pkiInscriptionbuildingtypeID, sInscriptionbuildingtypeNameX, pkiInscriptioncategoryID, sInscriptioncategoryNameX, iInscriptionUnit in inscriptionnotauthenticated-Listelement\n- Property eAgentSchedule in agent-ListElement\n- Property bInscriptionnotauthenticatedDraft in inscriptionnotauthenticated-ListElement\n- Webhook Realestate InscriptionCreated\n- Webhook Realestate InscriptionModified\n- Webhook Realestate InscriptionnotauthenticatedCreated\n- Webhook Realestate InscriptionnotauthenticatedModified\n\n\n### [1.3.1] - 2026-06-17\n\n#### Added\n- DELETE /1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\n- GET /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagepermissions\n- GET /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagewebhooks\n- GET /1/object/ezmaxmaillinglist/getList\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElementsForSigner\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplateannotations\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/duplicate\n- POST /1/object/ezsigntemplateannotation\n- POST /4/object/ezsignfoldertype\n- PUT /1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\n- PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplateannotations\n- PUT /4/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElementsForSigner\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignannotations\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignformfieldgroups\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignsignatures\n- GET /2/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\n- GET /2/object/ezsigntemplateglobalannotation/{pkiEzsigntemplateglobalannotationID}\n- POST /1/module/ezmaxmaillinglist/subscribe\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplateglobal\n- POST /3/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /3/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\n- Selector AgentBrokerEmployeeEzsignUserNormal in GET /2/object/user/getAutocomplete/{sSelector}\n- Properties dtAgentContractdate, dtAgentTransferdate, dtAgentSenioritydate, dtAgentSickleavestart and dtAgentSickleaveend in agent-ListElement\n- Properties fkiCountryID and fkiProvinceID in agent-ListElement, broker-ListElement, customer-ListElement, employee-ListElement, inscription-ListElement, inscriptionnotauthenticated-ListElement, rejectedoffertopurchase-ListElement and supplier-ListElement  \n- Properties fkiEzsignbulksendID, sEzsignbulksendDescription, fkiEzsignbulksendtransmissionID, sEzsignbulksendtransmissionDescription, fkiEzsigntemplatepublicID, sEzsigntemplatepublicDescription, eEzsignfolderSource in object ezsignfolder-ListElement\n- Properties bEzsignfoldertypeSenddocumentmergetoemail, bEzsignfoldertypeSenddocumentmergetoezsignsigner, bEzsignfoldertypeSenddocumentmergetoreceivealldocument and bEzsignfoldertypeSenddocumentmergetouser in ezsignfoldertype-RequestV3 and ezsignfoldertype-ResponseV4\n- Property a_objEzsigntemplateannotation in ezsigntemplate-ResponseCompound\n- Property a_objEzsigntemplateannotation in ezsigntemplate-ResponseCompoundV3\n- Property a_objEzsigntemplateglobalannotation in ezsigntemplateglobal-ResponseCompound\n- Property fkiEzmaxpartnerID in user-Response\n- Property fkiEzmaxpartnerproductstageID in apikey-ResponseCompound\n- Property iEzsignfolderStepcurrent in ezsignfolder-ResponseV3\n- Property iEzsignfoldertypeArchivaldays in ezsignfoldertype-getDefaults-v2-Response-mPayload\n- Property sBuyercontractContract in buyercontract-ListElement\n- Value Optional in Field-eEzsignsignatureConsultationtrigger\n- Value Suspended in Field-eSessionhistoryEndby\n\n\n### [1.3.0] - 2026-01-24\n\n#### Added\n- GET /1/object/agent/getList\n- GET /1/object/broker/getList\n- GET /1/object/buyercontract/getList\n- GET /1/object/customer/getList\n- GET /1/object/employee/getList\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}/getBatchFile\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}/getBatchFile\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/download\n- GET /1/object/inscriptiontemp/getList\n- GET /1/object/lead/getList\n- GET /1/object/otherincome/getList\n- GET /1/object/rejectedoffertopurchase/getList\n- GET /1/object/supplier/getList\n- GET /2/object/agent/getAutocomplete/{sSelector}\n- GET /2/object/agenttype/getAutocomplete/{sSelector}\n- GET /2/object/broker/getAutocomplete/{sSelector}\n- GET /2/object/brokertype/getAutocomplete/{sSelector}\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\n- GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\n- GET /2/object/inscriptionchecklist/getAutocomplete/{sSelector}\n- GET /2/object/leadsource/getAutocomplete/{sSelector}\n- GET /2/object/notificationtest/{pkiNotificationtestID}/getElements\n- GET /2/object/otherincometype/getAutocomplete/{sSelector}\n- GET /2/object/paymentmethod/getAutocomplete/{sSelector}\n- GET /3/object/ezsigndocument/{pkiEzsigndocumentID}\n- GET /3/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\n- GET /3/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\n- GET /4/object/ezsignsignature/{pkiEzsignsignatureID}\n- GET /4/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\n- POST /1/module/ezmaxcustomer/createCustomer\n- POST /1/object/activesession/setGoal\n- POST /1/object/agent/{pkiAgentID}/importIntoEDM\n- POST /1/object/broker/{pkiBrokerID}/importIntoEDM\n- POST /1/object/buyercontract/{pkiBuyercontractID}/importIntoEDM\n- POST /1/object/customer/{pkiCustomerID}/importIntoEDM\n- POST /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/importIntoEDM\n- POST /1/object/employee/{pkiEmployeeID}/importIntoEDM\n- POST /1/object/externalbroker/{pkiExternalbrokerID}/importIntoEDM\n- POST /1/object/inscription/{pkiInscriptionID}/importIntoEDM\n- POST /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/importIntoEDM\n- POST /1/object/inscriptiontemp/{pkiInscriptiontempID}/importIntoEDM\n- POST /1/object/invoice/{pkiInvoiceID}/importIntoEDM\n- POST /1/object/lead/{pkiLeadID}/importIntoEDM\n- POST /1/object/otherincome/{pkiOtherincomeID}/importIntoEDM\n- POST /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/importIntoEDM\n- POST /1/object/supplier/{pkiSupplierID}/importIntoEDM\n- POST /1/object/tranqcontract/{pkiTranqcontractID}/importIntoEDM\n- POST /1/report/accountspayable/accountspayable\n- POST /1/report/accountsreceivablevscommission/accountsreceivablevscommission\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\n- POST /2/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\n- POST /2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\n- POST /3/object/ezsigntemplatesignature\n- POST /4/object/ezsignsignature\n- PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\n- PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\n- PUT /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\n- PUT /3/object/ezsignsignature/{pkiEzsignsignatureID}\n- PUT /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\n- Properties a_objContactPrivate, a_objContactShared in ezsign-suggestSigners-v1-Response-mPayload\n- Properties bEzsignfoldertypeSendsignatureattachmentezsignsigner, bEzsignfoldertypeSendsignatureattachment, bEzsignfoldertypeSendsignatureattachmentuser, bEzsignfoldertypeAllowdownloadsignatureattachmentezsignsigner, bEzsignfoldertypeSendsignatureattachmentreceivealldocument in ezsignfoldertype-RequestV3 and- ezsignfoldertype-ResponseV4\n- Properties eEzsignsignatureSignaturepadrequired, eEzsignsignatureSignaturepadrequired in ezsignsignature-Request and ezsignsignature-Response\n- Properties eEzsigntemplatesignatureSignaturepadrequired, eEzsigntemplatesignatureSignaturepadrequired in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\n- Property a_objEzsignsignaturepaymentdetail in ezsignsignature-RequestCompound\n- Property a_objEzsigntemplatesignaturepaymentdetail in ezsigntemplatesignature-RequestCompound, ezsigntemplatesignature-RequestCompoundV2, ezsigntemplatesignature-ResponseCompoundV3\n- Property bInscriptionInspection in inscription-ListElement\n- Property bInscriptionInspection in inscriptionnotauthenticated-ListElement\n- Property bInscriptionnotauthenticatedConditional in inscription-ListElement\n- Property bInscriptionnotauthenticatedConditional in inscriptionnotauthenticated-ListElement\n- Property bUserAddmeinezsignfolder in activesession-ResponseCompound-User\n- Property bUserAddmeinezsignfolder in user-getPreferences-v1-Response\n- Property bUserAddmeinezsignfolder in user-setPreferences-v1-Request\n- Property dtUserNpsrequest in activesession-ResponseCompound\n- Property eEzsignfolderCompletion in ezsignfolder-ListElement\n- Property eEzsignfolderDocumentmerge in ezsignfoldertype-RequestV3 and ezsignfoldertype-ResponseV4\n- Property eEzsignfolderMessageorder in ezsignfolder-Response\n- Property eUserType in ezsignfoldersignerassociation-ResponseCompound-User\n- Property fkiDepartmentID in agent-AutocompleteElement-Response\n- Property fkiDepartmentID in broker-AutocompleteElement-Response\n- Property fkiDepartmentID in customer-AutocompleteElement-Response\n- Property fkiEzsigntemplateglobalID in Custom-Ezsignimportdocument-Response\n- Property fkiModuleIDForm in user-getPreferences-v1-Response-mPayload\n- Property fkiModuleIDForm in user-setPreferences-v1-Request\n- Property fkiPaymentgatewayID in ezsignsignature-Response, ezsigntemplatesignature-Request, ezsigntemplatesignature-Response\n- Property iUserFrontendgoal in activesession-ResponseCompound-User\n- Property iSystemconfigurationEzsignreminderhoursend in systemconfiguration-Request and systemconfiguration-Response\n- Property objReportcellstyleCustom in Common-Reportrow\n- Property sEzsignsignergroupDescriptionX in Custom-EzsignfoldertransmissionSigner-Response\n- Property sEzsigntemplateglobalDescription in Custom-Ezsignimportdocument-Response\n- Property sCustomerCode in customer-AutocompleteElement-Response\n- Property sModuleNameX in user-getPreferences-v1-Response-mPayload\n- Property sReportsectionTabname in Common-Reportsection\n- Property sWebhookAuthentificationexternalerror in webhook-ResponseCompound\n- Selector EzsignfoldertypeReassign in /2/object/userlogintype/getAutocomplete/{sSelector}\n- Value PerEzsignfolderStepSync in eEzsignfolderCompletion\n- Value PerEzsignfolderStepSync in eEzsignfoldertypeCompletion\n- Value PendingPrematurelyEnded in eEzsigndocumentStep\n\n#### Deprecated\n- POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\n\n#### Removed\n- Property bEzsignfolderPaymentused in Custom-EzmaxinvoicingEzsignfolder-Response\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\n- GET /1/object/notificationtest/{pkiNotificationtestID}/getElements\n- GET /2/object/inscriptionchecklist/getAutocomplete\n- GET /2/object/signature/{pkiSignatureID}\n- GET /3/object/ezsignsignature/{pkiEzsignsignatureID}\n- GET /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID} \n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/reorder\n- POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\n- PUT /1/object/ezsignbulksend/{pkiEzsignbulksendID}\n- PUT /1/object/systemconfiguration/{pkiSystemconfigurationID}\n- PUT /2/object/ezsignsignature/{pkiEzsignsignatureID}\n- PUT /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\n\n## Older Releases\nDocumentation and changelog for older releases can be found here\n- [1.2.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.2.html)\n- [1.1.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.1.html)\n- [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)\n",
+            "description": "All notable changes to this project will be documented in this section.\n\nVersion numbers are using **MAJOR**.**MINOR**.**PATCH** numbering format for example 1.2.34\n\n**MAJOR** will be incremented only if there is an incompatible breaking change. New distinct documentation and specification files will be published.\n\n**MINOR** will be incremented only if a function becomes deprecated or deleted (after being deprecated in a previous version)\n\n**PATCH** will be incremented everytime changes and additions are released.\n\nFor each version, there will be the list of changes:\n* **Breaking Changes** for breaking changes you need to take into consideration before updating.\n* **Added** for new features.\n* **Changed** for changes in existing functionality.\n* **Deprecated** for soon-to-be removed features.\n* **Removed** for now removed features.\n* **Fixed** for any bug fixes.\n* **Security** in case of vulnerabilities.\n\n**Removal lifecycle**<br>\nOnce a function becomes **Deprecated**, we monitor its usage to track how many users are still using it.\nAfter a long period of time, if a minority of users are still using the function, we might ask users to update to the newer version of the function and give them ample time to do so.\nOnly after that delay expires (or no more users are still using it), we will have the function **Removed**.\n\n## 1.3.X Releases\n\n### ⚠️ Compatibility Warning\n\nStarting with **version 1.3.0**, several API endpoints have been updated to support a **major enhancement**:\nYou can now **combine and alternate form steps and signature steps** within the same signing workflow.\n\nThis provides greater flexibility, but it also changes how **step numbers** are defined and managed.\n\n\n* **Endpoints introduced in 1.3.0** (listed below) use the *new step numbering model*.\n* **Endpoints from previous versions (≤ 1.2.2)** use the *old step numbering model*.\n* These two models are **not compatible** — mixing old and new endpoints within the same implementation could cause inconsistencies.\n\nYou may continue using the old routes or migrate fully to the new ones, but **do not mix both** in a single integration.\n\n### Endpoints with Step Numbers (pre-1.3.0)\n\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\n* GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\n* GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\n* GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\n* GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}\n* GET /3/object/ezsignsignature/{pkiEzsignsignatureID}\n* GET /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\n* POST /1/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\n* POST /1/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\n* POST /2/object/ezsigntemplatesignature\n* POST /3/object/ezsignsignature\n* PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\n* PUT /1/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\n* PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\n* PUT /2/object/ezsignsignature/{pkiEzsignsignatureID}\n* PUT /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\n\n### Updated endpoints with Step Numbers (introduced in 1.3.0)\n\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\n* GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\n* GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\n* GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\n* GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\n* GET /3/object/ezsigndocument/{pkiEzsigndocumentID}\n* GET /4/object/ezsignsignature/{pkiEzsignsignatureID}\n* GET /4/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\n* POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\n* POST /2/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\n* POST /3/object/ezsigntemplatesignature\n* POST /4/object/ezsignsignature\n* PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\n* PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\n* PUT /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\n* PUT /3/object/ezsignsignature/{pkiEzsignsignatureID}\n* PUT /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\n\n---\n\n### [1.3.4] - 2026-XX-XX\n\n#### Added\n- DELETE /1/object/documenttype/{pkiDocumenttypeID}\n- DELETE /1/object/documenttypechecklist/{pkiDocumenttypechecklistID}\n- GET /1/object/adjustment/{pkiAdjustmentID}/getAttachments\n- GET /1/object/adjustment/{pkiAdjustmentID}/getCommunicationCount\n- GET /1/object/adjustment/{pkiAdjustmentID}/getCommunicationList\n- GET /1/object/adjustment/{pkiAdjustmentID}/getCommunicationrecipients\n- GET /1/object/adjustment/{pkiAdjustmentID}/getCommunicationsenders\n- GET /1/object/adjustment/getList\n- GET /1/object/adjustmentreminder/getList\n- GET /1/object/bankaccount/getList\n- GET /1/object/deposit/getList\n- GET /1/object/deposittransitcheque/getList\n- GET /1/object/disclosure/getList\n- GET /1/object/electronicfundstransfer/getList\n- GET /1/object/electronicfundstransfertransaction/getList\n- GET /1/object/invoice/getList\n- GET /1/object/notary/getList\n- GET /1/object/officetaxreport/getList\n- GET /1/object/purchase/getList\n- GET /1/object/salary/getList\n- GET /2/module/ezsign/suggestTemplates\n- GET /2/object/attachmentrejectreason/getAutocomplete/{sSelector}\n- GET /2/object/ezsignbulksenddocumentmapping/{pkiEzsignbulksenddocumentmappingID}\n- GET /3/object/ezsignbulksendsignermapping/{pkiEzsignbulksendsignermappingID}\n- GET /3/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}\n- GET /3/object/ezsigntemplatepackagemembership/{pkiEzsigntemplatepackagemembershipID}\n- GET /3/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}\n- GET /3/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}\n- GET /4/object/ezsignbulksend/{pkiEzsignbulksendID}\n- GET /4/object/ezsigntemplate/{pkiEzsigntemplateID}\n- GET /1/object/documenttype/getList\n- GET /2/object/documenttype/{pkiDocumenttypeID}\n- GET /2/object/documenttype/getAutocomplete/{sSelector}\n- PUT /2/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}/editEzsigntemplatepackagesigners\n- PUT /2/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}\n- PUT /2/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}\n- PUT /1/object/documenttype/{pkiDocumenttypeID}\n- POST /1/object/adjustment/{pkiAdjustmentID}/importIntoEDM\n- POST /2/object/ezsignbulksendsignermapping\n- POST /2/object/ezsigntemplatepackagesigner\n- POST /2/object/ezsigntemplatesigner\n- POST /1/object/attachment/{pkiAttachmentID}/delete\n- POST /1/object/attachment/{pkiAttachmentID}/rename\n- POST /1/object/attachment/{pkiAttachmentID}/restore\n- POST /1/object/attachment/{pkiAttachmentID}/validate\n- POST /1/object/documenttype\n- PATCH /1/object/attachment/{pkiAttachmentID}/setDocumentType\n- PATCH /1/object/attachment/{pkiAttachmentID}/setPrivacy\n- PATCH /1/object/documenttypechecklist/{pkiDocumenttypechecklistID}\n- Selector AttachmentSpecificUser in GET /2/object/user/getAutocomplete/{sSelector}\n- Parameter fkiAttachmentID in GET /2/object/user/getAutocomplete/{sSelector}\n- Property dtAgentPermitexpiration in agent-ListElement\n- Property dtEzsignformfieldgroupCompleted in ezsignformfieldgroup-Response\n- Property eEzmaxcaseGooddaytaskstatus in ezmaxcase-Response and ezmaxcase-Listelement\n- Property eEzsignfoldersignerassociationRole in ezsignfoldersignerassociation-RequestPatch\n- Property fkiAgentID in user-ListElement\n- Property fkiBrokerID in user-ListElement\n- Property sAttachmentCategory in attachment-Response\n- Property objUserSpecific in attachment-Response\n- Property eWebhookEzmaxpartnerevent in webhook-sendWebhook-v1-Request\n- Enum value 'Optional' for Field-eEzsigntemplatesignatureConsultationtrigger\n- Enum value 'CCDeleted' for Field-eEzsignfoldersignerassociationRole\n- Enum value 'BuyercontractCreated' for Field-eWebhookRealestateevent\n- Enum value 'BuyercontractModified' for Field-eWebhookRealestateevent\n- Enum value 'CONFLICT' for Field-eErrorCode\n- Enum value 'Pending' for Field-eAttachmentVerified\n- Enum value 'Pending' for Field-eAttachmentlogType\n- Webhook Buyercontract BuyercontractCreated\n- Webhook Buyercontract BuyercontractModified\n\n\n### [1.3.3] - 2026-07-22\n\n#### Fixed\n- Minor structurals changes\n\n\n### [1.3.2] - 2026-07-21\n\n#### Added\n- GET /2/module/ezsign/suggestSigners\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignfoldersignerassociations\n- GET /3/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n- GET /2/object/inscription/{pkiInscriptionID}\n- GET /1/object/inscription/{pkiInscriptionID}/getInscriptionnotauthenticateds\n- GET /2/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}\n- POST /2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}\n- POST /3/object/ezsignfoldersignerassociation\n- Enum value 'Realestate' for eWebhookModule\n- Properties pkiInscriptionbuildingtypeID, sInscriptionbuildingtypeNameX, pkiInscriptioncategoryID, sInscriptioncategoryNameX, iInscriptionUnit in inscription-Listelement\n- Properties pkiInscriptionbuildingtypeID, sInscriptionbuildingtypeNameX, pkiInscriptioncategoryID, sInscriptioncategoryNameX, iInscriptionUnit in inscriptionnotauthenticated-Listelement\n- Property eAgentSchedule in agent-ListElement\n- Property bInscriptionnotauthenticatedDraft in inscriptionnotauthenticated-ListElement\n- Webhook Realestate InscriptionCreated\n- Webhook Realestate InscriptionModified\n- Webhook Realestate InscriptionnotauthenticatedCreated\n- Webhook Realestate InscriptionnotauthenticatedModified\n\n\n### [1.3.1] - 2026-06-17\n\n#### Added\n- DELETE /1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\n- GET /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagepermissions\n- GET /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagewebhooks\n- GET /1/object/ezmaxmaillinglist/getList\n- GET /1/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElementsForSigner\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplateannotations\n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/duplicate\n- POST /1/object/ezsigntemplateannotation\n- POST /4/object/ezsignfoldertype\n- PUT /1/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\n- PUT /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplateannotations\n- PUT /4/object/ezsignfoldertype/{pkiEzsignfoldertypeID}\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElementsForSigner\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignannotations\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignformfieldgroups\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsignsignatures\n- GET /2/object/ezsigntemplateannotation/{pkiEzsigntemplateannotationID}\n- GET /2/object/ezsigntemplateglobalannotation/{pkiEzsigntemplateglobalannotationID}\n- POST /1/module/ezmaxmaillinglist/subscribe\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplateglobal\n- POST /3/object/ezsigndocument/{pkiEzsigndocumentID}/applyEzsigntemplate\n- POST /3/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\n- Selector AgentBrokerEmployeeEzsignUserNormal in GET /2/object/user/getAutocomplete/{sSelector}\n- Properties dtAgentContractdate, dtAgentTransferdate, dtAgentSenioritydate, dtAgentSickleavestart and dtAgentSickleaveend in agent-ListElement\n- Properties fkiCountryID and fkiProvinceID in agent-ListElement, broker-ListElement, customer-ListElement, employee-ListElement, inscription-ListElement, inscriptionnotauthenticated-ListElement, rejectedoffertopurchase-ListElement and supplier-ListElement  \n- Properties fkiEzsignbulksendID, sEzsignbulksendDescription, fkiEzsignbulksendtransmissionID, sEzsignbulksendtransmissionDescription, fkiEzsigntemplatepublicID, sEzsigntemplatepublicDescription, eEzsignfolderSource in object ezsignfolder-ListElement\n- Properties bEzsignfoldertypeSenddocumentmergetoemail, bEzsignfoldertypeSenddocumentmergetoezsignsigner, bEzsignfoldertypeSenddocumentmergetoreceivealldocument and bEzsignfoldertypeSenddocumentmergetouser in ezsignfoldertype-RequestV3 and ezsignfoldertype-ResponseV4\n- Property a_objEzsigntemplateannotation in ezsigntemplate-ResponseCompound\n- Property a_objEzsigntemplateannotation in ezsigntemplate-ResponseCompoundV3\n- Property a_objEzsigntemplateglobalannotation in ezsigntemplateglobal-ResponseCompound\n- Property fkiEzmaxpartnerID in user-Response\n- Property fkiEzmaxpartnerproductstageID in apikey-ResponseCompound\n- Property iEzsignfolderStepcurrent in ezsignfolder-ResponseV3\n- Property iEzsignfoldertypeArchivaldays in ezsignfoldertype-getDefaults-v2-Response-mPayload\n- Property sBuyercontractContract in buyercontract-ListElement\n- Property objInscription in inscriptionnotauthenticated-Response\n- Value Optional in Field-eEzsignsignatureConsultationtrigger\n- Value Suspended in Field-eSessionhistoryEndby\n\n\n### [1.3.0] - 2026-01-24\n\n#### Added\n- GET /1/object/agent/getList\n- GET /1/object/broker/getList\n- GET /1/object/buyercontract/getList\n- GET /1/object/customer/getList\n- GET /1/object/employee/getList\n- GET /1/object/ezsignbulksend/{pkiEzsignbulksendID}/getBatchFile\n- GET /1/object/ezsignbulksendtransmission/{pkiEzsignbulksendtransmissionID}/getBatchFile\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/download\n- GET /1/object/inscriptiontemp/getList\n- GET /1/object/lead/getList\n- GET /1/object/otherincome/getList\n- GET /1/object/rejectedoffertopurchase/getList\n- GET /1/object/supplier/getList\n- GET /2/object/agent/getAutocomplete/{sSelector}\n- GET /2/object/agenttype/getAutocomplete/{sSelector}\n- GET /2/object/broker/getAutocomplete/{sSelector}\n- GET /2/object/brokertype/getAutocomplete/{sSelector}\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getCompletedElements\n- GET /2/object/ezsigndocument/{pkiEzsigndocumentID}/getEzsignsignatures\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\n- GET /2/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\n- GET /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\n- GET /2/object/inscriptionchecklist/getAutocomplete/{sSelector}\n- GET /2/object/leadsource/getAutocomplete/{sSelector}\n- GET /2/object/notificationtest/{pkiNotificationtestID}/getElements\n- GET /2/object/otherincometype/getAutocomplete/{sSelector}\n- GET /2/object/paymentmethod/getAutocomplete/{sSelector}\n- GET /3/object/ezsigndocument/{pkiEzsigndocumentID}\n- GET /3/object/ezsigndocument/{pkiEzsigndocumentID}/getActionableElements\n- GET /3/object/ezsignfolder/{pkiEzsignfolderID}/getActionableElements\n- GET /4/object/ezsignsignature/{pkiEzsignsignatureID}\n- GET /4/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\n- POST /1/module/ezmaxcustomer/createCustomer\n- POST /1/object/activesession/setGoal\n- POST /1/object/agent/{pkiAgentID}/importIntoEDM\n- POST /1/object/broker/{pkiBrokerID}/importIntoEDM\n- POST /1/object/buyercontract/{pkiBuyercontractID}/importIntoEDM\n- POST /1/object/customer/{pkiCustomerID}/importIntoEDM\n- POST /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/importIntoEDM\n- POST /1/object/employee/{pkiEmployeeID}/importIntoEDM\n- POST /1/object/externalbroker/{pkiExternalbrokerID}/importIntoEDM\n- POST /1/object/inscription/{pkiInscriptionID}/importIntoEDM\n- POST /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/importIntoEDM\n- POST /1/object/inscriptiontemp/{pkiInscriptiontempID}/importIntoEDM\n- POST /1/object/invoice/{pkiInvoiceID}/importIntoEDM\n- POST /1/object/lead/{pkiLeadID}/importIntoEDM\n- POST /1/object/otherincome/{pkiOtherincomeID}/importIntoEDM\n- POST /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/importIntoEDM\n- POST /1/object/supplier/{pkiSupplierID}/importIntoEDM\n- POST /1/object/tranqcontract/{pkiTranqcontractID}/importIntoEDM\n- POST /1/report/accountspayable/accountspayable\n- POST /1/report/accountsreceivablevscommission/accountsreceivablevscommission\n- POST /2/object/ezsigndocument/{pkiEzsigndocumentID}/createEzsignelementsPositionedByWord\n- POST /2/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage\n- POST /2/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\n- POST /3/object/ezsigntemplatesignature\n- POST /4/object/ezsignsignature\n- PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignformfieldgroups\n- PUT /2/object/ezsigndocument/{pkiEzsigndocumentID}/editEzsignsignatures\n- PUT /2/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/editEzsigntemplatesignatures\n- PUT /3/object/ezsignsignature/{pkiEzsignsignatureID}\n- PUT /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\n- Properties a_objContactPrivate, a_objContactShared in ezsign-suggestSigners-v1-Response-mPayload\n- Properties bEzsignfoldertypeSendsignatureattachmentezsignsigner, bEzsignfoldertypeSendsignatureattachment, bEzsignfoldertypeSendsignatureattachmentuser, bEzsignfoldertypeAllowdownloadsignatureattachmentezsignsigner, bEzsignfoldertypeSendsignatureattachmentreceivealldocument in ezsignfoldertype-RequestV3 and- ezsignfoldertype-ResponseV4\n- Properties eEzsignsignatureSignaturepadrequired, eEzsignsignatureSignaturepadrequired in ezsignsignature-Request and ezsignsignature-Response\n- Properties eEzsigntemplatesignatureSignaturepadrequired, eEzsigntemplatesignatureSignaturepadrequired in ezsigntemplatesignature-Request and ezsigntemplatesignature-Response\n- Property a_objEzsignsignaturepaymentdetail in ezsignsignature-RequestCompound\n- Property a_objEzsigntemplatesignaturepaymentdetail in ezsigntemplatesignature-RequestCompound, ezsigntemplatesignature-RequestCompoundV2, ezsigntemplatesignature-ResponseCompoundV3\n- Property bInscriptionInspection in inscription-ListElement\n- Property bInscriptionInspection in inscriptionnotauthenticated-ListElement\n- Property bInscriptionnotauthenticatedConditional in inscription-ListElement\n- Property bInscriptionnotauthenticatedConditional in inscriptionnotauthenticated-ListElement\n- Property bUserAddmeinezsignfolder in activesession-ResponseCompound-User\n- Property bUserAddmeinezsignfolder in user-getPreferences-v1-Response\n- Property bUserAddmeinezsignfolder in user-setPreferences-v1-Request\n- Property dtUserNpsrequest in activesession-ResponseCompound\n- Property eEzsignfolderCompletion in ezsignfolder-ListElement\n- Property eEzsignfolderDocumentmerge in ezsignfoldertype-RequestV3 and ezsignfoldertype-ResponseV4\n- Property eEzsignfolderMessageorder in ezsignfolder-Response\n- Property eUserType in ezsignfoldersignerassociation-ResponseCompound-User\n- Property fkiDepartmentID in agent-AutocompleteElement-Response\n- Property fkiDepartmentID in broker-AutocompleteElement-Response\n- Property fkiDepartmentID in customer-AutocompleteElement-Response\n- Property fkiEzsigntemplateglobalID in Custom-Ezsignimportdocument-Response\n- Property fkiModuleIDForm in user-getPreferences-v1-Response-mPayload\n- Property fkiModuleIDForm in user-setPreferences-v1-Request\n- Property fkiPaymentgatewayID in ezsignsignature-Response, ezsigntemplatesignature-Request, ezsigntemplatesignature-Response\n- Property iUserFrontendgoal in activesession-ResponseCompound-User\n- Property iSystemconfigurationEzsignreminderhoursend in systemconfiguration-Request and systemconfiguration-Response\n- Property objReportcellstyleCustom in Common-Reportrow\n- Property sEzsignsignergroupDescriptionX in Custom-EzsignfoldertransmissionSigner-Response\n- Property sEzsigntemplateglobalDescription in Custom-Ezsignimportdocument-Response\n- Property sCustomerCode in customer-AutocompleteElement-Response\n- Property sModuleNameX in user-getPreferences-v1-Response-mPayload\n- Property sReportsectionTabname in Common-Reportsection\n- Property sWebhookAuthentificationexternalerror in webhook-ResponseCompound\n- Selector EzsignfoldertypeReassign in /2/object/userlogintype/getAutocomplete/{sSelector}\n- Value PerEzsignfolderStepSync in eEzsignfolderCompletion\n- Value PerEzsignfolderStepSync in eEzsignfoldertypeCompletion\n- Value PendingPrematurelyEnded in eEzsigndocumentStep\n\n#### Deprecated\n- POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\n\n#### Removed\n- Property bEzsignfolderPaymentused in Custom-EzmaxinvoicingEzsignfolder-Response\n- GET /1/object/ezsignfolder/{pkiEzsignfolderID}/getEzsigndocuments\n- GET /1/object/ezsigntemplatedocument/{pkiEzsigntemplatedocumentID}/getEzsigntemplatesignatures\n- GET /1/object/notificationtest/{pkiNotificationtestID}/getElements\n- GET /2/object/inscriptionchecklist/getAutocomplete\n- GET /2/object/signature/{pkiSignatureID}\n- GET /3/object/ezsignsignature/{pkiEzsignsignatureID}\n- GET /3/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID} \n- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/reorder\n- POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl\n- PUT /1/object/ezsignbulksend/{pkiEzsignbulksendID}\n- PUT /1/object/systemconfiguration/{pkiSystemconfigurationID}\n- PUT /2/object/ezsignsignature/{pkiEzsignsignatureID}\n- PUT /2/object/ezsigntemplatesignature/{pkiEzsigntemplatesignatureID}\n\n## Older Releases\nDocumentation and changelog for older releases can be found here\n- [1.2.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.2.html)\n- [1.1.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.1.html)\n- [1.0.x Releases Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.0.html)\n",
             "x-displayName": "Changelog"
         },
         {
