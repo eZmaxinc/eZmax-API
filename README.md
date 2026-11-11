@@ -1,26 +1,21 @@
-# eZmax-API
+# eZmax API Specifications
 
-This repository contains the API documentation and definition for the eZmax and eZsign products.
+This repository contains the official API specifications for **eZmax** and **eZsign**.
 
-For more details about these products, please visit:
-- [eZmax.com](https://ezmax.com)
-- [eZsign.com](https://ezsign.com)
+## Developer Portal
 
-You can find the API specification files in the `specs` directory and the HTML documentation files in the `docs` directory.
+**Looking for API documentation, integration guides, examples, or technical resources?**
 
-We provide two versions of the documentation:
+Visit the **[eZmax Developer Portal](https://ezmax.dev)** — your central resource for everything related to integrating with eZmax and eZsign.
 
-## Full Documentation
-- [eZmax API Documentation (Full)](https://ezmaxinc.github.io/eZmax-API/docs/full/ezmax.v1.3.html)
-  
-The full documentation encompasses all endpoints, including both current and deprecated ones. It offers a comprehensive overview of the entire eZmax API, providing detailed information on every aspect of the API's functionality.
+## Repository Contents
 
-## Partial Documentations
-- [eZmax API Documentation (Ezsign)](https://ezmaxinc.github.io/eZmax-API/docs/partial/ezsign/ezmax.v1.3.html)
-- [eZmax API Documentation (RemaxQC)](https://ezmaxinc.github.io/eZmax-API/docs/partial/remaxqc/ezmax.v1.3.html)
-  
-These customized documentation versions provide a focused insight into the API functionalities, catering to distinct projects or purposes. It's important to note that the endpoints documented in these versions are identical to those in the full documentation; however, they selectively highlight the most frequently used functionalities, ensuring developers have a streamlined reference while not encompassing the entirety of the API's capabilities.
-  
-## Definition Files:
-- [eZmax API Definition (OpenAPI) (Full)](https://ezmaxinc.github.io/eZmax-API/specs/ezmax.v1.3.json)
-- [eZmax API Definition (Postman) (Full)](https://ezmaxinc.github.io/eZmax-API/specs/ezmax.v1.3%20%5BPostman%5D.json)
+| Directory | Description |
+|---|---|
+| `specs/` | API specifications |
+| `changelogs/` | Change history and release notes |
+
+## Products
+
+- **[eZmax](https://ezmax.com)** – Real estate brokerage management platform.
+- **[eZsign](https://ezsign.com)** – Electronic signature platform.
