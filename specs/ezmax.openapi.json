@@ -44,7 +44,38 @@
                     "default": "ca-central-1",
                     "description": "The region where your services are hosted."
                 }
-            }
+            },
+            "x-tag-groups": [
+                "Module",
+                "Object",
+                "Report",
+                "Scim",
+                "Tool"
+            ]
+        },
+        {
+            "url": "https://{sInfrastructureenvironmenttypeDescription}.payment.{sInfrastructureregionCode}.ezmax.com/rest",
+            "description": "",
+            "variables": {
+                "sInfrastructureenvironmenttypeDescription": {
+                    "enum": [
+                        "prod",
+                        "dev"
+                    ],
+                    "default": "prod",
+                    "description": "The environment on on which to call the API. Should always be \"prod\" unless instructed otherwise by support."
+                },
+                "sInfrastructureregionCode": {
+                    "enum": [
+                        "ca-central-1"
+                    ],
+                    "default": "ca-central-1",
+                    "description": "The region where your services are hosted."
+                }
+            },
+            "x-tag-groups": [
+                "Payment"
+            ]
         },
         {
             "url": "https://{sInfrastructureenvironmenttypeDescription}.api.global.ezmax.com",
@@ -58,7 +89,10 @@
                     "default": "prod",
                     "description": "The environment on on which to call the API. Should always be \"prod\" unless instructed otherwise by support."
                 }
-            }
+            },
+            "x-tag-groups": [
+                "Global"
+            ]
         },
         {
             "url": "wss://ws.{sInfrastructureregionCode}.ezmax.com/{sInfrastructureenvironmenttypeDescription}",
@@ -82,7 +116,17 @@
                     "default": "ca-central-1",
                     "description": "The region where your services are hosted."
                 }
-            }
+            },
+            "x-tag-groups": [
+                "Websocket"
+            ]
+        },
+        {
+            "url": "https://www.example.com",
+            "description": "This is an example of an external server.",
+            "x-tag-groups": [
+                "External"
+            ]
         }
     ],
     "paths": {
