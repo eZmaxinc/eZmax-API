@@ -8,13 +8,6 @@ This repository contains the official API specifications for **eZmax** and **eZs
 
 Visit the **[eZmax Developer Portal](https://ezmax.dev)** — your central resource for everything related to integrating with eZmax and eZsign.
 
-## Repository Contents
-
-| Directory | Description |
-|---|---|
-| `specs/` | API specifications |
-| `changelogs/` | Change history and release notes |
-
 ## Products
 
 - **[eZmax](https://ezmax.com)** – Real estate brokerage management platform.
