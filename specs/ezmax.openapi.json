@@ -214,6 +214,12 @@
                             }
                         },
                         "description": "Successful response"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Response-Error-403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
                     }
                 },
                 "security": [
@@ -9842,6 +9848,56 @@
                 ]
             }
         },
+        "/1/object/discussion/improveMessage": {
+            "description": "",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/discussion-improveMessage-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Discussion"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/discussion-improveMessage-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Response-Error-422"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Discussion_ImproveMessage_V1",
+                "summary": "Improve a message using the AI",
+                "description": "Improve a message using the AI.",
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ],
+                "x-systemconfigurationtype": [
+                    "All"
+                ]
+            }
+        },
         "/1/object/discussionmembership": {
             "description": "",
             "post": {
@@ -13318,6 +13374,353 @@
                 "x-permissions": [
                     "All"
                 ],
+                "x-systemconfigurationtype": [
+                    "All"
+                ]
+            }
+        },
+        "/2/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Ezmaxpartnerproductstage"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezmaxpartnerproductstage-getObject-v2-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezmaxpartnerproductstage_GetObject_V2",
+                "summary": "Retrieve an existing Ezmaxpartnerproductstage",
+                "description": "",
+                "x-systemconfigurationtype": [
+                    "All"
+                ],
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzmaxpartnerproductstageID",
+                    "description": "The unique ID of the Ezmaxpartnerproductstage",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzmaxpartnerproductstageID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagepermissions": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Ezmaxpartnerproductstage"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezmaxpartnerproductstage-getEzmaxpartnerproductstagepermissions-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezmaxpartnerproductstage_GetEzmaxpartnerproductstagepermissions_V1",
+                "summary": "Retrieve an existing Ezmaxpartnerproductstage's Ezmaxpartnerproductstagepermissions",
+                "x-systemconfigurationtype": [
+                    "All"
+                ],
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzmaxpartnerproductstageID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzmaxpartnerproductstageID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagewebhooks": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Ezmaxpartnerproductstage"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezmaxpartnerproductstage-getEzmaxpartnerproductstagewebhooks-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezmaxpartnerproductstage_GetEzmaxpartnerproductstagewebhooks_V1",
+                "summary": "Retrieve an existing Ezmaxpartnerproductstage's Ezmaxpartnerproductstagewebhooks",
+                "x-systemconfigurationtype": [
+                    "All"
+                ],
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzmaxpartnerproductstageID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzmaxpartnerproductstageID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/subscribe": {
+            "description": "",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezmaxpartnerproductstage-subscribe-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Ezmaxpartnerproductstage"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezmaxpartnerproductstage-subscribe-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezmaxpartnerproductstage_Subscribe_V1",
+                "summary": "Subscribe to the Ezmaxpartnerproductstage",
+                "x-systemconfigurationtype": [
+                    "All"
+                ],
+                "x-permissions": [
+                    "Management_EzmaxpartnerproductCompany"
+                ],
+                "x-usertypeextra": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzmaxpartnerproductstageID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzmaxpartnerproductstageID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/unsubscribe": {
+            "description": "",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ezmaxpartnerproductstage-unsubscribe-v1-Request"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "Object_Ezmaxpartnerproductstage"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezmaxpartnerproductstage-unsubscribe-v1-Response"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Response-Error-404"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezmaxpartnerproductstage_Unsubscribe_V1",
+                "summary": "Unsubscribe to the Ezmaxpartnerproductstage",
+                "x-systemconfigurationtype": [
+                    "All"
+                ],
+                "x-permissions": [
+                    "Management_EzmaxpartnerproductCompany"
+                ],
+                "x-usertypeextra": []
+            },
+            "parameters": [
+                {
+                    "name": "pkiEzmaxpartnerproductstageID",
+                    "schema": {
+                        "$ref": "#/components/schemas/Field-pkiEzmaxpartnerproductstageID"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/1/object/ezmaxpartnerproductstage/getList": {
+            "description": "",
+            "get": {
+                "tags": [
+                    "Object_Ezmaxpartnerproductstage"
+                ],
+                "parameters": [
+                    {
+                        "name": "eOrderBy",
+                        "description": "Specify how you want the results to be sorted",
+                        "schema": {
+                            "enum": [
+                                "pkiEzmaxpartnerproductstageID_ASC",
+                                "pkiEzmaxpartnerproductstageID_DESC",
+                                "efksEzmaxcustomerCode_ASC",
+                                "efksEzmaxcustomerCode_DESC",
+                                "fkiEzmaxpartnerproductID_ASC",
+                                "fkiEzmaxpartnerproductID_DESC",
+                                "sEzmaxpartnerproductNameX_ASC",
+                                "sEzmaxpartnerproductNameX_DESC",
+                                "sEzmaxpartnerproductShortdescriptionX_ASC",
+                                "sEzmaxpartnerproductShortdescriptionX_DESC",
+                                "sEzmaxpartnerproductLogourlX_ASC",
+                                "sEzmaxpartnerproductLogourlX_DESC",
+                                "fkiEzmaxpartnerID_ASC",
+                                "fkiEzmaxpartnerID_DESC",
+                                "sEzmaxpartnerNameX_ASC",
+                                "sEzmaxpartnerNameX_DESC",
+                                "eEzmaxpartnerproductstageCode_ASC",
+                                "eEzmaxpartnerproductstageCode_DESC",
+                                "bEzmaxpartnerproductstagePublished_ASC",
+                                "bEzmaxpartnerproductstagePublished_DESC",
+                                "bEzmaxpartnerproductstageInstalled_ASC",
+                                "bEzmaxpartnerproductstageInstalled_DESC"
+                            ],
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": false
+                    },
+                    {
+                        "$ref": "#/components/parameters/iRowMax"
+                    },
+                    {
+                        "$ref": "#/components/parameters/iRowOffset"
+                    },
+                    {
+                        "$ref": "#/components/parameters/AcceptLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/sFilter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ezmaxpartnerproductstage-getList-v1-Response"
+                                }
+                            },
+                            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/File-Xlsx"
+                                }
+                            }
+                        },
+                        "description": "Successful response"
+                    },
+                    "406": {
+                        "$ref": "#/components/responses/Response-Error-406"
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "operationId": "Ezmaxpartnerproductstage_GetList_V1",
+                "summary": "Retrieve Ezmaxpartnerproductstage list",
+                "description": "",
+                "x-permissions": [
+                    "All"
+                ],
+                "x-usertypeextra": [],
                 "x-systemconfigurationtype": [
                     "All"
                 ]
@@ -30746,7 +31149,9 @@
                 "x-permissions": [
                     "Inscription_TemporaryListingsAccess"
                 ],
-                "x-usertypeextra": []
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
             },
             "parameters": [
                 {
@@ -30792,7 +31197,9 @@
                 "x-permissions": [
                     "Inscription_TemporaryListingsAccess"
                 ],
-                "x-usertypeextra": []
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
             },
             "parameters": [
                 {
@@ -33460,7 +33867,9 @@
                 "x-permissions": [
                     "Inscription_OtherIncomeAccess"
                 ],
-                "x-usertypeextra": []
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
             },
             "parameters": [
                 {
@@ -33506,7 +33915,9 @@
                 "x-permissions": [
                     "Inscription_OtherIncomeAccess"
                 ],
-                "x-usertypeextra": []
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
             },
             "parameters": [
                 {
@@ -36565,7 +36976,9 @@
                 "x-permissions": [
                     "Management_RefusedPromisestoPurchase"
                 ],
-                "x-usertypeextra": []
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
             },
             "parameters": [
                 {
@@ -36611,7 +37024,9 @@
                 "x-permissions": [
                     "Management_RefusedPromisestoPurchase"
                 ],
-                "x-usertypeextra": []
+                "x-usertypeextra": [
+                    "AgentBroker"
+                ]
             },
             "parameters": [
                 {
@@ -44733,6 +45148,11 @@
                 "type": "boolean",
                 "example": true
             },
+            "Computed-bEzmaxpartnerproductstageInstalled": {
+                "description": "Whether the Ezmaxpartnerproductstage is installed or not",
+                "type": "boolean",
+                "example": false
+            },
             "Computed-bEzsigndocumentEzsignform": {
                 "description": "If the Ezsigndocument contains an Ezsignform or not",
                 "type": "boolean",
@@ -47127,6 +47547,55 @@
                     }
                 }
             },
+            "Custom-Module-Partner-ResponseCompound": {
+                "description": "A Module Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/module-Response"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "a_objModulesection": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Custom-Modulesection-Partner-ResponseCompound"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "Custom-Modulegroup-Partner-ResponseCompound": {
+                "description": "A Modulegroup Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/modulegroup-Response"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "a_objModule": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Custom-Module-Partner-ResponseCompound"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "Custom-Modulesection-Partner-ResponseCompound": {
+                "description": "A Modulesection Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/modulesection-Response"
+                    }
+                ]
+            },
             "Custom-Notificationsubsectiongetnotificationtests-Response": {
                 "description": "A Notificationsubsection Object in the context of getNotificationtests",
                 "type": "object",
@@ -47937,6 +48406,16 @@
             },
             "Field-bEzmaxpartnerIsactive": {
                 "description": "Whether the Ezmaxpartner is active or not",
+                "type": "boolean",
+                "example": false
+            },
+            "Field-bEzmaxpartnerproductstagePublished": {
+                "description": "Whether the Ezmaxpartnerproducstage is published or not",
+                "type": "boolean",
+                "example": false
+            },
+            "Field-bEzmaxpartnerproductstagesubscriptionIsinstalled": {
+                "description": "Whether the Ezmaxpartnerproductstagesubscription is installed or not",
                 "type": "boolean",
                 "example": false
             },
@@ -50426,6 +50905,84 @@
                 ],
                 "type": "string",
                 "example": "Listed"
+            },
+            "Field-eEzmaxpartnerproductstageCode": {
+                "description": "The code of the Ezmaxpartnerproductstage",
+                "enum": [
+                    "Beta",
+                    "Production"
+                ],
+                "type": "string",
+                "example": "Beta"
+            },
+            "Field-eEzmaxpartnerproductstageInstallationtype": {
+                "description": "The installation type of the Ezmaxpartnerproductstage",
+                "enum": [
+                    "Automated",
+                    "ContactEzmax",
+                    "ContactPartner"
+                ],
+                "type": "string",
+                "example": "Automated"
+            },
+            "Field-eEzmaxpartnerproductstagewebhookEzmaxpartnerevent": {
+                "description": "The Ezmaxpartnerevent of the Ezmaxpartnerproductstagewebhook",
+                "enum": [
+                    "ProductstageSubscribe",
+                    "ProductstageUnsubscribe"
+                ],
+                "type": "string",
+                "example": "ProductstageSubscribe"
+            },
+            "Field-eEzmaxpartnerproductstagewebhookEzsignevent": {
+                "description": "The ezsignevent of the Ezmaxpartnerproductstagewebhook",
+                "enum": [
+                    "DocumentCompleted",
+                    "DocumentFormCompleted",
+                    "DocumentUnsent",
+                    "EzsignsignerAcceptclause",
+                    "EzsignsignerConnect",
+                    "FolderCompleted",
+                    "FolderDisposed",
+                    "FolderSent",
+                    "FolderUnsent",
+                    "SignatureSigned"
+                ],
+                "type": "string",
+                "example": "DocumentCompleted"
+            },
+            "Field-eEzmaxpartnerproductstagewebhookManagementevent": {
+                "description": "The managementevent of the Ezmaxpartnerproductstagewebhook",
+                "enum": [
+                    "UserCreated",
+                    "UserstagedCreated"
+                ],
+                "type": "string",
+                "example": "UserCreated"
+            },
+            "Field-eEzmaxpartnerproductstagewebhookModule": {
+                "description": "The module of the Ezmaxpartnerproductstagewebhook",
+                "enum": [
+                    "Ezmaxpartner",
+                    "Ezsign",
+                    "Management",
+                    "Realestate"
+                ],
+                "type": "string",
+                "example": "Ezsign"
+            },
+            "Field-eEzmaxpartnerproductstagewebhookRealestateevent": {
+                "description": "The realestateevent of the Ezmaxpartnerproductstagewebhook",
+                "enum": [
+                    "BuyercontractCreated",
+                    "BuyercontractModified",
+                    "InscriptionCreated",
+                    "InscriptionModified",
+                    "InscriptionnotauthenticatedCreated",
+                    "InscriptionnotauthenticatedModified"
+                ],
+                "type": "string",
+                "example": "InscriptionCreated"
             },
             "Field-eEzsignannotationType": {
                 "description": "The type of the Ezsignannotation.\n\n1. **StrikethroughBlock** is a box with hatching.\n2. **StrikethroughLine** is a red line to cross words.\n3. **Text** is a simple Text.",
@@ -53259,6 +53816,11 @@
                 "type": "integer",
                 "example": 16
             },
+            "Field-pkiEzmaxpartnerproductstagesubscriptionID": {
+                "description": "The unique ID of the Ezmaxpartnerproductstagesubscription",
+                "type": "integer",
+                "example": 16
+            },
             "Field-pkiEzmaxpartnerproductstagewebhookID": {
                 "description": "The unique ID of the Ezmaxpartnerproductstagewebhook",
                 "maximum": 65535,
@@ -54293,6 +54855,10 @@
                 "type": "string",
                 "example": "Real Estate Broker"
             },
+            "Field-sApikeyApikey": {
+                "description": "The Apikey for the API key.\n\nThis will be hidden if we are not creating or regenerating the Apikey.",
+                "type": "string"
+            },
             "Field-sApikeyDescription1": {
                 "description": "The description of the Apikey in French",
                 "type": "string",
@@ -54859,11 +55425,13 @@
             "Field-sEzmaxpartnerDescription1": {
                 "description": "The description of the Ezmaxpartner in french",
                 "type": "string",
+                "pattern": "^[\\s\\S]{0,65535}$",
                 "example": "The name of the hospital in which you were born"
             },
             "Field-sEzmaxpartnerDescription2": {
                 "description": "The description of the Ezmaxpartner in english",
                 "type": "string",
+                "pattern": "^[\\s\\S]{0,65535}$",
                 "example": "The name of the hospital in which you were born"
             },
             "Field-sEzmaxpartnerLogourl1": {
@@ -54932,6 +55500,12 @@
                 "type": "string",
                 "example": "http://www.website.com/avatar.jpg"
             },
+            "Field-sEzmaxpartnerproductLogourlX": {
+                "description": "The url of the logo in the language of the requester",
+                "pattern": "^(https|http):\\/\\/[^\\s\\/$.?#].[^\\s]*$",
+                "type": "string",
+                "example": "http://www.website.com/avatar.jpg"
+            },
             "Field-sEzmaxpartnerproductName1": {
                 "description": "The name1 of the Ezmaxpartnerproduct",
                 "pattern": "^.{0,35}$",
@@ -54944,11 +55518,41 @@
                 "type": "string",
                 "example": "1"
             },
+            "Field-sEzmaxpartnerproductNameX": {
+                "description": "The name of the Ezmaxpartnerproduct in the language of the requester",
+                "pattern": "^.{0,35}$",
+                "type": "string",
+                "example": "eZsign"
+            },
+            "Field-sEzmaxpartnerproductShortdescriptionX": {
+                "description": "The short description of the Ezmaxpartnerproduct in the language of the requester",
+                "pattern": "^.{0,256}$",
+                "type": "string",
+                "example": "This is a software to e-sign documents"
+            },
             "Field-sEzmaxpartnerproductstageCode": {
                 "description": "The code of the sEzmaxpartnerproductstage",
                 "pattern": "^.{0,15}$",
                 "type": "string",
                 "example": "Default"
+            },
+            "Field-sEzmaxpartnerproductstagewebhookDescription": {
+                "description": "The description of the Ezmaxpartnerproductstagewebhook",
+                "pattern": "^.{0,80}$",
+                "type": "string",
+                "example": "Default"
+            },
+            "Field-sEzmaxpartnerproductstagewebhookEmailfailed": {
+                "description": "The emailfailed of the Ezmaxpartnerproductstagewebhook",
+                "pattern": "^.{0,75}$",
+                "type": "string",
+                "example": "email@example.com"
+            },
+            "Field-sEzmaxpartnerproductstagewebhookUrl": {
+                "description": "The url of the Ezmaxpartnerproductstagewebhook",
+                "pattern": "^.{0,65535}$",
+                "type": "string",
+                "example": "https://www.example.com"
             },
             "Field-sEzmaxproductDescriptionX": {
                 "description": "The description of the Ezmaxproduct in the language of the requester",
@@ -56837,10 +57441,10 @@
                                 "type": "string"
                             },
                             "sApikeyApikey": {
-                                "type": "string"
+                                "$ref": "#/components/schemas/Field-sApikeyApikey"
                             },
                             "sApikeySecret": {
-                                "type": "string"
+                                "$ref": "#/components/schemas/Field-sApikeySecret"
                             }
                         }
                     },
@@ -58992,12 +59596,10 @@
                         "$ref": "#/components/schemas/Custom-ContactName-Response"
                     },
                     "sApikeyApikey": {
-                        "description": "The Apikey for the API key.\n\nThis will be hidden if we are not creating or regenerating the Apikey.",
-                        "type": "string"
+                        "$ref": "#/components/schemas/Field-sApikeyApikey"
                     },
                     "sApikeySecret": {
-                        "description": "The Secret for the API key.\n\nThis will be hidden if we are not creating or regenerating the Apikey.",
-                        "type": "string"
+                        "$ref": "#/components/schemas/Field-sApikeySecret"
                     },
                     "bApikeyIsactive": {
                         "$ref": "#/components/schemas/Field-bApikeyIsactive"
@@ -66880,6 +67482,61 @@
                     }
                 }
             },
+            "discussion-improveMessage-v1-Request": {
+                "description": "Request for POST /1/object/discussion/improveMessage",
+                "required": [
+                    "eDiscussionRobot",
+                    "tDiscussionMessage"
+                ],
+                "type": "object",
+                "properties": {
+                    "fkiDiscussionID": {
+                        "$ref": "#/components/schemas/Field-pkiDiscussionID"
+                    },
+                    "eDiscussionRobot": {
+                        "$ref": "#/components/schemas/Field-eDiscussionRobot"
+                    },
+                    "tDiscussionMessage": {
+                        "$ref": "#/components/schemas/Field-tDiscussionMessage"
+                    }
+                }
+            },
+            "discussion-improveMessage-v1-Response": {
+                "description": "Response for POST /1/object/discussion",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/discussion-improveMessage-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "discussion-improveMessage-v1-Response-mPayload": {
+                "description": "Payload for POST /1/object/discussion",
+                "required": [
+                    "a_pkiDiscussionID"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_pkiDiscussionID": {
+                        "description": "An array of unique IDs representing the object that were requested to be created.\n\nThey are returned in the same order as the array containing the objects to be created that was sent in the request.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Field-pkiDiscussionID"
+                        }
+                    }
+                }
+            },
             "discussion-patchObject-v1-Request": {
                 "description": "Request for PATCH /1/object/discussion/{pkiDiscussionID}",
                 "required": [
@@ -70949,6 +71606,359 @@
                         "type": "string"
                     }
                 }
+            },
+            "ezmaxpartnerproductstage-ListElement": {
+                "description": "A Ezmaxpartnerproductstage List Element",
+                "required": [
+                    "pkiEzmaxpartnerproductstageID",
+                    "efksEzmaxcustomerCode",
+                    "fkiEzmaxpartnerproductID",
+                    "sEzmaxpartnerproductNameX",
+                    "sEzmaxpartnerproductShortdescriptionX",
+                    "sEzmaxpartnerproductLogourlX",
+                    "fkiEzmaxpartnerID",
+                    "sEzmaxpartnerNameX",
+                    "eEzmaxpartnerproductstageCode",
+                    "eEzmaxpartnerproductstageInstallationtype",
+                    "bEzmaxpartnerproductstagePublished",
+                    "bEzmaxpartnerproductstageInstalled"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzmaxpartnerproductstageID": {
+                        "$ref": "#/components/schemas/Field-pkiEzmaxpartnerproductstageID"
+                    },
+                    "efksEzmaxcustomerCode": {
+                        "$ref": "#/components/schemas/Field-pksEzmaxcustomerCode"
+                    },
+                    "fkiEzmaxpartnerproductID": {
+                        "$ref": "#/components/schemas/Field-pkiEzmaxpartnerproductID"
+                    },
+                    "sEzmaxpartnerproductNameX": {
+                        "$ref": "#/components/schemas/Field-sEzmaxpartnerproductNameX"
+                    },
+                    "sEzmaxpartnerproductShortdescriptionX": {
+                        "$ref": "#/components/schemas/Field-sEzmaxpartnerproductShortdescriptionX"
+                    },
+                    "sEzmaxpartnerproductLogourlX": {
+                        "$ref": "#/components/schemas/Field-sEzmaxpartnerproductLogourlX"
+                    },
+                    "fkiEzmaxpartnerID": {
+                        "$ref": "#/components/schemas/Field-pkiEzmaxpartnerID"
+                    },
+                    "sEzmaxpartnerNameX": {
+                        "$ref": "#/components/schemas/Field-sEzmaxpartnerNameX"
+                    },
+                    "eEzmaxpartnerproductstageCode": {
+                        "$ref": "#/components/schemas/Field-eEzmaxpartnerproductstageCode"
+                    },
+                    "eEzmaxpartnerproductstageInstallationtype": {
+                        "$ref": "#/components/schemas/Field-eEzmaxpartnerproductstageInstallationtype"
+                    },
+                    "bEzmaxpartnerproductstagePublished": {
+                        "$ref": "#/components/schemas/Field-bEzmaxpartnerproductstagePublished"
+                    },
+                    "bEzmaxpartnerproductstageInstalled": {
+                        "$ref": "#/components/schemas/Computed-bEzmaxpartnerproductstageInstalled"
+                    }
+                }
+            },
+            "ezmaxpartnerproductstage-Response": {
+                "description": "A Ezmaxpartnerproductstage Object",
+                "required": [
+                    "pkiEzmaxpartnerproductstageID",
+                    "fkiEzmaxpartnerproductID",
+                    "eEzmaxpartnerproductstageCode",
+                    "eEzmaxpartnerproductstageInstallationtype",
+                    "bEzmaxpartnerproductstagePublished",
+                    "bEzmaxpartnerproductstageInstalled"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzmaxpartnerproductstageID": {
+                        "$ref": "#/components/schemas/Field-pkiEzmaxpartnerproductstageID"
+                    },
+                    "fkiEzmaxpartnerproductID": {
+                        "$ref": "#/components/schemas/Field-pkiEzmaxpartnerproductID"
+                    },
+                    "eEzmaxpartnerproductstageCode": {
+                        "$ref": "#/components/schemas/Field-eEzmaxpartnerproductstageCode"
+                    },
+                    "eEzmaxpartnerproductstageInstallationtype": {
+                        "$ref": "#/components/schemas/Field-eEzmaxpartnerproductstageInstallationtype"
+                    },
+                    "bEzmaxpartnerproductstagePublished": {
+                        "$ref": "#/components/schemas/Field-bEzmaxpartnerproductstagePublished"
+                    },
+                    "bEzmaxpartnerproductstageInstalled": {
+                        "$ref": "#/components/schemas/Computed-bEzmaxpartnerproductstageInstalled"
+                    },
+                    "objEzmaxpartnerproductstagesubscription": {
+                        "$ref": "#/components/schemas/ezmaxpartnerproductstagesubscription-Response"
+                    }
+                }
+            },
+            "ezmaxpartnerproductstage-ResponseCompound": {
+                "description": "A Ezmaxpartnerproductstage Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezmaxpartnerproductstage-Response"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
+            },
+            "ezmaxpartnerproductstage-getEzmaxpartnerproductstagepermissions-v1-Response": {
+                "description": "Response for GET /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagepermissions",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezmaxpartnerproductstage-getEzmaxpartnerproductstagepermissions-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezmaxpartnerproductstage-getEzmaxpartnerproductstagepermissions-v1-Response-mPayload": {
+                "description": "Response for GET /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagepermissions",
+                "required": [
+                    "a_objModulegroup"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objModulegroup": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Custom-Modulegroup-Partner-ResponseCompound"
+                        }
+                    }
+                }
+            },
+            "ezmaxpartnerproductstage-getEzmaxpartnerproductstagewebhooks-v1-Response": {
+                "description": "Response for GET /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagewebhooks",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezmaxpartnerproductstage-getEzmaxpartnerproductstagewebhooks-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezmaxpartnerproductstage-getEzmaxpartnerproductstagewebhooks-v1-Response-mPayload": {
+                "description": "Response for GET /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/getEzmaxpartnerproductstagewebhooks",
+                "required": [
+                    "a_objEzmaxpartnerproductstagewebhook"
+                ],
+                "type": "object",
+                "properties": {
+                    "a_objEzmaxpartnerproductstagewebhook": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ezmaxpartnerproductstagewebhook-ResponseCompound"
+                        }
+                    }
+                }
+            },
+            "ezmaxpartnerproductstage-getList-v1-Response": {
+                "description": "Response for GET /1/object/ezmaxpartnerproductstage/getList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezmaxpartnerproductstage-getList-v1-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response_getList"
+                    }
+                ]
+            },
+            "ezmaxpartnerproductstage-getList-v1-Response-mPayload": {
+                "description": "Payload for GET /1/object/ezmaxpartnerproductstage/getList",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "a_objEzmaxpartnerproductstage"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "a_objEzmaxpartnerproductstage": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/ezmaxpartnerproductstage-ListElement"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-getList-v1-Response-mPayload"
+                    }
+                ]
+            },
+            "ezmaxpartnerproductstage-getObject-v2-Response": {
+                "description": "Response for GET /2/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "mPayload"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "mPayload": {
+                                "$ref": "#/components/schemas/ezmaxpartnerproductstage-getObject-v2-Response-mPayload"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezmaxpartnerproductstage-getObject-v2-Response-mPayload": {
+                "description": "Payload for GET /2/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}",
+                "required": [
+                    "objEzmaxpartnerproductstage"
+                ],
+                "type": "object",
+                "properties": {
+                    "objEzmaxpartnerproductstage": {
+                        "$ref": "#/components/schemas/ezmaxpartnerproductstage-ResponseCompound"
+                    }
+                }
+            },
+            "ezmaxpartnerproductstage-subscribe-v1-Request": {
+                "description": "Request for POST /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/subscribe\n\nIntentionally empty for future-proofing",
+                "type": "object"
+            },
+            "ezmaxpartnerproductstage-subscribe-v1-Response": {
+                "description": "Response for POST /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/subscribe",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezmaxpartnerproductstage-unsubscribe-v1-Request": {
+                "description": "Request for POST /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/subscribe\n\nIntentionally empty for future-proofing",
+                "type": "object"
+            },
+            "ezmaxpartnerproductstage-unsubscribe-v1-Response": {
+                "description": "Response for POST /1/object/ezmaxpartnerproductstage/{pkiEzmaxpartnerproductstageID}/unsubscribe",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Common-Response"
+                    }
+                ]
+            },
+            "ezmaxpartnerproductstagesubscription-Response": {
+                "description": "A Ezmaxpartnerproductstagesubscription-Response Object",
+                "required": [
+                    "pkiEzmaxpartnerproductstagesubscriptionID",
+                    "fkiEzmaxpartnerproductstageID",
+                    "bEzmaxpartnerproductstagesubscriptionIsinstalled",
+                    "objAudit"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzmaxpartnerproductstagesubscriptionID": {
+                        "$ref": "#/components/schemas/Field-pkiEzmaxpartnerproductstagesubscriptionID"
+                    },
+                    "fkiEzmaxpartnerproductstageID": {
+                        "$ref": "#/components/schemas/Field-pkiEzmaxpartnerproductstageID"
+                    },
+                    "bEzmaxpartnerproductstagesubscriptionIsinstalled": {
+                        "$ref": "#/components/schemas/Field-bEzmaxpartnerproductstagesubscriptionIsinstalled"
+                    },
+                    "objAudit": {
+                        "$ref": "#/components/schemas/Common-Audit"
+                    }
+                }
+            },
+            "ezmaxpartnerproductstagewebhook-Response": {
+                "description": "A Ezmaxpartnerproductstagewebhook Object",
+                "required": [
+                    "fkiEzmaxpartnerproductstageID",
+                    "eEzmaxpartnerproductstagewebhookModule"
+                ],
+                "type": "object",
+                "properties": {
+                    "pkiEzmaxpartnerproductstagewebhookID": {
+                        "$ref": "#/components/schemas/Field-pkiEzmaxpartnerproductstagewebhookID"
+                    },
+                    "fkiEzmaxpartnerproductstageID": {
+                        "$ref": "#/components/schemas/Field-pkiEzmaxpartnerproductstageID"
+                    },
+                    "sEzmaxpartnerproductstageCode": {
+                        "$ref": "#/components/schemas/Field-sEzmaxpartnerproductstageCode"
+                    },
+                    "eEzmaxpartnerproductstagewebhookModule": {
+                        "$ref": "#/components/schemas/Field-eEzmaxpartnerproductstagewebhookModule"
+                    },
+                    "eEzmaxpartnerproductstagewebhookEzmaxpartnerevent": {
+                        "$ref": "#/components/schemas/Field-eEzmaxpartnerproductstagewebhookEzmaxpartnerevent"
+                    },
+                    "eEzmaxpartnerproductstagewebhookEzsignevent": {
+                        "$ref": "#/components/schemas/Field-eEzmaxpartnerproductstagewebhookEzsignevent"
+                    },
+                    "eEzmaxpartnerproductstagewebhookManagementevent": {
+                        "$ref": "#/components/schemas/Field-eEzmaxpartnerproductstagewebhookManagementevent"
+                    },
+                    "eEzmaxpartnerproductstagewebhookRealestateevent": {
+                        "$ref": "#/components/schemas/Field-eEzmaxpartnerproductstagewebhookRealestateevent"
+                    },
+                    "sEzmaxpartnerproductstagewebhookDescription": {
+                        "$ref": "#/components/schemas/Field-sEzmaxpartnerproductstagewebhookDescription"
+                    },
+                    "sEzmaxpartnerproductstagewebhookUrl": {
+                        "$ref": "#/components/schemas/Field-sEzmaxpartnerproductstagewebhookUrl"
+                    },
+                    "sEzmaxpartnerproductstagewebhookEmailfailed": {
+                        "$ref": "#/components/schemas/Field-sEzmaxpartnerproductstagewebhookEmailfailed"
+                    }
+                }
+            },
+            "ezmaxpartnerproductstagewebhook-ResponseCompound": {
+                "description": "A Ezmaxpartnerproductstagewebhook Object",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ezmaxpartnerproductstagewebhook-Response"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ]
             },
             "ezmaxproduct-AutocompleteElement-Response": {
                 "description": "A Ezmaxproduct AutocompleteElement Response",
@@ -102977,6 +103987,11 @@
             "x-displayName": "Ezmaxpartnerproduct"
         },
         {
+            "name": "Object_Ezmaxpartnerproductstage",
+            "description": "Ezmaxpartnerproductstage contains details about Ezmaxpartnerproductstages",
+            "x-displayName": "Ezmaxpartnerproductstage"
+        },
+        {
             "name": "Object_Ezmaxproduct",
             "description": "Ezmaxproduct contains details about Ezmaxproducts",
             "x-displayName": "Ezmaxproduct"
@@ -104276,6 +105291,7 @@
                 "Object_Ezmaxmaillinglist",
                 "Object_Ezmaxpartner",
                 "Object_Ezmaxpartnerproduct",
+                "Object_Ezmaxpartnerproductstage",
                 "Object_Ezmaxproduct",
                 "Object_Ezsignannotation",
                 "Object_Ezsignbulksend",
