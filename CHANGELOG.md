@@ -85,7 +85,7 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 
 ---
 
-### [1.3.4] - 2026-XX-XX
+### [1.3.4] - 2026-11-27
 
 #### Added
 - DELETE /1/object/documenttypechecklist/{pkiDocumenttypechecklistID}
