@@ -35,7 +35,6 @@ You can now **combine and alternate form steps and signature steps** within the 
 
 This provides greater flexibility, but it also changes how **step numbers** are defined and managed.
 
-
 * **Endpoints introduced in 1.3.0** (listed below) use the *new step numbering model*.
 * **Endpoints from previous versions (≤ 1.2.2)** use the *old step numbering model*.
 * These two models are **not compatible** — mixing old and new endpoints within the same implementation could cause inconsistencies.
@@ -86,32 +85,130 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 
 ---
 
-### [1.3.4] - 2026-XX-XX
+### [1.3.4] - 2026-11-27
 
 #### Added
-- DELETE /1/object/documenttype/{pkiDocumenttypeID}
-- DELETE /1/object/documenttypechecklist/{pkiDocumenttypechecklistID}
+- GET /1/object/adjustment/getList
 - GET /1/object/adjustment/{pkiAdjustmentID}/getAttachments
 - GET /1/object/adjustment/{pkiAdjustmentID}/getCommunicationCount
 - GET /1/object/adjustment/{pkiAdjustmentID}/getCommunicationList
 - GET /1/object/adjustment/{pkiAdjustmentID}/getCommunicationrecipients
 - GET /1/object/adjustment/{pkiAdjustmentID}/getCommunicationsenders
-- GET /1/object/adjustment/getList
 - GET /1/object/adjustmentreminder/getList
+- GET /1/object/agent/{pkiAgentID}/getAttachments
+- GET /1/object/agent/{pkiAgentID}/getCommunicationCount
+- GET /1/object/agent/{pkiAgentID}/getCommunicationList
+- GET /1/object/agent/{pkiAgentID}/getCommunicationrecipients
+- GET /1/object/agent/{pkiAgentID}/getCommunicationsenders
 - GET /1/object/bankaccount/getList
+- GET /1/object/bankaccount/{pkiBankaccountID}/getAttachments
+- GET /1/object/bankaccount/{pkiBankaccountID}/getCommunicationCount
+- GET /1/object/bankaccount/{pkiBankaccountID}/getCommunicationList
+- GET /1/object/bankaccount/{pkiBankaccountID}/getCommunicationrecipients
+- GET /1/object/bankaccount/{pkiBankaccountID}/getCommunicationsenders
+- GET /1/object/broker/{pkiBrokerID}/getAttachments
+- GET /1/object/broker/{pkiBrokerID}/getCommunicationCount
+- GET /1/object/broker/{pkiBrokerID}/getCommunicationList
+- GET /1/object/broker/{pkiBrokerID}/getCommunicationrecipients
+- GET /1/object/broker/{pkiBrokerID}/getCommunicationsenders
+- GET /1/object/buyercontract/{pkiBuyercontractID}/getAttachments
+- GET /1/object/commissionadvance/{pkiCommissionadvanceID}/getAttachments
+- GET /1/object/commissionadvance/{pkiCommissionadvanceID}/getCommunicationCount
+- GET /1/object/commissionadvance/{pkiCommissionadvanceID}/getCommunicationList
+- GET /1/object/commissionadvance/{pkiCommissionadvanceID}/getCommunicationrecipients
+- GET /1/object/commissionadvance/{pkiCommissionadvanceID}/getCommunicationsenders
+- GET /1/object/customer/{pkiCustomerID}/getAttachments
+- GET /1/object/customer/{pkiCustomerID}/getCommunicationCount
+- GET /1/object/customer/{pkiCustomerID}/getCommunicationList
+- GET /1/object/customer/{pkiCustomerID}/getCommunicationrecipients
+- GET /1/object/customer/{pkiCustomerID}/getCommunicationsenders
 - GET /1/object/deposit/getList
+- GET /1/object/deposit/{pkiDepositID}/getAttachments
+- GET /1/object/deposit/{pkiDepositID}/getCommunicationCount
+- GET /1/object/deposit/{pkiDepositID}/getCommunicationList
+- GET /1/object/deposit/{pkiDepositID}/getCommunicationrecipients
+- GET /1/object/deposit/{pkiDepositID}/getCommunicationsenders
 - GET /1/object/deposittransitcheque/getList
+- GET /1/object/deposittransitcheque/{pkiDeposittransitchequeID}/getAttachments
+- GET /1/object/deposittransitcheque/{pkiDeposittransitchequeID}/getCommunicationCount
+- GET /1/object/deposittransitcheque/{pkiDeposittransitchequeID}/getCommunicationList
+- GET /1/object/deposittransitcheque/{pkiDeposittransitchequeID}/getCommunicationrecipients
+- GET /1/object/deposittransitcheque/{pkiDeposittransitchequeID}/getCommunicationsenders
 - GET /1/object/disclosure/getList
+- GET /1/object/disclosure/{pkiDisclosureID}/getAttachments
+- GET /1/object/disclosure/{pkiDisclosureID}/getCommunicationCount
+- GET /1/object/disclosure/{pkiDisclosureID}/getCommunicationList
+- GET /1/object/disclosure/{pkiDisclosureID}/getCommunicationrecipients
+- GET /1/object/disclosure/{pkiDisclosureID}/getCommunicationsenders
 - GET /1/object/electronicfundstransfer/getList
+- GET /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/getAttachments
 - GET /1/object/electronicfundstransfertransaction/getList
+- GET /1/object/employee/{pkiEmployeeID}/getAttachments
+- GET /1/object/employee/{pkiEmployeeID}/getCommunicationCount
+- GET /1/object/employee/{pkiEmployeeID}/getCommunicationList
+- GET /1/object/employee/{pkiEmployeeID}/getCommunicationrecipients
+- GET /1/object/employee/{pkiEmployeeID}/getCommunicationsenders
+- GET /1/object/externalbroker/{pkiExternalbrokerID}/getAttachments
+- GET /1/object/externalbroker/{pkiExternalbrokerID}/getCommunicationCount
+- GET /1/object/externalbroker/{pkiExternalbrokerID}/getCommunicationList
+- GET /1/object/externalbroker/{pkiExternalbrokerID}/getCommunicationrecipients
+- GET /1/object/externalbroker/{pkiExternalbrokerID}/getCommunicationsenders
+- GET /1/object/folder/{pkiFolderID}/getAttachments
+- GET /1/object/folder/{pkiFolderID}/getCommunicationCount
+- GET /1/object/folder/{pkiFolderID}/getCommunicationList
+- GET /1/object/folder/{pkiFolderID}/getCommunicationrecipients
+- GET /1/object/folder/{pkiFolderID}/getCommunicationsenders
+- GET /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/getAttachments
+- GET /1/object/inscriptiontemp/{pkiInscriptiontempID}/getAttachments
 - GET /1/object/invoice/getList
+- GET /1/object/lead/{pkiLeadID}/getAttachments
+- GET /1/object/lead/{pkiLeadID}/getCommunicationCount
+- GET /1/object/lead/{pkiLeadID}/getCommunicationList
+- GET /1/object/lead/{pkiLeadID}/getCommunicationrecipients
+- GET /1/object/lead/{pkiLeadID}/getCommunicationsenders
 - GET /1/object/notary/getList
+- GET /1/object/notary/{pkiNotaryID}/getAttachments
+- GET /1/object/notary/{pkiNotaryID}/getCommunicationCount
+- GET /1/object/notary/{pkiNotaryID}/getCommunicationList
+- GET /1/object/notary/{pkiNotaryID}/getCommunicationrecipients
+- GET /1/object/notary/{pkiNotaryID}/getCommunicationsenders
 - GET /1/object/officetaxreport/getList
+- GET /1/object/officetaxreport/{pkiOfficetaxreportID}/getAttachments
+- GET /1/object/officetaxreport/{pkiOfficetaxreportID}/getCommunicationCount
+- GET /1/object/officetaxreport/{pkiOfficetaxreportID}/getCommunicationList
+- GET /1/object/officetaxreport/{pkiOfficetaxreportID}/getCommunicationrecipients
+- GET /1/object/officetaxreport/{pkiOfficetaxreportID}/getCommunicationsenders
+- GET /1/object/otherincome/{pkiOtherincomeID}/getAttachments
+- GET /1/object/paymentpreparation/{pkiPaymentpreparationID}/getAttachments
+- GET /1/object/paymentpreparation/{pkiPaymentpreparationID}/getCommunicationCount
+- GET /1/object/paymentpreparation/{pkiPaymentpreparationID}/getCommunicationList
+- GET /1/object/paymentpreparation/{pkiPaymentpreparationID}/getCommunicationrecipients
+- GET /1/object/paymentpreparation/{pkiPaymentpreparationID}/getCommunicationsenders
 - GET /1/object/purchase/getList
+- GET /1/object/purchase/{pkiPurchaseID}/getAttachments
+- GET /1/object/purchase/{pkiPurchaseID}/getCommunicationCount
+- GET /1/object/purchase/{pkiPurchaseID}/getCommunicationList
+- GET /1/object/purchase/{pkiPurchaseID}/getCommunicationrecipients
+- GET /1/object/purchase/{pkiPurchaseID}/getCommunicationsenders
+- GET /1/object/reconciliation/{pkiReconciliationID}/getAttachments
+- GET /1/object/reconciliation/{pkiReconciliationID}/getCommunicationCount
+- GET /1/object/reconciliation/{pkiReconciliationID}/getCommunicationList
+- GET /1/object/reconciliation/{pkiReconciliationID}/getCommunicationrecipients
+- GET /1/object/reconciliation/{pkiReconciliationID}/getCommunicationsenders
+- GET /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/getAttachments
 - GET /1/object/salary/getList
-- GET /2/module/ezsign/suggestTemplates
+- GET /1/object/salary/{pkiSalaryID}/getAttachments
+- GET /1/object/salary/{pkiSalaryID}/getCommunicationCount
+- GET /1/object/salary/{pkiSalaryID}/getCommunicationList
+- GET /1/object/salary/{pkiSalaryID}/getCommunicationrecipients
+- GET /1/object/salary/{pkiSalaryID}/getCommunicationsenders
+- GET /1/object/supplier/{pkiSupplierID}/getAttachments
+- GET /1/object/supplier/{pkiSupplierID}/getCommunicationCount
+- GET /1/object/supplier/{pkiSupplierID}/getCommunicationList
+- GET /1/object/supplier/{pkiSupplierID}/getCommunicationrecipients
+- GET /1/object/supplier/{pkiSupplierID}/getCommunicationsenders
 - GET /2/object/attachmentrejectreason/getAutocomplete/{sSelector}
-- GET /2/object/ezsignbulksenddocumentmapping/{pkiEzsignbulksenddocumentmappingID}
+- GET /3/object/ezsignbulksenddocumentmapping/{pkiEzsignbulksenddocumentmappingID}
 - GET /3/object/ezsignbulksendsignermapping/{pkiEzsignbulksendsignermappingID}
 - GET /3/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}
 - GET /3/object/ezsigntemplatepackagemembership/{pkiEzsigntemplatepackagemembershipID}
@@ -119,31 +216,64 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - GET /3/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}
 - GET /4/object/ezsignbulksend/{pkiEzsignbulksendID}
 - GET /4/object/ezsigntemplate/{pkiEzsigntemplateID}
-- GET /1/object/documenttype/getList
-- GET /2/object/documenttype/{pkiDocumenttypeID}
-- GET /2/object/documenttype/getAutocomplete/{sSelector}
-- PUT /2/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}/editEzsigntemplatepackagesigners
-- PUT /2/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}
-- PUT /2/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}
-- PUT /1/object/documenttype/{pkiDocumenttypeID}
+- POST /1/object/adjustment/{pkiAdjustmentID}/batchDownload
 - POST /1/object/adjustment/{pkiAdjustmentID}/importIntoEDM
-- POST /2/object/ezsignbulksendsignermapping
-- POST /2/object/ezsigntemplatepackagesigner
-- POST /2/object/ezsigntemplatesigner
+- POST /1/object/agent/{pkiAgentID}/batchDownload
 - POST /1/object/attachment/{pkiAttachmentID}/delete
 - POST /1/object/attachment/{pkiAttachmentID}/rename
 - POST /1/object/attachment/{pkiAttachmentID}/restore
+- POST /1/object/attachment/{pkiAttachmentID}/setPrivacy
 - POST /1/object/attachment/{pkiAttachmentID}/validate
-- POST /1/object/documenttype
-- PATCH /1/object/attachment/{pkiAttachmentID}/setDocumentType
-- PATCH /1/object/attachment/{pkiAttachmentID}/setPrivacy
-- PATCH /1/object/documenttypechecklist/{pkiDocumenttypechecklistID}
+- POST /1/object/bankaccount/{pkiBankaccountID}/batchDownload
+- POST /1/object/bankaccount/{pkiBankaccountID}/importIntoEDM
+- POST /1/object/broker/{pkiBrokerID}/batchDownload
+- POST /1/object/buyercontract/{pkiBuyercontractID}/batchDownload
+- POST /1/object/commissionadvance/{pkiCommissionadvanceID}/batchDownload
+- POST /1/object/commissionadvance/{pkiCommissionadvanceID}/importIntoEDM
+- POST /1/object/customer/{pkiCustomerID}/batchDownload
+- POST /1/object/deposit/{pkiDepositID}/batchDownload
+- POST /1/object/deposit/{pkiDepositID}/importIntoEDM
+- POST /1/object/deposittransitcheque/{pkiDeposittransitchequeID}/batchDownload
+- POST /1/object/deposittransitcheque/{pkiDeposittransitchequeID}/importIntoEDM
+- POST /1/object/disclosure/{pkiDisclosureID}/batchDownload
+- POST /1/object/disclosure/{pkiDisclosureID}/importIntoEDM
+- POST /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/batchDownload
+- POST /1/object/employee/{pkiEmployeeID}/batchDownload
+- POST /1/object/externalbroker/{pkiExternalbrokerID}/batchDownload
+- POST /1/object/ezsignfolder/{pkiEzsignfolderID}/batchDownload
+- POST /1/object/folder/{pkiFolderID}/batchDownload
+- POST /1/object/folder/{pkiFolderID}/importIntoEDM
+- POST /1/object/inscription/{pkiInscriptionID}/batchDownload
+- POST /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/batchDownload
+- POST /1/object/inscriptiontemp/{pkiInscriptiontempID}/batchDownload
+- POST /1/object/invoice/{pkiInvoiceID}/batchDownload
+- POST /1/object/lead/{pkiLeadID}/batchDownload
+- POST /1/object/notary/{pkiNotaryID}/batchDownload
+- POST /1/object/notary/{pkiNotaryID}/importIntoEDM
+- POST /1/object/officetaxreport/{pkiOfficetaxreportID}/batchDownload
+- POST /1/object/officetaxreport/{pkiOfficetaxreportID}/importIntoEDM
+- POST /1/object/otherincome/{pkiOtherincomeID}/batchDownload
+- POST /1/object/paymentpreparation/{pkiPaymentpreparationID}/batchDownload
+- POST /1/object/paymentpreparation/{pkiPaymentpreparationID}/importIntoEDM
+- POST /1/object/purchase/{pkiPurchaseID}/batchDownload
+- POST /1/object/purchase/{pkiPurchaseID}/importIntoEDM
+- POST /1/object/reconciliation/{pkiReconciliationID}/batchDownload
+- POST /1/object/reconciliation/{pkiReconciliationID}/importIntoEDM
+- POST /1/object/rejectedoffertopurchase/{pkiRejectedoffertopurchaseID}/batchDownload
+- POST /1/object/salary/{pkiSalaryID}/batchDownload
+- POST /1/object/salary/{pkiSalaryID}/importIntoEDM
+- POST /1/object/supplier/{pkiSupplierID}/batchDownload
+- POST /2/object/ezsignbulksendsignermapping
+- POST /2/object/ezsigntemplatepackagesigner
+- POST /2/object/ezsigntemplatesigner
+- PUT /2/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}/editEzsigntemplatepackagesigners
+- PUT /2/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}
+- PUT /2/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}
 - Selector AttachmentSpecificUser in GET /2/object/user/getAutocomplete/{sSelector}
 - Selector Required in GET /3/object/inscriptionchecklist/getAutocomplete/{sSelector}
 - Parameter fkiAttachmentID in GET /2/object/user/getAutocomplete/{sSelector}
 - Property dtAgentPermitexpiration in agent-ListElement
 - Property dtEzsignformfieldgroupCompleted in ezsignformfieldgroup-Response
-- Property eEzmaxcaseGooddaytaskstatus in ezmaxcase-Response and ezmaxcase-Listelement
 - Property eEzsignfoldersignerassociationRole in ezsignfoldersignerassociation-RequestPatch
 - Property fkiAgentID in user-ListElement
 - Property fkiBrokerID in user-ListElement
@@ -151,6 +281,15 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - Property objCreditcardmerchant in ezsignsignature-ResponseCompound
 - Property objUserSpecific in attachment-Response
 - Property eWebhookEzmaxpartnerevent in webhook-sendWebhook-v1-Request
+- Property sUserLoginname in Custom-UserName-Response
+- Property fkiCompanyID in activesession-Response
+- Property fkiDepartmentID in activesession-Response
+- Property fkiDocumenttypechecklistID in attachment-Response
+- Property sDocumenttypeNameX in attachment-Response
+- Property objUser in attachmentlog-Response
+- Property bKeepenteredvalues in ezsignfolder-duplicate-v1-Request
+- Property fkiInscriptionnotauthenticatedID in communicationreference-Request
+- Property objInscription in inscriptionnotauthenticated-Response
 - Enum value 'Optional' for Field-eEzsigntemplatesignatureConsultationtrigger
 - Enum value 'CCDeleted' for Field-eEzsignfoldersignerassociationRole
 - Enum value 'BuyercontractCreated' for Field-eWebhookRealestateevent
@@ -158,15 +297,17 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - Enum value 'CONFLICT' for Field-eErrorCode
 - Enum value 'Pending' for Field-eAttachmentVerified
 - Enum value 'Pending' for Field-eAttachmentlogType
+- Enum value 'Realestate' for Field-eEzmaxpartnerproductstagewebhookModule
 - Webhook Buyercontract BuyercontractCreated
 - Webhook Buyercontract BuyercontractModified
 
+#### Deprecated
+- GET /3/object/inscriptionchecklist/getAutocomplete/{sSelector}
 
 ### [1.3.3] - 2026-07-22
 
 #### Fixed
-- Minor structurals changes
-
+- Minor structural changes
 
 ### [1.3.2] - 2026-07-21
 
@@ -188,7 +329,6 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - Webhook Realestate InscriptionModified
 - Webhook Realestate InscriptionnotauthenticatedCreated
 - Webhook Realestate InscriptionnotauthenticatedModified
-
 
 ### [1.3.1] - 2026-06-17
 
@@ -217,7 +357,7 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - POST /3/object/ezsignfolder/{pkiEzsignfolderID}/importEzsigntemplatepackage
 - Selector AgentBrokerEmployeeEzsignUserNormal in GET /2/object/user/getAutocomplete/{sSelector}
 - Properties dtAgentContractdate, dtAgentTransferdate, dtAgentSenioritydate, dtAgentSickleavestart and dtAgentSickleaveend in agent-ListElement
-- Properties fkiCountryID and fkiProvinceID in agent-ListElement, broker-ListElement, customer-ListElement, employee-ListElement, inscription-ListElement, inscriptionnotauthenticated-ListElement, rejectedoffertopurchase-ListElement and supplier-ListElement  
+- Properties fkiCountryID and fkiProvinceID in agent-ListElement, broker-ListElement, customer-ListElement, employee-ListElement, inscription-ListElement, inscriptionnotauthenticated-ListElement, rejectedoffertopurchase-ListElement and supplier-ListElement
 - Properties fkiEzsignbulksendID, sEzsignbulksendDescription, fkiEzsignbulksendtransmissionID, sEzsignbulksendtransmissionDescription, fkiEzsigntemplatepublicID, sEzsigntemplatepublicDescription, eEzsignfolderSource in object ezsignfolder-ListElement
 - Properties bEzsignfoldertypeSenddocumentmergetoemail, bEzsignfoldertypeSenddocumentmergetoezsignsigner, bEzsignfoldertypeSenddocumentmergetoreceivealldocument and bEzsignfoldertypeSenddocumentmergetouser in ezsignfoldertype-RequestV3 and ezsignfoldertype-ResponseV4
 - Property a_objEzsigntemplateannotation in ezsigntemplate-ResponseCompound
@@ -231,7 +371,6 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - Property objInscription in inscriptionnotauthenticated-Response
 - Value Optional in Field-eEzsignsignatureConsultationtrigger
 - Value Suspended in Field-eSessionhistoryEndby
-
 
 ### [1.3.0] - 2026-01-24
 
