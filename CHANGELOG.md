@@ -88,7 +88,6 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 ### [1.3.4] - 2026-11-27
 
 #### Added
-- DELETE /1/object/documenttypechecklist/{pkiDocumenttypechecklistID}
 - GET /1/object/adjustment/getList
 - GET /1/object/adjustment/{pkiAdjustmentID}/getAttachments
 - GET /1/object/adjustment/{pkiAdjustmentID}/getCommunicationCount
@@ -141,7 +140,6 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - GET /1/object/disclosure/{pkiDisclosureID}/getCommunicationList
 - GET /1/object/disclosure/{pkiDisclosureID}/getCommunicationrecipients
 - GET /1/object/disclosure/{pkiDisclosureID}/getCommunicationsenders
-- GET /1/object/documenttype/getList
 - GET /1/object/electronicfundstransfer/getList
 - GET /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/getAttachments
 - GET /1/object/electronicfundstransfertransaction/getList
@@ -210,8 +208,6 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - GET /1/object/supplier/{pkiSupplierID}/getCommunicationrecipients
 - GET /1/object/supplier/{pkiSupplierID}/getCommunicationsenders
 - GET /2/object/attachmentrejectreason/getAutocomplete/{sSelector}
-- GET /2/object/documenttype/getAutocomplete/{sSelector}
-- GET /2/object/documenttype/{pkiDocumenttypeID}
 - GET /3/object/ezsignbulksenddocumentmapping/{pkiEzsignbulksenddocumentmappingID}
 - GET /3/object/ezsignbulksendsignermapping/{pkiEzsignbulksendsignermappingID}
 - GET /3/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}
@@ -220,14 +216,12 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - GET /3/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}
 - GET /4/object/ezsignbulksend/{pkiEzsignbulksendID}
 - GET /4/object/ezsigntemplate/{pkiEzsigntemplateID}
-- PATCH /1/object/documenttypechecklist/{pkiDocumenttypechecklistID}
 - POST /1/object/adjustment/{pkiAdjustmentID}/batchDownload
 - POST /1/object/adjustment/{pkiAdjustmentID}/importIntoEDM
 - POST /1/object/agent/{pkiAgentID}/batchDownload
 - POST /1/object/attachment/{pkiAttachmentID}/delete
 - POST /1/object/attachment/{pkiAttachmentID}/rename
 - POST /1/object/attachment/{pkiAttachmentID}/restore
-- POST /1/object/attachment/{pkiAttachmentID}/setDocumentType
 - POST /1/object/attachment/{pkiAttachmentID}/setPrivacy
 - POST /1/object/attachment/{pkiAttachmentID}/validate
 - POST /1/object/bankaccount/{pkiBankaccountID}/batchDownload
@@ -243,7 +237,6 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - POST /1/object/deposittransitcheque/{pkiDeposittransitchequeID}/importIntoEDM
 - POST /1/object/disclosure/{pkiDisclosureID}/batchDownload
 - POST /1/object/disclosure/{pkiDisclosureID}/importIntoEDM
-- POST /1/object/documenttype
 - POST /1/object/electronicfundstransfer/{pkiElectronicfundstransferID}/batchDownload
 - POST /1/object/employee/{pkiEmployeeID}/batchDownload
 - POST /1/object/externalbroker/{pkiExternalbrokerID}/batchDownload
@@ -251,7 +244,6 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - POST /1/object/folder/{pkiFolderID}/batchDownload
 - POST /1/object/folder/{pkiFolderID}/importIntoEDM
 - POST /1/object/inscription/{pkiInscriptionID}/batchDownload
-- POST /1/object/inscription/{pkiInscriptionID}/synchronizationDocumenttype
 - POST /1/object/inscriptionnotauthenticated/{pkiInscriptionnotauthenticatedID}/batchDownload
 - POST /1/object/inscriptiontemp/{pkiInscriptiontempID}/batchDownload
 - POST /1/object/invoice/{pkiInvoiceID}/batchDownload
@@ -274,7 +266,6 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - POST /2/object/ezsignbulksendsignermapping
 - POST /2/object/ezsigntemplatepackagesigner
 - POST /2/object/ezsigntemplatesigner
-- PUT /1/object/documenttype/{pkiDocumenttypeID}
 - PUT /2/object/ezsigntemplatepackage/{pkiEzsigntemplatepackageID}/editEzsigntemplatepackagesigners
 - PUT /2/object/ezsigntemplatepackagesigner/{pkiEzsigntemplatepackagesignerID}
 - PUT /2/object/ezsigntemplatesigner/{pkiEzsigntemplatesignerID}
@@ -484,6 +475,7 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - Value PendingPrematurelyEnded in eEzsigndocumentStep
 
 #### Deprecated
+- GET /3/object/inscriptionchecklist/getAutocomplete/{sSelector}
 - POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl
 
 #### Removed
