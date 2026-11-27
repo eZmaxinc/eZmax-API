@@ -209,7 +209,6 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - GET /1/object/supplier/{pkiSupplierID}/getCommunicationList
 - GET /1/object/supplier/{pkiSupplierID}/getCommunicationrecipients
 - GET /1/object/supplier/{pkiSupplierID}/getCommunicationsenders
-- GET /2/module/ezsign/suggestTemplates
 - GET /2/object/attachmentrejectreason/getAutocomplete/{sSelector}
 - GET /2/object/documenttype/getAutocomplete/{sSelector}
 - GET /2/object/documenttype/{pkiDocumenttypeID}
@@ -284,7 +283,6 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - Parameter fkiAttachmentID in GET /2/object/user/getAutocomplete/{sSelector}
 - Property dtAgentPermitexpiration in agent-ListElement
 - Property dtEzsignformfieldgroupCompleted in ezsignformfieldgroup-Response
-- Property eEzmaxcaseGooddaytaskstatus in ezmaxcase-Response and ezmaxcase-Listelement
 - Property eEzsignfoldersignerassociationRole in ezsignfoldersignerassociation-RequestPatch
 - Property fkiAgentID in user-ListElement
 - Property fkiBrokerID in user-ListElement
@@ -301,8 +299,6 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - Property bKeepenteredvalues in ezsignfolder-duplicate-v1-Request
 - Property fkiInscriptionnotauthenticatedID in communicationreference-Request
 - Property objInscription in inscriptionnotauthenticated-Response
-- Property bListpresentationCount in listpresentation-Request
-- Property bListpresentationPinned in listpresentation-Request
 - Enum value 'Optional' for Field-eEzsigntemplatesignatureConsultationtrigger
 - Enum value 'CCDeleted' for Field-eEzsignfoldersignerassociationRole
 - Enum value 'BuyercontractCreated' for Field-eWebhookRealestateevent
@@ -311,7 +307,6 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - Enum value 'Pending' for Field-eAttachmentVerified
 - Enum value 'Pending' for Field-eAttachmentlogType
 - Enum value 'Realestate' for Field-eEzmaxpartnerproductstagewebhookModule
-- Enum value 'SubactionEDM' for Field-ePathAction
 - Webhook Buyercontract BuyercontractCreated
 - Webhook Buyercontract BuyercontractModified
 
