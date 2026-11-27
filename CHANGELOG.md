@@ -301,6 +301,9 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - Webhook Buyercontract BuyercontractCreated
 - Webhook Buyercontract BuyercontractModified
 
+#### Deprecated
+- GET /3/object/inscriptionchecklist/getAutocomplete/{sSelector}
+
 ### [1.3.3] - 2026-07-22
 
 #### Fixed
@@ -475,7 +478,6 @@ You may continue using the old routes or migrate fully to the new ones, but **do
 - Value PendingPrematurelyEnded in eEzsigndocumentStep
 
 #### Deprecated
-- GET /3/object/inscriptionchecklist/getAutocomplete/{sSelector}
 - POST /1/object/ezsignfoldersignerassociation/{pkiEzsignfoldersignerassociationID}/createEmbeddedUrl
 
 #### Removed
