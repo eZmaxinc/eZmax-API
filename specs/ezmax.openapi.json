@@ -10229,69 +10229,6 @@
                 }
             ]
         },
-        "/1/object/documenttypechecklist/{pkiDocumenttypechecklistID}": {
-            "description": "",
-            "patch": {
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/documenttypechecklist-patchObject-v1-Request"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "tags": [
-                    "Object_Documenttypechecklist"
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/documenttypechecklist-patchObject-v1-Response"
-                                }
-                            }
-                        },
-                        "description": "Successful response"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/Response-Error-404"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/Response-Error-422"
-                    }
-                },
-                "security": [
-                    {
-                        "Authorization": []
-                    }
-                ],
-                "operationId": "Documenttypechecklist_PatchObject_V1",
-                "summary": "Patch an existing Documenttypechecklist",
-                "description": "",
-                "x-systemconfigurationtype": [
-                    "All"
-                ],
-                "x-permissions": [
-                    "All"
-                ],
-                "x-usertypeextra": [],
-                "x-presentations": []
-            },
-            "parameters": [
-                {
-                    "name": "pkiDocumenttypechecklistID",
-                    "description": "The unique ID of the Documenttypechecklist",
-                    "schema": {
-                        "$ref": "#/components/schemas/Field-pkiDocumenttypechecklistID"
-                    },
-                    "in": "path",
-                    "required": true
-                }
-            ]
-        },
         "/1/object/domain": {
             "description": "",
             "post": {
@@ -51212,18 +51149,6 @@
                 "type": "string",
                 "example": "New"
             },
-            "Field-eDocumenttypechecklistStatus": {
-                "description": "The status of the Documenttypechecklist",
-                "enum": [
-                    "Not required",
-                    "Required",
-                    "Filed",
-                    "Justified",
-                    "Mandatory"
-                ],
-                "type": "string",
-                "example": "Not required"
-            },
             "Field-eErrorCode": {
                 "description": "The error code. See documentation for valid values",
                 "enum": [
@@ -56996,12 +56921,6 @@
                 "pattern": "^[\\s\\S]{0,65535}$",
                 "type": "string",
                 "example": "Hello, this is an example of content in a message"
-            },
-            "Field-tDocumenttypechecklistComment": {
-                "description": "The comment of the Documenttypechecklist",
-                "pattern": "^.{0,255}$",
-                "type": "string",
-                "example": "This document is optional."
             },
             "Field-tExtraMessage": {
                 "description": "A custom text message that will be added to the email sent.",
@@ -68207,39 +68126,6 @@
             },
             "discussionmessage-patchObject-v1-Response": {
                 "description": "Response for PATCH /1/object/discussionmessage/{pkiDiscussionmessageID}",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/Common-Response"
-                    }
-                ]
-            },
-            "documenttypechecklist-RequestPatch": {
-                "description": "A Documenttypechecklist Object",
-                "type": "object",
-                "properties": {
-                    "eDocumenttypechecklistStatus": {
-                        "$ref": "#/components/schemas/Field-eDocumenttypechecklistStatus"
-                    },
-                    "tDocumenttypechecklistComment": {
-                        "$ref": "#/components/schemas/Field-tDocumenttypechecklistComment"
-                    }
-                }
-            },
-            "documenttypechecklist-patchObject-v1-Request": {
-                "description": "Request for PATCH /1/object/documenttypechecklist/{pkiDocumenttypechecklistID}",
-                "required": [
-                    "objDocumenttypechecklist"
-                ],
-                "type": "object",
-                "properties": {
-                    "objDocumenttypechecklist": {
-                        "$ref": "#/components/schemas/documenttypechecklist-RequestPatch"
-                    }
-                }
-            },
-            "documenttypechecklist-patchObject-v1-Response": {
-                "description": "Response for PATCH /1/object/documenttypechecklist/{pkiDocumenttypechecklistID}",
                 "type": "object",
                 "allOf": [
                     {
@@ -103652,11 +103538,6 @@
             "x-displayName": "Discussionmessage"
         },
         {
-            "name": "Object_Documenttypechecklist",
-            "description": "Documenttypechecklist contains details about Documenttypechecklists",
-            "x-displayName": "Documenttypechecklist"
-        },
-        {
             "name": "Object_Domain",
             "description": "Domain contains details about Domains",
             "x-displayName": "Domain"
@@ -105073,7 +104954,6 @@
                 "Object_Discussion",
                 "Object_Discussionmembership",
                 "Object_Discussionmessage",
-                "Object_Documenttypechecklist",
                 "Object_Domain",
                 "Object_Electronicfundstransfer",
                 "Object_Electronicfundstransfertransaction",
